@@ -1,11 +1,13 @@
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 import requests
 import io
 import os
 from pdfminer.high_level import extract_text  # For PDF to text conversion
-from google import genai
+import google.generativeai as genai
 import json
 
 # All SciOly test banks
@@ -86,22 +88,32 @@ events = [
 
 # --- 1. Google Drive API Setup ---
 def authenticate_google_drive():
-    """Authenticates with Google Drive API."""
+    """Authenticates with Google Drive API and obtains token.json."""
     creds = None
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', ['https://www.googleapis.com/auth/drive.readonly'])
+    if os.path.exists(TOKEN_FILE):
+        creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
     if not creds or not creds.valid:
-        # Follow Google's OAuth flow to obtain or refresh credentials
-        print("Please follow the instructions to authenticate with Google Drive.")
-        # ... (Implementation for obtaining/refreshing credentials using google-auth-oauthlib)
-        # ... (Store the credentials in 'token.json')
-        pass  # Replace with actual authentication code
+        if creds and creds.expired and creds.refresh_token:
+            try:
+                creds.refresh(Request())
+            except Exception as e:
+                print(f"Error refreshing credentials: {e}")
+                os.remove(TOKEN_FILE) # Invalidate the potentially bad token
+                creds = None  # Force re-authentication
+        if not creds or not creds.valid:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                CREDENTIALS_FILE, SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open(TOKEN_FILE, 'w') as token:
+            token.write(creds.to_json())
     try:
         service = build('drive', 'v3', credentials=creds)
         return service
     except HttpError as error:
         print(f'An error occurred: {error}')
         return None
+
 
 def list_files_in_folder(service, folder_id):
     """Lists all PDF files in a given Google Drive folder."""
@@ -174,7 +186,7 @@ def extract_questions_with_gemini(client, text, events):
     }}
     """
     try:
-        response = client.models.generate_content(model = "gemini-2.0-flash-exp", contents=prompt)
+        response = client.models.generate_content(prompt)
         if response:
             return response.text
         else:
@@ -190,14 +202,17 @@ if __name__ == "__main__":
     GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'  # You might need to create this
     GEMINI_API_KEY = "AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE"  # Replace with your actual Gemini API key
     OUTPUT_DIR = "extracted_questions"
+    SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+    CREDENTIALS_FILE = 'credentials.json'
+    TOKEN_FILE = 'token.json'
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # --- Initialize APIs ---
     drive_service = authenticate_google_drive()
     if not drive_service:
         exit()
-    gemini_model = genai.Client(api_key="AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE") 
-
+    genai.configure(api_key="AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE") 
+    gemini_model = genai.GenerativeModel("gemini-2.0-flash-exp")
     all_extracted_questions = {}
 
     # --- Process Folders and Files ---
