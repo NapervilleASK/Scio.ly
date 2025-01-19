@@ -82,20 +82,20 @@ function EventDashboard() {
         <div className="flex-1 bg-white p-6 rounded-lg shadow-lg">
           <ul className="divide-y divide-gray-200">
             {sortedEvents.map((event) => (
-              <li
-              key={event.id}
-              className={`py-4 cursor-pointer ${
-                selectedEvent === event.id
-                  ? 'bg-blue-100 border-l-4' // Apply blue left bar and background for selected event
-                  : 'hover:bg-gray-50' // Apply hover effect for non-selected events
-              }`}
-              onClick={() => selectEvent(event.id)}
-            >
-              <div className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold">{event.name}</h2>
-                <p className="text-sm text-gray-500">{event.subject}</p>
-              </div>
-            </li>
+                <li
+                key={event.id}
+                className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transform transition-all duration-200 ${
+                  selectedEvent === event.id
+                  ? 'bg-gradient-to-r from-blue-100 via-white to-cyan-100 shadow-md scale-102'
+                  : 'hover:bg-gray-50'
+                }`}
+                onClick={() => selectEvent(event.id)}
+                >
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-semibold">{event.name}</h2>
+                  <p className="text-sm text-gray-500">{event.subject}</p>
+                </div>
+                </li>
             ))}
           </ul>
         </div>
