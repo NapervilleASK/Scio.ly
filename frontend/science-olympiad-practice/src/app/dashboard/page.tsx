@@ -37,15 +37,14 @@ function EventDashboard() {
 
   const handleGenerateTest = () => {
     const selectedEventDetails = events.find((event) => event.id === selectedEvent);
-    if (selectedEventDetails) {
-      router.push(
-        `/test?events=${encodeURIComponent(
-          JSON.stringify([selectedEventDetails])
-        )}`
-      );
-    } else {
+  
+    if (!selectedEventDetails) {
       alert('Please select an event to generate the test.');
+      return;
     }
+  
+    // Pass the event name (as eventName) to match the key in questions.json
+    router.push(`/test?eventName=${encodeURIComponent(selectedEventDetails.name)}`);
   };
 
   const sortedEvents = [...events].sort((a, b) => {
