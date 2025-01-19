@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,8 +15,104 @@
   }
 }
 
+/* Body Styling */
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Inter", sans-serif;
+}
+
+/* Keyframes for the Background Wave Animation */
+@keyframes random-waves {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Background Animation */
+.animate-random-waves {
+  background-size: 400% 400%;
+  animation: random-waves 10s linear infinite;
+  background-image: radial-gradient(
+    circle,
+    rgba(135, 206, 250, 0.8), /* Light pastel blue */
+    rgba(100, 149, 237, 0.7), /* Cornflower blue */
+    rgba(72, 61, 139, 0.6),   /* Dark slate blue */
+    rgba(25, 25, 112, 0.8)    /* Midnight blue */
+  );
+  opacity: 0.9;
+}
+
+/* Keyframes for Bubbly Particle Motion */
+@keyframes bubbly-particles {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(-20px, -30px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(15px, -50px) scale(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-10px, -70px) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(0, -100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Particles Container */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Particle Styling */
+.particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9), /* Soft white core */
+    rgba(173, 216, 230, 0.7), /* Pastel sky blue */
+    rgba(100, 149, 237, 0.5)  /* Cornflower blue edge */
+  );
+  border-radius: 50%;
+  animation: bubbly-particles 6s ease-in-out infinite;
+}
+
+/* Variation for particles to make them unique */
+.particle:nth-child(odd) {
+  animation-duration: 7s;
+  animation-delay: 0.5s;
+}
+
+.particle:nth-child(even) {
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+/* Additional Overlay to Blend Visuals */
+.additional-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+  opacity: 0.4;
 }
