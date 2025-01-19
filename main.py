@@ -3,10 +3,11 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-import requests
+from googleapiclient.http import MediaIoBaseDownload
+import re
 import io
 import os
-from pdfminer.high_level import extract_text  # For PDF to text conversion
+from pdfminer.high_level import extract_text 
 import google.generativeai as genai
 import json
 
@@ -109,6 +110,7 @@ def authenticate_google_drive():
             token.write(creds.to_json())
     try:
         service = build('drive', 'v3', credentials=creds)
+        # print(service)
         return service
     except HttpError as error:
         print(f'An error occurred: {error}')
@@ -133,15 +135,15 @@ def download_file(service, file_id, filename):
     try:
         request = service.files().get_media(fileId=file_id)
         fh = io.BytesIO()
-        downloader = requests.adapters.HTTPAdapter(max_retries=3)
-        session = requests.Session()
-        session.mount('https://', downloader)
-        response = session.get(request.uri, stream=True)
-        response.raise_for_status()
-        for chunk in response.iter_content(chunk_size=4096):
-            fh.write(chunk)
+        downloader = MediaIoBaseDownload(fh, request)
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+            print(f"Download {int(status.progress() * 100)}%.")
+
         with open(filename, 'wb') as f:
-            f.write(fh.getvalue())
+            fh.seek(0)
+            f.write(fh.read())
         return True
     except HttpError as error:
         print(f'An error occurred: {error}')
@@ -160,33 +162,34 @@ def pdf_to_text(pdf_path):
 # --- 3. Gemini API Interaction ---
 
 def extract_questions_with_gemini(client, text, events):
-    """Sends text to Gemini API and extracts multiple-choice questions with event detection."""
+    genai.configure(api_key=GEMINI_API_KEY[idx % 7]) 
+    idx += 1
     prompt = f"""
-    Analyze the following text, which contains Science Olympiad multiple-choice questions.
     Identify the event this test most likely belongs to from the following list: {', '.join(events)}.
-    Extract all multiple-choice questions and format them as a JSON object where the key is the detected event name,
-    and the value is a list of dictionaries, each representing a question with 'question' and 'options' keys.
-    The 'options' should be a list of the multiple-choice options.
-
-    Text:
-    ```{text}```
-
+    Extract all multiple-choice questions and output a raw JSON (no backticks or markdown) object of this test, similar to 
+    this schema:
     Example JSON output format:
     {{
       "ecology": [
         {{
           "question": "What is the primary role of decomposers in an ecosystem?",
           "options": ["Producing energy", "Breaking down dead organic matter", "Consuming producers", "Providing shelter"]
+          "answers": [2]
         }},
         {{
           "question": "Which of the following is an example of a symbiotic relationship?",
-          "options": ["Predation", "Competition", "Mutualism", "Parasitism"]
+          "options": ["Predation", "Competition", "Mutualism", "Parasitism"],
+          "answers": [1,2,3,4] // All of the options are correct
         }}
       ]
     }}
+
+    Here's the test:
+    ```{text}```
+
     """
     try:
-        response = client.models.generate_content(prompt)
+        response = client.generate_content(prompt)
         if response:
             return response.text
         else:
@@ -197,58 +200,64 @@ def extract_questions_with_gemini(client, text, events):
         return None
 
 # --- Main Execution ---
-if __name__ == "__main__":
-    # --- Configuration ---
-    GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'  # You might need to create this
-    GEMINI_API_KEY = "AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE"  # Replace with your actual Gemini API key
-    OUTPUT_DIR = "extracted_questions"
-    SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-    CREDENTIALS_FILE = 'credentials.json'
-    TOKEN_FILE = 'token.json'
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # --- Initialize APIs ---
-    drive_service = authenticate_google_drive()
-    if not drive_service:
-        exit()
-    genai.configure(api_key="AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE") 
-    gemini_model = genai.GenerativeModel("gemini-2.0-flash-exp")
-    all_extracted_questions = {}
+GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'
+idx = 0
+GEMINI_API_KEY = ["AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE","AIzaSyBd3NxLibgtZm9eVJtPN1l7TaKrFIfqsRw","AIzaSyAiA-njA4SwlA6sI12VKJHnYBNdKDzM0yI","AIzaSyA7tWKPs5TzSLGA9DJqKTjUyvCHs-zkRh4","AIzaSyAjTo2gr-jQvXPMfd3wgSgF4GlI9xSd2ug","AIzaSyAOP4QEzlMmiI2EMzSF-f8zCE2_3X8PMQI","AIzaSyDir7-baCKB81J_gF4WudMSL1LoxUK_yV4"]
+OUTPUT_DIR = "extracted_questions"
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+CREDENTIALS_FILE = 'credentials.json'
+TOKEN_FILE = 'token.json'
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # --- Process Folders and Files ---
+# --- Initialize APIs ---
+drive_service = authenticate_google_drive()
+if not drive_service:
+    exit()
+gemini_model = genai.GenerativeModel("gemini-2.0-flash-exp")
+all_extracted_questions = {}
+
+# --- Process Folders and Files ---
+with open("bank.json", 'a') as writefile:
     for folder_id in folder_links:
-
         files = list_files_in_folder(drive_service, folder_id)
-        if files:
-            print(f"Processing folder: {folder_id}")
-            for file in files:
-                if file['name'].lower().endswith('.pdf'):
-                    print(f"  Downloading file: {file['name']}")
-                    pdf_path = os.path.join(OUTPUT_DIR, file['name'])
-                    if download_file(drive_service, file['id'], pdf_path):
-                        print(f"  Converting {file['name']} to text...")
-                        text_content = pdf_to_text(pdf_path)
-                        if text_content:
-                            print(f"  Extracting questions using Gemini...")
-                            gemini_output = extract_questions_with_gemini(gemini_model, text_content, events)
-                            if gemini_output:
-                                try:
-                                    questions_json = json.loads(gemini_output)
-                                    for event, questions in questions_json.items():
-                                        if event not in all_extracted_questions:
-                                            all_extracted_questions[event] = []
-                                        all_extracted_questions[event].extend(questions)
-                                    print(f"  Extracted questions for event(s): {', '.join(questions_json.keys())}")
-                                except json.JSONDecodeError as e:
-                                    print(f"  Error decoding Gemini JSON output for {file['name']}: {e}")
-                                    print(f"  Gemini Output:\n{gemini_output}")
-                        os.remove(pdf_path) # Clean up the downloaded PDF
-        else:
+        if not files:
             print(f"No PDF files found in folder: {folder_id}")
+            continue
 
-    # --- Save the Extracted Questions ---
-    output_json_path = os.path.join(OUTPUT_DIR, "all_questions.json")
-    with open(output_json_path, 'w') as f:
-        json.dump(all_extracted_questions, f, indent=2)
+        print(f"Processing folder: {folder_id}")
+        for file in files:
+            if not (file['name'].lower().endswith('.pdf') and re.search(r"test", file['name'].lower())):
+                print('Was not a pdf that contained the text "test"')
+                continue
 
-    print(f"\nAll extracted questions saved to: {output_json_path}")
+            print(f"Downloading file: {file['name']}")
+
+            pdf_path = os.path.join(OUTPUT_DIR, file['name'])
+
+            if not download_file(drive_service, file['id'], pdf_path):
+                print('Can\'t download file')
+                continue
+
+            print(f"Converting {file['name']} to text...")
+
+            text_content = pdf_to_text(pdf_path)
+
+            print(f"Extracting questions using Gemini...")
+
+            gemini_output = extract_questions_with_gemini(gemini_model, text_content, events)
+
+            try:
+
+                questions_json = json.dumps(json.loads(re.search(r"\{.*\}", gemini_output, re.DOTALL).group(0)))
+
+                writefile.write(questions_json + "\n")
+
+                print(f"  Extracted questions for event(s): {', '.join(questions_json.keys())}")
+
+            except json.JSONDecodeError as e:
+
+                print(f"  Error decoding Gemini JSON output for {file['name']}: {e}")
+                print(f"  Gemini Output:\n{gemini_output}")
+
+            os.remove(pdf_path) # Clean up the downloaded PDF
