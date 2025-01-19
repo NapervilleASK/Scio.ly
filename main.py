@@ -258,8 +258,8 @@ with open("bank.json", 'a') as writefile:
 
         print(f"Processing folder: {folder_id}")
         for file in files:
-            if not (file['name'].lower().endswith('.pdf') and re.search(r"test", file['name'].lower())):
-                print(f'{file['name']} was not a pdf that contained the text "test"')
+            if not (file['name'].lower().endswith('.pdf') and re.search(r"test|exam", file['name'].lower())):
+                print(f'{file['name']} was not a pdf that contained the text "test" or "exam"')
                 continue
 
             print(f"Downloading file: {file['name']}")
@@ -273,7 +273,8 @@ with open("bank.json", 'a') as writefile:
             print(f"Converting {file['name']} to text...")
 
             text_content = pdf_to_text(pdf_path)
-
+            if len(text_content) < 100:
+                print("too short")
             print(f"Extracting questions using Gemini...")
             idx += 1
             gemini_output = extract_questions_with_gemini(gemini_model, text_content, events, idx)
