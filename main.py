@@ -118,17 +118,48 @@ def authenticate_google_drive():
 
 
 def list_files_in_folder(service, folder_id):
-    """Lists all PDF files in a given Google Drive folder."""
+    """Retrieves a list of all PDF file IDs from a Google Drive folder and its subfolders.
+
+    Args:
+        service: The Google Drive API service object.
+        folder_id: The ID of the Google Drive folder.
+
+    Returns:
+        A list of strings, where each string is the ID of a PDF file.
+    """
+    pdf_ids = []
     try:
-        results = service.files().list(
-            q=f"'{folder_id}' in parents and mimeType='application/pdf'",
-            fields="nextPageToken, files(id, name)"
-        ).execute()
+        query = f"'{folder_id}' in parents and mimeType='application/pdf' and trashed=false"
+        results = service.files().list(q=query, fields="nextPageToken, files(id, name)").execute()
         items = results.get('files', [])
-        return items
-    except HttpError as error:
-        print(f'An error occurred: {error}')
-        return []
+        pdf_ids.extend(items)
+
+        # Retrieve subfolders
+        subfolder_query = f"'{folder_id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false"
+        subfolder_results = service.files().list(q=subfolder_query, fields="nextPageToken, files(id, name)").execute()
+        subfolders = subfolder_results.get('files', [])
+
+        for subfolder in subfolders:
+            pdf_ids.extend(list_files_in_folder(service, subfolder['id']))
+
+        nextPageToken = results.get('nextPageToken')
+        while nextPageToken:
+            results = service.files().list(q=query, fields="nextPageToken, files(id)", pageToken=nextPageToken).execute()
+            items = results.get('files', [])
+            pdf_ids.extend(items)
+            nextPageToken = results.get('nextPageToken')
+
+        subfolder_nextPageToken = subfolder_results.get('nextPageToken')
+        while subfolder_nextPageToken:
+            subfolder_results = service.files().list(q=subfolder_query, fields="nextPageToken, files(id)", pageToken=subfolder_nextPageToken).execute()
+            subfolders = subfolder_results.get('files', [])
+            for subfolder in subfolders:
+                pdf_ids.extend(list_files_in_folder(service, subfolder['id']))
+            subfolder_nextPageToken = subfolder_results.get('nextPageToken')
+    except:
+        print("Couldn't grab file")
+
+    return pdf_ids
 
 def download_file(service, file_id, filename):
     """Downloads a file from Google Drive."""
@@ -162,7 +193,7 @@ def pdf_to_text(pdf_path):
 # --- 3. Gemini API Interaction ---
 
 def extract_questions_with_gemini(client, text, events, idx):
-    genai.configure(api_key=GEMINI_API_KEY[idx % 7]) 
+    genai.configure(api_key=GEMINI_API_KEY[idx % len(GEMINI_API_KEY)]) 
     prompt = f"""
     Identify the event this test most likely belongs to from the following list: {', '.join(events)}.
     Extract all multiple-choice questions and output a raw JSON (no backticks or markdown) object of this test, similar to 
@@ -184,7 +215,7 @@ def extract_questions_with_gemini(client, text, events, idx):
     }}
 
     DO NOT include any questions that require an image or anything other than the question itself to solve. You may leave the option field blank for free response, but have one element in the answers array providing a correct response. 
-
+	Create an empty json object if no test is present
     Here's the test:
     ```{text}```
 
@@ -199,7 +230,6 @@ def extract_questions_with_gemini(client, text, events, idx):
     except Exception as e:
         print(f"Error interacting with Gemini API: {e}")
         return None
-
 # --- Main Execution ---
 
 GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'
@@ -228,8 +258,8 @@ with open("bank.json", 'a') as writefile:
 
         print(f"Processing folder: {folder_id}")
         for file in files:
-            if not (file['name'].lower().endswith('.pdf') and re.search(r"test", file['name'].lower())):
-                print(f'{file['name']} was not a pdf that contained the text "test"')
+            if not (file['name'].lower().endswith('.pdf') and re.search(r"test|exam", file['name'].lower())):
+                print(f'{file['name']} was not a pdf that contained the text "test" or "exam"')
                 continue
 
             print(f"Downloading file: {file['name']}")
@@ -243,7 +273,8 @@ with open("bank.json", 'a') as writefile:
             print(f"Converting {file['name']} to text...")
 
             text_content = pdf_to_text(pdf_path)
-
+            if len(text_content) < 100:
+                print("too short")
             print(f"Extracting questions using Gemini...")
             idx += 1
             gemini_output = extract_questions_with_gemini(gemini_model, text_content, events, idx)
