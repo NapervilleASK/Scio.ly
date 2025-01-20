@@ -28,7 +28,7 @@ const events: Event[] = [
 
 function EventDashboard() {
   const [sortOption, setSortOption] = useState<string>('alphabetical');
-  const [selectedEvent, setSelectedEvent] = useState<number | null>(null); // Only one event can be selected
+  const [selectedEvent, setSelectedEvent] = useState<number | null>(null); // only one event can be selected
   const router = useRouter();
 
   const selectEvent = (eventId: number) => {
@@ -43,7 +43,7 @@ function EventDashboard() {
       return;
     }
   
-    // Pass the event name (as eventName) to match the key in questions.json
+    // pass the event name (as eventName) to match the key in questions.json
     router.push(`/test?eventName=${encodeURIComponent(selectedEventDetails.name)}`);
   };
 
@@ -77,29 +77,29 @@ function EventDashboard() {
       </div>
 
       <div className="w-full max-w-4xl flex gap-6">
-        {/* Event List */}
+        {/* event list */}
         <div className="flex-1 bg-white p-6 rounded-lg shadow-lg">
-          <ul className="divide-y divide-gray-200">
+          <ul>
             {sortedEvents.map((event) => (
-                <li
-                key={event.id}
-                className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transform transition-all duration-200 ${
-                  selectedEvent === event.id
-                  ? 'bg-gradient-to-r from-blue-100 via-white to-cyan-100 shadow-md scale-102'
-                  : 'hover:bg-gray-50'
-                }`}
-                onClick={() => selectEvent(event.id)}
-                >
+              <li
+              key={event.id}
+              className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                selectedEvent === event.id
+                ? 'bg-gradient-to-r from-blue-100 via-white to-cyan-100 shadow-md scale-105'
+                : 'hover:bg-gray-50'
+              }`}
+              onClick={() => selectEvent(event.id)}
+              >
                 <div className="flex justify-between items-center">
                   <h2 className="text-lg font-semibold">{event.name}</h2>
                   <p className="text-sm text-gray-500">{event.subject}</p>
                 </div>
-                </li>
+              </li>
             ))}
           </ul>
         </div>
 
-        {/* Test Configuration */}
+        {/* test configuration */}
         <div className="w-80 bg-white p-8 rounded-lg shadow-lg ml-6">
           <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
             Test Configuration
@@ -171,7 +171,7 @@ function EventDashboard() {
             </div>
             <button
               onClick={handleGenerateTest}
-              className="w-full mt-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200"
+              className="w-full mt-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-md hover:scale-105 transform transition-all duration-300"
             >
               Generate Test
             </button>

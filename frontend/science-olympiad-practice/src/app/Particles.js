@@ -8,22 +8,22 @@ export default function Particles() {
     particlesContainer.className = "particles-container";
     document.body.appendChild(particlesContainer);
 
-    const particleCount = 50; // Number of particles
+    const particleCount = 50; // number of particles
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
 
-      // Randomize initial position
+      // randomize initial position
       particle.style.top = `${Math.random() * 100}%`;
       particle.style.left = `${Math.random() * 100}%`;
 
-      // Append particle to the container
+      // append particle to the container
       particlesContainer.appendChild(particle);
     }
 
     return () => {
-      // Cleanup on unmount
+      // cleanup on unmount
       document.body.removeChild(particlesContainer);
     };
   }, []);
