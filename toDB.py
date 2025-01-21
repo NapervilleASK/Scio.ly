@@ -386,6 +386,7 @@ def combine_bank_data(filename="bank.txt"):
                             for item in value
                             if item.get('answers') and len(item['answers']) > 0 and item.get("question")
                             and len(item['question']) > 8
+                            and not (len(item['question']) < 85 and "this star" in item['question'])
                             and not any(phrase in item['question'].lower() for phrase in [
                                 "this picture", "this image", "this diagram", "this map",
                                 "image a", "image b", "image c", "image 1", "image 2", "image 3",
@@ -410,7 +411,8 @@ def combine_bank_data(filename="bank.txt"):
                                 "indicated by", "diagram to the right", "this device", "this bacteria",
                                 "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
                                 "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
-                                "shown to the right"
+                                "shown to the right", "identify powder", "(left)", "(right)", "graph above",
+                                "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on"
                             ])
                         ])
                     else:
@@ -428,4 +430,8 @@ combined_bank = combine_bank_data()
 with open("bank_filtered.json", 'w') as outfile:
     json.dump(combined_bank, outfile, indent=2)
 
+<<<<<<< HEAD
 print("Combined and filtered data written to bank_filtered.json")
+=======
+print("Combined and filtered data written to bank_filtered.json")
+>>>>>>> 67812faf785eb6bb1fe35a20e019fb91ef96a974
