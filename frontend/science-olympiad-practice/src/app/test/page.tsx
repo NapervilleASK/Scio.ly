@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/884c863c4d77081fb83f89ca831f1c7f/raw/4c7c815a474127e95d3776a061c076bf7c05bb8c/dataset.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/2241acc852a71f8672a97e6706baa766/raw/be38c689756d64e10f78db3962e56d2a3edc6da7/final.json';
 
 export default function TestPage() {
   const searchParams = useSearchParams();
