@@ -153,7 +153,7 @@ function EventDashboard() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-cyan-100 p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-6">
-        Test Generator Dashboard
+        Scio.ly Dashboard
       </h1>
       {loading ? (
         <p>Loading events...</p>
@@ -309,22 +309,22 @@ function EventDashboard() {
               </div>
             </div>
             <button
-              onClick={() => router.back()}
+              onClick={() => router.push('/')}
               className="fixed bottom-8 left-8 p-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
               </svg>
             </button>
 

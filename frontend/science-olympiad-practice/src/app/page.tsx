@@ -39,7 +39,16 @@ export default function HomePage() {
             We aim to provide all Science Olympiad students with the best and easiest way to practice their events. Our team strives to
             provide the best tests in the most realistic and interactive way.
           </p>
+
+          <img 
+            src="./ASK.png"
+            alt="Science Olympiad Practice"
+            className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+          />
+
         </div>
+
+
       </div>
 
     </div>

@@ -169,10 +169,10 @@ export default function TestPage() {
 <div
   className={`${
     isSubmitted ? '' : 'sticky top-6'
-  } z-10 w-full max-w-3xl bg-white border border-gray-300 rounded-full h-4 mb-6 shadow-md`}
+  } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg`}
 >
   <div
-    className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out"
+    className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out shadow-md"
     style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
   ></div>
 </div>
