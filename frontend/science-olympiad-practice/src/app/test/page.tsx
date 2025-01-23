@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react'; // Import Suspense
 
 interface Question {
   question: string;
@@ -20,6 +20,12 @@ interface RouterParams {
 
 const API_URL =
   'https://gist.githubusercontent.com/Kudostoy0u/e453dec308f66d0f9fea195750b6f70b/raw/e0b8152a4337cdc683abc7cd972b93e9a07b4b8b/final.json';
+
+const LoadingFallback = () => (
+  <div className="flex justify-center items-center h-64">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+  </div>
+);
 
 export default function TestPage() {
   const searchParams = useSearchParams();
@@ -155,156 +161,155 @@ export default function TestPage() {
   };
 
   return (
-    <Suspense>
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
-      <header className="w-full max-w-3xl flex justify-between items-center py-4">
-        <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
-        {timeLeft !== null && (
-          <div className={`text-xl font-semibold ${timeLeft <= 300 ? 'text-red-600' : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'}`}>
-            Time Left: {formatTime(timeLeft)}
-          </div>
-        )}
-      </header>
-
-      {/* Smooth Progress Bar */}
-<div
-  className={`${
-    isSubmitted ? '' : 'sticky top-6'
-  } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg`}
->
-  <div
-    className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out shadow-md"
-    style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
-  ></div>
-</div>
-
-
-      <main className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6 mt-4">
-        {isLoading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
-          </div>
-        ) : fetchError ? (
-          <div className="text-red-600 text-center">{fetchError}</div>
-        ) : (
-          <>
-            <ul className="space-y-6">
-              {data.map((item, index) => (
-                <li key={index} className="relative border p-4 rounded-lg shadow-sm bg-gray-50">
-                  <h3 className="font-semibold text-lg text-gray-800">Question {index + 1}</h3>
-                  <p className="text-gray-700 mb-4">{item.question}</p>
-
-                  {/* Answer Inputs */}
-                  {item.options && item.options.length > 0 && item.answers.length > 1 ? (
-                    <div className="space-y-2">
-                      {item.options.map((option, idx) => (
-                        <label
-                          key={idx}
-                          className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
-                        >
-                          <input
-                            type="checkbox"
-                            name={`question-${index}`}
-                            value={option}
-                            onChange={() => handleAnswerChange(index, option, true)}
-                            disabled={isSubmitted}
-                            checked={userAnswers[index]?.includes(option) || false}
-                            className="mr-2"
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </div>
-                  ) : item.options && item.options.length > 0 ? (
-                    <div className="space-y-2">
-                      {item.options.map((option, idx) => (
-                        <label
-                          key={idx}
-                          className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
-                        >
-                          <input
-                            type="radio"
-                            name={`question-${index}`}
-                            value={option}
-                            onChange={() => handleAnswerChange(index, option)}
-                            disabled={isSubmitted}
-                            checked={userAnswers[index]?.[0] === option}
-                            className="mr-2"
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </div>
-                  ) : (
-                    <textarea
-                      className="w-full p-2 border rounded-md text-black"
-                      rows={3}
-                      placeholder="Type your answer here (True/False if applicable)"
-                      onChange={(e) => handleAnswerChange(index, e.target.value)}
-                      disabled={isSubmitted}
-                      value={userAnswers[index]?.[0] || ''}
-                    />
-                  )}
-
-                  {isSubmitted && (
-                    <>
-                      <p
-                        className={`mt-2 font-semibold ${
-                          isCorrect(item, userAnswers[index]) ? 'text-green-600' : 'text-red-600'
-                        }`}
-                      >
-                        {isCorrect(item, userAnswers[index]) ? 'Correct!' : 'Wrong!'}
-                      </p>
-                      <p className="text-gray-600 text-sm mt-1">
-                        <strong>Correct Answer(s):</strong>{' '}
-                        {item.options?.length
-                          ? item.answers
-                              .map((ans) => item.options?.[ans as number - 1])
-                              .join(', ')
-                          : item.answers.join(', ')}
-                      </p>
-                    </>
-                  )}
-                  <br/> 
-                  {/* Difficulty Bar */}
-                  <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300">
-                    <div
-                      className={`h-full rounded-full transition-all ${
-                        item.difficulty >= 0.66
-                          ? 'bg-red-500'
-                          : item.difficulty >= 0.33
-                          ? 'bg-yellow-500'
-                          : 'bg-green-500'
-                      }`}
-                      style={{ width: `${item.difficulty * 100}%` }}
-                    ></div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            {/* Submit Button */}
-            <div className="mt-6 text-center">
-              {isSubmitted ? (
-                <button
-                  onClick={handleBackToMain}
-                  className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-green-600 transition"
-                >
-                  Return to Dashboard
-                </button>
-              ) : (
-                <button
-                  onClick={handleSubmit}
-                  className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition"
-                >
-                  Submit Answers
-                </button>
-              )}
+    <Suspense fallback={<LoadingFallback />}> {/* Wrap TestPage with Suspense */}
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
+        <header className="w-full max-w-3xl flex justify-between items-center py-4">
+          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
+          {timeLeft !== null && (
+            <div className={`text-xl font-semibold ${timeLeft <= 300 ? 'text-red-600' : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'}`}>
+              Time Left: {formatTime(timeLeft)}
             </div>
-          </>
-        )}
-      </main>
-    </div>
+          )}
+        </header>
+
+        {/* Smooth Progress Bar */}
+        <div
+          className={`${
+            isSubmitted ? '' : 'sticky top-6'
+          } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg`}
+        >
+          <div
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out shadow-md"
+            style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
+          ></div>
+        </div>
+
+        <main className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6 mt-4">
+          {isLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+            </div>
+          ) : fetchError ? (
+            <div className="text-red-600 text-center">{fetchError}</div>
+          ) : (
+            <>
+              <ul className="space-y-6">
+                {data.map((item, index) => (
+                  <li key={index} className="relative border p-4 rounded-lg shadow-sm bg-gray-50">
+                    <h3 className="font-semibold text-lg text-gray-800">Question {index + 1}</h3>
+                    <p className="text-gray-700 mb-4">{item.question}</p>
+
+                    {/* Answer Inputs */}
+                    {item.options && item.options.length > 0 && item.answers.length > 1 ? (
+                      <div className="space-y-2">
+                        {item.options.map((option, idx) => (
+                          <label
+                            key={idx}
+                            className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
+                          >
+                            <input
+                              type="checkbox"
+                              name={`question-${index}`}
+                              value={option}
+                              onChange={() => handleAnswerChange(index, option, true)}
+                              disabled={isSubmitted}
+                              checked={userAnswers[index]?.includes(option) || false}
+                              className="mr-2"
+                            />
+                            {option}
+                          </label>
+                        ))}
+                      </div>
+                    ) : item.options && item.options.length > 0 ? (
+                      <div className="space-y-2">
+                        {item.options.map((option, idx) => (
+                          <label
+                            key={idx}
+                            className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
+                          >
+                            <input
+                              type="radio"
+                              name={`question-${index}`}
+                              value={option}
+                              onChange={() => handleAnswerChange(index, option)}
+                              disabled={isSubmitted}
+                              checked={userAnswers[index]?.[0] === option}
+                              className="mr-2"
+                            />
+                            {option}
+                          </label>
+                        ))}
+                      </div>
+                    ) : (
+                      <textarea
+                        className="w-full p-2 border rounded-md text-black"
+                        rows={3}
+                        placeholder="Type your answer here (True/False if applicable)"
+                        onChange={(e) => handleAnswerChange(index, e.target.value)}
+                        disabled={isSubmitted}
+                        value={userAnswers[index]?.[0] || ''}
+                      />
+                    )}
+
+                    {isSubmitted && (
+                      <>
+                        <p
+                          className={`mt-2 font-semibold ${
+                            isCorrect(item, userAnswers[index]) ? 'text-green-600' : 'text-red-600'
+                          }`}
+                        >
+                          {isCorrect(item, userAnswers[index]) ? 'Correct!' : 'Wrong!'}
+                        </p>
+                        <p className="text-gray-600 text-sm mt-1">
+                          <strong>Correct Answer(s):</strong>{' '}
+                          {item.options?.length
+                            ? item.answers
+                                .map((ans) => item.options?.[ans as number - 1])
+                                .join(', ')
+                            : item.answers.join(', ')}
+                        </p>
+                      </>
+                    )}
+                    <br/>
+                    {/* Difficulty Bar */}
+                    <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300">
+                      <div
+                        className={`h-full rounded-full transition-all ${
+                          item.difficulty >= 0.66
+                            ? 'bg-red-500'
+                            : item.difficulty >= 0.33
+                            ? 'bg-yellow-500'
+                            : 'bg-green-500'
+                        }`}
+                        style={{ width: `${item.difficulty * 100}%` }}
+                      ></div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Submit Button */}
+              <div className="mt-6 text-center">
+                {isSubmitted ? (
+                  <button
+                    onClick={handleBackToMain}
+                    className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-green-600 transition"
+                  >
+                    Return to Dashboard
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition"
+                  >
+                    Submit Answers
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </main>
+      </div>
     </Suspense>
   );
 }

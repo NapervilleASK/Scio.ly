@@ -149,7 +149,7 @@ function EventDashboard() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-cyan-100 p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-6">
-        Scio Dashboard
+        Scioly Dashboard
       </h1>
       {loading ? (
         <p>Loading events...</p>
