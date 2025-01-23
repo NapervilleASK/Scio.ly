@@ -27,6 +27,13 @@ const LoadingFallback = () => (
   </div>
 );
 
+// Create a separate SuspenseWrapper component
+const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<LoadingFallback />}>
+    {children}
+  </Suspense>
+);
+
 export default function TestPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -130,7 +137,7 @@ export default function TestPage() {
 
   const isCorrect = (question: Question, answers: (string | null)[] | null) => {
     if (!question.answers || question.answers.length === 0) return null;
-  
+
     // For multiple-choice or options-based questions
     if (question.options && question.options.length > 0) {
       const correctAnswers = question.answers.map((ans) =>
@@ -142,17 +149,17 @@ export default function TestPage() {
         correctAnswers.every((ans) => answers.includes(ans))
       );
     }
-  
+
     // For free-response questions (FRQs)
     if (answers?.[0]) {
       const userAnswer = answers[0].toLowerCase();
       const keywords = question.answers.map((ans) => (ans as string).toLowerCase());
       return keywords.some((keyword) => userAnswer.includes(keyword));
     }
-  
+
     return false;
   };
-  
+
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -161,7 +168,7 @@ export default function TestPage() {
   };
 
   return (
-    <Suspense fallback={<LoadingFallback />}> {/* Wrap TestPage with Suspense */}
+    <SuspenseWrapper> {/* Wrap the entire TestPage with SuspenseWrapper */}
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
         <header className="w-full max-w-3xl flex justify-between items-center py-4">
           <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
@@ -310,6 +317,6 @@ export default function TestPage() {
           )}
         </main>
       </div>
-    </Suspense>
+    </SuspenseWrapper>
   );
 }
