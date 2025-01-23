@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 interface Question {
   question: string;
@@ -155,6 +155,7 @@ export default function TestPage() {
   };
 
   return (
+    <Suspense>
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
       <header className="w-full max-w-3xl flex justify-between items-center py-4">
         <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
@@ -304,5 +305,6 @@ export default function TestPage() {
         )}
       </main>
     </div>
+    </Suspense>
   );
 }
