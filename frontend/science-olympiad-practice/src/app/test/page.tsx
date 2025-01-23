@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 interface Question {
   question: string;
   options?: string[];
-  answers: (string | number)[];
+  answers: (number | string)[];
   difficulty: number;
 }
 
@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/2241acc852a71f8672a97e6706baa766/raw/be38c689756d64e10f78db3962e56d2a3edc6da7/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/e453dec308f66d0f9fea195750b6f70b/raw/e0b8152a4337cdc683abc7cd972b93e9a07b4b8b/final.json';
 
 export default function TestPage() {
   const searchParams = useSearchParams();
@@ -27,7 +27,7 @@ export default function TestPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Question[]>([]);
   const [routerData, setRouterData] = useState<RouterParams>({});
-  const [userAnswers, setUserAnswers] = useState<Record<number, string | null>>({});
+  const [userAnswers, setUserAnswers] = useState<Record<number, (string | null)[] | null>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -81,7 +81,6 @@ export default function TestPage() {
     fetchData();
   }, [searchParams]);
 
-  // Countdown Timer Logic
   useEffect(() => {
     if (timeLeft === null || isSubmitted) return;
 
@@ -96,11 +95,23 @@ export default function TestPage() {
     return () => clearInterval(timer);
   }, [timeLeft, isSubmitted]);
 
-  const handleAnswerChange = (questionIndex: number, answer: string | null) => {
-    setUserAnswers((prev) => ({
-      ...prev,
-      [questionIndex]: answer,
-    }));
+  const handleAnswerChange = (questionIndex: number, answer: string | null, multiselect = false) => {
+    setUserAnswers((prev) => {
+      const currentAnswers = prev[questionIndex] || [];
+      if (multiselect) {
+        const updatedAnswers = currentAnswers.includes(answer)
+          ? currentAnswers.filter((ans) => ans !== answer)
+          : [...currentAnswers, answer];
+        return {
+          ...prev,
+          [questionIndex]: updatedAnswers,
+        };
+      }
+      return {
+        ...prev,
+        [questionIndex]: [answer],
+      };
+    });
   };
 
   const handleSubmit = () => {
@@ -108,19 +119,34 @@ export default function TestPage() {
   };
 
   const handleBackToMain = () => {
-    router.push('/dashboard'); // Redirect to the main dashboard
+    router.push('/dashboard');
   };
 
-  const isCorrect = (question: Question, answer: string | null) => {
+  const isCorrect = (question: Question, answers: (string | null)[] | null) => {
     if (!question.answers || question.answers.length === 0) return null;
+  
+    // For multiple-choice or options-based questions
     if (question.options && question.options.length > 0) {
-      return question.answers.includes(question.options.indexOf(answer));
-    } else {
-      return question.answers.some((keyword: string) =>
-        answer?.toLowerCase().includes(keyword.toLowerCase())
+      const correctAnswers = question.answers.map((ans) =>
+        question.options![ans as number - 1]
+      );
+      return (
+        answers &&
+        correctAnswers.length === answers.length &&
+        correctAnswers.every((ans) => answers.includes(ans))
       );
     }
+  
+    // For free-response questions (FRQs)
+    if (answers?.[0]) {
+      const userAnswer = answers[0].toLowerCase();
+      const keywords = question.answers.map((ans) => (ans as string).toLowerCase());
+      return keywords.some((keyword) => userAnswer.includes(keyword));
+    }
+  
+    return false;
   };
+  
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -130,29 +156,28 @@ export default function TestPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
-      {/* Header */}
       <header className="w-full max-w-3xl flex justify-between items-center py-4">
-        <h1 className="text-2xl font-extrabold text-blue-600">Quiz Time!</h1>
+        <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
         {timeLeft !== null && (
-          <div className={`text-xl font-semibold ${timeLeft <= 10 ? 'text-red-600' : 'text-blue-600'}`}>
+          <div className={`text-xl font-semibold ${timeLeft <= 300 ? 'text-red-600' : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'}`}>
             Time Left: {formatTime(timeLeft)}
           </div>
         )}
       </header>
 
-      {/* Progress Bar */}
-      <div
-        className={`${
-          isSubmitted ? '' : 'sticky top-6'
-        } z-10 w-full max-w-3xl bg-gray-200 rounded-full h-4 mb-6 shadow-md transition-all`}
-      >
-        <div
-          className="bg-blue-600 h-4 rounded-full transition-all"
-          style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
-        ></div>
-      </div>
+      {/* Smooth Progress Bar */}
+<div
+  className={`${
+    isSubmitted ? '' : 'sticky top-6'
+  } z-10 w-full max-w-3xl bg-white border border-gray-300 rounded-full h-4 mb-6 shadow-md`}
+>
+  <div
+    className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out"
+    style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
+  ></div>
+</div>
 
-      {/* Content */}
+
       <main className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6 mt-4">
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
@@ -162,24 +187,39 @@ export default function TestPage() {
           <div className="text-red-600 text-center">{fetchError}</div>
         ) : (
           <>
-            {/* Questions */}
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Event: {routerData.eventName || 'N/A'}
-            </h2>
             <ul className="space-y-6">
               {data.map((item, index) => (
-                <li key={index} className="border p-4 rounded-lg shadow-sm bg-gray-50">
-                  <h3 className="font-semibold text-lg text-gray-800">
-                    Question {index + 1}
-                  </h3>
+                <li key={index} className="relative border p-4 rounded-lg shadow-sm bg-gray-50">
+                  <h3 className="font-semibold text-lg text-gray-800">Question {index + 1}</h3>
                   <p className="text-gray-700 mb-4">{item.question}</p>
 
-                  {item.options && item.options.length > 0 ? (
+                  {/* Answer Inputs */}
+                  {item.options && item.options.length > 0 && item.answers.length > 1 ? (
                     <div className="space-y-2">
                       {item.options.map((option, idx) => (
                         <label
                           key={idx}
-                          className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300"
+                          className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
+                        >
+                          <input
+                            type="checkbox"
+                            name={`question-${index}`}
+                            value={option}
+                            onChange={() => handleAnswerChange(index, option, true)}
+                            disabled={isSubmitted}
+                            checked={userAnswers[index]?.includes(option) || false}
+                            className="mr-2"
+                          />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  ) : item.options && item.options.length > 0 ? (
+                    <div className="space-y-2">
+                      {item.options.map((option, idx) => (
+                        <label
+                          key={idx}
+                          className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
                         >
                           <input
                             type="radio"
@@ -187,7 +227,7 @@ export default function TestPage() {
                             value={option}
                             onChange={() => handleAnswerChange(index, option)}
                             disabled={isSubmitted}
-                            checked={userAnswers[index] === option}
+                            checked={userAnswers[index]?.[0] === option}
                             className="mr-2"
                           />
                           {option}
@@ -196,12 +236,12 @@ export default function TestPage() {
                     </div>
                   ) : (
                     <textarea
-                      className="w-full p-2 border rounded-md"
+                      className="w-full p-2 border rounded-md text-black"
                       rows={3}
-                      placeholder="Type your answer here..."
+                      placeholder="Type your answer here (True/False if applicable)"
                       onChange={(e) => handleAnswerChange(index, e.target.value)}
                       disabled={isSubmitted}
-                      value={userAnswers[index] || ''}
+                      value={userAnswers[index]?.[0] || ''}
                     />
                   )}
 
@@ -216,12 +256,28 @@ export default function TestPage() {
                       </p>
                       <p className="text-gray-600 text-sm mt-1">
                         <strong>Correct Answer(s):</strong>{' '}
-                        {item.options && item.options.length > 0
-                          ? item.answers.map((ans: number) => item.options?.[ans]).join(', ')
+                        {item.options?.length
+                          ? item.answers
+                              .map((ans) => item.options?.[ans as number - 1])
+                              .join(', ')
                           : item.answers.join(', ')}
                       </p>
                     </>
                   )}
+                  <br/> 
+                  {/* Difficulty Bar */}
+                  <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300">
+                    <div
+                      className={`h-full rounded-full transition-all ${
+                        item.difficulty >= 0.66
+                          ? 'bg-red-500'
+                          : item.difficulty >= 0.33
+                          ? 'bg-yellow-500'
+                          : 'bg-green-500'
+                      }`}
+                      style={{ width: `${item.difficulty * 100}%` }}
+                    ></div>
+                  </div>
                 </li>
               ))}
             </ul>

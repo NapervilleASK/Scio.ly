@@ -288,6 +288,7 @@ titles = {
     'anatomy_cardiovascular': 'Anatomy - Cardiovascular',
     'integumentary system': 'Anatomy - Integumentary',
     'muscular system': 'Anatomy - Muscular',
+    'Anatomy - Muscular ': 'Anatomy - Muscular',
     'skeletal system': 'Anatomy - Skeletal',
     'air trajectory': 'Trajectory',
     'crispr-cas systems': 'Protein Modeling',
