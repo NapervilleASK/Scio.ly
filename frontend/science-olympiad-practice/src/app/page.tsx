@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Link from "next/link";
 import Particles from "./Particles";
 
 export default function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  // const toggleModal = () => {
+  //   setIsModalOpen(!isModalOpen);
+  // };
 
   return (
     <div className="relative flex flex-col items-center min-h-screen overflow-hidden bg-gradient-to-b from-blue-50 to-cyan-100">

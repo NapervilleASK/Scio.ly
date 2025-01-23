@@ -9,10 +9,6 @@ interface Event {
   subject: string;
 }
 
-interface WhitelistItem {
-  name: string;
-  category: string;
-}
 
 function EventDashboard() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -30,7 +26,7 @@ function EventDashboard() {
     types: 'multiple-choice',
   });
 
-  const handleChange = (e: { target: { id: any; value: any } }) => {
+  const handleChange = (e: { target: { id: number | string; value: number | string } }) => {
     const { id, value } = e.target;
     setSettings((prev) => ({
       ...prev,
@@ -153,7 +149,7 @@ function EventDashboard() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-cyan-100 p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-6">
-        Scio.ly Dashboard
+        Scio Dashboard
       </h1>
       {loading ? (
         <p>Loading events...</p>
