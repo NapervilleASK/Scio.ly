@@ -143,7 +143,7 @@ titles = {
     'entomology': 'Entomology',
     'cell_biology': 'Cell Biology',
     'materials science': 'Materials Science',
-    'anatomy - general': "Anatomy - Muscular ", 
+    'anatomy - general': "Anatomy - Muscular", 
     'detector building': 'Detector Building',
     'robot arm': 'Robot Arm',
     'public health': 'Disease Detectives',  # Mapped to Disease Detectives
@@ -365,6 +365,7 @@ def combine_bank_data(filename="bank.txt"):
         dict: A single dictionary containing the combined JSON data.
     """
     combined_data = {}
+    excluded_data = {}
     bruh = set()
     with open(filename, 'r') as f:
         for line in f:
@@ -380,59 +381,111 @@ def combine_bank_data(filename="bank.txt"):
                     if key is None:
                         # print("Skipping key")
                         continue
-                    if key in combined_data:
-                        # Extend the existing list with new items, filtering as needed
-                        combined_data[key].extend([
-                            item
-                            for item in value
-                            if item.get('answers') and len(item['answers']) > 0 and item.get("question")
-                            and len(item['question']) > 8
-                            and not (len(item['question']) < 85 and "this star" in item['question'])
-                            and not any(phrase in item['question'].lower() for phrase in [
-                                "this picture", "this image", "this diagram", "this map",
-                                "image a", "image b", "image c", "image 1", "image 2", "image 3",
-                                "the image", "in figure", "pictured above", "pictured below",
-                                "figure a", "figure b", "figure c", "following table", "table above",
-                                "this specimen", "identify this", "this organism", "the photo below",
-                                "given information", "the table", "the structures labeled", "specimen a",
-                                "specimen b", "specimen c", "specimen d", "specimen e", "specimen g"
-                                "specimen f", "below data", "this bird", "this animal", "this habitat", 
-                                "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
-                                "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
-                                "this individual", "Identify #", "diagram below", "the diagram", 
-                                "slide above", "depicted in image", "image 1", "image 2", "image 3",
-                                "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
-                                "picture below", "the picture", "shown above", "shown below", "point a",
-                                "point b", "point c", "Question 1", "question 2", "question 3",
-                                "question 4", "question 5", "question 6", "question 7", "question 8",
-                                "question 9", "question #", "specimen h", "specimen i", "specimen j",
-                                "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
-                                "specimen p", "specimen q" "specimen r" , "specimen s", "specimen t"
-                                "specimen u", "specimen v", "speciemn w", "specimen x", "specimen y", "specimen z", 
-                                "indicated by", "diagram to the right", "this device", "this bacteria",
-                                "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
-                                "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
-                                "shown to the right", "identify powder", "(left)", "(right)", "graph above",
-                                "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on"
-                            ])
+                    if not key in combined_data:
+                        combined_data[key] = []
+                        excluded_data[key] = []
+                    # Extend the existing list with new items, filtering as needed
+                    combined_data[key].extend([
+                        item
+                        for item in value
+                        if item.get('answers') and len(item['answers']) > 0 and item.get("question")
+                        and len(item['question']) > 8
+                        and not (item['question'].lower().startswith("identify the") and len(item['question']) < 75)
+                        and not ("based on" in item['question'] and "provided" in item['question'] or "information" in item['question'] and "provided" in item['question'])
+                        and not (len(item['question']) < 85 and " this " in item['question'])
+                        and not (len(item['question']) < 60 and "this object" in item['question'])
+                        and not (isinstance(item['answers'][0],str) and ("answer" in item['answers'][0] or "depends" in item['answers'][0]))
+                        and not ("is this?" in item['question'] and len(item['question']) < 40)
+                        and not (item['question'].lower().startswith("which letter"))
+                        # and not (len(item['question']) < 85 and "this disorder" in item['question'])
+                        and not any(phrase in item['question'].lower() for phrase in [
+                            " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
+                            "this picture", "this image", "this diagram", "this map",
+                            "image a", "image b", "image c", "image 1", "image 2", "image 3",
+                            "the image", "in figure", "pictured above", "pictured below",
+                            "figure a", "figure b", "figure c", "following table", "table above",
+                            "this specimen", "identify this", "this organism", "the photo below",
+                            "given information", "the table", "the structures labeled", "specimen a",
+                            "specimen b", "specimen c", "specimen d", "specimen e", "specimen g"
+                            "specimen f", "below data", "this bird", "this animal", "this habitat", 
+                            "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
+                            "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
+                            "this individual", "Identify #", "diagram below", "the diagram", 
+                            "slide above", "image 1", "image 2", "image 3",
+                            "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
+                            "picture below", "the picture", "shown above", "shown below", "point a",
+                            "point b", "point c", "Question 1", "question 2", "question 3",
+                            "question 4", "question 5", "question 6", "question 7", "question 8",
+                            "question 9", "question #", "specimen h", "specimen i", "specimen j",
+                            "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
+                            "specimen p", "specimen q" "specimen r" , "specimen s", "specimen t"
+                            "specimen u", "specimen v", "speciemn w", "specimen x", "specimen y", "specimen z", 
+                            "indicated by", "diagram to the right", "this device",
+                            "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
+                            "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
+                            "shown to the right", "identify powder", "(left)", "(right)", "graph above",
+                            "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on", "the image", 
+                            "labeled by", "area a", "which image", "above image", "below image", "in the image",
+                            "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
+                            "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
+                            "following image", "following diagram"
+
                         ])
-                    else:
-                        # Create a new list, filtering as needed
-                        combined_data[key] = [item for item in value if item.get('answers') and len(item['answers']) > 0]
+                    ])
+                    # excluded_data[key].extend([
+                    #     item
+                    #     for item in value
+                    #     if item.get('answers') and len(item['answers']) > 0 and item.get("question")
+                    #     and (
+                            # not len(item['question']) > 8
+                            # or (item['question'].lower().startswith("identify the") and len(item['question']) < 75)
+                            # or ("based on" in item['question'] and "provided" in item['question'] or "information" in item['question'] and "provided" in item['question'])
+                            # or (len(item['question']) < 85 and " this " in item['question'])
+                            # or (len(item['question']) < 60 and "this object" in item['question'])
+                            # or (isinstance(item['answers'][0],str) and "depends" in item['answers'][0])
+                            # (len(item['question']) < 85 and "this disorder" in item['question'])
+                        #     any(phrase in item['question'].lower() for phrase in [
+                        #     "this picture", "this image", "this diagram", "this map",
+                        #     "image a", "image b", "image c", "image 1", "image 2", "image 3",
+                        #     "the image", "in figure", "pictured above", "pictured below",
+                        #     "figure a", "figure b", "figure c", "following table", "table above",
+                        #     "this specimen", "identify this", "this organism", "the photo below",
+                        #     "given information", "the table", "the structures labeled", "specimen a",
+                        #     "specimen b", "specimen c", "specimen d", "specimen e", "specimen g"
+                        #     "specimen f", "below data", "this bird", "this animal", "this habitat", 
+                        #     "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
+                        #     "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
+                        #     "this individual", "Identify #", "diagram below", "the diagram", 
+                        #     "slide above", "image 1", "image 2", "image 3",
+                        #     "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
+                        #     "picture below", "the picture", "shown above", "shown below", "point a",
+                        #     "point b", "point c", "Question 1", "question 2", "question 3",
+                        #     "question 4", "question 5", "question 6", "question 7", "question 8",
+                        #     "question 9", "question #", "specimen h", "specimen i", "specimen j",
+                        #     "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
+                        #     "specimen p", "specimen q" "specimen r" , "specimen s", "specimen t"
+                        #     "specimen u", "specimen v", "speciemn w", "specimen x", "specimen y", "specimen z", 
+                        #     "indicated by", "diagram to the right", "this device",
+                        #     "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
+                        #     "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
+                        #     "shown to the right", "identify powder", "(left)", "(right)", "graph above",
+                        #     "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on", "the image", 
+                        #     "labeled by", "area a", "which image", "above image", "below image", "in the image",
+                        #     "depicted", "the figure", "above?", "to the right", "the chart", "the graph"
+                        # ])
+                    #     )
+                    # ])
             except json.JSONDecodeError:
                 print(f"Skipping invalid JSON line: {line.strip()}")
     print("Unknown keys: ", bruh)
-    return combined_data
+    return [combined_data, excluded_data]
 
 # Combine the data from bank.txt
 combined_bank = combine_bank_data()
 
 # Write the combined JSON object to bank_filtered.json
-with open("bank_filtered.json", 'w') as outfile:
-    json.dump(combined_bank, outfile, indent=2)
-
-<<<<<<< HEAD
+with open("final.json", 'w') as outfile:
+    json.dump(combined_bank[0], outfile)
+# with open("excluded.json", 'w') as outfile:
+#     json.dump(combined_bank[1], outfile, indent=2)
 print("Combined and filtered data written to bank_filtered.json")
-=======
-print("Combined and filtered data written to bank_filtered.json")
->>>>>>> 67812faf785eb6bb1fe35a20e019fb91ef96a974
