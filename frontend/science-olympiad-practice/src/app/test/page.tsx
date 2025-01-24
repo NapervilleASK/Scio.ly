@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/e453dec308f66d0f9fea195750b6f70b/raw/e0b8152a4337cdc683abc7cd972b93e9a07b4b8b/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/929582791b4d36914fc0d893a422cd35/raw/2ca2579568625924bdc47be9436aaf10ea773e6f/final.json';
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
@@ -71,7 +71,7 @@ export default function TestPage() {
 
         const filteredQuestions = eventQuestions.filter(
           (q) =>
-            q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue
+            difficulty == 'any' ? true : (q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue)
         );
 
         const finalQuestions =
@@ -79,8 +79,17 @@ export default function TestPage() {
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
             : filteredQuestions;
 
-        const shuffledQuestions = [...finalQuestions].sort(() => 0.5 - Math.random());
-        const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
+            function shuffleArray<T>(array: T[]): T[] {
+              const newArray = [...array]; // Create a copy to avoid modifying the original
+              for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
+              }
+              return newArray;
+            }
+            
+            const shuffledQuestions = shuffleArray(finalQuestions);
+            const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
 
         setData(selectedQuestions);
       } catch (error) {

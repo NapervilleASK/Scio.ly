@@ -397,6 +397,7 @@ def combine_bank_data(filename="bank.txt"):
                         and not (isinstance(item['answers'][0],str) and ("answer" in item['answers'][0] or "depends" in item['answers'][0]))
                         and not ("is this?" in item['question'] and len(item['question']) < 40)
                         and not (item['question'].lower().startswith("which letter"))
+                        and not (len(item['question']) < 3)
                         # and not (len(item['question']) < 85 and "this disorder" in item['question'])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
@@ -428,7 +429,7 @@ def combine_bank_data(filename="bank.txt"):
                             "labeled by", "area a", "which image", "above image", "below image", "in the image",
                             "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
                             "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
-                            "following image", "following diagram"
+                            "following image", "following diagram", "previous question", "Select all of the following that could have gone wrong."
 
                         ])
                     ])
