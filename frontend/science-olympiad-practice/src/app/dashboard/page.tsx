@@ -111,7 +111,7 @@ function EventDashboard() {
         
 
         const response = await fetch(
-          'https://gist.githubusercontent.com/Kudostoy0u/93a0bda74009801d5020bc5be8586a98/raw/4fa012fdd49fa4beaa623eb572ca9e7526024a10/final.json'
+          'https://gist.githubusercontent.com/Kudostoy0u/a8d1afaa57907718e0f951f0265b25ee/raw/020f837ba4b8bd5e2bf39e6edbf8187c8f0447e0/final.json'
         );
         const data = await response.json();
 
@@ -145,7 +145,6 @@ function EventDashboard() {
 
     fetchEvents();
   }, []);
-
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-cyan-100 p-6">
       <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-6">
@@ -174,49 +173,9 @@ function EventDashboard() {
             </select>
           </div>
 
-          <div className="w-full max-w-4xl flex gap-6">
-            {/* Event list */}
-            <div className="flex-1 bg-white p-6 rounded-lg shadow-lg">
-                <ul className="max-h-[60vh] overflow-y-auto overflow-x-hidden px-2">
-                <style jsx>{`
-                ul::-webkit-scrollbar {
-                  width: 8px;
-                }
-                ul::-webkit-scrollbar-track {
-                  background: #f1f1f1;
-                  border-radius: 4px;
-                }
-                ul::-webkit-scrollbar-thumb {
-                  background: linear-gradient(to bottom, #3b82f6, #06b6d4);
-                  border-radius: 4px;
-                }
-                ul::-webkit-scrollbar-thumb:hover {
-                  background: linear-gradient(to bottom, #2563eb, #0891b2);
-                }
-                `}</style>
-              {sortedEvents.map((event) => (
-                <li
-                key={event.id}
-                className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                  selectedEvent === event.id
-                  ? 'bg-gradient-to-r from-blue-100 via-white to-cyan-100 shadow-md scale-105'
-                  : 'hover:bg-gray-50'
-                }`}
-                onClick={() => selectEvent(event.id)}
-                >
-                <div className="flex justify-between items-center">
-                  <h2 className="text-black text-lg font-semibold">
-                  {event.name}
-                  </h2>
-                    <p className="text-sm text-gray-500 text-right">{event.subject}</p>
-                </div>
-                </li>
-              ))}
-              </ul>
-            </div>
-
-            {/* Test configuration */}
-            <div className="w-80 bg-white p-8 rounded-lg shadow-lg ml-6">
+          <div className="w-full max-w-4xl flex flex-col md:flex-row gap-6">
+            {/* Test configuration - Moved above event list and reordered for larger screens */}
+            <div className="md:order-1 w-full md:w-80 bg-white p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                 Test Configuration
               </h2>
@@ -304,6 +263,48 @@ function EventDashboard() {
                 </button>
               </div>
             </div>
+
+            {/* Event list */}
+            <div className="md:order-2 flex-1 bg-white p-6 rounded-lg shadow-lg">
+                <ul className="max-h-[60vh] overflow-y-auto overflow-x-hidden px-2">
+                <style jsx>{`
+                ul::-webkit-scrollbar {
+                  width: 8px;
+                }
+                ul::-webkit-scrollbar-track {
+                  background: #f1f1f1;
+                  border-radius: 4px;
+                }
+                ul::-webkit-scrollbar-thumb {
+                  background: linear-gradient(to bottom, #3b82f6, #06b6d4);
+                  border-radius: 4px;
+                }
+                ul::-webkit-scrollbar-thumb:hover {
+                  background: linear-gradient(to bottom, #2563eb, #0891b2);
+                }
+                `}</style>
+              {sortedEvents.map((event) => (
+                <li
+                key={event.id}
+                className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                  selectedEvent === event.id
+                  ? 'bg-gradient-to-r from-blue-100 via-white to-cyan-100 shadow-md scale-105'
+                  : 'hover:bg-gray-50'
+                }`}
+                onClick={() => selectEvent(event.id)}
+                >
+                <div className="flex justify-between items-center">
+                  <h2 className="text-black text-lg font-semibold">
+                  {event.name}
+                  </h2>
+                    <p className="text-sm text-gray-500 text-right">{event.subject}</p>
+                </div>
+                </li>
+              ))}
+              </ul>
+            </div>
+
+
             <button
               onClick={() => router.push('/')}
               className="fixed bottom-8 left-8 p-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl"
@@ -323,7 +324,6 @@ function EventDashboard() {
               />
               </svg>
             </button>
-
           </div>
         </>
       )}

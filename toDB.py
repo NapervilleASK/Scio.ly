@@ -90,7 +90,7 @@ titles = {
     'excretory': 'Anatomy - Excretory',
     'experimental_design': 'Experimental Design',
     'anatomy - cardiovascular': 'Anatomy - Cardiovascular',
-    'write it do it': 'Write It Do It',
+    'write it do it': 'Fun',
     'engineering': "Detector Building", 
     'anatomy - excretory': 'Anatomy - Excretory',
     'tower': 'Tower',
@@ -208,7 +208,7 @@ titles = {
     "wifi lab": "WiFi Lab",
     "wind power": "Wind Power",
     "wright stuff": "Wright Stuff",
-    "write it do it": "Write It Do It",
+    "write it do it": "Fun",
     "renewable energies": "Wind Power",  # Closest related event
     "energy conservation and recycling": "Green Generation", # Closest related event
     "water_quality": "Water Quality",
@@ -314,7 +314,7 @@ titles = {
     'algorithm analysis': 'Codebusters',
     'web architecture': 'Cybersecurity',
     'metric mastery': 'Technical Problem Solving',
-    'scribble pictionary': 'Write It Do It',
+    'scribble pictionary': 'Fun',
     'mycology': 'Microbe Mission',
     'extraordinary enso': 'Meteorology',
     'earth structure': 'Rocks and Minerals',
@@ -349,7 +349,8 @@ titles = {
     'climate in texas': 'Meteorology',           # Study of weather/climate
     'brainrot battle': 'Fun',                    # Informal/silly competition
     'general biology': 'Cell Biology',                # Broad ecological systems focus
-    'material science': 'Materials Science',     # Direct synonym (singular vs. plural)
+    'material science': 'Materials Science',     # Direct synonym (singular vs. plural),
+    'Fun': 'Fun'
 }
 print("All values:", [*set([f for f in titles.values() if f is not None])])
 # os.exit()
@@ -431,8 +432,10 @@ def combine_bank_data(filename="bank.txt"):
                             "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
                             "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
                             "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
-                            "match the following", "compare this to your measured", "of the lake and why?"
-
+                            "match the following", "compare this to your measured", "of the lake and why?", "figure 1",
+                            "figure 2", "figure 3", "figure 4", "figure 5", "figure 6", "figure 7", "figure 8", "figure 9",
+                            "the diagram", "red arrow", "black arrow", "the arrow", "Name a osteoclast precursor that ", "patients with hypocalcemia", # last 2 take out of filter
+                            "labelled", "for the given"
                         ])
                     ])
                     # excluded_data[key].extend([
