@@ -398,7 +398,7 @@ def combine_bank_data(filename="bank.txt"):
                         and not ("is this?" in item['question'] and len(item['question']) < 40)
                         and not (item['question'].lower().startswith("which letter"))
                         and not (len(item['question']) < 3)
-                        and not (item['question'] == item['answer'])
+                        and not (item['question'] == item['answers'][0])
                         # and not (len(item['question']) < 85 and "this disorder" in item['question'])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
@@ -416,7 +416,7 @@ def combine_bank_data(filename="bank.txt"):
                             "slide above", "image 1", "image 2", "image 3",
                             "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
                             "picture below", "the picture", "shown above", "shown below", "point a",
-                            "point b", "point c", "Question 1", "question 2", "question 3",
+                            "point b", "point c", "question 1", "question 2", "question 3",
                             "question 4", "question 5", "question 6", "question 7", "question 8",
                             "question 9", "question #", "specimen h", "specimen i", "specimen j",
                             "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
@@ -430,7 +430,8 @@ def combine_bank_data(filename="bank.txt"):
                             "labeled by", "area a", "which image", "above image", "below image", "in the image",
                             "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
                             "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
-                            "following image", "following diagram", "previous question", "Select all of the following that could have gone wrong."
+                            "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
+                            "match the following", "compare this to your measured", "of the lake and why?"
 
                         ])
                     ])
