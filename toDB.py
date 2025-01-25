@@ -398,6 +398,7 @@ def combine_bank_data(filename="bank.txt"):
                         and not ("is this?" in item['question'] and len(item['question']) < 40)
                         and not (item['question'].lower().startswith("which letter"))
                         and not (len(item['question']) < 3)
+                        and not (item['question'] == item['answer'])
                         # and not (len(item['question']) < 85 and "this disorder" in item['question'])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"

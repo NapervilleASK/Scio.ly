@@ -24,6 +24,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
+      '@types/estree':
+        specifier: ^1.0.6
+        version: 1.0.6
       '@types/node':
         specifier: ^20.17.14
         version: 20.17.14
