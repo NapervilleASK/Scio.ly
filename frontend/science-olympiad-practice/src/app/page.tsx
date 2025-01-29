@@ -1,56 +1,60 @@
 "use client";
 
-// import { useState } from "react";
+import { Stars } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { useEffect } from "react";
+import { FiArrowRight } from "react-icons/fi";
+import { useMotionTemplate, useMotionValue, motion, animate } from "framer-motion";
 import Link from "next/link";
-import Particles from "./Particles";
+
+const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 export default function HomePage() {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const color = useMotionValue(COLORS_TOP[0]);
 
-  // const toggleModal = () => {
-  //   setIsModalOpen(!isModalOpen);
-  // };
+  useEffect(() => {
+    animate(color, COLORS_TOP, {
+      ease: "easeInOut",
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "mirror",
+    });
+  }, []);
+
+  const backgroundImage = useMotionTemplate`radial-gradient(132% 132% at 50% 10%, #020617 50%, ${color})`;
+  const border = useMotionTemplate`1px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
   return (
-    <div className="relative flex flex-col items-center min-h-screen overflow-hidden bg-gradient-to-b from-blue-50 to-cyan-100">
-
-      {/* First Viewport (Initial Content) */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        <Particles />
-        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent mb-4 md:mb-6 py-1">
+    <motion.section
+      style={{ backgroundImage }}
+      className="relative grid min-h-screen place-content-center overflow-hidden bg-gray-950 px-4 py-24 text-gray-200"
+    >
+      <div className="relative z-10 flex flex-col items-center w-full text-center">
+        <h1 className="text-5xl font-bold leading-tight text-gray-100 sm:text-6xl">
           Scio.ly
         </h1>
-        <p className="text-base md:text-lg text-gray-700 mb-6 md:mb-8">
+        <p className="my-6 max-w-xl text-lg leading-relaxed text-gray-300">
           Over 2000 Science Olympiad tests into one website, designed for the ultimate studying experience.
         </p>
         <Link href="/dashboard">
-          <button className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-300 to-cyan-400 text-white font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transform transition-all duration-300 w-full sm:w-auto">
+          <motion.button
+            style={{ border, boxShadow }}
+            whileHover={{ scale: 1.015 }}
+            whileTap={{ scale: 0.985 }}
+            className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-6 py-3 text-gray-50 transition-colors hover:bg-gray-950/50"
+          >
             Start Practicing
-          </button>
+            <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          </motion.button>
         </Link>
       </div>
 
-      {/* Second Viewport (About Us Content) */}
-      <div className="relative z-10 w-full flex flex-col items-center min-h-screen px-4 text-center py-8 bg-black text-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-semibold mb-6">About Scio.ly</h2>
-          <p className="text-lg mb-6">
-            Scio.ly was created by a team of Naperville high school students, dedicated to the Science Olympiad competition.
-            We aim to provide all Science Olympiad students with the best and easiest way to practice their events. Our team strives to
-            provide the best tests in the most realistic and interactive way.
-          </p>
-
-          <img 
-            src="./ASK.png"
-            alt="Science Olympiad Practice"
-            className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
-          />
-
-        </div>
-
-
+      <div className="absolute inset-0 z-0">
+        <Canvas>
+          <Stars radius={50} count={2500} factor={4} fade speed={2} />
+        </Canvas>
       </div>
-
-    </div>
+    </motion.section>
   );
 }

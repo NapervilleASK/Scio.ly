@@ -90,7 +90,9 @@ export default function TestPage() {
             
             const shuffledQuestions = shuffleArray(finalQuestions);
             const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
-
+            console.log(shuffledQuestions);
+            console.log(selectedQuestions);
+            
         setData(selectedQuestions);
       } catch (error) {
         console.error(error);
