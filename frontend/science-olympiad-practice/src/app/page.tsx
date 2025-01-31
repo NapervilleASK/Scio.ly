@@ -47,7 +47,7 @@ const ParallaxImages = () => {
     <div className="mx-auto w-full max-w-6xl px-4 py-32">
       <div className="relative h-[1400px]">
         <ParallaxImg
-          src="/ASK.png"
+          src="/cat1.png"
           alt="Science Image 1"
           start={-120}
           end={120}
@@ -65,7 +65,7 @@ const ParallaxImages = () => {
           className="left-1/2 -translate-x-1/2 top-[29%] w-[300px] h-[450px]"
         />
         <ParallaxImg
-          src="/ASK.png"
+          src="/cat2.jpg"
           alt="Science Image 3"
           start={0}
           end={-100}
