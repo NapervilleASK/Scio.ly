@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/0d7b0a2e025f5ac24c2ed304f2cb9600/raw/fdef4d6e7bf2fbc87b36078f08ce1b25331093c5/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/4307d8a97dd33dd6a8232d49f49d08ae/raw/168db873669d60a5d264c784e646dcc9ee95c145/final.json';
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
