@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
 
 interface Event {
   id: number;
@@ -23,7 +24,7 @@ function EventDashboard() {
     questionCount: 50,
     timeLimit: 60,
     difficulty: 'any',
-    types: 'multiple-choice',
+    types: 'both',
   });
 
   const handleChange = (e: { target: { id: number | string; value: number | string } }) => {
@@ -39,14 +40,16 @@ function EventDashboard() {
       prevSelected === eventId ? null : eventId
     );
   };
-
+  const displayMessage = () => {
+    toast.warning("This feature isn't supported yet. Please use 'generate test' instead.")
+  }
   const handleGenerateTest = () => {
     const selectedEventDetails = events.find(
       (event) => event.id === selectedEvent
     );
 
     if (!selectedEventDetails) {
-      alert('Please select an event to generate the test.');
+      toast.warning('Please select an event to generate the test.');
       return;
     }
 
@@ -246,8 +249,8 @@ function EventDashboard() {
                     onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 bg-gradient-to-r from-blue-50 to-cyan-50 text-black"
                   >
-                    <option value="multiple-choice">MCQ</option>
                     <option value="both">MCQ + FRQ</option>
+                    <option value="multiple-choice">MCQ only</option>
                   </select>
                 </div>
                 <button
@@ -257,6 +260,7 @@ function EventDashboard() {
                   Generate Test
                 </button>
                 <button
+                  onClick={displayMessage}
                   className="w-full mt-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-md hover:scale-105 transform transition-all duration-300"
                 >
                   Unlimited Practice
@@ -327,6 +331,7 @@ function EventDashboard() {
           </div>
         </>
       )}
+    <ToastContainer />
     </div>
   );
 }

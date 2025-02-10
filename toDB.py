@@ -398,13 +398,20 @@ def combine_bank_data(filename="bank.txt"):
                         and not (isinstance(item['answers'][0],str) and ("answer" in item['answers'][0] or "depends" in item['answers'][0]))
                         and not ("is this?" in item['question'] and len(item['question']) < 40)
                         and not (item['question'].lower().startswith("which letter"))
+                        and not (item['question'].lower().startswith("based on your"))
+                        and not (item['question'].lower().startswith("based on the"))
+                        and not (item['question'].lower().startswith("based on this"))
+                        and not (item['question'].lower().startswith("these are"))
                         and not (len(item['question']) < 3)
                         and not (item['question'] == item['answers'][0])
-                        # and not (len(item['question']) < 85 and "this disorder" in item['question'])
+                        and not any(phrase in item['question'].lower() for phrase in [
+                            "powder A", "powder B", "powder C", "powder D", "structure A", "structure B", "structure C", "structure D", "structure E", 
+                            "structure F"
+                        ])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
                             "this picture", "this image", "this diagram", "this map",
-                            "image a", "image b", "image c", "image 1", "image 2", "image 3",
+                            "image a", "image b", "image c", "image d", "image e", "image f", "image g" "image 1", "image 2", "image 3",
                             "the image", "in figure", "pictured above", "pictured below",
                             "figure a", "figure b", "figure c", "following table", "table above",
                             "this specimen", "identify this", "this organism", "the photo below",
@@ -432,10 +439,13 @@ def combine_bank_data(filename="bank.txt"):
                             "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
                             "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
                             "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
-                            "match the following", "compare this to your measured", "of the lake and why?", "figure 1",
-                            "figure 2", "figure 3", "figure 4", "figure 5", "figure 6", "figure 7", "figure 8", "figure 9",
+                            "match the following", "compare this to your measured", "of the lake and why?", "igure 1",
+                            "igure 2", "igure 3", "igure 4", "igure 5", "igure 6", "igure 7", "igure 8", "igure 9",
                             "the diagram", "red arrow", "black arrow", "the arrow", "Name a osteoclast precursor that ", "patients with hypocalcemia", # last 2 take out of filter
-                            "labelled", "for the given"
+                            "labelled", "for the given", "if this", "on the right", "on the left", "above equation",
+                            "structure 1", "precipitate 1", "that empirical formula", "based on this", "based on these", "the powder",
+                            "above", "below,", "original test", "fossil above", "question (", "depicted", "disease causes failure of which organ?",
+                            "disease does she have?", "this disease causes failure of which organ?"
                         ])
                     ])
                     # excluded_data[key].extend([
