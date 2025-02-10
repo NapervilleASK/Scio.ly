@@ -14,12 +14,12 @@ interface RouterParams {
   eventName?: string;
   questionCount?: string;
   difficulty?: string;
-  category?: string;
+  types?: string;
   timeLimit?: string;
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/4307d8a97dd33dd6a8232d49f49d08ae/raw/168db873669d60a5d264c784e646dcc9ee95c145/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/0425d9f138c2f6a6cff9e99d965a5655/raw/c5339585f1fe124f8a54918b82aad29f59ed961b/final.json';
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
@@ -65,7 +65,7 @@ export default function TestPage() {
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
 
-        const { eventName, questionCount, difficulty, category } = routerParams;
+        const { eventName, questionCount, difficulty, types } = routerParams;
         const difficultyValue = difficultyMap[difficulty || 'easy'] || 0.33;
         const eventQuestions: Question[] = jsonData[eventName as string] || [];
 
@@ -75,7 +75,7 @@ export default function TestPage() {
         );
 
         const finalQuestions =
-          category === 'multiple-choice'
+          types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
             : filteredQuestions;
 

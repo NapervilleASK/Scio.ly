@@ -151,7 +151,7 @@ function EventDashboard() {
         Scioly Dashboard
       </h1>
       {loading ? (
-        <p>Loading events...</p>
+        <p className = "text-black">Loading events...</p>
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : events.length === 0 ? (
