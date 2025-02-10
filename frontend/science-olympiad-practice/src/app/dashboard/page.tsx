@@ -24,7 +24,7 @@ function EventDashboard() {
     questionCount: 50,
     timeLimit: 60,
     difficulty: 'any',
-    types: 'both',
+    types: 'multiple-choice',
   });
 
   const handleChange = (e: { target: { id: number | string; value: number | string } }) => {
@@ -249,8 +249,8 @@ function EventDashboard() {
                     onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 bg-gradient-to-r from-blue-50 to-cyan-50 text-black"
                   >
-                    <option value="both">MCQ + FRQ</option>
                     <option value="multiple-choice">MCQ only</option>
+                    <option value="both">MCQ + FRQ</option>
                   </select>
                 </div>
                 <button
