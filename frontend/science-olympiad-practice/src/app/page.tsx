@@ -45,7 +45,7 @@ const ParallaxImg = ({ className, alt, src, start, end, zIndex, rotate }) => {
 const ParallaxImages = () => {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-32">
-      <div className="relative h-[1400px]">
+      <div className="relative h-[]">
         <ParallaxImg
           src="/cat1.png"
           alt="Science Image 1"
@@ -174,7 +174,7 @@ export default function HomePage() {
         </div>
 
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[35vh] bg-gradient-to-b from-transparent to-black"
+          className="absolute bottom-0 left-0 right-0 h-[100vh] bg-gradient-to-b from-transparent to-black"
           style={{
             opacity: useTransform(scrollY, [SCROLL_THRESHOLD - 300, SCROLL_THRESHOLD], [0, 1]),
           }}
@@ -197,58 +197,57 @@ export default function HomePage() {
 
       {/* About Section */}
       <motion.section
-        className="absolute top-[200vh] h-screen w-full flex items-center justify-center text-white"
-        style={{
-          backgroundImage,
-          opacity: useTransform(
-            scrollY,
-            [SCROLL_THRESHOLD + SECTION_HEIGHT - 200, SCROLL_THRESHOLD + SECTION_HEIGHT],
-            [0, 1]
-          ),
-        }}
-      >
-        <div className="relative w-full max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300">
-              About Us
-            </h2>
-            <p className="text-lg leading-relaxed text-gray-300 mb-6">
-              Scio.ly was created by a team of Naperville high school students, dedicated to the Science Olympiad competition.
-              We aim to provide all Science Olympiad students with the best and easiest way to practice their events.
-            </p>
-            <p className="text-lg leading-relaxed text-gray-300">
-              Our team strives to provide the best tests in the most realistic and interactive way.
-            </p>
-          </motion.div>
+  className="absolute top-[200vh] h-screen w-full flex items-center justify-center text-white"
+  style={{
+    backgroundImage, // your radial gradient or other background style
+    opacity: useTransform(
+      scrollY,
+      [SCROLL_THRESHOLD + SECTION_HEIGHT - 200, SCROLL_THRESHOLD + SECTION_HEIGHT],
+      [0, 1]
+    ),
+  }}
+>
+  <div className="w-full max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+    <motion.div 
+      className="lg:w-1/2"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300">
+        About Us
+      </h2>
+      <p className="text-lg leading-relaxed text-gray-300 mb-6">
+        Scio.ly was created by a team of Naperville high school students, dedicated to the Science Olympiad competition.
+        We aim to provide all Science Olympiad students with the best and easiest way to practice their events.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-300">
+        Our team strives to provide the best tests in the most realistic and interactive way.
+      </p>
+    </motion.div>
 
-          <motion.div 
-            className="lg:w-[55%] relative flex justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="absolute inset-0 rounded-2xl"
-            />
-            <motion.img
-              src="/ASK.png"
-              alt="Science Olympiad"
-              className="relative w-[300px] h-[450px] object-cover rounded-2xl shadow-2xl"
-            />
-          </motion.div>
+    <motion.div 
+      className="lg:w-[55%] relative flex justify-center"
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.img
+        src="/ASK.png"
+        alt="Science Olympiad"
+        className="relative w-[300px] h-[450px] object-cover rounded-2xl shadow-2xl"
+      />
+    </motion.div>
 
-          <div className="absolute inset-0 z-0 opacity-30">
-            <Canvas>
-              <Stars radius={50} count={1500} factor={4} fade speed={1} />
-            </Canvas>
-          </div>
-        </div>
-      </motion.section>
+    {/* Background Canvas */}
+    <div className="absolute inset-0 z-0 opacity-30">
+      <Canvas>
+        <Stars radius={50} count={1500} factor={4} fade speed={1} />
+      </Canvas>
+    </div>
+  </div>
+</motion.section>
+
     </div>
   );
 }
