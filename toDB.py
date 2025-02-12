@@ -406,7 +406,8 @@ def combine_bank_data(filename="bank.txt"):
                         and not (len(item['question']) < 3)
                         and not (len(item['answers']) == 1 and item['answers'][0] == '')
                         and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
-                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimns*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)) ([A-Z][\s.,?!;:])",item['question'])))
+                        and not (False if not 'options' in item or item['options'] is None else (any(s == "A" for s in item['options']) and not "climate" in item['question'] and not "vitamin" in item['question']))
+                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimens*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)) ([A-Z][\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
@@ -422,6 +423,7 @@ def combine_bank_data(filename="bank.txt"):
                             "this individual", "Identify #", "diagram below", "the diagram", 
                             "slide above", "image 1", "image 2", "image 3",
                             "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
+                            "question 1", "question 2", "question 3", "question 4", "question 5", "question 6", "question 7", "question 8", "question 9", 
                             "picture below", "the picture", "shown above", "shown below", "question #",
                             "indicated by", "diagram to the right", "this device", "these specimens", "multiple choice",
                             "shown to the right", "identify powder", "(left)", "(right)", "graph above",
