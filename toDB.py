@@ -406,39 +406,29 @@ def combine_bank_data(filename="bank.txt"):
                         and not (len(item['question']) < 3)
                         and not (len(item['answers']) == 1 and item['answers'][0] == '')
                         and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
-                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimns*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)) ([A-Z][\s.,?!;:])",item['question'])))
+                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimns*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)) ([A-Z][\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
                             "this picture", "this image", "this diagram", "this map",
                             "image a", "image b", "image c", "image d", "image e", "image f", "image g" "image 1", "image 2", "image 3",
                             "the image", "in figure", "pictured above", "pictured below",
-                            "figure a", "figure b", "figure c", "following table", "table above",
+                            "following table", "table above",
                             "this specimen", "identify this", "this organism", "the photo below",
-                            "given information", "the table", "the structures labeled", "specimen a",
-                            "specimen b", "specimen c", "specimen d", "specimen e", "specimen g"
-                            "specimen f", "below data", "this bird", "this animal", "this habitat", 
+                            "given information", "the table", "the structures labeled",
+                            "this bird", "this animal", "this habitat", 
                             "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
                             "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
                             "this individual", "Identify #", "diagram below", "the diagram", 
                             "slide above", "image 1", "image 2", "image 3",
                             "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
-                            "picture below", "the picture", "shown above", "shown below", "point a",
-                            "point b", "point c", "question 1", "question 2", "question 3",
-                            "question 4", "question 5", "question 6", "question 7", "question 8",
-                            "question 9", "question #", "specimen h", "specimen i", "specimen j",
-                            "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
-                            "specimen p", "specimen q" "specimen r" , "specimen s", "specimen t"
-                            "specimen u", "specimen v", "speciemn w", "specimen x", "specimen y", "specimen z", 
-                            "indicated by", "diagram to the right", "this device",
-                            "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
-                            "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
+                            "picture below", "the picture", "shown above", "shown below", "question #",
+                            "indicated by", "diagram to the right", "this device", "these specimens", "multiple choice",
                             "shown to the right", "identify powder", "(left)", "(right)", "graph above",
                             "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on", "the image", 
                             "labeled by", "area a", "which image", "above image", "below image", "in the image",
                             "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
-                            "for this disease", "part a " "part b ", "part c ", "part a?", "part b?", "part c?",
-                            "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
+                            "for this disease", "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
                             "match the following", "compare this to your measured", "of the lake and why?", "igure 1",
                             "igure 2", "igure 3", "igure 4", "igure 5", "igure 6", "igure 7", "igure 8", "igure 9",
                             "the diagram", "red arrow", "black arrow", "the arrow", "Name a osteoclast precursor that ", "patients with hypocalcemia", # last 2 take out of filter

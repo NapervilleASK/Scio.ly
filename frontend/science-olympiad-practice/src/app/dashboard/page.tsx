@@ -131,7 +131,7 @@ function EventDashboard() {
         ];
 
         const response = await fetch(
-          'https://gist.githubusercontent.com/Kudostoy0u/e746d029254e1badf037fbde946774d8/raw/f3a486db241eeba30e9d611986934b8d605513f8/final.json'
+          'https://gist.githubusercontent.com/Kudostoy0u/6f878a6755c589b943277f99d328b158/raw/79baa77a8acd60cac30f075bdeb0fb26320d069d/final.json'
         );
         const data = await response.json();
 
@@ -266,7 +266,7 @@ function EventDashboard() {
                       max="25"
                       value={settings.questionCount}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out ${
                         darkMode
                           ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
                           : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
@@ -289,7 +289,7 @@ function EventDashboard() {
                       max="120"
                       value={settings.timeLimit}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out ${
                         darkMode
                           ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
                           : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
@@ -309,10 +309,10 @@ function EventDashboard() {
                       id="difficulty"
                       value={settings.difficulty}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out p-2 h-10 shadow-sm ${
                         darkMode
-                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
-                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
+                          ? 'border-gray-600 bg-gray-800 text-white'
+                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black'
                       }`}
                     >
                       <option value="any">Any</option>
@@ -334,10 +334,10 @@ function EventDashboard() {
                       id="types"
                       value={settings.types}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out p-2 h-10 shadow-sm ${
                         darkMode
-                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
-                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
+                          ? 'border-gray-600 bg-gray-800 text-white'
+                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black'
                       }`}
                     >
                       <option value="multiple-choice">MCQ only</option>
