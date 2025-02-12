@@ -1,5 +1,6 @@
 import json
 import os
+import regex as re
 titles = {
     'geology': 'Geologic Mapping',
     'digestive': 'Anatomy - Digestive',
@@ -38,7 +39,7 @@ titles = {
     'integration bee': "Fun", 
     'botany': 'Plant Biology',
     'epidemiology': "Disease Detectives", 
-    'helicopter': 'Helicopter',
+    'helicopter': 'Fun',
     'wifi lab': 'WiFi Lab',
     'anatomy - blood': 'Anatomy - Cardiovascular', 
     'cell biology': 'Cell Biology',
@@ -181,7 +182,7 @@ titles = {
     "geologic mapping": "Geologic Mapping",
     "gravity vehicle": "Gravity Vehicle",
     "green generation": "Green Generation",
-    "helicopter": "Helicopter",
+    "helicopter": "Fun",
     "herpetology": "Herpetology",
     "hovercraft": "Hovercraft",
     "invasive species": "Invasive Species",
@@ -282,7 +283,7 @@ titles = {
     'protein_modeling': 'Protein Modeling',
     'physics lab': 'Physics Lab',
     'fun': 'Fun',
-    'helicopters': 'Helicopter',
+    'helicopters': 'Fun',
     'microbe_mission': 'Microbe Mission',
     'materials_science': 'Materials Science',
     'anatomy_cardiovascular': 'Anatomy - Cardiovascular',
@@ -403,11 +404,9 @@ def combine_bank_data(filename="bank.txt"):
                         and not (item['question'].lower().startswith("based on this"))
                         and not (item['question'].lower().startswith("these are"))
                         and not (len(item['question']) < 3)
+                        and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
+                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimns*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)) ([A-Z][\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])
-                        and not any(phrase in item['question'].lower() for phrase in [
-                            "powder A", "powder B", "powder C", "powder D", "structure A", "structure B", "structure C", "structure D", "structure E", 
-                            "structure F"
-                        ])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
                             "this picture", "this image", "this diagram", "this map",
@@ -445,7 +444,11 @@ def combine_bank_data(filename="bank.txt"):
                             "labelled", "for the given", "if this", "on the right", "on the left", "above equation",
                             "structure 1", "precipitate 1", "that empirical formula", "based on this", "based on these", "the powder",
                             "above", "below,", "original test", "fossil above", "question (", "depicted", "disease causes failure of which organ?",
-                            "disease does she have?", "this disease causes failure of which organ?"
+                            "disease does she have?", "this disease causes failure of which organ?", "projection 1", "projection 2", 
+                            "projection 3", "the map?", "circular symbol", "union hill", "locations 1", "location 1", 
+                            "at the right?", "on the map", "this muscle", "interpret the", "evidence a", "evidence b", 
+                            "evidence c", "which suspect", "what is the id ", "what is the identity", "sample 1", 
+                            "sample 2", "sample 3", "sample 4"
                         ])
                     ])
                     # excluded_data[key].extend([
@@ -504,4 +507,4 @@ with open("final.json", 'w') as outfile:
     json.dump(combined_bank[0], outfile)
 # with open("excluded.json", 'w') as outfile:
 #     json.dump(combined_bank[1], outfile, indent=2)
-print("Combined and filtered data written to bank_filtered.json")
+print("Combined and filtered data written to final.json")

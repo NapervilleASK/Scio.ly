@@ -11,6 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        regalblue: {
+          100: "#0D324D"
+        },
+        regalred: {
+          100: "#7F5A83"
+        }, 
+        palenight: {
+          100: "#282C3E"
+        }
       },
     },
   },

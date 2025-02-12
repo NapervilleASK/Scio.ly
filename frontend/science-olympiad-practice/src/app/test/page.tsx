@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react'; // Import Suspense
+import { useEffect, useState, Suspense } from 'react';
 
 interface Question {
   question: string;
@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/5d50d61451983c092e0909d0a72a108a/raw/b2f809645b250c25bf14eb5876c549c4ebaf3ca9/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/837127ff249fe5d15742a69545f185a5/raw/273ec0caa9cedc130b5cfbafd969129775a2999f/final.json';
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
@@ -27,11 +27,8 @@ const LoadingFallback = () => (
   </div>
 );
 
-// Create a separate SuspenseWrapper component
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
-  <Suspense fallback={<LoadingFallback />}>
-    {children}
-  </Suspense>
+  <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
 );
 
 export default function TestPage() {
@@ -44,7 +41,15 @@ export default function TestPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
-
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof localStorage !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light') {
+        return false;
+      }
+    }
+    return true; // Default to dark mode
+  });
   const difficultyMap: Record<string, number> = {
     easy: 0.33,
     medium: 0.66,
@@ -69,9 +74,10 @@ export default function TestPage() {
         const difficultyValue = difficultyMap[difficulty || 'easy'] || 0.33;
         const eventQuestions: Question[] = jsonData[eventName as string] || [];
 
-        const filteredQuestions = eventQuestions.filter(
-          (q) =>
-            difficulty == 'any' ? true : (q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue)
+        const filteredQuestions = eventQuestions.filter((q) =>
+          difficulty === 'any'
+            ? true
+            : q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue
         );
 
         const finalQuestions =
@@ -79,20 +85,19 @@ export default function TestPage() {
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
             : filteredQuestions;
 
-            function shuffleArray<T>(array: T[]): T[] {
-              const newArray = [...array]; // Create a copy to avoid modifying the original
-              for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
-              }
-              return newArray;
-            }
-            
-            const shuffledQuestions = shuffleArray(finalQuestions);
-            const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
-            console.log(shuffledQuestions);
-            console.log(selectedQuestions);
-            
+        function shuffleArray<T>(array: T[]): T[] {
+          const newArray = [...array];
+          for (let i = newArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+          }
+          return newArray;
+        }
+
+        const shuffledQuestions = shuffleArray(finalQuestions);
+        const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
+        console.log(shuffledQuestions);
+        console.log(selectedQuestions);
         setData(selectedQuestions);
       } catch (error) {
         console.error(error);
@@ -104,6 +109,11 @@ export default function TestPage() {
 
     fetchData();
   }, [searchParams]);
+  useEffect(() => {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     if (timeLeft === null || isSubmitted) return;
@@ -119,22 +129,20 @@ export default function TestPage() {
     return () => clearInterval(timer);
   }, [timeLeft, isSubmitted]);
 
-  const handleAnswerChange = (questionIndex: number, answer: string | null, multiselect = false) => {
+  const handleAnswerChange = (
+    questionIndex: number,
+    answer: string | null,
+    multiselect = false
+  ) => {
     setUserAnswers((prev) => {
       const currentAnswers = prev[questionIndex] || [];
       if (multiselect) {
         const updatedAnswers = currentAnswers.includes(answer)
           ? currentAnswers.filter((ans) => ans !== answer)
           : [...currentAnswers, answer];
-        return {
-          ...prev,
-          [questionIndex]: updatedAnswers,
-        };
+        return { ...prev, [questionIndex]: updatedAnswers };
       }
-      return {
-        ...prev,
-        [questionIndex]: [answer],
-      };
+      return { ...prev, [questionIndex]: [answer] };
     });
   };
 
@@ -161,7 +169,7 @@ export default function TestPage() {
       );
     }
 
-    // For free-response questions (FRQs)
+    // For free-response questions
     if (answers?.[0]) {
       const userAnswer = answers[0].toLowerCase();
       const keywords = question.answers.map((ans) => (ans as string).toLowerCase());
@@ -171,7 +179,6 @@ export default function TestPage() {
     return false;
   };
 
-
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -179,154 +186,281 @@ export default function TestPage() {
   };
 
   return (
-    <SuspenseWrapper> {/* Wrap the entire TestPage with SuspenseWrapper */}
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 flex flex-col items-center p-6">
-        <header className="w-full max-w-3xl flex justify-between items-center py-4">
-          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Science Olympiad: {routerData.eventName ? routerData.eventName : 'Loading...'}</h1>
-          {timeLeft !== null && (
-            <div className={`text-xl font-semibold ${timeLeft <= 300 ? 'text-red-600' : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'}`}>
-              Time Left: {formatTime(timeLeft)}
-            </div>
-          )}
-        </header>
-
-        {/* Smooth Progress Bar */}
+    <SuspenseWrapper>
+      <div className="relative min-h-screen">
+        {/* Background Layers */}
         <div
-          className={`${
-            isSubmitted ? '' : 'sticky top-6'
-          } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg`}
-        >
-          <div
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out shadow-md"
-            style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
-          ></div>
-        </div>
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            darkMode ? 'opacity-100' : 'opacity-0'
+          } bg-gradient-to-br from-gray-800 to-black`}
+        ></div>
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            darkMode ? 'opacity-0' : 'opacity-100'
+          } bg-gradient-to-br from-gray-50 to-blue-100`}
+        ></div>
 
-        <main className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6 mt-4">
-          {isLoading ? (
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
-            </div>
-          ) : fetchError ? (
-            <div className="text-red-600 text-center">{fetchError}</div>
-          ) : (
-            <>
-              <ul className="space-y-6">
-                {data.map((item, index) => (
-                  <li key={index} className="relative border p-4 rounded-lg shadow-sm bg-gray-50">
-                    <h3 className="font-semibold text-lg text-gray-800">Question {index + 1}</h3>
-                    <p className="text-gray-700 mb-4">{item.question}</p>
-
-                    {/* Answer Inputs */}
-                    {item.options && item.options.length > 0 && item.answers.length > 1 ? (
-                      <div className="space-y-2">
-                        {item.options.map((option, idx) => (
-                          <label
-                            key={idx}
-                            className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
-                          >
-                            <input
-                              type="checkbox"
-                              name={`question-${index}`}
-                              value={option}
-                              onChange={() => handleAnswerChange(index, option, true)}
-                              disabled={isSubmitted}
-                              checked={userAnswers[index]?.includes(option) || false}
-                              className="mr-2"
-                            />
-                            {option}
-                          </label>
-                        ))}
-                      </div>
-                    ) : item.options && item.options.length > 0 ? (
-                      <div className="space-y-2">
-                        {item.options.map((option, idx) => (
-                          <label
-                            key={idx}
-                            className="block bg-gray-200 p-2 rounded-md hover:bg-gray-300 text-black"
-                          >
-                            <input
-                              type="radio"
-                              name={`question-${index}`}
-                              value={option}
-                              onChange={() => handleAnswerChange(index, option)}
-                              disabled={isSubmitted}
-                              checked={userAnswers[index]?.[0] === option}
-                              className="mr-2"
-                            />
-                            {option}
-                          </label>
-                        ))}
-                      </div>
-                    ) : (
-                      <textarea
-                        className="w-full p-2 border rounded-md text-black"
-                        rows={3}
-                        placeholder="Type your answer here (True/False if applicable)"
-                        onChange={(e) => handleAnswerChange(index, e.target.value)}
-                        disabled={isSubmitted}
-                        value={userAnswers[index]?.[0] || ''}
-                      />
-                    )}
-
-                    {isSubmitted && (
-                      <>
-                        <p
-                          className={`mt-2 font-semibold ${
-                            isCorrect(item, userAnswers[index]) ? 'text-green-600' : 'text-red-600'
-                          }`}
-                        >
-                          {isCorrect(item, userAnswers[index]) ? 'Correct!' : 'Wrong!'}
-                        </p>
-                        <p className="text-gray-600 text-sm mt-1">
-                          <strong>Correct Answer(s):</strong>{' '}
-                          {item.options?.length
-                            ? item.answers
-                                .map((ans) => item.options?.[ans as number - 1])
-                                .join(', ')
-                            : item.answers.join(', ')}
-                        </p>
-                      </>
-                    )}
-                    <br/>
-                    {/* Difficulty Bar */}
-                    <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300">
-                      <div
-                        className={`h-full rounded-full transition-all ${
-                          item.difficulty >= 0.66
-                            ? 'bg-red-500'
-                            : item.difficulty >= 0.33
-                            ? 'bg-yellow-500'
-                            : 'bg-green-500'
-                        }`}
-                        style={{ width: `${item.difficulty * 100}%` }}
-                      ></div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Submit Button */}
-              <div className="mt-6 text-center">
-                {isSubmitted ? (
-                  <button
-                    onClick={handleBackToMain}
-                    className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-green-600 transition"
-                  >
-                    Return to Dashboard
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleSubmit}
-                    className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition"
-                  >
-                    Submit Answers
-                  </button>
-                )}
+        {/* Page Content */}
+        <div className="relative flex flex-col items-center p-6 transition-all duration-1000 ease-in-out">
+          <header className="w-full max-w-3xl flex justify-between items-center py-4 transition-colors duration-1000 ease-in-out">
+            <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent transition-colors duration-1000 ease-in-out">
+              Scio.ly: {' '}
+              {routerData.eventName ? routerData.eventName : 'Loading...'}
+            </h1>
+            {timeLeft !== null && (
+              <div
+                className={`text-xl font-semibold transition-colors duration-1000 ease-in-out ${
+                  timeLeft <= 300
+                    ? 'text-red-600'
+                    : darkMode
+                    ? 'text-white'
+                    : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'
+                }`}
+              >
+                Time Left: {formatTime(timeLeft)}
               </div>
-            </>
-          )}
-        </main>
+            )}
+          </header>
+
+          {/* Smooth Progress Bar */}
+          <div
+            className={`${
+              isSubmitted ? '' : 'sticky top-6'
+            } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg transition-all duration-1000 ease-in-out`}
+          >
+            <div
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 h-4 rounded-full transition-[width] duration-700 ease-in-out shadow-md"
+              style={{ width: `${(Object.keys(userAnswers).length / data.length) * 100}%` }}
+            ></div>
+          </div>
+
+          <main
+            className={`w-full max-w-3xl rounded-lg shadow-md p-6 mt-4 transition-all duration-1000 ease-in-out ${
+              darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+            }`}
+          >
+            {isLoading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+              </div>
+            ) : fetchError ? (
+              <div className="text-red-600 text-center">{fetchError}</div>
+            ) : (
+              <>
+                <ul className="space-y-6">
+                  {data.map((item, index) => (
+                    <li
+                      key={index}
+                      className={`relative border p-4 rounded-lg shadow-sm transition-all duration-1000 ease-in-out ${
+                        darkMode
+                          ? 'bg-gray-700 border-gray-600 text-white'
+                          : 'bg-gray-50 border-gray-300 text-black'
+                      }`}
+                    >
+                      <h3 className="font-semibold text-lg transition-colors ease-in-out">
+                        Question {index + 1}
+                      </h3>
+                      <p className="mb-4 transition-colors ease-in-out">
+                        {item.question}
+                      </p>
+
+                      {/* Answer Inputs */}
+                      {item.options && item.options.length > 0 && item.answers.length > 1 ? (
+                        <div className="space-y-2">
+                          {item.options.map((option, idx) => (
+                            <label
+                              key={idx}
+                              className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
+                                darkMode
+                                  ? 'bg-gray-700 hover:bg-gray-600'
+                                  : 'bg-gray-200 hover:bg-gray-300'
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                name={`question-${index}`}
+                                value={option}
+                                onChange={() => handleAnswerChange(index, option, true)}
+                                disabled={isSubmitted}
+                                checked={userAnswers[index]?.includes(option) || false}
+                                className="mr-2"
+                              />
+                              {option}
+                            </label>
+                          ))}
+                        </div>
+                      ) : item.options && item.options.length > 0 ? (
+                        <div className="space-y-2">
+                          {item.options.map((option, idx) => (
+                            <label
+                              key={idx}
+                              className={`block p-2 rounded-md transition-colors duration-200 ease-in-out ${
+                                darkMode
+                                  ? 'bg-gray-700 hover:bg-gray-600'
+                                  : 'bg-gray-200 hover:bg-gray-300'
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name={`question-${index}`}
+                                value={option}
+                                onChange={() => handleAnswerChange(index, option)}
+                                disabled={isSubmitted}
+                                checked={userAnswers[index]?.[0] === option}
+                                className="mr-2"
+                              />
+                              {option}
+                            </label>
+                          ))}
+                        </div>
+                      ) : (
+                        <textarea
+                          className={`w-full p-2 border rounded-md transition-all duration-1000 ease-in-out ${
+                            darkMode
+                              ? 'bg-gray-700'
+                              : 'bg-white'
+                          }`}
+                          rows={3}
+                          placeholder="Type your answer here (True/False if applicable)"
+                          onChange={(e) => handleAnswerChange(index, e.target.value)}
+                          disabled={isSubmitted}
+                          value={userAnswers[index]?.[0] || ''}
+                        />
+                      )}
+
+                      {isSubmitted && (
+                        <>
+                          <p
+                            className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
+                              isCorrect(item, userAnswers[index])
+                                ? 'text-green-600'
+                                : 'text-red-600'
+                            }`}
+                          >
+                            {isCorrect(item, userAnswers[index]) ? 'Correct!' : 'Wrong!'}
+                          </p>
+                          <p className={`text-sm mt-1 transition-colors duration-1000 ease-in-out ${
+                                        darkMode ? 'text-white' : 'text-gray-600'
+                                        }`}>
+                            <strong>Correct Answer(s):</strong>{' '}
+                            {item.options?.length
+                              ? item.answers
+                                  .map((ans) => item.options?.[ans as number - 1])
+                                  .join(', ')
+                              : item.answers.join(', ')}
+                          </p>
+                        </>
+                      )}
+                      <br />
+                      {/* Difficulty Bar */}
+                      <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300 transition-all duration-1000 ease-in-out">
+                        <div
+                          className={`h-full rounded-full transition-all duration-1000 ease-in-out ${
+                            item.difficulty >= 0.66
+                              ? 'bg-red-500'
+                              : item.difficulty >= 0.33
+                              ? 'bg-yellow-500'
+                              : 'bg-green-500'
+                          }`}
+                          style={{ width: `${item.difficulty * 100}%` }}
+                        ></div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+            {/* Submit Button */}
+            <div className="mt-6 text-center transition-all duration-1000 ease-in-out">
+              {isSubmitted ? (
+                <button
+                  onClick={handleBackToMain}
+                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                    darkMode
+                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                  }`}
+                  >
+                  Return to Dashboard
+                </button>
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                    darkMode
+                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                  }`}>
+                  Submit Answers
+                </button>
+              )}
+            </div>
+          </>
+        )}
+      </main>
+          {/* Back Button (bottom-left) */}
+          <button
+            onClick={() => router.push('/dashboard')}
+            className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
+              darkMode
+                ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
+                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
+            } text-white`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+          </button>
+          {/* Dark/Light Toggle Button */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out"
+          >
+            {darkMode ? (
+              // Sun icon (click to switch to light mode)
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+                />
+              </svg>
+            ) : (
+              // Moon icon (click to switch to dark mode)
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
     </SuspenseWrapper>
   );

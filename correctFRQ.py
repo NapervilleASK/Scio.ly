@@ -1,59 +1,88 @@
 import json
 import google.generativeai as genai
-import os
-import time
+import random
+from joblib import Parallel, delayed
 
-# List of API Keys
-API_KEYS = [
-    "AIzaSyCfqBUffTO__rekXIKOU3g5gaWtNiXqUJE",
-    "AIzaSyBd3NxLibgtZm9eVJtPN1l7TaKrFIfqsRw",
-    "AIzaSyAiA-njA4SwlA6sI12VKJHnYBNdKDzM0yI",
-    "AIzaSyA7tWKPs5TzSLGA9DJqKTjUyvCHs-zkRh4",
-    "AIzaSyAjTo2gr-jQvXPMfd3wgSgF4GlI9xSd2ug",
-    "AIzaSyAOP4QEzlMmiI2EMzSF-f8zCE2_3X8PMQI",
-    "AIzaSyDir7-baCKB81J_gF4WudMSL1LoxUK_yV4",
+# Replace these with your actual Gemini API keys.
+GEMINI_API_KEYS = [
+    "AIzaSyAGInMj66MuPgMyCQWZkXist9HYQIQKhXo",
+    "AIzaSyB0LVzvI2qZARHYckGF5xAZcDDcSLv_G4c",
+    "AIzaSyBHtubyKwYj2J4N0ONNMN9SNqQDhfFUr6c",
+    "AIzaSyA5LYpfW01qntmc9Ifb-5-RYr_nixG0S84"
 ]
 
-def process_free_response_questions(filepath):
+def call_gemini(prompt: str) -> str:
     """
-    Reads a JSON file line by line, identifies free response questions,
-    and uses a generative AI model to get answers, cycling through API keys.
-
-    Args:
-        filepath (str): The path to the JSON file.
+    Calls the Gemini 2 API with the provided prompt using one of the API keys.
+    Returns the response text.
     """
+    print('calling')
+    api_key = random.choice(GEMINI_API_KEYS)
+    genai.configure(api_key=api_key)
     try:
-        with open(filepath, 'r') as f:
-            for line in f:
-                try:
-                    data = json.loads(line.strip())
-                    for category, questions in data.items():
-                        print(f"\nProcessing questions for category: {category}")
-                        for question_entry in questions:
-                            if any("free response" in str(ans).lower() for ans in question_entry.get("answers", [])):
-                                question_text = question_entry.get("question")
-                                print(f"\nFound free response question: {question_text}")
-                                for api_key in API_KEYS:
-                                    try:
-                                        genai.configure(api_key=api_key)
-                                        model = genai.GenerativeModel("gemini-2.0-flash-exp")
-                                        response = model.generate_content(f"Answer the following question: {question_text}")
-                                        if response.parts:
-                                            print("AI Generated Answer (using API Key starting with: ...{})".format(api_key[7:10]))
-                                            print(response.text)
-                                            break  # Move to the next question if successful
-                                        else:
-                                            print("AI did not generate an answer with this API key (starting with: ...{}). Trying next key.".format(api_key[7:10]))
-                                    except Exception as e:
-                                        print(f"Error generating answer with API key starting with: ...{api_key[7:10]}: {e}. Trying next key.")
-                                    time.sleep(1) # Add a small delay to avoid hitting rate limits quickly
-                                else:  # This else belongs to the for loop, executed if the loop finishes without break
-                                    print("Failed to get an answer for this question with all available API keys.")
-                except json.JSONDecodeError:
-                    print(f"Skipping invalid JSON line: {line.strip()}")
-    except FileNotFoundError:
-        print(f"Error: File not found at {filepath}")
+        # Using the Gemini 2.0 flash experiment model.
+        response = genai.GenerativeModel("gemini-1.5-flash").generate_content(prompt)
+        if response and hasattr(response, 'text'):
+            return response.text.strip()
+        else:
+            print("Gemini response empty or missing text.")
+            return ""
+    except Exception as e:
+        print(f"Error calling Gemini API: {e}")
+        return ""
+
+def evaluate_question(question: dict) -> dict:
+    """
+    Given a question (a dictionary containing at least a "question" key),
+    this function calls Gemini asking if it can be answered as is.
+    The Gemini call is expected to return only YES or NO.
+    If YES is returned, the original question is kept; otherwise it is filtered out.
+    """
+    question_text = question.get("question", "")
+    prompt = (
+        f"Can the following question be answered as is? "
+        f"Respond with only YES or NO.\n\nQuestion: {question_text}"
+    )
+    result = call_gemini(prompt)
+    if result.strip().upper() == "YES":
+        return question
+    else:
+        return None
+
+def process_test_entry(test_entry: dict) -> dict:
+    """
+    Processes one test entry (a dict with subjects as keys and question lists as values).
+    For each subject, it sends a Gemini call in parallel for every question in that subject.
+    It then filters out any question that does not return YES.
+    Returns a new test entry with only the filtered questions.
+    """
+    filtered_entry = {}
+    for subject, questions in test_entry.items():
+        # Evaluate all questions in parallel.
+        results = Parallel(n_jobs=-1)(
+            delayed(evaluate_question)(q) for q in questions
+        )
+        # Keep only the questions where Gemini returned YES.
+        filtered_questions = [q for q in results if q is not None]
+        filtered_entry[subject] = filtered_questions
+    return filtered_entry
+
+def main():
+    # Read the input JSON from bank.json.
+    with open("bank.json", "r") as infile:
+        bank_data = json.load(infile)
+    print("Loaded tests.")
+
+    filtered_tests = []
+    # Process each test sequentially.
+    for test_entry in bank_data:
+        filtered_entry = process_test_entry(test_entry)
+        filtered_tests.append(filtered_entry)
+        # Optionally, write out the partial result after each test.
+        with open("bank_filtered.json", "w") as outfile:
+            json.dump(filtered_tests, outfile, indent=2)
+
+    print("Finished processing. Output written to bank_filtered.json.")
 
 if __name__ == "__main__":
-    filepath = "beta_bank.json"  # Replace with the actual path to your file
-    process_free_response_questions(filepath)
+    main()
