@@ -19,7 +19,7 @@ interface RouterParams {
 }
 
 const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/837127ff249fe5d15742a69545f185a5/raw/273ec0caa9cedc130b5cfbafd969129775a2999f/final.json';
+  'https://gist.githubusercontent.com/Kudostoy0u/e746d029254e1badf037fbde946774d8/raw/f3a486db241eeba30e9d611986934b8d605513f8/final.json';
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
@@ -205,7 +205,7 @@ export default function UnlimitedPracticePage() {
 
           <main
             className={`w-full max-w-3xl rounded-lg shadow-md p-6 mt-4 transition-all duration-1000 ease-in-out ${
-              darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+              darkMode ? 'bg-gray-800' : 'bg-white'
             }`}
           >
             {isLoading ? (
@@ -217,7 +217,7 @@ export default function UnlimitedPracticePage() {
             ) : (
               <div className="space-y-6">
                 <div
-                  className={`relative border p-4 rounded-lg shadow-sm transition-all duration-1000 ease-in-out ${
+                  className={`relative border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
                     darkMode
                       ? 'bg-gray-700 border-gray-600 text-white'
                       : 'bg-gray-50 border-gray-300 text-black'
@@ -259,7 +259,7 @@ export default function UnlimitedPracticePage() {
                         {currentQuestion.options.map((option, idx) => (
                           <label
                             key={idx}
-                            className={`block p-2 rounded-md transition-colors duration-200 ease-in-out ${
+                            className={`block p-2 rounded-md transition-colors duration-500 ease-in-out ${
                               darkMode
                                 ? 'bg-gray-700 hover:bg-gray-600'
                                 : 'bg-gray-200 hover:bg-gray-300'
@@ -322,7 +322,7 @@ export default function UnlimitedPracticePage() {
                       </p>
                     </>
                   )}
-
+					<br/>	
                   {/* Difficulty Bar */}
                   <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300 transition-all duration-1000 ease-in-out">
                     <div

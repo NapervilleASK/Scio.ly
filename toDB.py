@@ -404,6 +404,7 @@ def combine_bank_data(filename="bank.txt"):
                         and not (item['question'].lower().startswith("based on this"))
                         and not (item['question'].lower().startswith("these are"))
                         and not (len(item['question']) < 3)
+                        and not (len(item['answers']) == 1 and item['answers'][0] == '')
                         and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
                         and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimns*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)) ([A-Z][\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])

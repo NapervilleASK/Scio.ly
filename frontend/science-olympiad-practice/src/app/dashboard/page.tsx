@@ -131,7 +131,7 @@ function EventDashboard() {
         ];
 
         const response = await fetch(
-          'https://gist.githubusercontent.com/Kudostoy0u/837127ff249fe5d15742a69545f185a5/raw/273ec0caa9cedc130b5cfbafd969129775a2999f/final.json'
+          'https://gist.githubusercontent.com/Kudostoy0u/e746d029254e1badf037fbde946774d8/raw/f3a486db241eeba30e9d611986934b8d605513f8/final.json'
         );
         const data = await response.json();
 
