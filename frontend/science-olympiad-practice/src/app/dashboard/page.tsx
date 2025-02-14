@@ -262,8 +262,8 @@ function EventDashboard() {
                     <input
                       type="number"
                       id="questionCount"
-                      min="10"
-                      max="25"
+                      min="1"
+                      max="100"
                       value={settings.questionCount}
                       onChange={handleChange}
                       className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out ${
@@ -285,7 +285,7 @@ function EventDashboard() {
                     <input
                       type="number"
                       id="timeLimit"
-                      min="5"
+                      min="1"
                       max="120"
                       value={settings.timeLimit}
                       onChange={handleChange}

@@ -24,6 +24,7 @@ interface ReportModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (reason: string) => void;
+  darkMode: boolean;
 }
 
 interface ReportState {
@@ -44,7 +45,7 @@ const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
 );
 
-const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
+const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) => {
   const [reason, setReason] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,11 +59,17 @@ const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96">
-        <h3 className="text-lg font-semibold mb-4 dark:text-white">Report Question</h3>
+      <div className={`rounded-lg p-6 w-96 transition-colors duration-300 ${
+        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+      }`}>
+        <h3 className="text-lg font-semibold mb-4">Report Question</h3>
         <form onSubmit={handleSubmit}>
           <textarea
-            className="w-full p-2 border rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
+              darkMode 
+                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+            }`}
             rows={4}
             placeholder="Please describe the issue with this question..."
             value={reason}
@@ -73,13 +80,17 @@ const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                darkMode
+                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+              }`}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
+              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
             >
               Submit Report
             </button>
@@ -211,6 +222,11 @@ export default function TestPage() {
 
   const handleSubmit = () => {
     setIsSubmitted(true);
+    // Scroll to top smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   const handleBackToMain = () => {
@@ -343,13 +359,34 @@ export default function TestPage() {
         <div
           className={`absolute inset-0 transition-opacity duration-1000 ${
             darkMode ? 'opacity-100' : 'opacity-0'
-          } bg-gradient-to-br from-gray-800 to-black`}
+          } bg-gradient-to-br from-regalblue-100 to-regalred-100`}
         ></div>
         <div
           className={`absolute inset-0 transition-opacity duration-1000 ${
             darkMode ? 'opacity-0' : 'opacity-100'
-          } bg-gradient-to-br from-gray-50 to-blue-100`}
+          } bg-gradient-to-br from-blue-100 via-white to-cyan-100`}
         ></div>
+
+        {/* Add styled scrollbar */}
+        <style jsx global>{`
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+              : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
+            border-radius: 4px;
+            transition: background 1s ease;
+          }
+          
+          ::-webkit-scrollbar-thumb:hover {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+              : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
+          }
+        `}</style>
 
         {/* Page Content */}
         <div className="relative flex flex-col items-center p-6 transition-all duration-1000 ease-in-out">
@@ -636,6 +673,7 @@ export default function TestPage() {
         isOpen={reportState.isOpen}
         onClose={() => setReportState({ isOpen: false, questionIndex: null })}
         onSubmit={handleReport}
+        darkMode={darkMode}
       />
       <ToastContainer
         position="bottom-center"
