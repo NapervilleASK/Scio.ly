@@ -2,6 +2,8 @@
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Question {
   question: string;
@@ -18,6 +20,17 @@ interface RouterParams {
   timeLimit?: string;
 }
 
+interface ReportModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (reason: string) => void;
+}
+
+interface ReportState {
+  isOpen: boolean;
+  questionIndex: number | null;
+}
+
 const API_URL =
   'https://gist.githubusercontent.com/Kudostoy0u/31a422ee7cc029570e81a450ee4673cc/raw/9e1062fb980b51611ff5ff8760b4aeff2fba475b/final.json';
 
@@ -30,6 +43,52 @@ const LoadingFallback = () => (
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
 );
+
+const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
+  const [reason, setReason] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(reason);
+    setReason('');
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96">
+        <h3 className="text-lg font-semibold mb-4 dark:text-white">Report Question</h3>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="w-full p-2 border rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            rows={4}
+            placeholder="Please describe the issue with this question..."
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            required
+          />
+          <div className="flex justify-end space-x-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
+            >
+              Submit Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default function TestPage() {
   const searchParams = useSearchParams();
@@ -55,6 +114,10 @@ export default function TestPage() {
     medium: 0.66,
     hard: 1.0,
   };
+  const [reportState, setReportState] = useState<ReportState>({
+    isOpen: false,
+    questionIndex: null
+  });
 
   useEffect(() => {
     const routerParams = Object.fromEntries(searchParams.entries()) as RouterParams;
@@ -185,6 +248,94 @@ export default function TestPage() {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  const handleReport = async (reason: string) => {
+    if (reportState.questionIndex === null) return;
+    
+    const questionData = data[reportState.questionIndex];
+    const mainWebhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
+    const summaryWebhookUrl = "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
+
+    const mainPayload = {
+      embeds: [{
+        title: "Question Report",
+        color: 0xFF0000,
+        fields: [
+          {
+            name: "Event",
+            value: routerData.eventName || "Unknown Event",
+            inline: true
+          },
+          {
+            name: "Question",
+            value: questionData.question
+          },
+          {
+            name: "Report Reason",
+            value: reason
+          },
+          {
+            name: "Question Data",
+            value: `\`\`\`json\n${JSON.stringify(questionData, null, 2)}\n\`\`\``
+          }
+        ],
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    const summaryPayload = {
+      embeds: [{
+        title: "❌ Question Reported",
+        description: questionData.question,
+        color: 0xFF0000,
+        fields: [
+          {
+            name: "Event",
+            value: routerData.eventName || "Unknown Event",
+            inline: true
+          }
+        ],
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    const toastId = toast.loading('Sending report...');
+
+    try {
+      // Send both webhook requests in parallel
+      const [mainResponse, summaryResponse] = await Promise.all([
+        fetch(mainWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(mainPayload)
+        }),
+        fetch(summaryWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(summaryPayload)
+        })
+      ]);
+
+      if (!mainResponse.ok || !summaryResponse.ok) {
+        throw new Error('Failed to send report');
+      }
+
+      toast.update(toastId, {
+        render: 'Report sent successfully!',
+        type: 'success',
+        isLoading: false,
+        autoClose: 3000
+      });
+    } catch (error) {
+      console.error('Error sending report:', error);
+      toast.update(toastId, {
+        render: 'Failed to send report. Please try again.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000
+      });
+    }
+  };
+
   return (
     <SuspenseWrapper>
       <div className="relative min-h-screen">
@@ -257,9 +408,30 @@ export default function TestPage() {
                           : 'bg-gray-50 border-gray-300 text-black'
                       }`}
                     >
-                      <h3 className="font-semibold text-lg transition-colors ease-in-out">
-                        Question {index + 1}
-                      </h3>
+                      <div className="flex justify-between items-start">
+                        <h3 className="font-semibold text-lg transition-colors ease-in-out">
+                          Question {index + 1}
+                        </h3>
+                        <button
+                          onClick={() => setReportState({ isOpen: true, questionIndex: index })}
+                          className="text-gray-500 hover:text-red-500 transition-colors duration-200"
+                          title="Report this question"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                            <line x1="4" y1="22" x2="4" y2="15" />
+                          </svg>
+                        </button>
+                      </div>
                       <p className="mb-4 transition-colors ease-in-out break-words whitespace-normal overflow-x-auto">
                         {item.question}
                       </p>
@@ -460,6 +632,23 @@ export default function TestPage() {
           </button>
         </div>
       </div>
+      <ReportModal
+        isOpen={reportState.isOpen}
+        onClose={() => setReportState({ isOpen: false, questionIndex: null })}
+        onSubmit={handleReport}
+      />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "dark" : "light"}
+      />
     </SuspenseWrapper>
   );
 }

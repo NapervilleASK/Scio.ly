@@ -2,7 +2,7 @@
 
 import { Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiArrowRight, FiHelpCircle } from "react-icons/fi"; // <-- Imported FiHelpCircle here
 import Lenis from "@studio-freight/lenis";
 import {
@@ -14,6 +14,8 @@ import {
   useTransform,
 } from "framer-motion";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 const SCROLL_THRESHOLD = 550;
@@ -73,6 +75,63 @@ const ParallaxImages = () => {
           rotate={0}
           className="right-[15%] top-[52vh] w-[15vw] h-[35vh]"
         />
+      </div>
+    </div>
+  );
+};
+
+// Add these interfaces at the top
+interface FeedbackModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (feedback: string) => void;
+}
+
+interface FeedbackState {
+  isOpen: boolean;
+}
+
+// Add the FeedbackModal component
+const FeedbackModal = ({ isOpen, onClose, onSubmit }: FeedbackModalProps) => {
+  const [feedback, setFeedback] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(feedback);
+    setFeedback('');
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-[500px]">
+        <h3 className="text-xl font-semibold mb-4 dark:text-white">Submit Feedback</h3>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="w-full p-3 border rounded-md mb-4 dark:bg-gray-700 dark:text-white min-h-[150px]"
+            placeholder="Share your suggestions, feedback, or feature requests..."
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            required
+          />
+          <div className="flex justify-end space-x-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"
+            >
+              Submit Feedback
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
@@ -143,6 +202,71 @@ export default function HomePage() {
     [SCROLL_THRESHOLD + SECTION_HEIGHT - 1200, SCROLL_THRESHOLD + SECTION_HEIGHT],
     [0, 1]
   );
+
+  // Add this state
+  const [feedbackState, setFeedbackState] = useState<FeedbackState>({
+    isOpen: false
+  });
+
+  // Update the handleFeedback function
+  const handleFeedback = async (feedback: string) => {
+    const webhookUrl = "https://discord.com/api/webhooks/1339791675018576024/M9vqEh3Zw67jhoaZ20hA6yFLADRiXEpCvPNOpMgy5iaao_DkNaGm4NpPtE00SGjybAPc";
+    
+    const payload = {
+      embeds: [{
+        title: "💡 New Website Feedback",
+        description: feedback,
+        color: 0x3498db,
+        fields: [
+          {
+            name: "📱 Device Info",
+            value: `Platform: ${navigator.platform}\nScreen: ${window.innerWidth}x${window.innerHeight}`,
+            inline: true
+          },
+          {
+            name: "🌐 Browser",
+            value: navigator.userAgent.split('/')[0],
+            inline: true
+          }
+        ],
+        footer: {
+          text: "Scio.ly Feedback System"
+        },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    const toastId = toast.loading('Sending feedback...');
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send feedback');
+      }
+
+      toast.update(toastId, {
+        render: 'Thank you for your feedback!',
+        type: 'success',
+        isLoading: false,
+        autoClose: 3000
+      });
+    } catch (error) {
+      console.error('Error sending feedback:', error);
+      toast.update(toastId, {
+        render: 'Failed to send feedback. Please try again.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000
+      });
+    }
+  };
 
   return (
     <div className="relative h-[300vh] bg-black">
@@ -255,17 +379,33 @@ export default function HomePage() {
       </motion.section>
 
       {/* Question Mark Icon (Fades in with About Section) */}
-      <motion.a
-        href="https://forms.gle/C5tAeTRM1yzPf58q7"
-        target="_blank"
-        rel="noopener noreferrer"
+      <motion.button
+        onClick={() => setFeedbackState({ isOpen: true })}
         style={{ opacity: questionMarkOpacity }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-4 right-4 z-50 p-3 bg-gradient-to-r from-gray-500 to-regalred-100 rounded-full transition-colors cursor-pointer"
+        className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-gray-500 to-regalred-100 rounded-full transition-colors cursor-pointer shadow-lg hover:shadow-xl"
       >
         <FiHelpCircle size={24} className="text-white" />
-      </motion.a>
+      </motion.button>
+
+      <FeedbackModal
+        isOpen={feedbackState.isOpen}
+        onClose={() => setFeedbackState({ isOpen: false })}
+        onSubmit={handleFeedback}
+      />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

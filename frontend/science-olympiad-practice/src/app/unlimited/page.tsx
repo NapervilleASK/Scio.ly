@@ -2,6 +2,8 @@
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState, Suspense } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Question {
   question: string;
@@ -18,6 +20,17 @@ interface RouterParams {
   types?: string;
 }
 
+interface ReportModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (reason: string) => void;
+}
+
+interface ReportState {
+  isOpen: boolean;
+  questionIndex: number | null;
+}
+
 const API_URL =
   'https://gist.githubusercontent.com/Kudostoy0u/31a422ee7cc029570e81a450ee4673cc/raw/9e1062fb980b51611ff5ff8760b4aeff2fba475b/final.json';
 
@@ -30,6 +43,52 @@ const LoadingFallback = () => (
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
 );
+
+const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
+  const [reason, setReason] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(reason);
+    setReason('');
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96">
+        <h3 className="text-lg font-semibold mb-4 dark:text-white">Report Question</h3>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="w-full p-2 border rounded-md mb-4 dark:bg-gray-700 dark:text-white"
+            rows={4}
+            placeholder="Please describe the issue with this question..."
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            required
+          />
+          <div className="flex justify-end space-x-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
+            >
+              Submit Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default function UnlimitedPracticePage() {
   const searchParams = useSearchParams();
@@ -49,6 +108,10 @@ export default function UnlimitedPracticePage() {
       return storedTheme === 'dark';
     }
     return true;
+  });
+  const [reportState, setReportState] = useState<ReportState>({
+    isOpen: false,
+    questionIndex: null
   });
 
   // Update localStorage when darkMode changes
@@ -139,7 +202,7 @@ export default function UnlimitedPracticePage() {
     setIsSubmitted(true);
   };
 
-  // When “Next Question” is clicked, load the next question.
+  // When "Next Question" is clicked, load the next question.
   // If at the end, reshuffle and loop back to the beginning.
   const handleNext = () => {
     let nextIndex = currentQuestionIndex + 1;
@@ -179,6 +242,76 @@ export default function UnlimitedPracticePage() {
       typeof ans === 'string' ? ans.toLowerCase() : ''
     );
     return keywords.some((keyword) => userAnswer.includes(keyword));
+  };
+
+  const handleReport = async (reason: string) => {
+    if (reportState.questionIndex === null) return;
+    
+    const questionData = data[reportState.questionIndex];
+    const webhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
+
+    if (!webhookUrl) {
+      toast.error('Report system not configured properly');
+      return;
+    }
+
+    const payload = {
+      embeds: [{
+        title: "Question Report (Unlimited Mode)",
+        color: 0xFF0000,
+        fields: [
+          {
+            name: "Event",
+            value: routerData.eventName || "Unknown Event",
+            inline: true
+          },
+          {
+            name: "Question",
+            value: questionData.question
+          },
+          {
+            name: "Report Reason",
+            value: reason
+          },
+          {
+            name: "Question Data",
+            value: `\`\`\`json\n${JSON.stringify(questionData, null, 2)}\n\`\`\``
+          }
+        ],
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    const toastId = toast.loading('Sending report...');
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send report');
+      }
+
+      toast.update(toastId, {
+        render: 'Report sent successfully!',
+        type: 'success',
+        isLoading: false,
+        autoClose: 3000
+      });
+    } catch (error) {
+      console.error('Error sending report:', error);
+      toast.update(toastId, {
+        render: 'Failed to send report. Please try again.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000
+      });
+    }
   };
 
   return (
@@ -223,8 +356,31 @@ export default function UnlimitedPracticePage() {
                       : 'bg-gray-50 border-gray-300 text-black'
                   }`}
                 >
-                  <h3 className="font-semibold text-lg">Question</h3>
-                  <p className="mb-4">{currentQuestion.question}</p>
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-semibold text-lg">Question</h3>
+                    <button
+                      onClick={() => setReportState({ isOpen: true, questionIndex: currentQuestionIndex })}
+                      className="text-gray-500 hover:text-red-500 transition-colors duration-200"
+                      title="Report this question"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                        <line x1="4" y1="22" x2="4" y2="15" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p className="mb-4 break-words whitespace-normal overflow-x-auto">
+                    {currentQuestion.question}
+                  </p>
 
                   {/* Answer Input(s) */}
                   {currentQuestion.options && currentQuestion.options.length > 0 ? (
@@ -426,6 +582,24 @@ export default function UnlimitedPracticePage() {
           </button>
         </div>
       </div>
+
+      <ReportModal
+        isOpen={reportState.isOpen}
+        onClose={() => setReportState({ isOpen: false, questionIndex: null })}
+        onSubmit={handleReport}
+      />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "dark" : "light"}
+      />
     </SuspenseWrapper>
   );
 }
