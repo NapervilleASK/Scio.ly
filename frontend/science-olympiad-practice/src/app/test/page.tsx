@@ -260,7 +260,7 @@ export default function TestPage() {
                       <h3 className="font-semibold text-lg transition-colors ease-in-out">
                         Question {index + 1}
                       </h3>
-                      <p className="mb-4 transition-colors ease-in-out">
+                      <p className="mb-4 transition-colors ease-in-out break-words whitespace-normal overflow-x-auto">
                         {item.question}
                       </p>
 
