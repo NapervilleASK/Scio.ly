@@ -336,7 +336,7 @@ export default function TestPage() {
       }
 
       toast.update(toastId, {
-        render: 'Report sent successfully!',
+        render: 'Report sent successfully! We will fix this question soon. Thank you!',
         type: 'success',
         isLoading: false,
         autoClose: 3000
