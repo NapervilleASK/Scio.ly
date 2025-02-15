@@ -422,7 +422,7 @@ function EventDashboard() {
 
               {/* Back Button (bottom-left) */}
               <button
-                onClick={() => router.push('/')}
+                onClick={() => router.push('/welcome')}
                 className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
                   darkMode
                     ? 'bg-gradient-to-r from-regalblue-500 to-regalred-500'
