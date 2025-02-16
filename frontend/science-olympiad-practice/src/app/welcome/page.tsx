@@ -181,14 +181,6 @@ export default function WelcomePage() {
     }
   }, [darkMode]);
 
-  const handleContinue = () => {
-    router.push('/dashboard');
-  };
-
-  const handleBack = () => {
-    router.push('/');
-  };
-
   const handleThemeToggle = () => {
     setDarkMode(!darkMode);
   };
@@ -263,8 +255,8 @@ export default function WelcomePage() {
   };
 
   const cardStyle = darkMode 
-    ? 'bg-gray-800/50' 
-    : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)]';
+    ? 'bg-gray-800/50 transition-all duration-1000 ease-in-out' 
+    : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-1000 ease-in-out';
 
   return (
     <div className="relative min-h-screen">
@@ -288,7 +280,7 @@ export default function WelcomePage() {
       </div>
 
       {/* Navigation Bar */}
-      <nav className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-1000 ease-in-out ${
         darkMode ? 'bg-gray-900/90' : 'bg-white/95 shadow-md'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -329,7 +321,7 @@ export default function WelcomePage() {
         <div className="max-w-7xl mx-auto">
           {/* Welcome Banner */}
           <div className={`p-6 rounded-lg mb-8 ${cardStyle}`}>
-            <h1 className={`text-2xl font-bold mb-2 ${
+            <h1 className={`text-2xl font-bold mb-2 transition-colors duration-1000 ease-in-out ${
               darkMode ? 'text-white' : 'text-gray-900'
             }`}>
               Welcome to Scio.ly!
@@ -385,7 +377,7 @@ export default function WelcomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`p-6 rounded-lg cursor-pointer transition-all duration-1000 ease-in-out ${
                 darkMode 
                   ? 'bg-gray-800/50 hover:bg-gray-700/50' 
                   : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.15)]'
@@ -403,7 +395,7 @@ export default function WelcomePage() {
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`p-6 rounded-lg cursor-pointer transition-all duration-1000 ease-in-out ${
                 darkMode 
                   ? 'bg-gray-800/50 hover:bg-gray-700/50' 
                   : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.15)]'
