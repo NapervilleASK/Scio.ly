@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
 import { auth } from '@/lib/firebase';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface Question {
   question: string;
@@ -104,24 +105,11 @@ export default function UnlimitedPracticePage() {
   // For the current question, the answer is stored as an array.
   const [currentAnswer, setCurrentAnswer] = useState<(string | null)[]>([]);
   const [routerData, setRouterData] = useState<RouterParams>({});
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof localStorage !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      return storedTheme === 'dark';
-    }
-    return true;
-  });
+  const { darkMode, setDarkMode } = useTheme();
   const [reportState, setReportState] = useState<ReportState>({
     isOpen: false,
     questionIndex: null
   });
-
-  // Update localStorage when darkMode changes
-  useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    }
-  }, [darkMode]);
 
   // Fetch and filter questions on mount
   useEffect(() => {
@@ -566,12 +554,15 @@ export default function UnlimitedPracticePage() {
             </svg>
           </button>
 
-          {/* Dark/Light Toggle Button (bottom-right) */}
+          {/* Dark Mode Toggle (bottom-right) */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out"
+            className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
+              darkMode ? 'bg-gray-700' : 'bg-white'
+            }`}
           >
             {darkMode ? (
+              // Sun icon (click to switch to light mode)
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-yellow-400"
@@ -587,6 +578,7 @@ export default function UnlimitedPracticePage() {
                 />
               </svg>
             ) : (
+              // Moon icon (click to switch to dark mode)
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-blue-600"
@@ -594,7 +586,12 @@ export default function UnlimitedPracticePage() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+                />
               </svg>
             )}
           </button>

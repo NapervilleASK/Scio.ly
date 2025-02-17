@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
 import { auth } from '@/lib/firebase';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface Question {
   question: string;
@@ -120,15 +121,7 @@ export default function TestPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof localStorage !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light') {
-        return false;
-      }
-    }
-    return true; // Default to dark mode
-  });
+  const { darkMode, setDarkMode } = useTheme();
   const [reportState, setReportState] = useState<ReportState>({
     isOpen: false,
     questionIndex: null
@@ -187,12 +180,6 @@ export default function TestPage() {
 
     fetchData();
   }, [searchParams]); // Remove difficultyMap from dependencies
-
-  useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     if (timeLeft === null || isSubmitted) return;
@@ -646,10 +633,12 @@ export default function TestPage() {
               />
             </svg>
           </button>
-          {/* Dark/Light Toggle Button */}
+          {/* Dark Mode Toggle (bottom-right) */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out"
+            className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
+              darkMode ? 'bg-gray-700' : 'bg-white'
+            }`}
           >
             {darkMode ? (
               // Sun icon (click to switch to light mode)
