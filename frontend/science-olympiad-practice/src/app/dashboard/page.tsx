@@ -3,6 +3,7 @@
 import { useState, useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface Event {
   id: number;
@@ -11,21 +12,12 @@ interface Event {
 }
 
 function EventDashboard() {
+  const { darkMode, setDarkMode } = useTheme();
   const [events, setEvents] = useState<Event[]>([]);
   const [sortOption, setSortOption] = useState<string>('alphabetical');
   const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  // Initialize darkMode state based on localStorage or default to dark
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof localStorage !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light') {
-        return false;
-      }
-    }
-    return true; // Default to dark mode
-  });
 
   const router = useRouter();
 
@@ -165,13 +157,6 @@ function EventDashboard() {
 
     fetchEvents();
   }, []);
-
-  // useEffect to update localStorage when darkMode changes
-  useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    }
-  }, [darkMode]);
 
   return (
     // Wrap the whole page in a relative container

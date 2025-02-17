@@ -7,6 +7,10 @@ import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import AuthButton from '@/components/AuthButton';
+import { auth } from '@/lib/firebase';
+import { getDailyMetrics } from '@/utils/metrics';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -20,6 +24,16 @@ interface ContactFormData {
   email: string;
   topic: string;
   message: string;
+}
+
+interface DailyData {
+  date: string;
+  count: number;
+}
+
+interface WeeklyData {
+  questions: DailyData[];
+  accuracy: number;
 }
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps) => {
@@ -161,25 +175,67 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps
   );
 };
 
+const generateWeeklyData = (questionsAttempted: number, correctAnswers: number): WeeklyData => {
+  const days: DailyData[] = [];
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    days.push({
+      date: date.toLocaleDateString('en-US', { weekday: 'short' }),
+      count: i === 0 ? questionsAttempted : 0
+    });
+  }
+  return {
+    questions: days,
+    accuracy: questionsAttempted > 0 ? (correctAnswers / questionsAttempted) * 100 : 0
+  };
+};
+
+// Helper to get y-axis scale based on max questions in a week
+const getYAxisScale = (maxValue: number) => {
+  const steps = 5; // Number of y-axis marks
+  const max = Math.max(maxValue, 1);
+  return Array.from({ length: steps }, (_, i) => Math.round(max * (1 - i / (steps - 1))));
+};
+
 export default function WelcomePage() {
   const router = useRouter();
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof localStorage !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light') {
-        return false;
-      }
-    }
-    return true;
-  });
-
+  const { darkMode, setDarkMode } = useTheme();
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [metrics, setMetrics] = useState({
+    questionsAttempted: 0,
+    correctAnswers: 0,
+    eventsPracticed: 0
+  });
+  const [authInitialized, setAuthInitialized] = useState(false);
 
+  // Handle auth state
   useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    }
-  }, [darkMode]);
+    const unsubscribe = auth.onAuthStateChanged(() => {
+      setAuthInitialized(true);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Fetch metrics only after auth is initialized
+  useEffect(() => {
+    if (!authInitialized) return;
+
+    const fetchMetrics = async () => {
+      const stats = await getDailyMetrics(auth.currentUser?.uid || null);
+      if (stats) {
+        setMetrics({
+          questionsAttempted: stats.questionsAttempted,
+          correctAnswers: stats.correctAnswers,
+          eventsPracticed: stats.eventsPracticed?.length || 0
+        });
+      }
+    };
+
+    fetchMetrics();
+    const interval = setInterval(fetchMetrics, 60000);
+    return () => clearInterval(interval);
+  }, [authInitialized]);
 
   const handleThemeToggle = () => {
     setDarkMode(!darkMode);
@@ -293,6 +349,11 @@ export default function WelcomePage() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
+              <Link href="/dashboard" className={`px-3 py-2 rounded-md text-sm font-medium ${
+                darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}>
+                Practice
+              </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
                 className={`px-3 py-2 rounded-md text-sm font-medium ${
@@ -301,16 +362,7 @@ export default function WelcomePage() {
               >
                 Contact Us
               </button>
-              <Link href="/dashboard" className={`px-3 py-2 rounded-md text-sm font-medium ${
-                darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}>
-                Dashboard
-              </Link>
-              <button className={`px-3 py-2 rounded-md text-sm font-medium ${
-                darkMode ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'
-              }`}>
-                Sign In
-              </button>
+              <AuthButton />
             </div>
           </div>
         </div>
@@ -331,45 +383,112 @@ export default function WelcomePage() {
             </p>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {/* Metrics Section */}
+          <div className="grid grid-cols-3 gap-6 mb-8">
             <div className={`p-6 rounded-lg ${cardStyle}`}>
-              <h2 className={`text-lg font-semibold mb-2 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Questions Attempted
-              </h2>
-              <p className="text-3xl font-bold text-blue-500">0</p>
+              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Questions Attempted</h3>
+              <p className="text-4xl font-bold text-blue-600">{metrics.questionsAttempted}</p>
             </div>
             <div className={`p-6 rounded-lg ${cardStyle}`}>
-              <h2 className={`text-lg font-semibold mb-2 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Correct Answers
-              </h2>
-              <p className="text-3xl font-bold text-green-500">0</p>
+              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Correct Answers</h3>
+              <p className="text-4xl font-bold text-green-600">{metrics.correctAnswers}</p>
             </div>
             <div className={`p-6 rounded-lg ${cardStyle}`}>
-              <h2 className={`text-lg font-semibold mb-2 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Events Practiced
-              </h2>
-              <p className="text-3xl font-bold text-purple-500">0</p>
+              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Events Practiced</h3>
+              <p className="text-4xl font-bold text-purple-600">{metrics.eventsPracticed}</p>
             </div>
           </div>
 
-          {/* Recent Activity */}
-          <div className={`p-6 rounded-lg mb-8 ${cardStyle}`}>
-            <h2 className={`text-xl font-semibold mb-4 ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Recent Activity
-            </h2>
-            <div className={`text-center py-8 ${
-              darkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>
-              No recent activity. Start practicing to see your progress!
+          {/* Recent Activity - New Layout */}
+          <div className="grid grid-cols-2 gap-6 mb-8">
+            {/* Left side - Questions Line Graph */}
+            <div className={`p-6 rounded-lg ${cardStyle}`}>
+              <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Questions This Week
+              </h2>
+              <div className="relative h-[200px] flex items-end justify-between px-12">
+                {/* Y-axis */}
+                <div className="absolute left-0 top-0 h-full flex flex-col justify-between">
+                  {getYAxisScale(metrics.questionsAttempted).map((tick, index) => (
+                    <div key={`y-axis-${index}`} className="flex items-center">
+                      <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                        {tick}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bars */}
+                {generateWeeklyData(metrics.questionsAttempted, metrics.correctAnswers).questions.map((day, index) => (
+                  <div key={index} className="flex flex-col items-center group">
+                    <div className="relative">
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className={`px-2 py-1 rounded text-sm ${
+                          darkMode 
+                            ? 'bg-gray-800 text-white' 
+                            : 'bg-white text-gray-900 shadow-lg'
+                        }`}>
+                          {day.count} questions
+                        </div>
+                      </div>
+                      
+                      {/* Bar */}
+                      <div 
+                        className={`w-12 bg-blue-500 rounded-t-md transition-all duration-300 group-hover:bg-blue-400`}
+                        style={{ 
+                          height: `${(day.count / Math.max(getYAxisScale(metrics.questionsAttempted)[0], 1)) * 150}px` 
+                        }}
+                      />
+                    </div>
+                    <span className={`text-sm mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {day.date}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side - Half Circle Accuracy */}
+            <div className={`p-6 rounded-lg ${cardStyle}`}>
+              <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Accuracy Today
+              </h2>
+              <div className="relative flex items-center justify-center h-[200px]">
+                <svg className="w-72 h-36" viewBox="0 0 100 60">
+                  {/* Background arc */}
+                  <path
+                    d="M5 50 A 45 45 0 0 1 95 50"
+                    fill="none"
+                    stroke={darkMode ? '#1e293b' : '#e2e8f0'}
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    style={{ transition: 'stroke 1s ease' }}
+                  />
+                  {/* Progress arc */}
+                  <path
+                    d="M5 50 A 45 45 0 0 1 95 50"
+                    fill="none"
+                    stroke={darkMode ? '#60a5fa' : '#3b82f6'}
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeDasharray={`${(metrics.correctAnswers / Math.max(metrics.questionsAttempted, 1)) * 140}, 140`}
+                    style={{ transition: 'stroke 1s ease' }}
+                  />
+                  <text
+                    x="50"
+                    y="50"
+                    className="text-3xl font-bold"
+                    textAnchor="middle"
+                    fill={darkMode ? '#fff' : '#000'}
+                    style={{ transition: 'fill 1s ease' }}
+                  >
+                    {metrics.questionsAttempted > 0 
+                      ? `${Math.round((metrics.correctAnswers / metrics.questionsAttempted) * 100)}%`
+                      : '0%'}
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
 

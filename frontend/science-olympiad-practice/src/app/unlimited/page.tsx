@@ -4,6 +4,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState, Suspense } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateMetrics } from '@/utils/metrics';
+import { auth } from '@/lib/firebase';
 
 interface Question {
   question: string;
@@ -198,8 +200,24 @@ export default function UnlimitedPracticePage() {
   };
 
   // Mark the current question as submitted
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitted(true);
+    try {
+      // Update metrics for each question attempted
+      await updateMetrics(auth.currentUser?.uid || null, {
+        questionsAttempted: 1,
+        correctAnswers: isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
+        eventName: searchParams.get('eventName') || undefined
+      });
+
+      if (isCorrect(currentQuestion, currentAnswer)) {
+        toast.success('Correct!');
+      } else {
+        toast.error('Incorrect. Try again!');
+      }
+    } catch (error) {
+      console.error('Error updating metrics:', error);
+    }
   };
 
   // When "Next Question" is clicked, load the next question.

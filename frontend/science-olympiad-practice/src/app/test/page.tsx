@@ -4,6 +4,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateMetrics } from '@/utils/metrics';
+import { auth } from '@/lib/firebase';
 
 interface Question {
   question: string;
@@ -101,6 +103,13 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) 
   );
 };
 
+// Move difficultyMap outside the component
+const difficultyMap: Record<string, number> = {
+  easy: 0.33,
+  medium: 0.66,
+  hard: 1.0,
+};
+
 export default function TestPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -120,11 +129,6 @@ export default function TestPage() {
     }
     return true; // Default to dark mode
   });
-  const difficultyMap: Record<string, number> = {
-    easy: 0.33,
-    medium: 0.66,
-    hard: 1.0,
-  };
   const [reportState, setReportState] = useState<ReportState>({
     isOpen: false,
     questionIndex: null
@@ -182,7 +186,8 @@ export default function TestPage() {
     };
 
     fetchData();
-  }, [searchParams]);
+  }, [searchParams]); // Remove difficultyMap from dependencies
+
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('theme', darkMode ? 'dark' : 'light');
@@ -220,8 +225,21 @@ export default function TestPage() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitted(true);
+    
+    // Calculate total correct answers
+    const correctAnswers = data.reduce((total, question, index) => {
+      return total + (isCorrect(question, userAnswers[index]) ? 1 : 0);
+    }, 0);
+
+    // Update metrics
+    await updateMetrics(auth.currentUser?.uid || null, {
+      questionsAttempted: data.length,
+      correctAnswers: correctAnswers,
+      eventName: routerData.eventName || undefined
+    });
+
     // Scroll to top smoothly
     window.scrollTo({
       top: 0,
