@@ -2,7 +2,7 @@
 
 import { Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import { FiArrowRight} from "react-icons/fi"; 
 import Lenis from "@studio-freight/lenis";
 import {
@@ -122,7 +122,7 @@ export default function HomePage() {
       controls.stop();
       aboutControls.stop();
     };
-  }, []);
+  }, [aboutColor, color]);
 
   const clip1 = useTransform(scrollY, [0, SCROLL_THRESHOLD], [0, 50]);
   const clip2 = useTransform(scrollY, [0, SCROLL_THRESHOLD], [100, 50]);
@@ -137,12 +137,6 @@ export default function HomePage() {
     SCROLL_THRESHOLD + SECTION_HEIGHT - 100
   ];
 
-  // Define an opacity transform for the question mark icon that matches the About section.
-  const questionMarkOpacity = useTransform(
-    scrollY,
-    [SCROLL_THRESHOLD + SECTION_HEIGHT - 1200, SCROLL_THRESHOLD + SECTION_HEIGHT],
-    [0, 1]
-  );
 
   return (
     <div className="relative h-[300vh] bg-black">

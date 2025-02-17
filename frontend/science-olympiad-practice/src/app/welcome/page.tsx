@@ -175,37 +175,84 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps
   );
 };
 
-const generateWeeklyData = (questionsAttempted: number, correctAnswers: number): WeeklyData => {
-  const days: DailyData[] = [];
-  for (let i = 6; i >= 0; i--) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    days.push({
-      date: date.toLocaleDateString('en-US', { weekday: 'short' }),
-      count: i === 0 ? questionsAttempted : 0
-    });
-  }
-  return {
-    questions: days,
-    accuracy: questionsAttempted > 0 ? (correctAnswers / questionsAttempted) * 100 : 0
-  };
+const NumberAnimation = ({ value, className }: { value: number, className: string }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [displayValue, setDisplayValue] = useState(value); // Initialize with the final value
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    let start = 0;
+    const end = value;
+    const duration = 1000;
+    const increment = end / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setDisplayValue(end);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [value, isMounted]);
+
+  return <span className={className}>{displayValue}</span>;
 };
 
-// Helper to get y-axis scale based on max questions in a week
-const getYAxisScale = (maxValue: number) => {
-  const steps = 5; // Number of y-axis marks
-  const max = Math.max(maxValue, 1);
-  return Array.from({ length: steps }, (_, i) => Math.round(max * (1 - i / (steps - 1))));
+// Create a client component for the animated accuracy display
+const AnimatedAccuracy = ({ value, darkMode }: { value: number, darkMode: boolean }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <text
+        x="50"
+        y="50"
+        className="text-3xl font-bold"
+        textAnchor="middle"
+        fill={darkMode ? '#fff' : '#000'}
+      >
+        {value}%
+      </text>
+    );
+  }
+
+  return (
+    <motion.text
+      x="50"
+      y="50"
+      className="text-3xl font-bold"
+      textAnchor="middle"
+      fill={darkMode ? '#fff' : '#000'}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
+    >
+      {value}%
+    </motion.text>
+  );
 };
 
 export default function WelcomePage() {
   const router = useRouter();
   const { darkMode, setDarkMode } = useTheme();
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [metrics, setMetrics] = useState({
+  const [dailyStats, setDailyStats] = useState({
     questionsAttempted: 0,
     correctAnswers: 0,
-    eventsPracticed: 0
+    eventsPracticed: [] as string[]
   });
   const [authInitialized, setAuthInitialized] = useState(false);
 
@@ -217,25 +264,59 @@ export default function WelcomePage() {
     return () => unsubscribe();
   }, []);
 
-  // Fetch metrics only after auth is initialized
+  // Fetch daily metrics
   useEffect(() => {
     if (!authInitialized) return;
 
-    const fetchMetrics = async () => {
+    const fetchDailyStats = async () => {
       const stats = await getDailyMetrics(auth.currentUser?.uid || null);
       if (stats) {
-        setMetrics({
-          questionsAttempted: stats.questionsAttempted,
-          correctAnswers: stats.correctAnswers,
-          eventsPracticed: stats.eventsPracticed?.length || 0
+        setDailyStats({
+          questionsAttempted: stats.questionsAttempted || 0,
+          correctAnswers: stats.correctAnswers || 0,
+          eventsPracticed: stats.eventsPracticed || []
         });
       }
     };
 
-    fetchMetrics();
-    const interval = setInterval(fetchMetrics, 60000);
+    fetchDailyStats();
+    const interval = setInterval(fetchDailyStats, 60000);
     return () => clearInterval(interval);
   }, [authInitialized]);
+
+  // Calculate metrics from daily stats
+  const metrics = {
+    questionsAttempted: dailyStats.questionsAttempted,
+    correctAnswers: dailyStats.correctAnswers,
+    eventsPracticed: dailyStats.eventsPracticed.length,
+    accuracy: dailyStats.questionsAttempted > 0 
+      ? (dailyStats.correctAnswers / dailyStats.questionsAttempted) * 100 
+      : 0
+  };
+
+  // Generate weekly data from daily stats
+  const generateWeeklyData = (): WeeklyData => {
+    const days: DailyData[] = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      days.push({
+        date: date.toLocaleDateString('en-US', { weekday: 'short' }),
+        count: i === 0 ? dailyStats.questionsAttempted : 0 // Only show today's questions
+      });
+    }
+    return {
+      questions: days,
+      accuracy: metrics.accuracy
+    };
+  };
+
+  // Helper to get y-axis scale
+  const getYAxisScale = (maxValue: number) => {
+    const steps = 5;
+    const max = Math.max(maxValue, 1);
+    return Array.from({ length: steps }, (_, i) => Math.round(max * (1 - i / (steps - 1))));
+  };
 
   const handleThemeToggle = () => {
     setDarkMode(!darkMode);
@@ -387,15 +468,24 @@ export default function WelcomePage() {
           <div className="grid grid-cols-3 gap-6 mb-8">
             <div className={`p-6 rounded-lg ${cardStyle}`}>
               <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Questions Attempted</h3>
-              <p className="text-4xl font-bold text-blue-600">{metrics.questionsAttempted}</p>
+              <NumberAnimation 
+                value={metrics.questionsAttempted} 
+                className="text-4xl font-bold text-blue-600"
+              />
             </div>
             <div className={`p-6 rounded-lg ${cardStyle}`}>
               <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Correct Answers</h3>
-              <p className="text-4xl font-bold text-green-600">{metrics.correctAnswers}</p>
+              <NumberAnimation 
+                value={metrics.correctAnswers} 
+                className="text-4xl font-bold text-green-600"
+              />
             </div>
             <div className={`p-6 rounded-lg ${cardStyle}`}>
               <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Events Practiced</h3>
-              <p className="text-4xl font-bold text-purple-600">{metrics.eventsPracticed}</p>
+              <NumberAnimation 
+                value={metrics.eventsPracticed} 
+                className="text-4xl font-bold text-purple-600"
+              />
             </div>
           </div>
 
@@ -419,7 +509,7 @@ export default function WelcomePage() {
                 </div>
 
                 {/* Bars */}
-                {generateWeeklyData(metrics.questionsAttempted, metrics.correctAnswers).questions.map((day, index) => (
+                {generateWeeklyData().questions.map((day, index) => (
                   <div key={index} className="flex flex-col items-center group">
                     <div className="relative">
                       {/* Tooltip */}
@@ -463,30 +553,22 @@ export default function WelcomePage() {
                     stroke={darkMode ? '#1e293b' : '#e2e8f0'}
                     strokeWidth="8"
                     strokeLinecap="round"
-                    style={{ transition: 'stroke 1s ease' }}
                   />
-                  {/* Progress arc */}
-                  <path
+                  {/* Progress arc with animation */}
+                  <motion.path
                     d="M5 50 A 45 45 0 0 1 95 50"
                     fill="none"
                     stroke={darkMode ? '#60a5fa' : '#3b82f6'}
                     strokeWidth="8"
                     strokeLinecap="round"
-                    strokeDasharray={`${(metrics.correctAnswers / Math.max(metrics.questionsAttempted, 1)) * 140}, 140`}
-                    style={{ transition: 'stroke 1s ease' }}
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: metrics.accuracy / 100 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                   />
-                  <text
-                    x="50"
-                    y="50"
-                    className="text-3xl font-bold"
-                    textAnchor="middle"
-                    fill={darkMode ? '#fff' : '#000'}
-                    style={{ transition: 'fill 1s ease' }}
-                  >
-                    {metrics.questionsAttempted > 0 
-                      ? `${Math.round((metrics.correctAnswers / metrics.questionsAttempted) * 100)}%`
-                      : '0%'}
-                  </text>
+                  <AnimatedAccuracy 
+                    value={Math.round(metrics.accuracy)} 
+                    darkMode={darkMode}
+                  />
                 </svg>
               </div>
             </div>
