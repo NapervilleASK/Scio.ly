@@ -12,6 +12,7 @@ import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/utils/metrics';
 import { useTheme } from '@/contexts/ThemeContext';
 import { User } from 'firebase/auth';
+import Image from 'next/image';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -434,13 +435,22 @@ export default function WelcomePage() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-1000 ease-in-out ${
         darkMode ? 'bg-gray-900/90' : 'bg-white/95 shadow-md'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className={`text-xl font-bold ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Scio.ly
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center h-16 px-6">
+            <div className="flex items-center space-x-2">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/site-logo.png"
+                  alt="Scio.ly Logo"
+                  width={32}
+                  height={32}
+                  className="mr-2"
+                />
+                <span className={`text-xl font-bold ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Scio.ly
+                </span>
               </Link>
             </div>
             <div className="flex items-center space-x-4">

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Scio.ly",
   description: "The Ultimate Study Guide",
   icons: {
-    icon: "./favicon.ico"
+    icon: "/site-logo.png"
   }
 };
 
@@ -28,13 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/site-logo.png" sizes="any" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body 
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <ThemeProvider>
-          <main>{children}</main>
+          {children}
         </ThemeProvider>
         <Analytics />
       </body>
