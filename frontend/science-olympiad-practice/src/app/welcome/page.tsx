@@ -210,7 +210,11 @@ const NumberAnimation = ({ value, className }: { value: number, className: strin
 };
 
 // Create a client component for the animated accuracy display
-const AnimatedAccuracy = ({ value, darkMode }: { value: number, darkMode: boolean }) => {
+const AnimatedAccuracy = ({ value, darkMode, className }: { 
+  value: number, 
+  darkMode: boolean,
+  className?: string 
+}) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -222,7 +226,7 @@ const AnimatedAccuracy = ({ value, darkMode }: { value: number, darkMode: boolea
       <text
         x="50"
         y="50"
-        className="text-3xl font-bold"
+        className={className}
         textAnchor="middle"
         fill={darkMode ? '#fff' : '#000'}
       >
@@ -235,7 +239,7 @@ const AnimatedAccuracy = ({ value, darkMode }: { value: number, darkMode: boolea
     <motion.text
       x="50"
       y="50"
-      className="text-3xl font-bold"
+      className={className}
       textAnchor="middle"
       fill={darkMode ? '#fff' : '#000'}
       initial={{ opacity: 0, y: 20 }}
@@ -407,7 +411,7 @@ export default function WelcomePage() {
   };
 
   const cardStyle = darkMode 
-    ? 'bg-gray-800/50 transition-all duration-1000 ease-in-out' 
+    ? 'bg-gray-800 transition-all duration-1000 ease-in-out'
     : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-1000 ease-in-out';
 
   return (
@@ -593,6 +597,7 @@ export default function WelcomePage() {
                     <AnimatedAccuracy 
                       value={Math.round(metrics.accuracy)} 
                       darkMode={darkMode}
+                      className="text-2xl font-bold"
                     />
                   </svg>
                 </div>
@@ -606,45 +611,23 @@ export default function WelcomePage() {
             )}
           </div>
 
-          {/* Quick Actions */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-1000 ease-in-out ${
-                darkMode 
-                  ? 'bg-gray-800/50 hover:bg-gray-700/50' 
-                  : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.15)]'
-              }`}
-              onClick={() => router.push('/dashboard')}
-            >
-              <h3 className={`text-lg font-semibold mb-2 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Generate Test
-              </h3>
-              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Create a customized test with specific parameters
-              </p>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-1000 ease-in-out ${
-                darkMode 
-                  ? 'bg-gray-800/50 hover:bg-gray-700/50' 
-                  : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.15)]'
-              }`}
-              onClick={() => router.push('/dashboard')}
-            >
-              <h3 className={`text-lg font-semibold mb-2 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Unlimited Practice
-              </h3>
-              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Practice continuously with instant feedback
-              </p>
-            </motion.div>
-          </div>
+          {/* Practice Button */}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            onClick={() => router.push('/dashboard')}
+            className={`w-full p-8 rounded-lg text-white text-left transition-all duration-300 ${
+              darkMode
+                ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900'
+                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
+            }`}
+          >
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold mb-2">Practice</span>
+              <span className="text-lg opacity-90">
+                Start practicing with customized tests or unlimited questions
+              </span>
+            </div>
+          </motion.button>
         </div>
       </div>
 
