@@ -408,11 +408,11 @@ function EventDashboard() {
               {/* Back Button (bottom-left) */}
               <button
                 onClick={() => router.push('/welcome')}
-                className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
+                className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
                   darkMode
-                    ? 'bg-gradient-to-r from-regalblue-500 to-regalred-500'
-                    : 'bg-gradient-to-r from-blue-500 to-cyan-500'
-                } text-white`}
+                    ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white hover:shadow-regalblue-100/50'
+                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:shadow-blue-500/50'
+                }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -424,7 +424,7 @@ function EventDashboard() {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>

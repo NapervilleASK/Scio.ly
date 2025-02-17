@@ -11,6 +11,7 @@ import AuthButton from '@/components/AuthButton';
 import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/utils/metrics';
 import { useTheme } from '@/contexts/ThemeContext';
+import { User } from 'firebase/auth';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -255,34 +256,47 @@ export default function WelcomePage() {
     eventsPracticed: [] as string[]
   });
   const [authInitialized, setAuthInitialized] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  // Handle auth state
+  // Handle auth state and reset stats on sign out
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setAuthInitialized(true);
+      setCurrentUser(user);
+      
+      // Reset stats if user signs out
+      if (!user) {
+        setDailyStats({
+          questionsAttempted: 0,
+          correctAnswers: 0,
+          eventsPracticed: []
+        });
+      }
     });
     return () => unsubscribe();
   }, []);
 
-  // Fetch daily metrics
+  // Fetch daily metrics when auth state changes
   useEffect(() => {
     if (!authInitialized) return;
 
     const fetchDailyStats = async () => {
-      const stats = await getDailyMetrics(auth.currentUser?.uid || null);
-      if (stats) {
-        setDailyStats({
-          questionsAttempted: stats.questionsAttempted || 0,
-          correctAnswers: stats.correctAnswers || 0,
-          eventsPracticed: stats.eventsPracticed || []
-        });
+      if (currentUser) {
+        const stats = await getDailyMetrics(currentUser.uid);
+        if (stats) {
+          setDailyStats({
+            questionsAttempted: stats.questionsAttempted || 0,
+            correctAnswers: stats.correctAnswers || 0,
+            eventsPracticed: stats.eventsPracticed || []
+          });
+        }
       }
     };
 
     fetchDailyStats();
     const interval = setInterval(fetchDailyStats, 60000);
     return () => clearInterval(interval);
-  }, [authInitialized]);
+  }, [authInitialized, currentUser]); // Added currentUser as dependency
 
   // Calculate metrics from daily stats
   const metrics = {
@@ -540,38 +554,46 @@ export default function WelcomePage() {
             </div>
 
             {/* Right side - Half Circle Accuracy */}
-            <div className={`p-6 rounded-lg ${cardStyle}`}>
-              <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                Accuracy Today
-              </h2>
-              <div className="relative flex items-center justify-center h-[200px]">
-                <svg className="w-72 h-36" viewBox="0 0 100 60">
-                  {/* Background arc */}
-                  <path
-                    d="M5 50 A 45 45 0 0 1 95 50"
-                    fill="none"
-                    stroke={darkMode ? '#1e293b' : '#e2e8f0'}
-                    strokeWidth="8"
-                    strokeLinecap="round"
-                  />
-                  {/* Progress arc with animation */}
-                  <motion.path
-                    d="M5 50 A 45 45 0 0 1 95 50"
-                    fill="none"
-                    stroke={darkMode ? '#60a5fa' : '#3b82f6'}
-                    strokeWidth="8"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: metrics.accuracy / 100 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  />
-                  <AnimatedAccuracy 
-                    value={Math.round(metrics.accuracy)} 
-                    darkMode={darkMode}
-                  />
-                </svg>
+            {metrics.questionsAttempted > 0 ? (
+              <div className={`p-6 rounded-lg ${cardStyle}`}>
+                <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Accuracy Today
+                </h2>
+                <div className="relative flex items-center justify-center h-[200px]">
+                  <svg className="w-72 h-36" viewBox="0 0 100 60">
+                    {/* Background arc */}
+                    <path
+                      d="M5 50 A 45 45 0 0 1 95 50"
+                      fill="none"
+                      stroke={darkMode ? '#1e293b' : '#e2e8f0'}
+                      strokeWidth="8"
+                      strokeLinecap="round"
+                    />
+                    {/* Progress arc with animation */}
+                    <motion.path
+                      d="M5 50 A 45 45 0 0 1 95 50"
+                      fill="none"
+                      stroke={darkMode ? '#60a5fa' : '#3b82f6'}
+                      strokeWidth="8"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: metrics.accuracy / 100 }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                    />
+                    <AnimatedAccuracy 
+                      value={Math.round(metrics.accuracy)} 
+                      darkMode={darkMode}
+                    />
+                  </svg>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className={`p-6 rounded-lg ${cardStyle}`}>
+                <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Start practicing to see your accuracy!
+                </h2>
+              </div>
+            )}
           </div>
 
           {/* Quick Actions */}
