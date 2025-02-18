@@ -1,3 +1,113 @@
+<div class="mw-parser-output"><table class="plainlinks metadata ambox ambox-notice" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="/wiki/images/thumb/5/54/Information.png/40px-Information.png" decoding="async" width="40" height="40" srcset="/wiki/images/thumb/5/54/Information.png/60px-Information.png 1.5x, /wiki/images/thumb/5/54/Information.png/80px-Information.png 2x"></div></td><td class="mbox-text"><div class="mbox-text-span"><b>This is used as a collection of student-made and tournament test sets and not the site's main test exchange.</b><span class="hide-when-compact"> The new test exchange, which does not yet support uploading, can be found <a rel="nofollow" class="external text" href="https://scioly.org/tests">here</a>.</span></div></td></tr></tbody></table>
+<table class="plainlinks metadata ambox ambox-speedy" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/60px-Ambox_warning_pn.svg.png 1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/80px-Ambox_warning_pn.svg.png 2x"></div></td><td class="mbox-text"><div class="mbox-text-span"><b>These test sets CAN NOT be used in tournaments.</b><span class="hide-when-compact"> No part of ANY of these tests below should be reproduced for competitive use. The tests below may serve as inspiration for competition tests, but absolutely no part of them should be reproduced into competition material. They are for educational use only.</span></div></td></tr></tbody></table>
+<p><br clear="left">
+</p>
+<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f8f9fa;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tbody><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em"><a href="/wiki/index.php/Test_Exchange" class="mw-redirect" title="Test Exchange">Scioly.org Test Exchange</a></th></tr><tr><th style="padding:0.1em">
+Current</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
+<ul><li><a href="/wiki/index.php/2025_Test_Exchange" class="mw-redirect" title="2025 Test Exchange">2025 Test Exchange</a></li></ul></td>
+</tr><tr><th style="padding:0.1em">
+Archives</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
+<ul><li><a href="/wiki/index.php/Test_Exchange_Archive" title="Test Exchange Archive">Test Exchange Archive</a></li>
+<li><a href="/wiki/index.php/Tufts_Wright_Center" title="Tufts Wright Center">Tufts Wright Center</a></li>
+<li><a href="/wiki/index.php/Captains%27_Summer_Exchange" title="Captains' Summer Exchange">Captains' Summer Exchange</a></li>
+<li><a href="/wiki/index.php/Scioly_Summer_Study_Session" class="mw-redirect" title="Scioly Summer Study Session">Scioly Summer Study Session</a></li>
+<li><a href="/wiki/index.php/Captains_Tryouts" title="Captains Tryouts">Captains Tryouts</a></li></ul></td>
+</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/index.php/Template:TestExchange" title="Template:TestExchange"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a href="/wiki/index.php?title=Template_talk:TestExchange&amp;action=edit&amp;redlink=1" class="new" title="Template talk:TestExchange (page does not exist)"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a rel="nofollow" class="external text" href="https://scioly.org/wiki/index.php?title=Template:TestExchange&amp;action=edit"><abbr title="Edit this template">e</abbr></a></li></ul></div></td></tr></tbody></table>
+<p><br>
+</p>
+<ul><li><b>Upload files through this page: <a href="/wiki/index.php/Special:Upload" title="Special:Upload">Special:Upload</a>.</b>
+<ul><li>If you get an error or need another filetype allowed, send bernard a <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;u=22093">private message</a>.</li></ul></li>
+<li>Please <b>put what the tests are from</b> (location/tournament/year) either in the filename, the summary, or both.</li>
+<li><b>PDF is the preferred format for all tests</b>, excluding PowerPoint presentations or Excel spreadsheets. If a file is not in PDF form, <b>specify in parentheses</b> what format it's in (e.g. (.docx) or (.ppt)).
+<ul><li>Please <b>upload your test to the wiki instead of linking to a Google Doc</b>! A Google Doc is subject to <a href="https://en.wikipedia.org/wiki/link_rot" class="extiw" title="wikipedia:link rot">link rot</a> and might become unavailable if you move or delete it, while a file uploaded to the wiki will be easier to preserve.</li></ul></li>
+<li><b>Do not try to overwrite other tests or remove them from the list.</b>
+<ul><li>While we want to always provide users with the greatest breadth of public resources possible to ensure that all teams have adequate access to practice tests, we understand that there are situations in which the preference is to not have tests posted in a public area. If you are a tournament director or other authority and wish for a test to be removed, send bernard a <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;u=22093">private message</a> with a takedown request.</li></ul></li>
+<li>See the <a href="/wiki/index.php/How_to_Write_a_Practice_Test" title="How to Write a Practice Test">Practice Test Writing Guide</a> on how to write and upload homemade tests to the test exchange.</li></ul>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Full_Sets"><span class="tocnumber">1</span> <span class="toctext">Full Sets</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Tournament-Released_Sets"><span class="tocnumber">1.1</span> <span class="toctext">Tournament-Released Sets</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#.22Do_Not_Post.22"><span class="tocnumber">1.2</span> <span class="toctext">"Do Not Post"</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#User-Submitted_Sets"><span class="tocnumber">1.3</span> <span class="toctext">User-Submitted Sets</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Full_Sets">Full Sets</span></h2>
+<p><i><b>Note:</b> This section is only for links to full test sets. For individual tests, please see the main body of the Test Exchange below.</i>
+</p>
+<h3><span class="mw-headline" id="Tournament-Released_Sets">Tournament-Released Sets</span></h3>
+<p><i><b>The following are full test sets that have been published openly by the tournaments themselves. As this is a noble practice we wish to encourage, please use these resources only for training. While we would ask prospective event supervisors to refrain from copying any of the tests on this exchange for use in a competitive setting, this request is especially important for these full sets.</b></i>
+</p>
+<dl><dd><b>Division B/C</b>
+<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1TMCWdLlOjnRFUy7SBuYbj6ur__xwkAk7?usp=drive_link">2024 UT Austin Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/13yNsNguUT7TDjLAdM3b6kffzSh7rgR5A?usp=drive_link">2024 Rickards Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1xoVEkV1YEXa6dTuFEzXKIo-QgZj84MAP">2024 Mason Satellite Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1OML-ZgbV12_9CWKDCtjMhsQ1HuppWYu3">2025 Penn State (SOAPS) Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/17ounKibxg78Zs5K7ANTrKc2HZMbZWUdc?usp=sharing">2025 UCR Highlander Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1dOShoe9xFn0WOxvvlmdej2qJaKDqJtuj?usp=sharing">2025 Purdue University Invitational B/C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1hwbtfm8m2V6Hj4HYIo7SS45tmgf36g8v">2025 USC Invitational B/C</a></dd></dl></dd></dl>
+<dl><dd><b>Division B only</b>
+<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1WfsB8nqU5ho4CiWw9KjXEaC-CK4eV-_a?usp=drive_link">2024 WashU Invitational B</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1zsV_AM9dw_3hrbJEokkgELAI9Mctqafn">2025 UChicago Invitational B</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/u/1/folders/1NL86PYG1ZBm1-AEKFwdG8t00iUGBEpOl">2025 Brown University Invitational B</a></dd></dl></dd></dl>
+<dl><dd><b>Division C only</b>
+<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1XdYRVuOHAr05HZSuHLSgbNroFl-kWnBl?usp=drive_link">2024 UGA Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1xAQZDOqHEQh_O2G1evPyIorNiNPrgbtG">2024 Monta Vista Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1z-15Pu6jZeryJbhiV7QVkAuzbKir1CFm?usp=drive_link">2024 Seven Lakes Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1iSR_xc48OuykFRPaUi_kJ1oQWFLgrW3q">2024 GullSO Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/14a4cVDPXjLcyn97PnPNmh9nXc5B7rvIw">2025 MIT Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1rpA0bVImjfH00Hzpuc7r4J7IY1UnEITX">2025 UChicago Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1uv_aNdDVI8ZS1jmfVil6X9VnU3MyuS55">2025 Virginia Tech University Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1cG61YoOH9sgUxEU4I0yiN3huv_4G3Gnq">2025 Columbia University  Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1Ci0C62oIbeLmZOQ_S5QGYibYA_ZxZo2e">2025 Brown University Invitational C</a></dd>
+<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/u/0/folders/1DqyyQI0j7aR-DQ5gAO5CbuVaSedHFsjX">2025 Princeton University Invitational C</a></dd></dl></dd></dl>
+<h3><span id="&quot;Do_Not_Post&quot;"></span><span class="mw-headline" id=".22Do_Not_Post.22">"Do Not Post"</span></h3>
+<p>These tournaments have submitted takedown requests for test sets that have previously been posted. Keywords are used to describe when these sets can be posted: "AFTER" means only after the national tournament for that season, and "NEVER" means these test sets should never be posted to this Test Exchange.
+</p>
+<dl><dd>Long Island Science Olympiad (LISO) Invitational (B/C) -- NEVER -- added November 10, 2019</dd></dl>
+<h3><span class="mw-headline" id="User-Submitted_Sets">User-Submitted Sets</span></h3>
+<p><i><b>The following are test sets that have been submitted by our userbase to contribute to the resource bank available to the community.</b></i> Please assume that all contributions to this section have been done in good faith, with no malicious intent. <b>If you are a director of a tournament whose tests are found here, and you wish for the link to be removed, please send a private message <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;g=5">to the administrators</a> and/or <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;g=5">to the moderators</a>, and they will remove the link. Please do not remove a test yourself.</b>
+</p><p>All submitted tests are subject to the <a rel="nofollow" class="external text" href="https://scioly.org/rules">Science Olympiad Student Center Site Rules and Policies</a>.
+</p>
+<dl><dd><b>Division B/C</b>
+<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1as5mvrBbUYOkKc9Mpa8u7fy2XmBm8yXy?usp=drive_link">2024 Summer Event Challenges C</a></dd></dl></dd></dl>
+<dl><dd><b>Division B</b></dd></dl>
+<dl><dd><b>Division C</b></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20250216045209
+Cache expiry: 86400
+Dynamic content: false
+Complications: []
+CPU time usage: 0.225 seconds
+Real time usage: 0.669 seconds
+Preprocessor visited node count: 106/1000000
+Post‐expand include size: 6002/2097152 bytes
+Template argument size: 20/2097152 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+Lua time usage: 0.030/7 seconds
+Lua virtual size: 5.21 MB/50 MB
+Lua estimated memory usage: 0 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  229.416      1 -total
+ 51.30%  117.688      2 Template:Ambox
+ 38.84%   89.108      1 Template:TestExchange
+ 33.82%   77.588      1 Template:Sidebar
+  5.91%   13.557      1 Template:Wikipedia
+  3.31%    7.603      1 Template:Clear
+-->
+
+<!-- Saved in parser cache with key wiki-wikiv2_:pcache:idhash:18668-0!canonical and timestamp 20250216045208 and revision id 185788
+ -->
+</div>
 <div class="mw-parser-output"><table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f8f9fa;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tbody><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em"><a href="/wiki/index.php/Test_Exchange" class="mw-redirect" title="Test Exchange">Scioly.org Test Exchange</a></th></tr><tr><th style="padding:0.1em">
 Current</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
 <ul><li><a href="/wiki/index.php/2025_Test_Exchange" class="mw-redirect" title="2025 Test Exchange">2025 Test Exchange</a></li></ul></td>
@@ -3419,12 +3529,12 @@ Archives</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
 <ul><li><a href="/wiki/images/e/e2/Write_It-Do-It-Checklist-2011.pdf" class="internal" title="Write It-Do-It-Checklist-2011.pdf">Rubric</a></li></ul></li></ul>
 <!-- 
 NewPP limit report
-Cached time: 20250118131752
+Cached time: 20250216212547
 Cache expiry: 86400
 Dynamic content: false
 Complications: []
-CPU time usage: 5.300 seconds
-Real time usage: 7.341 seconds
+CPU time usage: 5.522 seconds
+Real time usage: 17.104 seconds
 Preprocessor visited node count: 2819/1000000
 Post‐expand include size: 8160/2097152 bytes
 Template argument size: 54/2097152 bytes
@@ -3432,118 +3542,20 @@ Highest expansion depth: 5/40
 Expensive parser function count: 0/100
 Unstrip recursion depth: 0/20
 Unstrip post‐expand size: 0/5000000 bytes
-Lua time usage: 0.070/7 seconds
-Lua virtual size: 5.71 MB/50 MB
+Lua time usage: 0.110/7 seconds
+Lua virtual size: 5.75 MB/50 MB
 Lua estimated memory usage: 0 bytes
 -->
 <!--
 Transclusion expansion time report (%,ms,calls,template)
-100.00%  269.468      1 -total
- 48.57%  130.870      1 Template:TestExchange
- 46.09%  124.199      1 Template:Sidebar
- 35.07%   94.503      5 Template:User
- 31.49%   84.853      5 Template:User-multi
- 13.77%   37.093      1 Template:Ambox
+100.00% 1133.979      1 -total
+ 50.29%  570.292      1 Template:TestExchange
+ 49.54%  561.814      1 Template:Sidebar
+ 36.46%  413.477      5 Template:User
+ 34.05%  386.067      5 Template:User-multi
+  9.51%  107.861      1 Template:Ambox
 -->
 
-<!-- Saved in parser cache with key wiki-wikiv2_:pcache:idhash:3146-0!canonical and timestamp 20250118131744 and revision id 184969
- -->
-</div>
-<div class="mw-parser-output"><table class="plainlinks metadata ambox ambox-notice" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="/wiki/images/thumb/5/54/Information.png/40px-Information.png" decoding="async" width="40" height="40" srcset="/wiki/images/thumb/5/54/Information.png/60px-Information.png 1.5x, /wiki/images/thumb/5/54/Information.png/80px-Information.png 2x"></div></td><td class="mbox-text"><div class="mbox-text-span"><b>This is used as a collection of student-made and tournament test sets and not the site's main test exchange.</b><span class="hide-when-compact"> The new test exchange, which does not yet support uploading, can be found <a rel="nofollow" class="external text" href="https://scioly.org/tests">here</a>.</span></div></td></tr></tbody></table>
-<table class="plainlinks metadata ambox ambox-speedy" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/60px-Ambox_warning_pn.svg.png 1.5x, https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ambox_warning_pn.svg/80px-Ambox_warning_pn.svg.png 2x"></div></td><td class="mbox-text"><div class="mbox-text-span"><b>These test sets CAN NOT be used in tournaments.</b><span class="hide-when-compact"> No part of ANY of these tests below should be reproduced for competitive use. The tests below may serve as inspiration for competition tests, but absolutely no part of them should be reproduced into competition material. They are for educational use only.</span></div></td></tr></tbody></table>
-<p><br clear="left">
-</p>
-<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f8f9fa;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tbody><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em"><a href="/wiki/index.php/Test_Exchange" class="mw-redirect" title="Test Exchange">Scioly.org Test Exchange</a></th></tr><tr><th style="padding:0.1em">
-Current</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
-<ul><li><a href="/wiki/index.php/2025_Test_Exchange" class="mw-redirect" title="2025 Test Exchange">2025 Test Exchange</a></li></ul></td>
-</tr><tr><th style="padding:0.1em">
-Archives</th></tr><tr><td class="hlist" style="padding:0 0.1em 0.4em">
-<ul><li><a href="/wiki/index.php/Test_Exchange_Archive" title="Test Exchange Archive">Test Exchange Archive</a></li>
-<li><a href="/wiki/index.php/Tufts_Wright_Center" title="Tufts Wright Center">Tufts Wright Center</a></li>
-<li><a href="/wiki/index.php/Captains%27_Summer_Exchange" title="Captains' Summer Exchange">Captains' Summer Exchange</a></li>
-<li><a href="/wiki/index.php/Scioly_Summer_Study_Session" class="mw-redirect" title="Scioly Summer Study Session">Scioly Summer Study Session</a></li>
-<li><a href="/wiki/index.php/Captains_Tryouts" title="Captains Tryouts">Captains Tryouts</a></li></ul></td>
-</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/index.php/Template:TestExchange" title="Template:TestExchange"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a href="/wiki/index.php?title=Template_talk:TestExchange&amp;action=edit&amp;redlink=1" class="new" title="Template talk:TestExchange (page does not exist)"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a rel="nofollow" class="external text" href="https://scioly.org/wiki/index.php?title=Template:TestExchange&amp;action=edit"><abbr title="Edit this template">e</abbr></a></li></ul></div></td></tr></tbody></table>
-<p><br>
-</p>
-<ul><li><b>Upload files through this page: <a href="/wiki/index.php/Special:Upload" title="Special:Upload">Special:Upload</a>.</b>
-<ul><li>If you get an error or need another filetype allowed, send bernard a <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;u=22093">private message</a>.</li></ul></li>
-<li>Please <b>put what the tests are from</b> (location/tournament/year) either in the filename, the summary, or both.</li>
-<li><b>PDF is the preferred format for all tests</b>, excluding PowerPoint presentations or Excel spreadsheets. If a file is not in PDF form, <b>specify in parentheses</b> what format it's in (e.g. (.docx) or (.ppt)).
-<ul><li>Please <b>upload your test to the wiki instead of linking to a Google Doc</b>! A Google Doc is subject to <a href="https://en.wikipedia.org/wiki/link_rot" class="extiw" title="wikipedia:link rot">link rot</a> and might become unavailable if you move or delete it, while a file uploaded to the wiki will be easier to preserve.</li></ul></li>
-<li><b>Do not try to overwrite other tests or remove them from the list.</b>
-<ul><li>While we want to always provide users with the greatest breadth of public resources possible to ensure that all teams have adequate access to practice tests, we understand that there are situations in which the preference is to not have tests posted in a public area. If you are a tournament director or other authority and wish for a test to be removed, send bernard a <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;u=22093">private message</a> with a takedown request.</li></ul></li>
-<li>See the <a href="/wiki/index.php/How_to_Write_a_Practice_Test" title="How to Write a Practice Test">Practice Test Writing Guide</a> on how to write and upload homemade tests to the test exchange.</li></ul>
-<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
-<ul>
-<li class="toclevel-1 tocsection-1"><a href="#Full_Sets"><span class="tocnumber">1</span> <span class="toctext">Full Sets</span></a>
-<ul>
-<li class="toclevel-2 tocsection-2"><a href="#Tournament-Released_Sets"><span class="tocnumber">1.1</span> <span class="toctext">Tournament-Released Sets</span></a></li>
-<li class="toclevel-2 tocsection-3"><a href="#.22Do_Not_Post.22"><span class="tocnumber">1.2</span> <span class="toctext">"Do Not Post"</span></a></li>
-<li class="toclevel-2 tocsection-4"><a href="#User-Submitted_Sets"><span class="tocnumber">1.3</span> <span class="toctext">User-Submitted Sets</span></a></li>
-</ul>
-</li>
-</ul>
-</div>
-
-<h2><span class="mw-headline" id="Full_Sets">Full Sets</span></h2>
-<p><i><b>Note:</b> This section is only for links to full test sets. For individual tests, please see the main body of the Test Exchange below.</i>
-</p>
-<h3><span class="mw-headline" id="Tournament-Released_Sets">Tournament-Released Sets</span></h3>
-<p><i><b>The following are full test sets that have been published openly by the tournaments themselves. As this is a noble practice we wish to encourage, please use these resources only for training. While we would ask prospective event supervisors to refrain from copying any of the tests on this exchange for use in a competitive setting, this request is especially important for these full sets.</b></i>
-</p>
-<dl><dd><b>Division B/C</b>
-<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1TMCWdLlOjnRFUy7SBuYbj6ur__xwkAk7?usp=drive_link">2024 UT Austin Invitational B/C</a></dd>
-<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/13yNsNguUT7TDjLAdM3b6kffzSh7rgR5A?usp=drive_link">2024 Rickards Invitational B/C</a></dd>
-<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1xoVEkV1YEXa6dTuFEzXKIo-QgZj84MAP">2024 Mason Satellite Invitational B/C</a></dd></dl></dd></dl>
-<dl><dd><b>Division B only</b>
-<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1WfsB8nqU5ho4CiWw9KjXEaC-CK4eV-_a?usp=drive_link">2024 WashU Invitational B</a></dd></dl></dd></dl>
-<dl><dd><b>Division C only</b>
-<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1XdYRVuOHAr05HZSuHLSgbNroFl-kWnBl?usp=drive_link">2024 UGA Invitational C</a></dd>
-<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1xAQZDOqHEQh_O2G1evPyIorNiNPrgbtG">2024 Monta Vista Invitational C</a></dd>
-<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1z-15Pu6jZeryJbhiV7QVkAuzbKir1CFm?usp=drive_link">2024 Seven Lakes Invitational C</a></dd>
-<dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1iSR_xc48OuykFRPaUi_kJ1oQWFLgrW3q">2024 GullSO Invitational C</a></dd></dl></dd></dl>
-<h3><span id="&quot;Do_Not_Post&quot;"></span><span class="mw-headline" id=".22Do_Not_Post.22">"Do Not Post"</span></h3>
-<p>These tournaments have submitted takedown requests for test sets that have previously been posted. Keywords are used to describe when these sets can be posted: "AFTER" means only after the national tournament for that season, and "NEVER" means these test sets should never be posted to this Test Exchange.
-</p>
-<dl><dd>Long Island Science Olympiad (LISO) Invitational (B/C) -- NEVER -- added November 10, 2019</dd></dl>
-<h3><span class="mw-headline" id="User-Submitted_Sets">User-Submitted Sets</span></h3>
-<p><i><b>The following are test sets that have been submitted by our userbase to contribute to the resource bank available to the community.</b></i> Please assume that all contributions to this section have been done in good faith, with no malicious intent. <b>If you are a director of a tournament whose tests are found here, and you wish for the link to be removed, please send a private message <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;g=5">to the administrators</a> and/or <a rel="nofollow" class="external text" href="https://scioly.org/forums/ucp.php?i=pm&amp;mode=compose&amp;g=5">to the moderators</a>, and they will remove the link. Please do not remove a test yourself.</b>
-</p><p>All submitted tests are subject to the <a rel="nofollow" class="external text" href="https://scioly.org/rules">Science Olympiad Student Center Site Rules and Policies</a>.
-</p>
-<dl><dd><b>Division B/C</b>
-<dl><dd><a rel="nofollow" class="external text" href="https://drive.google.com/drive/folders/1as5mvrBbUYOkKc9Mpa8u7fy2XmBm8yXy?usp=drive_link">2024 Summer Event Challenges C</a></dd></dl></dd></dl>
-<dl><dd><b>Division B</b></dd></dl>
-<dl><dd><b>Division C</b></dd></dl>
-<!-- 
-NewPP limit report
-Cached time: 20250118071634
-Cache expiry: 86400
-Dynamic content: false
-Complications: []
-CPU time usage: 0.204 seconds
-Real time usage: 0.529 seconds
-Preprocessor visited node count: 106/1000000
-Post‐expand include size: 6002/2097152 bytes
-Template argument size: 20/2097152 bytes
-Highest expansion depth: 4/40
-Expensive parser function count: 0/100
-Unstrip recursion depth: 0/20
-Unstrip post‐expand size: 0/5000000 bytes
-Lua time usage: 0.040/7 seconds
-Lua virtual size: 5.21 MB/50 MB
-Lua estimated memory usage: 0 bytes
--->
-<!--
-Transclusion expansion time report (%,ms,calls,template)
-100.00%  153.828      1 -total
- 65.50%  100.752      2 Template:Ambox
- 27.09%   41.668      1 Template:TestExchange
- 23.80%   36.605      1 Template:Sidebar
-  3.35%    5.161      1 Template:Clear
-  3.31%    5.098      1 Template:Wikipedia
--->
-
-<!-- Saved in parser cache with key wiki-wikiv2_:pcache:idhash:18668-0!canonical and timestamp 20250118071633 and revision id 185085
+<!-- Saved in parser cache with key wiki-wikiv2_:pcache:idhash:3146-0!canonical and timestamp 20250216212530 and revision id 184969
  -->
 </div>

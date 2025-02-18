@@ -222,6 +222,14 @@ export default function TestPage() {
 
   const handleSubmit = () => {
     setIsSubmitted(true);
+    const answered: string | null  = localStorage.getItem("answers");
+    if (answered !== null) {
+      localStorage.setItem("answers",`${parseInt(answered,10)+Object.keys(userAnswers).length}`);
+    } else {
+      localStorage.setItem("answers",`${Object.keys(userAnswers).length}`);
+    }
+    console.log(answered)
+
     // Scroll to top smoothly
     window.scrollTo({
       top: 0,
@@ -241,11 +249,21 @@ export default function TestPage() {
       const correctAnswers = question.answers.map((ans) =>
         question.options![ans as number - 1]
       );
-      return (
+      if (! (
         answers &&
         correctAnswers.length === answers.length &&
         correctAnswers.every((ans) => answers.includes(ans))
-      );
+      )) {
+        return false
+      }
+      const correct: string | null  = localStorage.getItem("correct");
+
+      if (correct !== null) {
+        localStorage.setItem("correct",`${parseInt(correct,10)+1}`);
+      } else {
+        localStorage.setItem("correct",`1`);
+      }
+      return true;
     }
 
     // For free-response questions

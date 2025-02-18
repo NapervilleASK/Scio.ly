@@ -199,6 +199,12 @@ export default function UnlimitedPracticePage() {
 
   // Mark the current question as submitted
   const handleSubmit = () => {
+    const answered: string | null  = localStorage.getItem("answers");
+    if (answered !== null) {
+      localStorage.setItem("answers",`${parseInt(answered,10)+1}`);
+    } else {
+      localStorage.setItem("answers","1");
+    }
     setIsSubmitted(true);
   };
 
@@ -231,7 +237,18 @@ export default function UnlimitedPracticePage() {
       // Filter out any null values from the user answer.
       const filteredUserAnswers = answers.filter((a) => a !== null);
       if (correctAnswers.length !== filteredUserAnswers.length) return false;
-      return correctAnswers.every((a) => filteredUserAnswers.includes(a));
+      const correct: string | null  = localStorage.getItem("correct");
+
+      if (!correctAnswers.every((a) => filteredUserAnswers.includes(a))) {
+        return false;
+      }
+
+      if (correct !== null) {
+        localStorage.setItem("correct",`${parseInt(correct,10)+1}`);
+      } else {
+        localStorage.setItem("correct",`1`);
+      }
+      return true;
     }
 
     // For free-response questions, check if the user answer (in lower case)
