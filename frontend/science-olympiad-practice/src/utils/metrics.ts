@@ -1,13 +1,13 @@
 import { db } from '@/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-interface DailyMetrics {
+export interface DailyMetrics {
   questionsAttempted: number;
   correctAnswers: number;
   eventsPracticed: string[];
 }
 
-const getLocalMetrics = () => {
+const getLocalMetrics = (): DailyMetrics => {
   const today = new Date().toISOString().split('T')[0];
   const localStats = localStorage.getItem(`metrics_${today}`);
   return localStats ? JSON.parse(localStats) : {
@@ -23,12 +23,12 @@ const saveLocalMetrics = (metrics: DailyMetrics) => {
 };
 
 export const getDailyMetrics = async (userId: string | null) => {
-  const today = new Date().toISOString().split('T')[0];
-
   if (!userId) {
     return getLocalMetrics();
   }
   
+  const today = new Date().toISOString().split('T')[0];
+
   try {
     const userRef = doc(db, 'users', userId);
     const userDoc = await getDoc(userRef);
@@ -42,10 +42,10 @@ export const getDailyMetrics = async (userId: string | null) => {
         eventsPracticed: []
       };
     }
-    return getLocalMetrics();
+    return null;
   } catch (error) {
     console.error('Error getting metrics:', error);
-    return getLocalMetrics();
+    return null;
   }
 };
 
@@ -57,8 +57,6 @@ export const updateMetrics = async (
     eventName?: string;
   }
 ) => {
-  const today = new Date().toISOString().split('T')[0];
-
   if (!userId) {
     const currentStats = getLocalMetrics();
     const updatedStats = {
@@ -71,6 +69,8 @@ export const updateMetrics = async (
     saveLocalMetrics(updatedStats);
     return updatedStats;
   }
+  
+  const today = new Date().toISOString().split('T')[0];
   
   try {
     const userRef = doc(db, 'users', userId);
@@ -88,7 +88,6 @@ export const updateMetrics = async (
       eventsPracticed: []
     };
 
-    // Update stats
     const updatedTodayStats = {
       ...todayStats,
       questionsAttempted: todayStats.questionsAttempted + (updates.questionsAttempted || 0),
@@ -98,7 +97,6 @@ export const updateMetrics = async (
         : todayStats.eventsPracticed
     };
 
-    // Update Firestore with the correct structure
     await setDoc(userRef, {
       dailyStats: {
         ...dailyStats,
@@ -109,6 +107,6 @@ export const updateMetrics = async (
     return updatedTodayStats;
   } catch (error) {
     console.error('Error updating metrics:', error);
-    return updateMetrics(null, updates);
+    return null;
   }
 }; 

@@ -13,6 +13,8 @@ import { getDailyMetrics } from '@/utils/metrics';
 import { useTheme } from '@/contexts/ThemeContext';
 import { User } from 'firebase/auth';
 import Image from 'next/image';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -36,6 +38,12 @@ interface DailyData {
 interface WeeklyData {
   questions: DailyData[];
   accuracy: number;
+}
+
+interface HistoricalMetrics {
+  questionsAttempted: number;
+  correctAnswers: number;
+  eventsPracticed: string[];
 }
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps) => {
@@ -262,6 +270,8 @@ export default function WelcomePage() {
   });
   const [authInitialized, setAuthInitialized] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [historyData, setHistoryData] = useState<Record<string, HistoricalMetrics>>({});
+  const [showWeekly, setShowWeekly] = useState(false);
 
   // Handle auth state and reset stats on sign out
   useEffect(() => {
@@ -285,23 +295,30 @@ export default function WelcomePage() {
   useEffect(() => {
     if (!authInitialized) return;
 
-    const fetchDailyStats = async () => {
+    const fetchData = async () => {
       if (currentUser) {
-        const stats = await getDailyMetrics(currentUser.uid);
-        if (stats) {
-          setDailyStats({
-            questionsAttempted: stats.questionsAttempted || 0,
-            correctAnswers: stats.correctAnswers || 0,
-            eventsPracticed: stats.eventsPracticed || []
-          });
+        const userRef = doc(db, 'users', currentUser.uid);
+        const userDoc = await getDoc(userRef);
+        
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const allDailyStats = userData.dailyStats || {};
+          setHistoryData(allDailyStats);
+          
+          const todayStats = await getDailyMetrics(currentUser.uid);
+          if (todayStats) {
+            setDailyStats({
+              questionsAttempted: todayStats.questionsAttempted || 0,
+              correctAnswers: todayStats.correctAnswers || 0,
+              eventsPracticed: todayStats.eventsPracticed || []
+            });
+          }
         }
       }
     };
 
-    fetchDailyStats();
-    const interval = setInterval(fetchDailyStats, 60000);
-    return () => clearInterval(interval);
-  }, [authInitialized, currentUser]); // Added currentUser as dependency
+    fetchData();
+  }, [authInitialized, currentUser]);
 
   // Calculate metrics from daily stats
   const metrics = {
@@ -319,9 +336,12 @@ export default function WelcomePage() {
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      const dayData = historyData[dateStr] || { questionsAttempted: 0 };
+      
       days.push({
         date: date.toLocaleDateString('en-US', { weekday: 'short' }),
-        count: i === 0 ? dailyStats.questionsAttempted : 0 // Only show today's questions
+        count: dayData.questionsAttempted || 0
       });
     }
     return {
@@ -331,10 +351,34 @@ export default function WelcomePage() {
   };
 
   // Helper to get y-axis scale
-  const getYAxisScale = (maxValue: number) => {
-    const steps = 5;
-    const max = Math.max(maxValue, 1);
-    return Array.from({ length: steps }, (_, i) => Math.round(max * (1 - i / (steps - 1))));
+  const getYAxisScale = () => {
+    // Get max value from the week's data
+    const weekData = generateWeeklyData().questions;
+    const maxValue = Math.max(...weekData.map(day => day.count), 1);
+    
+    // Round up to next nice number
+    const roundedMax = Math.ceil(maxValue / 5) * 5;
+    
+    // Generate 5 evenly spaced intervals
+    return Array.from({ length: 5 }, (_, i) => 
+      Math.round(roundedMax * (1 - i / 4))
+    );
+  };
+
+  // Add this function to calculate weekly accuracy
+  const calculateWeeklyAccuracy = (): number => {
+    const weekData = Object.entries(historyData)
+      .sort()
+      .slice(-7);
+    
+    const totals = weekData.reduce((acc, [, stats]) => ({
+      attempted: acc.attempted + (stats.questionsAttempted || 0),
+      correct: acc.correct + (stats.correctAnswers || 0)
+    }), { attempted: 0, correct: 0 });
+
+    return totals.attempted > 0 
+      ? (totals.correct / totals.attempted) * 100 
+      : 0;
   };
 
   const handleThemeToggle = () => {
@@ -527,7 +571,7 @@ export default function WelcomePage() {
               <div className="relative h-[200px] flex items-end justify-between px-12">
                 {/* Y-axis */}
                 <div className="absolute left-0 top-0 h-full flex flex-col justify-between">
-                  {getYAxisScale(metrics.questionsAttempted).map((tick, index) => (
+                  {getYAxisScale().map((tick, index) => (
                     <div key={`y-axis-${index}`} className="flex items-center">
                       <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                         {tick}
@@ -555,7 +599,7 @@ export default function WelcomePage() {
                       <div 
                         className={`w-12 bg-blue-500 rounded-t-md transition-all duration-300 group-hover:bg-blue-400`}
                         style={{ 
-                          height: `${(day.count / Math.max(getYAxisScale(metrics.questionsAttempted)[0], 1)) * 150}px` 
+                          height: `${(day.count / Math.max(getYAxisScale()[0], 1)) * 160}px` 
                         }}
                       />
                     </div>
@@ -568,47 +612,82 @@ export default function WelcomePage() {
             </div>
 
             {/* Right side - Half Circle Accuracy */}
-            {metrics.questionsAttempted > 0 ? (
-              <div className={`p-6 rounded-lg ${cardStyle}`}>
-                <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Accuracy Today
-                </h2>
-                <div className="relative flex items-center justify-center h-[200px]">
-                  <svg className="w-72 h-36" viewBox="0 0 100 60">
-                    {/* Background arc */}
-                    <path
-                      d="M5 50 A 45 45 0 0 1 95 50"
-                      fill="none"
-                      stroke={darkMode ? '#1e293b' : '#e2e8f0'}
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                    />
-                    {/* Progress arc with animation */}
-                    <motion.path
-                      d="M5 50 A 45 45 0 0 1 95 50"
-                      fill="none"
-                      stroke={darkMode ? '#60a5fa' : '#3b82f6'}
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: metrics.accuracy / 100 }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                    />
-                    <AnimatedAccuracy 
-                      value={Math.round(metrics.accuracy)} 
-                      darkMode={darkMode}
-                      className="text-2xl font-bold"
-                    />
-                  </svg>
+            <div className="perspective-1000 hover:-translate-y-1 transition-all duration-300">
+              <div 
+                className={`p-6 rounded-lg cursor-pointer transition-all duration-700 transform-style-3d ${
+                  showWeekly ? 'rotate-x-180' : ''
+                } ${cardStyle}`}
+                onClick={() => setShowWeekly(!showWeekly)}
+              >
+                {/* Front - Daily Accuracy */}
+                <div className="backface-hidden w-full">
+                  <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    Daily Accuracy
+                  </h2>
+                  <div className="relative flex items-center justify-center h-[200px]">
+                    <svg className="w-72 h-36" viewBox="0 0 100 60">
+                      {/* Background arc */}
+                      <path
+                        d="M5 50 A 45 45 0 0 1 95 50"
+                        fill="none"
+                        stroke={darkMode ? '#374151' : '#e2e8f0'}
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                      />
+                      {/* Progress arc with animation */}
+                      <motion.path
+                        d="M5 50 A 45 45 0 0 1 95 50"
+                        fill="none"
+                        stroke={darkMode ? '#60a5fa' : '#3b82f6'}
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: metrics.accuracy / 100 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                      />
+                      <AnimatedAccuracy 
+                        value={Math.round(metrics.accuracy)} 
+                        darkMode={darkMode}
+                        className="text-2xl font-bold"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Back - Weekly Accuracy */}
+                <div className="absolute inset-0 rotate-x-180 backface-hidden w-full p-6">
+                  <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    Weekly Accuracy
+                  </h2>
+                  <div className="relative flex items-center justify-center h-[200px]">
+                    <svg className="w-72 h-36" viewBox="0 0 100 60">
+                      <path
+                        d="M5 50 A 45 45 0 0 1 95 50"
+                        fill="none"
+                        stroke={darkMode ? '#374151' : '#e2e8f0'}
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                      />
+                      <motion.path
+                        d="M5 50 A 45 45 0 0 1 95 50"
+                        fill="none"
+                        stroke={darkMode ? '#60a5fa' : '#3b82f6'}
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: calculateWeeklyAccuracy() / 100 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                      />
+                      <AnimatedAccuracy 
+                        value={Math.round(calculateWeeklyAccuracy())} 
+                        darkMode={darkMode}
+                        className="text-2xl font-bold"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            ) : (
-              <div className={`p-6 rounded-lg ${cardStyle}`}>
-                <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Start practicing to see your accuracy!
-                </h2>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Practice Button */}
