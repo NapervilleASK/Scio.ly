@@ -297,6 +297,7 @@ export default function WelcomePage() {
 
     const fetchData = async () => {
       if (currentUser) {
+        // Fetch from Firebase for signed in users
         const userRef = doc(db, 'users', currentUser.uid);
         const userDoc = await getDoc(userRef);
         
@@ -314,6 +315,24 @@ export default function WelcomePage() {
             });
           }
         }
+      } else {
+        // Fetch from localStorage for non-signed in users
+        const localStats = await getDailyMetrics(null);
+        setDailyStats({
+          questionsAttempted: localStats?.questionsAttempted || 0,
+          correctAnswers: localStats?.correctAnswers || 0,
+          eventsPracticed: localStats?.eventsPracticed || []
+        });
+        
+        // For weekly data, we'll just show today's data from localStorage
+        const today = new Date().toISOString().split('T')[0];
+        setHistoryData({
+          [today]: localStats || {
+            questionsAttempted: 0,
+            correctAnswers: 0,
+            eventsPracticed: []
+          }
+        });
       }
     };
 
@@ -552,12 +571,36 @@ export default function WelcomePage() {
                 className="text-4xl font-bold text-green-600"
               />
             </div>
-            <div className={`p-6 rounded-lg ${cardStyle}`}>
+            <div className={`p-6 rounded-lg ${cardStyle} relative group`}>
               <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Events Practiced</h3>
               <NumberAnimation 
                 value={metrics.eventsPracticed} 
                 className="text-4xl font-bold text-purple-600"
               />
+              
+              {/* Tooltip */}
+              <div className={`absolute left-0 w-96 p-4 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 
+                transition-opacity duration-200 pointer-events-none z-10 -bottom-2 translate-y-full
+                ${darkMode ? 'bg-gray-800/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'}`}
+              >
+                <h4 className={`text-base font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Event Breakdown
+                </h4>
+                <div className="space-y-2">
+                  {dailyStats.eventsPracticed.map((event, index) => (
+                    <div key={index}>
+                      <span className={`${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                        {event}
+                      </span>
+                    </div>
+                  ))}
+                  {dailyStats.eventsPracticed.length === 0 && (
+                    <span className={`block text-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                      No events practiced yet
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -694,15 +737,15 @@ export default function WelcomePage() {
           <motion.button
             whileHover={{ scale: 1.02 }}
             onClick={() => router.push('/dashboard')}
-            className={`w-full p-8 rounded-lg text-white text-left transition-all duration-300 ${
+            className={`w-full py-8 px-6 rounded-lg text-white text-left transition-all duration-300 ${
               darkMode
                 ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900'
                 : 'bg-gradient-to-r from-blue-500 to-cyan-500'
             }`}
           >
             <div className="flex flex-col">
-              <span className="text-2xl font-bold mb-2">Practice</span>
-              <span className="text-lg opacity-90">
+              <span className="text-xl font-bold mb-1">Practice</span>
+              <span className="text-base opacity-90">
                 Start practicing with customized tests or unlimited questions
               </span>
             </div>

@@ -132,11 +132,14 @@ export default function UnlimitedPracticePage() {
         // Use the event name from the query params (if provided) or default to an empty array
         const eventQuestions: Question[] = jsonData[routerParams.eventName as string] || [];
 
-        const filteredQuestions = eventQuestions.filter((q) =>
-          routerParams.difficulty === 'any'
+        const filteredQuestions = eventQuestions.filter((q) => {
+          // Set default difficulty to 0.5 if not specified
+          const questionDifficulty = q.difficulty ?? 0.5;
+          
+          return routerParams.difficulty === 'any'
             ? true
-            : q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue
-        );
+            : questionDifficulty >= difficultyValue - 0.33 && questionDifficulty <= difficultyValue;
+        });
 
         const finalQuestions =
           routerParams.types === 'multiple-choice'
@@ -190,18 +193,23 @@ export default function UnlimitedPracticePage() {
   // Mark the current question as submitted
   const handleSubmit = async () => {
     setIsSubmitted(true);
+    
+    // Only count if there's an actual answer
+    const wasAttempted = currentAnswer.length > 0 && currentAnswer[0] !== null && currentAnswer[0] !== '';
+    
     try {
-      // Update metrics for each question attempted
       await updateMetrics(auth.currentUser?.uid || null, {
-        questionsAttempted: 1,
-        correctAnswers: isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
-        eventName: searchParams.get('eventName') || undefined
+        questionsAttempted: wasAttempted ? 1 : 0,
+        correctAnswers: wasAttempted && isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
+        eventName: routerData.eventName || undefined
       });
 
       if (isCorrect(currentQuestion, currentAnswer)) {
         toast.success('Correct!');
+      } else if (wasAttempted) {
+        toast.error('Incorrect. :(');
       } else {
-        toast.error('Incorrect. Try again!');
+        toast.info('Question skipped');
       }
     } catch (error) {
       console.error('Error updating metrics:', error);

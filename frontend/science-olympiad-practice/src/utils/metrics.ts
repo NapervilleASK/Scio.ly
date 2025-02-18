@@ -5,6 +5,7 @@ export interface DailyMetrics {
   questionsAttempted: number;
   correctAnswers: number;
   eventsPracticed: string[];
+  eventQuestions: Record<string, number>;
 }
 
 const getLocalMetrics = (): DailyMetrics => {
@@ -13,7 +14,8 @@ const getLocalMetrics = (): DailyMetrics => {
   return localStats ? JSON.parse(localStats) : {
     questionsAttempted: 0,
     correctAnswers: 0,
-    eventsPracticed: []
+    eventsPracticed: [],
+    eventQuestions: {}
   };
 };
 
@@ -22,7 +24,7 @@ const saveLocalMetrics = (metrics: DailyMetrics) => {
   localStorage.setItem(`metrics_${today}`, JSON.stringify(metrics));
 };
 
-export const getDailyMetrics = async (userId: string | null) => {
+export const getDailyMetrics = async (userId: string | null): Promise<DailyMetrics | null> => {
   if (!userId) {
     return getLocalMetrics();
   }
@@ -39,7 +41,8 @@ export const getDailyMetrics = async (userId: string | null) => {
       return dailyStats[today] || {
         questionsAttempted: 0,
         correctAnswers: 0,
-        eventsPracticed: []
+        eventsPracticed: [],
+        eventQuestions: {}
       };
     }
     return null;
@@ -64,7 +67,11 @@ export const updateMetrics = async (
       correctAnswers: currentStats.correctAnswers + (updates.correctAnswers || 0),
       eventsPracticed: updates.eventName && !currentStats.eventsPracticed.includes(updates.eventName)
         ? [...currentStats.eventsPracticed, updates.eventName]
-        : currentStats.eventsPracticed
+        : currentStats.eventsPracticed,
+      eventQuestions: {
+        ...currentStats.eventQuestions,
+        [updates.eventName || '']: (currentStats.eventQuestions?.[updates.eventName || ''] || 0) + (updates.questionsAttempted || 0)
+      }
     };
     saveLocalMetrics(updatedStats);
     return updatedStats;
@@ -85,7 +92,8 @@ export const updateMetrics = async (
     const todayStats = dailyStats[today] || {
       questionsAttempted: 0,
       correctAnswers: 0,
-      eventsPracticed: []
+      eventsPracticed: [],
+      eventQuestions: {}
     };
 
     const updatedTodayStats = {
@@ -94,7 +102,11 @@ export const updateMetrics = async (
       correctAnswers: todayStats.correctAnswers + (updates.correctAnswers || 0),
       eventsPracticed: updates.eventName && !todayStats.eventsPracticed.includes(updates.eventName)
         ? [...todayStats.eventsPracticed, updates.eventName]
-        : todayStats.eventsPracticed
+        : todayStats.eventsPracticed,
+      eventQuestions: {
+        ...todayStats.eventQuestions,
+        [updates.eventName || '']: (todayStats.eventQuestions?.[updates.eventName || ''] || 0) + (updates.questionsAttempted || 0)
+      }
     };
 
     await setDoc(userRef, {

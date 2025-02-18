@@ -145,11 +145,14 @@ export default function TestPage() {
         const difficultyValue = difficultyMap[difficulty || 'easy'] || 0.33;
         const eventQuestions: Question[] = jsonData[eventName as string] || [];
 
-        const filteredQuestions = eventQuestions.filter((q) =>
-          difficulty === 'any'
+        const filteredQuestions = eventQuestions.filter((q) => {
+          // Set default difficulty to 0.5 if not specified
+          const questionDifficulty = q.difficulty ?? 0.5;
+          
+          return difficulty === 'any'
             ? true
-            : q.difficulty >= difficultyValue - 0.33 && q.difficulty <= difficultyValue
-        );
+            : questionDifficulty >= difficultyValue - 0.33 && questionDifficulty <= difficultyValue;
+        });
 
         const finalQuestions =
           types === 'multiple-choice'
@@ -215,18 +218,29 @@ export default function TestPage() {
   const handleSubmit = async () => {
     setIsSubmitted(true);
     
-    // Calculate total correct answers
-    const correctAnswers = data.reduce((total, question, index) => {
-      return total + (isCorrect(question, userAnswers[index]) ? 1 : 0);
-    }, 0);
+    // Calculate total answered questions and correct answers
+    const stats = data.reduce((total, question, index) => {
+      const answers = userAnswers[index];
+      // Only count if the question was actually answered
+      if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
+        total.attempted++;
+        if (isCorrect(question, answers)) {
+          total.correct++;
+        }
+      }
+      return total;
+    }, { attempted: 0, correct: 0 });
 
-    // Update metrics
-    await updateMetrics(auth.currentUser?.uid || null, {
-      questionsAttempted: data.length,
-      correctAnswers: correctAnswers,
-      eventName: routerData.eventName || undefined
-    });
-
+    try {
+      await updateMetrics(auth.currentUser?.uid || null, {
+        questionsAttempted: stats.attempted,
+        correctAnswers: stats.correct,
+        eventName: routerData.eventName || undefined
+      });
+    } catch (error) {
+      console.error('Error updating metrics:', error);
+    }
+    
     // Scroll to top smoothly
     window.scrollTo({
       top: 0,
