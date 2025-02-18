@@ -259,6 +259,26 @@ const AnimatedAccuracy = ({ value, darkMode, className }: {
   );
 };
 
+// First, create a new client component for the welcome message
+const WelcomeMessage = ({ darkMode, currentUser }: { darkMode: boolean, currentUser: User | null }) => {
+  return (
+    <div className={`p-6 rounded-lg mb-8 ${darkMode ? 'bg-gray-800' : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)]'}`}>
+      <h1 className={`text-2xl font-bold mb-2 transition-colors duration-1000 ease-in-out ${
+        darkMode ? 'text-white' : 'text-gray-900'
+      }`}>
+        {currentUser ? (
+          `Welcome to Scio.ly, ${currentUser.displayName?.split(' ')[0]}!`
+        ) : (
+          'Welcome to Scio.ly!'
+        )}
+      </h1>
+      <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+        Get started by exploring our practice resources or checking your progress.
+      </p>
+    </div>
+  );
+};
+
 export default function WelcomePage() {
   const router = useRouter();
   const { darkMode, setDarkMode } = useTheme();
@@ -544,16 +564,7 @@ export default function WelcomePage() {
       <div className="relative z-10 pt-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Welcome Banner */}
-          <div className={`p-6 rounded-lg mb-8 ${cardStyle}`}>
-            <h1 className={`text-2xl font-bold mb-2 transition-colors duration-1000 ease-in-out ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Welcome to Scio.ly!
-            </h1>
-            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Get started by exploring our practice resources or checking your progress.
-            </p>
-          </div>
+          <WelcomeMessage darkMode={darkMode} currentUser={currentUser} />
 
           {/* Metrics Section */}
           <div className="grid grid-cols-3 gap-6 mb-8">

@@ -1,3 +1,3 @@
 export default {
-    api: 'https://gist.githubusercontent.com/Kudostoy0u/31515db6eea9a184d74a06689e132e4a/raw/d1d075a022916637c2198dd145b9c290020f3633/final.json'
+    api: 'https://gist.githubusercontent.com/Kudostoy0u/a1fd5fee7586461e0d20fce0ef3bc177/raw/50e28d4a6acd5de841d989ac969ea92875405cc0/gistfile1.txt'
 };
