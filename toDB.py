@@ -8,7 +8,7 @@ titles = {
     'outbreak investigation': 'Disease Detectives',
     'human_impact': 'Human Impact on Environment',
     'ping pong parachute': 'Ping Pong Parachute',
-    'mission possible': 'Mission Possible',
+    "Mission Possible": "Mission Possible",
     "it's about time": "It's About Time",
     'cardiovascular': 'Anatomy - Cardiovascular',
     'geologic mapping': 'Geologic Mapping',
@@ -351,11 +351,242 @@ titles = {
     'brainrot battle': 'Fun',                    # Informal/silly competition
     'general biology': 'Cell Biology',                # Broad ecological systems focus
     'material science': 'Materials Science',     # Direct synonym (singular vs. plural),
-    'Fun': 'Fun'
+    'Fun': 'Fun',
+    'game theory': None,
+    'ichthyology': None,
+    'geowizard': None,
+    'computer science': None,
+    '3d printing': None,
+    'picture this': None,
+    'science word': None,
+    'ecology free response': "Ecology",
+    "anagrams": None,
+    "crimebusters": "Crime Busters",
+    "geoguessr": None,
+    "toxicology": None,
+    "general toxicology": None,
+    'anatomy': 'Anatomy - Cardiovascular',
+    'torque': 'Machines',
+    'polymer chemistry': 'Materials Science',
+    'instructions': None,
+    'nervous system': 'Anatomy - Nervous',
+    'solutions': 'Chemistry Lab',
+    'immune system': 'Anatomy - Immune',
+    'genetic technologies': 'Designer Genes',
+    'disease dynamics': 'Disease Detectives',
+    'anatomy - cardiovascular & lymphatic': 'Anatomy - Cardiovascular',
+    'lean mean meme machine': 'Fun',
+    'troll facts': 'Game On',
+    'population genetics and phylogeny': 'Designer Genes',
+    'brainrot': 'Interrogating the Brain',
+    'difficulty': 'Technical Problem Solving',
+    'general science': None,
+    'respiratory system': 'Anatomy - Respiratory',
+    'free response': None,
+    'science': None,
+    'sense organs - eye conditions': 'Anatomy - Sense Organs',
+    'game knowledge': 'Game On',
+    'anatomy - biochemistry': 'Cell Biology',
+    'leguminosae': 'Plant Biology',
+    'minerals': 'Rocks and Minerals',
+    'soil': 'Geologic Mapping',
+    'dog breeds': None,
+    'biology': 'Cell Biology',
+    'write it do it c': 'Fun',
+    'general lab safety': 'Chemistry Lab',
+    'anatomy - digestive - histology': 'Anatomy - Digestive',
+    'digital structures': 'Machines',
+    'terrestrial environmental issues': 'Human Impact on Environment',
+    'economic impact': None,
+    'particle physics': 'Physics Lab',
+    'microbial genetics': 'Microbe Mission',
+    'renewable energy': 'Wind Power',
+    'dinosaurs': 'Fossils',
+    'calculus': 'Technical Problem Solving',
+    'computer hardware': 'Robot Arm',
+    'science fields': None,
+    'general questions': None,
+    'environmental toxins': 'Environmental Chemistry',
+    'brawl stars': 'Game On',
+    'free response questions': None,
+    'meteorology b': 'Meteorology',
+    'viruses & viroids': 'Disease Detectives',
+    'digestive system': 'Anatomy - Digestive',
+    'coral reefs': 'Ecology',
+    'microbial metabolism': 'Microbe Mission',
+    'multiple events': None,
+    'prokaryotic genetic analysis': 'Designer Genes',
+    'mathematics': 'Technical Problem Solving',
+    'anatomy - organs': 'Anatomy - Digestive',
+    'circulatory': 'Anatomy - Cardiovascular',
+    'cryptanalysis': 'Codebusters',
+    'topography': 'Geologic Mapping',
+    'study design': 'Experimental Design',
+    'fast facts': None,
+    'community interactions and diversity': 'Ecology',
+    'famous scientists': None,
+    'physiological integration': 'Anatomy - Muscular',
+    'physics - particle': 'Physics Lab',
+    'python and general programming': 'Technical Problem Solving',
+    'machine intelligence': 'Data Science',
+    'culture & growth': 'Plant Biology',
+    'clash royale': 'Fun',
+    'orgo olympics': 'Chemistry Lab',
+    'endocrine system': 'Anatomy - Endocrine',
+    'sense organs': 'Anatomy - Sense Organs',
+    'lab equipment': 'Chemistry Lab',
+    'structure & morphology': 'Anatomy - Skeletal',
+    'biomes': 'Ecology',
+    'anatomy - digestive - true/false': 'Anatomy - Digestive',
+    'physics - quantum': 'Physics Lab',
+    'physics - general': 'Physics Lab',
+    'cellular and molecular biology': 'Cell Biology',
+    'statistical methods': 'Data Science',
+    'microbial reproduction & extremophiles': 'Microbe Mission',
+    'forests and grasslands': 'Forestry',
+    'microbial interactions': 'Microbe Mission',
+    'experiment & data analysis': 'Experimental Design',
+    'chromatography': 'Chemistry Lab',
+    'herbarium samples': 'Plant Biology',
+    'physicists': 'Physics Lab',
+    'deserts and tundra': 'Ecology',
+    'anatomy - digestive true/false': 'Anatomy - Digestive',
+    'proteins': 'Protein Modeling',
+    'event': None,
+    'polymer testing': 'Materials Science',
+    'crave the wave': 'Crave the Wave',
+    'animal biology': 'Cell Biology',
+    'dynamic planet free response': 'Dynamic Planet',
+    'constellations': 'Astronomy',
+    'technology': None,
+    'bacterial physiology': 'Microbe Mission',
+    'satellite photos/internet maps': 'Remote Sensing',
+    'metabolism & application': 'Cell Biology',
+    'solar power': 'Green Generation',
+    'fields of science': None,
+    'robotics': 'Robot Arm',
+    'aerodynamics': 'Flight',
+    'integrative': 'Anatomy - Muscular',
+    'plants': 'Plant Biology',
+    'antennas': 'Circuit Lab',
+    'anatomy - sensory receptors': 'Anatomy - Sense Organs',
+    'microscopes': 'Cell Biology',
+    'music theory': 'Sounds of Music',
+    'flowers and fruits': 'Plant Biology',
+    'meta': None,
+    'anatomy - integrative': 'Anatomy - Muscular',
+    'anatomy - cardiovascular/lymphatic/excretory': 'Anatomy - Cardiovascular',
+    'transition metals': 'Chemistry Lab',
+    'amphibians': 'Herpetology',
+    'environmental engineering': 'Human Impact on Environment',
+    'anatomy - cell biology': 'Cell Biology',
+    'scientific tools': 'Technical Problem Solving',
+    'bark': 'Forestry',
+    'electromagnetism': 'Physics Lab',
+    'ecology - symbiosis': 'Ecology',
+    'bio process lab': 'Food Science',
+    'mammals': 'Cell Biology',
+    'anatomy - respiratory true/false': 'Anatomy - Respiratory',
+    'basic discrete math': 'Technical Problem Solving',
+    'molecular biology': 'Cell Biology',
+    'number theory': 'Technical Problem Solving',
+    'answers': None,
+    'eukaryotic genetic analysis': 'Designer Genes',
+    'population dynamics': 'Ecology',
+    'pedigrees and karyotypes': 'Designer Genes',
+    'anatomy - all systems': 'Anatomy - Cardiovascular',
+    'tournament tycoon': 'Game On',
+    'amino acids': 'Protein Modeling',
+    'general energy': 'Thermodynamics',
+    'periodic table elements': 'Chemistry Lab',
+    'subatomic particles': 'Physics Lab',
+    'microbe mission free response': 'Microbe Mission',
+    'fluid mechanics': 'Physics Lab',
+    'general': None,
+    'evolution & ecology': 'Ecology',
+    'fill in the blank': None,
+    'options': None,
+    'bio-process lab': 'Food Science',
+    'anatomy - anatomy and physiology': 'Anatomy - Cardiovascular',
+    'wave properties and radio waves': 'Physics Lab',
+    'water monitoring': 'Water Quality',
+    'write it do it b': 'Fun',
+    'microbial effects & treatments': 'Microbe Mission',
+    'quantum': 'Physics Lab',
+    'programming': 'Fun',
+    'microbiology': 'Microbe Mission',
+    'fun physics time': 'Physics Lab',
+    'tiebreaker': None,
+    'wind power free response': 'Wind Power',
+    'climatology': 'Meteorology',
+    'rosaceae': 'Plant Biology',
+    'true/false': None,
+    'microbial ecology': 'Microbe Mission',
+    'geometry': 'Technical Problem Solving',
+    'bioprocess lab': 'Food Science',
+    'endangered species': 'Ecology',
+    'team prop': None,
+    'scientific processes': 'Experimental Design',
+    'microbe mission matching': 'Microbe Mission',
+    'cell biology - plants': 'Plant Biology',
+    'mechanics': 'Physics Lab',
+    'geography': 'Geologic Mapping',
+    'fun food': 'Food Science',
+    'anatomy - proteins': 'Protein Modeling',
+    'measurements': 'Technical Problem Solving',
+    'anatomy - respiratory - diagram': 'Anatomy - Respiratory',
+    'evolution': 'Ecology',
+    'microbes in industry': 'Microbe Mission',
+    'energy sources': 'Thermodynamics',
+    'boom beach': 'Fun',
+    'anatomy - cardiovascular,anatomy - lymphatic,anatomy - excretory': 'Anatomy - Cardiovascular',
+    'population growth issues': 'Ecology',
+    'write it, do it': 'Technical Problem Solving',
+    'ecology general': 'Ecology',
+    'oceanography': 'Remote Sensing',
+    'nobel prize': None,
+    'applied game theory': 'Fun',
+    'weather terms': 'Meteorology',
+    'reach for the stars': 'Astronomy',
+    'anatomy - cancer': 'Disease Detectives',
+    'diseases': 'Disease Detectives',
+    'anatomy - immune/nervous': 'Anatomy - Nervous',
+    'cell biology of hiv infection': 'Cell Biology',
+    'units of measure': 'Technical Problem Solving',
+    'human organs': 'Anatomy - Digestive',
+    'question': None,
+    'wifi': 'WiFi Lab',
+    'disease detectives free response': 'Disease Detectives',
+    'dna process - replication, transcription, and translation': 'Cell Biology',
+    'anatomy - digestive - histology2': 'Anatomy - Digestive',
+    'ecology/microbe mission': 'Microbe Mission',
+    'extraterrestrial objects': 'Astronomy',
+    'highway map': 'Geologic Mapping',
+    'pokemon': 'Fun',
+    'fagaceae': 'Plant Biology',
+    'science quiz bowl': 'Fun',
+    'elements': 'Chemistry Lab',
+    'leaves': 'Plant Biology',
+    'hay day': 'Fun',
+    'microbial agents & pandemics': 'Disease Detectives',
+    'anatomy - all': 'Anatomy - Cardiovascular',
+    'microbes': 'Microbe Mission',
+    'betulaceae': 'Plant Biology',
+    'moons': 'Astronomy',
+    'organic chemistry': 'Chemistry Lab',
+    'k-pop trivia': 'Fun',
+    'short answer': None,
+    'dna mutation & repair': 'Cell Biology',
+    'human impact': 'Human Impact on Environment',
+    'clash of clans': 'Fun',
+    'scioly events': None,
+    'instruments and miscellaneous topics': 'Sounds of Music',
+    'no_event': None
+
 }
 print("All values:", [*set([f for f in titles.values() if f is not None])])
 # os.exit()
-def combine_bank_data(filename="bank.txt"):
+def combine_bank_data(filename="beta_bank.json"):
     """
     Combines JSON objects from a file, extending arrays for same keys
     and filtering out objects with empty 'answers' arrays.
@@ -375,22 +606,23 @@ def combine_bank_data(filename="bank.txt"):
                 data = json.loads(line.strip())
                 for key, value in data.items():
                     key = key.lower()
-                    # bruh.add(key)
                     if key not in titles:
                         bruh.add(key)
                         continue
                     key = titles[key]
                     if key is None:
-                        # print("Skipping key")
                         continue
                     if not key in combined_data:
                         combined_data[key] = []
                         excluded_data[key] = []
+                    if not isinstance(value,list) or len(value) == 1:
+                        continue
                     # Extend the existing list with new items, filtering as needed
                     combined_data[key].extend([
                         item
                         for item in value
                         if item.get('answers') and len(item['answers']) > 0 and item.get("question")
+                        and not (isinstance(item['answers'][0],list) and (item['answers'][0] == [""] or item['answers'][0] == [[]] or item['answers'][0] == [[""]]))
                         and len(item['question']) > 8
                         and not (item['question'].lower().startswith("identify the") and len(item['question']) < 75)
                         and not ("based on" in item['question'] and "provided" in item['question'] or "information" in item['question'] and "provided" in item['question'])
@@ -403,11 +635,16 @@ def combine_bank_data(filename="bank.txt"):
                         and not (item['question'].lower().startswith("based on the"))
                         and not (item['question'].lower().startswith("based on this"))
                         and not (item['question'].lower().startswith("these are"))
+                        and not (item['question'].lower().startswith("calculate the"))
                         and not (len(item['question']) < 3)
+                        and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "free response")
+                        and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "requires missing")
+                        and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "unknown")
+                        and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "refer to")
                         and not (len(item['answers']) == 1 and item['answers'][0] == '')
                         and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
                         and not (False if not 'options' in item or item['options'] is None else (any(s == "A" for s in item['options']) and not "climate" in item['question'] and not "vitamin" in item['question']))
-                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimens*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)) ([A-Z][\s.,?!;:])",item['question'])))
+                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimens*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)|((f|F)ibers*)|((l|L)etters*)) (([A-Z]|[0-9])[\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
@@ -417,7 +654,6 @@ def combine_bank_data(filename="bank.txt"):
                             "following table", "table above",
                             "this specimen", "identify this", "this organism", "the photo below",
                             "given information", "the table", "the structures labeled",
-                            "this bird", "this animal", "this habitat", 
                             "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
                             "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
                             "this individual", "Identify #", "diagram below", "the diagram", 
@@ -441,63 +677,29 @@ def combine_bank_data(filename="bank.txt"):
                             "projection 3", "the map?", "circular symbol", "union hill", "locations 1", "location 1", 
                             "at the right?", "on the map", "this muscle", "interpret the", "evidence a", "evidence b", 
                             "evidence c", "which suspect", "what is the id ", "what is the identity", "sample 1", 
-                            "sample 2", "sample 3", "sample 4"
+                            "sample 2", "sample 3", "sample 4", "this test?"
                         ])
                     ])
-                    # excluded_data[key].extend([
-                    #     item
-                    #     for item in value
-                    #     if item.get('answers') and len(item['answers']) > 0 and item.get("question")
-                    #     and (
-                            # not len(item['question']) > 8
-                            # or (item['question'].lower().startswith("identify the") and len(item['question']) < 75)
-                            # or ("based on" in item['question'] and "provided" in item['question'] or "information" in item['question'] and "provided" in item['question'])
-                            # or (len(item['question']) < 85 and " this " in item['question'])
-                            # or (len(item['question']) < 60 and "this object" in item['question'])
-                            # or (isinstance(item['answers'][0],str) and "depends" in item['answers'][0])
-                            # (len(item['question']) < 85 and "this disorder" in item['question'])
-                        #     any(phrase in item['question'].lower() for phrase in [
-                        #     "this picture", "this image", "this diagram", "this map",
-                        #     "image a", "image b", "image c", "image 1", "image 2", "image 3",
-                        #     "the image", "in figure", "pictured above", "pictured below",
-                        #     "figure a", "figure b", "figure c", "following table", "table above",
-                        #     "this specimen", "identify this", "this organism", "the photo below",
-                        #     "given information", "the table", "the structures labeled", "specimen a",
-                        #     "specimen b", "specimen c", "specimen d", "specimen e", "specimen g"
-                        #     "specimen f", "below data", "this bird", "this animal", "this habitat", 
-                        #     "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
-                        #     "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
-                        #     "this individual", "Identify #", "diagram below", "the diagram", 
-                        #     "slide above", "image 1", "image 2", "image 3",
-                        #     "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
-                        #     "picture below", "the picture", "shown above", "shown below", "point a",
-                        #     "point b", "point c", "Question 1", "question 2", "question 3",
-                        #     "question 4", "question 5", "question 6", "question 7", "question 8",
-                        #     "question 9", "question #", "specimen h", "specimen i", "specimen j",
-                        #     "specimen k", "specimen l", "specimen m", "specimen n", "specimen o",
-                        #     "specimen p", "specimen q" "specimen r" , "specimen s", "specimen t"
-                        #     "specimen u", "specimen v", "speciemn w", "specimen x", "specimen y", "specimen z", 
-                        #     "indicated by", "diagram to the right", "this device",
-                        #     "letter a ", "letter b ", "letter c ", "letter d ", "letter e ", "letter f ",
-                        #     "letter g ", "letter h ", "letter i ", "letter j ", "these specimens", "multiple choice",
-                        #     "shown to the right", "identify powder", "(left)", "(right)", "graph above",
-                        #     "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on", "the image", 
-                        #     "labeled by", "area a", "which image", "above image", "below image", "in the image",
-                        #     "depicted", "the figure", "above?", "to the right", "the chart", "the graph"
-                        # ])
-                    #     )
-                    # ])
             except json.JSONDecodeError:
                 print(f"Skipping invalid JSON line: {line.strip()}")
     print("Unknown keys: ", bruh)
     return [combined_data, excluded_data]
 
 # Combine the data from bank.txt
-combined_bank = combine_bank_data()
+combined_bank = combine_bank_data()[0]
+for key, questions in combined_bank.items():
+    seen = set()
+    filtered_questions = []
+    for q in questions:
+        if q['question'] not in seen:
+            filtered_questions.append(q)
+            seen.add(q['question'])
+    combined_bank[key] = filtered_questions
+
 
 # Write the combined JSON object to bank_filtered.json
 with open("final.json", 'w') as outfile:
-    json.dump(combined_bank[0], outfile)
+    json.dump(combined_bank, outfile)
 # with open("excluded.json", 'w') as outfile:
 #     json.dump(combined_bank[1], outfile, indent=2)
 print("Combined and filtered data written to final.json")

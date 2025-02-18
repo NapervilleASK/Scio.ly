@@ -1,0 +1,989 @@
+{
+    "Astronomy": [
+      {
+        "question": "On my honor, I have not given, received, nor witnessed any unauthorized aid on this test.",
+        "options": [
+          "Yes",
+          "No"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0
+      },
+      {
+        "question": "Which of the following class of stars is best known for being variable in the radio?",
+        "options": [
+          "M Dwarfs",
+          "Visual Binaries",
+          "Supergiants",
+          "White Dwarfs"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Which of the Following is True?",
+        "options": [
+          "Cepheids are about the same temperature as the Sun but less massive.",
+          "Cepheids are about the same temperature as the Sun but more massive.",
+          "Cepheids are mostly colder than the Sun but the same mass.",
+          "Cepheids are mostly hotter than the Sun but the same mass."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Which of the following is NOT a subclass of Type II Cepheids?",
+        "options": [
+          "BL Herculis",
+          "Delta Scuti",
+          "RR Lyrae",
+          "RV Tauri"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The following light curve most likely belongs to an RRab pulsator. (Assuming that you have access to the light curve image).",
+        "options": [
+          "True",
+          "False"
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Which of the following magnetic field strengths most accurately reflects that of a typical pulsar, in Teslas?",
+        "options": [
+          "10^2 T",
+          "10^5 T",
+          "10^8 T",
+          "10^11 T"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The period of a pulsar decreases with time.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Millisecond pulsars generally have much stronger magnetic fields than typical pulsars.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 1
+      }
+    ]
+  },
+  {
+    "Astronomy": [
+      {
+        "question": "What is the name for the objects located in the molecular cloud in image 20?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "This region in image 20 contains the highest known concentration of what type of feature?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "This region in image 20 is located in what star-formation cloud complex?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What type of event produced the object in image 4?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The striped areas in Image 4 are thought to be the first direct evidence of what type of phenomena?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name of the protostar in image 15?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the specific classification for the type of object in image 15?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What characteristic is associated with this specific class of protostars?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What unique information resulted from the Chandra observational data for the protostar in image 15?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter on the H-R diagram shows the location of the object involved in the event that produced image 4?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What type of objects are located in this region of the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What was the cause that initiated this event?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name of the binary system located in image 9?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The emissions coming from the system are likely dominated by what type of radiation?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What behavior is the white dwarf in image 9 undergoing that had never been observed before?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the graph that shows this behavior?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The V Sagittae system illustrated in image 6 is predicted to undergo an extremely bright nova in 2083. What is unusual about the masses in this system that will cause the nova?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What will happen to the mass of the companion star in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the final outcome for the system in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name of the region designated by the letter A on the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What evolutionary transitions are happening to the stars in this region A on the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What class and type of variability are these stars experiencing during these transitions?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the image that shows the behavior of these types of stars located at letter A on the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the image number for the illustration of the prototype for the types of variable stars located at letter A on the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter shows the location of the star referenced from the previous question (question 25) on the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the image number and type of object that contains a large number of Population II stars?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and image number of the star that is the prototype for the variable stars that can be found in the object in the previous question?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter on the H-R diagram shows the location of these stars?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "This letter is located in what region of the H-R diagram?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the graph that shows the behavior of the type of object from the previous two questions?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is important about the behavior of these objects?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "These stars are in the same class of variable stars as Mira variables. Why can’t Mira variables be used for the same purpose?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What two types of stellar objects are illustrated in the binary system in image number 14?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What two letters on the H-R diagram show their locations? Write your letters in alphabetical order.",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Why has it taken until fairly recently to detect this type of dead cataclysmic system?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and image number of a catastrophic event in the Large Magellanic Cloud?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and image number of a similar type of object?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the graph that shows the behavior from this type of event?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Image 6 illustrates an object moving at a high rate of speed through the galaxy. What is the name of the object?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What type of object is shown in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is unusual about the chemical composition of the object shown in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the image that shows the spectrum for the object in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What happened that resulted in the unusual composition and motions for the object in image 6?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name of the bright star residing within an open cluster of stars in image number 13?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter on the H-R diagram shows the location of the star in image 13?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Will the ultimate collapse of this star have the same end products as Omicron Ceti? Why or why not?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "What is the name and image number of a close-by star formation complex?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and number of another star formation region that has an extremely early protostar forming and emitting X-rays?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What image numbers show the end products of the core collapse of mid-mass stars? What are they called?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "What is the difference in longevity for the two different end products in these images from the question above?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and image number showing the internal structure of a carbon star?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Strong stellar winds have ejected material at high speed. What is the number of the image that shows this material? What observatory detected this material?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter on the H-R diagram shows the location of the star referred to in the two questions above?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name and evolutionary stage of the object shown in image number 11?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What letter on the H-R diagram shows the location of this type of object shown in image 11?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the graph that shows the behavior of this type of object shown in image 11?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Some close binary systems with a white dwarf and accretion disk increase in brightness due to\ninstabilities within the accretion disk. What is the number of the graph that shows the behavior of this\ntype of dwarf nova system?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the number of the graph that shows the behavior of a recurrent nova type of binary\nsystem that results from thermonuclear events on the surface of the white dwarf?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is the name of the binary system illustrated in image number 16?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What physical process is unique for the white dwarf in image 16?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What is unique about the emissions from the system shown in image 16?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "If fusion is causing the emissions, the emissions should come from the entire surface of the\nwhite dwarf; however, they are coming from a much smaller area. Where are the emissions thought to\noriginate?",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What are the numbers of the two graphs that show the spectrum and behavior for this system\nin image 16? Write your answers in numerical order.",
+        "options": [],
+        "answers": [
+          ""
+        ],
+        "difficulty": 1
+      }
+    ]
+  },
+  {
+    "Astronomy": [
+      {
+        "question": "Consider an open cluster of stars. To study the cluster in detail, astronomers would like to establish the distance of the cluster. If the cluster is within 1000 Pc, what would be the most accurate way to establish distance to the cluster?",
+        "options": [],
+        "answers": [
+          "Parallax"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Say the cluster is now believed to be over 10,000 Pc away. Assuming it is possible, what method would be best to use to determine the distance to the cluster?",
+        "options": [],
+        "answers": [
+          "Spectroscopic parallax"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "At the distances in the above two questions, what are two methods of determining distance that are impractical / unreliable?",
+        "options": [],
+        "answers": [
+          "Direct parallax and moving cluster method"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What principle can explain why the core begins to collapse before a supernovae?",
+        "options": [],
+        "answers": [
+          "Jeans Instability"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "You’re studying a globular cluster of stars and observe one star whose luminosity is changing over time. This prompts you to study the star more closely, and you observe that its spectral class is A and it has a mass about half that of the sun. What type of object is this?",
+        "options": [],
+        "answers": [
+          "RR Lyrae variable"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "You identified the spectral class of the star by looking at the spectrum taken in a survey of\nthe cluster. What is the most prominent feature that would have allowed you to identify its spectrum as\nclass A?",
+        "options": [],
+        "answers": [
+          "Strong hydrogen Balmer lines"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Given the relation MJ = -0.141 - 1.773 log(P) + 0.190 log(Z), and assuming it applies accurately, you make further measurements about the object, and determine it has a period of .63 days, a mass of .45 solar masses, a metallicity of .002, and an apparent magnitude of 10 at the wavelengths your colleagues were studying. How far away is the object?",
+        "options": [],
+        "answers": [
+          "1565.88 Pc"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "In the equation MJ = -0.141 - 1.773 log(P) + 0.190 log(Z) , what does the subscript J stand for?",
+        "options": [],
+        "answers": [
+          "Absolute Magnitude in the J band"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "A follow up study of the same area discovers that there is dust partially obscuring the object\nyou were observing, causing extinction (loss of light due to absorption or scattering by the dust) at\nthe wavelengths you took your measurements at. You to need to correct your calculations! This study\nreports an extinction of 20%, or that 20% of the light of the object (at these wavelengths) was absorbed\nor scattered. What is the true distance to this object?",
+        "options": [],
+        "answers": [
+          "1398.46 Pc"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "By coincidence, in your observations you discover there is a foreground star that is also of\ninterest. This star exhibits an average parallax motion of .4 arcseconds between its extreme points of the\nsky. How far away is this object (in parsecs)?",
+        "options": [],
+        "answers": [
+          "2.5 parsecs"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "This foreground object also appears to wobble by a magnitude of 2.5 milli-arcseconds (accord-\ning to data from the Gaia spacecraft) in addition to it’s average parallax motion, over a consistent period.\nWhat could explain this?",
+        "options": [],
+        "answers": [
+          "The star has a companion"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "Investigating the wobble of this foreground object further, you determine that the main star\nhas 90% of the mass, and that the total mass of this object is 5 times that of the Sun. Any companions\nhowever are too faint to be directly observed. Assuming there is only one significant companion, what\nradius (from the barycenter) must it orbit at? For simplicity we assume a model of a circular orbit. Give\nyour answer in AUs.",
+        "options": [],
+        "answers": [
+          "2.7 AU"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "What is the period of this objects wobble?",
+        "options": [],
+        "answers": [
+          "3.5 years"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "From our observations above, what is the most likely candidate for the companion object?",
+        "options": [],
+        "answers": [
+          "Red Dwarf"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "From everything we know about this object, what specific type of variable star will it likely\nevolve into?",
+        "options": [],
+        "answers": [
+          "Mira Variable"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "You’re observing an open cluster of stars and performing spectral classification of the brightest stars. You notice that every star in your survey happens to lie on the main sequence. Assuming we are only measuring stars in the cluster itself, what spectral class are we least likely to observe? Why are these the least likely for you to observe?",
+        "options": [],
+        "answers": [
+          "O class, because they are short-lived"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "We now adjust our survey to surveying the luminosities of each star in the cluster at several\nfilters to measure the color index of each object. At each filter B, V, R, and I, which spectral class will\nhave the smallest apparent magnitudes in the cluster? (Assume relative distances between each star are\nnegligible compared to the distance to the cluster from you)",
+        "options": [],
+        "answers": [
+          "O"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "We are interested in one star in particular, in our survey. Let’s name it for referring to it in\nour survey. Star has apparent magnitudes as follows:\nMB = 2.02, MV = 2.32, MR = 2.45, MI = 2.74. What is the spectral and luminosity class of star ?",
+        "options": [],
+        "answers": [
+          "A5V"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "Given our measurements so far, what would be a good approximation of its radius? Answer in\nterms of solar radii",
+        "options": [],
+        "answers": [
+          "1.4 solar radii"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Using these measurements, what is the approximate temperature of star ? If needed, you can\nuse Ballesteros’ formula to answer this:\nT = 4600K (1/(0.92 (B-V)) +1/(0.92 (B-V) + 0.62))",
+        "options": [],
+        "answers": [
+          "8275 K"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "Using the temperature you found above, what is the peak wavelength of this star?",
+        "options": [],
+        "answers": [
+          "350 nm"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "What is the total luminosity of this object? Answer in terms of solar luminosities.",
+        "options": [],
+        "answers": [
+          "4.3 Lsun"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "What is the next phase of this star’s evolution?",
+        "options": [],
+        "answers": [
+          "Red Giant"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "What will be the last element this star’s core is able to burn?",
+        "options": [],
+        "answers": [
+          "Helium"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "In one word, name any stellar property that can distinguish Type I and Type II Cepheids (Other than period).",
+        "options": [],
+        "answers": [
+          "Metallicity"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Another name for Type II Cepheids is...",
+        "options": [],
+        "answers": [
+          "W Virginis star"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "Stars along the Instability Strip pulsate via which mechanism (Write out the full name)?",
+        "options": [],
+        "answers": [
+          "Kappa mechanism"
+        ],
+        "difficulty": 1
+      },
+      {
+        "question": "The Period-Luminosity Relation is used to estimate either the Absolute Mangitude or Period\nof a Classical Cepheid. Supposing the Absolute Magnitude of Delta Cephei to be -3.47, use the following\nequation to estimate its period, rounding to the nearest number of days.\nMv = - [2.76 (log10(P) - 1.0)] - 4.16",
+        "options": [],
+        "answers": [
+          "6 days"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "A star must have at least 0.08 solar masses in order to burn hydrogen at its core. Assuming the\nrelation L M3.5, and the absolute magnitude of the Sun to be +4.83, calculate the absolute magnitude\nthat the least massive star on the main sequence could have.",
+        "options": [],
+        "answers": [
+          "15.6"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "The efficiency of hydrogen burning is approximately 0.7%, with only 10% of a star’s hydrogen\nbeing consumed in the core. Using the mass and luminosity of the Sun (M = 1.989e30 kg and L=\n3.826e26 W), estimate the duration of the Sun on the main sequence in years. (Hint: The luminosity is\nthe rate of energy burned per second)",
+        "options": [],
+        "answers": [
+          "10 billion years"
+        ],
+        "difficulty": 2
+      },
+      {
+        "question": "We had previously given the mass-luminosity relation for a star on the main sequence to be\nLM3.5 , and hinted at the fact that the lifetime of a star is inversely proportional to its luminosity. Using\nthe lifetime of the Sun calculated in the last problem, derive a relation for estimating the lifetime of a\nmain sequence star based on its mass, and use this to calculate the lifetime of a 0.08 M star.",
+        "options": [],
+        "answers": [
+          "3.5e12 years"
+        ],
+        "difficulty": 2
+      }
+    ]
+  }{
+  "Codebusters": [
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class One { \n    public static void main(String args[]) { \n        int j = 10; \n        for (int i = 0; i <= 9; i++) \n            j=(j+3*i/2)/3; \n        System.out.println(j); \n    } \n}",
+      "options": [],
+      "answers": [
+        "3"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Two { \n    public static void main(String args[]) { \n        double j = 5; \n        for (int i = 0; i < 7; i++) \n            j = i%2==0&&j<=10 ? j+i/2 : j-i/3; \n    System.out.println(j); \n    } \n}",
+      "options": [],
+      "answers": [
+        "4.0"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Three { \n    public static void main(String args[]) { \n        int a = 8; \n        int b = 6; \n        System.out.print(a<<(~b+a<<1)); \n    } \n}",
+      "options": [],
+      "answers": [
+        "536870912"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Four { \n    public static void main(String args[]) { \n        for (int i = 1; i <= 10; i++)  \n            if (((i % 5) == 0) || ((i % 4) == 0)) \n                System.out.print(\"A\"); \n            else if ((i % 3) == 0) \n                System.out.print(\"B\"); \n            else if ((i % 2) == 0) \n                System.out.print(\"C\"); \n            else \n                System.out.print(\"D\"); \n    } \n}",
+      "options": [],
+      "answers": [
+        "DCDABCDCBA"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Five { \n    public static void main(String args[]) { \n        int[] A = {1,3,2,1,0,1}; \n        String B = \"SciOly\"; \n        for(int i = 0; i <= 5; i++) \n            System.out.print(B.substring(i,i+A[i])); \n    } \n}",
+      "options": [],
+      "answers": [
+        "ScOlylyO"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Six { \n    public static void main(String args[]) { \n        int i = 0; \n        int j = 's'; \n        while((i + j)/2 < 'Z') \n            i++; \n        System.out.print((char) i); \n    } \n}",
+      "options": [],
+      "answers": [
+        "4"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Seven { \n    public static void main(String args[]) { \n        String string = \"Strings are things\"; \n        int i = string.indexOf(\"ing\"); \n        int j = string.lastIndexOf(\"ing\"); \n        System.out.println(string.substring(i,j)); \n    } \n}",
+      "options": [],
+      "answers": [
+        "ings are th"
+      ]
+    },
+    {
+      "question": "What is the resulting output of the following code snippet?\n\npublic class Eight { \n    public static void main(String args[]) { \n        int x = 2; \n        int y = 3; \n        while(x < y) { \n            x = 2*(x+1); \n            y = y + 7; \n        } \n        System.out.println(x); \n        System.out.println(y); \n    } \n}",
+      "options": [],
+      "answers": [
+        "12\n17"
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class One { \n2      public static void main(String args[]) { \n3          double j = 10; \n4          boolean i = true; \n5          int k = -5; \n6          System.out.println((int) j + (int) i + (int) k); \n7      } \n8  }",
+      "options": [],
+      "answers": [
+        "no error"
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Two { \n2      public static void main(String args[]) { \n3          int x = 3.0 > 2.0 ?int(2.0) : 3; \n4          System.out.print(x); \n5      } \n6  }",
+      "options": [],
+      "answers": [
+        "Line 3: int is used like a function to cast 2.0 to an integer, which is invalid.  Change int(2.0) to (int) 2.0"
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Three { \n2      public static void main(String args[]) { \n3          int i = 2; \n4          int[] j = new int[1]; \n5          j += i; \n6      } \n7  }",
+      "options": [],
+      "answers": [
+        "Line 5: You cannot add an integer to an array. Change it to j[0] = i;"
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Four { \n2      public Static Void Main(String args[]) { \n3          int x = 0; \n4          int y = 2; \n5          int z = 5; \n6          while(x+y+z < y*z){ \n7              x = y; \n8              y++; \n9          } \n10     } \n11 }",
+      "options": [],
+      "answers": [
+        "Line 2: static and void should be lowercase. Change Static to static and Void to void."
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Five { \n2      public static void main(String args[]) { \n3          double[] array[] = {{1,2},{3,4},{5,6}}; \n4          for (int i=0 ; i<(array.length) ; i++ ) { \n5              for (int j=0 ; j<array[i].length ; j++) \n6                  System.out.println(array[i,j]); \n7          } \n8      } \n9  }",
+      "options": [],
+      "answers": [
+        "Line 6: array[i,j] is invalid syntax to access elements of a 2D array. Change array[i,j] to array[i][j]."
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Six { \n2      public static void main(String args[]) { \n3          String string = \"Lemony Snicket\"; \n4          if (string.charAt(string.length()- 5) == 'c'){ \n5              System.out.print(\"true\"); \n6          } \n7      } \n8  }",
+      "options": [],
+      "answers": [
+        "no error"
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Seven { \n2      public static void main(String args[]) { \n3          String s = \"\\\\\'\\\\\"\\\\\"; \n4          System.out.printf(%%%s,s); \n5      } \n6  }",
+      "options": [],
+      "answers": [
+        "Line 4: printf is not a valid java command, and needs to be System.out.printf(...); Additionally, the first parameter is misformatted. Replace '%%%s' with '%s'."
+      ]
+    },
+    {
+      "question": "For the code snippet below, determine if there is an error that will prevent the code from running. If there is an error, enter what line the error is on, describe concisely and specifically why the code does not run properly, and describe how to correct it. If there is no error, simply write “no error”. You do not need to write the output of the code.\n\n1  public class Eight { \n2      public static void main(String args[]) { \n3          double k = 5; \n4          for (int i = 0; i <= 6; i++){ \n5              k += --k- --k+-k++; \n6          } \n7      System.out.println(k); \n8      } \n9  }",
+      "options": [],
+      "answers": [
+        "no error"
+      ]
+    },
+    {
+      "question": "Analyze the large section of code below and determine the output.\n\npublic class BigOne { \n    static void functionOne(int arr[][]){ \n        int[][] arr2 = new int[2][5]; \n        int k1 = 0; \n        int k2 = 0; \n        for(int i = 0; i < 2; i++){ \n            for(int j = 0; j < 5; j++){ \n                int a = arr[i][j]; \n                if(a%2==0){ \n                    arr2[0][k1] = a; \n                    k1++; \n                } \n                else{ \n                    arr2[1][k2] = a; \n                    k2++; \n                } \n\n            } \n        } \n        functionThree(arr2); \n        functionTwo(arr2); \n    } \n    static void functionTwo(int arr[][]){ \n        int[][] arr2 = new int[2][5]; \n        boolean flag = false; \n        for(int i = 0; i < 4; i++){ \n            if(arr2[0][i]==0){ \n                if(arr[0][i]%10>arr[0][i+1]%10){ \n                    flag = true; \n                    arr2[0][i] = arr[0][i]; \n                } \n                else{ \n                    arr2[0][i] = arr[0][i+1]; \n                    arr2[0][i+1] = arr[0][i]; \n                } \n            } \n        } \n        if(arr2[0][4]==0){ \n                arr2[0][4] = arr[0][4]; \n        } \n        for(int j = 0; j < 4; j++){ \n            if(arr2[1][j]==0){ \n                if(arr[1][j]%9>arr[1][j+1]%9){ \n                    flag = true; \n                    arr2[1][j] = arr[1][j]; \n                } \n                else{ \n                    arr2[1][j] = arr[1][j+1]; \n                    arr2[1][j+1] = arr[1][j]; \n                } \n            } \n        } \n        if(arr2[0][4]==0){ \n                arr2[0][4] = arr[0][4]; \n        } \n        if(flag){ \n            functionTwo(arr2); \n        } \n        else{ \n            functionThree(arr2); \n        } \n    } \n    static void functionThree(int arr[][]){ \n        for(int i = 0; i < 2; i++){ \n            for(int j = 0; j < 5; j++){ \n                System.out.print(arr[i][j] + \" \"); \n            } \n        } \n        System.out.println(\"\"); \n    } \n    public static void main(String args[]){ \n        int arr[][] = {{28, 1, 17, 10, 5},{13, 2, 26, 15, 24}}; \n        functionOne(arr); \n    } \n}",
+      "options": [],
+      "answers": [
+        "28 10 2 26 24 1 17 5 13 15 "
+      ]
+    },
+    {
+      "question": "Analyze the large section of code below and determine the output. Both \"flag\" and \"add\" can be accessed by any function (do not worry about variable scope)\n\npublic class BigTwo{\n    public static boolean flag = false; //This can be used and modified by any function\n    public static int add = 0; //This can be used and modified by any function\n\n    public static boolean functionOne(){\n        if(flag){\n            flag = false;\n            return(flag);\n        }\n        else{\n            flag = true;\n            return(!flag);\n        }\n    }\n\n    public static void functionTwo(int a){\n        if(a%2 == 0){\n            functionOne();\n            add += 3;\n        }\n        if(a%3 == 0){\n            add += 1;\n            if(functionOne() == flag){\n                add += 2;\n            }\n        }\n        if(a%5 == 0){\n            add += 2;\n            if(functionOne() || flag){\n                add += 2;\n            }\n        }\n        functionThree(a);\n    }\n\n    public static void functionThree(int a){\n        System.out.print(a+add);\n        System.out.print(\" \");\n        System.out.println(flag);\n    }\n\n    public static void main(String args[]){\n         int arr[] = {7, 25, 21, 16, 45, 20, 36, 30};\n         for(int i = 0; i < arr.length; i++){\n             flag = false;\n             add = 0;\n             functionTwo(arr[i]);\n         }\n    }\n}",
+      "options": [],
+      "answers": [
+        "7 0 false\n31 4 false\n24 3 false\n19 3 false\n53 8 true\n25 5 true\n40 4 false\n35 5 true\n"
+      ]
+    }
+  ]
+}
