@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTheme } from '@/contexts/ThemeContext';
-
+import api from '../api'
 interface Event {
   id: number;
   name: string;
@@ -123,7 +123,7 @@ function EventDashboard() {
         ];
 
         const response = await fetch(
-          'https://gist.githubusercontent.com/Kudostoy0u/31a422ee7cc029570e81a450ee4673cc/raw/9e1062fb980b51611ff5ff8760b4aeff2fba475b/final.json'
+          api.api
         );
         const data = await response.json();
 
