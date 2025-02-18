@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
 import { auth } from '@/lib/firebase';
 import { useTheme } from '@/contexts/ThemeContext';
-
+import api from '../api'
 interface Question {
   question: string;
   options?: string[];
@@ -35,9 +35,7 @@ interface ReportState {
   questionIndex: number | null;
 }
 
-const API_URL =
-  'https://gist.githubusercontent.com/Kudostoy0u/31a422ee7cc029570e81a450ee4673cc/raw/9e1062fb980b51611ff5ff8760b4aeff2fba475b/final.json';
-
+const API_URL = api.api
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
     <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>

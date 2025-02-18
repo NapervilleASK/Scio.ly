@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { Suspense } from 'react'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <Suspense>
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/site-logo.png" sizes="any" />
@@ -42,5 +44,6 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
+    </Suspense>
   );
 }
