@@ -753,8 +753,8 @@ def combine_bank_data(filename="beta_bank.json"):
                             "original test", "fossil above", "question (", "depicted", "projection 1", "projection 2", 
                             "projection 3", "the map?", "circular symbol", "union hill", "locations 1", "location 1", 
                             "at the right?", "on the map", "interpret the", "evidence a", "evidence b", 
-                            "evidence c", "which suspect", "what is the id ", "Are you currently in a location where you cannot see or talk to your partner?", 
-                            "honor code"
+                            "evidence c", "which suspect", "what is the id ", "are you currently in a location where you cannot see or talk to your partner?", 
+                            "honor code", "from the provided answer key"
                         ])
                     ])
             except json.JSONDecodeError:
@@ -775,6 +775,8 @@ for key, questions in combined_bank.items():
             q['difficulty'] = 0.5
         elif q['difficulty'] > 1:
             q['difficulty'] = 0.9
+        elif q['difficulty'] == 0:
+            q['difficulty'] = 0.1
 
         # 2. Convert answer elements to integers if an options list exists and is non-empty.
         if 'options' in q and isinstance(q['options'], list) and len(q['options']) > 0:
