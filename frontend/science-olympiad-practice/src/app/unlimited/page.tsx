@@ -261,16 +261,12 @@ export default function UnlimitedPracticePage() {
     if (reportState.questionIndex === null) return;
     
     const questionData = data[reportState.questionIndex];
-    const webhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
+    const mainWebhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
+    const summaryWebhookUrl = "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
 
-    if (!webhookUrl) {
-      toast.error('Report system not configured properly');
-      return;
-    }
-
-    const payload = {
+    const mainPayload = {
       embeds: [{
-        title: "Question Report (Unlimited Mode)",
+        title: "Question Report",
         color: 0xFF0000,
         fields: [
           {
@@ -295,23 +291,45 @@ export default function UnlimitedPracticePage() {
       }]
     };
 
+    const summaryPayload = {
+      embeds: [{
+        title: "❌ Question Reported",
+        description: questionData.question,
+        color: 0xFF0000,
+        fields: [
+          {
+            name: "Event",
+            value: routerData.eventName || "Unknown Event",
+            inline: true
+          }
+        ],
+        timestamp: new Date().toISOString()
+      }]
+    };
+
     const toastId = toast.loading('Sending report...');
 
     try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload)
-      });
+      // Send both webhook requests in parallel
+      const [mainResponse, summaryResponse] = await Promise.all([
+        fetch(mainWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(mainPayload)
+        }),
+        fetch(summaryWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(summaryPayload)
+        })
+      ]);
 
-      if (!response.ok) {
+      if (!mainResponse.ok || !summaryResponse.ok) {
         throw new Error('Failed to send report');
       }
 
       toast.update(toastId, {
-        render: 'Report sent successfully!',
+        render: 'Report sent successfully! We will fix this question soon. Thank you!',
         type: 'success',
         isLoading: false,
         autoClose: 3000
