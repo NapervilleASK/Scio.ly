@@ -550,10 +550,10 @@ export default function WelcomePage() {
                 </span>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center space-x-3">
+            <div className="flex flex-wrap items-center space-x-2">
               <Link
                 href="/dashboard"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                className={`px-1 py-1 rounded-md text-sm font-medium ${
                   darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
@@ -561,7 +561,7 @@ export default function WelcomePage() {
               </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
-                className={`px-2 py-2 rounded-md text-sm font-medium ${
+                className={`px-1 py-1 rounded-md text-sm ${
                   darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
