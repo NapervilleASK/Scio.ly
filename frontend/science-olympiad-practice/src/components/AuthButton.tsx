@@ -65,6 +65,7 @@ export default function AuthButton() {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       setShowSignInModal(false);
+      window.location.reload()
     } catch (error) {
       console.error('Error signing in:', error);
     }
@@ -74,6 +75,7 @@ export default function AuthButton() {
     try {
       await signOut(auth);
       setIsDropdownOpen(false);
+      window.location.reload()
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -149,8 +151,8 @@ export default function AuthButton() {
 
       <AnimatePresence>
         {showSignInModal && (
-          <div className="fixed -left-10 top-0 right-0 bottom-0 w-[110vw] h-screen bg-black bg-opacity-50 z-[100]">
-            <div className="absolute top-1/2 left-[47%] -translate-x-1/2 -translate-y-1/2">
+          <div className="fixed top-0 right-0 bottom-0 w-[100vw] h-screen bg-black bg-opacity-50 z-[100]">
+            <div className="flex align-middle mt-[35vh] justify-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}

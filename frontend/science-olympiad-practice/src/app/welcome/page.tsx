@@ -508,7 +508,7 @@ export default function WelcomePage() {
 
   return (
     // The outer container: we now use an inline style for minHeight based on our computed value.
-    <div className="relative overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
+    <div className="relative w-100 overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
       {/* Background Layers */}
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -530,7 +530,7 @@ export default function WelcomePage() {
 
       {/* Navigation Bar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-1000 ease-in-out ${
+        className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${
           darkMode ? 'bg-gray-900/90' : 'bg-white/95 shadow-md'
         }`}
       >
