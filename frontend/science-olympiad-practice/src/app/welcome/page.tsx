@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import AuthButton from '@/components/AuthButton';
 import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/utils/metrics';
@@ -15,6 +15,7 @@ import { User } from 'firebase/auth';
 import Image from 'next/image';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -809,6 +810,19 @@ export default function WelcomePage() {
         onClose={() => setContactModalOpen(false)}
         onSubmit={handleContact}
         darkMode={darkMode}
+      />
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "dark" : "light"}
       />
     </div>
   );
