@@ -414,9 +414,13 @@ export default function UnlimitedPracticePage() {
                             key={idx}
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
-                                ? 'bg-gray-700 hover:bg-gray-600'
-                                : 'bg-gray-200 hover:bg-gray-300'
-                            }`}
+                                ? isSubmitted && currentAnswer[0] === option
+                                  ? 'bg-gray-800'
+                                  : 'bg-gray-700'
+                                : isSubmitted && currentAnswer[0] === option
+                                  ? 'bg-gray-300'
+                                  : 'bg-gray-200'
+                            } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
                             <input
                               type="checkbox"
@@ -437,11 +441,15 @@ export default function UnlimitedPracticePage() {
                         {currentQuestion.options.map((option, idx) => (
                           <label
                             key={idx}
-                            className={`block p-2 rounded-md transition-colors duration-500 ease-in-out ${
+                            className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
-                                ? 'bg-gray-700 hover:bg-gray-600'
-                                : 'bg-gray-200 hover:bg-gray-300'
-                            }`}
+                                ? isSubmitted && currentAnswer[0] === option
+                                  ? 'bg-gray-800'
+                                  : 'bg-gray-700'
+                                : isSubmitted && currentAnswer[0] === option
+                                  ? 'bg-gray-300'
+                                  : 'bg-gray-200'
+                            } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
                             <input
                               type="radio"
