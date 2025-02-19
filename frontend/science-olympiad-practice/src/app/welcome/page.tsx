@@ -250,7 +250,7 @@ const AnimatedAccuracy = ({
 const WelcomeMessage = ({ darkMode, currentUser }: { darkMode: boolean; currentUser: User | null }) => {
   return (
     <div
-      className={`p-6 rounded-lg mb-8 ${
+      className={`p-6 rounded-lg mb-8 transition-colors duration-1000 ease-in-out ${
         darkMode ? 'bg-gray-800' : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)]'
       }`}
     >
@@ -545,7 +545,7 @@ export default function WelcomePage() {
                   height={32}
                   className="mr-2"
                 />
-                <span className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   Scio.ly
                 </span>
               </Link>
@@ -553,7 +553,7 @@ export default function WelcomePage() {
             <div className="flex flex-wrap items-center space-x-2">
               <Link
                 href="/dashboard"
-                className={`px-1 py-1 rounded-md text-sm font-medium ${
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
                   darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
@@ -561,7 +561,7 @@ export default function WelcomePage() {
               </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
-                className={`px-1 py-1 rounded-md text-sm ${
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${
                   darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
@@ -582,19 +582,19 @@ export default function WelcomePage() {
           {/* Metrics Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className={`p-6 rounded-lg ${cardStyle} text-center md:text-left`}>
-              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              <h3 className={`transition-colors duration-1000 ease-in-out text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                 Questions Attempted
               </h3>
               <NumberAnimation value={metrics.questionsAttempted} className="text-4xl font-bold text-blue-600" />
             </div>
             <div className={`p-6 rounded-lg ${cardStyle} text-center md:text-left`}>
-              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              <h3 className={` transition-colors duration-1000 ease-in-outtext-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                 Correct Answers
               </h3>
               <NumberAnimation value={metrics.correctAnswers} className="text-4xl font-bold text-green-600" />
             </div>
             <div className={`p-6 rounded-lg ${cardStyle} relative group text-center md:text-left`}>
-              <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              <h3 className={` transition-colors duration-1000 ease-in-out text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                 Events Practiced
               </h3>
               <NumberAnimation value={metrics.eventsPracticed} className="text-4xl font-bold text-purple-600" />
@@ -605,17 +605,17 @@ export default function WelcomePage() {
                     darkMode ? 'bg-gray-800/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'
                   }`}
               >
-                <h4 className={`text-base font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <h4 className={`transition-colors duration-1000 ease-in-out text-base font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   Event Breakdown
                 </h4>
                 <div className="space-y-2">
                   {dailyStats.eventsPracticed.map((event, index) => (
                     <div key={index}>
-                      <span className={`${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</span>
+                      <span className={`transition-colors duration-1000 ease-in-out ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</span>
                     </div>
                   ))}
                   {dailyStats.eventsPracticed.length === 0 && (
-                    <span className={`block text-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <span className={`transition-colors duration-1000 ease-in-out block text-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                       No events practiced yet
                     </span>
                   )}
@@ -628,7 +628,7 @@ export default function WelcomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             {/* Desktop Vertical Chart */}
             <div className={`hidden sm:block p-6 rounded-lg ${cardStyle}`}>
-              <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              <h2 className={`transition-colors duration-1000 ease-in-out text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Questions This Week
               </h2>
               <div className="relative h-[200px] flex items-end justify-between px-12">
@@ -636,7 +636,7 @@ export default function WelcomePage() {
                 <div className="absolute left-0 top-0 h-full flex flex-col justify-between">
                   {getYAxisScale().map((tick, index) => (
                     <div key={`y-axis-${index}`} className="flex items-center">
-                      <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <span className={`transition-colors duration-1000 ease-in-out text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                         {tick}
                       </span>
                     </div>
@@ -648,7 +648,7 @@ export default function WelcomePage() {
                     <div className="relative">
                       <div className="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         <div
-                          className={`px-2 py-1 rounded text-sm ${
+                          className={`transition-colors duration-1000 ease-in-out px-2 py-1 rounded text-sm ${
                             darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900 shadow-lg'
                           }`}
                         >
@@ -662,7 +662,7 @@ export default function WelcomePage() {
                         }}
                       />
                     </div>
-                    <span className={`text-sm mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <span className={`transition-colors duration-1000 ease-in-out text-sm mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                       {day.date}
                     </span>
                   </div>
@@ -671,7 +671,7 @@ export default function WelcomePage() {
             </div>
 
             {/* Mobile Horizontal Chart */}
-            <div className={`block sm:hidden p-6 rounded-lg ${cardStyle} ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <div className={`transition-colors duration-1000 ease-in-out block sm:hidden p-6 rounded-lg ${cardStyle} ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               <h2 className={`text-xl font-semibold mb-4`}>
                 Questions This Week
               </h2>
@@ -701,7 +701,7 @@ export default function WelcomePage() {
               >
                 {/* Front - Daily Accuracy */}
                 <div className="backface-hidden w-full">
-                  <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h2 className={`transition-colors duration-1000 ease-in-out text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     Daily Accuracy
                   </h2>
                   <div className="relative flex items-center justify-center h-[200px]">
@@ -733,7 +733,7 @@ export default function WelcomePage() {
                 </div>
                 {/* Back - Weekly Accuracy */}
                 <div className="absolute inset-0 rotate-x-180 backface-hidden w-full p-6">
-                  <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h2 className={`transition-colors duration-1000 ease-in-out text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     Weekly Accuracy
                   </h2>
                   <div className="relative flex items-center justify-center h-[200px]">
@@ -790,7 +790,7 @@ export default function WelcomePage() {
       {/* Dark Mode Toggle */}
       <button
         onClick={handleThemeToggle}
-        className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 z-50 ${
+        className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-1000 hover:scale-110 z-50 ${
           darkMode ? 'bg-gray-800' : 'bg-white'
         }`}
       >
