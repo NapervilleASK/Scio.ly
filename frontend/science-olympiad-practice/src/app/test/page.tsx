@@ -508,11 +508,15 @@ export default function TestPage() {
                               className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                                 darkMode
                                   ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? 'bg-gray-800'
+                                    ? isCorrect(item, userAnswers[index])
+                                      ? 'bg-green-800'
+                                      : 'bg-red-900'
                                     : 'bg-gray-700'
                                   : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? 'bg-gray-300'
-                                    : 'bg-gray-200'
+                                    ? isCorrect(item, userAnswers[index])
+                                      ? 'bg-green-200'
+                                      : 'bg-red-200'
+                                  : 'bg-gray-200'
                               } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                             >
                               <input
@@ -536,11 +540,15 @@ export default function TestPage() {
                               className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                                 darkMode
                                   ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? 'bg-gray-800'
+                                    ? isCorrect(item, userAnswers[index])
+                                      ? 'bg-green-800'
+                                      : 'bg-red-900'
                                     : 'bg-gray-700'
                                   : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? 'bg-gray-300'
-                                    : 'bg-gray-200'
+                                    ? isCorrect(item, userAnswers[index])
+                                      ? 'bg-green-200'
+                                      : 'bg-red-200'
+                                  : 'bg-gray-200'
                               } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                             >
                               <input
@@ -575,12 +583,18 @@ export default function TestPage() {
                         <>
                           <p
                             className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
-                              isCorrect(item, userAnswers[index])
-                                ? 'text-green-600'
-                                : 'text-red-600'
+                              !userAnswers[index]?.[0]
+                                ? 'text-blue-500'  // Skipped
+                                : isCorrect(item, userAnswers[index])
+                                  ? 'text-green-600'  // Correct
+                                  : 'text-red-600'    // Wrong
                             }`}
                           >
-                            {isCorrect(item, userAnswers[index]) ? 'Correct!' : 'Wrong!'}
+                            {!userAnswers[index]?.[0]
+                              ? 'Skipped'
+                              : isCorrect(item, userAnswers[index])
+                                ? 'Correct!'
+                                : 'Wrong!'}
                           </p>
                           <p className={`text-sm mt-1`}>
                             <strong>Correct Answer(s):</strong>{' '}

@@ -202,14 +202,6 @@ export default function UnlimitedPracticePage() {
         correctAnswers: wasAttempted && isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
         eventName: routerData.eventName || undefined
       });
-
-      if (isCorrect(currentQuestion, currentAnswer)) {
-        toast.success('Correct!');
-      } else if (wasAttempted) {
-        toast.error('Incorrect. :(');
-      } else {
-        toast.info('Question skipped');
-      }
     } catch (error) {
       console.error('Error updating metrics:', error);
     }
@@ -433,10 +425,14 @@ export default function UnlimitedPracticePage() {
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
                                 ? isSubmitted && currentAnswer[0] === option
-                                  ? 'bg-gray-800'
+                                  ? isCorrect(currentQuestion, currentAnswer)
+                                    ? 'bg-green-800'  // Correct answer in dark mode
+                                    : 'bg-red-900'    // Wrong answer in dark mode
                                   : 'bg-gray-700'
                                 : isSubmitted && currentAnswer[0] === option
-                                  ? 'bg-gray-300'
+                                  ? isCorrect(currentQuestion, currentAnswer)
+                                    ? 'bg-green-200'  // Correct answer in light mode
+                                    : 'bg-red-200'    // Wrong answer in light mode
                                   : 'bg-gray-200'
                             } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
@@ -462,10 +458,14 @@ export default function UnlimitedPracticePage() {
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
                                 ? isSubmitted && currentAnswer[0] === option
-                                  ? 'bg-gray-800'
+                                  ? isCorrect(currentQuestion, currentAnswer)
+                                    ? 'bg-green-800'  // Correct answer in dark mode
+                                    : 'bg-red-900'    // Wrong answer in dark mode
                                   : 'bg-gray-700'
                                 : isSubmitted && currentAnswer[0] === option
-                                  ? 'bg-gray-300'
+                                  ? isCorrect(currentQuestion, currentAnswer)
+                                    ? 'bg-green-200'  // Correct answer in light mode
+                                    : 'bg-red-200'    // Wrong answer in light mode
                                   : 'bg-gray-200'
                             } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
@@ -501,14 +501,18 @@ export default function UnlimitedPracticePage() {
                     <>
                       <p
                         className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
-                          isCorrect(currentQuestion, currentAnswer)
-                            ? 'text-green-600'
-                            : 'text-red-600'
+                          !currentAnswer[0] 
+                            ? 'text-blue-500'  // Skipped
+                            : isCorrect(currentQuestion, currentAnswer)
+                              ? 'text-green-600'  // Correct
+                              : 'text-red-600'    // Wrong
                         }`}
                       >
-                        {isCorrect(currentQuestion, currentAnswer)
-                          ? 'Correct!'
-                          : 'Wrong!'}
+                        {!currentAnswer[0] 
+                          ? 'Skipped'
+                          : isCorrect(currentQuestion, currentAnswer)
+                            ? 'Correct!'
+                            : 'Wrong!'}
                       </p>
                       <p className={`text-sm mt-1 transition-colors duration-1000 ease-in-out ${
 						darkMode ? 'text-white' : 'text-gray-600'
