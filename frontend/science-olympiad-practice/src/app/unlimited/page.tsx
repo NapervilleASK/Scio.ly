@@ -143,7 +143,11 @@ export default function UnlimitedPracticePage() {
         const finalQuestions =
           routerParams.types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : filteredQuestions;
+            : (
+          routerParams.types === 'free-response'
+            ? filteredQuestions.filter((q) => q.options?.length == 0)
+            : filteredQuestions
+            );
 
         // Shuffle the questions
         const shuffledQuestions = shuffleArray(finalQuestions);
@@ -202,14 +206,6 @@ export default function UnlimitedPracticePage() {
         correctAnswers: wasAttempted && isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
         eventName: routerData.eventName || undefined
       });
-
-      if (isCorrect(currentQuestion, currentAnswer)) {
-        toast.success('Correct!');
-      } else if (wasAttempted) {
-        toast.error('Incorrect. :(');
-      } else {
-        toast.info('Question skipped');
-      }
     } catch (error) {
       console.error('Error updating metrics:', error);
     }

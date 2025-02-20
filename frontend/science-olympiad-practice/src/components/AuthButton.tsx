@@ -101,7 +101,7 @@ export default function AuthButton() {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="flex items-center space-x-2 focus:outline-none"
+          className="flex items-center space-x-4 focus:outline-none"
         >
           <div className="w-8 h-8 rounded-full overflow-hidden">
             {user.photoURL ? (

@@ -70,7 +70,7 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="fixed inset-0 h-screen bg-black bg-opacity-50 flex items-center justify-center z-50"
           onClick={(e) => {
             if (e.target === e.currentTarget) onClose();
           }}
@@ -151,7 +151,7 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps
                   />
                 </div>
               </div>
-              <div className="flex justify-end space-x-3 mt-6">
+              <div className="flex justify-end space-x-5 mt-6">
                 <button
                   type="button"
                   onClick={onClose}
@@ -283,6 +283,8 @@ export default function WelcomePage() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [historyData, setHistoryData] = useState<Record<string, HistoricalMetrics>>({});
   const [showWeekly, setShowWeekly] = useState(false);
+  // State for Recent Events tooltip/modal
+  const [showEventsTooltip, setShowEventsTooltip] = useState(false);
 
   // --- New: Compute window width and extra height on mobile ---
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
@@ -293,14 +295,14 @@ export default function WelcomePage() {
       const width = window.innerWidth;
       const height = window.innerHeight;
       setWindowWidth(width);
-      let increments = 0
+      let increments = 0;
       if (width < 414) {
         const diff = 414 - width;
         increments += Math.floor(diff / 4);
       }
       if (height < 700) {
         const diff = 700 - extraHeight;
-        increments += Math.floor(diff/22)
+        increments += Math.floor(diff / 22);
       }
       setExtraHeight(increments);
     }
@@ -312,7 +314,7 @@ export default function WelcomePage() {
 
   // Compute the minimum height style:
   // - On mobile (width below 414px): baseline 220vw + extra (1vh per 10px below 414px)
-  // - Otherwise: fixed 110vw
+  // - Otherwise: fixed 110vh
   const computedMinHeight =
     windowWidth === null || windowWidth < 1000
       ? `calc(190vh + ${extraHeight}vh)`
@@ -506,8 +508,10 @@ export default function WelcomePage() {
   const weekData = generateWeeklyData().questions;
   const maxCount = Math.max(...weekData.map((day) => day.count), 1);
 
+  // Determine if we are on a mobile screen (width 1000 or less)
+  const isMobile = windowWidth !== null && windowWidth <= 1000;
+
   return (
-    // The outer container: we now use an inline style for minHeight based on our computed value.
     <div className="relative w-100 overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
       {/* Background Layers */}
       <div
@@ -550,7 +554,7 @@ export default function WelcomePage() {
                 </span>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center space-x-2">
+            <div className="flex flex-wrap items-center space-x-4">
               <Link
                 href="/dashboard"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
@@ -588,39 +592,107 @@ export default function WelcomePage() {
               <NumberAnimation value={metrics.questionsAttempted} className="text-4xl font-bold text-blue-600" />
             </div>
             <div className={`p-6 rounded-lg ${cardStyle} text-center md:text-left`}>
-              <h3 className={` transition-colors duration-1000 ease-in-outtext-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              <h3 className={`transition-colors duration-1000 ease-in-out text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                 Correct Answers
               </h3>
               <NumberAnimation value={metrics.correctAnswers} className="text-4xl font-bold text-green-600" />
             </div>
-            <div className={`p-6 rounded-lg ${cardStyle} relative group text-center md:text-left`}>
-              <h3 className={` transition-colors duration-1000 ease-in-out text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                Events Practiced
+            <div
+              className={`p-6 rounded-lg ${cardStyle} relative text-center md:text-left`}
+              {...(isMobile
+                ? { onClick: () => setShowEventsTooltip((prev) => !prev) }
+                : { onMouseEnter: () => setShowEventsTooltip(true), onMouseLeave: () => setShowEventsTooltip(false) }
+              )}
+            >
+              <h3 className={`transition-colors duration-1000 ease-in-out text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              Events Practiced
               </h3>
               <NumberAnimation value={metrics.eventsPracticed} className="text-4xl font-bold text-purple-600" />
-              {/* Tooltip */}
-              <div
-                className={`absolute left-0 w-96 p-4 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 
-                  transition-opacity duration-200 pointer-events-none z-10 -bottom-2 translate-y-full ${
-                    darkMode ? 'bg-gray-800/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'
-                  }`}
-              >
-                <h4 className={`transition-colors duration-1000 ease-in-out text-base font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Event Breakdown
-                </h4>
-                <div className="space-y-2">
-                  {dailyStats.eventsPracticed.map((event, index) => (
-                    <div key={index}>
-                      <span className={`transition-colors duration-1000 ease-in-out ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</span>
-                    </div>
-                  ))}
-                  {dailyStats.eventsPracticed.length === 0 && (
-                    <span className={`transition-colors duration-1000 ease-in-out block text-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                      No events practiced yet
-                    </span>
-                  )}
+              {/* Up-right arrow icon for mobile */}
+              {isMobile && (
+                <div className="absolute top-2 right-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M7 7h10v10" />
+                  </svg>
                 </div>
-              </div>
+              )}
+              {/* Tooltip / Modal for Recent Events */}
+              {showEventsTooltip && (
+                isMobile ? (
+                  <AnimatePresence>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="fixed inset-0 h-screen bg-black bg-opacity-50 flex items-center justify-center z-50"
+                      onClick={() => setShowEventsTooltip(false)}
+                    >
+                      <motion.div
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.95, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className={`rounded-lg p-6 w-[600px] max-h-[90vh] overflow-y-auto ${
+                          darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+                        }`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="flex justify-between items-center mb-4">
+                          <h2 className="text-xl font-semibold text-center w-full">&nbsp;&nbsp;&nbsp;Recent Events</h2>
+                          <button onClick={() => setShowEventsTooltip(false)} className="text-gray-500 hover:text-gray-700">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          {dailyStats.eventsPracticed.length > 0 ? (
+                            dailyStats.eventsPracticed.map((event, index) => (
+                              <div key={index}>
+                                <span className={darkMode ? 'text-blue-400' : 'text-blue-600'}>{event}</span>
+                              </div>
+                            ))
+                          ) : (
+                            <span className={`block text-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                              No events practiced yet
+                            </span>
+                          )}
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </AnimatePresence>
+                ) : (
+                  <div
+                    className="absolute left-0 top-[15vh] z-10"
+                    onMouseEnter={() => setShowEventsTooltip(true)}
+                    onMouseLeave={() => setShowEventsTooltip(false)}
+                  >
+                    <div className="p-4">
+                      <div
+                        className={`w-96 p-4 rounded-lg shadow-xl transition-opacity duration-200 pointer-events-auto ${
+                          darkMode ? 'bg-gray-800/95 backdrop-blur-sm text-white' : 'bg-white/95 backdrop-blur-sm text-gray-900'
+                        }`}
+                      >
+                        <h4 className="text-base font-semibold">Recent Events </h4>
+                        <div className="space-y-2">
+                          {dailyStats.eventsPracticed.length > 0 ? (
+                            dailyStats.eventsPracticed.map((event, index) => (
+                              <div key={index}>
+                                <Link href={{ pathname: "/dashboard", query: { event: event } }} className={`mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</Link>
+                              </div>
+                            ))
+                          ) : (
+                            <span className={`mt-1 block ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                              No events practiced yet
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -672,7 +744,7 @@ export default function WelcomePage() {
 
             {/* Mobile Horizontal Chart */}
             <div className={`transition-colors duration-1000 ease-in-out block sm:hidden p-6 rounded-lg ${cardStyle} ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              <h2 className={`text-xl font-semibold mb-4`}>
+              <h2 className="text-xl font-semibold mb-4">
                 Questions This Week
               </h2>
               <div className="flex flex-col space-y-3">
@@ -846,7 +918,30 @@ export default function WelcomePage() {
         pauseOnHover
         theme={darkMode ? 'dark' : 'light'}
       />
-      <br/>
+        {/* Add styled scrollbar */}
+        <style jsx global>{`
+          ::-webkit-scrollbar {
+            width: 8px;
+            ${darkMode
+              ? 'background: black;'
+              : 'background: white;'
+            }
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+              : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
+            border-radius: 4px;
+            transition: background 1s ease;
+          }     
+          ::-webkit-scrollbar-thumb:hover {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+              : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
+          }
+        `}</style>
+      <br />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTheme } from '@/contexts/ThemeContext';
 import api from '../api';
@@ -21,6 +21,7 @@ function EventDashboard() {
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [settings, setSettings] = useState({
     questionCount: 50,
@@ -98,33 +99,32 @@ function EventDashboard() {
         setLoading(true);
 
         const whitelist = [
-          { name: "Anatomy - Skeletal", category: "Life, Personal & Social Science" },
-          { name: "Anatomy - Muscular", category: "Life, Personal & Social Science" },
-          { name: "Anatomy - Integumentary", category: "Life, Personal & Social Science" },
+          { name: "Anatomy - Skeletal", category: "Life & Social Science" },
+          { name: "Anatomy - Muscular", category: "Life & Social Science" },
+          { name: "Anatomy - Integumentary", category: "Life & Social Science" },
           { name: "Astronomy", category: "Earth and Space Science" },
-          { name: "Cell Biology", category: "Life, Personal & Social Science" },
+          { name: "Cell Biology", category: "Life & Social Science" },
           { name: "Chemistry Lab", category: "Physical Science & Chemistry" },
           { name: "Codebusters", category: "Inquiry & Nature of Science" },
           { name: "Crime Busters", category: "Physical Science & Chemistry" },
-          { name: "Disease Detectives", category: "Life, Personal & Social Science" },
+          { name: "Disease Detectives", category: "Life & Social Science" },
           { name: "Dynamic Planet - Glaciers", category: "Earth and Space Science" },
-          { name: "Ecology", category: "Life, Personal & Social Science" },
-          { name: "Entomology", category: "Life, Personal & Social Science" },
-          { name: "Environmental Chemistry", category: "Life, Personal & Social Science" },
+          { name: "Ecology", category: "Life & Social Science" },
+          { name: "Entomology", category: "Life & Social Science" },
+          { name: "Environmental Chemistry", category: "Life & Social Science" },
           { name: "Forensics", category: "Physical Science & Chemistry" },
           { name: "Fossils", category: "Earth and Space Science" },
           { name: "Geologic Mapping", category: "Earth and Space Science" },
-          { name: "Green Generation", category: "Life, Personal & Social Science" },
+          { name: "Green Generation", category: "Life & Social Science" },
           { name: "Materials Science", category: "Physical Science & Chemistry" },
           { name: "Meteorology", category: "Earth and Space Science" },
           { name: "Metric Mastery", category: "Inquiry & Nature of Science" },
-          { name: "Microbe Mission", category: "Life, Personal & Social Science" },
+          { name: "Microbe Mission", category: "Life & Social Science" },
           { name: "Optics", category: "Physical Science & Chemistry" },
           { name: "Potions and Poisons", category: "Physical Science & Chemistry" },
           { name: "Reach for the Stars", category: "Earth and Space Science" },
           { name: "Road Scholar", category: "Earth and Space Science" },
           { name: "Wind Power", category: "Physical Science & Chemistry" },
-          { name: "Fun", category: "Miscellaneous" }
         ];
 
         const response = await fetch(api.api);
@@ -158,8 +158,23 @@ function EventDashboard() {
     fetchEvents();
   }, []);
 
+  // Preselect and scroll to the event if a query parameter is provided.
+  useEffect(() => {
+    const preselectedEventName = searchParams.get('event');
+    if (preselectedEventName && events.length > 0) {
+      const eventToSelect = events.find(
+        (event) => event.name === preselectedEventName
+      );
+      if (eventToSelect) {
+        setSelectedEvent(eventToSelect.id);
+        // Scroll the matching list item into view.
+        const element = document.getElementById(`event-${eventToSelect.id}`);
+        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [events, searchParams]);
+
   return (
-    // Outer container: on mobile, minimum height is 180vh; on desktop, it's 100vh.
     <div className="relative min-h-[180vh] md:min-h-screen">
       {/* Background Layers */}
       <div
@@ -335,6 +350,7 @@ function EventDashboard() {
                     >
                       <option value="multiple-choice">MCQ only</option>
                       <option value="both">MCQ + FRQ</option>
+                      <option value="free-response">FRQ only</option>
                     </select>
                   </div>
                   <button
@@ -366,7 +382,7 @@ function EventDashboard() {
                   darkMode ? 'bg-palenight-100 shadow-gray-700' : 'bg-white shadow-lg'
                 } p-6 rounded-lg`}
               >
-                <ul className="max-h-[67vh] overflow-y-auto overflow-x-hidden px-2">
+                <ul className="max-h-[67vh] overflow-y-scroll overflow-x-hidden px-2">
                   <style jsx>{`
                     ul::-webkit-scrollbar {
                       width: 8px;
@@ -387,6 +403,7 @@ function EventDashboard() {
                   {sortedEvents.map((event) => (
                     <li
                       key={event.id}
+                      id={`event-${event.id}`}
                       className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
                         selectedEvent === event.id
                           ? darkMode
@@ -399,10 +416,10 @@ function EventDashboard() {
                       onClick={() => selectEvent(event.id)}
                     >
                       <div className="flex justify-between items-center">
-                        <h2 className={`text-lg font-semibold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-black'}`}>
+                        <h2 className={`w-[70%] text-lg font-semibold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-black'}`}>
                           {event.name}
                         </h2>
-                        <p className={`text-sm text-right transition-colors duration-1000 ease-in-out ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                        <p className={`w-[50%] text-sm text-right transition-colors duration-1000 ease-in-out ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {event.subject}
                         </p>
                       </div>

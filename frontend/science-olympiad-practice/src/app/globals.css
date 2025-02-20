@@ -120,9 +120,6 @@ body {
 * {
   -ms-overflow-style: none;
 }
-::-webkit-scrollbar {
-  display: none;
-}
 
 .perspective-1000 {
   perspective: 1000px;
