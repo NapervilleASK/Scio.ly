@@ -247,6 +247,11 @@ export default function HomePage() {
           </div>
         </div>
       </motion.section>
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
