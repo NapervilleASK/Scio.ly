@@ -143,7 +143,11 @@ export default function UnlimitedPracticePage() {
         const finalQuestions =
           routerParams.types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : filteredQuestions;
+            : (
+          routerParams.types === 'free-response'
+            ? filteredQuestions.filter((q) => q.options?.length == 0)
+            : filteredQuestions
+            );
 
         // Shuffle the questions
         const shuffledQuestions = shuffleArray(finalQuestions);

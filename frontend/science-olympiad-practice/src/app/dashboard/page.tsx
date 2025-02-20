@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect} from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTheme } from '@/contexts/ThemeContext';
-import api from '../api'
+import api from '../api';
+
 interface Event {
   id: number;
   name: string;
@@ -20,6 +21,7 @@ function EventDashboard() {
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [settings, setSettings] = useState({
     questionCount: 50,
@@ -28,7 +30,9 @@ function EventDashboard() {
     types: 'multiple-choice',
   });
 
-  const handleChange = (e: { target: { id: number | string; value: number | string } }) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
     setSettings((prev) => ({
       ...prev,
@@ -48,7 +52,9 @@ function EventDashboard() {
     );
 
     if (!selectedEventDetails) {
-      toast.info('Please select an event to start practicing.', {theme:'dark'});
+      toast.info('Please select an event to start practicing.', {
+        theme: 'dark',
+      });
       return;
     }
 
@@ -65,16 +71,16 @@ function EventDashboard() {
     );
 
     if (!selectedEventDetails) {
-      toast.info('Please select an event to generate the test.', {theme: 'dark'});
+      toast.info('Please select an event to generate the test.', {
+        theme: 'dark',
+      });
       return;
     }
 
     router.push(
       `/test?eventName=${encodeURIComponent(
         selectedEventDetails.name
-      )}&questionCount=${settings.questionCount}&timeLimit=${
-        settings.timeLimit
-      }&difficulty=${settings.difficulty}&types=${settings.types}`
+      )}&questionCount=${settings.questionCount}&timeLimit=${settings.timeLimit}&difficulty=${settings.difficulty}&types=${settings.types}`
     );
   };
 
@@ -93,38 +99,35 @@ function EventDashboard() {
         setLoading(true);
 
         const whitelist = [
-          { name: "Anatomy - Skeletal", category: "Life, Personal & Social Science" },
-          { name: "Anatomy - Muscular", category: "Life, Personal & Social Science" },
-          { name: "Anatomy - Integumentary", category: "Life, Personal & Social Science" },
+          { name: "Anatomy - Skeletal", category: "Life & Social Science" },
+          { name: "Anatomy - Muscular", category: "Life & Social Science" },
+          { name: "Anatomy - Integumentary", category: "Life & Social Science" },
           { name: "Astronomy", category: "Earth and Space Science" },
-          { name: "Cell Biology", category: "Life, Personal & Social Science" },
+          { name: "Cell Biology", category: "Life & Social Science" },
           { name: "Chemistry Lab", category: "Physical Science & Chemistry" },
           { name: "Codebusters", category: "Inquiry & Nature of Science" },
           { name: "Crime Busters", category: "Physical Science & Chemistry" },
-          { name: "Disease Detectives", category: "Life, Personal & Social Science" },
-          { name: "Dynamic Planet", category: "Earth and Space Science" },
-          { name: "Ecology", category: "Life, Personal & Social Science" },
-          { name: "Entomology", category: "Life, Personal & Social Science" },
-          { name: "Environmental Chemistry", category: "Life, Personal & Social Science" },
+          { name: "Disease Detectives", category: "Life & Social Science" },
+          { name: "Dynamic Planet - Glaciers", category: "Earth and Space Science" },
+          { name: "Ecology", category: "Life & Social Science" },
+          { name: "Entomology", category: "Life & Social Science" },
+          { name: "Environmental Chemistry", category: "Life & Social Science" },
           { name: "Forensics", category: "Physical Science & Chemistry" },
           { name: "Fossils", category: "Earth and Space Science" },
           { name: "Geologic Mapping", category: "Earth and Space Science" },
-          { name: "Green Generation", category: "Life, Personal & Social Science" },
+          { name: "Green Generation", category: "Life & Social Science" },
           { name: "Materials Science", category: "Physical Science & Chemistry" },
           { name: "Meteorology", category: "Earth and Space Science" },
           { name: "Metric Mastery", category: "Inquiry & Nature of Science" },
-          { name: "Microbe Mission", category: "Life, Personal & Social Science" },
+          { name: "Microbe Mission", category: "Life & Social Science" },
           { name: "Optics", category: "Physical Science & Chemistry" },
           { name: "Potions and Poisons", category: "Physical Science & Chemistry" },
           { name: "Reach for the Stars", category: "Earth and Space Science" },
           { name: "Road Scholar", category: "Earth and Space Science" },
           { name: "Wind Power", category: "Physical Science & Chemistry" },
-          { name: "Write It Do It", category: "Inquiry & Nature of Science" },
         ];
 
-        const response = await fetch(
-          api.api
-        );
+        const response = await fetch(api.api);
         const data = await response.json();
 
         const eventsFromURL: Event[] = Object.keys(data)
@@ -134,16 +137,13 @@ function EventDashboard() {
             subject: data[key].category || 'Uncategorized',
           }))
           .filter((event) =>
-            whitelist.some(
-              (whitelisted) => event.name === whitelisted.name
-            )
+            whitelist.some((whitelisted) => event.name === whitelisted.name)
           )
           .map((event) => ({
             ...event,
             subject:
-              whitelist.find(
-                (whitelisted) => whitelisted.name === event.name
-              )?.category || event.subject,
+              whitelist.find((whitelisted) => whitelisted.name === event.name)
+                ?.category || event.subject,
           }));
 
         setEvents(eventsFromURL);
@@ -158,9 +158,24 @@ function EventDashboard() {
     fetchEvents();
   }, []);
 
+  // Preselect and scroll to the event if a query parameter is provided.
+  useEffect(() => {
+    const preselectedEventName = searchParams.get('event');
+    if (preselectedEventName && events.length > 0) {
+      const eventToSelect = events.find(
+        (event) => event.name === preselectedEventName
+      );
+      if (eventToSelect) {
+        setSelectedEvent(eventToSelect.id);
+        // Scroll the matching list item into view.
+        const element = document.getElementById(`event-${eventToSelect.id}`);
+        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [events, searchParams]);
+
   return (
-    // Wrap the whole page in a relative container
-    <div className="relative min-h-screen">
+    <div className="relative min-h-[180vh] md:min-h-screen">
       {/* Background Layers */}
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -185,13 +200,19 @@ function EventDashboard() {
           Scio.ly Dashboard
         </h1>
         {loading ? (
-          <p className={`transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-black'}`}>
+          <p
+            className={`transition-colors duration-1000 ease-in-out ${
+              darkMode ? 'text-white' : 'text-black'
+            }`}
+          >
             Loading events...
           </p>
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : events.length === 0 ? (
-          <p className="text-gray-500">No events match the whitelist criteria.</p>
+          <p className="text-gray-500">
+            No events match the whitelist criteria.
+          </p>
         ) : (
           <>
             <div className="mb-6">
@@ -221,8 +242,10 @@ function EventDashboard() {
             <div className="w-full max-w-4xl flex flex-col md:flex-row gap-6">
               {/* Test Configuration */}
               <div
-                className={`md:order-1 w-full md:w-80 transition-all duration-1000 ease-in-out ${
-                  darkMode ? 'bg-palenight-100 shadow-gray-700' : 'bg-white shadow-lg'
+                className={`w-full md:w-80 transition-all duration-1000 ease-in-out ${
+                  darkMode
+                    ? 'bg-palenight-100 shadow-gray-700'
+                    : 'bg-white shadow-lg'
                 } p-8 rounded-lg`}
               >
                 <h2
@@ -251,10 +274,10 @@ function EventDashboard() {
                       max="100"
                       value={settings.questionCount}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out p-2 ${
                         darkMode
-                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
-                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
+                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100'
+                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500'
                       }`}
                     />
                   </div>
@@ -274,10 +297,10 @@ function EventDashboard() {
                       max="120"
                       value={settings.timeLimit}
                       onChange={handleChange}
-                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out ${
+                      className={`mt-1 block w-full rounded-md border-none outline-none transition-all duration-1000 ease-in-out p-2 ${
                         darkMode
-                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100 p-2'
-                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2'
+                          ? 'border-gray-600 bg-gray-800 text-white shadow-sm focus:border-regalblue-100 focus:ring-regalblue-100'
+                          : 'border-gray-300 bg-gradient-to-r from-blue-50 to-cyan-50 text-black shadow-sm focus:border-blue-500 focus:ring-blue-500'
                       }`}
                     />
                   </div>
@@ -327,44 +350,43 @@ function EventDashboard() {
                     >
                       <option value="multiple-choice">MCQ only</option>
                       <option value="both">MCQ + FRQ</option>
+                      <option value="free-response">FRQ only</option>
                     </select>
                   </div>
-                <button
-                  onClick={handleGenerateTest}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transform transition-all duration-700 transform hover:scale-105  ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}
-                >
-                  Generate Test
-                </button>
-                <button
-                  onClick={handleUnlimited}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-700 transform hover:scale-105 ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}
-                >
-                  Unlimited Practice
-                </button>
+                  <button
+                    onClick={handleGenerateTest}
+                    className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-700 transform hover:scale-105 ${
+                      darkMode
+                        ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                        : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                    }`}
+                  >
+                    Generate Test
+                  </button>
+                  <button
+                    onClick={handleUnlimited}
+                    className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-700 transform hover:scale-105 ${
+                      darkMode
+                        ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                        : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                    }`}
+                  >
+                    Unlimited Practice
+                  </button>
                 </div>
               </div>
 
               {/* Event List */}
               <div
-                className={`md:order-2 flex-1 transition-all duration-1000 ease-in-out ${
+                className={`flex-1 transition-all duration-1000 ease-in-out ${
                   darkMode ? 'bg-palenight-100 shadow-gray-700' : 'bg-white shadow-lg'
                 } p-6 rounded-lg`}
               >
-                <ul className="max-h-[67vh] overflow-y-auto overflow-x-hidden px-2">
+                <ul className="max-h-[67vh] overflow-y-scroll overflow-x-hidden px-2">
                   <style jsx>{`
                     ul::-webkit-scrollbar {
                       width: 8px;
-                      display: block !important;
                     }
-
                     ul::-webkit-scrollbar-thumb {
                       background: ${darkMode
                         ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
@@ -381,6 +403,7 @@ function EventDashboard() {
                   {sortedEvents.map((event) => (
                     <li
                       key={event.id}
+                      id={`event-${event.id}`}
                       className={`py-4 px-4 mx-2 my-1 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
                         selectedEvent === event.id
                           ? darkMode
@@ -393,10 +416,10 @@ function EventDashboard() {
                       onClick={() => selectEvent(event.id)}
                     >
                       <div className="flex justify-between items-center">
-                        <h2 className={`text-lg font-semibold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-black'}`}>
+                        <h2 className={`w-[70%] text-lg font-semibold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-black'}`}>
                           {event.name}
                         </h2>
-                        <p className={`text-sm text-right transition-colors duration-1000 ease-in-out ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                        <p className={`w-[50%] text-sm text-right transition-colors duration-1000 ease-in-out ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {event.subject}
                         </p>
                       </div>
@@ -404,78 +427,71 @@ function EventDashboard() {
                   ))}
                 </ul>
               </div>
-
-              {/* Back Button (bottom-left) */}
-              <button
-                onClick={() => router.push('/welcome')}
-                className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
-                  darkMode
-                    ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white hover:shadow-regalblue-100/50'
-                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:shadow-blue-500/50'
-                }`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
-              </button>
             </div>
           </>
         )}
         <ToastContainer />
 
-        {/* Dark Mode Toggle (bottom-right) */}
+        {/* Back Button (bottom-left) */}
         <button
-          onClick={() => setDarkMode(!darkMode)}
-          className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
-            darkMode ? 'bg-gray-700' : 'bg-white'
+          onClick={() => router.push('/welcome')}
+          className={`fixed bottom-8 left-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
+            darkMode
+              ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white hover:shadow-regalblue-100/50'
+              : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:shadow-blue-500/50'
           }`}
         >
-          {darkMode ? (
-            // Sun icon (click to switch to light mode)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-yellow-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
-              />
-            </svg>
-          ) : (
-            // Moon icon (click to switch to dark mode)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-blue-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
-              />
-            </svg>
-          )}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
         </button>
       </div>
+
+      {/* Dark Mode Toggle (bottom-right) */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
+          darkMode ? 'bg-gray-700' : 'bg-white'
+        }`}
+      >
+        {darkMode ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-yellow-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-blue-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+            />
+          </svg>
+        )}
+      </button>
     </div>
   );
 }

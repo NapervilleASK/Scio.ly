@@ -155,7 +155,11 @@ export default function TestPage() {
         const finalQuestions =
           types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : filteredQuestions;
+            : (
+          types === 'free-response'
+            ? filteredQuestions.filter((q) => q.options?.length == 0)
+            : filteredQuestions
+            );
 
         function shuffleArray<T>(array: T[]): T[] {
           const newArray = [...array];
@@ -388,6 +392,11 @@ export default function TestPage() {
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 8px;
+            transition: background 1s ease;
+            ${darkMode
+              ? 'background: black;'
+              : 'background: white;'
+            }
           }
 
           ::-webkit-scrollbar-thumb {
@@ -396,8 +405,7 @@ export default function TestPage() {
               : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
             border-radius: 4px;
             transition: background 1s ease;
-          }
-          
+          }     
           ::-webkit-scrollbar-thumb:hover {
             background: ${darkMode
               ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'

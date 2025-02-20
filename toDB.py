@@ -31,7 +31,6 @@ titles = {
     'mousetrap vehicle': 'Mousetrap Vehicle',
     'immune': 'Anatomy - Immune',
     'waste': 'Ecology',  # Mapped to Ecology
-    'dynamic planet': 'Dynamic Planet',
     'machines': 'Machines',
     'lymphatic': 'Anatomy - Lymphatic',
     'astronomy': 'Astronomy',
@@ -68,7 +67,6 @@ titles = {
     'anatomy_digestive': 'Anatomy - Digestive',
     'green generation': 'Green Generation',
     'anatomy_muscular': 'Anatomy - Muscular',
-    'earth science': "Dynamic Planet", 
     'physics terms': "Physics Lab", 
     'bungee drop': 'Bungee Drop',
     'protein modeling': 'Protein Modeling',
@@ -95,7 +93,6 @@ titles = {
     'engineering': "Detector Building", 
     'anatomy - excretory': 'Anatomy - Excretory',
     'tower': 'Tower',
-    'climate': "Dynamic Planet", 
     'solutions to negative human impact on environment': "Green Generation", 
     'psychoactive drugs': "Interrogating the Brain", 
     'wind_power': 'Wind Power',
@@ -117,7 +114,6 @@ titles = {
     'rocks and minerals free response': 'Rocks and Minerals',
     'forensics': 'Forensics',
     'designer genes': 'Designer Genes',
-    'dynamic_planet': 'Dynamic Planet',
     'chemistry lab': 'Chemistry Lab',
     'fingerprinting': "Forensics", 
     'anatomy - respiratory': 'Anatomy - Respiratory',
@@ -167,7 +163,6 @@ titles = {
     "designer genes": "Designer Genes",
     "detector building": "Detector Building",
     "disease detectives": "Disease Detectives",
-    "dynamic planet": "Dynamic Planet",
     "ecology": "Ecology",
     "electric vehicle": "Electric Vehicle",
     "entomology": "Entomology",
@@ -215,6 +210,11 @@ titles = {
     "water_quality": "Water Quality",
     "population_dynamics": "Ecology", # or possibly Dynamic Planet if focusing on changing populations over time
     "biogeochemical_cycles": "Environmental Chemistry", # or potentially Dynamic Planet or Ecology
+    "dynamic planet - glaciers": "Dynamic Planet - Glaciers",
+    "dynamic planet - earthquakes, volcanoes, and tectonics": "Dynamic Planet - Earthquakes, Volcanoes, and Tectonics",
+    "dynamic planet - earth's fresh waters": "Dynamic Planet - Earth's Fresh Waters",
+    "dynamic planet - oceanography": "Dynamic Planet - Oceanography",
+    "dynamic planet - tectonics": "Dynamic Planet - Tectonics",
     "sustainability": "Green Generation",
     "community_interactions": "Ecology",
     "legislation": "Green Generation", # Unrelated to listed events
@@ -228,7 +228,6 @@ titles = {
     "nutrient cycles": "Ecology", # Related to chemical processes in the environment
     "human impacts": "Environmental Chemistry", # Or potentially Ecology
     "air quality": "Environmental Chemistry",
-    "climate change": "Dynamic Planet", # Most directly related
     "sustainability": "Green Generation",
     "pollution prevention": "Environmental Chemistry", # Or Green Generation
     "plant science": "Plant Biology", # or potentially Forestry
@@ -248,7 +247,6 @@ titles = {
     'scientific_method': 'Experimental Design',
     'linguistics': 'Codebusters',
     'geophysics': 'Geologic Mapping',
-    'glaciology': "Dynamic Planet",
     'microscopy': "Microbe Mission",
     'tools and analysis': "Chemistry Lab",
     'geologic_mapping': 'Geologic Mapping',
@@ -256,7 +254,6 @@ titles = {
     'taxonomy': 'Ornithology',
     'anatomy_sense_organs': 'Anatomy - Sense Organs',
     'aquatic': "Water Quality",
-    'air_quality': 'Dynamic Planet',
     'climate_change': 'Ecology',
     'sustainability_strategies': 'Ecology',
     'horticulture': 'Plant Biology',
@@ -296,7 +293,6 @@ titles = {
     'protein modeling and crispr-cas systems': 'Protein Modeling',
     'remote sensing and climate change': 'Remote Sensing',
     'remote sensing and the atmosphere': 'Remote Sensing',
-    'plate tectonics': 'Dynamic Planet',
     'pathophysiology': 'Disease Detectives',
     'aviation': 'Flight',
     'robot tour': 'Robot Arm',
@@ -307,7 +303,6 @@ titles = {
     'taphonomy': 'Fossils',
     'case studies': 'Forensics',
     'general principles of ecology': 'Ecology',
-    'oceans, climate, and climatographs': 'Dynamic Planet',
     'earth_science': 'Geologic Mapping',
     'vegetation, soil, and drought': 'Forestry',
     'paleobotany': 'Fossils',
@@ -319,7 +314,6 @@ titles = {
     'mycology': 'Microbe Mission',
     'extraordinary enso': 'Meteorology',
     'earth structure': 'Rocks and Minerals',
-    'ocean floor': 'Dynamic Planet',
     'physical properties': 'Materials Science',
     'anatomy - physiology': 'Anatomy - Cardiovascular',
     'anatomy - disease': 'Disease Detectives',
@@ -456,7 +450,6 @@ titles = {
     'polymer testing': 'Materials Science',
     'crave the wave': 'Crave the Wave',
     'animal biology': 'Cell Biology',
-    'dynamic planet free response': 'Dynamic Planet',
     'constellations': 'Astronomy',
     'technology': None,
     'bacterial physiology': 'Microbe Mission',
@@ -581,7 +574,98 @@ titles = {
     'clash of clans': 'Fun',
     'scioly events': None,
     'instruments and miscellaneous topics': 'Sounds of Music',
-    'no_event': None
+    'no_event': None,
+    'chemistry - organic': 'Chemistry Lab',
+    'fatty acids': 'Chemistry Lab',
+    'dynamic planet - glaciers': 'Dynamic Planet - Glaciers',
+    'matching': 'Experimental Design',
+    'earth science - astronomy': 'Astronomy',
+    'mystery architecture': 'Tower',
+    'test_type': 'Experimental Design',
+    'earth science - oceanography': 'Dynamic Planet - Oceanography',
+    'muscular system and joints': 'Anatomy - Muscular',
+    'no category': 'Fun',
+    'experiment and data analysis': 'Experimental Design',
+    'earth science': 'Geologic Mapping',
+    'cryptography - theory and hands on': 'Codebusters',
+    'internet terminology': 'Cybersecurity',
+    'designer genes - crispr': 'Designer Genes',
+    'pedigrees & karyotypes': 'Cell Biology',
+    'anatomy - case studies': 'Anatomy - Muscular',
+    'chemistry - solutions': 'Chemistry Lab',
+    'indoor agriculture': 'Plant Biology',
+    'dynamic planet - tectonics': 'Dynamic Planet - Tectonics',
+    "dynamic planet - earth's fresh waters": "Dynamic Planet - Earth's Fresh Waters",
+    'event coordinators': 'Wright Stuff',
+    'chemistry - general': 'Chemistry Lab',
+    'chemistry - acid/base': 'Chemistry Lab',
+    'browser concepts': 'Cybersecurity',
+    'wind energy': 'Wind Power',
+    'coral reef macroflora and fauna': 'Water Quality',
+    'crime scene': 'Crime Busters',
+    'astronomy - quantum': 'Astronomy',
+    'algorithm design': 'Data Science',
+    'highway': 'Road Scholar',
+    'physics - equations': 'Physics Lab',
+    'event organization': 'Technical Problem Solving',
+    'authentication and security': 'Cybersecurity',
+    'experimental and data analysis': 'Experimental Design',
+    'score statistics': 'Fermi Questions',
+    'towers': 'Tower',
+    'anatomy - misc': 'Anatomy - Integumentary',
+    'physics - astronomy': 'Astronomy',
+    'circuit lab - free response': 'Circuit Lab',
+    'dynamic planet - oceanography': 'Dynamic Planet - Oceanography',
+    'chemistry - reactions': 'Chemistry Lab',
+    'symmetric cryptosystems': 'Codebusters',
+    'anatomy - respiratory/anatomy - muscular': 'Anatomy - Respiratory',
+    'maine mileage diagram': 'Road Scholar',
+    'physics - kinematics': 'Physics Lab',
+    'physics - vectors': 'Physics Lab',
+    'chemistry lab free response': 'Chemistry Lab',
+    'physics - thermodynamics': 'Thermodynamics',
+    'energy conservation': 'Physics Lab',
+    'water monitoring and analysis': 'Water Quality',
+    'chemistry - bonding': 'Chemistry Lab',
+    'earth science - geology': 'Geologic Mapping',
+    'cell cycle & chromosomes': 'Cell Biology',
+    'anatomy - muscular - true/false': 'Anatomy - Muscular',
+    'write it cad it': 'Machines',
+    'anatomy - cardiovascular (tiebreaker)': 'Anatomy - Cardiovascular',
+    'chemistry - quantum mechanics': 'Chemistry Lab',
+    'road scholar b': 'Road Scholar',
+    'sounds of music fill in the blank': 'Sounds of Music',
+    'physics - forces': 'Physics Lab',
+    'event logistics': 'Mission Possible',
+    'circuitlab': 'Circuit Lab',
+    'earth science - mapping': 'Geologic Mapping',
+    'anatomy - pathophysiology': 'Anatomy - Immune',
+    'earth science - seismology': 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics',
+    'identification': 'Forensics',
+    'dynamic planet - earthquakes, volcanoes, and tectonics': 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics',
+    'web technologies': 'Cybersecurity',
+    'case study': 'Experimental Design',
+    'anatomy - protein modeling': 'Protein Modeling',
+    'aging': 'Cell Biology',
+    'hashing': 'Codebusters',
+    'subjective': 'Experimental Design',
+    'chemistry - gases': 'Chemistry Lab',
+    'anatomy - respiratory - oxyhemoglobin dissociation': 'Anatomy - Respiratory',
+    'physics - gravity': 'Gravity Vehicle',
+    'public-key cryptography': 'Codebusters',
+    'physics - circuits': 'Physics Lab',
+    'physics - electromagnetism': 'Physics Lab',
+    'chemistry - laws': 'Chemistry Lab',
+    'physics - waves': 'Physics Lab',
+    'event coordinator information': 'Wright Stuff',
+    'salinometer testing': 'Water Quality',
+    'satellite': 'Astronomy',
+    'road map reading': 'Road Scholar',
+    'acids and bases': 'Chemistry Lab',
+    'constants': 'Physics Lab',
+    'coral reef macroflora & fauna': 'Water Quality',
+    'memes': 'Fun',
+    'coral reef macroflora and fauna identification': 'Remote Sensing'
 
 }
 print("All values:", [*set([f for f in titles.values() if f is not None])])
@@ -618,13 +702,14 @@ def combine_bank_data(filename="beta_bank.json"):
                     if not isinstance(value,list) or len(value) == 1:
                         continue
                     # Extend the existing list with new items, filtering as needed
+
                     combined_data[key].extend([
                         item
                         for item in value
-                        if item.get('answers') and len(item['answers']) > 0 and item.get("question")
-                        and not (isinstance(item['answers'][0],list) and (item['answers'][0] == [""] or item['answers'][0] == [[]] or item['answers'][0] == [[""]]))
+                        if item.get('answers') and len(item['answers']) > 0 and item.get("question") and len(item['options']) != 1
+                        and not (item['answers'][0] == "" or isinstance(item['answers'][0],list) and (item['answers'][0] == [""] or item['answers'][0] == [[]] or item['answers'][0] == [[""]]))
                         and len(item['question']) > 8
-                        and not (item['question'].lower().startswith("identify the") and len(item['question']) < 75)
+                        and not (isinstance(item['answers'][0], str) and "see answer" in item['answers'][0].lower())
                         and not ("based on" in item['question'] and "provided" in item['question'] or "information" in item['question'] and "provided" in item['question'])
                         and not (len(item['question']) < 85 and " this " in item['question'])
                         and not (len(item['question']) < 60 and "this object" in item['question'])
@@ -641,43 +726,35 @@ def combine_bank_data(filename="beta_bank.json"):
                         and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "requires missing")
                         and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "unknown")
                         and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "refer to")
+                        and not ("station" in item['question'].lower() and not item['question'].lower().startswith("station"))
+                        and not (bool(re.search(r"(q|Q)uestion [0-9]+[^:]",item['question'])))
+                        and not (bool(re.search(r"(?<=(((i|I)mages*)|(e|E)vents*)|((f|F)eatures*)|(row)|((p|P)owder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimens*)|((m|M)odels*)|((l|L)ayers*)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((f|F)ibers*)|((s|S)ymbol)) (([A-Z]+|[0-9]+)[\s.,?!;:])",item['question'])))
                         and not (len(item['answers']) == 1 and item['answers'][0] == '')
                         and not (sum(map(lambda s: 1 if isinstance(s, str) and len(s)==1 else 0, item['answers'])) > 2)
                         and not (False if not 'options' in item or item['options'] is None else (any(s == "A" for s in item['options']) and not "climate" in item['question'] and not "vitamin" in item['question']))
-                        and not (bool(re.search(r"(?<=((e|E)vents*)|((f|F)eatures*)|(row)|(powder)|(patient)|((l|L)abels*)|(labeled)|(horomone)|((a|A)rea)|(items*)|(ganglion)|(disorders*)|((r|R)egion)|(when)|((N|n)euron)|(Box)|((s|S)pecimens*)|((m|M)odels*)|((l|L)ayers*)|((s|S)tar)|(part of)|((s|S)olids*)|((f|F)igure)|((m|M)etals*)|((h|H)airs*)|((f|F)ibers*)|((p|P)lastics*)|((f|F)ingerprints*)|((s|S)oils*)|((s|S)tructures*)|((p|P)oint)|((u|U)nit)|((p|P)anel)|((f|F)eatures*)|((l|L)iquid)|((p|P)roteins*)|((f|F)igures*)|((s|S)pecimens*)|((p|P)oints*)|((l|L)etters*)|((q|Q)uestions*)|((p|P)arts*)|((f|F)ibers*)|((l|L)etters*)) (([A-Z]|[0-9])[\s.,?!;:])",item['question'])))
                         and not (item['question'] == item['answers'][0])
                         and not any(phrase in item['question'].lower() for phrase in [
                             " a?", " b?", " c?", " d?", " g?", " h?", " i?", " j?", " k?", " l?", " m?", " n?", " o?", " p?", " q?", " r?", " s?", " t?", " u?"
                             "this picture", "this image", "this diagram", "this map",
-                            "image a", "image b", "image c", "image d", "image e", "image f", "image g" "image 1", "image 2", "image 3",
-                            "the image", "in figure", "pictured above", "pictured below",
-                            "following table", "table above",
-                            "this specimen", "identify this", "this organism", "the photo below",
+                            "in figure", "pictured below",
+                            "this specimen", "this organism", "the photo below",
                             "given information", "the table", "the structures labeled",
                             "specimen 1", "specimen 2", "specimen 3", "specimen 4", "specimen 5",
                             "specimen 6", "specimen 7", "specimen 8", "specimen 9", "specimen 10",
                             "this individual", "Identify #", "diagram below", "the diagram", 
-                            "slide above", "image 1", "image 2", "image 3",
-                            "image 4", "image 5", "image 6", "image 7", "image 8", "image 9", 
-                            "question 1", "question 2", "question 3", "question 4", "question 5", "question 6", "question 7", "question 8", "question 9", 
-                            "picture below", "the picture", "shown above", "shown below", "question #",
+                            "slide above", "picture below", "the picture", "shown above", "shown below", "question #",
                             "indicated by", "diagram to the right", "this device", "these specimens", "multiple choice",
-                            "shown to the right", "identify powder", "(left)", "(right)", "graph above",
-                            "#1","#2","#3","#4","#5","#6","#7","#8","#9", "the reading on", "the image", 
-                            "labeled by", "area a", "which image", "above image", "below image", "in the image",
-                            "depicted", "the figure", "above?", "to the right", "the chart", "the graph", "this disease?",
-                            "for this disease", "following image", "following diagram", "previous question", "select all of the following that could have gone wrong.",
-                            "match the following", "compare this to your measured", "of the lake and why?", "igure 1",
-                            "igure 2", "igure 3", "igure 4", "igure 5", "igure 6", "igure 7", "igure 8", "igure 9",
-                            "the diagram", "red arrow", "black arrow", "the arrow", "Name a osteoclast precursor that ", "patients with hypocalcemia", # last 2 take out of filter
-                            "labelled", "for the given", "if this", "on the right", "on the left", "above equation",
-                            "structure 1", "precipitate 1", "that empirical formula", "based on this", "based on these", "the powder",
-                            "above", "below,", "original test", "fossil above", "question (", "depicted", "disease causes failure of which organ?",
-                            "disease does she have?", "this disease causes failure of which organ?", "projection 1", "projection 2", 
+                            "shown to the right", "(left)", "(right)", "graph above",
+                            "the reading on", "the image", 
+                            "labeled by", "which image", "above image", "below image", "in the image",
+                            "depicted", "the figure", "above?", "to the right", "the chart", 
+                            "the diagram", "red arrow", "black arrow", "the arrow",
+                            "labelled", "for the given", "if this", "above equation",
+                            "original test", "fossil above", "question (", "depicted", "projection 1", "projection 2", 
                             "projection 3", "the map?", "circular symbol", "union hill", "locations 1", "location 1", 
-                            "at the right?", "on the map", "this muscle", "interpret the", "evidence a", "evidence b", 
-                            "evidence c", "which suspect", "what is the id ", "what is the identity", "sample 1", 
-                            "sample 2", "sample 3", "sample 4", "this test?"
+                            "at the right?", "on the map", "interpret the", "evidence a", "evidence b", 
+                            "evidence c", "which suspect", "what is the id ", "are you currently in a location where you cannot see or talk to your partner?", 
+                            "honor code", "from the provided answer key"
                         ])
                     ])
             except json.JSONDecodeError:
@@ -686,20 +763,73 @@ def combine_bank_data(filename="beta_bank.json"):
     return [combined_data, excluded_data]
 
 # Combine the data from bank.txt
-combined_bank = combine_bank_data()[0]
+raw = combine_bank_data()
+combined_bank = raw[0]
+
 for key, questions in combined_bank.items():
     seen = set()
-    filtered_questions = []
+    new_questions = []
     for q in questions:
-        if q['question'] not in seen:
-            filtered_questions.append(q)
-            seen.add(q['question'])
-    combined_bank[key] = filtered_questions
+        # 1. Set difficulty: default to 0.5 if missing/None, and cap values > 1 at 0.9.
+        if 'difficulty' not in q or q['difficulty'] is None:
+            q['difficulty'] = 0.5
+        elif q['difficulty'] > 1:
+            q['difficulty'] = 0.9
+        elif q['difficulty'] == 0:
+            q['difficulty'] = 0.1
+
+        # 2. Convert answer elements to integers if an options list exists and is non-empty.
+        if 'options' in q and isinstance(q['options'], list) and len(q['options']) > 0:
+            if 'answer' in q:
+                if isinstance(q['answer'], list):
+                    try:
+                        q['answer'] = [int(a) for a in q['answer']]
+                    except (ValueError, TypeError):
+                        pass  # Handle conversion issues if needed.
+                else:
+                    try:
+                        q['answer'] = int(q['answer'])
+                    except (ValueError, TypeError):
+                        pass
+
+        # 3. Codebusters-specific filtering.
+        if key == "Codebusters":
+            question_text = q.get('question', '')
+            # Count the number of uppercase letters.
+            capital_count = sum(1 for c in question_text if c.isupper())
+            # Skip if the text is less than 200 characters and contains fewer than 25 capital letters.
+            if len(question_text) < 200 and capital_count < 25:
+                continue
+
+        # 4. Filter out duplicate questions based on the "question" text.
+        question_text = q.get('question')
+        if question_text in seen:
+            continue
+        seen.add(question_text)
+        new_questions.append(q)
+
+    # 5. For Codebusters, add one humorous MCQ at the end.
+    if key == "Codebusters":
+        humorous_question = {
+            "question": "Why on earth are you even looking for Codebusters MCQs?",
+            "options": [
+                "Because you're a rebel.",
+                "Just curious, that's all.",
+                "Maybe you're lost?",
+                "No valid reason at all."
+            ],
+            "answer": 0,  # Assuming the first option is the humorous 'correct' answer.
+            "difficulty": 0.5
+        }
+        new_questions.append(humorous_question)
+    
+    combined_bank[key] = new_questions
+
 
 
 # Write the combined JSON object to bank_filtered.json
 with open("final.json", 'w') as outfile:
     json.dump(combined_bank, outfile)
-# with open("excluded.json", 'w') as outfile:
-#     json.dump(combined_bank[1], outfile, indent=2)
+with open("excluded.json", 'w') as outfile:
+    json.dump(raw[1],outfile, indent=4)
 print("Combined and filtered data written to final.json")

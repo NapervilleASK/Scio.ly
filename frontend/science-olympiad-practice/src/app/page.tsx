@@ -153,7 +153,7 @@ export default function HomePage() {
             Scio.ly
           </h1>
           <p className="my-6 max-w-xl text-lg leading-relaxed text-gray-300">
-            Over 2000 Science Olympiad tests into one website, designed for the ultimate studying experience.
+            Over 3000 Science Olympiad tests into one website, designed for the ultimate studying experience.
           </p>
           <Link href="/welcome">
             <motion.button
@@ -247,6 +247,11 @@ export default function HomePage() {
           </div>
         </div>
       </motion.section>
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
