@@ -650,7 +650,7 @@ export default function WelcomePage() {
                           {dailyStats.eventsPracticed.length > 0 ? (
                             dailyStats.eventsPracticed.map((event, index) => (
                               <div key={index}>
-                                <span className={darkMode ? 'text-blue-400' : 'text-blue-600'}>{event}</span>
+                                <Link href={{ pathname: "/dashboard", query: { event: event } }} className={`mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</Link>
                               </div>
                             ))
                           ) : (
