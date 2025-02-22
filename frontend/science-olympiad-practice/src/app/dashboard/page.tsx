@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
-import { useTheme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 
 interface Event {

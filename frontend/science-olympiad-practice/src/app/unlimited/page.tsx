@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
 import { auth } from '@/lib/firebase';
-import { useTheme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api'
 
 interface Question {
