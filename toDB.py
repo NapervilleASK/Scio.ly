@@ -706,7 +706,7 @@ def combine_bank_data(filename="beta_bank.json"):
                     combined_data[key].extend([
                         item
                         for item in value
-                        if item.get('answers') and len(item['answers']) > 0 and item.get("question") and len(item['options']) != 1
+                        if item.get('answers') and isinstance(item['answers'],list) and len(item['answers']) > 0 and item.get("question") and len(item['options']) != 1
                         and not (item['answers'][0] == "" or isinstance(item['answers'][0],list) and (item['answers'][0] == [""] or item['answers'][0] == [[]] or item['answers'][0] == [[""]]))
                         and len(item['question']) > 8
                         and not (isinstance(item['answers'][0], str) and "see answer" in item['answers'][0].lower())
@@ -754,7 +754,7 @@ def combine_bank_data(filename="beta_bank.json"):
                             "projection 3", "the map?", "circular symbol", "union hill", "locations 1", "location 1", 
                             "at the right?", "on the map", "interpret the", "evidence a", "evidence b", 
                             "evidence c", "which suspect", "what is the id ", "are you currently in a location where you cannot see or talk to your partner?", 
-                            "honor code", "from the provided answer key"
+                            "honor code", "from the provided answer key", "according to article"
                         ])
                     ])
             except json.JSONDecodeError:
@@ -780,17 +780,38 @@ for key, questions in combined_bank.items():
 
         # 2. Convert answer elements to integers if an options list exists and is non-empty.
         if 'options' in q and isinstance(q['options'], list) and len(q['options']) > 0:
-            if 'answer' in q:
-                if isinstance(q['answer'], list):
-                    try:
-                        q['answer'] = [int(a) for a in q['answer']]
-                    except (ValueError, TypeError):
-                        pass  # Handle conversion issues if needed.
+            if 'answers' in q:
+                # If answers is a list
+                if isinstance(q['answers'], list):
+                    # Check if every answer is numeric or a numeric string.
+                    all_numeric = all(
+                        isinstance(a, (int, float)) or (isinstance(a, str) and a.strip().isdigit())
+                        for a in q['answers']
+                    )
+                    if all_numeric:
+                        # Convert all answers to integers.
+                        q['answers'] = [int(a) for a in q['answers']]
+                    else:
+                        # If not all answers are numeric, take only the first answer,
+                        # and if it exactly matches one of the options, convert it to the
+                        # 1-indexed position of that option.
+                        first_ans = q['answers'][0]
+                        first_ans_str = str(first_ans)
+                        if first_ans_str in q['options']:
+                            q['answers'] = [q['options'].index(first_ans_str) + 1]
                 else:
-                    try:
-                        q['answer'] = int(q['answer'])
-                    except (ValueError, TypeError):
-                        pass
+                    # When answers is a single value.
+                    if isinstance(q['answers'], (int, float)) or (isinstance(q['answers'], str) and q['answers'].strip().isdigit()):
+                        try:
+                            q['answers'] = int(q['answers'])
+                        except (ValueError, TypeError):
+                            pass
+                    else:
+                        # For a non-numeric answer, try matching it against the options.
+                        ans_str = str(q['answers'])
+                        if ans_str in q['options']:
+                            q['answers'] = q['options'].index(ans_str) + 1
+
 
         # 3. Codebusters-specific filtering.
         if key == "Codebusters":
@@ -818,7 +839,7 @@ for key, questions in combined_bank.items():
                 "Maybe you're lost?",
                 "No valid reason at all."
             ],
-            "answer": 0,  # Assuming the first option is the humorous 'correct' answer.
+            "answers": [1],  # Assuming the first option is the humorous 'correct' answer.
             "difficulty": 0.5
         }
         new_questions.append(humorous_question)
