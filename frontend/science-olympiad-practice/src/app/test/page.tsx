@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -101,7 +101,6 @@ const difficultyMap: Record<string, number> = {
 };
 
 export default function TestPage() {
-  const searchParams = useSearchParams();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Question[]>([]);
@@ -117,41 +116,47 @@ export default function TestPage() {
   });
 
   useEffect(() => {
-    const routerParams = Object.fromEntries(searchParams.entries()) as RouterParams;
+    const storedParams = localStorage.getItem('testParams');
+    if (!storedParams) {
+      // Handle the case where params are not in localStorage (e.g., redirect)
+      router.push('/'); // Or some other appropriate action.
+      return;
+    }
+  
+    const routerParams = JSON.parse(storedParams);
     setRouterData(routerParams);
-
+  
     if (routerParams.timeLimit) {
       setTimeLeft(parseInt(routerParams.timeLimit, 10) * 60); // Convert minutes to seconds
     }
-
+  
     const fetchData = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
-
+  
         const { eventName, questionCount, difficulty, types } = routerParams;
         const difficultyValue = difficultyMap[difficulty || 'easy'] || 0.33;
         const eventQuestions: Question[] = jsonData[eventName as string] || [];
-
+  
         const filteredQuestions = eventQuestions.filter((q) => {
           // Set default difficulty to 0.5 if not specified
           const questionDifficulty = q.difficulty ?? 0.5;
-          
+  
           return difficulty === 'any'
             ? true
-            : questionDifficulty >= difficultyValue - 0.33 && questionDifficulty <= difficultyValue;
+            : questionDifficulty >= difficultyValue - 0.33 &&
+                questionDifficulty <= difficultyValue;
         });
-
+  
         const finalQuestions =
           types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : (
-          types === 'free-response'
+            : types === 'free-response'
             ? filteredQuestions.filter((q) => q.options?.length == 0)
-            : filteredQuestions
-            );
-
+            : filteredQuestions;
+  
         function shuffleArray<T>(array: T[]): T[] {
           const newArray = [...array];
           for (let i = newArray.length - 1; i > 0; i--) {
@@ -160,9 +165,12 @@ export default function TestPage() {
           }
           return newArray;
         }
-
+  
         const shuffledQuestions = shuffleArray(finalQuestions);
-        const selectedQuestions = shuffledQuestions.slice(0, parseInt(questionCount || '0'));
+        const selectedQuestions = shuffledQuestions.slice(
+          0,
+          parseInt(questionCount || '0')
+        );
         console.log(shuffledQuestions);
         console.log(selectedQuestions);
         setData(selectedQuestions);
@@ -173,9 +181,9 @@ export default function TestPage() {
         setIsLoading(false);
       }
     };
-
+  
     fetchData();
-  }, [searchParams]); // Remove difficultyMap from dependencies
+  }, [router]); // dependency array now only contains router.
 
   useEffect(() => {
     if (timeLeft === null || isSubmitted) return;
@@ -363,7 +371,15 @@ export default function TestPage() {
       });
     }
   };
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   return (
     <>
       <div className="relative min-h-screen">

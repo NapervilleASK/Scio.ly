@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
@@ -21,7 +21,6 @@ function EventDashboard() {
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [settings, setSettings] = useState({
     questionCount: 50,
@@ -50,40 +49,50 @@ function EventDashboard() {
     const selectedEventDetails = events.find(
       (event) => event.id === selectedEvent
     );
-
+  
     if (!selectedEventDetails) {
       toast.info('Please select an event to start practicing.', {
         theme: 'dark',
       });
       return;
     }
-
-    router.push(
-      `/unlimited?eventName=${encodeURIComponent(
-        selectedEventDetails.name
-      )}&difficulty=${settings.difficulty}&types=${settings.types}`
-    );
+  
+    const unlimitedParams = {
+      eventName: selectedEventDetails.name,
+      difficulty: settings.difficulty,
+      types: settings.types,
+    };
+  
+    localStorage.setItem('testParams', JSON.stringify(unlimitedParams));
+  
+    router.push('/unlimited'); // No query params in the URL now.
   };
 
   const handleGenerateTest = () => {
     const selectedEventDetails = events.find(
       (event) => event.id === selectedEvent
     );
-
+  
     if (!selectedEventDetails) {
       toast.info('Please select an event to generate the test.', {
         theme: 'dark',
       });
       return;
     }
-
-    router.push(
-      `/test?eventName=${encodeURIComponent(
-        selectedEventDetails.name
-      )}&questionCount=${settings.questionCount}&timeLimit=${settings.timeLimit}&difficulty=${settings.difficulty}&types=${settings.types}`
-    );
+  
+    const testParams = {
+      eventName: selectedEventDetails.name,
+      questionCount: settings.questionCount,
+      timeLimit: settings.timeLimit,
+      difficulty: settings.difficulty,
+      types: settings.types,
+    };
+  
+    localStorage.setItem('testParams', JSON.stringify(testParams));
+  
+    router.push('/test'); // No query params in the URL now.
   };
-
+  
   const sortedEvents = [...events].sort((a, b) => {
     if (sortOption === 'alphabetical') {
       return a.name.localeCompare(b.name);
@@ -160,19 +169,19 @@ function EventDashboard() {
 
   // Preselect and scroll to the event if a query parameter is provided.
   useEffect(() => {
-    const preselectedEventName = searchParams.get('event');
-    if (preselectedEventName && events.length > 0) {
-      const eventToSelect = events.find(
-        (event) => event.name === preselectedEventName
-      );
-      if (eventToSelect) {
-        setSelectedEvent(eventToSelect.id);
-        // Scroll the matching list item into view.
-        const element = document.getElementById(`event-${eventToSelect.id}`);
-        element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  }, [events, searchParams]);
+    const storedEventParams = localStorage.getItem('eventParams');
+    if (storedEventParams) {
+        const eventToSelect = events.find(
+          (event) => event.name === storedEventParams
+        );
+        if (eventToSelect) {
+          setSelectedEvent(eventToSelect.id);
+          const element = document.getElementById(`event-${eventToSelect.id}`);
+          element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          localStorage.removeItem('eventParams')
+        }
+  }
+  }, [events]);
 
   return (
     <div className="relative min-h-[180vh] md:min-h-screen">

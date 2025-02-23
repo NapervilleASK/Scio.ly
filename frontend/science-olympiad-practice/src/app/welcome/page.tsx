@@ -511,6 +511,10 @@ export default function WelcomePage() {
   // Determine if we are on a mobile screen (width 1000 or less)
   const isMobile = windowWidth !== null && windowWidth <= 1000;
 
+  const handleLinkClick = event => {
+    localStorage.setItem('eventParams', event); 
+    router.push('/dashboard'); // Navigate using router
+  };
   return (
     <div className="relative w-100 overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
       {/* Background Layers */}
@@ -650,7 +654,7 @@ export default function WelcomePage() {
                           {dailyStats.eventsPracticed.length > 0 ? (
                             dailyStats.eventsPracticed.map((event, index) => (
                               <div key={index}>
-                                <Link href={{ pathname: "/dashboard", query: { event: event } }} className={`mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</Link>
+                                <span onClick={() => handleLinkClick(event)} className={`cursor-pointer mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</span>
                               </div>
                             ))
                           ) : (
@@ -676,10 +680,11 @@ export default function WelcomePage() {
                       >
                         <h4 className="text-base font-semibold">Recent Events </h4>
                         <div className="space-y-2">
+                          <div></div>
                           {dailyStats.eventsPracticed.length > 0 ? (
                             dailyStats.eventsPracticed.map((event, index) => (
                               <div key={index}>
-                                <Link href={{ pathname: "/dashboard", query: { event: event } }} className={`mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</Link>
+                                <span onClick={() => handleLinkClick(event)} className={`cursor-pointer mt-1 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{event}</span>
                               </div>
                             ))
                           ) : (

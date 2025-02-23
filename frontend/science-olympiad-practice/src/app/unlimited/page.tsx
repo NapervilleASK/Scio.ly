@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -89,7 +89,6 @@ const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
 };
 
 export default function UnlimitedPracticePage() {
-  const searchParams = useSearchParams();
   const router = useRouter();
 
   const [data, setData] = useState<Question[]>([]);
@@ -108,44 +107,47 @@ export default function UnlimitedPracticePage() {
 
   // Fetch and filter questions on mount
   useEffect(() => {
-    const routerParams = Object.fromEntries(searchParams.entries()) as RouterParams;
+    const storedParams = localStorage.getItem('testParams');
+    if (!storedParams) {
+      // Handle the case where params are not in localStorage (e.g., redirect)
+      router.push('/');
+      return;
+    }
+  
+    const routerParams = JSON.parse(storedParams);
     setRouterData(routerParams);
-
+  
     const difficultyMap: Record<string, number> = {
       easy: 0.33,
       medium: 0.66,
       hard: 1.0,
     };
     const difficultyValue = difficultyMap[routerParams.difficulty || 'easy'] || 0.33;
-
+  
     const fetchData = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
-
-        // Use the event name from the query params (if provided) or default to an empty array
+  
         const eventQuestions: Question[] = jsonData[routerParams.eventName as string] || [];
-
+  
         const filteredQuestions = eventQuestions.filter((q) => {
-          // Set default difficulty to 0.5 if not specified
           const questionDifficulty = q.difficulty ?? 0.5;
-          
+  
           return routerParams.difficulty === 'any'
             ? true
-            : questionDifficulty >= difficultyValue - 0.33 && questionDifficulty <= difficultyValue;
+            : questionDifficulty >= difficultyValue - 0.33 &&
+                questionDifficulty <= difficultyValue;
         });
-
+  
         const finalQuestions =
           routerParams.types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : (
-          routerParams.types === 'free-response'
+            : routerParams.types === 'free-response'
             ? filteredQuestions.filter((q) => q.options?.length == 0)
-            : filteredQuestions
-            );
-
-        // Shuffle the questions
+            : filteredQuestions;
+  
         const shuffledQuestions = shuffleArray(finalQuestions);
         setData(shuffledQuestions);
       } catch (error) {
@@ -155,10 +157,9 @@ export default function UnlimitedPracticePage() {
         setIsLoading(false);
       }
     };
-
+  
     fetchData();
-  }, [searchParams]);
-
+  }, [router]); // Dependency array now only contains router.
   // Helper function to shuffle an array
   function shuffleArray<T>(array: T[]): T[] {
     const newArray = [...array];
