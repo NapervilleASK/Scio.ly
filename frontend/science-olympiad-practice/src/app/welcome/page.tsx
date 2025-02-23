@@ -16,6 +16,8 @@ import Image from 'next/image';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import 'react-toastify/dist/ReactToastify.css';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -45,6 +47,12 @@ interface HistoricalMetrics {
   questionsAttempted: number;
   correctAnswers: number;
   eventsPracticed: string[];
+}
+
+interface UpdateInfo {
+  date: string;
+  features: string[];
+  comingSoon: string[];
 }
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps) => {
@@ -285,6 +293,9 @@ export default function WelcomePage() {
   const [showWeekly, setShowWeekly] = useState(false);
   // State for Recent Events tooltip/modal
   const [showEventsTooltip, setShowEventsTooltip] = useState(false);
+  const [showUpdatePopup, setShowUpdatePopup] = useState(false);
+  const [hasSeenUpdate, setHasSeenUpdate] = useState(false);
+  const [hasCheckedStorage, setHasCheckedStorage] = useState(false);
 
   // --- New: Compute window width and extra height on mobile ---
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
@@ -309,7 +320,7 @@ export default function WelcomePage() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [extraHeight]);
   // ------------------------------------------------------------
 
   // Compute the minimum height style:
@@ -375,6 +386,13 @@ export default function WelcomePage() {
 
     fetchData();
   }, [authInitialized, currentUser]);
+
+  useEffect(() => {
+    const hasSeenUpdateThisSession = sessionStorage.getItem('hasSeenUpdateThisSession');
+    setShowUpdatePopup(!hasSeenUpdateThisSession);
+    setHasSeenUpdate(!!hasSeenUpdateThisSession);
+    setHasCheckedStorage(true);
+  }, []);
 
   const metrics = {
     questionsAttempted: dailyStats.questionsAttempted,
@@ -515,6 +533,27 @@ export default function WelcomePage() {
     localStorage.setItem('eventParams', event); 
     router.push('/dashboard'); // Navigate using router
   };
+
+  const UPDATE_INFO: UpdateInfo = {
+    date: "March 2025",
+    features: [
+      "🔐 SIGN IN TO SAVE YOUR PROGRESS",
+      "✨ AI-powered explanations for every question",
+      "🎯 Improved question filtering and difficulty system",
+      "📊 Weekly progress and performance tracking",
+    ],
+    comingSoon: [
+      "🎯 More practice questions, events, and Div B support",
+      "📈 Improved analytics dashboard"
+    ]
+  };
+
+  const handleCloseUpdatePopup = () => {
+    sessionStorage.setItem('hasSeenUpdateThisSession', 'true');
+    setShowUpdatePopup(false);
+    setHasSeenUpdate(true);
+  };
+
   return (
     <div className="relative w-100 overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
       {/* Background Layers */}
@@ -923,29 +962,112 @@ export default function WelcomePage() {
         pauseOnHover
         theme={darkMode ? 'dark' : 'light'}
       />
-        {/* Add styled scrollbar */}
-        <style jsx global>{`
-          ::-webkit-scrollbar {
-            width: 8px;
-            ${darkMode
-              ? 'background: black;'
-              : 'background: white;'
-            }
-          }
 
-          ::-webkit-scrollbar-thumb {
-            background: ${darkMode
-              ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
-              : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
-            border-radius: 4px;
-            transition: background 1s ease;
-          }     
-          ::-webkit-scrollbar-thumb:hover {
-            background: ${darkMode
-              ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
-              : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
+      <Transition show={hasCheckedStorage && showUpdatePopup && !hasSeenUpdate} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-50 overflow-y-auto"
+          onClose={handleCloseUpdatePopup}
+        >
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black/30" />
+            </Transition.Child>
+
+            <span className="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>
+
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className={`inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded-2xl ${
+                darkMode 
+                  ? 'bg-gray-800 text-white' 
+                  : 'bg-white text-gray-900'
+              }`}>
+                <Dialog.Title as="h3" className={`text-2xl font-bold mb-4 bg-gradient-to-r ${
+                  darkMode
+                    ? 'from-blue-300 via-green-300 to-red-300'
+                    : 'from-blue-500 to-cyan-500'
+                } bg-clip-text text-transparent`}>
+                  What&apos;s New - {UPDATE_INFO.date}
+                </Dialog.Title>
+
+                <div className="mt-4">
+                  <h4 className="text-lg font-semibold text-blue-500 mb-2">New Features</h4>
+                  <ul className="space-y-2 mb-6">
+                    {UPDATE_INFO.features.map((feature, index) => (
+                      <li key={index} className="flex items-center">
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <h4 className="text-lg font-semibold text-purple-500 mb-2">Coming Soon</h4>
+                  <ul className="space-y-2 mb-6">
+                    {UPDATE_INFO.comingSoon.map((feature, index) => (
+                      <li key={index} className="flex items-center">
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    className={`w-full px-4 py-2 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                      darkMode
+                        ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                        : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                    }`}
+                    onClick={handleCloseUpdatePopup}
+                  >
+                    Got it, thanks!
+                  </button>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+
+      {/* Add styled scrollbar */}
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 8px;
+          ${darkMode
+            ? 'background: black;'
+            : 'background: white;'
           }
-        `}</style>
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+            : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
+          border-radius: 4px;
+          transition: background 1s ease;
+        }     
+        ::-webkit-scrollbar-thumb:hover {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+            : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
+        }
+      `}</style>
       <br />
     </div>
   );

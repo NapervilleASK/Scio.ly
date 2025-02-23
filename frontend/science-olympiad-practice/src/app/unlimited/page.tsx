@@ -104,6 +104,10 @@ export default function UnlimitedPracticePage() {
     isOpen: false,
     questionIndex: null
   });
+  const [explanations, setExplanations] = useState<{[key: number]: string}>({});
+  const [loadingExplanation, setLoadingExplanation] = useState<{[key: number]: boolean}>({});
+  const [lastCallTime, setLastCallTime] = useState<number>(0);
+  const RATE_LIMIT_DELAY = 2000;
 
   // Fetch and filter questions on mount
   useEffect(() => {
@@ -338,6 +342,80 @@ export default function UnlimitedPracticePage() {
     }
   };
 
+  const formatExplanationText = (text: string) => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+  };
+
+  const getExplanation = async (index: number, question: Question) => {
+    if (explanations[index]) return;
+    
+    const now = Date.now();
+    if (now - lastCallTime < RATE_LIMIT_DELAY) {
+      toast.error('Please wait a moment before requesting another explanation');
+      return;
+    }
+    setLastCallTime(now);
+    
+    setLoadingExplanation(prev => ({...prev, [index]: true}));
+    
+    try {
+      let correctAnswers = '';
+      if (question.options && question.options.length > 0) {
+        correctAnswers = question.answers
+          .map(ans => question.options![ans as number - 1])
+          .filter(Boolean)
+          .join(', ');
+      } else {
+        correctAnswers = Array.isArray(question.answers) 
+          ? question.answers.join(', ')
+          : String(question.answers);
+      }
+
+      const prompt = `Question: ${question.question}\n` + 
+        (question.options && question.options.length > 0
+          ? `Options: ${question.options.join(', ')}\n`
+          : '') +
+        `Correct Answer(s): ${correctAnswers}\n\n` +
+        `Please explain why this is the correct answer with detailed reasoning, but keep it concise within reason.`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Response error:', errorText);
+        throw new Error(`Failed to fetch explanation: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+        throw new Error('Invalid response format from API');
+      }
+
+      const explanation = data.candidates[0].content.parts[0].text;
+      setExplanations(prev => ({...prev, [index]: explanation}));
+    } catch (error) {
+      console.error('Error in getExplanation:', error);
+      setExplanations(prev => ({
+        ...prev, 
+        [index]: 'Failed to load explanation. Please try again later.'
+      }));
+      toast.error(`Failed to get explanation: ${(error as Error).message}`);
+    } finally {
+      setLoadingExplanation(prev => ({...prev, [index]: false}));
+    }
+  };
+
   return (
     <>
       <div className="relative min-h-screen">
@@ -515,20 +593,45 @@ export default function UnlimitedPracticePage() {
                             ? 'Correct!'
                             : 'Wrong!'}
                       </p>
-                      <p className={`text-sm mt-1 transition-colors duration-1000 ease-in-out ${
-						darkMode ? 'text-white' : 'text-gray-600'
-					  }`}>
+                      <p className="text-sm mt-1">
                         <strong>Correct Answer(s):</strong>{' '}
-                        {currentQuestion.options && currentQuestion.options.length > 0
-                          ? currentQuestion.answers
-                              .map((ans) =>
-                                typeof ans === 'number'
-                                  ? currentQuestion.options![ans - 1]
-                                  : ans
-                              )
-                              .join(', ')
+                        {currentQuestion.options?.length
+                          ? currentQuestion.answers.map((ans) => currentQuestion.options?.[ans as number - 1]).join(', ')
                           : currentQuestion.answers.join(', ')}
                       </p>
+                      <div className="mt-2">
+                        {!explanations[currentQuestionIndex] ? (
+                          <button
+                            onClick={() => getExplanation(currentQuestionIndex, currentQuestion)}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-300 ${
+                              darkMode 
+                                ? 'bg-gray-700 hover:bg-gray-600 text-blue-400' 
+                                : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                            }`}
+                            disabled={loadingExplanation[currentQuestionIndex]}
+                          >
+                            {loadingExplanation[currentQuestionIndex] ? (
+                              <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
+                            ) : (
+                              <>
+                                <span>Explain</span>
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              </>
+                            )}
+                          </button>
+                        ) : (
+                          <div 
+                            className={`text-sm mt-2 p-3 rounded-md ${
+                              darkMode ? 'bg-gray-700' : 'bg-blue-50'
+                            }`}
+                            dangerouslySetInnerHTML={{ 
+                              __html: `<strong>Explanation:</strong> ${formatExplanationText(explanations[currentQuestionIndex])}` 
+                            }}
+                          />
+                        )}
+                      </div>
                     </>
                   )}
 					<br/>	
