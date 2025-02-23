@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
@@ -36,15 +36,6 @@ interface ReportState {
 }
 
 const API_URL = api.api
-const LoadingFallback = () => (
-  <div className="flex justify-center items-center h-64">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
-  </div>
-);
-
-const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
-  <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
-);
 
 const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) => {
   const [reason, setReason] = useState('');
@@ -374,7 +365,7 @@ export default function TestPage() {
   };
 
   return (
-    <SuspenseWrapper>
+    <>
       <div className="relative min-h-screen">
         {/* Background Layers */}
         <div
@@ -745,6 +736,6 @@ export default function TestPage() {
         pauseOnHover
         theme={darkMode ? "dark" : "light"}
       />
-    </SuspenseWrapper>
+    </>
   );
 }
