@@ -1,0 +1,3381 @@
+{
+    "question": "What is the capital of France?",
+    "answer": "Paris"
+  },
+  {
+    "question": "According to this diagram, what is the value of X?",
+    "answer": [""]
+  },
+  {
+    "question": "Solve for x: 2x + 3 = 7",
+    "answer": "x = 2"
+  },
+  {
+    "question": "Based on this image, describe the object.",
+    "answer": [""]
+  },
+  {
+    "question": "What is the name of the first book in the Harry Potter series?",
+    "answer": "Harry Potter and the Sorcerer's Stone"
+  },
+  {
+    "question": "What is the atomic number of Hydrogen?",
+    "answer": "1"
+  },
+  {
+    "question": "What is this?",
+    "answer": [""]
+  }{
+        "question": "Clinical term required. Characterized by an itching, redness, and in some cases drainage of the ear canal, this disease is oftentimes caused by a retention of water in the ear, or by (*) objects plugged in the ear, causing a moist environment for bacteria to grow. This disease is usually treatable in the early stage with ear drops. For ten points, name this disorder commonly known as swimmer’s ear.",
+        "options": [],
+        "answers": [
+            "Otitis externa"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "This structure, located in the ear, is made up of two main parts: the head and manubrium, or “handle”. This bone makes contact with both the tensor tympani and the tympanic membrane. For human hearing, this (*) bone is the ﬁrst of the three smallest bones in the human body to receive sound vibrations. For ten points, name the largest of the three ossicles, more colloquially known as the “hammer”.",
+        "options": [],
+        "answers": [
+            "Malleus"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. For ﬁve points each, this neurotransmitter is most closely associated with Alzheimer’s. A deﬁciency in this neurotransmitter leads to Alzheimer’s.",
+        "options": [],
+        "answers": [
+            "Acetylcholine"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. For ﬁve points each, this brain function is what Alzheimer’s mainly aﬀects, and is dedicated to the short term and long term storage of information.",
+        "options": [],
+        "answers": [
+            "Memory"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. For ﬁve points each, this is the main cause for why Alzheimer’s patients’ brains shut down over time, leading to neuron death.",
+        "options": [],
+        "answers": [
+            "Buildup of proteins"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "This hormone is typically created within the hypothalamus to aid in breast-feeding. Oftentimes, this hormone is stimulated by a (*) positive feedback caused as the result of exercise. Commonly released from the posterior pituitary gland, this hormone is responsible for contractions during childbirth. It is also known as the love hormone. For ten points, what is the hormone commonly associated with cuddling?",
+        "options": [],
+        "answers": [
+            "Oxytocin"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. For ﬁve points each, name this invasive mollusk that is named after the stripes on its shell is a look-alike to the Quagga mussel. This species reproduces extremely rapidly, outcompeting native fauna.",
+        "options": [],
+        "answers": [
+            "Zebra Mussel"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. For ﬁve points each, name this jawless ﬁsh that aggressively attacks other ﬁsh in the Great Lakes, leading to huge declines in native ﬁsh populations. It has facilitated the growth of the invasive alewife’s population due to its removal of the alewife’s predators.",
+        "options": [],
+        "answers": [
+            "Sea Lamprey"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. For ﬁve points each, name this ﬁsh native to the Indian and Paciﬁc oceans threatens coral reef ecosystems due to competition with native feeders and lack of predators. It is easily recognizable from its red and white stripes and long spike-like ﬁns.",
+        "options": [],
+        "answers": [
+            "Lionﬁsh"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "There are four major types of macromolecules that compose living organisms. For ﬁve points each, name the laboratory technique where this substance turns to a color yellow-red from blue in the presence of a certain type of carbohydrates. This substance will not react with complex carbohydrates, but will react with reducing sugars.",
+        "options": [],
+        "answers": [
+            "Benedict’s reagent"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "There are four major types of macromolecules that compose living organisms. For ﬁve points each, name the laboratory technique where in this technique, DNA strands are heated to be separated and then cooled so that primers can attach new pairs to the original strand. Hundreds of copies of DNA can be created with the help of an enzyme for which this technique is named after.",
+        "options": [],
+        "answers": [
+            "Polymerase Chain Reaction"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "There are four major types of macromolecules that compose living organisms. For ﬁve points each, name the laboratory technique where This analytical technique utilizes gel electrophoresis to identify the presence of proteins in a given sample. In this technique, the gel is applied to a membrane that is exposed to antibodies.",
+        "options": [],
+        "answers": [
+            "Western blot"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "DNA is what makes every person unique. For ﬁve points each, what principle states that the purines and pyrimidines in DNA must have the same percentage respectively.",
+        "options": [],
+        "answers": [
+            "Chargaﬀ’s rule"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "DNA is what makes every person unique. For ﬁve points each, what organic molecules make up DNA and consist of a nitrogenous base, a sugar, and a phosphate group.",
+        "options": [],
+        "answers": [
+            "Nucleotide"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "DNA is what makes every person unique. For ﬁve points each, what nucleobase is contained in RNA as opposed to its DNA counterpart, Thymine.",
+        "options": [],
+        "answers": [
+            "Uracil"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "These speciﬁc organisms ﬁrst appeared in the Late Carboniferous period, and are evolutionarily and structurally similar to Cordaitales [KOR-dih-tails]. These plants are well known for their forests within the Northwest region of the United States. Instead of (*) leaves, this type of tree has needles and pine cones can be found at its base. Examples of this division of plants include cedars, cypresses, and ﬁrs. For ten points, name the group of trees commonly decorated for Christmas.",
+        "options": [],
+        "answers": [
+            "Conifers"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Zaitsev’s Rule states that the reaction between these substances and strong acids form the most stable alkenes possible. Without the presence of oxygen, intestinal bacteria will produce one of these substances as a (*) waste product when breaking down sugars. These substances are commonly used in fuel production and beverages. For ten points, name this type of organic compounds, of which common examples include menthol and ethanol.",
+        "options": [],
+        "answers": [
+            "Alcohols"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Saturated ﬁlter paper or glass tubes are typically used as one of two types of this device. Batteries are made of multiple voltaic cells which employs this device that typically contains (*) electrolytes. There are two half cells in which ions ﬂow from and to with the use of this device. As one half cell is for oxidation and the other for reduction, the device is vital so that charges do not build up on either cell. For ten points, name the device that connects the anode and cathode in voltaic cells.",
+        "options": [],
+        "answers": [
+            "Salt Bridge"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "While this substance makes up the majority of the atmosphere of Saturn’s sixth-largest moon, it is only found in trace amounts of Earth’s atmosphere. In nuclear power production, this substance moderates the nuclear reaction. Until recently, the (*) Kelvin temperature scale was based on a value measured using this substance; this change was oﬃcially made in 2019. For ten points, name this substance, which the person reading the question is about to take a sip of.",
+        "options": [],
+        "answers": [
+            "Water"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "In aqueous solutions, this state is usually determined in the presence of chemically inactive electrolytes like sodium nitrate. Although the law of mass action, which tries to describe this state, is generally invalid, it correctly gives this state for a reaction as a constant. This state was heavily used in the development of an eﬃcient way of producing (*) industrial ammonia, known as the Haber-Bosch process. For ten points, name the state at which the concentrations of reactants and products will not tend to change with time.",
+        "options": [],
+        "answers": [
+            "Equilibrium"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. For ﬁve points each, what property of a substance explains why some substances travel further in certain solvents, as well as why oil and water don’t mix.",
+        "options": [],
+        "answers": [
+            "Polarity"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. For ﬁve points each, what number is the distance that a substance travels divided by the distance that a solvent travels, and can be used to compare two unknown substances.",
+        "options": [],
+        "answers": [
+            "Retention factor"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. For ﬁve points each, what attractive force allows water to travel up the stationary phase used in paper chromatography.",
+        "options": [],
+        "answers": [
+            "Cohesion"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. For ﬁve points each, what number refers to the amount of particles contained within one mole of a substance.",
+        "options": [],
+        "answers": [
+            "Avogadro Number"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. For ﬁve points each, written in energy divided by temperature, what constant is used to deﬁne entropy as a statistical property.",
+        "options": [],
+        "answers": [
+            "Boltzmann constant"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. For ﬁve points each, what constant is commonly used to relate the pressure, temperature, and amount of a substance, and is deﬁned as the previous two constants multiplied together.",
+        "options": [],
+        "answers": [
+            "Gas constant"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, what type of high-temperature redox reaction utilizes a fuel to produce typically gaseous products such as water and carbon dioxide.",
+        "options": [],
+        "answers": [
+            "Combustion reaction"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, explosions are characterized by a rapid increase in volume, as well as a release of energy. What type of process involves the transfer of energy from a system to its surroundings.",
+        "options": [],
+        "answers": [
+            "Exothermic"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "For ﬁve points each, what type of explosive compounds are characterized by deﬂagration or a low rate of reaction. Although its name may suggest a lack of destructive potential, they can still be highly dangerous. Common examples include black powder and smokeless powder.",
+        "options": [],
+        "answers": [
+            "Low explosives"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. For ﬁve points each, diamond or graphite are two structurally diﬀerent forms of solid carbon; thus they are called what term.",
+        "options": [],
+        "answers": [
+            "Allotropes"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. For ﬁve points each, what is the name for the smallest portion of a crystal lattice that shows the entire structure of the compound.",
+        "options": [],
+        "answers": [
+            "Unit Cell"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. For ﬁve points each, what type of bond does carbon form that allows it to form compounds of such varying strength, sharing electrons between atoms.",
+        "options": [],
+        "answers": [
+            "Covalent"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "One of the last simple machines invented, this simple machine is vastly ineﬃcient, usually around 15 to 20 percent. Oftentimes, these devices rely on (*) device eﬃciency over mechanical advantage, and convert a rotational motion into a linear motion. Most of the time, they take the form of a cylindrical shaft with grooves called threads wrapped around them. For ten points, name this machine that is usually used in conjunction with a so-called “driver”.",
+        "options": [],
+        "answers": [
+            "Screw"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "The energy for interactions between particles is thought to be controlled by carriers of this quantity. For two massive particles, an inverse square law determines the gravitational variety of this quantity that can be thought of as a (*) ﬁeld extending from each particle. The centripetal variety of this quantity accelerates a mass perpendicular to its direction of motion. For ten points, name this mechanical quantity deﬁned by Sir Isaac Newton as mass times acceleration.",
+        "options": [],
+        "answers": [
+            "Force"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Because this state of matter experiences no surface tension, it is used for drying some substances, most notably aerogels. In this state, a substance has properties of both liquids and gasses, giving it the ability to eﬀuse like a gas and dissolve solutes like a liquid. This state of matter (*) rarely occurs on Earth, but can be found recreated in labs, or in the atmospheres of large gas planets such as Jupiter and Saturn. For ten points, name the state of matter where matter is heated and pressurized past the point of being a gas and liquid, but not quite enough to compress down to a solid.",
+        "options": [],
+        "answers": [
+            "Supercritical state"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Four of these components are contained in a Wheatstone bridge, which is used to measure a property of the aforementioned components. This component is sometimes found in the form of an (*) inﬁnite or ﬁnite ladder. Frequently, they are connected together in series or in parallel. For ten points, name this component found in circuits and associated with the R in Ohm’s law.",
+        "options": [],
+        "answers": [
+            "Resistor"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, what electromagnetic spectrum detection technology provided one of the ﬁrst major practical uses for microwaves, as radio waves required antennae that were too large to be portable.",
+        "options": [],
+        "answers": [
+            "Radar"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "For ﬁve points each, what form of electromagnetic radiation has applications in thermal imaging, which is where a camera creates images according to diﬀerences in heat by the detection of this type of radiation.",
+        "options": [],
+        "answers": [
+            "Infrared"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "For ﬁve points each, gamma rays are emitted from supernovae and other similarly energetic objects, but they can also be emitted from what process, where a radioactive nucleus emits a photon in the form of gamma radiation.",
+        "options": [],
+        "answers": [
+            "Gamma Decay"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, objects will continue to follow their motion unless acted upon by an outside force in what frame of motion, where the laws of physics are simplest.",
+        "options": [],
+        "answers": [
+            "Inertial frame of reference"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, because of what phenomenon is the clock for an astronaut measuring how fast light travels on their ship slower than someone on Earth.",
+        "options": [],
+        "answers": [
+            "Time dilation"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "For ﬁve points each, in 2021, what scientist’s Black Hole Theorem, where the area of a black hole should never decrease, was conﬁrmed for the ﬁrst time.",
+        "options": [],
+        "answers": [
+            "Stephen Hawking"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. For ﬁve points each, what state function is expressed through SI units of Pascals, and is inversely proportional to volume in the ideal gas law.",
+        "options": [],
+        "answers": [
+            "Pressure"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. For ﬁve points each, what state function is a form of energy, generally represented by the letter H, and expressed in natural variables of pressure and entropy.",
+        "options": [],
+        "answers": [
+            "Enthalpy"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. For ﬁve points each, the third law of thermodynamics predicts that as what state function approaches absolute zero, all processes cease and the entropy of the system approaches a minimum value.",
+        "options": [],
+        "answers": [
+            "Temperature"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, all materials exhibit weak forms of what type of magnetism, in which the susceptibility is less than zero, so the application of a magnetic ﬁeld induces a polarization which opposes the applied ﬁeld.",
+        "options": [],
+        "answers": [
+            "diamagnetism"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "For ﬁve points each, the magnetic “B-ﬁeld”, or magnetic ﬂux density is measured in what SI unit named after a Serbian-American inventor, equivalent to one kilogram per second squared per ampere.",
+        "options": [],
+        "answers": [
+            "Tesla"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "For ﬁve points each, if magnetic dipoles were observed separating into what hypothetical particles, Gauss’s law for magnetism would need to account for magnetic charge density.",
+        "options": [],
+        "answers": [
+            "magnetic monopoles"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "This law can be used to determine the habitability of a planet by calculating orbital parameters from its transit light curve. Speciﬁcally, knowing the drop in brightness and applying this law can help ﬁnd the (*) orbital distance between a planet and its star. This law, which was created around 400 years ago, uses the constant G/4pi^2 (big G over four pi squared)  to relate two diﬀerent characteristics of an orbit with the total mass of the system. For ten points, name this empirical law that relates a planet's period of orbit with the length of its semimajor axis.",
+        "options": [],
+        "answers": [
+            "Kepler’s 3rd law"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "This planet was known to ancient Chinese astronomers as the “Suìxīng”. Pioneer 10 was the ﬁrst spacecraft to conduct a ﬂyby of this planet, where it took many photographs of both the planet and its moons. Another, more modern probe which became the second to orbit this planet was named (*) Juno. The moons of this planet inﬂuenced Copernicus’s theory of heliocentrism, as they were observed to be orbiting something other than Earth. For ten points, name this planet which notably has four Galilean moons.",
+        "options": [],
+        "answers": [
+            "Jupiter"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. For 5 points each, what object is an example such as Barnard’s Loop, part of the Orion Molecular Cloud Complex and appears as a patchy, red area in the night sky.",
+        "options": [],
+        "answers": [
+            "Emission Nebula"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. For 5 points each, what type of object is Barnard’s Star which appears dim in the night sky despite being the second closest star to the sun other than the Alpha Centauri system.",
+        "options": [],
+        "answers": [
+            "Red Dwarf"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. For 5 points each, what general type of telescope was Barnard’s ﬁrst which uses lenses to focus the light and is subject to chromatic aberration due to the use of lenses.",
+        "options": [],
+        "answers": [
+            "Refractor Telescope"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "This series is the inverse of the Goldich dissolution series, which describes the rate of weathering of silicates at the earth’s surface. First published in The Evolution of the Igneous Rocks in 1928, this sequence of minerals helps describe the diﬀerence in formation of maﬁc versus felsic rocks. It characteristically possesses a (*) continuous branch with feldspars and a discontinuous branch that involves nesosilicates, inosilicates, and phyllosilicates, as well as residual phases at lower temperatures. For ten points, name this series that describes the order of minerals that crystallize from a maﬁc magma body as it cools, named for an early 20th century geologist.",
+        "options": [],
+        "answers": [
+            "Bowen’s Reaction Series"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. For 5 points each, identify these types of lakes which form when a river erodes the neck of one of its meanders. They often form alongside meander scars and are typically U-shaped.",
+        "options": [],
+        "answers": [
+            "Oxbow lake"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. For 5 points each, what ﬂuvial depositional feature is found on the inside bends of streams and rivers, opposes the cut bank and grows in size as the river meanders further.",
+        "options": [],
+        "answers": [
+            "Point bar"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. For 5 points each, what type of stream is marked by multiple channels formed when the base level rises and sediment deposition increases. These types of streams are often found near river deltas, have relatively permanent mid-channel bars, and have steep channel sides.",
+        "options": [],
+        "answers": [
+            "Anastomosing stream"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. For 5 points each, what phenomenon occurs near Earth’s magnetic poles as charged particles from the sun are redirected by the magnetic ﬁeld into the atmosphere, where they ionize particles.",
+        "options": [],
+        "answers": [
+            "Aurora"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. For 5 points each, what geologic phenomenon occurs as a result of Earth’s magnetic ﬁeld reversing polarity. It is observed primarily in younger oceanic crust near spreading ridges.",
+        "options": [],
+        "answers": [
+            "Magnetic ﬁeld stripes"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. For 5 points each, the circulation of molten iron and nickel in what layer of the Earth is responsible for generating Earth’s magnetic ﬁeld.",
+        "options": [],
+        "answers": [
+            "Outer core"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. For 5 points each, any storms with strong winds may push water towards a beach surface and force water much higher above the highest astronomical tide. Name this phenomenon of a sudden onrush of water associated with storms making landfall.",
+        "options": [],
+        "answers": [
+            "Storm Surge"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. For 5 points each, strong updrafts in thunderstorm systems may cause ice to freeze around nuclei and aggrade layers as these ice particles travel in these vertical wind systems. Name the type of precipitation that these large spherules of ice dropping from the sky represents.",
+        "options": [],
+        "answers": [
+            "Hail"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. For 5 points each, what quantity is the rate at which an atmospheric variable, often temperature, changes with altitude, and the subject of two diﬀerent meteorological feedback loops, depending on its value.",
+        "options": [],
+        "answers": [
+            "Lapse rate"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "One phase of this phenomenon is marked by cooler sea surface temperatures in the South Paciﬁc Ocean. That phase of this phenomenon also leads to increased hurricane development in the Atlantic Ocean. During the opposing phase, which lends its (*) name to this phenomenon, the trade winds over the South Paciﬁc are weaker or even reverse direction. For 10 points, identify this phenomenon with phases including a neutral state and La Niña which is abbreviated as ENSO.",
+        "options": [],
+        "answers": [
+            "El Niño-Southern Oscillation"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "The Embedded JavaScript language can be used to generate code in this language with plain JavaScript. Cross-site scripting vulnerabilities work because the injection is maliciously rendered in this language. In this language, the &lt; and &gt; (ampersand l t semicolon, ampersand g t semicolon) entities (*) are needed as escape characters, as they represent less than and greater than symbols, which are used in the language to denote tags. For ten points, name this programming “language” (“quote language” [air quotes]) which is used as the foundational building block of websites.",
+        "options": [],
+        "answers": [
+            "HTML"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "HostOnly, Session, Secure, and HttpOnly are all attributes of this term in computer science. Famously, DNS cache poisoning attacks can be used to malicious access these. (*) Session hijacking is often accomplished by stealing one of these, so the best way to prevent such attacks is through letting this information expire. For ten points, name this term for a packet of data locally stored on one’s computer, which shares its name with a typically sweet and ﬂat baked good that the person reading this question is about to take a bite of.",
+        "options": [],
+        "answers": [
+            "Web Cookies"
+        ],
+        "difficulty": 0.7
+    },
+    {
+        "question": "Tail-call optimization can be used in conjunction with this technique to prevent errors when running a program. In particular, stack overﬂows are often caused by this programming technique when it is used poorly. (*) However, dynamic programming techniques and memoization can be used instead, often resulting in a less resource-intensive algorithm. For ten points, what is this term, best deﬁned as this term, best deﬁned as this term?",
+        "options": [],
+        "answers": [
+            "Recursion"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "This man, tragically, was found dead in his home at age 41 due to cyanide poisoning just two years after being convicted for “gross indecency” in 1952. Conway’s game of life (*) is one system that has a certain property whose variant’s namesake is this person. For ten points, name this English computer scientist and mathematician who is most well-known for his huge contributions towards cracking the Enigma employed by the Axis during World War II.",
+        "options": [],
+        "answers": [
+            "Alan Turing"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Information is often stored and represented in a variety of data structures. For ﬁve points each, linear probing and separate chaining are two variants of what data structure. While accessing elements from this structure takes constant time on average, the worst-case time complexity is linear.",
+        "options": [],
+        "answers": [
+            "Hash Table"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Information is often stored and represented in a variety of data structures. For ﬁve points each, what data structure can be thought of as an undirected graph with degree at most two. Equivalently, nodes in this data structure have at most two children.",
+        "options": [],
+        "answers": [
+            "Binary Tree"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "Information is often stored and represented in a variety of data structures. For ﬁve points each, what data structure, represented with square brackets in Java, represents an ordered series of objects.",
+        "options": [],
+        "answers": [
+            "Array"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Many modern electronic technologies are made possible through code. For ﬁve points each, what type of programming language are C++ and Rust examples, but neither Python nor R. It requires a translator to convert source code to machine code.",
+        "options": [],
+        "answers": [
+            "Compiled Language"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Many modern electronic technologies are made possible through code. For ﬁve points each, what object-oriented compiled language that is designed to be accessible and general-purpose gets its name from a type of Indonesian coﬀee. Did you know that it is run by more than 13 billion devices?",
+        "options": [],
+        "answers": [
+            "Java"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "Many modern electronic technologies are made possible through code. For ﬁve points each, what low-level language is designed to communicate directly with a computer directly, where each statement often corresponds to one machine instruction, but is distinct from machine code in that it is usually more easily readable by people.",
+        "options": [],
+        "answers": [
+            "Assembly"
+        ],
+        "difficulty": 0.6
+    },
+    {
+        "question": "For ﬁve points each, Portable Network Graphics, RAW, and Joint Photographic Experts Group are all formats of what type of ﬁle.",
+        "options": [],
+        "answers": [
+            "Image"
+        ],
+        "difficulty": 0.5
+    },
+    {
+        "question": "For ﬁve points each, images and text formatting may both be stored using what ﬁle format developed by Adobe in 1992 meant to make sharing documents easy regardless of machine.",
+        "options": [],
+        "answers": [
+            "PDF"
+        ],
+        "difficulty": 0.8
+    },
+    {
+        "question": "Many programming applications utilize the Internet. For ﬁve points each, what system translates domain names like google.com to IP addresses.",
+        "options": [],
+        "answers": [
+            "Domain Name System"
+        ],
+        "difficulty": 0.5
+    }{
+    "Anatomy - Integumentary": [
+      {
+        "question": "The skin is a component of each of the body systems below EXCEPT for the:",
+        "options": [
+          "Excretory system",
+          "Immune system",
+          "Integumentary system",
+          "Cardiovascular system"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.3
+      }
+    ]
+  },
+  {
+    "Ecology": [
+      {
+        "question": "How much energy is transferred between each trophic level in a food web?",
+        "options": [
+          "5%",
+          "10%",
+          "15%",
+          "20%"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "There is a group of rabbits living all together in a forest during the same period of time. They are genetically distinct from another group of rabbits three miles away. What is the ecological term for this group?",
+        "options": [
+          "Population",
+          "Colony",
+          "Aggregation",
+          "Species"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of these species is a k-strategist?",
+        "options": [
+          "Elephants",
+          "Fish",
+          "Rats",
+          "Flies"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "As bees obtain nutrition from flowers, pollen gets on bees’ legs and is then spread to other areas, so that bees effectively act as pollinators. What type of ecological relationship is this?",
+        "options": [
+          "Commensalism",
+          "Mutualism",
+          "Parasitism",
+          "Exploitation"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      }
+    ]
+  },
+  {
+    "Anatomy - Cardiovascular": [
+      {
+        "question": "Which of the following is not true about blood vessels?",
+        "options": [
+          "Arteries direct blood away from the heart.",
+          "Veins direct blood towards the heart.",
+          "Capillaries are often the locations of increased gas exchange.",
+          "The majority of arteries contain valves to prevent the backflow of blood."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the animals below would have the fastest heartbeat?",
+        "options": [
+          "Fennec fox",
+          "Zebra",
+          "Elephant",
+          "Mouse"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Designer Genes": [
+      {
+        "question": "A red flower is crossed with a white flower, resulting in four pink flowers. What type of genetic inheritance pattern is this?",
+        "options": [
+          "Incomplete dominance",
+          "Codominance",
+          "Dominant homozygous",
+          "Sex-linked"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Suppose a population of 500 rock pigeons is in Hardy-Weinberg equilibrium. Suppose that the dominant allele for chest feather density is “fluffy”, and the recessive allele is “sparse”. If there are 434 fluffy rock pigeons, what is the frequency of the “sparse” allele?",
+        "options": [
+          "0.132",
+          "0.248",
+          "0.363",
+          "0.868"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which of the following is true about DNA?",
+        "options": [
+          "The four nucleotides that make up DNA are adenosine, thymine, guanine, and uracil.",
+          "DNA is found as a double-stranded molecule in humans, but can be single-stranded in other organisms.",
+          "A point mutation in a single nucleotide of an organism’s DNA has no effect on resulting proteins.",
+          "DNA is always double-stranded except when it is cleaved during replication."
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "There is a population of elephants living in a certain savanna. Elephants enjoy eating tree bark, and in order to do so, use their tusks to tear off pieces of tree bark. One elephant named Aidan grows longer and tougher tusks than his friends. According to Lamarck’s theory of evolution, which of the following is true?",
+        "options": [
+          "Aidan’s tusks will eventually return to a size comparable to his friends’ tusks.",
+          "Aidan’s tusks will remain larger even if he is incapacitated and stops using them.",
+          "Aidan will pass on these elongated tusks to any offspring.",
+          "Aidan happened to inherit these tusks which are a random mutation."
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "If A and T are complementary nucleotides, and G and C are complementary nucleotides in DNA, A makes up what percentage of a sample of DNA if it is 41% G?",
+        "options": [
+          "9",
+          "18",
+          "41",
+          "82"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Suppose there are two parents. One is a carrier for a disease that follows a recessive pattern of inheritance (for the disease to be present, an individual must be homozygous recessive for a particular gene). The other parent is not a carrier and does not have this disease. What is the probability of a child being a carrier of this disease?",
+        "options": [
+          "0.25",
+          "0.50",
+          "0.75",
+          "1.00"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "If a cell undergoes mitosis, how many chromosomes will be present in the resulting cells?",
+        "options": [
+          "One fourth the number of chromosomes in the parent cell",
+          "Half the number of chromosomes in the parent cell",
+          "The same number of chromosomes in the parent cell",
+          "Depends on the type of cell"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "What initiates the movement of DNA through a gel during gel electrophoresis?",
+        "options": [
+          "There is an electrical power source that pushes the DNA through the gel by providing the nucleotides with enough energy to do so.",
+          "There is an electrical power source that creates an electrical power field on one end, repelling DNA which is negatively charged, so it moves through the gel.",
+          "There is a protein inserted into the gel wells which latches onto the DNA nucleotides and moves through the gel due to a chemical reaction with another compound, transporting the DNA along with it.",
+          "There are proteins which are bound to the DNA and are repelled by the gel electrophoresis buffer, moving away from the gel wells through the gel, transporting the DNA along with them."
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "What factor determines which strands of DNA travel the furthest through a gel in gel electrophoresis?",
+        "options": [
+          "Fragment length",
+          "Charge",
+          "Nucleotide sequence",
+          "Strand type"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "According to the cladogram of (fictional) passerine birds, which statement is true? The cladogram isn't included in the prompt, so assuming this is a generic cladogram question: Which of the following describes a cladogram?",
+        "options": [
+          "A diagram showing the evolutionary relationships among a group of organisms.",
+          "A diagram showing the physical appearance of a group of organisms.",
+          "A diagram showing the geographical distribution of a group of organisms.",
+          "A diagram showing the behavioral patterns of a group of organisms."
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following is a pyrimidine?",
+        "options": [
+          "Guanine",
+          "Adenine",
+          "Adenosine",
+          "Cytosine"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Cell Biology": [
+      {
+        "question": "There is a fictional protein, birdsoase, being produced in a cell to be used for extracellular defense in the bloodstream. Which organelle produces this birdsoase protein?",
+        "options": [
+          "Mitochondria",
+          "Ribosomes on the rough endoplasmic reticulum",
+          "Free ribosomes in the cytoplasm",
+          "Nucleolus"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following is true about fungi?",
+        "options": [
+          "Fungi produce energy through both aerobic and anaerobic cellular respiration.",
+          "Their cell walls are primarily made of peptidoglycan.",
+          "They are solely multicellular and heterotrophic organisms.",
+          "Some examples of fungi include blue-green algae, mushrooms, and yeast."
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Your class is tasked with helping to classify a cell. When you look at it under the microscope, it appears to have no cell wall, but you’re not sure what exactly is surrounding the cell. It also appears to have quite a large central vacuole and a visible nucleus. When you continuously add water to the cell, it does not burst. What type of cell do you think this is?",
+        "options": [
+          "Bacterial cell",
+          "Fungal cell",
+          "Animal cell",
+          "Plant cell"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "In 2007, a young adult tragically passed away after participating in a radio station’s (incredibly irresponsible) water drinking contest to win a Nintendo Wii video game system. What cellular behavior explains the woman’s death?",
+        "options": [
+          "As the cells take up more water, it overwhelms the concentration gradient between the bloodstream and intracellular contents and the cellular mechanisms for releasing water, so cells begin to burst.",
+          "As the bloodstream takes up more water, water passes into cells to balance the concentration gradient, but the excessive water transported into cells causes cells to burst.",
+          "As the bloodstream begins to take up more water, cells guard themselves against the excess water, but this leads to water building up in the blood vessels, which swell and obstruct proper cardiovascular functioning until the heart fails.",
+          "The excessive water leads to the kidney cells increasing rate of filtration, but they are overwhelmed, leading to acute kidney failure and death."
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.9
+      },
+      {
+        "question": "What are the different types of RNA and what do they stand for?",
+        "options": [
+          "mRNA, rRNA, tRNA: messenger RNA, ribosomal RNA, and transfer RNA",
+          "mRNA, rRNA, tRNA: microbial RNA, ribosomal RNA, and transfer RNA",
+          "mRNA, rRNA, tRNA: messenger RNA, ribosomal RNA, and translational RNA",
+          "mRNA, rRNA, tRNA: microbial RNA, ribosomal RNA, and translational RNA"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which cellular process is used to produce energy from glucose?",
+        "options": [
+          "Photosynthesis",
+          "Phagocytosis",
+          "Cellular respiration",
+          "Pinocytosis"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "What protects the ends of chromosomes from degrading?",
+        "options": [
+          "Chromatin",
+          "Telomeres",
+          "Nucleotides",
+          "Shelterin"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Anatomy - Immune": [
+      {
+        "question": "HIV patients may not display AIDS symptoms immediately after contracting the virus, and symptoms may take up to ten years to appear in a patient. What is this ten year period called?",
+        "options": [
+          "Interphase period",
+          "Latency period",
+          "Clinical period",
+          "Incubation period"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which cytotoxic cells are responsible for directly killing virus-infected cells?",
+        "options": [
+          "Regulatory T cell",
+          "CD4 cells",
+          "Helper T cells",
+          "CD8+ T cells"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Disease Detectives": [
+      {
+        "question": "Antibiotics would theoretically be effective in treating all of the disease below except which disease?",
+        "options": [
+          "Tuberculosis",
+          "Botulism",
+          "Salmonella",
+          "Mononucleosis"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Anatomy - Endocrine": [
+      {
+        "question": "When sugar levels are too high in your bloodstream, your body will use the hormone insulin to remove sugar from your bloodstream and transport it to the proper cells. When your sugar levels are too low, your cells will secrete glucagon to halt your cells’ intake of sugar. What bodily mechanism is this an example of?",
+        "options": [
+          "Positive feedback",
+          "Homeostasis",
+          "Metabolism",
+          "Cellular respiration"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Botany": [
+      {
+        "question": "Humans intake oxygen as plants intake…",
+        "options": [
+          "Oxygen",
+          "Carbon dioxide",
+          "Nitrogen",
+          "Carbon monoxide"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which structure contains the female reproductive cells in plants?",
+        "options": [
+          "Ovule",
+          "Megaspore",
+          "Angiosperm",
+          "Gymnosperm"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Ecology and Taxonomy": [
+      {
+        "question": "Consider the scientific name of a species. What taxonomic category does the first term refer to, and what taxonomic category does the second term refer to? For example, the scientific name of the Eastern Bluebird is Sialia sialisis. What taxonomic category does Sialia refer to, and what taxonomic category does sialisis refer to?",
+        "options": [
+          "Class; genus",
+          "Class; species",
+          "Genus; species",
+          "Order; phylum"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "If two organisms are in the same kingdom, which of the following statements is not true?",
+        "options": [
+          "The two organisms must be within the same domain.",
+          "If one of these organisms is eukaryotic, the other organism cannot be prokaryotic.",
+          "The two organisms must be within the same domain and phylum.",
+          "If the two organisms attempt reproduction, they may or may not produce fertile offspring."
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.8
+      }
+    ]
+  },
+  {
+    "Ethology": [
+      {
+        "question": "Crystal has recently acquired two lovely new pet birds. To her surprise and joy, the female bird lays an egg the spring after. She is watching the egg while the female bird is let out to fly, when to her shock, it hatches! However, for the next four weeks, the baby bird begins following Crystal around instead of its mother. What is this phenomenon called?",
+        "options": [
+          "Fostering",
+          "Maternal tracking",
+          "Imprinting",
+          "Biological adoption"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Cell Division": [
+      {
+        "question": "A cell that is currently undergoing cellular division has a visible nuclear membrane, a cleavage furrow, and the chromophores are at the poles. What phase of cellular division is this cell in?",
+        "options": [
+          "Prophase",
+          "Metaphase",
+          "Anaphase",
+          "Telophase"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Water Transport in Plants": [
+      {
+        "question": "Water is transported in plants through the xylem, against the force of gravity. What type of capillary action is occurring between the water molecules and the xylem cells?",
+        "options": [
+          "Surface tension",
+          "Adhesion",
+          "Cohesion",
+          "Diffusion"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Chemistry": [
+      {
+        "question": "If an atom has 25 protons, 24 neutrons, and 25 electrons, what is its atomic number?",
+        "options": [
+          "24",
+          "25",
+          "49",
+          "50"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.3
+      },
+      {
+        "question": "If an atom has 25 protons, 24 neutrons, and 25 electrons, what is its atomic mass?",
+        "options": [
+          "24 amu",
+          "25 amu",
+          "49 amu",
+          "50 amu"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.3
+      },
+      {
+        "question": "How many valence electrons does carbon have, given its atomic number is 6?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "How many electrons are in a single chemical bond?",
+        "options": [
+          "0; it is not a tangible attraction.",
+          "1",
+          "2",
+          "It depends on the type of bond."
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What type of bonding is present between the Na+ and Cl- ions of an NaCl molecule?",
+        "options": [
+          "Polar covalent bonding",
+          "Nonpolar covalent bonding",
+          "Intermolecular bonding",
+          "Ionic bonding"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "The process of sublimation is …",
+        "options": [
+          "The phase transition of a gas to a solid",
+          "The phase transition of a solid to plasma",
+          "Exothermic",
+          "Endothermic"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following would not necessarily indicate that a chemical reaction is taking place?",
+        "options": [
+          "A color change",
+          "Freezing",
+          "Formation of a gas",
+          "A change in temperature"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Each atom of the fictional element ___ has 262 protons. If an atom of ___ undergoes alpha decay, how many protons will the resulting atom have? (not the helium)",
+        "options": [
+          "260 protons",
+          "259 protons",
+          "258 protons",
+          "257 protons"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Andrew is one of your chemistry classmates, and decides to play around with the matches in the back of the lab. However, he accidentally lights his homework on fire, and panics because he doesn’t have any water on him. What can he do to extinguish this fire (if he thinks fast enough), and why would that work?",
+        "options": [
+          "He can quickly put a sealed container on top of the paper. This would work because there would be no air to spread the fire, therefore extinguishing the fire.",
+          "He can quickly put a sealed container on top of the paper.",
+          "He can quickly fan the fire, as the additional kinetic energy will provide sufficient energy for the reverse chemical reaction of fire.",
+          "He can use a cloth or something to firmly beat out the fire. This would work because there would be no oxygen to function as an oxidizing agent and initiate/maintain the fire."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which of the following solutions is not an acid?",
+        "options": [
+          "A solution with pH of 9",
+          "A solution with pH of 5",
+          "A solution with pH of 3",
+          "A solution with pH of 1"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What is the pOH of a solution with pH of 11?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of these elemental pairs has the most similar chemical behavior?",
+        "options": [
+          "F and Cl",
+          "C and N",
+          "Zr and Ac",
+          "Bi and Po"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "How many valence electrons does Ne have?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What is the name of group 1A?",
+        "options": [
+          "Noble gases",
+          "Halogens",
+          "Alkaline metals",
+          "Alkaline earth metals"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What happens to electronegativity as you go across a period (left to right across the periodic table, ex. Na →Ar)?",
+        "options": [
+          "It increases",
+          "It decreases",
+          "No change",
+          "Cannot tell without more information"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What happens to ionization energy as you go down a group (top to bottom down the periodic table, ex. H → Fr)?",
+        "options": [
+          "It increases",
+          "It decreases",
+          "No change",
+          "Cannot tell without more information"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What happens to reactivity as you go down a group (top to bottom down the periodic table, ex. H → Fr)?",
+        "options": [
+          "It increases",
+          "It decreases",
+          "No change",
+          "Cannot tell without more information"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "The chemical reaction represented by this free energy diagram is …",
+        "options": [
+          "Endergonic",
+          "Exergonic",
+          "Endothermic",
+          "Exothermic"
+        ],
+        "answers": [
+          2
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "The activation energy of the forward reaction described by this free energy diagram is",
+        "options": [
+          "187 kJ",
+          "341 kJ",
+          "439 kJ",
+          "528 kJ"
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "The activation energy for the forward reaction is equal to the activation energy for the reverse reaction.",
+        "options": [
+          "True",
+          "False; it is less than the activation energy for the reverse reaction",
+          "False; it is greater than the activation energy for the reverse reaction",
+          "Not enough information to tell"
+        ],
+        "answers": [
+          3
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "This reaction favors…",
+        "options": [
+          "The production of products",
+          "The production of reactants",
+          "Neither; it is stagnant",
+          "Both, equally so"
+        ],
+        "answers": [
+          1
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "If a catalyst is added to this reaction, which value would change?",
+        "options": [
+          "The 341 kJ would decrease",
+          "The 341 kJ would increase",
+          "The 528 kJ would decrease",
+          "The 528 kJ would increase"
+        ],
+        "answers": [
+          1
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Given the chemical reaction below: 2𝐴  +  3𝐵 → 𝐶  +  2𝐷 How do the rates of the consumption/production of reactants and products compare to each other?",
+        "options": [
+          "A is consumed at ⅔ the rate that C is produced.",
+          "A is consumed at the same rate as D is produced.",
+          "C is produced at twice the rate that D is produced.",
+          "D is produced at 3/2 the rate that B is consumed."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "What are these materials called (i.e., Na, Mg, Al, and Si)?",
+        "options": [
+          "Compounds",
+          "Salts",
+          "Elements",
+          "Radicals"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of these would be the most reactive?",
+        "options": [
+          "Na",
+          "Mg",
+          "Al",
+          "Si"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What determines the level of reactivity?",
+        "options": [
+          "The larger an atom is, the more likely its electrons are to interact with electrons of other molecules or atoms, and therefore the greater the strength of interactions and reactivity.",
+          "The larger an atom is, the farther away its valence electrons are from the positive nuclear attractions, and the more free they are to interact with the valence electrons of other molecules or atoms, producing a greater reactivity.",
+          "The more electronegative an atom is, the more likely its valence electrons are to form interactions with the valence electrons of other molecules or atoms and therefore the greater the reactivity.",
+          "The more electronegative an atom is, the more likely valence electrons are to be released from an atom and therefore form stronger interactions with other atoms, resulting in a greater reactivity."
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which of these is an accurate description of 𝐻 𝑂?",
+        "options": [
+          "It is a nonpolar molecule. Its intramolecular interactions are nonpolar covalent bonds. Its intermolecular interactions are dipole-dipole forces and hydrogen bonding.",
+          "It is a nonpolar molecule. Its intramolecular interactions are nonpolar covalent bonds. Its intermolecular interactions are hydrogen bonding and dipole-induced dipole forces.",
+          "It is a polar molecule. Its intramolecular interactions are polar covalent bonds and its intermolecular interactions are hydrogen bonding and dipole-dipole forces.",
+          "It is a polar molecule. Its intramolecular interactions are polar covalent bonds. Its intermolecular interactions are hydrogen bonding and London dispersion forces."
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "When will a chemical reaction be spontaneous?",
+        "options": [
+          "When the Gibbs free energy is a negative value.",
+          "When the Gibbs free energy is a positive value.",
+          "When the enthalpy is a negative value.",
+          "When the enthalpy is a positive value."
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "When will a chemical reaction always be spontaneous?",
+        "options": [
+          "If enthalpy is a negative value and entropy is a positive value.",
+          "If enthalpy is a negative value and entropy is a negative value.",
+          "If enthalpy is a positive value and entropy is a positive value.",
+          "If enthalpy is a positive value and entropy is a negative value."
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Consider a compound AB. If A is the more electronegative element, which element has a partial positive charge?",
+        "options": [
+          "A",
+          "B",
+          "There are no partial charges.",
+          "The two elements have an equal positive charge."
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Given the electronegativity of Na is 0.93 and the electronegativity of Cl is 3.16, what type of bond is between Na and Cl in NaCl?",
+        "options": [
+          "Non-polar covalent",
+          "Polar covalent",
+          "Ionic",
+          "Interionic"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Given the table below, rank the bonds H-F, H-O, H-N, H-C from most polar to least polar.",
+        "options": [
+          "H-F, H-O, H-N, H-C",
+          "H-N, H-F, H-O, H-C",
+          "H-C, H-O, H-F, H-N",
+          "H-C, H-N, H-O, H-F"
+        ],
+        "answers": [
+          1
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Do electrons farther away from the nucleus have more or less energy than electrons closer to the nucleus?",
+        "options": [
+          "They have more energy.",
+          "They have less energy.",
+          "They have the same amount of energy.",
+          "It depends on the element."
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "You conduct paper chromatography for comparing the ink of a couple of different Zebra pens. If the ink that travels the furthest travels 11.2 cm from the solvent front and the solvent travels 14.5 cm, what is the 𝑅 value for this ink?",
+        "options": [
+          "0.56",
+          "0.77",
+          "1.3",
+          "1.6"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "What is the electron group geometry of 𝐶𝐻 ?",
+        "options": [
+          "Linear",
+          "Trigonal-planar",
+          "Tetrahedral",
+          "Octahedral"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What is the molecular geometry of 𝐶𝐻 ?",
+        "options": [
+          "Linear",
+          "Trigonal-planar",
+          "Tetrahedral",
+          "Triangular bipyramidal"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      }{
+    "Anatomy - Skeletal": [
+      {
+        "question": "Which of the following bones are not found in the skull?",
+        "options": [
+          "Zygomatic",
+          "Ethmoid",
+          "Scaphoid",
+          "Temporal"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Anatomy - Cardiovascular": [
+      {
+        "question": "Which of the following organs would be likely affected if a patient had damage below the diaphragm?",
+        "options": [
+          "Heart",
+          "Lungs",
+          "Liver",
+          "Thyroid"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Cell Biology": [
+      {
+        "question": "During which period did fish first evolve (including jawless fish)?",
+        "options": [
+          "Cambrian",
+          "Ordovician",
+          "Devonian",
+          "Carboniferous"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following cell types are commonly known as red blood cells?",
+        "options": [
+          "Leukocytes",
+          "Erythrocytes",
+          "Thrombocytes",
+          "Myelocytes"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.3
+      },
+      {
+        "question": "Which of the following organelles does not have its own DNA?",
+        "options": [
+          "Nucleus",
+          "Ribosome",
+          "Mitochondria",
+          "Chloroplast"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "During which step of aerobic respiration is glucose broken down to produce pyruvate?",
+        "options": [
+          "Glycolysis",
+          "Link reaction",
+          "Krebs cycle",
+          "Electron transport chain"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of the following is a major component of bacterial cell walls?",
+        "options": [
+          "Peptidoglycan",
+          "Cellulose",
+          "Chitin",
+          "Cholesterol"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "You are a budding botanist at your local greenhouse! One day, you find a true-breeding (homozygous) white flower and a true-breeding red flower. You cross both plants, which give rise to offspring with pink flowers! What is the most likely form of inheritance of flower color for this plant?",
+        "options": [
+          "Epistasis",
+          "Incomplete dominance",
+          "Codominance",
+          "Lethal allele"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following biomolecules could contain phosphorus atoms? Disaccharide Phospholipid Amino acid Ribonucleic acid",
+        "options": [
+          "I and II only",
+          "II and IV only",
+          "II and III only",
+          "I, III, and IV only"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following molecules is the main constituent of the cell membrane?",
+        "options": [
+          "Sphingolipids",
+          "Proteins",
+          "Phospholipids",
+          "Cholesterol"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "DNA Ligase is an essential enzyme in DNA replication. Which of the following functions does it perform?",
+        "options": [
+          "“Unzips” and separates the DNA strands",
+          "Adds an RNA primer to the strand",
+          "Stabilizes the strands as they are unwound",
+          "Sticks DNA fragments together"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Where in the cell does transcription take place?",
+        "options": [
+          "Ribosome",
+          "Cytosol",
+          "Nucleus",
+          "Mitochondria"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of the following components is not present in a eukaryotic mature mRNA molecule?",
+        "options": [
+          "A 5’ cap",
+          "Exons",
+          "Introns",
+          "A 3’ poly-A tail"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What type of stem cell can differentiate into any cell type found in an adult body?",
+        "options": [
+          "Totipotent",
+          "Pluripotent",
+          "Multipotent",
+          "Unipotent"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Order the steps of mitosis chronologically from left to right.",
+        "options": [
+          "Prophase > Telophase > Anaphase > Metaphase",
+          "Anaphase > Metaphase > Telophase > Prophase",
+          "Prophase > Metaphase > Anaphase > Telophase",
+          "Metaphase > Anaphase > Prophase > Telophase"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following terms below best describes the body cavities of members in phylum Nematoda?",
+        "options": [
+          "Acoelomate",
+          "Pseudocoelomate",
+          "Coelomate",
+          "Eucoelemate"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following structures are formed from the mesoderm? Muscles Stomach lining Kidneys Red blood cells",
+        "options": [
+          "I only",
+          "I and II only",
+          "I, III, IV only",
+          "II, III, IV only"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Ecology": [
+      {
+        "question": "Mangrove trees serve a critical role in swamp biomes due to their large biomass. What are mangrove trees an example of?",
+        "options": [
+          "Keystone species",
+          "Dominant species",
+          "Indicator species",
+          "Founder species"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Given 15,000 kJ of available energy available in grass, how much of that energy is available for an eagle (a tertiary consumer), assuming that the energy is transferred in a straight chain?",
+        "options": [
+          "15,000 kJ",
+          "1,500 kJ",
+          "150 kJ",
+          "15 kJ"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Studies have shown that adult blue-footed boobies may cause wing deformities in booby chicks within a colony at no benefit for the adults. This type of relationship is best described as:",
+        "options": [
+          "Parasitism",
+          "Commensalism",
+          "Amensalism",
+          "Neutralism"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following terms best describes the prolonged dormancy of a desert tortoise in extreme heat?",
+        "options": [
+          "Torpor",
+          "Estivation",
+          "Brumation",
+          "Hibernation"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Botany": [
+      {
+        "question": "Which of the following is true about the xylem of plants?",
+        "options": [
+          "Contains sieve plates",
+          "Transports organic compounds actively",
+          "Occupy the inner portion of the vascular bundle",
+          "Utilize companion cells"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following phyla consist solely of nonvascular plants?",
+        "options": [
+          "Bryophyta",
+          "Angiospermophyta",
+          "Coniferophyta",
+          "Filicinophyta"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Why would it be advantageous for xylem to be composed of dead cells?",
+        "options": [
+          "Requires less energy to transport water",
+          "Allows for the osmosis of water into the xylem",
+          "Dead cells can be hollow, allowing for more free movement of water",
+          "The xylem is composed of living cells, the phloem is composed of dead cells"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.8
+      }
+    ]
+  },
+  {
+    "Anatomy - Reproductive": [
+      {
+        "question": "The development of what structure allowed animals to permanently inhabit land?",
+        "options": [
+          "Stronger hindlimbs",
+          "Nictitating membrane",
+          "Middle ear structures",
+          "Amniotic egg"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Two individuals with IAi and IAIB genotypes are having a child together. What is the probability that their child would exhibit the B phenotype?",
+        "options": [
+          "0%",
+          "25%",
+          "50%",
+          "100%"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.8
+      }
+    ]
+  },
+  {
+    "Anatomy - Immune": [
+      {
+        "question": "Antibody concentration within a human is highest at which of the following points in time?",
+        "options": [
+          "Initial exposure",
+          "Primary immune response",
+          "Secondary exposure",
+          "Secondary immune response"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Evolution": [
+      {
+        "question": "Humans have been able to artificially perform one step of the nitrogen cycle, where hydrogen and nitrogen gas are converted to ammonia. What is this process called?",
+        "options": [
+          "Haber-Bosch process",
+          "Birkeland-Eyde process",
+          "Cyanamide process",
+          "Paradas method"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Zoology": [
+      {
+        "question": "Phylum Arthropoda have a distinct body plan where most species’ body plans are divided into how many tagmata?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "6"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      }
+    ]
+  },
+  {
+    "Chemistry Lab": [
+      {
+        "question": "Uranium with mass of 235 and atomic number of 92 goes under what type of decay to form thorium with mass 231 and atomic number 90?",
+        "options": [
+          "Alpha decay",
+          "Beta decay",
+          "Gamma decay",
+          "Positron emission"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "You mix together two reactants, which then form three products: one gas, one solid, and one liquid. Which of the following techniques would you use in the process of separating these products from each other?",
+        "options": [
+          "Evaporation",
+          "Gas chromatography",
+          "Gravimetric separation",
+          "Distillation"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      }
+    ]
+  },
+  {
+    "Chemistry": [
+      {
+        "question": "What is the oxidation state of “O” in hydrogen peroxide?",
+        "options": [
+          "-2",
+          "-1",
+          "0",
+          "1"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following elements is in a liquid state at STP?",
+        "options": [
+          "Fluorine",
+          "Sulfur",
+          "Chlorine",
+          "Bromine"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which of the following accurately ranks the following ions: (1) Na+, (2) F−, and (3) O−2, by increasing atomic radii?",
+        "options": [
+          "(1), (2), (3)",
+          "(3), (2), (1)",
+          "(2), (3), (1)",
+          "(1), (3), (2)"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "In the nitrogen cycle, ammonia, NH3, gets oxidized to nitrite, NO−2. What is the oxidation state of the nitrogen atom in ammonia and nitrite respectively?",
+        "options": [
+          "0, +1",
+          "0, +3",
+          "-3, +1",
+          "-3, +3"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "What is the IUPAC ID of cupric nitrate?",
+        "options": [
+          "Copper(I) nitrate",
+          "Copper(II) nitrate",
+          "CuNO3",
+          "Cu(NO3)2"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of the following is true of carbon dioxide?",
+        "options": [
+          "It has an oxygen central atom.",
+          "The central atom has a net charge of -4.",
+          "Its initial VSEPR shape is tetrahedral.",
+          "It has 3 normal modes."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following accurately describes hydrogen bonds?",
+        "options": [
+          "Form between two hydrogen atoms",
+          "Form between two hydrogen atoms bonded to electronegative atoms",
+          "Form only between water molecules",
+          "Form between a hydrogen atom bonded to an electronegative atom and another electronegative atom"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of the following elements is liquid at standard room temperature and pressure?",
+        "options": [
+          "Hydrogen",
+          "Gold",
+          "Mercury",
+          "Fermium"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "What is the pH of a solution with a pOH of 2?",
+        "options": [
+          "12",
+          "9",
+          "6",
+          "4"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What does the 0th law of thermodynamics state?",
+        "options": [
+          "If System A is in equilibrium with System B and System B is in equilibrium with System C, then System A and C are in equilibrium with each other",
+          "Entropy of a system always increases",
+          "Energy is always conserved",
+          "All molecular movement stops at absolute zero"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "How many kelvins is 25 degree Celsius?",
+        "options": [
+          "25",
+          "298",
+          "567",
+          "50"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.3
+      },
+      {
+        "question": "If the enthalpy and entropy change in a reaction are both negative, what is true of the reaction?",
+        "options": [
+          "It is always spontaneous",
+          "It is only spontaneous at high temperatures",
+          "It is only spontaneous at low temperatures",
+          "It is never spontaneous"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following gases would behave most like an ideal gas at 400K?",
+        "options": [
+          "H2",
+          "NH3",
+          "Kr",
+          "BF3"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which of the following contributions to atomic theory is matched with the correct scientist who discovered it?",
+        "options": [
+          "Determination of charge and mass of an electron - Rutherford",
+          "Discovery of the electron - Millikan",
+          "Discovery of the atomic nucleus - Dalton",
+          "Discovery of the neutron - Chadwick"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "You plot the natural log of the concentration of compound [A] against time and find that it forms a straight line. What is the rate order of this reaction?",
+        "options": [
+          "0th order",
+          "1st order",
+          "2nd order",
+          "3rd order"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Catalysts help speed up reactions by:",
+        "options": [
+          "Increasing the initial concentration of reactants",
+          "Lowering the activation energy",
+          "Increasing Gibbs Free Energy",
+          "Decreasing the enthalpy change"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Given a 2.0 L container at 1.7 atm filled with equal amounts of CO2 and CH4 gas (molar masses of 44.01 g/mol and 16.04 g/mol respectively) at 328K, how do the kinetic energies of each gas compare?",
+        "options": [
+          "CO2 has more kinetic energy than CH4",
+          "CH4 has more kinetic energy than CO2",
+          "The kinetic energies of each gas are approximately equal",
+          "Kinetic energies are impossible to determine given the current information"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which of the following compounds has resonance?",
+        "options": [
+          "Carbon dioxide",
+          "Propene",
+          "Ethane",
+          "Benzene"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Find the standard cell potential of a cell with an anode of -0.15 V and a cathode of 0.60 V.",
+        "options": [
+          "75 V",
+          "45 V",
+          "30 V",
+          "55 V"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "In an acid-base titration where the titrant is a strong base and the analyte is a strong acid, where does the endpoint of the titration occur?",
+        "options": [
+          "When the moles of hydronium ions equals the moles of hydroxide ions",
+          "When the moles of hydronium ions are less than the moles of hydroxide ions",
+          "When the moles of hydronium ions are more than the moles of hydroxide ions",
+          "When the pH of the solution is more than 7"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following chemical elements would be affected by a magnetic field?",
+        "options": [
+          "Be",
+          "He",
+          "O",
+          "Zn"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Why is ice less dense than water, in terms of lattice structure?",
+        "options": [
+          "Ice has a lower volume in comparison to mass, which means that there are less ions in each unit cell, leading to a lower density.",
+          "Ice has a cubic structure, which allows for air to gather in between the individual unit cell, therefore making ice less dense.",
+          "Ice has a hexagonal structure, which allows for air to gather in between the individual unit cell, therefore making ice less dense.",
+          "Ice has a higher volume in comparison to mass, which means that there are less ions in each unit cell, leading to a lower density."
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which three elements can form hydrogen bonds?",
+        "options": [
+          "O, N, C",
+          "F, O, N",
+          "F, Cl, Br",
+          "O, H, He"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "What type of chemical reaction is the following: HCl (aq) + Zn(s) → ZnCl2(aq) + H2(g)?",
+        "options": [
+          "Double replacement",
+          "Synthesis",
+          "Decomposition",
+          "Single replacement"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which three factors can cause a shift in the dynamic equilibrium? (Hint: Le Chatelier’s Principle)",
+        "options": [
+          "Pressure, Temperature, Concentration",
+          "Pressure, Reactants, State of Matter",
+          "State of Matter, Products, Temperature",
+          "Concentration, Pressure, State of Matter"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of the following laws states that no two electrons in the same atom can have the same values for all of their four quantum numbers?",
+        "options": [
+          "Hund’s Rule",
+          "Heisenberg Uncertainty Principle",
+          "Pauli’s Exclusion Principle",
+          "Aufbau Principle"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "What do you call a solution that carries more solute than required?",
+        "options": [
+          "Saturated",
+          "Oversaturated",
+          "Undersaturated",
+          "Supersaturated"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which is the correct order of the following intermolecular forces from strongest to weakest?",
+        "options": [
+          "London Dispersion Forces ¿ Ionic Bonds ¿ Hydrogen Bonds",
+          "Hydrogen Bonds ¿ Dipole-Dipole Interactions ¿ London Dispersion Forces",
+          "London Dispersion Forces ¿ Dipole-Dipole Interactions ¿ Hydrogen Bonds",
+          "Ionic Bonds ¿ Hydrogen Bonds ¿ Dipole-Dipole Interactions ¿ London Dispersion Forces"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.8
+      }
+    ]
+  },
+  {
+    "Physics": [
+      {
+        "question": "Which of the following is equal to the velocity of a wave?",
+        "options": [
+          "Frequency * period",
+          "Frequency * amplitude",
+          "Amplitude * period",
+          "Frequency * wavelength"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "Which of the following are not one of the main components of aerodynamics?",
+        "options": [
+          "Lift",
+          "Mass",
+          "Trust",
+          "Drag"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "If a plane is stalling, which way would you move the center of gravity?",
+        "options": [
+          "Forward",
+          "Backward",
+          "Cannot be determined",
+          "Leave it in the middle; change the mass instead"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "If one were to swing an ideal pendulum, which of the following would not change the period?",
+        "options": [
+          "Length of pendulum",
+          "Gravity",
+          "Mass of the pendulum",
+          "Temperature of the pendulum"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "What is the wavelength of a wave with period 4 ms that is traveling at 90 m/s?",
+        "options": [
+          "22.5 m",
+          "22500 m",
+          "360 m",
+          "1.44 m"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "A vertical 600 lb force is exerted on an ideal truss as shown below. Which of these members experiences zero force?",
+        "options": [
+          "GF",
+          "FB",
+          "AB",
+          "EC"
+        ],
+        "answers": [
+          ""
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Which of these real-life phenomena can propagate faster than the speed of light?",
+        "options": [
+          "The phase velocity of an electromagnetic wave in a dispersive medium",
+          "The group velocity of an electromagnetic wave in a dispersive medium",
+          "A photon undergoing time dilation",
+          "An electron undergoing quantum tunneling"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "Which of the following can physically travel at exactly the speed of light?",
+        "options": [
+          "A massless particle",
+          "A particle with a mass of 3 u and a spin of +1/2",
+          "An accelerated proton",
+          "An accelerated electron"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "You hit the left end of a long metal rod. Which of these define the time it takes for the right end to begin moving?",
+        "options": [
+          "The speed of sound along the rod",
+          "The speed of light",
+          "The speed of your hand",
+          "No time; it’s instantaneous"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Sound waves travel fastest in which of these media?",
+        "options": [
+          "Aluminum",
+          "Wood",
+          "Water",
+          "Air"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "A simple circuit can be connected with either a 50 Ω, 100 Ω, or 200 Ω resistor. Which resistor would lead to the least magnitude of flowing current?",
+        "options": [
+          "50 Ω",
+          "100 Ω",
+          "200 Ω",
+          "They have the same magnitude of current"
+        ],
+        "answers": [
+          3
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "Which of these radio antennas has the lowest directivity?",
+        "options": [
+          "Dipole",
+          "Loop",
+          "Helical",
+          "Yagi-Uda"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "In what solid would heat take the longest to travel through?",
+        "options": [
+          "Metal",
+          "Water",
+          "Air",
+          "Ceramic fiber"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "Which of these items would most likely dampen the reverberation of a sound wave in a closed room via absorption?",
+        "options": [
+          "A plant",
+          "A phone",
+          "A computer",
+          "A mirror"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.4
+      },
+      {
+        "question": "What is the ideal end-to-end length of a dipole radio antenna in terms of the wavelength (λ) of the radio wave it produces?",
+        "options": [
+          "λ/4",
+          "λ/2",
+          "λ",
+          "λπ"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      },
+      {
+        "question": "A horizontal spring-mass system rests on a rubber pad (with significant friction). Which of these best describes its angular frequency as it oscillates back and forth?",
+        "options": [
+          "The angular frequency gets lower over time",
+          "The angular frequency gets higher over time",
+          "The angular frequency stays constant over time",
+          "The angular frequency oscillates between low and high"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "Two spheres of equal volume and mass roll without slipping down a ramp. The first sphere has its mass evenly distributed throughout its entire volume while the second sphere has its mass concentrated along its outermost layer. Which of these takes the longest to roll to the bottom, assuming they begin at equal height?",
+        "options": [
+          "The first sphere takes the longest",
+          "The second sphere takes the longest",
+          "Both spheres take the same amount of time to roll",
+          "Neither sphere reaches the bottom"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.8
+      },
+      {
+        "question": "A trombone player plays a note at sound level β dB. If 5 trombone players join them playing at the same sound level, what will the total sound level be?",
+        "options": [
+          "7 + β dB",
+          "7.8 + β dB",
+          "5β dB",
+          "6β dB"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "A sliding object travels with a kinetic energy of 12 J. If it slides along a rubber pad and comes to a stop, how much energy would it need to have lost via friction?",
+        "options": [
+          "6 J",
+          "12 J",
+          "72 J",
+          "144 J"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "A cube of mass m slides down a ramp with friction. A sphere of mass m rolls without slipping down the same ramp. Which object loses more energy to friction?",
+        "options": [
+          "The cube",
+          "The sphere",
+          "Both lose the same amount",
+          "Neither lose any"
+        ],
+        "answers": [
+          1
+        ],
+        "difficulty": 0.7
+      },
+      {
+        "question": "A ping pong ball is launched towards a bowling ball at rest. When the two balls collide, which of these statements is true about their combined momentum?",
+        "options": [
+          "Their momentum is unknown until measured",
+          "They lose momentum after the collision",
+          "They gain momentum after the collision",
+          "Their net momentum remains constant"
+        ],
+        "answers": [
+          4
+        ],
+        "difficulty": 0.5
+      },
+      {
+        "question": "The strong nuclear force acts on what kinds of sub-atomic particles?",
+        "options": [
+          "Leptons",
+          "Hadrons",
+          "Bosons",
+          "Photons"
+        ],
+        "answers": [
+          2
+        ],
+        "difficulty": 0.6
+      }{
+  "Anatomy - Sense Organs": [
+    {
+      "question": "Clinical term required. Characterized by an itching, redness, and in some cases drainage of the ear canal, this disease is oftentimes caused by a retention of water in the ear, or by objects plugged in the ear, causing a moist environment for bacteria to grow. This disease is usually treatable in the early stage with ear drops. For ten points, name this disorder commonly known as swimmer’s ear.",
+      "options": [],
+      "answers": [
+        "Otitis externa"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "This structure, located in the ear, is made up of two main parts: the head and manubrium, or “handle”. This bone makes contact with both the tensor tympani and the tympanic membrane. For human hearing, this bone is the ﬁrst of the three smallest bones in the human body to receive sound vibrations. For ten points, name the largest of the three ossicles, more colloquially known as the “hammer”.",
+      "options": [],
+      "answers": [
+        "Malleus"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Anatomy - Nervous": [
+    {
+      "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. This neurotransmitter is most closely associated with Alzheimer’s. A deﬁciency in this neurotransmitter leads to Alzheimer’s.",
+      "options": [],
+      "answers": [
+        "Acetylcholine"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. This brain function is what Alzheimer’s mainly aﬀects, and is dedicated to the short term and long term storage of information.",
+      "options": [],
+      "answers": [
+        "Memory"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Neurological disorders such as Alzheimer’s are devastating to the brain. This is the main cause for why Alzheimer’s patients’ brains shut down over time, leading to neuron death.",
+      "options": [],
+      "answers": [
+        "Buildup of proteins"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Anatomy - Endocrine": [
+    {
+      "question": "This hormone is typically created within the hypothalamus to aid in breast-feeding. Oftentimes, this hormone is stimulated by a positive feedback caused as the result of exercise. Commonly released from the posterior pituitary gland, this hormone is responsible for contractions during childbirth. It is also known as the love hormone. For ten points, what is the hormone commonly associated with cuddling?",
+      "options": [],
+      "answers": [
+        "Oxytocin"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Biology": [
+    {
+      "question": "These speciﬁc organisms ﬁrst appeared in the Late Carboniferous period, and are evolutionarily and structurally similar to Cordaitales [KOR-dih-tails]. These plants are well known for their forests within the Northwest region of the United States. Instead of leaves, this type of tree has needles and pine cones can be found at its base. Examples of this division of plants include cedars, cypresses, and ﬁrs. For ten points, name the group of trees commonly decorated for Christmas.",
+      "options": [],
+      "answers": [
+        "Conifers"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. Name this invasive mollusk that is named after the stripes on its shell is a look-alike to the Quagga mussel. This species reproduces extremely rapidly, outcompeting native fauna.",
+      "options": [],
+      "answers": [
+        "Zebra Mussel"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. Name this jawless ﬁsh aggressively attacks other ﬁsh in the Great Lakes, leading to huge declines in native ﬁsh populations. It has facilitated the growth of the invasive alewife’s population due to its removal of the alewife’s predators.",
+      "options": [],
+      "answers": [
+        "Sea Lamprey"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Of great importance nowadays is the study of invasive species, the eﬀects of which can be dramatic on many ecosystems. Name this ﬁsh native to the Indian and Paciﬁc oceans threatens coral reef ecosystems due to competition with native feeders and lack of predators. It is easily recognizable from its red and white stripes and long spike-like ﬁns.",
+      "options": [],
+      "answers": [
+        "Lionﬁsh"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "There are four major types of macromolecules that compose living organisms. This substance turns to a color yellow-red from blue in the presence of a certain type of carbohydrates. This substance will not react with complex carbohydrates, but will react with reducing sugars.",
+      "options": [],
+      "answers": [
+        "Benedict’s reagent"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "There are four major types of macromolecules that compose living organisms. In this technique, DNA strands are heated to be separated and then cooled so that primers can attach new pairs to the original strand. Hundreds of copies of DNA can be created with the help of an enzyme for which this technique is named after.",
+      "options": [],
+      "answers": [
+        "Polymerase Chain Reaction"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "There are four major types of macromolecules that compose living organisms. This analytical technique utilizes gel electrophoresis to identify the presence of proteins in a given sample. In this technique, the gel is applied to a membrane that is exposed to antibodies.",
+      "options": [],
+      "answers": [
+        "Western blot"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "DNA is what makes every person unique. This principle states that the purines and pyrimidines in DNA must have the same percentage respectively.",
+      "options": [],
+      "answers": [
+        "Chargaﬀ’s rule"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "DNA is what makes every person unique. DNA is primarily composed of these organic molecules, which consist of a nitrogenous base, a sugar, and a phosphate group.",
+      "options": [],
+      "answers": [
+        "Nucleotide"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "DNA is what makes every person unique. This nucleobase is contained in RNA as opposed to its DNA counterpart, Thymine.",
+      "options": [],
+      "answers": [
+        "Uracil"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Chemistry": [
+    {
+      "question": "Zaitsev’s Rule states that the reaction between these substances and strong acids form the most stable alkenes possible. Without the presence of oxygen, intestinal bacteria will produce one of these substances as a waste product when breaking down sugars. These substances are commonly used in fuel production and beverages. For ten points, name this type of organic compounds, of which common examples include menthol and ethanol.",
+      "options": [],
+      "answers": [
+        "Alcohols"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Saturated ﬁlter paper or glass tubes are typically used as one of two types of this device. Batteries are made of multiple voltaic cells which employs this device that typically contains electrolytes. There are two half cells in which ions ﬂow from and to with the use of this device. As one half cell is for oxidation and the other for reduction, the device is vital so that charges do not build up on either cell. For ten points, name the device that connects the anode and cathode in voltaic cells.",
+      "options": [],
+      "answers": [
+        "Salt Bridge"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "While this substance makes up the majority of the atmosphere of Saturn’s sixth-largest moon, it is only found in trace amounts of Earth’s atmosphere. In nuclear power production, this substance moderates the nuclear reaction. Until recently, the Kelvin temperature scale was based on a value measured using this substance; this change was oﬃcially made in 2019. For ten points, name this substance, which the person reading the question is about to take a sip of.",
+      "options": [],
+      "answers": [
+        "Water"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "In aqueous solutions, this state is usually determined in the presence of chemically inactive electrolytes like sodium nitrate. Although the law of mass action, which tries to describe this state, is generally invalid, it correctly gives this state for a reaction as a constant. This state was heavily used in the development of an eﬃcient way of producing industrial ammonia, known as the Haber-Bosch process. For ten points, name the state at which the concentrations of reactants and products will not tend to change with time.",
+      "options": [],
+      "answers": [
+        "Equilibrium"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. This property of a substance explains why some substances travel further in certain solvents, as well as why oil and water don’t mix.",
+      "options": [],
+      "answers": [
+        "Polarity"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. This number is the distance that a substance travels divided by the distance that a solvent travels, and can be used to compare two unknown substances.",
+      "options": [],
+      "answers": [
+        "Retention factor"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s by separating substances or solving crimes, chromatography sees a variety of uses in chemical analysis. This attractive force allows water to travel up the stationary phase used in paper chromatography.",
+      "options": [],
+      "answers": [
+        "Cohesion"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. This number refers to the amount of particles contained within one mole of a substance.",
+      "options": [],
+      "answers": [
+        "Avogadro Number"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. Written in energy divided by temperature, this constant is used to deﬁne entropy as a statistical property.",
+      "options": [],
+      "answers": [
+        "Boltzmann constant"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "While the entropy of the universe is constantly increasing, there are always some things that remain constant. This constant is commonly used to relate the pressure, temperature, and amount of a substance, and is deﬁned as the previous two constants multiplied together.",
+      "options": [],
+      "answers": [
+        "Gas constant"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about explosions in chemistry. This type of high-temperature redox reaction utilizes a fuel to produce typically gaseous products such as water and carbon dioxide.",
+      "options": [],
+      "answers": [
+        "Combustion reaction"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about explosions in chemistry. Explosions are characterized by a rapid increase in volume, as well as a release of energy. This type of process involves the transfer of energy from a system to its surroundings.",
+      "options": [],
+      "answers": [
+        "Exothermic"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about explosions in chemistry. This type of explosive compounds are characterized by deﬂagration or a low rate of reaction. Although its name may suggest a lack of destructive potential, they can still be highly dangerous. Common examples include black powder and smokeless powder.",
+      "options": [],
+      "answers": [
+        "Low explosives"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. Diamond or graphite are two structurally diﬀerent forms of solid carbon; thus they are called this term.",
+      "options": [],
+      "answers": [
+        "Allotropes"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. This is the name for the smallest portion of a crystal lattice that shows the entire structure of the compound.",
+      "options": [],
+      "answers": [
+        "Unit Cell"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Whether it’s a diamond necklace or the lead in a mechanical pencil, both materials are solid forms of carbon. This is the type of bond that carbon forms that allows it to form compounds of such varying strength. Sharing electrons between atoms, name this bond.",
+      "options": [],
+      "answers": [
+        "Covalent"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Physics": [
+    {
+      "question": "One of the last simple machines invented, this simple machine is vastly ineﬃcient, usually around 15 to 20 percent. Oftentimes, these devices rely on device eﬃciency over mechanical advantage, and convert a rotational motion into a linear motion. Most of the time, they take the form of a cylindrical shaft with grooves called threads wrapped around them. For ten points, name this machine that is usually used in conjunction with a so-called “driver”.",
+      "options": [],
+      "answers": [
+        "Screw"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "The energy for interactions between particles is thought to be controlled by carriers of this quantity. For two massive particles, an inverse square law determines the gravitational variety of this quantity that can be thought of as a ﬁeld extending from each particle. The centripetal variety of this quantity accelerates a mass perpendicular to its direction of motion. For ten points, name this mechanical quantity deﬁned by Sir Isaac Newton as mass times acceleration.",
+      "options": [],
+      "answers": [
+        "Force"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Because this state of matter experiences no surface tension, it is used for drying some substances, most notably aerogels. In this state, a substance has properties of both liquids and gasses, giving it the ability to eﬀuse like a gas and dissolve solutes like a liquid. This state of matter rarely occurs on Earth, but can be found recreated in labs, or in the atmospheres of large gas planets such as Jupiter and Saturn. For ten points, name the state of matter where matter is heated and pressurized past the point of being a gas and liquid, but not quite enough to compress down to a solid.",
+      "options": [],
+      "answers": [
+        "Supercritical state"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Four of these components are contained in a Wheatstone bridge, which is used to measure a property of the aforementioned components. This component is sometimes found in the form of an inﬁnite or ﬁnite ladder. Frequently, they are connected together in series or in parallel. For ten points, name this component found in circuits and associated with the R in Ohm’s law.",
+      "options": [],
+      "answers": [
+        "Resistor"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about various parts of the electromagnetic spectrum. The development of this detection technology provided one of the ﬁrst major practical uses for microwaves, as radio waves required antennae that were too large to be portable.",
+      "options": [],
+      "answers": [
+        "Radar"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about various parts of the electromagnetic spectrum. This form of electromagnetic radiation has applications in thermal imaging, which is where a camera creates images according to diﬀerences in heat by the detection of this type of radiation.",
+      "options": [],
+      "answers": [
+        "Infrared"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about various parts of the electromagnetic spectrum. Gamma rays are emitted from supernovae and other similarly energetic objects, but they can also be emitted from this process, where a radioactive nucleus emits a photon in the form of gamma radiation.",
+      "options": [],
+      "answers": [
+        "Gamma Decay"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about relativity and frames of reference. Objects will continue to follow their motion unless acted upon by an outside force in this frame of motion, where the laws of physics are simplest.",
+      "options": [],
+      "answers": [
+        "Inertial frame of reference"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about relativity and frames of reference. Because of this phenomenon, the clock for an astronaut measuring how fast light travels on their ship is slower than someone on Earth.",
+      "options": [],
+      "answers": [
+        "Time dilation"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about relativity and frames of reference. In 2021, this scientist’s Black Hole Theorem, where the area of a black hole should never decrease, was conﬁrmed for the ﬁrst time.",
+      "options": [],
+      "answers": [
+        "Stephen Hawking"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. This state function is expressed through SI units of Pascals, and is inversely proportional to volume in the ideal gas law.",
+      "options": [],
+      "answers": [
+        "Pressure"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. This state function is a form of energy, generally represented by the letter H, and expressed in natural variables of pressure and entropy.",
+      "options": [],
+      "answers": [
+        "Enthalpy"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "A state function in thermodynamics is a property which does not depend on the path taken to reach the state. The third law of thermodynamics predicts that as this state function approaches absolute zero, all processes cease and the entropy of the system approaches a minimum value.",
+      "options": [],
+      "answers": [
+        "Temperature"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about magnetism. All materials exhibit weak forms of this type of magnetism, in which the susceptibility is less than zero, so the application of a magnetic ﬁeld induces a polarization which opposes the applied ﬁeld.",
+      "options": [],
+      "answers": [
+        "diamagnetism"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about magnetism. The magnetic “B-ﬁeld”, or magnetic ﬂux density is measured in this SI unit named after a Serbian-American inventor, equivalent to one kilogram per second squared per ampere.",
+      "options": [],
+      "answers": [
+        "Tesla"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about magnetism. If magnetic dipoles were observed separating into these hypothetical particles, Gauss’s law for magnetism would need to account for magnetic charge density.",
+      "options": [],
+      "answers": [
+        "magnetic monopoles"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Earth/Space Science": [
+    {
+      "question": "One phase of this phenomenon is marked by cooler sea surface temperatures in the South Paciﬁc Ocean. That phase of this phenomenon also leads to increased hurricane development in the Atlantic Ocean. During the opposing phase, which lends its name to this phenomenon, the trade winds over the South Paciﬁc are weaker or even reverse direction. For 10 points, identify this phenomenon with phases including a neutral state and La Niña which is abbreviated as ENSO.",
+      "options": [],
+      "answers": [
+        "El Niño-Southern Oscillation"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "This series is the inverse of the Goldich dissolution series, which describes the rate of weathering of silicates at the earth’s surface. First published in The Evolution of the Igneous Rocks in 1928, this sequence of minerals helps describe the diﬀerence in formation of maﬁc versus felsic rocks. It characteristically possesses a continuous branch with feldspars and a discontinuous branch that involves nesosilicates, inosilicates, and phyllosilicates, as well as residual phases at lower temperatures. For ten points, name this series that describes the order of minerals that crystallize from a maﬁc magma body as it cools, named for an early 20th century geologist.",
+      "options": [],
+      "answers": [
+        "Bowen’s Reaction Series"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "This law can be used to determine the habitability of a planet by calculating orbital parameters from its transit light curve. Speciﬁcally, knowing the drop in brightness and applying this law can help ﬁnd the orbital distance between a planet and its star. This law, which was created around 400 years ago, uses the constant G/4pi^2 (big G over four pi squared) to relate two diﬀerent characteristics of an orbit with the total mass of the system. For ten points, name this empirical law that relates a planet's period of orbit with the length of its semimajor axis.",
+      "options": [],
+      "answers": [
+        "Kepler’s 3rd law"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "This planet was known to ancient Chinese astronomers as the “Suìxīng”. Pioneer 10 was the ﬁrst spacecraft to conduct a ﬂyby of this planet, where it took many photographs of both the planet and its moons. Another, more modern probe which became the second to orbit this planet was named Juno. The moons of this planet inﬂuenced Copernicus’s theory of heliocentrism, as they were observed to be orbiting something other than Earth. For ten points, name this planet which notably has four Galilean moons.",
+      "options": [],
+      "answers": [
+        "Jupiter"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. Identify these types of lakes which form when a river erodes the neck of one of its meanders. They often form alongside meander scars and are typically U-shaped.",
+      "options": [],
+      "answers": [
+        "Oxbow lake"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. This ﬂuvial depositional feature is found on the inside bends of streams and rivers. It opposes the cut bank and grows in size as the river meanders further.",
+      "options": [],
+      "answers": [
+        "Point bar"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "These features often can protect the ecosystems of rivers by trapping pollutants, although at the expense of its own health. This type of stream is marked by multiple channels formed when the base level rises and sediment deposition increases. These types of streams are often found near river deltas, have relatively permanent mid-channel bars, and have steep channel sides.",
+      "options": [],
+      "answers": [
+        "Anastomosing stream"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. This phenomenon occurs near Earth’s magnetic poles as charged particles from the sun are redirected by the magnetic ﬁeld into the atmosphere, where they ionize particles.",
+      "options": [],
+      "answers": [
+        "Aurora"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. This geologic phenomenon occurs as a result of Earth’s magnetic ﬁeld reversing polarity. It is observed primarily in younger oceanic crust near spreading ridges.",
+      "options": [],
+      "answers": [
+        "Magnetic ﬁeld stripes"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Earth’s magnetic ﬁeld is responsible for many phenomena seen on our planet. The circulation of molten iron and nickel in this layer of the Earth is responsible for generating Earth’s magnetic ﬁeld.",
+      "options": [],
+      "answers": [
+        "Outer core"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. Any storms with strong winds may push water towards a beach surface and force water much higher above the highest astronomical tide. Name this phenomenon of a sudden onrush of water associated with storms making landfall.",
+      "options": [],
+      "answers": [
+        "Storm Surge"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. Strong updrafts in thunderstorm systems may cause ice to freeze around nuclei and aggrade layers as these ice particles travel in these vertical wind systems. Name the type of precipitation that these large spherules of ice dropping from the sky represents.",
+      "options": [],
+      "answers": [
+        "Hail"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Weather phenomena are often diﬃcult to predict, though they often follow similar and predictable patterns throughout development and seasons. This quantity is the rate at which an atmospheric variable, often temperature, changes with altitude. This quantity is the subject of two diﬀerent meteorological feedback loops, depending on its value.",
+      "options": [],
+      "answers": [
+        "Lapse rate"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. An example of this type of object is Barnard’s Loop, part of the Orion Molecular Cloud Complex. This object appears as a patchy, red area in the night sky.",
+      "options": [],
+      "answers": [
+        "Emission Nebula"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. Barnard’s Star is this type of object, which appears dim in the night sky despite being the second closest star to the sun other than the Alpha Centauri system.",
+      "options": [],
+      "answers": [
+        "Red Dwarf"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Edward Barnard was a famous astronomer and astrophotographer with multiple features in the sky named after him. Barnard’s ﬁrst telescope was of this general type, which uses lenses to focus the light and is subject to chromatic aberration due to the use of lenses.",
+      "options": [],
+      "answers": [
+        "Refractor Telescope"
+      ],
+      "difficulty": 0.0
+    }
+  ],
+  "Computer Science": [
+    {
+      "question": "The Embedded JavaScript language can be used to generate code in this language with plain JavaScript. Cross-site scripting vulnerabilities work because the injection is maliciously rendered in this language. In this language, the < and > (ampersand l t semicolon, ampersand g t semicolon) entities are needed as escape characters, as they represent less than and greater than symbols, which are used in the language to denote tags. For ten points, name this programming “language” (“quote language” [air quotes]) which is used as the foundational building block of websites.",
+      "options": [],
+      "answers": [
+        "HTML"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "HostOnly, Session, Secure, and HttpOnly are all attributes of this term in computer science. Famously, DNS cache poisoning attacks can be used to malicious access these. Session hijacking is often accomplished by stealing one of these, so the best way to prevent such attacks is through letting this information expire. For ten points, name this term for a packet of data locally stored on one’s computer, which shares its name with a typically sweet and ﬂat baked good that the person reading this question is about to take a bite of.",
+      "options": [],
+      "answers": [
+        "Web Cookies"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Tail-call optimization can be used in conjunction with this technique to prevent errors when running a program. In particular, stack overﬂows are often caused by this programming technique when it is used poorly. However, dynamic programming techniques and memoization can be used instead, often resulting in a less resource-intensive algorithm. For ten points, what is this term, best deﬁned as this term, best deﬁned as this term?",
+      "options": [],
+      "answers": [
+        "Recursion"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "This man, tragically, was found dead in his home at age 41 due to cyanide poisoning just two years after being convicted for “gross indecency” in 1952. Conway’s game of life is one system that has a certain property whose variant’s namesake is this person. For ten points, name this English computer scientist and mathematician who is most well-known for his huge contributions towards cracking the Enigma employed by the Axis during World War II.",
+      "options": [],
+      "answers": [
+        "Alan Turing"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Information is often stored and represented in a variety of data structures. Linear probing and separate chaining are two variants of this data structure. While accessing elements from this structure takes constant time on average, the worst-case time complexity is linear.",
+      "options": [],
+      "answers": [
+        "Hash Table"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Information is often stored and represented in a variety of data structures. This data structure can be thought of as an undirected graph with degree at most two. Equivalently, nodes in this data structure have at most two children.",
+      "options": [],
+      "answers": [
+        "Binary Tree"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Information is often stored and represented in a variety of data structures. This data structure, represented with square brackets in Java, represents an ordered series of objects.",
+      "options": [],
+      "answers": [
+        "Array"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Many modern electronic technologies are made possible through code. C++ and Rust, but neither Python nor R, are both examples of this type of language that requires a translator to convert source code to machine code.",
+      "options": [],
+      "answers": [
+        "Compiled Language"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Many modern electronic technologies are made possible through code. This object-oriented compiled language that is designed to be accessible and general-purpose gets its name from a type of Indonesian coﬀee. Did you know that it is run by more than 13 billion devices?",
+      "options": [],
+      "answers": [
+        "Java"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "Many modern electronic technologies are made possible through code. This low-level language is designed to communicate directly with a computer directly, where each statement often corresponds to one machine instruction, but is distinct from machine code in that it is usually more easily readable by people.",
+      "options": [],
+      "answers": [
+        "Assembly"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about ﬁle formats. Portable Network Graphics, RAW, and Joint Photographic Experts Group are all formats of this type of ﬁle.",
+      "options": [],
+      "answers": [
+        "Image"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about ﬁle formats. Images and text formatting may both be stored using this ﬁle format developed by Adobe in 1992 meant to make sharing documents easy regardless of machine.",
+      "options": [],
+      "answers": [
+        "PDF"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "For ﬁve points each, answer the following questions about ﬁle formats. 0xCAFEBABE (Zero X Cafe Babe) are the bytes used to denote this information in Java .class (dot class) ﬁles, which are the opening bits of a ﬁle used to convey information to computers regarding a ﬁle’s identity.",
+      "options": [],
+      "answers": [
+        "File Signature"
+      ],
+      "difficulty": 0.0
+    },
+    {
+      "question": "The Internet is central to many of our lives in the modern world. This protocol, part of the transport layer of a certain protocol suite, is responsible
+    }
+  ]
+}
