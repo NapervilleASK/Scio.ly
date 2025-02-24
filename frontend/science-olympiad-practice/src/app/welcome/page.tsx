@@ -537,7 +537,7 @@ export default function WelcomePage() {
   const UPDATE_INFO: UpdateInfo = {
     date: "March 2025",
     features: [
-      "🔐 SIGN IN TO SAVE YOUR PROGRESS",
+      "🔐 Account system to save your progress across devices",
       "✨ AI-powered explanations for every question",
       "🎯 Improved question filtering and difficulty system",
       "📊 Weekly progress and performance tracking",
@@ -833,7 +833,7 @@ export default function WelcomePage() {
                         d="M5 50 A 45 45 0 0 1 95 50"
                         fill="none"
                         stroke={darkMode ? '#60a5fa' : '#3b82f6'}
-                        strokeWidth="8"
+                         strokeWidth="8"
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: metrics.accuracy / 100 }}
