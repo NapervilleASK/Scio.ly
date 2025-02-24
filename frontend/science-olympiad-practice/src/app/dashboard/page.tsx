@@ -131,7 +131,6 @@ function EventDashboard() {
           { name: "Microbe Mission", category: "Life & Social Science" },
           { name: "Optics", category: "Physical Science & Chemistry" },
           { name: "Potions and Poisons", category: "Physical Science & Chemistry" },
-          { name: "Reach for the Stars", category: "Earth and Space Science" },
           { name: "Wind Power", category: "Physical Science & Chemistry" },
         ];
 
