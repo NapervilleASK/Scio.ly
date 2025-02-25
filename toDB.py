@@ -846,9 +846,11 @@ def combine_bank_data(filename="beta_bank.json"):
                             "at the right?", "on the map", "interpret the", "evidence a", "evidence b", 
                             "evidence c", "which suspect", "what is the id ", "are you currently in a location where you cannot see or talk to your partner?", 
                             "honor code", "from the provided answer key", "according to article", "previous question",
-                            "found at the scene", "according to elsa's bio", "from the scenario", "on my honor"
+                            "found at the scene", "according to elsa's bio", "from the scenario", "on my honor", 
+                            "following questions refer to light and electron microscopes"
                         ])
                         and not any(question in item['question'].lower() for question in [
+                            "information needed"
                         ])
                     ])
             except json.JSONDecodeError:
