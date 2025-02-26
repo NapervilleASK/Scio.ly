@@ -107,6 +107,46 @@ const formatExplanationText = (text: string) => {
     .replace(/\*(.*?)\*/g, '<em>$1</em>');
 };
 
+// Add the gradeWithGemini function (same as above)
+const gradeWithGemini = async (userAnswer: string, correctAnswers: (string | number)[], question: string) => {
+  if (!userAnswer) return false;
+
+  const prompt = `You are grading a Science Olympiad question.
+
+Question: ${question}
+Correct Answer(s): ${correctAnswers.join(', ')}
+Student Answer: ${userAnswer}
+
+Grade this response as either CORRECT or INCORRECT. Be lenient - if the student's answer demonstrates understanding of the core concept, mark it as CORRECT even if the wording isn't exact. Consider synonyms and equivalent expressions as correct.
+
+Respond with only a single word: either "CORRECT" or "INCORRECT".`;
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      }
+    );
+
+    if (!response.ok) {
+      console.error('Gemini API error:', await response.text());
+      return false;
+    }
+
+    const data = await response.json();
+    const result = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
+    return result === 'CORRECT';
+  } catch (error) {
+    console.error('Error grading with Gemini:', error);
+    return false;
+  }
+};
+
 export default function TestPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -125,6 +165,7 @@ export default function TestPage() {
   const [loadingExplanation, setLoadingExplanation] = useState<{[key: number]: boolean}>({});
   const [lastCallTime, setLastCallTime] = useState<number>(0);
   const RATE_LIMIT_DELAY = 2000; // 2 seconds between calls
+  const [gradingResults, setGradingResults] = useState<{[key: string]: boolean}>({});
 
   useEffect(() => {
     const storedParams = localStorage.getItem('testParams');
@@ -227,23 +268,50 @@ export default function TestPage() {
     });
   };
 
+  // Modify the isCorrect function to be async
+  const isCorrect = async (question: Question, answers: (string | null)[] | null) => {
+    if (!question.answers || question.answers.length === 0) return false;
+
+    // For multiple-choice questions, keep existing logic
+    if (question.options && question.options.length > 0) {
+      const correctAnswers = question.answers.map((ans) =>
+        question.options![ans as number - 1]
+      );
+      return (
+        answers &&
+        correctAnswers.length === answers.length &&
+        correctAnswers.every((ans) => answers.includes(ans))
+      );
+    }
+
+    // For free-response questions, use Gemini
+    if (!answers?.[0]) return false;
+    return await gradeWithGemini(answers[0], question.answers, question.question);
+  };
+
+  // Modify handleSubmit to handle async isCorrect
   const handleSubmit = async () => {
     setIsSubmitted(true);
     
-    // Calculate total answered questions and correct answers
-    const stats = data.reduce((total, question, index) => {
-      const answers = userAnswers[index];
-      // Only count if the question was actually answered
-      if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
-        total.attempted++;
-        if (isCorrect(question, answers)) {
-          total.correct++;
-        }
-      }
-      return total;
-    }, { attempted: 0, correct: 0 });
-
     try {
+      // Calculate total answered questions and correct answers
+      const results = await Promise.all(
+        data.map(async (question, index) => {
+          const answers = userAnswers[index];
+          if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
+            const correct = await isCorrect(question, answers);
+            setGradingResults(prev => ({...prev, [index]: correct}));
+            return { attempted: 1, correct: correct ? 1 : 0 };
+          }
+          return { attempted: 0, correct: 0 };
+        })
+      );
+      
+      const stats = results.reduce((total, curr) => ({
+        attempted: total.attempted + curr.attempted,
+        correct: total.correct + curr.correct
+      }), { attempted: 0, correct: 0 });
+
       await updateMetrics(auth.currentUser?.uid || null, {
         questionsAttempted: stats.attempted,
         correctAnswers: stats.correct,
@@ -262,31 +330,6 @@ export default function TestPage() {
 
   const handleBackToMain = () => {
     router.push('/dashboard');
-  };
-
-  const isCorrect = (question: Question, answers: (string | null)[] | null) => {
-    if (!question.answers || question.answers.length === 0) return null;
-
-    // For multiple-choice or options-based questions
-    if (question.options && question.options.length > 0) {
-      const correctAnswers = question.answers.map((ans) =>
-        question.options![ans as number - 1]
-      );
-      return (
-        answers &&
-        correctAnswers.length === answers.length &&
-        correctAnswers.every((ans) => answers.includes(ans))
-      );
-    }
-
-    // For free-response questions
-    if (answers?.[0]) {
-      const userAnswer = answers[0].toLowerCase();
-      const keywords = question.answers.map((ans) => (ans as string).toLowerCase());
-      return keywords.some((keyword) => userAnswer.includes(keyword));
-    }
-
-    return false;
   };
 
   const formatTime = (seconds: number): string => {
@@ -612,12 +655,12 @@ export default function TestPage() {
                               className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                                 darkMode
                                   ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? isCorrect(item, userAnswers[index])
+                                    ? gradingResults[index] ?? false
                                       ? 'bg-green-800'
                                       : 'bg-red-900'
                                     : 'bg-gray-700'
                                   : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? isCorrect(item, userAnswers[index])
+                                    ? gradingResults[index] ?? false
                                       ? 'bg-green-200'
                                       : 'bg-red-200'
                                   : 'bg-gray-200'
@@ -644,12 +687,12 @@ export default function TestPage() {
                               className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                                 darkMode
                                   ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? isCorrect(item, userAnswers[index])
+                                    ? gradingResults[index] ?? false
                                       ? 'bg-green-800'
                                       : 'bg-red-900'
                                     : 'bg-gray-700'
                                   : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? isCorrect(item, userAnswers[index])
+                                    ? gradingResults[index] ?? false
                                       ? 'bg-green-200'
                                       : 'bg-red-200'
                                   : 'bg-gray-200'
@@ -689,14 +732,14 @@ export default function TestPage() {
                             className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
                               !userAnswers[index]?.[0]
                                 ? 'text-blue-500'  // Skipped
-                                : isCorrect(item, userAnswers[index])
+                                : gradingResults[index] ?? false
                                   ? 'text-green-600'  // Correct
                                   : 'text-red-600'    // Wrong
                             }`}
                           >
                             {!userAnswers[index]?.[0]
                               ? 'Skipped'
-                              : isCorrect(item, userAnswers[index])
+                              : gradingResults[index] ?? false
                                 ? 'Correct!'
                                 : 'Wrong!'}
                           </p>

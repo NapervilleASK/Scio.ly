@@ -88,6 +88,46 @@ const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
   );
 };
 
+const gradeWithGemini = async (userAnswer: string, correctAnswers: (string | number)[], question: string) => {
+  if (!userAnswer) return false;
+
+  const prompt = `You are grading a Science Olympiad question.
+
+Question: ${question}
+Correct Answer(s): ${correctAnswers.join(', ')}
+Student Answer: ${userAnswer}
+
+
+Grade this response as either CORRECT or INCORRECT. Be lenient - if the student's answer demonstrates understanding of the core concept, mark it as CORRECT even if the wording isn't exact. Consider synonyms and equivalent expressions as correct.
+
+Respond with only a single word: either "CORRECT" or "INCORRECT".`;
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      }
+    );
+
+    if (!response.ok) {
+      console.error('Gemini API error:', await response.text());
+      return false;
+    }
+
+    const data = await response.json();
+    const result = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
+    return result === 'CORRECT';
+  } catch (error) {
+    console.error('Error grading with Gemini:', error);
+    return false;
+  }
+};
+
 export default function UnlimitedPracticePage() {
   const router = useRouter();
 
@@ -108,6 +148,7 @@ export default function UnlimitedPracticePage() {
   const [loadingExplanation, setLoadingExplanation] = useState<{[key: number]: boolean}>({});
   const [lastCallTime, setLastCallTime] = useState<number>(0);
   const RATE_LIMIT_DELAY = 2000;
+  const [gradingResults, setGradingResults] = useState<{[key: string]: boolean}>({});
 
   // Fetch and filter questions on mount
   useEffect(() => {
@@ -198,13 +239,16 @@ export default function UnlimitedPracticePage() {
   const handleSubmit = async () => {
     setIsSubmitted(true);
     
-    // Only count if there's an actual answer
-    const wasAttempted = currentAnswer.length > 0 && currentAnswer[0] !== null && currentAnswer[0] !== '';
-    
     try {
+      const isAnswerCorrect = await isCorrect(currentQuestion, currentAnswer);
+      setGradingResults(prev => ({...prev, [currentQuestionIndex]: isAnswerCorrect}));
+      
+      // Only count if there's an actual answer
+      const wasAttempted = currentAnswer.length > 0 && currentAnswer[0] !== null && currentAnswer[0] !== '';
+      
       await updateMetrics(auth.currentUser?.uid || null, {
         questionsAttempted: wasAttempted ? 1 : 0,
-        correctAnswers: wasAttempted && isCorrect(currentQuestion, currentAnswer) ? 1 : 0,
+        correctAnswers: wasAttempted && isAnswerCorrect ? 1 : 0,
         eventName: routerData.eventName || undefined
       });
     } catch (error) {
@@ -229,7 +273,7 @@ export default function UnlimitedPracticePage() {
 
   // Check if the current answer is correct.
   // For questions with options, we map the answer indexes (if stored as numbers) to the option text.
-  const isCorrect = (question: Question, answers: (string | null)[]) => {
+  const isCorrect = async (question: Question, answers: (string | null)[]) => {
     if (!question.answers || question.answers.length === 0) return false;
 
     // When options exist, assume that the answer(s) should match the option text.
@@ -244,14 +288,9 @@ export default function UnlimitedPracticePage() {
       return correctAnswers.every((a) => filteredUserAnswers.includes(a));
     }
 
-    // For free-response questions, check if the user answer (in lower case)
-    // contains any of the provided keywords.
+    // For free-response questions, use Gemini
     if (!answers[0]) return false;
-    const userAnswer = answers[0].toLowerCase();
-    const keywords = question.answers.map((ans) =>
-      typeof ans === 'string' ? ans.toLowerCase() : ''
-    );
-    return keywords.some((keyword) => userAnswer.includes(keyword));
+    return await gradeWithGemini(answers[0], question.answers, question.question);
   };
 
   const handleReport = async (reason: string) => {
@@ -504,12 +543,12 @@ export default function UnlimitedPracticePage() {
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
                                 ? isSubmitted && currentAnswer[0] === option
-                                  ? isCorrect(currentQuestion, currentAnswer)
+                                  ? gradingResults[currentQuestionIndex] ?? false
                                     ? 'bg-green-800'  // Correct answer in dark mode
                                     : 'bg-red-900'    // Wrong answer in dark mode
                                   : 'bg-gray-700'
                                 : isSubmitted && currentAnswer[0] === option
-                                  ? isCorrect(currentQuestion, currentAnswer)
+                                  ? gradingResults[currentQuestionIndex] ?? false
                                     ? 'bg-green-200'  // Correct answer in light mode
                                     : 'bg-red-200'    // Wrong answer in light mode
                                   : 'bg-gray-200'
@@ -537,12 +576,12 @@ export default function UnlimitedPracticePage() {
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
                               darkMode
                                 ? isSubmitted && currentAnswer[0] === option
-                                  ? isCorrect(currentQuestion, currentAnswer)
+                                  ? gradingResults[currentQuestionIndex] ?? false
                                     ? 'bg-green-800'  // Correct answer in dark mode
                                     : 'bg-red-900'    // Wrong answer in dark mode
                                   : 'bg-gray-700'
                                 : isSubmitted && currentAnswer[0] === option
-                                  ? isCorrect(currentQuestion, currentAnswer)
+                                  ? gradingResults[currentQuestionIndex] ?? false
                                     ? 'bg-green-200'  // Correct answer in light mode
                                     : 'bg-red-200'    // Wrong answer in light mode
                                   : 'bg-gray-200'
@@ -582,14 +621,14 @@ export default function UnlimitedPracticePage() {
                         className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
                           !currentAnswer[0] 
                             ? 'text-blue-500'  // Skipped
-                            : isCorrect(currentQuestion, currentAnswer)
+                            : gradingResults[currentQuestionIndex] ?? false
                               ? 'text-green-600'  // Correct
                               : 'text-red-600'    // Wrong
                         }`}
                       >
                         {!currentAnswer[0] 
                           ? 'Skipped'
-                          : isCorrect(currentQuestion, currentAnswer)
+                          : gradingResults[currentQuestionIndex] ?? false
                             ? 'Correct!'
                             : 'Wrong!'}
                       </p>
