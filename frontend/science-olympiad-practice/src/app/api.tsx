@@ -1,4 +1,4 @@
 const api = {
-    api: 'https://gist.githubusercontent.com/Kudostoy0u/404ac5c27405f274b350469f29573f61/raw/d63153f9ce19f5626133e38b885dcc0699a32065/final.json'
+    api: 'https://gist.githubusercontent.com/Kudostoy0u/fe21578f3076c5c7af8affee2442bbfe/raw/e172373628c713574eeef00711ab5b49161ccccf/final.json'
 };
 export default api  
