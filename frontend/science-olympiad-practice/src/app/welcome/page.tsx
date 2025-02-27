@@ -535,10 +535,10 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "March 2025",
+    date: "2/26/25",
     features: [
       "🔐 Account system to save your progress across devices",
-      "✨ AI-powered explanations for every question",
+      "✨ Better FRQ grading, partial credit, and explanations",
       "🎯 Improved question filtering and difficulty system",
       "📊 Weekly progress and performance tracking",
     ],
