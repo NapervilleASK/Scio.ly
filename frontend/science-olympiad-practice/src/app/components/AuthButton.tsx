@@ -11,9 +11,11 @@ export default function AuthButton() {
   const [user, setUser] = useState(auth.currentUser);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showSignInModal, setShowSignInModal] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const privacyModalRef = useRef<HTMLDivElement>(null);
 
   // Monitor online/offline status
   useEffect(() => {
@@ -196,6 +198,93 @@ export default function AuthButton() {
                   </svg>
                   <span>Sign in with Google</span>
                 </button>
+                <div className="mt-4 text-center text-sm text-gray-500">
+                  By signing in, you agree to our{' '}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPrivacyPolicy(true);
+                    }}
+                    className="text-blue-500 hover:text-blue-700 underline"
+                  >
+                    Privacy Policy
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showPrivacyPolicy && (
+          <div className="fixed top-0 right-0 bottom-0 w-[100vw] h-screen bg-black bg-opacity-50 z-[101]">
+            <div className="flex align-middle mt-[15vh] justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-lg p-6 w-[600px] max-w-[90vw] max-h-[70vh] overflow-y-auto"
+                ref={privacyModalRef}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900">Privacy Policy</h2>
+                  <button
+                    onClick={() => setShowPrivacyPolicy(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="space-y-4 text-gray-700">
+                  <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
+                  
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">1. Information We Collect</h3>
+                    <p>We collect minimal information necessary to provide our Science Olympiad practice services:</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Authentication information if you choose to sign in (email address only)</li>
+                      <li>Practice test performance data</li>
+                      <li>Usage statistics to improve our service</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">2. How We Use Your Information</h3>
+                    <p>We use collected information to:</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Track your progress and performance</li>
+                      <li>Improve our question bank and services</li>
+                      <li>Provide personalized practice experiences</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">3. Data Security</h3>
+                    <p>Your practice and authentication data is stored securely and is not shared with third parties.</p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">4. Your Rights</h3>
+                    <p>You have the right to request deletion of your data at any time.</p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">5. Contact Us</h3>
+                    <p>For any privacy-related questions or concerns, please contact us with the form on the top of the dashboard page.</p>  
+                  </section>
+                </div>
+                <div className="mt-6 flex justify-end">
+                  <button
+                    onClick={() => setShowPrivacyPolicy(false)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
               </motion.div>
             </div>
           </div>
