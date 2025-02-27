@@ -180,6 +180,20 @@ export default function TestPage() {
   const RATE_LIMIT_DELAY = 2000;
   // gradingResults now holds numeric scores (0, 0.5, or 1)
   const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    // Only clear localStorage when component unmounts, not on mount
+    return () => {
+      if (window.location.pathname !== '/test') {
+        localStorage.removeItem('testQuestions');
+        localStorage.removeItem('testTimeLeft');
+        localStorage.removeItem('testParams');
+        localStorage.removeItem('testTimeLeft');
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const storedParams = localStorage.getItem('testParams');
@@ -192,7 +206,20 @@ export default function TestPage() {
     setRouterData(routerParams);
   
     if (routerParams.timeLimit) {
-      setTimeLeft(parseInt(routerParams.timeLimit, 10) * 60);
+      const storedTimeLeft = localStorage.getItem('testTimeLeft');
+      if (storedTimeLeft) {
+        setTimeLeft(parseInt(storedTimeLeft, 10));
+      } else {
+        setTimeLeft(parseInt(routerParams.timeLimit, 10) * 60);
+      }
+    }
+
+    // Check if we have stored questions
+    const storedQuestions = localStorage.getItem('testQuestions');
+    if (storedQuestions) {
+      setData(JSON.parse(storedQuestions));
+      setIsLoading(false);
+      return;
     }
   
     const fetchData = async () => {
@@ -234,8 +261,10 @@ export default function TestPage() {
           0,
           parseInt(questionCount || '0')
         );
-        console.log(shuffledQuestions);
-        console.log(selectedQuestions);
+        
+        // Store the selected questions in localStorage
+        localStorage.setItem('testQuestions', JSON.stringify(selectedQuestions));
+        
         setData(selectedQuestions);
       } catch (error) {
         console.error(error);
@@ -253,6 +282,11 @@ export default function TestPage() {
 
     if (timeLeft === 0) {
       setIsSubmitted(true);
+    }
+
+    // Store timeLeft in localStorage whenever it changes
+    if (timeLeft > 0) {
+      localStorage.setItem('testTimeLeft', timeLeft.toString());
     }
 
     const timer = setInterval(() => {
@@ -350,6 +384,10 @@ export default function TestPage() {
   };
 
   const handleBackToMain = () => {
+    // Clear test-related localStorage items
+    localStorage.removeItem('testQuestions');
+    localStorage.removeItem('testTimeLeft');
+    localStorage.removeItem('testParams');
     router.push('/dashboard');
   };
 
@@ -525,12 +563,6 @@ export default function TestPage() {
       setLoadingExplanation((prev) => ({ ...prev, [index]: false }));
     }
   };
-
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   if (!isMounted) {
     return null;

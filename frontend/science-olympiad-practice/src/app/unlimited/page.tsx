@@ -172,6 +172,19 @@ export default function UnlimitedPracticePage() {
     const routerParams = JSON.parse(storedParams);
     setRouterData(routerParams);
 
+    // Check if we have stored questions
+    const storedQuestions = localStorage.getItem('unlimitedQuestions');
+    const storedIndex = localStorage.getItem('unlimitedCurrentIndex');
+    
+    if (storedQuestions) {
+      setData(JSON.parse(storedQuestions));
+      if (storedIndex) {
+        setCurrentQuestionIndex(parseInt(storedIndex, 10));
+      }
+      setIsLoading(false);
+      return;
+    }
+
     const difficultyMap: Record<string, number> = {
       easy: 0.33,
       medium: 0.66,
@@ -203,6 +216,10 @@ export default function UnlimitedPracticePage() {
             : filteredQuestions;
 
         const shuffledQuestions = shuffleArray(finalQuestions);
+        
+        // Store the questions in localStorage
+        localStorage.setItem('unlimitedQuestions', JSON.stringify(shuffledQuestions));
+        
         setData(shuffledQuestions);
       } catch (error) {
         console.error(error);
@@ -214,6 +231,22 @@ export default function UnlimitedPracticePage() {
 
     fetchData();
   }, [router]);
+
+  // Store current question index when it changes
+  useEffect(() => {
+    localStorage.setItem('unlimitedCurrentIndex', currentQuestionIndex.toString());
+  }, [currentQuestionIndex]);
+
+  // Cleanup effect to clear localStorage on unmount
+  useEffect(() => {
+    return () => {
+      if (window.location.pathname !== '/unlimited') {
+        localStorage.removeItem('unlimitedQuestions');
+        localStorage.removeItem('unlimitedCurrentIndex');
+        localStorage.removeItem('testParams');
+      }
+    };
+  }, []);
 
   // Helper function to shuffle an array
   function shuffleArray<T>(array: T[]): T[] {
@@ -740,7 +773,13 @@ export default function UnlimitedPracticePage() {
 
           {/* Back Button (bottom-left) */}
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => {
+              // Clear unlimited practice-related localStorage items
+              localStorage.removeItem('unlimitedQuestions');
+              localStorage.removeItem('unlimitedCurrentIndex');
+              localStorage.removeItem('testParams');
+              router.push('/dashboard');
+            }}
             className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
               darkMode
                 ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
