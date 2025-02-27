@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/utils/metrics';
 import { auth } from '@/lib/firebase';
 import { useTheme } from '@/app/contexts/ThemeContext';
-import api from '../api'
+import api from '../api';
 
 interface Question {
   question: string;
@@ -35,7 +35,7 @@ interface ReportState {
   questionIndex: number | null;
 }
 
-const API_URL = api.api
+const API_URL = api.api;
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
     <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
@@ -88,8 +88,15 @@ const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
   );
 };
 
-const gradeWithGemini = async (userAnswer: string, correctAnswers: (string | number)[], question: string) => {
-  if (!userAnswer) return false;
+/* 
+  Updated gradeWithGemini now returns a numeric score (0, 0.5, or 1).
+*/
+const gradeWithGemini = async (
+  userAnswer: string,
+  correctAnswers: (string | number)[],
+  question: string
+): Promise<number> => {
+  if (!userAnswer) return 0;
 
   const prompt = `You are grading a Science Olympiad question.
 
@@ -97,14 +104,15 @@ Question: ${question}
 Correct Answer(s): ${correctAnswers.join(', ')}
 Student Answer: ${userAnswer}
 
-
-Grade this response as either CORRECT or INCORRECT. Be lenient - if the student's answer demonstrates understanding of the core concept, mark it as CORRECT even if the wording isn't exact. Consider synonyms and equivalent expressions as correct.
-
-Respond with only a single word: either "CORRECT" or "INCORRECT".`;
+Grade this response on a scale as follows:
+0: The answer is completely incorrect.
+0.5: The answer is partially correct.
+1: The answer is fully correct.
+Provide only a single number (0, 0.5, or 1) as the score.`;
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -116,15 +124,16 @@ Respond with only a single word: either "CORRECT" or "INCORRECT".`;
 
     if (!response.ok) {
       console.error('Gemini API error:', await response.text());
-      return false;
+      return 0;
     }
 
     const data = await response.json();
-    const result = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
-    return result === 'CORRECT';
+    const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    const score = parseFloat(resultText);
+    return score;
   } catch (error) {
     console.error('Error grading with Gemini:', error);
-    return false;
+    return 0;
   }
 };
 
@@ -144,11 +153,12 @@ export default function UnlimitedPracticePage() {
     isOpen: false,
     questionIndex: null
   });
-  const [explanations, setExplanations] = useState<{[key: number]: string}>({});
-  const [loadingExplanation, setLoadingExplanation] = useState<{[key: number]: boolean}>({});
+  const [explanations, setExplanations] = useState<{ [key: number]: string }>({});
+  const [loadingExplanation, setLoadingExplanation] = useState<{ [key: number]: boolean }>({});
   const [lastCallTime, setLastCallTime] = useState<number>(0);
   const RATE_LIMIT_DELAY = 2000;
-  const [gradingResults, setGradingResults] = useState<{[key: string]: boolean}>({});
+  // Updated gradingResults now holds a numeric score.
+  const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
 
   // Fetch and filter questions on mount
   useEffect(() => {
@@ -158,41 +168,40 @@ export default function UnlimitedPracticePage() {
       router.push('/');
       return;
     }
-  
+
     const routerParams = JSON.parse(storedParams);
     setRouterData(routerParams);
-  
+
     const difficultyMap: Record<string, number> = {
       easy: 0.33,
       medium: 0.66,
       hard: 1.0,
     };
     const difficultyValue = difficultyMap[routerParams.difficulty || 'easy'] || 0.33;
-  
+
     const fetchData = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
-  
+
         const eventQuestions: Question[] = jsonData[routerParams.eventName as string] || [];
-  
+
         const filteredQuestions = eventQuestions.filter((q) => {
           const questionDifficulty = q.difficulty ?? 0.5;
-  
           return routerParams.difficulty === 'any'
             ? true
             : questionDifficulty >= difficultyValue - 0.33 &&
                 questionDifficulty <= difficultyValue;
         });
-  
+
         const finalQuestions =
           routerParams.types === 'multiple-choice'
             ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
             : routerParams.types === 'free-response'
             ? filteredQuestions.filter((q) => q.options?.length == 0)
             : filteredQuestions;
-  
+
         const shuffledQuestions = shuffleArray(finalQuestions);
         setData(shuffledQuestions);
       } catch (error) {
@@ -202,9 +211,10 @@ export default function UnlimitedPracticePage() {
         setIsLoading(false);
       }
     };
-  
+
     fetchData();
-  }, [router]); // Dependency array now only contains router.
+  }, [router]);
+
   // Helper function to shuffle an array
   function shuffleArray<T>(array: T[]): T[] {
     const newArray = [...array];
@@ -235,21 +245,52 @@ export default function UnlimitedPracticePage() {
     }
   };
 
-  // Mark the current question as submitted
+  /* 
+    Updated isCorrect now returns a numeric score:
+    - For questions with options:
+      • If multiple answers are allowed, we calculate the fraction of correct options selected.
+      • If only one answer is allowed, we return 1 if it exactly matches; otherwise 0.
+    - For free-response questions we use gradeWithGemini.
+  */
+  const isCorrect = async (question: Question, answers: (string | null)[]): Promise<number> => {
+    if (!question.answers || question.answers.length === 0) return 0;
+
+    if (question.options && question.options.length > 0) {
+      const correctAnswers = question.answers.map((ans) =>
+        typeof ans === 'number' ? question.options![ans - 1] : ans
+      );
+      const filteredUserAnswers = answers.filter((a) => a !== null) as string[];
+      // Multi-select: return fraction (0 to 1)
+      if (question.answers.length > 1) {
+        if (filteredUserAnswers.length === 0) return 0;
+        const numCorrectSelected = filteredUserAnswers.filter((a) => correctAnswers.includes(a)).length;
+        const fraction = numCorrectSelected / filteredUserAnswers.length;
+        return fraction;
+      } else {
+        // Single selection
+        return filteredUserAnswers.length === 1 && filteredUserAnswers[0] === correctAnswers[0] ? 1 : 0;
+      }
+    }
+
+    // For free-response questions, use Gemini-2.0-flash-lite
+    if (!answers[0]) return 0;
+    return await gradeWithGemini(answers[0], question.answers, question.question);
+  };
+
+  // Mark the current question as submitted and store the numeric score.
   const handleSubmit = async () => {
     setIsSubmitted(true);
-    
+
     try {
-      const isAnswerCorrect = await isCorrect(currentQuestion, currentAnswer);
-      setGradingResults(prev => ({...prev, [currentQuestionIndex]: isAnswerCorrect}));
-      
+      const score = await isCorrect(currentQuestion, currentAnswer);
+      setGradingResults((prev) => ({ ...prev, [currentQuestionIndex]: score }));
+
       // Only count if there's an actual answer
       const wasAttempted = currentAnswer.length > 0 && currentAnswer[0] !== null && currentAnswer[0] !== '';
-      
       await updateMetrics(auth.currentUser?.uid || null, {
         questionsAttempted: wasAttempted ? 1 : 0,
-        correctAnswers: wasAttempted && isAnswerCorrect ? 1 : 0,
-        eventName: routerData.eventName || undefined
+        correctAnswers: wasAttempted && score === 1 ? 1 : 0,
+        eventName: routerData.eventName || undefined,
       });
     } catch (error) {
       console.error('Error updating metrics:', error);
@@ -257,7 +298,6 @@ export default function UnlimitedPracticePage() {
   };
 
   // When "Next Question" is clicked, load the next question.
-  // If at the end, reshuffle and loop back to the beginning.
   const handleNext = () => {
     let nextIndex = currentQuestionIndex + 1;
     if (nextIndex >= data.length) {
@@ -271,31 +311,9 @@ export default function UnlimitedPracticePage() {
     setIsSubmitted(false);
   };
 
-  // Check if the current answer is correct.
-  // For questions with options, we map the answer indexes (if stored as numbers) to the option text.
-  const isCorrect = async (question: Question, answers: (string | null)[]) => {
-    if (!question.answers || question.answers.length === 0) return false;
-
-    // When options exist, assume that the answer(s) should match the option text.
-    if (question.options && question.options.length > 0) {
-      // Convert stored answer indexes (if any) into option text.
-      const correctAnswers = question.answers.map((ans) =>
-        typeof ans === 'number' ? question.options![ans - 1] : ans
-      );
-      // Filter out any null values from the user answer.
-      const filteredUserAnswers = answers.filter((a) => a !== null);
-      if (correctAnswers.length !== filteredUserAnswers.length) return false;
-      return correctAnswers.every((a) => filteredUserAnswers.includes(a));
-    }
-
-    // For free-response questions, use Gemini
-    if (!answers[0]) return false;
-    return await gradeWithGemini(answers[0], question.answers, question.question);
-  };
-
   const handleReport = async (reason: string) => {
     if (reportState.questionIndex === null) return;
-    
+
     const questionData = data[reportState.questionIndex];
     const mainWebhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
     const summaryWebhookUrl = "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
@@ -346,7 +364,6 @@ export default function UnlimitedPracticePage() {
     const toastId = toast.loading('Sending report...');
 
     try {
-      // Send both webhook requests in parallel
       const [mainResponse, summaryResponse] = await Promise.all([
         fetch(mainWebhookUrl, {
           method: 'POST',
@@ -389,16 +406,16 @@ export default function UnlimitedPracticePage() {
 
   const getExplanation = async (index: number, question: Question) => {
     if (explanations[index]) return;
-    
+
     const now = Date.now();
     if (now - lastCallTime < RATE_LIMIT_DELAY) {
       toast.error('Please wait a moment before requesting another explanation');
       return;
     }
     setLastCallTime(now);
-    
-    setLoadingExplanation(prev => ({...prev, [index]: true}));
-    
+
+    setLoadingExplanation(prev => ({ ...prev, [index]: true }));
+
     try {
       let correctAnswers = '';
       if (question.options && question.options.length > 0) {
@@ -407,7 +424,7 @@ export default function UnlimitedPracticePage() {
           .filter(Boolean)
           .join(', ');
       } else {
-        correctAnswers = Array.isArray(question.answers) 
+        correctAnswers = Array.isArray(question.answers)
           ? question.answers.join(', ')
           : String(question.answers);
       }
@@ -420,7 +437,7 @@ export default function UnlimitedPracticePage() {
         `Please explain why this is the correct answer with detailed reasoning, but keep it concise within reason.`;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -442,16 +459,16 @@ export default function UnlimitedPracticePage() {
       }
 
       const explanation = data.candidates[0].content.parts[0].text;
-      setExplanations(prev => ({...prev, [index]: explanation}));
+      setExplanations(prev => ({ ...prev, [index]: explanation }));
     } catch (error) {
       console.error('Error in getExplanation:', error);
       setExplanations(prev => ({
-        ...prev, 
+        ...prev,
         [index]: 'Failed to load explanation. Please try again later.'
       }));
       toast.error(`Failed to get explanation: ${(error as Error).message}`);
     } finally {
-      setLoadingExplanation(prev => ({...prev, [index]: false}));
+      setLoadingExplanation(prev => ({ ...prev, [index]: false }));
     }
   };
 
@@ -534,24 +551,20 @@ export default function UnlimitedPracticePage() {
 
                   {/* Answer Input(s) */}
                   {currentQuestion.options && currentQuestion.options.length > 0 ? (
-                    // Use checkboxes if multiple correct answers are allowed…
+                    // For multi-select questions (more than one answer allowed)
                     currentQuestion.answers.length > 1 ? (
                       <div className="space-y-2">
                         {currentQuestion.options.map((option, idx) => (
                           <label
                             key={idx}
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                              darkMode
-                                ? isSubmitted && currentAnswer[0] === option
-                                  ? gradingResults[currentQuestionIndex] ?? false
-                                    ? 'bg-green-800'  // Correct answer in dark mode
-                                    : 'bg-red-900'    // Wrong answer in dark mode
-                                  : 'bg-gray-700'
-                                : isSubmitted && currentAnswer[0] === option
-                                  ? gradingResults[currentQuestionIndex] ?? false
-                                    ? 'bg-green-200'  // Correct answer in light mode
-                                    : 'bg-red-200'    // Wrong answer in light mode
-                                  : 'bg-gray-200'
+                              isSubmitted && currentAnswer.includes(option)
+                                ? gradingResults[currentQuestionIndex] === 1
+                                  ? darkMode ? 'bg-green-800' : 'bg-green-200'
+                                  : gradingResults[currentQuestionIndex] === 0
+                                  ? darkMode ? 'bg-red-900' : 'bg-red-200'
+                                  : darkMode ? 'bg-amber-400' : 'bg-amber-400'
+                                : darkMode ? 'bg-gray-700' : 'bg-gray-200'
                             } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
                             <input
@@ -568,23 +581,19 @@ export default function UnlimitedPracticePage() {
                         ))}
                       </div>
                     ) : (
-                      // …otherwise use radio buttons
+                      // Otherwise, use radio buttons
                       <div className="space-y-2">
                         {currentQuestion.options.map((option, idx) => (
                           <label
                             key={idx}
                             className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                              darkMode
-                                ? isSubmitted && currentAnswer[0] === option
-                                  ? gradingResults[currentQuestionIndex] ?? false
-                                    ? 'bg-green-800'  // Correct answer in dark mode
-                                    : 'bg-red-900'    // Wrong answer in dark mode
-                                  : 'bg-gray-700'
-                                : isSubmitted && currentAnswer[0] === option
-                                  ? gradingResults[currentQuestionIndex] ?? false
-                                    ? 'bg-green-200'  // Correct answer in light mode
-                                    : 'bg-red-200'    // Wrong answer in light mode
-                                  : 'bg-gray-200'
+                              isSubmitted && currentAnswer[0] === option
+                                ? gradingResults[currentQuestionIndex] === 1
+                                  ? darkMode ? 'bg-green-800' : 'bg-green-200'
+                                  : gradingResults[currentQuestionIndex] === 0
+                                  ? darkMode ? 'bg-red-900' : 'bg-red-200'
+                                  : darkMode ? 'bg-amber-400' : 'bg-amber-400'
+                                : darkMode ? 'bg-gray-700' : 'bg-gray-200'
                             } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                           >
                             <input
@@ -617,25 +626,35 @@ export default function UnlimitedPracticePage() {
 
                   {isSubmitted && (
                     <>
-                      <p
-                        className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
-                          !currentAnswer[0] 
-                            ? 'text-blue-500'  // Skipped
-                            : gradingResults[currentQuestionIndex] ?? false
-                              ? 'text-green-600'  // Correct
-                              : 'text-red-600'    // Wrong
-                        }`}
-                      >
-                        {!currentAnswer[0] 
-                          ? 'Skipped'
-                          : gradingResults[currentQuestionIndex] ?? false
-                            ? 'Correct!'
-                            : 'Wrong!'}
-                      </p>
+                      {(() => {
+                        const score = gradingResults[currentQuestionIndex];
+                        let resultText = '';
+                        let resultColor = '';
+                        if (!currentAnswer[0]) {
+                          resultText = 'Skipped';
+                          resultColor = 'text-blue-500';
+                        } else if (score === 1) {
+                          resultText = 'Correct!';
+                          resultColor = 'text-green-600';
+                        } else if (score === 0) {
+                          resultText = 'Wrong!';
+                          resultColor = 'text-red-600';
+                        } else {
+                          resultText = 'Partial Credit';
+                          resultColor = 'text-amber-400';
+                        }
+                        return (
+                          <p className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${resultColor}`}>
+                            {resultText}
+                          </p>
+                        );
+                      })()}
                       <p className="text-sm mt-1">
                         <strong>Correct Answer(s):</strong>{' '}
                         {currentQuestion.options?.length
-                          ? currentQuestion.answers.map((ans) => currentQuestion.options?.[ans as number - 1]).join(', ')
+                          ? currentQuestion.answers
+                              .map((ans) => currentQuestion.options?.[ans as number - 1])
+                              .join(', ')
                           : currentQuestion.answers.join(', ')}
                       </p>
                       <div className="mt-2">
@@ -643,8 +662,8 @@ export default function UnlimitedPracticePage() {
                           <button
                             onClick={() => getExplanation(currentQuestionIndex, currentQuestion)}
                             className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-300 ${
-                              darkMode 
-                                ? 'bg-gray-700 hover:bg-gray-600 text-blue-400' 
+                              darkMode
+                                ? 'bg-gray-700 hover:bg-gray-600 text-blue-400'
                                 : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
                             }`}
                             disabled={loadingExplanation[currentQuestionIndex]}
@@ -673,7 +692,7 @@ export default function UnlimitedPracticePage() {
                       </div>
                     </>
                   )}
-					<br/>	
+                  <br />
                   {/* Difficulty Bar */}
                   <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300 transition-all duration-1000 ease-in-out">
                     <div
@@ -694,21 +713,23 @@ export default function UnlimitedPracticePage() {
                   {!isSubmitted ? (
                     <button
                       onClick={handleSubmit}
-					  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-						darkMode
-						  ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-						  : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-					  }`}>
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                        darkMode
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      }`}
+                    >
                       Check Answer
                     </button>
                   ) : (
                     <button
                       onClick={handleNext}
-					  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-						darkMode
-						  ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-						  : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-					  }`}>
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                        darkMode
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      }`}
+                    >
                       Next Question
                     </button>
                   )}
@@ -717,7 +738,6 @@ export default function UnlimitedPracticePage() {
             )}
           </main>
 
-          {/* Back Button (bottom-left) */}
           {/* Back Button (bottom-left) */}
           <button
             onClick={() => router.push('/dashboard')}
@@ -751,7 +771,6 @@ export default function UnlimitedPracticePage() {
             }`}
           >
             {darkMode ? (
-              // Sun icon (click to switch to light mode)
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-yellow-400"
@@ -767,7 +786,6 @@ export default function UnlimitedPracticePage() {
                 />
               </svg>
             ) : (
-              // Moon icon (click to switch to dark mode)
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 text-blue-600"

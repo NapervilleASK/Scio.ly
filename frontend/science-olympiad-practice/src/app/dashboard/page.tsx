@@ -23,8 +23,8 @@ function EventDashboard() {
   const router = useRouter();
 
   const [settings, setSettings] = useState({
-    questionCount: 50,
-    timeLimit: 60,
+    questionCount: 15,
+    timeLimit: 25,
     difficulty: 'any',
     types: 'multiple-choice',
   });
