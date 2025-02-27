@@ -6,6 +6,7 @@ import { auth, db } from '@/lib/firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTheme } from '@/app/contexts/ThemeContext';
 
 export default function AuthButton() {
   const [user, setUser] = useState(auth.currentUser);
@@ -13,6 +14,7 @@ export default function AuthButton() {
   const [showSignInModal, setShowSignInModal] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
+  const { darkMode } = useTheme();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const privacyModalRef = useRef<HTMLDivElement>(null);
@@ -115,8 +117,8 @@ export default function AuthButton() {
                 className="rounded-full"
               />
             ) : (
-              <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-600 text-sm">
+              <div className={`w-full h-full flex items-center justify-center ${darkMode ? 'bg-gray-700' : 'bg-gray-300'}`}>
+                <span className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {user.displayName?.[0] || 'U'}
                 </span>
               </div>
@@ -125,14 +127,22 @@ export default function AuthButton() {
         </button>
 
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-            <div className="px-4 py-2 text-sm text-gray-700 border-b">
+          <div className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 ${
+            darkMode ? 'bg-gray-800' : 'bg-white'
+          }`}>
+            <div className={`px-4 py-2 text-sm border-b ${
+              darkMode ? 'text-gray-200 border-gray-700' : 'text-gray-700 border-gray-200'
+            }`}>
               <p className="font-medium">{user.displayName}</p>
-              <p className="text-gray-500 truncate">{user.email}</p>
+              <p className={darkMode ? 'text-gray-400' : 'text-gray-500'} style={{ wordBreak: 'break-all' }}>{user.email}</p>
             </div>
             <button
               onClick={handleSignOut}
-              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className={`block w-full text-left px-4 py-2 text-sm ${
+                darkMode 
+                  ? 'text-gray-200 hover:bg-gray-700' 
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
             >
               Sign out
             </button>
@@ -146,7 +156,11 @@ export default function AuthButton() {
     <>
       <button
         onClick={() => setShowSignInModal(true)}
-        className="px-1 py-1 text-sm text-blue-500 hover:text-blue-700"
+        className={`px-1 py-1 text-sm ${
+          darkMode 
+            ? 'text-blue-400 hover:text-blue-300' 
+            : 'text-blue-500 hover:text-blue-700'
+        }`}
       >
         Sign In
       </button>
@@ -160,14 +174,20 @@ export default function AuthButton() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-lg p-6 w-[400px] max-w-[90vw]"
+                className={`rounded-lg p-6 w-[400px] max-w-[90vw] ${
+                  darkMode ? 'bg-gray-800' : 'bg-white'
+                }`}
                 ref={modalRef}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900">Sign In</h2>
+                  <h2 className={`text-xl font-semibold ${
+                    darkMode ? 'text-white' : 'text-gray-900'
+                  }`}>Sign In</h2>
                   <button
                     onClick={() => setShowSignInModal(false)}
-                    className="text-gray-500 hover:text-gray-700"
+                    className={`${
+                      darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'
+                    }`}
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -176,7 +196,11 @@ export default function AuthButton() {
                 </div>
                 <button
                   onClick={handleSignIn}
-                  className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+                  className={`w-full flex items-center justify-center space-x-2 px-4 py-2 border rounded-md transition-colors duration-200 ${
+                    darkMode 
+                      ? 'border-gray-600 bg-gray-700 text-white hover:bg-gray-600' 
+                      : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'
+                  }`}
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path
@@ -198,14 +222,20 @@ export default function AuthButton() {
                   </svg>
                   <span>Sign in with Google</span>
                 </button>
-                <div className="mt-4 text-center text-sm text-gray-500">
+                <div className={`mt-4 text-center text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
                   By signing in, you agree to our{' '}
                   <button
                     onClick={(e) => {
                       e.preventDefault();
                       setShowPrivacyPolicy(true);
                     }}
-                    className="text-blue-500 hover:text-blue-700 underline"
+                    className={`underline ${
+                      darkMode 
+                        ? 'text-blue-400 hover:text-blue-300' 
+                        : 'text-blue-500 hover:text-blue-700'
+                    }`}
                   >
                     Privacy Policy
                   </button>
@@ -225,25 +255,33 @@ export default function AuthButton() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="bg-white rounded-lg p-6 w-[600px] max-w-[90vw] max-h-[70vh] overflow-y-auto"
+                className={`rounded-lg p-6 w-[600px] max-w-[90vw] max-h-[70vh] overflow-y-auto ${
+                  darkMode ? 'bg-gray-800' : 'bg-white'
+                }`}
                 ref={privacyModalRef}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900">Privacy Policy</h2>
+                  <h2 className={`text-xl font-semibold ${
+                    darkMode ? 'text-white' : 'text-gray-900'
+                  }`}>Privacy Policy</h2>
                   <button
                     onClick={() => setShowPrivacyPolicy(false)}
-                    className="text-gray-500 hover:text-gray-700"
+                    className={`${
+                      darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'
+                    }`}
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
-                <div className="space-y-4 text-gray-700">
+                <div className={`space-y-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
                   
                   <section>
-                    <h3 className="text-lg font-semibold mb-2">1. Information We Collect</h3>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      1. Information We Collect
+                    </h3>
                     <p>We collect minimal information necessary to provide our Science Olympiad practice services:</p>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Authentication information if you choose to sign in (email address only)</li>
@@ -253,7 +291,9 @@ export default function AuthButton() {
                   </section>
 
                   <section>
-                    <h3 className="text-lg font-semibold mb-2">2. How We Use Your Information</h3>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      2. How We Use Your Information
+                    </h3>
                     <p>We use collected information to:</p>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>Track your progress and performance</li>
@@ -263,24 +303,34 @@ export default function AuthButton() {
                   </section>
 
                   <section>
-                    <h3 className="text-lg font-semibold mb-2">3. Data Security</h3>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      3. Data Security
+                    </h3>
                     <p>Your practice and authentication data is stored securely and is not shared with third parties.</p>
                   </section>
 
                   <section>
-                    <h3 className="text-lg font-semibold mb-2">4. Your Rights</h3>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      4. Your Rights
+                    </h3>
                     <p>You have the right to request deletion of your data at any time.</p>
                   </section>
 
                   <section>
-                    <h3 className="text-lg font-semibold mb-2">5. Contact Us</h3>
-                    <p>For any privacy-related questions or concerns, please contact us with the form on the top of the dashboard page.</p>  
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      5. Contact Us
+                    </h3>
+                    <p>For any privacy-related questions or concerns, please contact us with the form on the top of the dashboard page.</p>
                   </section>
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button
                     onClick={() => setShowPrivacyPolicy(false)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                    className={`px-4 py-2 rounded transition-colors ${
+                      darkMode 
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                        : 'bg-blue-500 hover:bg-blue-600 text-white'
+                    }`}
                   >
                     Close
                   </button>
