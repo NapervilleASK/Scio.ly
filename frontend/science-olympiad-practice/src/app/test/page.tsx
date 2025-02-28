@@ -160,6 +160,33 @@ const gradeFreeResponses = async (
   }
 };
 
+// Add this helper function
+const isMultiSelectQuestion = (question: string, answers?: (number | string)[]): boolean => {
+  const multiSelectKeywords = [
+    'choose all',
+    'select all',
+    'all that apply',
+    'multi select',
+    'multiple select',
+    'multiple answers',
+    'check all',
+    'mark all'
+  ];
+  
+  // First check if the question text contains any multi-select keywords
+  const hasKeywords = multiSelectKeywords.some(keyword => 
+    question.toLowerCase().includes(keyword.toLowerCase())
+  );
+  
+  // If keywords are found, it's definitely multi-select
+  if (hasKeywords) return true;
+  
+  // If answers array is provided and has more than one answer, it's multi-select
+  if (answers && answers.length > 1) return true;
+  
+  return false;
+};
+
 export default function TestPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -328,12 +355,29 @@ export default function TestPage() {
             const correctAnswers = question.answers.map(
               (ans) => question.options![ans as number - 1]
             );
-            const isMCorrect =
-              answers.length === correctAnswers.length &&
-              correctAnswers.every((ans) => answers.includes(ans));
-            const score = isMCorrect ? 1 : 0;
-            setGradingResults((prev) => ({ ...prev, [index]: score }));
-            totalScore += score;
+            
+            // Handle multi-select questions
+            if (question.answers.length > 1) {
+              const filteredAnswers = answers.filter((a): a is string => a !== null);
+              const numCorrectSelected = filteredAnswers.filter((a) => correctAnswers.includes(a)).length;
+              const hasIncorrectAnswers = filteredAnswers.some(a => !correctAnswers.includes(a));
+              
+              // Set score: 1 for perfect, 0.5 for partial (but count as wrong), 0 for completely wrong
+              if (numCorrectSelected === correctAnswers.length && !hasIncorrectAnswers) {
+                setGradingResults((prev) => ({ ...prev, [index]: 1 }));
+                totalScore += 1;
+              } else if (numCorrectSelected > 0) {
+                setGradingResults((prev) => ({ ...prev, [index]: 0.5 })); // Shows amber but counts as wrong
+              } else {
+                setGradingResults((prev) => ({ ...prev, [index]: 0 }));
+              }
+            } else {
+              // Single select questions
+              const filteredAnswers = answers.filter((a): a is string => a !== null);
+              const isCorrect = filteredAnswers.length === 1 && filteredAnswers[0] === correctAnswers[0];
+              setGradingResults((prev) => ({ ...prev, [index]: isCorrect ? 1 : 0 }));
+              if (isCorrect) totalScore += 1;
+            }
           } else {
             setGradingResults((prev) => ({ ...prev, [index]: 0 }));
           }
@@ -363,17 +407,16 @@ export default function TestPage() {
     
     if (freeResponses.length > 0) {
       const scores = await gradeFreeResponses(freeResponses);
-      console.log(scores)
       scores.forEach((score, idx) => {
         const index = freeResponseIndices[idx];
         setGradingResults((prev) => ({ ...prev, [index]: score }));
-        totalScore += score;
+        if (score >= 0.5) totalScore += score;
       });
     }
     
     await updateMetrics(auth.currentUser?.uid || null, {
       questionsAttempted: totalAttempted,
-      correctAnswers: totalScore,
+      correctAnswers: Math.round(totalScore),
       eventName: routerData.eventName || undefined
     });
     
@@ -663,302 +706,203 @@ export default function TestPage() {
               </div>
             ) : (
               <>
-                <ul className="space-y-6">
-                  {data.map((item, index) => (
-                    <li
-                      key={index}
-                      className={`relative border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+                <div className="container mx-auto px-4 py-8">
+                  {data.map((question, index) => {
+                    const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
+                    const currentAnswers = userAnswers[index] || [];
+                    const isAnswered = currentAnswers.length > 0 && currentAnswers[0] !== null;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`relative border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out mb-6 ${
+                          darkMode
+                            ? 'bg-gray-700 border-gray-600 text-white'
+                            : 'bg-gray-50 border-gray-300 text-black'
+                        }`}
+                      >
+                        <div className="flex justify-between items-start">
+                          <h3 className="font-semibold text-lg">Question</h3>
+                          <button
+                            onClick={() => setReportState({ isOpen: true, questionIndex: index })}
+                            className="text-gray-500 hover:text-red-500 transition-colors duration-200"
+                            title="Report this question"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                              <line x1="4" y1="22" x2="4" y2="15" />
+                            </svg>
+                          </button>
+                        </div>
+                        <p className="mb-4 break-words whitespace-normal overflow-x-auto">
+                          {question.question}
+                        </p>
+
+                        {question.options ? (
+                          <div className="space-y-2">
+                            {question.options.map((option, optionIndex) => (
+                              <label
+                                key={optionIndex}
+                                className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
+                                  isSubmitted && currentAnswers.includes(option)
+                                    ? (gradingResults[index] ?? 0) === 1
+                                      ? darkMode ? 'bg-green-800' : 'bg-green-200'
+                                      : (gradingResults[index] ?? 0) === 0
+                                      ? darkMode ? 'bg-red-900' : 'bg-red-200'
+                                      : darkMode ? 'bg-amber-400' : 'bg-amber-400'
+                                    : darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                                } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
+                              >
+                                <input
+                                  type={isMultiSelect ? "checkbox" : "radio"}
+                                  name={`question-${index}`}
+                                  value={option}
+                                  checked={currentAnswers.includes(option)}
+                                  onChange={() => handleAnswerChange(index, option, isMultiSelect)}
+                                  disabled={isSubmitted}
+                                  className="mr-2"
+                                />
+                                {option}
+                              </label>
+                            ))}
+                          </div>
+                        ) : (
+                          <textarea
+                            value={userAnswers[index]?.[0] || ''}
+                            onChange={(e) => handleAnswerChange(index, e.target.value)}
+                            disabled={isSubmitted}
+                            className={`w-full p-2 border rounded-md transition-all duration-1000 ease-in-out ${
+                              darkMode ? 'bg-gray-700' : 'bg-white'
+                            }`}
+                            rows={3}
+                            placeholder="Type your answer here..."
+                          />
+                        )}
+
+                        {isSubmitted && (
+                          <>
+                            {(() => {
+                              const score = gradingResults[index] ?? 0;
+                              let resultText = '';
+                              let resultColor = '';
+                              if (!currentAnswers[0]) {
+                                resultText = 'Skipped';
+                                resultColor = 'text-blue-500';
+                              } else if (score === 1) {
+                                resultText = 'Correct!';
+                                resultColor = 'text-green-600';
+                              } else if (score === 0) {
+                                resultText = 'Wrong!';
+                                resultColor = 'text-red-600';
+                              } else {
+                                resultText = 'Partial Credit';
+                                resultColor = 'text-amber-400';
+                              }
+                              return (
+                                <p className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${resultColor}`}>
+                                  {resultText}
+                                </p>
+                              );
+                            })()}
+                            <p className="text-sm mt-1">
+                              <strong>Correct Answer(s):</strong>{' '}
+                              {question.options?.length
+                                ? question.answers
+                                    .map((ans) => question.options?.[ans as number - 1])
+                                    .join(', ')
+                                : question.answers.join(', ')}
+                            </p>
+                            <div className="mt-2">
+                              {!explanations[index] ? (
+                                <button
+                                  onClick={() => getExplanation(index, question)}
+                                  className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-300 ${
+                                    darkMode
+                                      ? 'bg-gray-700 hover:bg-gray-600 text-blue-400'
+                                      : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                                  }`}
+                                  disabled={loadingExplanation[index]}
+                                >
+                                  {loadingExplanation[index] ? (
+                                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
+                                  ) : (
+                                    <>
+                                      <span>Explain</span>
+                                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      </svg>
+                                    </>
+                                  )}
+                                </button>
+                              ) : (
+                                <div 
+                                  className={`text-sm mt-2 p-3 rounded-md ${
+                                    darkMode ? 'bg-gray-700' : 'bg-blue-50'
+                                  }`}
+                                  dangerouslySetInnerHTML={{ 
+                                    __html: `<strong>Explanation:</strong> ${formatExplanationText(explanations[index])}` 
+                                  }}
+                                />
+                              )}
+                            </div>
+                          </>
+                        )}
+                        <br />
+                        {/* Difficulty Bar */}
+                        <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300 transition-all duration-1000 ease-in-out">
+                          <div
+                            className={`h-full rounded-full transition-all duration-1000 ease-in-out ${
+                              question.difficulty >= 0.66
+                                ? 'bg-red-500'
+                                : question.difficulty >= 0.33
+                                ? 'bg-yellow-500'
+                                : 'bg-green-500'
+                            }`}
+                            style={{ width: `${question.difficulty * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Submit Button */}
+                <div className="mt-6 text-center transition-all duration-1000 ease-in-out">
+                  {isSubmitted ? (
+                    <button
+                      onClick={handleBackToMain}
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
                         darkMode
-                          ? 'bg-gray-700 border-gray-600 text-white'
-                          : 'bg-gray-50 border-gray-300 text-black'
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
                       }`}
                     >
-                      <div className="flex justify-between items-start">
-                        <h3 className="font-semibold text-lg transition-colors ease-in-out">
-                          Question {index + 1}
-                        </h3>
-                        <button
-                          onClick={() => setReportState({ isOpen: true, questionIndex: index })}
-                          className="text-gray-500 hover:text-red-500 transition-colors duration-200"
-                          title="Report this question"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-                            <line x1="4" y1="22" x2="4" y2="15" />
-                          </svg>
-                        </button>
-                      </div>
-                      <p className="mb-4 transition-colors ease-in-out break-words whitespace-normal overflow-x-auto">
-                        {item.question}
-                      </p>
-
-                      {/* Answer Inputs */}
-                      {item.options && item.options.length > 0 && item.answers.length > 1 ? (
-                        <div className="space-y-2">
-                          {item.options.map((option, idx) => (
-                            <label
-                              key={idx}
-                              className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                                darkMode
-                                  ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? gradingResults[index] ?? false
-                                      ? 'bg-green-800'
-                                      : 'bg-red-900'
-                                    : 'bg-gray-700'
-                                  : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? gradingResults[index] ?? false
-                                      ? 'bg-green-200'
-                                      : 'bg-red-200'
-                                  : 'bg-gray-200'
-                              } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
-                            >
-                              <input
-                                type="checkbox"
-                                name={`question-${index}`}
-                                value={option}
-                                onChange={() => handleAnswerChange(index, option, true)}
-                                disabled={isSubmitted}
-                                checked={userAnswers[index]?.includes(option) || false}
-                                className="mr-2"
-                              />
-                              {option}
-                            </label>
-                          ))}
-                        </div>
-                      ) : item.options && item.options.length > 0 ? (
-                        <div className="space-y-2">
-                          {item.options.map((option, idx) => (
-                            <label
-                              key={idx}
-                              className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                                darkMode
-                                  ? isSubmitted && userAnswers[index]?.[0] === option
-                                    ? gradingResults[index] ?? false
-                                      ? 'bg-green-800'
-                                      : 'bg-red-900'
-                                    : 'bg-gray-700'
-                                  : isSubmitted && userAnswers[index]?.[0] === option
-                                    ? gradingResults[index] ?? false
-                                      ? 'bg-green-200'
-                                      : 'bg-red-200'
-                                  : 'bg-gray-200'
-                              } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
-                            >
-                              <input
-                                type="radio"
-                                name={`question-${index}`}
-                                value={option}
-                                onChange={() => handleAnswerChange(index, option)}
-                                disabled={isSubmitted}
-                                checked={userAnswers[index]?.[0] === option}
-                                className="mr-2"
-                              />
-                              {option}
-                            </label>
-                          ))}
-                        </div>
-                      ) : (
-                        <textarea
-                          className={`w-full p-2 border rounded-md transition-all duration-1000 ease-in-out ${
-                            darkMode
-                              ? 'bg-gray-700'
-                              : 'bg-white'
-                          }`}
-                          rows={3}
-                          placeholder="Type your answer here (True/False if applicable)"
-                          onChange={(e) => handleAnswerChange(index, e.target.value)}
-                          disabled={isSubmitted}
-                          value={userAnswers[index]?.[0] || ''}
-                        />
-                      )}
-
-                      {isSubmitted && (
-                        <>
-                          <p
-                            className={`mt-2 font-semibold transition-colors duration-1000 ease-in-out ${
-                              !userAnswers[index]?.[0]
-                                ? 'text-blue-500'  // Skipped
-                                : (gradingResults[index] ?? 0) == 1
-                                  ? 'text-green-600'  // Correct
-                                  : (gradingResults[index] ?? 0) == 0
-                                    ? 'text-red-600'    // Wrong
-                                    : 'text-amber-400'
-                            }`}
-                          >
-                            {!userAnswers[index]?.[0]
-                              ? 'Skipped'
-                              : (gradingResults[index] ?? 0) == 1
-                                ? 'Correct!'
-                                : (gradingResults[index] ?? 0) == 0
-                                  ? 'Wrong!'
-                                  : 'Partial credit!'
-
-                              }
-                          </p>
-                          <p className={`text-sm mt-1`}>
-                            <strong>Correct Answer(s):</strong>{' '}
-                            {item.options?.length
-                              ? item.answers
-                                  .map((ans) => item.options?.[ans as number - 1])
-                                  .join(', ')
-                              : item.answers.join(', ')}
-                          </p>
-                          <div className="mt-2">
-                            {!explanations[index] ? (
-                              <button
-                                onClick={() => getExplanation(index, item)}
-                                className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-300 ${
-                                  darkMode 
-                                    ? 'bg-gray-700 hover:bg-gray-600 text-blue-400' 
-                                    : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
-                                }`}
-                                disabled={loadingExplanation[index]}
-                              >
-                                {loadingExplanation[index] ? (
-                                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
-                                ) : (
-                                  <>
-                                    <span>Explain</span>
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                  </>
-                                )}
-                              </button>
-                            ) : (
-                              <div 
-                                className={`text-sm mt-2 p-3 rounded-md ${
-                                  darkMode ? 'bg-gray-700' : 'bg-blue-50'
-                                }`}
-                                dangerouslySetInnerHTML={{ 
-                                  __html: `<strong>Explanation:</strong> ${formatExplanationText(explanations[index])}` 
-                                }}
-                              />
-                            )}
-                          </div>
-                        </>
-                      )}
-                      <br />
-                      {/* Difficulty Bar */}
-                      <div className="absolute bottom-2 right-2 w-20 h-2 rounded-full bg-gray-300 transition-all duration-1000 ease-in-out">
-                        <div
-                          className={`h-full rounded-full transition-all duration-1000 ease-in-out ${
-                            item.difficulty >= 0.66
-                              ? 'bg-red-500'
-                              : item.difficulty >= 0.33
-                              ? 'bg-yellow-500'
-                              : 'bg-green-500'
-                          }`}
-                          style={{ width: `${item.difficulty * 100}%` }}
-                        ></div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-            {/* Submit Button */}
-            <div className="mt-6 text-center transition-all duration-1000 ease-in-out">
-              {isSubmitted ? (
-                <button
-                  onClick={handleBackToMain}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}
-                  >
-                  Return to Dashboard
-                </button>
-              ) : (
-                <button
-                  onClick={handleSubmit}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}>
-                  Submit Answers
-                </button>
-              )}
-            </div>
-          </>
-        )}
-      </main>
-          {/* Back Button (bottom-left) */}
-          <button
-            onClick={() => router.push('/dashboard')}
-            className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
-              darkMode
-                ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
-                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
-            } text-white`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
-          </button>
-          {/* Dark Mode Toggle (bottom-right) */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
-              darkMode ? 'bg-gray-700' : 'bg-white'
-            }`}
-          >
-            {darkMode ? (
-              // Sun icon (click to switch to light mode)
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
-            />
-              </svg>
-            ) : (
-              // Moon icon (click to switch to dark mode)
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
-                />
-              </svg>
+                      Return to Dashboard
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleSubmit}
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                        darkMode
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      }`}>
+                      Submit Answers
+                    </button>
+                  )}
+                </div>
+              </>
             )}
-          </button>
+          </main>
         </div>
       </div>
       <ReportModal
