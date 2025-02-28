@@ -283,7 +283,7 @@ export default function UnlimitedPracticePage() {
   const router = useRouter();
 
   const [data, setData] = useState<Question[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(Math.floor(Math.random() * 200));
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -320,13 +320,9 @@ export default function UnlimitedPracticePage() {
 
     // Check if we have stored questions
     const storedQuestions = localStorage.getItem('unlimitedQuestions');
-    const storedIndex = localStorage.getItem('unlimitedCurrentIndex');
-    
     if (storedQuestions) {
       setData(JSON.parse(storedQuestions));
-      if (storedIndex) {
-        setCurrentQuestionIndex(parseInt(storedIndex, 10));
-      }
+
       setIsLoading(false);
       return;
     }
@@ -375,17 +371,12 @@ export default function UnlimitedPracticePage() {
     fetchData();
   }, [router]);
 
-  // Store current question index when it changes
-  useEffect(() => {
-    localStorage.setItem('unlimitedCurrentIndex', currentQuestionIndex.toString());
-  }, [currentQuestionIndex]);
 
   // Cleanup effect to clear localStorage on unmount
   useEffect(() => {
     return () => {
       if (window.location.pathname !== '/unlimited') {
         localStorage.removeItem('unlimitedQuestions');
-        localStorage.removeItem('unlimitedCurrentIndex');
         localStorage.removeItem('testParams');
       }
     };
@@ -969,7 +960,6 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
             onClick={() => {
               // Clear unlimited practice-related localStorage items
               localStorage.removeItem('unlimitedQuestions');
-              localStorage.removeItem('unlimitedCurrentIndex');
               localStorage.removeItem('testParams');
               router.push('/dashboard');
             }}
