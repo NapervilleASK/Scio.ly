@@ -361,12 +361,9 @@ export default function UnlimitedPracticePage() {
             ? filteredQuestions.filter((q) => q.options?.length == 0)
             : filteredQuestions;
 
-        const shuffledQuestions = shuffleArray(finalQuestions);
-        
-        // Store the questions in localStorage
-        localStorage.setItem('unlimitedQuestions', JSON.stringify(shuffledQuestions));
-        
-        setData(shuffledQuestions);
+        // No shuffling here anymore
+        localStorage.setItem('unlimitedQuestions', JSON.stringify(finalQuestions));
+        setData(finalQuestions);
       } catch (error) {
         console.error(error);
         setFetchError('Failed to load questions. Please try again later.');
@@ -393,16 +390,6 @@ export default function UnlimitedPracticePage() {
       }
     };
   }, []);
-
-  // Helper function to shuffle an array
-  function shuffleArray<T>(array: T[]): T[] {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  }
 
   // Grab the current question (if available)
   const currentQuestion = data[currentQuestionIndex];
@@ -488,18 +475,17 @@ export default function UnlimitedPracticePage() {
     }
   };
 
-  // When "Next Question" is clicked, load the next question.
+  // When "Next Question" is clicked, load a random question.
   const handleNext = () => {
-    let nextIndex = currentQuestionIndex + 1;
-    if (nextIndex >= data.length) {
-      // Loop around with a reshuffled question order
-      const reshuffled = shuffleArray(data);
-      setData(reshuffled);
-      nextIndex = 0;
+    if (data.length > 0) { // Ensure there are questions to pick from
+      const randomIndex = Math.floor(Math.random() * data.length);
+      setCurrentQuestionIndex(randomIndex);
+      setCurrentAnswer([]);
+      setIsSubmitted(false);
+    } else {
+      console.warn("No questions available to select randomly.");
+      // Optionally handle the case where there are no questions, e.g., show a message to the user.
     }
-    setCurrentQuestionIndex(nextIndex);
-    setCurrentAnswer([]);
-    setIsSubmitted(false);
   };
 
   const handleReport = async (reason: string) => {
