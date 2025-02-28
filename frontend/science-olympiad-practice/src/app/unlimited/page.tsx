@@ -738,8 +738,9 @@ Respond with ONLY "VALID" or "INVALID"`;
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-                <line x1="4" y1="22" x2="4" y2="15" />
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
             </button>
           </div>
@@ -748,7 +749,7 @@ Respond with ONLY "VALID" or "INVALID"`;
           {question.question}
         </p>
 
-        {question.options ? (
+        {question.options && question.options.length > 0 ? (
           <div className="space-y-2">
             {question.options.map((option, idx) => (
               <label
@@ -778,11 +779,19 @@ Respond with ONLY "VALID" or "INVALID"`;
           </div>
         ) : (
           <textarea
-            value={currentAnswers[0] || ''}
+            value={currentAnswer[0] || ''}
             onChange={(e) => handleAnswerChange(e.target.value)}
             disabled={isSubmitted}
             className={`w-full p-2 border rounded-md transition-all duration-1000 ease-in-out ${
-              darkMode ? 'bg-gray-700' : 'bg-white'
+              isSubmitted 
+                ? gradingResults[currentQuestionIndex] === 1
+                  ? darkMode ? 'bg-green-800 border-green-700' : 'bg-green-200 border-green-300'
+                  : gradingResults[currentQuestionIndex] === 0
+                  ? darkMode ? 'bg-red-900 border-red-800' : 'bg-red-200 border-red-300'
+                  : darkMode ? 'bg-amber-400 border-amber-500' : 'bg-amber-400 border-amber-500'
+                : darkMode 
+                  ? 'bg-gray-700 border-gray-600 text-white' 
+                  : 'bg-white border-gray-300'
             }`}
             rows={3}
             placeholder="Type your answer here..."
@@ -932,7 +941,7 @@ Respond with ONLY "VALID" or "INVALID"`;
                           : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
                       }`}
                     >
-                      Check Answer
+                      {currentAnswer.length === 0 || currentAnswer[0] === null || currentAnswer[0] === '' ? 'Skip Question' : 'Check Answer'}
                     </button>
                   ) : (
                     <button
