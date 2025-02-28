@@ -36,6 +36,18 @@ interface ReportState {
   questionIndex: number | null;
 }
 
+interface ContestModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (reason: string) => Promise<void>;
+  darkMode: boolean;
+}
+
+interface ContestState {
+  isOpen: boolean;
+  questionIndex: number | null;
+}
+
 const API_URL = api.api;
 const arr = api.arr
 
@@ -87,6 +99,73 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) 
               className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
             >
               Submit Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+const ContestModal = ({ isOpen, onClose, onSubmit, darkMode }: ContestModalProps) => {
+  const [reason, setReason] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsProcessing(true);
+    await onSubmit(reason);
+    setReason('');
+    setIsProcessing(false);
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className={`rounded-lg p-6 w-96 transition-colors duration-300 ${
+        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+      }`}>
+        <h3 className="text-lg font-semibold mb-4">Contest Question</h3>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
+              darkMode 
+                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+            }`}
+            rows={4}
+            placeholder="Please explain why your answer should be considered correct..."
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            required
+          />
+          <div className="flex justify-end space-x-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                darkMode
+                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+              }`}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={isProcessing}
+              className={`px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300 flex items-center gap-2`}
+            >
+              {isProcessing ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                  Processing...
+                </>
+              ) : (
+                'Submit Contest'
+              )}
             </button>
           </div>
         </form>
@@ -208,6 +287,10 @@ export default function TestPage() {
   // gradingResults now holds numeric scores (0, 0.5, or 1)
   const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
   const [isMounted, setIsMounted] = useState(false);
+  const [contestState, setContestState] = useState<ContestState>({
+    isOpen: false,
+    questionIndex: null
+  });
 
   useEffect(() => {
     setIsMounted(true);
@@ -605,6 +688,71 @@ Focus on explaining the scientific reasoning and concepts behind the correct ans
     }
   };
 
+  const validateContest = async (question: Question, userAnswer: (string | null)[], contestReason: string): Promise<boolean> => {
+    const prompt = `You are validating a student's contest of their answer to a Science Olympiad question.
+
+Question: ${question.question}
+${question.options ? `Options: ${question.options.join(', ')}\n` : ''}
+Correct Answer(s): ${question.options ? 
+  question.answers.map(ans => question.options![Number(ans) - 1]).join(', ') : 
+  question.answers.join(', ')}
+Student's Answer: ${userAnswer.filter(a => a !== null).join(', ')}
+Student's Contest Reasoning: ${contestReason}
+
+Based on the student's reasoning, should their answer be considered correct? Consider:
+1. Scientific accuracy of their explanation
+2. Whether their reasoning demonstrates understanding of the core concept
+3. If there could be alternative valid interpretations of the question
+4. If there are any ambiguities in the question that make their answer reasonable
+
+Respond with ONLY "VALID" or "INVALID"`;
+
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        }
+      );
+
+      if (!response.ok) {
+        console.error('Gemini API error:', await response.text());
+        return false;
+      }
+
+      const data = await response.json();
+      const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
+      return resultText.startsWith('VALID');
+    } catch (error) {
+      console.error('Error validating contest:', error);
+      return false;
+    }
+  };
+
+  const handleContest = async (reason: string) => {
+    if (contestState.questionIndex === null) return;
+    
+    const question = data[contestState.questionIndex];
+    const userAnswer = userAnswers[contestState.questionIndex] || [];
+    
+    const isValid = await validateContest(question, userAnswer, reason);
+    
+    if (isValid) {
+      setGradingResults(prev => ({ ...prev, [contestState.questionIndex!.toString()]: 1 }));
+      toast.success('Contest accepted! Your answer has been marked as correct.', {
+        autoClose: 5000
+      });
+    } else {
+      toast.error('Contest rejected. The original grade stands.', {
+        autoClose: 5000
+      });
+    }
+  };
+
   if (!isMounted) {
     return null;
   }
@@ -721,25 +869,43 @@ Focus on explaining the scientific reasoning and concepts behind the correct ans
                       >
                         <div className="flex justify-between items-start">
                           <h3 className="font-semibold text-lg">Question</h3>
-                          <button
-                            onClick={() => setReportState({ isOpen: true, questionIndex: index })}
-                            className="text-gray-500 hover:text-red-500 transition-colors duration-200"
-                            title="Report this question"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-5 w-5"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
+                          <div className="flex gap-2">
+                            {isSubmitted && (
+                              <button
+                                onClick={() => setContestState({ isOpen: true, questionIndex: index })}
+                                className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
+                                title="Contest this question"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 57 57"
+                                  fill="currentColor"
+                                >
+                                  <path d="M57,0h-8.837L18.171,29.992l-4.076-4.076l-1.345-4.034c-0.22-0.663-0.857-1.065-1.55-0.98 c-0.693,0.085-1.214,0.63-1.268,1.327l-0.572,7.438l5.982,5.982L4.992,46H2.274C1.02,46,0,47.02,0,48.274v6.452 C0,55.98,1.02,57,2.274,57h6.452C9.98,57,11,55.98,11,54.726v-3.421l10-10l6.021,6.021l6.866-1.145 c0.685-0.113,1.182-0.677,1.21-1.37c0.028-0.693-0.422-1.295-1.096-1.464l-3.297-0.824l-4.043-4.043L57,8.489V0z M9,54.726 C9,54.877,8.877,55,8.726,55H2.274C2.123,55,2,54.877,2,54.726v-6.452C2,48.123,2.123,48,2.274,48h0.718h5.734 C8.877,48,9,48.123,9,48.274v5.031V54.726z M11,48.477v-0.203C11,47.02,9.98,46,8.726,46H7.82l8.938-8.938l1.417,1.417l1.411,1.411 L11,48.477z M30.942,44.645l-3.235,0.54l-5.293-5.293l0,0l-2.833-2.833l-8.155-8.155l0.292-3.796l0.63,1.89l4.41,4.41l0,0 l4.225,4.225l8.699,8.699L30.942,44.645z M25.247,37.066l-2.822-2.822l-2.839-2.839L48.991,2h4.243L23.829,31.406 c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293L55,3.062v4.592L25.247,37.066z" />
+                                </svg>
+                              </button>
+                            )}
+                            <button
+                              onClick={() => setReportState({ isOpen: true, questionIndex: index })}
+                              className="text-gray-500 hover:text-red-500 transition-colors duration-200"
+                              title="Report this question"
                             >
-                              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-                              <line x1="4" y1="22" x2="4" y2="15" />
-                            </svg>
-                          </button>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                                <line x1="4" y1="22" x2="4" y2="15" />
+                              </svg>
+                            </button>
+                          </div>
                         </div>
                         <p className="mb-4 break-words whitespace-normal overflow-x-auto">
                           {question.question}
@@ -907,6 +1073,12 @@ Focus on explaining the scientific reasoning and concepts behind the correct ans
         isOpen={reportState.isOpen}
         onClose={() => setReportState({ isOpen: false, questionIndex: null })}
         onSubmit={handleReport}
+        darkMode={darkMode}
+      />
+      <ContestModal
+        isOpen={contestState.isOpen}
+        onClose={() => setContestState({ isOpen: false, questionIndex: null })}
+        onSubmit={handleContest}
         darkMode={darkMode}
       />
       <ToastContainer
