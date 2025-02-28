@@ -389,7 +389,7 @@ function EventDashboard() {
                   darkMode ? 'bg-palenight-100 shadow-gray-700' : 'bg-white shadow-lg'
                 } p-6 rounded-lg`}
               >
-                <ul className="max-h-[67vh] overflow-y-scroll overflow-x-hidden px-2">
+                <ul className="max-h-[75vh] overflow-y-scroll overflow-x-hidden px-2">
                   <style jsx>{`
                     ul::-webkit-scrollbar {
                       width: 8px;
@@ -468,20 +468,21 @@ function EventDashboard() {
         }`}
       >
         {darkMode ? (
-          <svg
+            <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-yellow-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-          >
+            >
+            <circle cx="12" cy="12" r="4" fill="currentColor"/>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
             />
-          </svg>
+            </svg>
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
