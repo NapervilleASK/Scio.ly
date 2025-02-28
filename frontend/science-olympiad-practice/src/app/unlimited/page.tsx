@@ -502,12 +502,13 @@ export default function UnlimitedPracticePage() {
           : String(question.answers);
       }
 
-      const prompt = `Question: ${question.question}\n` + 
-        (question.options && question.options.length > 0
-          ? `Options: ${question.options.join(', ')}\n`
-          : '') +
-        `Correct Answer(s): ${correctAnswers}\n\n` +
-        `Please explain why this is the correct answer with detailed reasoning, but keep it concise within reason.`;
+      const prompt = `You are grading a Science Olympiad question. Explain why the selected answer is correct by completing this sentence: "This answer is correct because..."
+
+Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
+
+Focus on explaining the scientific reasoning and concepts behind the correct answer. Be concise but thorough.`;
+
+      console.log('Sending prompt:', prompt);
 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
