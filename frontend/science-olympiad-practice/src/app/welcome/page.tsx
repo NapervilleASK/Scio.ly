@@ -535,11 +535,11 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "2/26/25",
+    date: "2/28/25",
     features: [
       "🔐 Account system to save your progress across devices",
-      "✨ Better FRQ grading, partial credit, and explanations",
-      "🎯 Improved question filtering and difficulty system",
+      "🤼‍♂️ Support to contest an answer erroneously marked wrong",
+      "✨ Even better FRQ grading, explanations",
       "📊 Weekly progress and performance tracking",
     ],
     comingSoon: [
@@ -910,37 +910,38 @@ export default function WelcomePage() {
           darkMode ? 'bg-gray-800' : 'bg-white'
         }`}
       >
-        {darkMode ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-yellow-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+ {darkMode ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+<circle cx="12" cy="12" r="4" fill="currentColor"/>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
             />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
-            />
-          </svg>
-        )}
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+                />
+              </svg>
+            )}
       </button>
 
       <ContactModal

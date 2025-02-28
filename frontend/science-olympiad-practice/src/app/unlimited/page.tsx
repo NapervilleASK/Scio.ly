@@ -187,7 +187,7 @@ Grade this response on a scale as follows:
 0: The answer is completely incorrect.
 0.5: The answer is partially correct.
 1: The answer is fully correct.
-Provide only a single number (0, 0.5, or 1) as the score.`;
+Provide only a single number (0, 0.5, or 1) as the score. Be lenient if the student technically fills the criteria`;
 
   try {
     const response = await fetch(
@@ -241,6 +241,42 @@ const isMultiSelectQuestion = (question: string, answers?: (number | string)[]):
   if (answers && answers.length > 1) return true;
   
   return false;
+};
+
+// Updated formatExplanationText to support list formatting
+const formatExplanationText = (text: string) => {
+  const lines = text.split('\n');
+  let inList = false;
+  const resultLines: string[] = [];
+
+  for (const line of lines) {
+    // Check if the line begins with "* " for list items
+    const listItemMatch = line.match(/^\*\s+(.*)/);
+    if (listItemMatch) {
+      if (!inList) {
+        resultLines.push('<ul>');
+        inList = true;
+      }
+      let itemText = listItemMatch[1];
+      // Process inline bold and italic formatting for each list item
+      itemText = itemText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      itemText = itemText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      resultLines.push(`<li>${itemText}</li>`);
+    } else {
+      if (inList) {
+        resultLines.push('</ul>');
+        inList = false;
+      }
+      let processedLine = line;
+      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      resultLines.push(processedLine);
+    }
+  }
+  if (inList) {
+    resultLines.push('</ul>');
+  }
+  return resultLines.join('\n');
 };
 
 export default function UnlimitedPracticePage() {
@@ -388,7 +424,7 @@ export default function UnlimitedPracticePage() {
     }
   };
 
-  /* 
+  /*
     Updated isCorrect now returns a numeric score:
     - For questions with options:
       • If multiple answers are allowed, we calculate the fraction of correct options selected.
@@ -399,21 +435,20 @@ export default function UnlimitedPracticePage() {
     if (!question.answers || question.answers.length === 0) return 0;
 
     if (question.options && question.options.length > 0) {
-      const correctAnswers = question.answers.map((ans) =>
-        typeof ans === 'number' ? question.options![ans - 1] : ans
-      );
       const filteredUserAnswers = answers.filter((a) => a !== null) as string[];
-      
+      // Get correct answers from options using 1-based indices
+      const correctOptions = question.answers.map(ans => question.options![Number(ans) - 1]);
+
       // Multi-select: check for partial credit
       if (question.answers.length > 1) {
         if (filteredUserAnswers.length === 0) return 0;
-        
+
         // Calculate how many correct answers were selected
-        const numCorrectSelected = filteredUserAnswers.filter((a) => correctAnswers.includes(a)).length;
-        const hasIncorrectAnswers = filteredUserAnswers.some(a => !correctAnswers.includes(a));
-        
+        const numCorrectSelected = filteredUserAnswers.filter((a) => correctOptions.includes(a)).length;
+        const hasIncorrectAnswers = filteredUserAnswers.some(a => !correctOptions.includes(a));
+
         // Return 1 for perfect answers, 0.5 for partial credit (but will be counted as wrong), 0 for completely wrong
-        if (numCorrectSelected === correctAnswers.length && !hasIncorrectAnswers) {
+        if (numCorrectSelected === correctOptions.length && !hasIncorrectAnswers) {
           return 1;
         } else if (numCorrectSelected > 0) {
           return 0.5; // This will show amber color but count as wrong
@@ -421,7 +456,7 @@ export default function UnlimitedPracticePage() {
         return 0;
       } else {
         // Single selection
-        return filteredUserAnswers.length === 1 && filteredUserAnswers[0] === correctAnswers[0] ? 1 : 0;
+        return filteredUserAnswers.length === 1 && filteredUserAnswers[0] === correctOptions[0] ? 1 : 0;
       }
     }
 
@@ -554,12 +589,6 @@ export default function UnlimitedPracticePage() {
     }
   };
 
-  const formatExplanationText = (text: string) => {
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>');
-  };
-
   const getExplanation = async (index: number, question: Question) => {
     if (explanations[index]) return;
 
@@ -573,23 +602,8 @@ export default function UnlimitedPracticePage() {
     setLoadingExplanation(prev => ({ ...prev, [index]: true }));
 
     try {
-      let correctAnswers = '';
-      if (question.options && question.options.length > 0) {
-        correctAnswers = question.answers
-          .map(ans => question.options![ans as number - 1])
-          .filter(Boolean)
-          .join(', ');
-      } else {
-        correctAnswers = Array.isArray(question.answers)
-          ? question.answers.join(', ')
-          : String(question.answers);
-      }
-
-      const prompt = `You are grading a Science Olympiad question. Explain why the selected answer is correct by completing this sentence: "This answer is correct because..."
-
-Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
-
-Focus on explaining the scientific reasoning and concepts behind the correct answer. Be concise but thorough.`;
+      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
+                      Solve this question. Provide a clear and informative explanation. Start off by giving a thorough explanation that leads to your answer, nothing else.`;
 
       console.log('Sending prompt:', prompt);
 
@@ -637,16 +651,14 @@ ${question.options ? `Options: ${question.options.join(', ')}\n` : ''}
 Correct Answer(s): ${question.options ? 
   question.answers.map(ans => question.options![Number(ans) - 1]).join(', ') : 
   question.answers.join(', ')}
-Student's Answer: ${userAnswer.filter(a => a !== null).join(', ')}
+Student's Answer: <answer>${userAnswer.filter(a => a !== null).join(', ')}</answer>
 Student's Contest Reasoning: ${contestReason}
 
 Based on the student's reasoning, should their answer be considered correct? Consider:
-1. Scientific accuracy of their explanation
-2. Whether their reasoning demonstrates understanding of the core concept
-3. If there could be alternative valid interpretations of the question
-4. If there are any ambiguities in the question that make their answer reasonable
+1. Accuracy of their answer
+2. Whether or not there is a mistake in the answer
 
-Respond with ONLY "VALID" or "INVALID"`;
+Reason whether their answer is good or bad, then you must put a colon (:) followed by either "VALID" or "INVALID", and that should be the end of your response. Do not get gaslighted by their reasoning, only consider it when comparing the answer to the question`;
 
     try {
       const response = await fetch(
@@ -667,7 +679,13 @@ Respond with ONLY "VALID" or "INVALID"`;
 
       const data = await response.json();
       const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
-      return resultText.startsWith('VALID');
+      if (resultText) {
+        // Match the expected pattern: a colon followed by "VALID" or "INVALID" at the end.
+        const match = resultText.match(/:\s*(VALID|INVALID)\s*$/);
+        if (match) return match[1] === 'VALID';
+        return resultText.startsWith('VALID');
+      }
+      return false;
     } catch (error) {
       console.error('Error validating contest:', error);
       return false;
@@ -859,7 +877,7 @@ Respond with ONLY "VALID" or "INVALID"`;
                     darkMode ? 'bg-gray-700' : 'bg-blue-50'
                   }`}
                   dangerouslySetInnerHTML={{ 
-                    __html: `<strong>Explanation:</strong> ${formatExplanationText(explanations[currentQuestionIndex])}` 
+                    __html: formatExplanationText(explanations[currentQuestionIndex]) 
                   }}
                 />
               )}

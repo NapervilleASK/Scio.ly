@@ -180,10 +180,40 @@ const difficultyMap: Record<string, number> = {
   hard: 1.0,
 };
 
+// Updated formatExplanationText to support list formatting
 const formatExplanationText = (text: string) => {
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>');
+  const lines = text.split('\n');
+  let inList = false;
+  const resultLines: string[] = [];
+
+  for (const line of lines) {
+    // Check if the line starts with "* " (a typical markdown list marker)
+    const listItemMatch = line.match(/^\*\s+(.*)/);
+    if (listItemMatch) {
+      if (!inList) {
+        resultLines.push('<ul>');
+        inList = true;
+      }
+      let itemText = listItemMatch[1];
+      // Apply bold and italic formatting inside each list item
+      itemText = itemText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      itemText = itemText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      resultLines.push(`<li>${itemText}</li>`);
+    } else {
+      if (inList) {
+        resultLines.push('</ul>');
+        inList = false;
+      }
+      let processedLine = line;
+      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      resultLines.push(processedLine);
+    }
+  }
+  if (inList) {
+    resultLines.push('</ul>');
+  }
+  return resultLines.join('\n');
 };
 
 // Batch grading function for free-response questions using Gemini 2.0 Lite
@@ -435,6 +465,7 @@ export default function TestPage() {
           const answers = userAnswers[index];
           if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
             totalAttempted++;
+            // Get correct answers from options using 1-based indices
             const correctAnswers = question.answers.map(
               (ans) => question.options![ans as number - 1]
             );
@@ -510,11 +541,19 @@ export default function TestPage() {
   };
 
   const handleBackToMain = () => {
-    // Clear test-related localStorage items
+    // Clear test-related localStorage items and navigate to dashboard
     localStorage.removeItem('testQuestions');
     localStorage.removeItem('testTimeLeft');
     localStorage.removeItem('testParams');
     router.push('/dashboard');
+  };
+
+  // Reset the test while preserving test parameters
+  const handleResetTest = () => {
+    localStorage.removeItem('testQuestions');
+    localStorage.removeItem('testTimeLeft');
+    // testParams is preserved to regenerate a new test using the same parameters
+    window.location.reload()
   };
 
   const formatTime = (seconds: number): string => {
@@ -631,23 +670,9 @@ export default function TestPage() {
     try {
       console.log('Question data:', question);
       
-      let correctAnswers = '';
-      if (question.options && question.options.length > 0) {
-        correctAnswers = question.answers
-          .map((ans) => question.options![ans as number - 1])
-          .filter(Boolean)
-          .join(', ');
-      } else {
-        correctAnswers = Array.isArray(question.answers)
-          ? question.answers.join(', ')
-          : String(question.answers);
-      }
+      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
+                      Solve this question. Provide a clear and informative explanation. Start off by giving a thorough explanation that leads to your answer, nothing else.`;
 
-      const prompt = `You are grading a Science Olympiad question. Explain why the selected answer is correct by completing this sentence: "This answer is correct because..."
-
-Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
-
-Focus on explaining the scientific reasoning and concepts behind the correct answer. Be concise but thorough.`;
 
       console.log('Sending prompt:', prompt);
       const response = await fetch(
@@ -693,19 +718,17 @@ Focus on explaining the scientific reasoning and concepts behind the correct ans
 
 Question: ${question.question}
 ${question.options ? `Options: ${question.options.join(', ')}\n` : ''}
-Correct Answer(s): ${question.options ? 
+"Correct Answer(s)": ${question.options ? 
   question.answers.map(ans => question.options![Number(ans) - 1]).join(', ') : 
   question.answers.join(', ')}
-Student's Answer: ${userAnswer.filter(a => a !== null).join(', ')}
+Student's Answer: <answer>${userAnswer.filter(a => a !== null).join(', ')}</answer>
 Student's Contest Reasoning: ${contestReason}
 
 Based on the student's reasoning, should their answer be considered correct? Consider:
-1. Scientific accuracy of their explanation
-2. Whether their reasoning demonstrates understanding of the core concept
-3. If there could be alternative valid interpretations of the question
-4. If there are any ambiguities in the question that make their answer reasonable
+1. Accuracy of their answer
+2. Whether or not there is a mistake in the answer
 
-Respond with ONLY "VALID" or "INVALID"`;
+Reason whether their answer is good or bad, then you must put a colon (:) followed by either "VALID" or "INVALID", and that should be the end of your response. Do not get gaslighted by their reasoning, only consider it when comparing the answer to the question`;
 
     try {
       const response = await fetch(
@@ -726,7 +749,13 @@ Respond with ONLY "VALID" or "INVALID"`;
 
       const data = await response.json();
       const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
-      return resultText.startsWith('VALID');
+      if (resultText) {
+         // Look for a colon followed by the verdict at the end of the response.
+         const match = resultText.match(/:\s*(VALID|INVALID)\s*$/);
+         if (match) return match[1] === 'VALID';
+         return resultText.startsWith('VALID');
+      }
+      return false;
     } catch (error) {
       console.error('Error validating contest:', error);
       return false;
@@ -798,6 +827,19 @@ Respond with ONLY "VALID" or "INVALID"`;
 
         {/* Page Content */}
         <div className="relative flex flex-col items-center p-6 transition-all duration-1000 ease-in-out">
+        <button
+            onClick={handleResetTest}
+            className={`absolute top-4 right-4 p-2 rounded-full transition-transform duration-300 hover:scale-110 ${
+              darkMode ? 'bg-gray-700 text-white shadow-lg' : 'bg-white text-gray-900 shadow-md'
+            }`}
+            title="Reset Test"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-refresh">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+              <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+            </svg>
+          </button>
           <header className="w-full max-w-3xl flex justify-between items-center py-4 transition-colors duration-1000 ease-in-out">
             <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent transition-colors duration-1000 ease-in-out">
               Scio.ly: {' '}
@@ -856,7 +898,6 @@ Respond with ONLY "VALID" or "INVALID"`;
                   {data.map((question, index) => {
                     const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
                     const currentAnswers = userAnswers[index] || [];
-                    const isAnswered = currentAnswers.length > 0 && currentAnswers[0] !== null;
 
                     return (
                       <div
@@ -868,7 +909,7 @@ Respond with ONLY "VALID" or "INVALID"`;
                         }`}
                       >
                         <div className="flex justify-between items-start">
-                          <h3 className="font-semibold text-lg">Question</h3>
+                          <h3 className="font-semibold text-lg">Question {index + 1}</h3>
                           <div className="flex gap-2">
                             {isSubmitted && (
                               <button
@@ -912,7 +953,7 @@ Respond with ONLY "VALID" or "INVALID"`;
                           {question.question}
                         </p>
 
-                        {question.options ? (
+                        {question.options && question.options.length > 0 ? (
                           <div className="space-y-2">
                             {question.options.map((option, optionIndex) => (
                               <label
@@ -1041,22 +1082,22 @@ Respond with ONLY "VALID" or "INVALID"`;
                 </div>
 
                 {/* Submit Button */}
-                <div className="mt-6 text-center transition-all duration-1000 ease-in-out">
+                <div className="text-center transition-all duration-1000 ease-in-out">
                   {isSubmitted ? (
                     <button
-                      onClick={handleBackToMain}
-                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                      onClick={handleResetTest}
+                      className={`w-full px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
                         darkMode
                           ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
                           : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
                       }`}
                     >
-                      Return to Dashboard
+                      Reset Test
                     </button>
                   ) : (
                     <button
                       onClick={handleSubmit}
-                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                      className={`w-full px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
                         darkMode
                           ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
                           : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
@@ -1094,6 +1135,67 @@ Respond with ONLY "VALID" or "INVALID"`;
         pauseOnHover
         theme={darkMode ? "dark" : "light"}
       />
+
+      {/* Fixed Back Button */}
+      <button
+        onClick={handleBackToMain}
+        className={`fixed bottom-8 left-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
+          darkMode
+            ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white hover:shadow-regalblue-100/50'
+            : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:shadow-blue-500/50'
+        }`}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </button>
+
+      {/* Fixed Dark Mode Toggle */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
+          darkMode ? 'bg-gray-700' : 'bg-white'
+        }`}
+      >
+        {darkMode ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-yellow-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-blue-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+            />
+          </svg>
+        )}
+      </button>
     </>
   );
 }

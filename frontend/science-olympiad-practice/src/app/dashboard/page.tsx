@@ -135,13 +135,14 @@ function EventDashboard() {
         ];
 
         const response = await fetch(api.api);
-        const data = await response.json();
-
-        const eventsFromURL: Event[] = Object.keys(data)
+        const raw = await response.json();
+        console.log(Object.keys(raw))
+        const data = ['Astronomy', 'Fun', 'Fermi Questions', 'Entomology', 'Geologic Mapping', 'Optics', 'Codebusters', 'Anatomy - Integumentary', 'Anatomy - Nervous', 'Anatomy - Skeletal', 'Anatomy - Muscular', 'Thermodynamics', 'Wind Power', 'Dynamic Planet - Glaciers', 'Materials Science', 'Chemistry Lab', 'Ecology', 'Meteorology', 'Forensics', 'Disease Detectives', 'Fossils', 'Microbe Mission', 'Gravity Vehicle', 'Forestry', 'Crime Busters', "Dynamic Planet - Earth's Fresh Waters", 'Anatomy - Respiratory', 'Anatomy - Digestive', 'Anatomy - Cardiovascular', 'Trajectory', 'Scrambler', 'Road Scholar', 'Environmental Chemistry', 'Remote Sensing', 'Game On', 'Physics Lab', 'Plant Biology', 'Cell Biology', 'Experimental Design', 'Detector Building', "It's About Time", 'Mission Possible', 'Technical Problem Solving', 'Tower', 'Anatomy - Sense Organs', 'Protein Modeling', 'Rocks and Minerals', 'Robot Arm', 'Electric Vehicle', 'Designer Genes', 'Interrogating the Brain', 'Anatomy - Lymphatic', 'Anatomy - Excretory', 'Anatomy - Immune', 'Anatomy - Endocrine', 'Compound Machines', 'Green Generation', 'Herpetology', 'Hovercraft', 'Invasive Species', 'Machines', 'Mousetrap Vehicle', 'Ornithology', 'Sounds of Music', 'Dynamic Planet - Tectonics', 'Flight', 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics', 'Cybersecurity', 'Crave the Wave', 'Human Impact on Environment', 'Neuroscience', 'Data Science', 'Food Science', 'Dynamic Planet - Oceanography', 'Roller Coaster', 'WiFi Lab', 'Agricultural Science', 'Circuit Lab', 'Water Quality', 'Wright Stuff']
+        const eventsFromURL: Event[] = data
           .map((key, index) => ({
             id: index + 1,
             name: key,
-            subject: data[key].category || 'Uncategorized',
+            subject:  'Uncategorized',
           }))
           .filter((event) =>
             whitelist.some((whitelisted) => event.name === whitelisted.name)

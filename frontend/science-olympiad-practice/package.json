@@ -19,6 +19,7 @@
     "framer-motion": "^12.4.7",
     "headlessui": "^0.0.0",
     "lenis": "^1.1.21",
+    "marked": "^15.0.7",
     "next": "15.1.5",
     "next-auth": "^4.24.11",
     "pnpm": "^9.15.6",

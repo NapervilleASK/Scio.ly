@@ -847,7 +847,8 @@ def combine_bank_data(filename="beta_bank.json"):
                             "evidence c", "which suspect", "what is the id ", "are you currently in a location where you cannot see or talk to your partner?", 
                             "honor code", "from the provided answer key", "according to article", "previous question",
                             "found at the scene", "according to elsa's bio", "from the scenario", "on my honor", 
-                            "following questions refer to light and electron microscopes"
+                            "following questions refer to light and electron microscopes", "given the following graph",
+                            "shown on the graph", "suspect no.", "from the given scenario"
                         ])
                         and not any(question in item['question'].lower() for question in [
                             "information needed"
@@ -925,22 +926,13 @@ for key, questions in combined_bank.items():
             continue
         seen.add(question_text)
         new_questions.append(q)
-
-    # 5. For Codebusters, add one humorous MCQ at the end.
-    if key == "Codebusters":
-        humorous_question = {
-            "question": "Why on earth are you even looking for Codebusters MCQs?",
-            "options": [
-                "Because you're a rebel.",
-                "Just curious, that's all.",
-                "Maybe you're lost?",
-                "No valid reason at all."
-            ],
-            "answers": [1],  # Assuming the first option is the humorous 'correct' answer.
-            "difficulty": 0.5
-        }
-        new_questions.append(humorous_question)
-    
+    flag = False
+    for answer in q['answers']:
+        if not isinstance(answer,int) and answer.lower() in q.get("question").lower():
+            flag = True 
+            break
+    if flag:
+        continue
     combined_bank[key] = new_questions
 
 
