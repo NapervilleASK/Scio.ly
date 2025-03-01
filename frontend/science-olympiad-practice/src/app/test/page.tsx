@@ -417,13 +417,11 @@ export default function TestPage() {
         (question.options && question.options.length > 0
           ? `Options: ${question.options.join(', ')}\n`
           : '') +
-        `Correct Answer(s): ${correctAnswers}\n\n` +
-        `Please explain why this is the correct answer with detailed reasoning, but keep it concise within reason.`;
-
-      console.log('Sending prompt:', prompt);
+        `THIS IS THE CORRECT ANSWER(S): ${correctAnswers}\n\n` +
+        `Please explain why the correct answer(s) are correct with detailed reasoning, but keep it concise within reason. DO NOT CHANGE THE CORRECT ANSWER(S).`;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
