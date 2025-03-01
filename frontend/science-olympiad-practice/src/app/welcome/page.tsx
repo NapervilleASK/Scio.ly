@@ -1019,7 +1019,7 @@ export default function WelcomePage() {
                 </div>
               </motion.button>
               <div className="w-1/2 flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
-                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white text-black'} rounded-l-lg border-black border-r-4`}>
+                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} rounded-l-lg border-black border-r-4`}>
                   Test share code
                 </div>
                 <div className="w-4/5 flex flex-wrap">
