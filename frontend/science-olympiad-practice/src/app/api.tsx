@@ -1,4 +1,5 @@
 const api = {
-    api: 'https://gist.githubusercontent.com/Kudostoy0u/b86edd14ba0f54ab4f3ce8d0767d857d/raw/7548860c90133a32fabbf141cab19d33d3a9e0b4/final.json'
+    api: 'https://gist.githubusercontent.com/Kudostoy0u/b3d64e46331905d0bc35e97add17c2c4/raw/34b5aeffff7ddcdc8c912d0ef4b091e2f8cacef5/final.json',
+    arr: ["AIzaSyCOiVGlfw_UOLKliNst8m-Uy24CZuh_OM0", "AIzaSyAXt1_c7U7mWodul8DZZQbMH3-8cflQmOk", "AIzaSyBqBzKaa51_VlOb7QzgeQ5MO3Z9gBtYHsE", "AIzaSyAasbhNf4HGN9xkRpPVKOMzq-kGKHcDTfA", "AIzaSyAE3Ndo-2aMlnTgPyAd2smuVxJNkHe6BtY", "AIzaSyCBd5I8hYiRlxKyy6CpvJtUNeeyoUR16wg", "AIzaSyCwZwBK6DJax10pnws8rGIS6_UJ_OkorJU", "AIzaSyCtKTk_YYHSHoIK_c_YFnZi4738QeXbJ64", "AIzaSyAjDwM_zDF-nzrWSt3JlR0F05cdDfUuj9c", "AIzaSyBgk6SZrk1wIZocBTW-Oh44jwl4PbiQBH4", "AIzaSyADNEoPaG47ZOLXmXXyhFwBFgl2l0fpqGE", "AIzaSyDKeOpq_xy7dzKtYvlSeovdRHg5vcWhlN8", "AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c"]
 };
 export default api  

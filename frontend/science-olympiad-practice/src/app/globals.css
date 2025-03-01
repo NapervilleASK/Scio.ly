@@ -1,12 +1,15 @@
 /* postcss-import */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Root Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {

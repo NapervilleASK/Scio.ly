@@ -23,8 +23,8 @@ function EventDashboard() {
   const router = useRouter();
 
   const [settings, setSettings] = useState({
-    questionCount: 50,
-    timeLimit: 60,
+    questionCount: 15,
+    timeLimit: 25,
     difficulty: 'any',
     types: 'multiple-choice',
   });
@@ -64,7 +64,7 @@ function EventDashboard() {
     };
   
     localStorage.setItem('testParams', JSON.stringify(unlimitedParams));
-  
+    localStorage.removeItem('testQuestions')
     router.push('/unlimited'); // No query params in the URL now.
   };
 
@@ -89,7 +89,7 @@ function EventDashboard() {
     };
   
     localStorage.setItem('testParams', JSON.stringify(testParams));
-  
+    localStorage.removeItem('testQuestions')
     router.push('/test'); // No query params in the URL now.
   };
   
@@ -131,19 +131,15 @@ function EventDashboard() {
           { name: "Microbe Mission", category: "Life & Social Science" },
           { name: "Optics", category: "Physical Science & Chemistry" },
           { name: "Potions and Poisons", category: "Physical Science & Chemistry" },
-          { name: "Reach for the Stars", category: "Earth and Space Science" },
-          { name: "Road Scholar", category: "Earth and Space Science" },
           { name: "Wind Power", category: "Physical Science & Chemistry" },
         ];
 
-        const response = await fetch(api.api);
-        const data = await response.json();
-
-        const eventsFromURL: Event[] = Object.keys(data)
+        const data = ['Astronomy', 'Fun', 'Fermi Questions', 'Entomology', 'Geologic Mapping', 'Optics', 'Codebusters', 'Anatomy - Integumentary', 'Anatomy - Nervous', 'Anatomy - Skeletal', 'Anatomy - Muscular', 'Thermodynamics', 'Wind Power', 'Dynamic Planet - Glaciers', 'Materials Science', 'Chemistry Lab', 'Ecology', 'Meteorology', 'Forensics', 'Disease Detectives', 'Fossils', 'Microbe Mission', 'Gravity Vehicle', 'Forestry', 'Crime Busters', "Dynamic Planet - Earth's Fresh Waters", 'Anatomy - Respiratory', 'Anatomy - Digestive', 'Anatomy - Cardiovascular', 'Trajectory', 'Scrambler', 'Road Scholar', 'Environmental Chemistry', 'Remote Sensing', 'Game On', 'Physics Lab', 'Plant Biology', 'Cell Biology', 'Experimental Design', 'Detector Building', "It's About Time", 'Mission Possible', 'Technical Problem Solving', 'Tower', 'Anatomy - Sense Organs', 'Protein Modeling', 'Rocks and Minerals', 'Robot Arm', 'Electric Vehicle', 'Designer Genes', 'Interrogating the Brain', 'Anatomy - Lymphatic', 'Anatomy - Excretory', 'Anatomy - Immune', 'Anatomy - Endocrine', 'Compound Machines', 'Green Generation', 'Herpetology', 'Hovercraft', 'Invasive Species', 'Machines', 'Mousetrap Vehicle', 'Ornithology', 'Sounds of Music', 'Dynamic Planet - Tectonics', 'Flight', 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics', 'Cybersecurity', 'Crave the Wave', 'Human Impact on Environment', 'Neuroscience', 'Data Science', 'Food Science', 'Dynamic Planet - Oceanography', 'Roller Coaster', 'WiFi Lab', 'Agricultural Science', 'Circuit Lab', 'Water Quality', 'Wright Stuff']
+        const eventsFromURL: Event[] = data
           .map((key, index) => ({
             id: index + 1,
             name: key,
-            subject: data[key].category || 'Uncategorized',
+            subject:  'Uncategorized',
           }))
           .filter((event) =>
             whitelist.some((whitelisted) => event.name === whitelisted.name)
@@ -154,8 +150,10 @@ function EventDashboard() {
               whitelist.find((whitelisted) => whitelisted.name === event.name)
                 ?.category || event.subject,
           }));
-
         setEvents(eventsFromURL);
+        const response = await fetch(api.api);
+        const raw = await response.json();
+        console.log(Object.keys(raw))
       } catch (err) {
         console.error('Error fetching events:', err);
         setError('Failed to load events. Please try again later.');
@@ -391,7 +389,7 @@ function EventDashboard() {
                   darkMode ? 'bg-palenight-100 shadow-gray-700' : 'bg-white shadow-lg'
                 } p-6 rounded-lg`}
               >
-                <ul className="max-h-[67vh] overflow-y-scroll overflow-x-hidden px-2">
+                <ul className="max-h-[75vh] overflow-y-scroll overflow-x-hidden px-2">
                   <style jsx>{`
                     ul::-webkit-scrollbar {
                       width: 8px;
@@ -470,20 +468,21 @@ function EventDashboard() {
         }`}
       >
         {darkMode ? (
-          <svg
+            <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-yellow-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-          >
+            >
+            <circle cx="12" cy="12" r="4" fill="currentColor"/>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
             />
-          </svg>
+            </svg>
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"

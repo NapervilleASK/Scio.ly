@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import AuthButton from '@/app/components/AuthButton';
 import { auth } from '@/lib/firebase';
-import { getDailyMetrics } from '@/utils/metrics';
+import { getDailyMetrics } from '@/app/utils/metrics';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { User } from 'firebase/auth';
 import Image from 'next/image';
@@ -328,7 +328,7 @@ export default function WelcomePage() {
   // - Otherwise: fixed 110vh
   const computedMinHeight =
     windowWidth === null || windowWidth < 1000
-      ? `calc(190vh + ${extraHeight}vh)`
+      ? `calc(195vh + ${extraHeight}vh)`
       : '110vh';
 
   useEffect(() => {
@@ -535,11 +535,11 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "March 2025",
+    date: "2/28/25",
     features: [
-      "🔐 SIGN IN TO SAVE YOUR PROGRESS",
-      "✨ AI-powered explanations for every question",
-      "🎯 Improved question filtering and difficulty system",
+      "🔐 Account system to save your progress across devices",
+      "🤼‍♂️ Support to contest an answer erroneously marked wrong",
+      "✨ Even better FRQ grading, explanations",
       "📊 Weekly progress and performance tracking",
     ],
     comingSoon: [
@@ -552,6 +552,83 @@ export default function WelcomePage() {
     sessionStorage.setItem('hasSeenUpdateThisSession', 'true');
     setShowUpdatePopup(false);
     setHasSeenUpdate(true);
+  };
+
+  // Add new state for six test code digits
+  const [testCodeDigits, setTestCodeDigits] = useState(new Array(6).fill(''));
+
+  // Replace the old handleLoadTest function with one that accepts a code parameter
+  const handleLoadTest = async (code: string) => {
+    if (!code) {
+      toast.error('Please enter a test code');
+      return;
+    }
+    try {
+      const response = await fetch(`/api/share?code=${code}`);
+      if (!response.ok) {
+        throw new Error('Invalid or expired test code');
+      }
+      const data = await response.json();
+      if (data.testParamsRaw) {
+        localStorage.setItem('testParams', JSON.stringify(data.testParamsRaw));
+      }
+      toast.success('Test loaded successfully!');
+      router.push('/test');
+    } catch (error) {
+      console.error(error);
+      toast.error((error as Error).message);
+    }
+  };
+
+  // Add two helper functions to handle individual digit input and key navigation
+  const handleDigitChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const val = e.target.value;
+    if (val === '') {
+      const newDigits = [...testCodeDigits];
+      newDigits[index] = '';
+      setTestCodeDigits(newDigits);
+      return;
+    }
+    // If multiple characters are entered (e.g., paste), fill subsequent inputs
+    if (val.length > 1) {
+      const newDigits = [...testCodeDigits];
+      for (let i = 0; i < val.length && index + i < newDigits.length; i++) {
+        const char = val[i];
+        if (!char.match(/^[A-Za-z0-9]$/)) continue;
+        newDigits[index + i] = char.toUpperCase();
+      }
+      setTestCodeDigits(newDigits);
+      const nextIndex = Math.min(index + val.length, newDigits.length - 1);
+      const nextInput = document.getElementById(`digit-${nextIndex}`) as HTMLInputElement | null;
+      if (nextInput) { nextInput.focus(); }
+      if (newDigits.every(digit => digit !== '')) {
+        handleLoadTest(newDigits.join(''));
+      }
+      return;
+    }
+    const char = val.slice(-1); // take only the last character
+    if (!char.match(/^[A-Za-z0-9]$/)) return; // allow only alphanumeric
+    const newDigits = [...testCodeDigits];
+    newDigits[index] = char.toUpperCase();
+    setTestCodeDigits(newDigits);
+    // Focus next input if available
+    if (index < 5 && char) {
+      const nextInput = document.getElementById(`digit-${index + 1}`) as HTMLInputElement | null;
+      if (nextInput) { nextInput.focus(); }
+    }
+    // Auto-submit if all 6 boxes are filled
+    if (newDigits.every(digit => digit !== '')) {
+      handleLoadTest(newDigits.join(''));
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+    if (e.key === 'Backspace' && testCodeDigits[index] === '') {
+      if (index > 0) {
+        const prevInput = document.getElementById(`digit-${index - 1}`) as HTMLInputElement | null;
+        if (prevInput) { prevInput.focus(); }
+      }
+    }
   };
 
   return (
@@ -833,7 +910,7 @@ export default function WelcomePage() {
                         d="M5 50 A 45 45 0 0 1 95 50"
                         fill="none"
                         stroke={darkMode ? '#60a5fa' : '#3b82f6'}
-                        strokeWidth="8"
+                         strokeWidth="8"
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: metrics.accuracy / 100 }}
@@ -882,24 +959,90 @@ export default function WelcomePage() {
               </div>
             </div>
           </div>
-
-          {/* Practice Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            onClick={() => router.push('/dashboard')}
-            className={`w-full py-8 px-6 rounded-lg text-white text-left transition-all duration-300 ${
-              darkMode
-                ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900'
-                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
-            }`}
-          >
-            <div className="flex flex-col">
-              <span className="text-xl font-bold mb-1">Practice</span>
-              <span className="text-base opacity-90">
-                Start practicing with customized tests or unlimited questions
-              </span>
+          { isMobile ? (
+          <div className="flex w-full gap-4">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                onClick={() => router.push('/dashboard')}
+                className={`rounded-md w-full py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}
+              >
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold mb-1">Practice</span>
+                  <span className="text-base opacity-90">
+                    Start practicing with customized tests or unlimited questions
+                  </span>
+                </div>
+              </motion.button>
+              </div> ) : (<></>)
+            }
+          {/* Practice/Test Code Button Area */}
+          {isMobile ? (
+            <>
+            <br/>
+            <div className="w-full border border-black shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg">
+              <div className={`w-full py-4 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} rounded-t-lg`}>
+                <span className="text-2xl font-bold">Test share code</span>
+              </div>
+              <div className="w-full h-px bg-black"></div>
+              <div className="flex flex-wrap">
+                  {testCodeDigits.map((digit, index) => (
+                    <div key={index} className="w-1/6">
+                      <input
+                        id={`digit-${index}`}
+                        type="text"
+                        maxLength={1}
+                        value={digit}
+                        onChange={(e) => handleDigitChange(e, index)}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className={
+                          `${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'} w-full h-full text-center text-4xl font-bold transform focus:outline-none ${index === 0 ? '' : 'border-l'} ${index === testCodeDigits.length - 1 ? 'rounded-tr-lg rounded-br-lg' : 'border-r'} border-gray-300 ${index < 3 ? 'border-b sm:border-b-0' : 'border-t sm:border-t-0'}`
+                        }
+                        style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
+                      />
+                    </div>
+                  ))}
+                </div>
             </div>
-          </motion.button>
+            </>
+          ) : (
+            <div className="flex w-full gap-4">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                onClick={() => router.push('/dashboard')}
+                className={`rounded-md w-1/2 py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}
+              >
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold mb-1">Practice</span>
+                  <span className="text-base opacity-90">
+                    Start practicing with customized tests or unlimited questions
+                  </span>
+                </div>
+              </motion.button>
+              <div className="w-1/2 flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white border-white' : 'bg-white text-black border-black'} rounded-l-lg  border-r-4`}>
+                  Test share code
+                </div>
+                <div className="w-4/5 flex flex-wrap">
+                  {testCodeDigits.map((digit, index) => (
+                    <div key={index} className="w-1/6">
+                      <input
+                        id={`digit-${index}`}
+                        type="text"
+                        maxLength={1}
+                        value={digit}
+                        onChange={(e) => handleDigitChange(e, index)}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className={
+                          `${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'} w-full h-full text-center text-4xl font-bold transform focus:outline-none ${index === 0 ? '' : 'border-l'} ${index === testCodeDigits.length - 1 ? 'rounded-tr-lg rounded-br-lg' : 'border-r'} border-gray-300 ${index < 3 ? 'border-b sm:border-b-0' : 'border-t sm:border-t-0'}`
+                        }
+                        style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -910,37 +1053,38 @@ export default function WelcomePage() {
           darkMode ? 'bg-gray-800' : 'bg-white'
         }`}
       >
-        {darkMode ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-yellow-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+ {darkMode ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+<circle cx="12" cy="12" r="4" fill="currentColor"/>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414 1.414M7.05 7.05L5.636 5.636"
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
             />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
-            />
-          </svg>
-        )}
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+                />
+              </svg>
+            )}
       </button>
 
       <ContactModal
@@ -1068,7 +1212,7 @@ export default function WelcomePage() {
             : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
         }
       `}</style>
-      <br />
+      <br/><br/>
     </div>
   );
 }

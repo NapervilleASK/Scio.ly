@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react"
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
@@ -42,6 +43,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <GoogleAnalytics gaId="G-P9SVV3TY4G" />
         <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f5838db0caa649f9a42aeb710f79a241"}'></script>
       </body>
     </html>
