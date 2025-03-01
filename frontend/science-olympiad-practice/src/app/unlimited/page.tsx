@@ -4,10 +4,11 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateMetrics } from '@/utils/metrics';
+import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
+import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 
 interface Question {
   question: string;
@@ -241,42 +242,6 @@ const isMultiSelectQuestion = (question: string, answers?: (number | string)[]):
   if (answers && answers.length > 1) return true;
   
   return false;
-};
-
-// Updated formatExplanationText to support list formatting
-const formatExplanationText = (text: string) => {
-  const lines = text.split('\n');
-  let inList = false;
-  const resultLines: string[] = [];
-
-  for (const line of lines) {
-    // Check if the line begins with "* " for list items
-    const listItemMatch = line.match(/^\*\s+(.*)/);
-    if (listItemMatch) {
-      if (!inList) {
-        resultLines.push('<ul>');
-        inList = true;
-      }
-      let itemText = listItemMatch[1];
-      // Process inline bold and italic formatting for each list item
-      itemText = itemText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      itemText = itemText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      resultLines.push(`<li>${itemText}</li>`);
-    } else {
-      if (inList) {
-        resultLines.push('</ul>');
-        inList = false;
-      }
-      let processedLine = line;
-      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      resultLines.push(processedLine);
-    }
-  }
-  if (inList) {
-    resultLines.push('</ul>');
-  }
-  return resultLines.join('\n');
 };
 
 export default function UnlimitedPracticePage() {
@@ -580,7 +545,7 @@ export default function UnlimitedPracticePage() {
 
     try {
       const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
-                      Solve this question. Provide a clear and informative explanation. Start off by giving a thorough explanation that leads to your answer, nothing else.`;
+                      Solve this question. Start with the text "Explanation: ", providing a clear and informative explanation. Start off by giving a one paragraph explanation that leads to your answer, nothing else.`;
 
       console.log('Sending prompt:', prompt);
 
@@ -849,14 +814,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
                   )}
                 </button>
               ) : (
-                <div 
-                  className={`text-sm mt-2 p-3 rounded-md ${
-                    darkMode ? 'bg-gray-700' : 'bg-blue-50'
-                  }`}
-                  dangerouslySetInnerHTML={{ 
-                    __html: formatExplanationText(explanations[currentQuestionIndex]) 
-                  }}
-                />
+                <MarkdownExplanation text={explanations[currentQuestionIndex]} />
               )}
             </div>
           </>

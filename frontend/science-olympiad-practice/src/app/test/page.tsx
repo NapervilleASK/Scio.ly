@@ -1,19 +1,31 @@
 'use client';
-
+import React from 'react';
+import { FaRegClipboard, FaShareAlt } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateMetrics } from '@/utils/metrics';
+import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
+import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 
 interface Question {
   question: string;
   options?: string[];
   answers: (number | string)[];
   difficulty: number;
+}
+
+interface ShareModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  setData: (data: Question[]) => void;
+  inputCode: string;
+  setInputCode: (code: string) => void;
+  setRouterData: (data: RouterParams) => void;
+  darkMode: boolean;
 }
 
 interface RouterParams {
@@ -50,6 +62,9 @@ interface ContestState {
 
 const API_URL = api.api;
 const arr = api.arr
+
+// Replace the global variable declaration of globalShareCode with a removal comment
+// let globalShareCode: string | null = null;
 
 const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) => {
   const [reason, setReason] = useState('');
@@ -180,42 +195,6 @@ const difficultyMap: Record<string, number> = {
   hard: 1.0,
 };
 
-// Updated formatExplanationText to support list formatting
-const formatExplanationText = (text: string) => {
-  const lines = text.split('\n');
-  let inList = false;
-  const resultLines: string[] = [];
-
-  for (const line of lines) {
-    // Check if the line starts with "* " (a typical markdown list marker)
-    const listItemMatch = line.match(/^\*\s+(.*)/);
-    if (listItemMatch) {
-      if (!inList) {
-        resultLines.push('<ul>');
-        inList = true;
-      }
-      let itemText = listItemMatch[1];
-      // Apply bold and italic formatting inside each list item
-      itemText = itemText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      itemText = itemText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      resultLines.push(`<li>${itemText}</li>`);
-    } else {
-      if (inList) {
-        resultLines.push('</ul>');
-        inList = false;
-      }
-      let processedLine = line;
-      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      resultLines.push(processedLine);
-    }
-  }
-  if (inList) {
-    resultLines.push('</ul>');
-  }
-  return resultLines.join('\n');
-};
-
 // Batch grading function for free-response questions using Gemini 2.0 Lite
 const gradeFreeResponses = async (
   freeResponses: { question: string; correctAnswers: (string | number)[]; studentAnswer: string }[]
@@ -259,7 +238,7 @@ const gradeFreeResponses = async (
     if (!resultText) {
       return freeResponses.map(() => 0);
     }
-    let scores = resultText.split(',').map(item => parseFloat(item.trim()));
+    let scores = resultText.split(",").map(item => parseFloat(item.trim()));
     // Ensure scores are one of 0, 0.5, or 1; otherwise default to 0.
     scores = scores.map(score => (score === 1 || score === 0.5 || score === 0 ? score : 0));
     return scores;
@@ -269,7 +248,7 @@ const gradeFreeResponses = async (
   }
 };
 
-// Add this helper function
+// Helper function to determine if question is multi-select
 const isMultiSelectQuestion = (question: string, answers?: (number | string)[]): boolean => {
   const multiSelectKeywords = [
     'choose all',
@@ -282,15 +261,12 @@ const isMultiSelectQuestion = (question: string, answers?: (number | string)[]):
     'mark all'
   ];
   
-  // First check if the question text contains any multi-select keywords
   const hasKeywords = multiSelectKeywords.some(keyword => 
     question.toLowerCase().includes(keyword.toLowerCase())
   );
   
-  // If keywords are found, it's definitely multi-select
   if (hasKeywords) return true;
   
-  // If answers array is provided and has more than one answer, it's multi-select
   if (answers && answers.length > 1) return true;
   
   return false;
@@ -321,18 +297,16 @@ export default function TestPage() {
     isOpen: false,
     questionIndex: null
   });
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [inputCode, setInputCode] = useState<string>('');
+
+  const closeShareModal = useCallback(() => {
+    setShareModalOpen(false);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
-    // Only clear localStorage when component unmounts, not on mount
-    return () => {
-      if (window.location.pathname !== '/test') {
-        localStorage.removeItem('testQuestions');
-        localStorage.removeItem('testTimeLeft');
-        localStorage.removeItem('testParams');
-        localStorage.removeItem('testTimeLeft');
-      }
-    };
+    localStorage.removeItem('testTimeLeft');
   }, []);
 
   useEffect(() => {
@@ -372,6 +346,7 @@ export default function TestPage() {
         const difficultyValue = difficultyMap[difficulty || 'easy'] || 0.33;
         const eventQuestions: Question[] = jsonData[eventName as string] || [];
   
+        // Filter questions based on difficulty
         const filteredQuestions = eventQuestions.filter((q) => {
           const questionDifficulty = q.difficulty ?? 0.5;
           return difficulty === 'any'
@@ -380,12 +355,18 @@ export default function TestPage() {
                 questionDifficulty <= difficultyValue;
         });
   
-        const finalQuestions =
-          types === 'multiple-choice'
-            ? filteredQuestions.filter((q) => q.options && q.options.length > 0)
-            : types === 'free-response'
-            ? filteredQuestions.filter((q) => !q.options || q.options.length === 0)
-            : filteredQuestions;
+        // Assign original indices to the filtered questions
+        const filteredQuestionsWithIndex = filteredQuestions.map((q, idx) => ({
+          ...q,
+          originalIndex: idx
+        }));
+  
+        // Further filter questions based on types
+        const finalQuestions = types === 'multiple-choice'
+          ? filteredQuestionsWithIndex.filter((q) => q.options && q.options.length > 0)
+          : types === 'free-response'
+          ? filteredQuestionsWithIndex.filter((q) => !q.options || q.options.length === 0)
+          : filteredQuestionsWithIndex;
   
         function shuffleArray<T>(array: T[]): T[] {
           const newArray = [...array];
@@ -401,10 +382,10 @@ export default function TestPage() {
           0,
           parseInt(questionCount || '0')
         );
-        
-        // Store the selected questions in localStorage
-        localStorage.setItem('testQuestions', JSON.stringify(selectedQuestions));
-        
+
+        // Store only the indices of the selected questions for sharing
+        localStorage.setItem('selectedIndices', JSON.stringify(selectedQuestions.map(q => q.originalIndex)));
+        localStorage.setItem('testQuestions', JSON.stringify(selectedQuestions))
         setData(selectedQuestions);
       } catch (error) {
         console.error(error);
@@ -541,10 +522,6 @@ export default function TestPage() {
   };
 
   const handleBackToMain = () => {
-    // Clear test-related localStorage items and navigate to dashboard
-    localStorage.removeItem('testQuestions');
-    localStorage.removeItem('testTimeLeft');
-    localStorage.removeItem('testParams');
     router.push('/dashboard');
   };
 
@@ -671,7 +648,7 @@ export default function TestPage() {
       console.log('Question data:', question);
       
       const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
-                      Solve this question. Provide a clear and informative explanation. Start off by giving a thorough explanation that leads to your answer, nothing else.`;
+                      Solve this question. Start with the text "Explanation: ", providing a clear and informative explanation. Start off by giving a one paragraph explanation that leads to your answer, nothing else.`;
 
 
       console.log('Sending prompt:', prompt);
@@ -841,10 +818,11 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
             </svg>
           </button>
           <header className="w-full max-w-3xl flex justify-between items-center py-4 transition-colors duration-1000 ease-in-out">
-            <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent transition-colors duration-1000 ease-in-out">
-              Scio.ly: {' '}
-              {routerData.eventName ? routerData.eventName : 'Loading...'}
-            </h1>
+            <div className="flex items-center">
+              <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent transition-colors duration-1000 ease-in-out">
+                Scio.ly: {routerData.eventName ? routerData.eventName : 'Loading...'}
+              </h1>
+            </div>
             {timeLeft !== null && (
               <div
                 className={`text-xl font-semibold transition-colors duration-1000 ease-in-out ${
@@ -877,6 +855,15 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
               darkMode ? 'bg-gray-800' : 'bg-white'
             }`}
           >
+          <button
+            onClick={() => setShareModalOpen(true)}
+            title="Share Test"
+            className="absolute "
+          >
+          <div className = "flex justify-between text-blue-400">
+          <FaShareAlt className={`transition-all duration-500 mt-0.5`}/> <p>&nbsp;&nbsp;Take together</p>
+          </div>
+          </button>
             {isLoading ? (
               <div className="flex justify-center items-center h-64">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
@@ -894,7 +881,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
               </div>
             ) : (
               <>
-                <div className="container mx-auto px-4 py-8">
+                <div className="container mx-auto px-4 py-8 mt-3">
                   {data.map((question, index) => {
                     const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
                     const currentAnswers = userAnswers[index] || [];
@@ -1050,14 +1037,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
                                   )}
                                 </button>
                               ) : (
-                                <div 
-                                  className={`text-sm mt-2 p-3 rounded-md ${
-                                    darkMode ? 'bg-gray-700' : 'bg-blue-50'
-                                  }`}
-                                  dangerouslySetInnerHTML={{ 
-                                    __html: `<strong>Explanation:</strong> ${formatExplanationText(explanations[index])}` 
-                                  }}
-                                />
+                                <MarkdownExplanation text={explanations[index]} />
                               )}
                             </div>
                           </>
@@ -1121,6 +1101,15 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         isOpen={contestState.isOpen}
         onClose={() => setContestState({ isOpen: false, questionIndex: null })}
         onSubmit={handleContest}
+        darkMode={darkMode}
+      />
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={closeShareModal}
+        setData={setData}
+        inputCode={inputCode}
+        setInputCode={setInputCode}
+        setRouterData={setRouterData}
         darkMode={darkMode}
       />
       <ToastContainer
@@ -1199,3 +1188,182 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
     </>
   );
 }
+
+export const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, setData, inputCode, setInputCode, setRouterData, darkMode }) => {
+  const [loadingGenerate, setLoadingGenerate] = useState(false);
+  const [loadingLoad, setLoadingLoad] = useState(false);
+  const [shareCode, setShareCode] = useState<string | null>(null);
+  const hasGeneratedRef = useRef(false);
+
+  const generateShareCode = async () => {
+    const selectedIndicesRaw = localStorage.getItem('selectedIndices');
+    if (!selectedIndicesRaw) {
+      toast.error('No selected test questions found to share.');
+      return;
+    }
+    const testParamsRaw = localStorage.getItem('testParams');
+    if (!testParamsRaw) {
+      toast.error('No test parameters found.');
+      return;
+    }
+    setLoadingGenerate(true);
+    try {
+      const indices = JSON.parse(selectedIndicesRaw) as number[];
+      const testParams = JSON.parse(testParamsRaw);
+      const response = await fetch('/api/share/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ indices, testParamsRaw: testParams })
+      });
+      if (!response.ok) {
+        throw new Error('Failed to generate share code');
+      }
+      const data = await response.json();
+      setShareCode(data.code);
+    } catch (error) {
+      console.error(error);
+      toast.error((error as Error).message);
+    } finally {
+      setLoadingGenerate(false);
+    }
+  };
+
+  const copyCodeToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(shareCode || '');
+      toast.success('Code copied to clipboard!');
+    } catch {
+      toast.error('Failed to copy code');
+    }
+  };
+
+  const loadSharedTest = async () => {
+    if (!inputCode) {
+      toast.error('Please enter a share code');
+      return;
+    }
+    setLoadingLoad(true);
+    try {
+      const response = await fetch(`/api/share?code=${inputCode}`);
+      if (!response.ok) {
+        throw new Error('Invalid or expired share code');
+      }
+      const data = await response.json();
+      if (!data.indices || !Array.isArray(data.indices)) {
+        throw new Error('Invalid data received from share code');
+      }
+
+      if (data.testParamsRaw) {
+        localStorage.setItem('testParams', JSON.stringify(data.testParamsRaw));
+      }
+      const storedParams = localStorage.getItem('testParams');
+      if (!storedParams) {
+        throw new Error('No test parameters found');
+      }
+      const routerParams = JSON.parse(storedParams);
+      const { eventName } = routerParams;
+
+      setRouterData(routerParams);
+
+      const freshResponse = await fetch(API_URL);
+      if (!freshResponse.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const jsonData = await freshResponse.json();
+      let eventQuestions = jsonData[eventName] || [];
+      eventQuestions = eventQuestions.map((q, idx) => ({ ...q, originalIndex: idx }));
+
+      const newQuestions = data.indices
+        .map((i: number) => eventQuestions[i])
+        .filter((q: Question | undefined): q is Question => q !== undefined);
+
+      if (newQuestions.length === 0) {
+        throw new Error('No matching questions found for this share code');
+      }
+      localStorage.setItem("testQuestions",JSON.stringify(newQuestions))
+      setData(newQuestions);
+      toast.success('Shared test loaded successfully!');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      onClose();
+    } catch (error) {
+      console.error(error);
+      toast.error((error as Error).message);
+    } finally {
+      setLoadingLoad(false);
+    }
+  };
+
+  // Listen for localStorage changes on testParams and regenerate share code if it changes
+  useEffect(() => {
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === 'testParams') {
+        generateShareCode();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen && !hasGeneratedRef.current && !shareCode) {
+      generateShareCode();
+      hasGeneratedRef.current = true;
+    }
+  }, [isOpen, shareCode]);
+
+  return (
+    <div
+      style={{ display: isOpen ? 'flex' : 'none' }}
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      onClick={onClose}
+    >
+      <div
+        className={`relative rounded-lg p-6 w-96 transition-colors duration-300 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-xl font-bold"
+          style={{ color: darkMode ? 'white' : '#4A5568' }}
+        >
+          &times;
+        </button>
+        <h3 className="text-lg font-semibold mb-4">Share Test</h3>
+        <div className="mb-4">
+          <h4 className="font-semibold mb-2">Share Code</h4>
+          {loadingGenerate ? (
+            <p>Generating...</p>
+          ) : shareCode ? (
+            <div className="flex items-center justify-between bg-gray-100 p-2 rounded-md">
+              <span className="break-all text-black">{shareCode}</span>
+              <button onClick={copyCodeToClipboard} className="ml-2">
+              <FaRegClipboard className="text-black"/>
+            </button>
+            </div>
+          ) : (
+            <p>No code available</p>
+          )}
+        </div>
+        <div className="mb-4">
+          <h4 className="font-semibold mb-2">Load Shared Test</h4>
+          <input
+            type="text"
+            value={inputCode}
+            onChange={(e) => setInputCode(e.target.value)}
+            placeholder="Enter share code"
+            className="w-full p-2 border rounded-md mb-2 text-black"
+          />
+          <button
+            onClick={loadSharedTest}
+            disabled={loadingLoad}
+            className="w-full px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-600 transition-colors duration-300"
+          >
+            {loadingLoad ? 'Loading...' : 'Load Shared Test'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+ShareModal.displayName = 'ShareModal';

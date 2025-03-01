@@ -64,7 +64,7 @@ function EventDashboard() {
     };
   
     localStorage.setItem('testParams', JSON.stringify(unlimitedParams));
-  
+    localStorage.removeItem('testQuestions')
     router.push('/unlimited'); // No query params in the URL now.
   };
 
@@ -89,7 +89,7 @@ function EventDashboard() {
     };
   
     localStorage.setItem('testParams', JSON.stringify(testParams));
-  
+    localStorage.removeItem('testQuestions')
     router.push('/test'); // No query params in the URL now.
   };
   
