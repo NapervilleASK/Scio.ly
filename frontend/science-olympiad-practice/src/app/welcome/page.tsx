@@ -978,31 +978,35 @@ export default function WelcomePage() {
           {/* Practice/Test Code Button Area */}
           {isMobile ? (
             <>
-            <br/>
-            <div className="w-full border border-black shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg">
-              <div className={`w-full py-4 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} rounded-t-lg`}>
-                <span className="text-2xl font-bold">Test share code</span>
-              </div>
-              <div className="w-full h-px bg-black"></div>
-              <div className="flex flex-wrap">
+              <br/>
+              <div className="w-full border-t border-black shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden">
+                <div className={`w-full py-4 px-6 flex items-center justify-center transition-all duration-300 ${
+                  darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+                >
+                  <span className="text-2xl font-bold">Test share code</span>
+                </div>
+                <div className="w-full h-px bg-black"></div>
+                <div className="grid grid-cols-6 w-full">
                   {testCodeDigits.map((digit, index) => (
-                    <div key={index} className="w-1/6">
-                      <input
-                        id={`digit-${index}`}
-                        type="text"
-                        maxLength={1}
-                        value={digit}
-                        onChange={(e) => handleDigitChange(e, index)}
-                        onKeyDown={(e) => handleKeyDown(e, index)}
-                        className={
-                          `${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'} w-full h-full text-center text-4xl font-bold transform focus:outline-none ${index === 0 ? '' : 'border-l'} ${index === testCodeDigits.length - 1 ? 'rounded-tr-lg rounded-br-lg' : 'border-r'} border-gray-300 ${index < 3 ? 'border-b sm:border-b-0' : 'border-t sm:border-t-0'}`
-                        }
-                        style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
-                      />
-                    </div>
+                    <input
+                      key={index}
+                      id={`digit-${index}`}
+                      type="text"
+                      maxLength={1}
+                      value={digit}
+                      onChange={(e) => handleDigitChange(e, index)}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                      className={`
+                        ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'}
+                        w-full aspect-square text-center text-4xl font-bold
+                        focus:outline-none
+                        ${index > 0 ? 'border-l border-gray-400' : ''}
+                      `}
+                      style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
+                    />
                   ))}
                 </div>
-            </div>
+              </div>
             </>
           ) : (
             <div className="flex w-full gap-4">
