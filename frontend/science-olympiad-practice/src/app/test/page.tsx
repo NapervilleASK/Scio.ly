@@ -1189,7 +1189,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
   );
 }
 
-export const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, setData, inputCode, setInputCode, setRouterData, darkMode }) => {
+const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, setData, inputCode, setInputCode, setRouterData, darkMode }) => {
   const [loadingGenerate, setLoadingGenerate] = useState(false);
   const [loadingLoad, setLoadingLoad] = useState(false);
   const [shareCode, setShareCode] = useState<string | null>(null);
