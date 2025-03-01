@@ -204,7 +204,7 @@ const gradeFreeResponses = async (
   let prompt =
     "You are grading a Science Olympiad free-response section. For each of the following questions, grade the student's answer on a scale as follows:\n" +
     "0: The answer is incorrect\n" +
-    "0.5: The answer is partially correct\n" +
+    "0.5: The answer is partially correct. (BE STRINGENT ON THIS THIS MEANS THE STUDENT GOT SOME OF THE ANSWERS BUT NOT ALL)\n" +
     "1: The answer is fully correct\n" +
     "Provide the scores for each question in order, separated by commas.\n\n";
   
@@ -653,7 +653,7 @@ export default function TestPage() {
 
       console.log('Sending prompt:', prompt);
       const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=" + arr[Math.floor(Math.random() * arr.length)],
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + arr[Math.floor(Math.random() * arr.length)],
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

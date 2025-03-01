@@ -186,7 +186,7 @@ Student Answer: ${userAnswer}
 
 Grade this response on a scale as follows:
 0: The answer is completely incorrect.
-0.5: The answer is partially correct.
+0.5: The answer is partially correct. (BE STRINGENT ON THIS THIS MEANS THE STUDENT GOT SOME OF THE ANSWERS BUT NOT ALL)
 1: The answer is fully correct.
 Provide only a single number (0, 0.5, or 1) as the score. Be lenient if the student technically fills the criteria`;
 
@@ -550,7 +550,7 @@ export default function UnlimitedPracticePage() {
       console.log('Sending prompt:', prompt);
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
