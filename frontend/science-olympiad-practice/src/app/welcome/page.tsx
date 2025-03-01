@@ -979,13 +979,12 @@ export default function WelcomePage() {
           {isMobile ? (
             <>
               <br/>
-              <div className="w-full border-t border-black shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden">
+              <div className="w-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden">
                 <div className={`w-full py-4 px-6 flex items-center justify-center transition-all duration-300 ${
                   darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
                 >
                   <span className="text-2xl font-bold">Test share code</span>
                 </div>
-                <div className="w-full h-px bg-black"></div>
                 <div className="grid grid-cols-6 w-full">
                   {testCodeDigits.map((digit, index) => (
                     <input
