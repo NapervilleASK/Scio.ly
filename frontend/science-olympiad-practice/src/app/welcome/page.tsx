@@ -5,19 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
-import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
-import AuthButton from '@/app/components/AuthButton';
 import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/app/utils/metrics';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { User } from 'firebase/auth';
-import Image from 'next/image';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import 'react-toastify/dist/ReactToastify.css';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import Header from '../components/Header';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -652,50 +650,7 @@ export default function WelcomePage() {
         </Canvas>
       </div>
 
-      {/* Navigation Bar */}
-      <nav
-        className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${
-          darkMode ? 'bg-gray-900/90' : 'bg-white/95 shadow-md'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-between items-center h-16 px-4 sm:px-6">
-            <div className="flex items-center space-x-2">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/site-logo.png"
-                  alt="Scio.ly Logo"
-                  width={32}
-                  height={32}
-                  className="mr-2"
-                />
-                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Scio.ly
-                </span>
-              </Link>
-            </div>
-            <div className="flex flex-wrap items-center space-x-4">
-              <Link
-                href="/dashboard"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
-                  darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Practice
-              </Link>
-              <button
-                onClick={() => setContactModalOpen(true)}
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${
-                  darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Contact Us
-              </button>
-              <AuthButton />
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* Main Content */}
       <div className="relative z-10 pt-20 px-4 sm:px-6">
