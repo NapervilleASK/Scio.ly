@@ -544,7 +544,7 @@ export default function UnlimitedPracticePage() {
     setLoadingExplanation(prev => ({ ...prev, [index]: true }));
 
     try {
-      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
+      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}\nAnswer:${question.answers[0]}
                       Solve this question. Start with the text "Explanation: ", providing a clear and informative explanation. Start off by giving a one paragraph explanation that leads to your answer, nothing else.`;
 
       console.log('Sending prompt:', prompt);

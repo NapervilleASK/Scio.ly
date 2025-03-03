@@ -63,9 +63,6 @@ interface ContestState {
 const API_URL = api.api;
 const arr = api.arr
 
-// Replace the global variable declaration of globalShareCode with a removal comment
-// let globalShareCode: string | null = null;
-
 const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) => {
   const [reason, setReason] = useState('');
 
@@ -647,7 +644,7 @@ export default function TestPage() {
     try {
       console.log('Question data:', question);
       
-      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}
+      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}\nAnswer:${question.answers[0]}
                       Solve this question. Start with the text "Explanation: ", providing a clear and informative explanation. Start off by giving a one paragraph explanation that leads to your answer, nothing else.`;
 
 

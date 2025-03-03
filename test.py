@@ -1,7 +1,7 @@
 import json
 from google import genai
 import time
-GEMINI_API_KEY = ["AIzaSyCeePYMH5HBSXUTveHl4bdmFO4ahBAE_DE","AIzaSyC5OKLpFadOMx0sbRT2_sZ_K7eIY2lXdTo","AIzaSyCqomCXXxkbHDxvDvIUiK9ZVgYo3_A37G0","AIzaSyDgsQMjAIZOSkJ2NviVynyRm4e5no-xso0","AIzaSyDPGNgvfwwLsblr3Pn_-sFlBVk32JkAqRg","AIzaSyAr2RYSw_BvjtHBFfemY_XMlKJt__SPkfk","AIzaSyCmxaRE45Su7KT0oGifWJZaV9p0zRaNUWU","AIzaSyAadf7tJuQoiE_BGoFUOyGcxEAeeCtBJIw","AIzaSyD6gVkOJaiU6okLIQfrpcknHHAcmqUTQSg","AIzaSyBm_QUZnny6jo92p1CkbPOMglV73hUBETQ","AIzaSyCkskTBQMpvckmcIm2bHVbl2kkM9TnTjCA","AIzaSyBsA_O9vjzhkWAmjyD0KzSFNP0cxB9Yu90", "AIzaSyA3_dpqOA67d0tiQ3ayCL69lr2UD3OkDV8", "AIzaSyDHGciTN4papPucYcVU50xMZxii_CeJImE", "AIzaSyDX_lsfZLPdy-ZJtwj6z6V03vUoHRIVNYU", "AIzaSyDfi2QkcMCh1JoQgxA70VeZjZONUWMhm4A", "AIzaSyACCMbTVB7yCGXFNktKbIXF_NiTEZVw698", "AIzaSyDhXgviXgz03pdZ7yPMUiRrlquuvOUcuYo", "AIzaSyDkWDMtwWYKNOs-xlqHD8j4ekWZx6ivqWY", "AIzaSyBLRJQoy4icrP3_fVPyP7Ri7W-yULvrU-A", "AIzaSyCcc1SPuC_MIMtbLL3Tm35jjtez9ob6d8s", "AIzaSyCUmZWb4pgY_b_4I9vyWf12dWB_ja3DZzo", "AIzaSyDkoP82SFpZxXdOAa3-gqI8AEjlzcsXwNM", "AIzaSyCmjfvRzpwyhJ5Jg7RrLIfVq_MK9wdoq-E", "AIzaSyAVWlHTbtoUpo5Io6DMCt38Ih4ncfbDiXo", "AIzaSyBnLq7fxkCumOOB473f7nsqo_CCqIcTGTQ", "AIzaSyAgB3MoY7L1ALdXmY2t2N89eqgPAQeeyss", "AIzaSyC8l9t_YNnzTuXsOEiuBkhC390lOw6mV9k", "AIzaSyA-GSUkZ7-wtHcbT81JHP31v1OaXPZ4to8", "AIzaSyCNKjY5WL2NtJJfAoI9OOAAIrXWGpmJYpI", "AIzaSyDU-wpPBOvBsAvrbe8uY99uLhOK-LQSRPE", "AIzaSyCugPr4zL53bCFqBVArY_gPjKcjQQpc1Xc", "AIzaSyBr8iiu1CaTb4ptl0yjNN3ltZ_o7qN12Gk", "AIzaSyAcP0Y4u8qzuz0SKipNSTvvX9WwPz7Jlb4"]
+GEMINI_API_KEY = []
 # Initialize the Gemini client with your API key
 # List of keys to process (we compare in lowercase)
 keys_to_process = {

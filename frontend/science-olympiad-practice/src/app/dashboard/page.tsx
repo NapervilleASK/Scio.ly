@@ -151,6 +151,7 @@ function EventDashboard() {
                 ?.category || event.subject,
           }));
         setEvents(eventsFromURL);
+        //@ts-expect-error annoying
         const response = await fetch(api.api);
         const raw = await response.json();
         console.log(Object.keys(raw))

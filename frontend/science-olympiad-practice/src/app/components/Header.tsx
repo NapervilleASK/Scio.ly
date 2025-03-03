@@ -150,14 +150,15 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
   );
 };
 
+
 export default function Header() {
   const { darkMode } = useTheme();
   const [contactModalOpen, setContactModalOpen] = useState(false);
-
+  const frontpage = window.location.pathname == '/' 
+  
   const handleContact = async (data: ContactFormData) => {
     const webhookUrl =
       'https://discord.com/api/webhooks/1339791675018576024/M9vqEh3Zw67jhoaZ20hA6yFLADRiXEpCvPNOpMgy5iaao_DkNaGm4NpPtE00SGjybAPc';
-
     const payload = {
       embeds: [
         {
@@ -228,16 +229,16 @@ export default function Header() {
 
   return (
     <>
-      <ContactModal 
+      <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
         onSubmit={handleContact}
-        darkMode={darkMode}
+        darkMode={darkMode || frontpage}
       />
-      <ToastContainer theme={darkMode ? "dark" : "light"} />
-      
+      <ToastContainer theme={darkMode || frontpage ? "dark" : "light"} />
+
       <nav className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${
-        darkMode ? 'bg-gray-900/90' : 'bg-white/95 shadow-md'
+        frontpage ? 'bg-transparent' : (darkMode || frontpage ? 'bg-gray-900/90' : 'bg-white/95 shadow-md')
       }`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-between items-center h-16 px-4 sm:px-6">
@@ -251,7 +252,7 @@ export default function Header() {
                   className="mr-2"
                 />
                 <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out hidden sm:inline ${
-                  darkMode ? 'text-white' : 'text-gray-900'
+                  darkMode || frontpage ? 'text-white' : 'text-gray-900'
                 }`}>
                   Scio.ly
                 </span>
@@ -261,7 +262,7 @@ export default function Header() {
               <Link
                 href="/welcome"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
-                  darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
                 Dashboard
@@ -269,7 +270,7 @@ export default function Header() {
               <Link
                 href="/dashboard"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
-                  darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
                 Practice
@@ -277,7 +278,7 @@ export default function Header() {
               <button
                 onClick={() => setContactModalOpen(true)}
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${
-                  darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
                 Contact
@@ -289,4 +290,4 @@ export default function Header() {
       </nav>
     </>
   );
-} 
+}

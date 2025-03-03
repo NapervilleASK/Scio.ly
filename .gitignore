@@ -1,2 +1,8 @@
-NEXT_PUBLIC_GEMINI_API_KEY=AIzaSyCo9E0ui3r0VyMtJHJdRWeajjv3jVZh3_Y
-.env.local 
+frontend/science-olympiad-practice/.env.local 
+token.json
+.next 
+backup.json
+backup2.json
+bank.txt 
+failed.json
+keys.txt

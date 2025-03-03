@@ -756,9 +756,74 @@ titles = {
     'anatomy - pathology': 'Disease Detectives',
     'satellite map short answer ii': 'Remote Sensing',
     'physics, modern': 'Physics Lab',
-    'earth/space science': 'Astronomy'
+    'earth/space science': 'Astronomy',
 
+    'solar system': 'Astronomy',
+    'image analysis': None,
+    'remote sensing image a': 'Remote Sensing',
+    'updates': 'Data Science', # Educated guess, could also be Cybersecurity or Fun depending on context
+    'plant anatomy': 'Plant Biology',
+    'remote sensing applications': 'Remote Sensing',
+    'tie breaker questions': 'Fermi Questions', # Could also be Technical Problem Solving
+    'dynamic planet - glaciers free response': 'Dynamic Planet - Glaciers',
+    'nearpod directions': 'Experimental Design', # Educated guess, could also be Technical Problem Solving or Fun
+    'free_response': 'Experimental Design', # Could also be Fermi Questions
+    'ecology - short fill': 'Ecology',
+    'anatomy - crispr history': 'Designer Genes', # Could also be Cell Biology or Anatomy - Immune
+    'ecology - tiebreaker': 'Ecology',
+    'test instructions': None, # Educated guess, could also be Technical Problem Solving or Fun
+    'remote sensing satellites and sensors': 'Remote Sensing',
+    'excretory system': 'Anatomy - Excretory',
+    'pre-build meme prompts and directions': 'Fun', # Educated guess, could also be Game On or Cybersecurity
+    'protein modelling': 'Protein Modeling',
+    'remote sensing image c': 'Remote Sensing',
+    'climate change': 'Human Impact on Environment', # Could also be Environmental Chemistry or Dynamic Planet series
+    'electromagnetic spectrum': 'Physics Lab', # Could also be Optics or Astronomy
+    'road map test': 'Road Scholar', # Could also be Geologic Mapping
+    'remote sensing fill in the blank': 'Remote Sensing',
+    'ecology - completion': 'Ecology',
+    'redox': 'Chemistry Lab',
+    'dynamic planet - earthquakes': 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics',
+    'zoology': 'Ecology', # Could also be Ornithology, Entomology, Herpetology depending on context
+    'dynamic planet - geologic mapping': 'Geologic Mapping',
+    'wastewater technology': 'Water Quality', # Could also be Environmental Chemistry
+    'feedback_form': 'Experimental Design', # Educated guess, could also be Data Science or Technical Problem Solving
+    'lymphatic system': 'Anatomy - Lymphatic',
+    'acoustics': 'Sounds of Music', # Could also be Physics Lab
+    'anatomy - crispr/cas9': 'Designer Genes', # Could also be Cell Biology or Anatomy - Immune
+    'watershed resource management': 'Water Quality', # Could also be Dynamic Planet - Earth's Fresh Waters or Ecology
+    'dynamic planet - meteorology': 'Meteorology',
+    'indiana wastewater operators manual & clean water act': 'Water Quality', # Could also be Environmental Chemistry
+    'ph': 'Chemistry Lab', # Could also be Environmental Chemistry or Water Quality
+    'remote sensing calculations': 'Remote Sensing',
+    'marine carbonate chemistry & water hardness': 'Water Quality', # Could also be Environmental Chemistry
+    'geologic history': 'Geologic Mapping', # Could also be Fossils or Rocks and Minerals
+    'feedback': None, # Educated guess, could also be Data Science or Technical Problem Solving
+    'wind power true false': 'Wind Power',
+    'relating velocity, wavelength, and frequency for waves': 'Physics Lab', # Could also be Optics or Sounds of Music
+    'write-it cad it': 'Technical Problem Solving', # Educated guess, could also be Experimental Design or Machines related events
+    'dynamic planet - volcanoes, earthquakes, and tectonics': 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics',
+    'satellites and orbits': 'Astronomy', # Could also be Remote Sensing or Physics Lab
+    'crowdpurr': None, # Educated guess, could also be Data Science or WiFi Lab
+    'remote sensing image b': 'Remote Sensing',
+    'periodicity': 'Chemistry Lab', # Could also be Physics Lab
+    'anatomy - respiratory and digestive': 'Anatomy - Respiratory', # Arbitrarily chose Respiratory, could be Digestive
+    'common antenna designs': 'WiFi Lab', # Could also be Circuit Lab or Detector Building or Physics Lab
+    'web architecture + principles of cybersecurity': 'Cybersecurity',
+    'volcanism': 'Dynamic Planet - Volcanoes, Earthquakes, and Tectonics',
+    'road mapping': 'Geologic Mapping', # Could also be Road Scholar
+    'physics/chemistry': 'Physics Lab', # Arbitrarily chose Physics Lab, could be Chemistry Lab
+    'cardiovascular system': 'Anatomy - Cardiovascular',
+    'dynamic planet - volcanoes': 'Dynamic Planet - Volcanoes, Earthquakes, and Tectonics',
+    'ecology - free response': 'Ecology',
+    'radio waves': 'Physics Lab', # Could also be Optics or WiFi Lab
+    'em wave propagation': 'Physics Lab', # Could also be Optics or WiFi Lab
+    'wind power short answer': 'Wind Power',
+    'anatomy - research analysis- cytidine deaminase': 'Anatomy - Immune', # Could also be Cell Biology or Designer Genes
+    'remote sensing acronym identification': 'Remote Sensing',
+    'the electromagnetic spectrum': 'Physics Lab' # Could also be Optics or Astronomy
 }
+
 print("All values:", [*set([f for f in titles.values() if f is not None])])
 # os.exit()
 def combine_bank_data(filename="beta_bank.json"):
@@ -812,6 +877,7 @@ def combine_bank_data(filename="beta_bank.json"):
                         and not (item['question'].lower().startswith("based on this"))
                         and not (item['question'].lower().startswith("these are"))
                         and not (item['question'].lower().startswith("calculate the"))
+                        and not (item['question'].lower().startswith("participants"))
                         and not (len(item['question']) < 3)
                         and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "free response")
                         and not (isinstance(item['answers'][0],str) and item['answers'][0].lower() == "requires missing")
@@ -848,7 +914,7 @@ def combine_bank_data(filename="beta_bank.json"):
                             "honor code", "from the provided answer key", "according to article", "previous question",
                             "found at the scene", "according to elsa's bio", "from the scenario", "on my honor", 
                             "following questions refer to light and electron microscopes", "given the following graph",
-                            "shown on the graph", "suspect no.", "from the given scenario"
+                            "shown on the graph", "suspect no.", "from the given scenario", "the competitors"
                         ])
                         and not any(question in item['question'].lower() for question in [
                             "information needed"

@@ -55,9 +55,9 @@ export default function HomePage() {
   ];
 
   const metrics = [
-    { number: "3000+", label: "Practice Questions" },
-    { number: "2000+", label: "Questions Answered" },
-    { number: "0", label: "GitHub Stars :(" }
+    { number: "4.3K", label: "Practice tests scraped" },
+    { number: "38.4K+", label: "Questions solved" },
+    { number: "22.9K", label: "Page views" }
   ];
 
   return (
@@ -144,7 +144,7 @@ export default function HomePage() {
               <h4 className="text-green-400 font-semibold mb-2">Life Science</h4>
               <ul className="text-gray-400 text-sm space-y-1">
                 <li>• Anatomy & Physiology</li>
-                <li>• Cell Biology</li>
+                <li>• Microbe Mission</li>
                 <li>• Disease Detectives</li>
               </ul>
             </div>
@@ -153,23 +153,23 @@ export default function HomePage() {
               <ul className="text-gray-400 text-sm space-y-1">
                 <li>• Astronomy</li>
                 <li>• Dynamic Planet</li>
-                <li>• Remote Sensing</li>
+                <li>• Fossils</li>
               </ul>
             </div>
             <div className="bg-blue-500/10 rounded-lg p-4">
               <h4 className="text-blue-400 font-semibold mb-2">Physical Science</h4>
               <ul className="text-gray-400 text-sm space-y-1">
+                <li>• Wind Power</li>
+                <li>• Optics</li>
                 <li>• Chemistry Lab</li>
-                <li>• Physics Lab</li>
-                <li>• Forensics</li>
               </ul>
             </div>
             <div className="bg-red-500/10 rounded-lg p-4">
-              <h4 className="text-red-400 font-semibold mb-2">Technology</h4>
+              <h4 className="text-red-400 font-semibold mb-2">New and FRQ-based</h4>
               <ul className="text-gray-400 text-sm space-y-1">
                 <li>• Codebusters</li>
-                <li>• Robot Tour</li>
-                <li>• WiFi Lab</li>
+                <li>• Entomology</li>
+                <li>• Geologic Mapping</li>
               </ul>
             </div>
           </div>
@@ -321,7 +321,7 @@ export default function HomePage() {
       {/* Metrics Section */}
       <section className="py-20 px-4 bg-gray-900/30">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-12">Trusted by few (Help us fix that!).</h2>
+          <h2 className="text-3xl font-bold text-white mb-12">Trusted by students across the U.S.</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {metrics.map((metric, index) => (
               <div key={index} className="p-6">
@@ -331,10 +331,10 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-12 flex justify-center gap-4">
-            <a href="https://github.com/your-repo" className="text-gray-400 hover:text-white">
+            <a href="https://github.com/NapervilleASK/Scio.ly" className="text-gray-400 hover:text-white">
               <FaGithub className="w-6 h-6" />
             </a>
-            <a href="https://discord.gg/your-server" className="text-gray-400 hover:text-white">
+            <a href="https://discord.gg/hXSkrD33gu" className="text-gray-400 hover:text-white">
               <FaDiscord className="w-6 h-6" />
             </a>
           </div>
@@ -401,7 +401,7 @@ export default function HomePage() {
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-semibold text-white mb-3">Is this an official practice platform?</h3>
               <p className="text-gray-300">
-                No, Science Olympiad is not an official practice tool. Our platform provides practice materials based on past exams but we do not make any guarantees about content on future exams.
+                No, Scio.ly is not not endorsed by Science Olympiad Inc. - Our platform provides practice materials based on past exams but we do not make any guarantees about content on future exams.
               </p>
             </div>
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
@@ -451,10 +451,10 @@ export default function HomePage() {
             <div>
               <h3 className="text-white font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
-                <a href="https://github.com/your-repo" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://github.com/NapervilleASK/Scio.ly" className="text-gray-400 hover:text-white transition-colors">
                   <FaGithub className="w-6 h-6" />
                 </a>
-                <a href="https://discord.gg/your-server" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://discord.gg/hXSkrD33gu" className="text-gray-400 hover:text-white transition-colors">
                   <FaDiscord className="w-6 h-6" />
                 </a>
               </div>
@@ -465,6 +465,24 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+      <style jsx>{`
+                    ::-webkit-scrollbar {
+                      width: 8px;
+                    }
+                    ::-webkit-scrollbar-thumb {
+                      background: linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72));
+
+                      border-radius: 4px;
+                      transition: background 1s ease;
+                    }
+                    ::-webkit-scrollbar-thumb:hover {
+                      background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54));
+                    }
+                    ::-webkit-scrollbar-track {
+                     background: black;
+                    }
+                  `}
+      </style>
     </div>
   );
 }

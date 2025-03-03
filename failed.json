@@ -3378,4 +3378,3224 @@
       "question": "The Internet is central to many of our lives in the modern world. This protocol, part of the transport layer of a certain protocol suite, is responsible
     }
   ]
+}{
+    "question": "Based on the Google Form link provided, this test most likely belongs to which Science Olympiad event?",
+    "options": [
+      "Anatomy - Skeletal",
+      "Anatomy - Muscular",
+      "Anatomy - Integumentary",
+      "Anatomy - Cardiovascular",
+      "Anatomy - Lymphatic",
+      "Anatomy - Excretory",
+      "Anatomy - Respiratory",
+      "Anatomy - Digestive",
+      "Anatomy - Immune",
+      "Anatomy - Nervous",
+      "Anatomy - Sense Organs",
+      "Anatomy - Endocrine",
+      "Astronomy",
+      "Cell Biology",
+      "Chemistry Lab",
+      "Codebusters",
+      "Compound Machines",
+      "Designer Genes",
+      "Detector Building",
+      "Disease Detectives",
+      "Dynamic Planet - Glaciers",
+      "Dynamic Planet - Earthquakes, Volcanoes, and Tectonics",
+      "Dynamic Planet - Earth's Fresh Waters",
+      "Dynamic Planet - Oceanography",
+      "Dynamic Planet - Tectonics",
+      "Ecology",
+      "Entomology",
+      "Environmental Chemistry",
+      "Fermi Questions",
+      "Forensics",
+      "Forestry",
+      "Fossils",
+      "Geologic Mapping",
+      "Gravity Vehicle",
+      "Green Generation",
+      "Helicopter",
+      "Herpetology",
+      "Hovercraft",
+      "Invasive Species",
+      "It's About Time",
+      "Machines",
+      "Materials Science",
+      "Microbe Mission",
+      "Mission Possible",
+      "Mousetrap Vehicle",
+      "Optics",
+      "Ornithology",
+      "Rocks and Minerals",
+      "Sounds of Music",
+      "Thermodynamics",
+      "Wind Power"
+    ],
+    "answers": [
+      45
+    ],
+    "difficulty": 0.1
+  },
+  {
+    "question": "What is a common problem teams faced during the Mousetrap Vehicle event, according to the provided information?",
+    "options": [
+      "Vehicles not reaching the target distance",
+      "Videos being too large to upload",
+      "Mousetraps malfunctioning",
+      "Wheels falling off the vehicle"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "Regarding video submission for Mousetrap Vehicle, what is a suggested strategy to reduce file size?",
+    "options": [
+      "Use a lower resolution camera",
+      "Shoot more footage to capture every angle",
+      "Edit out extra footage before and after the run",
+      "Convert the video to a different file format"
+    ],
+    "answers": [
+      3
+    ],
+    "difficulty": 0.5
+  }{
+    "question": "Go to Nearpod.com",
+    "options": [],
+    "answers": [
+      "Go to Nearpod.com"
+    ],
+    "difficulty": 0.0
+  },
+  {
+    "question": "Type in this join code: A7GQS",
+    "options": [],
+    "answers": [
+      "A7GQS"
+    ],
+    "difficulty": 0.0
+  },
+  {
+    "question": "The version you will see is self-paced and will show you the answers, but the real test will be in timed sections like a station lab.",
+    "options": [],
+    "answers": [
+      "The version on Nearpod is self-paced and will show you the answers, but the real test will be in timed sections like a station lab."
+    ],
+    "difficulty": 0.0
+  },
+  {
+    "question": "If these codes don’t work, please email ncscienceolympiad@ncsu.edu and we will set up new codes.",
+    "options": [],
+    "answers": [
+      "If the provided codes don't work, email ncscienceolympiad@ncsu.edu to obtain new codes."
+    ],
+    "difficulty": 0.0
+  }{
+    "question": "Rank the speeds of the following fronts from fastest to slowest:",
+    "options": [],
+    "answers": [
+      "Cold front > Warm Front > Occluded front = Stationary Front"
+    ],
+    "difficulty": 0.7
+  },
+  {
+    "question": "What happens to the updraft and downdraft of a thunderstorm during the dissipation stage of its lifecycle?",
+    "options": [],
+    "answers": [
+      "The updraft weakens and the downdraft becomes the main force of the thunderstorm"
+    ],
+    "difficulty": 0.6
+  }{
+    "question": "Which of the following is NOT one of the responsibilities of the first officer on the scene?",
+    "options": [
+      "Officer Safety",
+      "Attending to Injured",
+      "Contamination of the Scene",
+      "Securing the Scene"
+    ],
+    "answers": [
+      3
+    ],
+    "difficulty": 0.3
+  },
+  {
+    "question": "Which search pattern is best used when a crime scene is over a large area?",
+    "options": [
+      "Spiral",
+      "Grid",
+      "Line",
+      "Zone"
+    ],
+    "answers": [
+      2,
+      3
+    ],
+    "difficulty": 0.5
+  },
+  {
+    "question": "How many minutiae are required to make a match of fingerprints?",
+    "options": [
+      "8",
+      "10",
+      "12",
+      "There is no set number"
+    ],
+    "answers": [
+      4
+    ],
+    "difficulty": 0.7
+  },
+  {
+    "question": "Which of the following is NOT a type of fingerprint pattern?",
+    "options": [
+      "Arch",
+      "Loop",
+      "Whorl",
+      "Delta"
+    ],
+    "answers": [
+      4
+    ],
+    "difficulty": 0.3
+  },
+  {
+    "question": "What is the first thing that should be done when collecting a questioned document?",
+    "options": [
+      "Photocopy the document",
+      "Handle it carefully to preserve evidence",
+      "Fold it so it fits into an envelope",
+      "Compare it to exemplar documents"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "A circular area around a bloodstain, lacking blood, that indicates an object was present when the blood impacted the surface is called:",
+    "options": [
+      "Void",
+      "Satellite Spatter",
+      "Spine",
+      "Point of Origin"
+    ],
+    "answers": [
+      1
+    ],
+    "difficulty": 0.8
+  },
+  {
+    "question": "What is the most common type of bloodstain pattern found at a crime scene?",
+    "options": [
+      "Impact Spatter",
+      "Projected Spatter",
+      "Transfer Stain",
+      "Arterial Spurting"
+    ],
+    "answers": [
+      3
+    ],
+    "difficulty": 0.4
+  },
+  {
+    "question": "The clumping of red blood cells after an antibody-antigen reaction is called:",
+    "options": [
+      "Agglutination",
+      "Coagulation",
+      "Precipitation",
+      "Sensitization"
+    ],
+    "answers": [
+      1
+    ],
+    "difficulty": 0.7
+  },
+  {
+    "question": "What is the refractive index?",
+    "options": [
+      "The angle at which light bends when passing through a substance",
+      "The measure of how much light slows down when passing through a substance",
+      "The color of light produced by a substance",
+      "The temperature at which a substance melts"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "Which type of evidence is most likely to be found using a microscope at a crime scene?",
+    "options": [
+      "Fingerprints",
+      "Blood Spatter",
+      "Hair and Fiber",
+      "Shoe Prints"
+    ],
+    "answers": [
+      3
+    ],
+    "difficulty": 0.4
+  },
+  {
+    "question": "What does the abbreviation GSR stand for in forensics?",
+    "options": [
+      "Gunshot Residue",
+      "Gas Sample Retrieval",
+      "Glove Sample Recovery",
+      "Granular Soil Remains"
+    ],
+    "answers": [
+      1
+    ],
+    "difficulty": 0.5
+  },
+  {
+    "question": "Which of the following is a presumptive test for blood?",
+    "options": [
+      "DNA analysis",
+      "Kastle-Meyer test",
+      "Chromatography",
+      "Spectroscopy"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.4
+  },
+  {
+    "question": "What is rigor mortis?",
+    "options": [
+      "The cooling of the body after death",
+      "The stiffening of muscles after death",
+      "The discoloration of the skin after death",
+      "The settling of blood after death"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "Which of the following is NOT a factor that affects the rate of decomposition?",
+    "options": [
+      "Temperature",
+      "Humidity",
+      "Insect Activity",
+      "Hair Color"
+    ],
+    "answers": [
+      4
+    ],
+    "difficulty": 0.3
+  },
+  {
+    "question": "What is algor mortis?",
+    "options": [
+      "The cooling of the body after death",
+      "The stiffening of muscles after death",
+      "The discoloration of the skin after death",
+      "The settling of blood after death"
+    ],
+    "answers": [
+      1
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "What is livor mortis?",
+    "options": [
+      "The cooling of the body after death",
+      "The stiffening of muscles after death",
+      "The discoloration of the skin after death",
+      "The settling of blood after death"
+    ],
+    "answers": [
+      4
+    ],
+    "difficulty": 0.6
+  },
+  {
+    "question": "In chromatography, what is the stationary phase?",
+    "options": [
+      "The mobile liquid or gas that carries the sample",
+      "The solid or liquid that separates the sample components",
+      "The detector that measures the separated components",
+      "The injector that introduces the sample"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.7
+  },
+  {
+    "question": "Which of the following is NOT a type of questioned document examination?",
+    "options": [
+      "Handwriting analysis",
+      "Ink analysis",
+      "Paper analysis",
+      "DNA analysis"
+    ],
+    "answers": [
+      4
+    ],
+    "difficulty": 0.5
+  },
+  {
+    "question": "What is the purpose of luminol in forensic science?",
+    "options": [
+      "To detect latent fingerprints",
+      "To detect bloodstains",
+      "To analyze DNA",
+      "To identify fibers"
+    ],
+    "answers": [
+      2
+    ],
+    "difficulty": 0.4
+  },
+  {
+    "question": "What is the primary use of super glue (cyanoacrylate) fuming in crime scene investigation?",
+    "options": [
+      "To develop latent fingerprints on non-porous surfaces",
+      "To enhance bloodstain patterns",
+      "To preserve DNA evidence",
+      "To identify accelerants in arson cases"
+    ],
+    "answers": [
+      1
+    ],
+    "difficulty": 0.5
+  }{
+    "question": "Go to Nearpod.com",
+    "options": [],
+    "answers": ["Go to Nearpod.com"],
+    "difficulty": 0.0
+  },
+  {
+    "question": "Type in this join code: FXPWD",
+    "options": [],
+    "answers": ["Type in join code FXPWD"],
+    "difficulty": 0.0
+  },
+  {
+    "question": "The version you will see is self-paced and will show you the answers, but the real test will be in timed sections like a station lab.",
+    "options": [],
+    "answers": ["The test is self-paced and will show answers, but the real test will be timed."],
+    "difficulty": 0.0
+  },
+  {
+    "question": "If these codes don’t work, please email ncscienceolympiad@ncsu.edu and we will set up new codes.",
+    "options": [],
+    "answers": ["Email ncscienceolympiad@ncsu.edu if the codes don't work"],
+    "difficulty": 0.0
+  }{
+  "Anatomy - Muscular": [
+    {
+      "question": "Given the cipher text (a) `h\\x91zåp\\nVïBÇf°\\x1a\\x1eó\\x88&ã\\xadñ0\\x02/Ú\\x01m¸ýá[\\x9fÆ\\x85\\x00Úô)TàÃÍÝl¸J°\\x04dÛ\\x96Q¾\\x95r©~\\x82ß#¾\\x18\\x94¿\\x1d\\x17{G63P¿@$\\x19\\x1eÄ_éL]äÈ\\x06ÿ\\x8f\\rïµ¯Wg!çe\\x97\\r\\x14°OÌº\\x95Ù½c\\x07;\\x1ftÆ\\x99þ\\x1bá\\x84»Ô\\x93«pÇef\\x9e9²¾zM,\\n.ä\\x94½Å«Î\\x8dÓ²DW¿\\x8eP\\x13Ò^\\x98n\\x19Ü\\x16c@±BÕ\\x85mºõ}Ü\\x12eõWô\\x17£\\x13\\x8e§.åp¢N~5öÏ\\x0cEX=.Í\\x88¾\"UÅ\\x00\\x9e\\x00`#6i\\x12ªemí\\x19$ë'`ÛRÈÌ\\x1fRàÚ\\x07ãX;%&43\\x14Ü>ä\\x17äb¸\\x15Ö\\x18Ø1(3(\\x0e¦\\x1e\\x1b*2<Å\\x01ñ\\x17Ö\"ù$9c\\x9d?c\\r\\x1a$ 3©\\x06P9\\x1c>[?\\x83&\\x018\\x12f;?â2s\\x14É\\x1cÊ*ø~\\x084\\x10\\x16&kÜ7\\x98\\x0f[?IS\\x19\\x17\\x92v\\x18Zp}_ Ã\\x0e\\x7f#Å\\x11þJ\\x02\\x00ÀB\'6ü\\x14¾?\\x16\\x08\\x07)º\\x7f@\\x02i9ß\\x0c\\x15+×\\x06Ph\\\\x11\\xa0QB,×8Ürn\\x06æ5[C·\\x0ez(V\\x0fS\\x06ü\\x19¶80\\x19à\\x04\\x17\\x13ÆhÁfMYãAR=Q;ù(®\\x10#\\x15Ì\\x1dª;81|\\x17÷0fLp\\x06¬\\x12ð6î\\x19´p±\\x05M\\n·\\x1fã\\x15\\x02\\x0c\\x9fBd%¿&^\\x10D\\x96_\'}ãÍâ@èO{ó±/iÆþ\\x8aºðôÅ<_-â7\\x8båB+ô÷Á³Ô§ö#\\x1c+bz\\x1eá\\x17jTº|óæ³©p÷(\\x13y¯õD¶ïµ:û\\x02ö\\x9b ö%\\x99è}¬äêI M\\xa0fj\\x9aëÁºÄô¡¡ï\\x14\\x1dð×2Cò8rº§âr:ë§\".=I½-aV3Ø¼&&\\x0bñUøù¨\\x97 ¤\'\\x9e´Q \\x9c=\\x98\"Åì\\x1eï¤3÷¥\\x96¢\\x84¦?bP|ü/Ú÷ü/«þ\\x8a7´%Òkíëm?â\\xa0\\x0c¶Çê\\x10õ¬\' ½\\nrÆyÇ¤(oÓÐ\\xa0{Ò¥Z¨:éé<¶>äêö®\\x06~-¨\\x92ä¢nX V«vØÀb\\x13Þ-â*S\\x85w*ö¢×£É¹3\\x8c\\xa0\\x8a\\x92\\x9a7kq\\x8fý\\x86ç\\x06*!Ø\\x87\\ròÔ\\x91\\x81yYåÜ\'Ñ8\\x96¢ÆF#¹\\x15M\'§+6n7Ê\\t\\x1b\\x83Û\\x98ºUöa¤L\\x9aãL(\\x1fe\\x17SïÚR±3N\\x0bCzan\\x9f\\xa08ßénJ\\x95ø\\x06ù÷\"\\x8d\\x03\\x0bË\\x92\\x90>L9\\x1aB¸·\\x84u\\x8a\\x13óêÕ\\\\B\\x16r\\x95\\x8c$~e`É\\x85Õë¿ôÏU\\x1c÷,lÛSû«\\x03ëßïì\\x01Q[×îæµz\\x8d\\x9b?\\tAY\\x86å\\x9c_w\\x9bß0üÖf¢ÍP\\x9f\\x07úÙe#?¥ Á\\x9ei!\\x8e\'\\x9fZÀ\\x02WÊÏ\\x986ÿ\\x08ôJ*ýÖ\\x8dÇÐ¸\\x00\\x8c\\x82]U\\x03%\\x9d\\xadð0å\\x9cíI\\x89Ì°\\x90_Bà\\x93\\x19Ê\\x83á¿½1j%§\\x9fO\\t0\\x84ÊN¸vðs¥\\x8c]w9\\x0cài\\x8d\\x96U\\xa0\\x9bÕ\\x15\\x88\\x8d\\xad(ò}\\x00\\x03\\x92*óÓ0´¢\\x89s\\x9b\\x99B\\x91Í¤ªº\\x16\\x05\\x17üØ\\x14èy\\x15f\\x13\\x8bä[\\x17\\x1a\\x0cDK\\x9fFsÓÜk·ê¸eô.\\x88]úåB\\x1bÈ\\x9d\\x0f/@\\x9bÖ\\x1b\\x1f\"èÒã\\x1f¹No\\x12R!É]£\\xa0O\\x8b-\\x02RÉM¼M¼\"©±°\\x11t-\\x86\\x1fä\\x89}8åã\\x15WÓ¸+\\x08\\x8aÇÏ¶r-\\x9e\\x7f<5îÉ\\x98^3\\x07I1Á5s¾&\\x05ó\\x81å¶7u\\x18],5\\x84üv\\x18\\x98®À\\x954¦®\\x99 \\x95è¨\\x06\\xa0\\x87v3dZ6o#d~|«6b\\x81cl+Ósð>ó<\"9\\x8ce,\'\\x01k\\x826\\x05,\\x92²6<Fæ\\x93h\\x06©ÿ¨,©\"üpøäsÎ!fm±sî³J»¾,L©Å¤\\x17þÐpdà8!¿â\\x17¾:~Ïá¥çËíªå´=\\x08·um¦}[º¥ ×÷Òï\\x05ªÒu¢aºépµ\\x8b´\\x92:Ó¿FsA©Aã\\x17eàå\\x122¡õ_=\\x91k\\x875²r\\x9f8ÖòHáFb5l_u\\x0b$©p¦6I!X¯ö¹\\x8dµ\\x981\\x0bû\\tóÒ©ëàê\\x19`£fa¡O±\\xa03\\x9fõp¬Ú/Aa?9a²é½×±ìe\'¹\\x156g<¾ò\\x95\\nò\\x7f¾\\x1eÔ(Ú\\r\\x04\\x1bm.érK5ªJý\\x17J8\\x9f\\x056$Fh\\x0c\\x01¡\\x04å\\x1f\\x96\\x1bÃ\\x1b\\x81kÙ\\x07Þh¾\\x12\\x83\\x03á8\\x8f:õAú-£4ê7µ}²\\x0b\\t6ê)Ä\\x1a3\\x03\\x955÷1Ï4á\\x19=\\x10\\x98 lbÄj\\x9cGT\\x7f\\x0c%Ä4ì\\x0cëLz0|\\x14.\\x14?\\x0b\\x11)óT»\\x05ã\\x0bæ$ü á9\\x95Cõ9\\x89\\x07\\x8d\\x16þ\\x1eô\\tî8\"\\x16H\\x1eÀ\\x1ba2G<ú\\x14Ý\\x17\\x92;3cd)Ò\\x05h<-vÜ\\x0f_xò@mg6\\x1e97k\\x1d®=ec=?Û\\x0c\\x9e\\x06IBë*\\x98;npÎ3ëh$\\x03c&\\x91\\x13\\x80\'\\x18\\x13@\"#\\r{&¯\\x17ã1\\r&>@\"\"\"",
+      "options": [],
+      "answers": [
+        "This is an XOR cipher and needs to be deciphered with the key 'SOAPS'"
+      ]
+    },
+    {
+      "question": "Given the cipher text (b) `±{\\x0f½ô\\x82¤X^}`ê7HD\\x867²\\x08ÖË^¨_H¢µßBF/\\'P^\\x18§\\x9b\\rfIB\\x9céo\\x82\\x82\\x19\\x11\\x16C\\x1e;ì}0(\\x87\\x94\\x16\\x9bù\\x80\\x92\\x1eBê\\x91ú\\x06\\x1c\\x13úÙj^µ\\x91Ü\\x1e\\x13oÙí\\x18\\x9bõ\\x90Þv\\x0c×\\x91WU\\x02\\x84\\x9e\\x05kÇ\\x1b³G>\\r\\x93yñw\\x92»h¬8\\x04\\x95µ\\x8aICÅ>\\xa0[\\x8e\\xa0>SU\\x82^#f\\x02Ò\\x01$Fs\\x93qENHÃ\\x12&-v[ðµPv]n\\x1aÞVÊ\\x90\\x94¡(ØMì3\\x15Ï\\x92\\xa0}}Uç&¢.Ü\\x99£rI\\x0eÍñá\\x12\\x8a:/ÜsÖê-[}T9\"\\x0f_\\x9eZ\\x00\\x85\\x04\\x18\\x130\\x0c\\x13\\x05\\x0ew\\x91\'T\\x800°4\\x85\\x91\\x9c\\x118\\x06\\x94¦ØE\\x88p·\\x01\\x11Å2ö\\x14\\x0bÇ\\x18.ñ%E¥\\x80\\x02IfÝ\\n\\\\)X1¦£\\\\Rí\\x82hoX_\\x18\\x8e\\x0c\\x1f ó\\x13\\x1dËf¥¯dUË³°KZI\\x08Þ\\x1d\\x91ã>ò\\x05\\x80ü(þÛB\\x0bÎù¦A¦Ì\\x0e\\x96=\\x17W7\\x8f2X\\x847µ\\x0f?Ðµñ(\\x01C»¹sá\\x1f0Y\\r\\rTÝ\\x03\\x02ÃÈ\\x7f½\\x11¸$2ð.®RüÜ\\x1b\\x06\\x89¾Þc_Q\\x1fÇ\\x13=Û[@]nÇi\\x96V¥\\x1e«á7½Ö,Õ1\\x04U@\\x8d\\x10ìAìº\\x04LÚ¦\\x8e\\x04\\x9aH±\\x17X\\x8d\\x0c¶äYZ\\x92 »+hÝ5%?j\\x91ä\\x01cOÁín<ñÖVSx~\\x9eè0aú\\x87\\x83u?/\\x91W\\t\'4×á\\x01K¬¶ëÏ\\x18\\x04Ü\\x8bëx\\x7f@\\x82\\x90,\\x82\\x92ÆÛ\\x0bì×sZ\\x19Ç\\x87Xü8\'\\x03´c\\x00<\\x11\\x1d`\\x01\\x08\\x83l\\x95mvDG\\x0e4ÀÑ¿«\\x10\\x96RU\\x1f\\x15\\\\Ò\\x88\\x7f\\x18Ó\\x90Ô\\xa0\"\\x8aÑ.>4r\\x04`þ\\x04\\x03Ã\\x89\\x04\\x1eôNó462C«>\\x12²^Ñ£\\x12\\x80D\'Û1\\rS\'\\x14\\x1e§Ï³U-C\\x83\\x96G\\x0cI\\x83$\\x9b!n\\x06}±qÒèÁXÑÉ\\x0eõÑ\\x0e\\r\\x8cøÖÞ98\\x99\\x1eáL,,\\x1e\\x84sù\\x16C\\x06o\\x8c\\x05\\x06Ü=($Fþ,\\x138[ð\\x18û=\\x8aáOs4ïjYlw_ù\\x12c\\x92Æ=\\x0fO\\xa0BwU8\\x93È\\x18b\\\"\\x9b-/\\x11²\\x95ú\\r\\x9c¶ÞQw(\\x94Øð\'|EÀÖ\\x1eã\\x1dÑg2\\x93\\x9aÕå>Î¤\\x00\\x9e\\x19B\\x9cB\\x00p9§DxO!*\\x00 n²\\x1d\\x1fÎE÷¹_§\\x1d%¬\\x12\\x8dL=¥Wèk\\x1b¬J\\n/³\"\\x06£\\x0fC\\x06AM1=-\\x87¤H\\xa0Ë\\x14\\x08j^+\\x14\'\\x07\\x13\\x08Xvg\\x91\\x8d\\x17\\x98$ù¦\\x98ha+:\\x12I\\x1bÚ\\x01\\x9c\\x1d1\\x1f6Ã&3÷\\x0f_\\x11_\\x07¶\\x96z)\\x14Ð\\t\\x85e\\x86\\x86Hä$\\÷\\x06ÎrA!\\x80ÉjK\\x01\\x08\\x0702\\x08¯\\x01\\x98tdµ\\x048TÕ\\x9f\\x1af^\\x88\\x82Ñ\\x8fQn8Ù\\x9f9-\\x17\\x96ãt\\x13`\\x1fP9M6\\x90û\"Ò\\x84\\x86n\\x0fE\\x04Z+6éñ±Wü§r\\x08äÙ\\x1am\\x06s\\x00vº\\x0bs¢2\\x039C\\x9d\\x1f\\x8c·\\x0f\\x052WuJ\\x13el8ë\\x8f\\x1a\\x97¼²\\x8a\\x19ü^±ÉL|Òõ¢\\x03Ã·»\\x97jR-E\\x04\\x1ee×\\x8d <\\x9a\\x10\\x01\\x91\\x7f>°[\\x06\\r\\x12GV\\x8aqÐ#¤\\x08=\\x0eÙ\\x0e\\x88/\\x8d×\\x81\\x9f?!Ô<\\x08UË·R\\x8f0r\\x006\\x978\\x8b §\\x80\\x05Æ²\\x0f\\x8aAÊ\\x83U\\x87Je;;N\\x0b\\x00Á\\x9a\\x9b\\x04»÷\\x9d\\x889«e8\\x8b\\t\\x91ÿ4\\x82P86Z\\x86\\x1c\\x8b±h\\x1fb\\x85$\\x82\\x84\\x0e\\x92?5×V¥\\x00Á\\x81:²&&ÎE\\n\\rúÀ2â\\x1e\\x14\\tK»o¸Î\\x182Qþ×B\\x8a P\\x8bVÌu\\x8f\\x84v²ÁEV\\x12ÙË ×\\x07\\x7fækØ9ècÏ\\x18\\r9Æ\\x14\\x86<Û\\x0eþ\\x97P ß\\x13Õ\\x13c-/J\\x0co$tVN\\x94Ó\\x13\\x03<íu\\x07\\x90\\x0bÇÃ\\x15\\x94\\x18iSà\\x05\\x00-|\\x0eAGòz\\x1cÄ\\x8aùÔÄ-«¢;4Æ²¹\\x87\\x86äU=<\\x0b!i\\x05u¸\\xadÏQ§\\x91\\x84\\x00\\x07W\\x920ö\\x1d2\\x16\\nO\\x1d\\x89°åPB¹§ûá\\ty\\x91k¯t\\x86æM\\x89\\x07ÚG\\x8a:\\n°Ýó\\x12\\x0båÆtÍ\\nºs»!\\x027P¯°\\x15\\r£\\x12f\\x0c\\x94\\x86YÞ\\x01\\x83úÆa\\x05ÛÆú\\x8f\\x07©\\x99W\\x0e\\x0b<ÿ´ME\\x1f\\x95<º\\n·^£öO(N\\x7f\\x14\\x1c A|\\x15A\\x0cãøcD\\x05\\x19ç£L©\\x80\\x02ÀJ\\x91\\x942\\x98PÇÚwQM+\\x90¸¸Hª\\t\\x98ËL8\\x12?\\x98X;á_\\x16F \\x81\\xa0PI%§Æé\\x1c\\x8aràlM·c §\\n\\x8f\\x11^\\x96F\\x89ÕÕ\\x1dX\\x87ÿPZ\\t -wÇ\\x1d\\x9a*ºÞO.Ó\\x9d+Y\\xa0uT\\x1b\\\\ª¤Å°P½\\x1f\\x14\\x8c\\x1dJC\\x85ÃYW¢\\x0fû\\r©\\x13=\\x8c\\x07\\x9båpÍVÍ6Y\\x8c\\x10\\x1ed8IG§\\x9d~§Y+=ï\\r\\x08\\x91\\x97n¶\\x08=¤\"",
+      "options": [],
+      "answers": [
+        "This is an XOR cipher and needs to be deciphered with the key 'secure'"
+      ]
+    }
+  ]
+}{
+  "Anatomy - Digestive": [
+    {
+      "question": "In the absence of oxygen, some organisms produce ethanol (alcohol) and ATP from pyruvate and NADH. What is the name of this anaerobic pathway?",
+      "options": [
+        "alcohol fermentation",
+        "Krebs cycle",
+        "lactic acid fermentation",
+        "glycolysis"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "When do organisms use anaerobic pathways to generate energy?",
+      "options": [
+        "When there is not enough oxygen available to undergo aerobic cellular respiration.",
+        "When the Krebs cycle is moving too slowly.",
+        "When glucose is available as a reactant.",
+        "When the cytoplasm is unavailable for cellular respiration."
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Mother of Vinegar is a slimy, harmless substance consisting mostly of _________ bacteria (Mycoderma aceti) and cellulose.",
+      "options": [
+        "nitric acid",
+        "acetic acid",
+        "citric acid",
+        "boric acid",
+        "vinegar acid"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Gwen is investigating how exercise affects the rate at which she can squeeze a ball. After several minutes, she begins to experience muscle soreness and fatigue. She knows that this means her muscles are beginning to run out of oxygen. Which process is likely causing the soreness in her muscle cells?",
+      "options": [
+        "photosynthesis",
+        "Krebs cycle",
+        "alcohol fermentation",
+        "lactic acid fermentation"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "The general term used for the anaerobic degradation of glucose to obtain energy is",
+      "options": [
+        "anabolism",
+        "oxidation",
+        "fermentation",
+        "metabolism"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Cleavage of Fructose 1, 6-bisphosphate yields",
+      "options": [
+        "two aldoses",
+        "two ketoses",
+        "an aldose and a ketose",
+        "only a ketose"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The substrate used in the last step of glycolysis is",
+      "options": [
+        "glyceraldehyde 3-phosphate",
+        "pyruvate",
+        "phosphoenolpyruvate",
+        "1,3-bisphosphoglycerate"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "The product formed in the first substrate level phosphorylation in glycolysis is __________.",
+      "options": [
+        "pyruvate",
+        "3-phosphoglycerate",
+        "1,3-bisphosphoglycerate",
+        "2-phosphoglycerate"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "For its activity, pyruvate decarboxylase requires _______.",
+      "options": [
+        "Mg+2",
+        "Ca+2",
+        "Na+",
+        "H+"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "This enzyme is involved in the pathway of synthesis of acetyl-coA.",
+      "options": [
+        "hexokinase",
+        "pyruvate decarboxylase",
+        "pyruvate dehydrogenase",
+        "pyruvate kinase"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "In mitochondria, exergonic redox reactions _______________.",
+      "options": [
+        "are the source of energy driving prokaryotic ATP synthesis.",
+        "provide the energy that establishes the proton gradient.",
+        "reduce carbon atoms to carbon dioxide.",
+        "are coupled via phosphorylated intermediates to endergonic processes."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Most methods of preserving food involve ________ the process of decay. Fermentation ________ organic breakdown.",
+      "options": [
+        "speeding up or increasing - accelerates",
+        "stopping or slowing down - accelerates",
+        "speeding up or increasing - retards",
+        "stopping or slowing down - retards"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Increasing levels of CO2 during fermentation in a closed container will affect yeast by all of the following except ______________.",
+      "options": [
+        "increasing pH",
+        "acidifying growth medium",
+        "increasing pressure"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the definition of glycolysis?",
+      "options": [
+        "The process of breaking down glucose aerobically.",
+        "The process of breaking down glucose anaerobically.",
+        "The process of breaking down glucose to save energy.",
+        "The process of producing more glucose anaerobically."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Homemade vinegar typically contains a small amount of alcohol remaining. It can be removed by",
+      "options": [
+        "freezing the vinegar.",
+        "allowing the alcohol to evaporate.",
+        "boiling the vinegar.",
+        "diluting the vinegar."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Food preservation is the process of treating food to stop or slow down ____________.",
+      "options": [
+        "spoilage",
+        "loss of quality",
+        "loss nutritional value",
+        "all of the above",
+        "none of the above"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Since both glycolysis and fermentation do not require oxygen, they are both examples of __________ metabolism.",
+      "options": [
+        "aerobic",
+        "anaerobic",
+        "catabolic",
+        "anabolic"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Sugars belong to the family of organic compounds called ____________.",
+      "options": [
+        "proteins",
+        "fructoses",
+        "carbohydrates",
+        "maltoses"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.2
+    },
+    {
+      "question": "As the water activity (Aw) increases, a food’s ability to support the growth of bacteria, yeasts and mold ______.",
+      "options": [
+        "increases",
+        "decreases",
+        "remains the same"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Which is the correct equation for aerobic respiration in humans?",
+      "options": [
+        "glucose + oxygen → carbon dioxide + water",
+        "glucose + oxygen → lactic acid",
+        "glucose → lactic acid"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "In the cell, most aerobic respiration reactions happen?",
+      "options": [
+        "in the nucleus",
+        "in the cell membrane",
+        "in the mitochondria"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "What products are made during anaerobic respiration in yeast?",
+      "options": [
+        "carbon dioxide and water",
+        "ethanol and water",
+        "ethanol and carbon dioxide"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "In an experiment to show respiration in living organisms, the air they need may be passed through sodium hydroxide solution first. This is done ___________.",
+      "options": [
+        "to kill harmful pathogens that may be in the air",
+        "to release oxygen needed for respiration",
+        "to absorb carbon dioxide from the air"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Most ATP produced in aerobic respiration occurs in the process of ____________.",
+      "options": [
+        "glycolysis",
+        "the formation of acetyl-CoA",
+        "the Krebs cycle",
+        "chemiosmosis",
+        "substrate-level phosphorylation"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "In aerobic respiration, the energy in 1 mole of glucose is capable of producing ____ molecules of  ATP.",
+      "options": [
+        "2",
+        "38",
+        "2 x (6.02 x 1023)",
+        "38 x (6.02 x 1023)"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "In glycolysis, the activation of glucose is accomplished by __________. ",
+      "options": [
+        "NADH",
+        "coenzyme A",
+        "ATP",
+        "CO2",
+        "O2"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "In the presence of oxygen, all cells synthesize ATP via the process of glycolysis. Many cells also can metabolize pyruvate if oxygen is not present, via the process of __________.",
+      "options": [
+        "fermentation",
+        "aerobic respiration",
+        "oxidative phosphorylation",
+        "electron transport",
+        "photophosphorylation"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which stage of aerobic respiration requires CO2?",
+      "options": [
+        "glycolysis",
+        "Krebs cycle",
+        "electron transport chain",
+        "fermentation",
+        "none of the above"
+      ],
+      "answers": [
+        5
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "As protons flow through the ______, energy is released and exploited to combine ADP and inorganic phosphate to form ATP.",
+      "options": [
+        "electron transport chain",
+        "outer mitochondrial membrane",
+        "cytochrome oxidase",
+        "ATP synthase",
+        "NADH"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "The highest level of water activity (Aw) can be found in __________.",
+      "options": [
+        "apples",
+        "jams or preserves",
+        "cheese",
+        "beef jerky"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "The following actions relate to the bound water except __________.",
+      "options": [
+        "bound to molecules",
+        "loses freedom to move",
+        "held inside cells",
+        "does not retain properties of free water"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Even though vinegar is used as an effective natural preservative, vinegar itself is made through the fermentation process by adding _________________ together.",
+      "options": [
+        "sugar and alcohol",
+        "sugar and lactic acid",
+        "sugar and water",
+        "maltose and alcohol"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Vinegar is a liquid or solution that commonly has between _________ acetic acid as well as other properties such as flavour compounds and vitamins.",
+      "options": [
+        "2% - 3%",
+        "2% - 8%",
+        "2% - 10%",
+        "5% - 15%"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "The final acceptor for its electrons during alcoholic fermentation is __________.",
+      "options": [
+        "acetaldehyde",
+        "pyruvate",
+        "oxygen",
+        "carbon dioxide"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "About ____ % of the potential chemical energy in glucose is transferred to ATP.",
+      "options": [
+        "34%",
+        "48%",
+        "75%",
+        "94%"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "____________ titration is a classic titration method in chemical analysis that uses coulometric or volumetric titration to determine trace amounts of water in a sample.",
+      "options": [
+        "Fisher Price",
+        "Frasier Crane",
+        "Karl Fischer",
+        "Karl Erlich"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.8
+    }
+  ],
+  "Food Science": [
+    {
+      "question": "The minimum Aw level for the growth of C. botulinum is approximately _____. Depending on various product characteristics this minimum level can be as high as _____.",
+      "options": [],
+      "answers": [
+        "0.94",
+        "0.97"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The sound produced by 'crunching' breakfast cereal disappears after sitting in milk for a few minutes because the Aw _________________.",
+      "options": [],
+      "answers": [
+        "Increases"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Enzymes are biological _________ that speed up chemical reactions in living organisms.",
+      "options": [],
+      "answers": [
+        "catalysts"
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "The shape of an enzyme is critical to its __________.",
+      "options": [],
+      "answers": [
+        "function",
+        "activity",
+        "specificity"
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "The reason that Dietary Fiber + Sugar in Nutrition Label don't add up to the Total Carbohydrate is because the remainder is _________. ",
+      "options": [],
+      "answers": [
+        "starch"
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "The enzyme that acts on amylose (starch) is called __________.",
+      "options": [],
+      "answers": [
+        "amylase"
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Because enzymes are made in living things they are called _________ catalysts.",
+      "options": [],
+      "answers": [
+        "organic",
+        "biological"
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "The function of a protein is decided not only by the sequence of amino acids but also by the way the protein __________.",
+      "options": [],
+      "answers": [
+        "folds"
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "As of 2006, the Nutrition Facts Labels on packaged food products are required by the FDA to list how many grams of _________ are contained within one serving of the product.",
+      "options": [],
+      "answers": [
+        "trans fat"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Name 3 factors that affect the rate of enzyme catalyzed reactions.",
+      "options": [],
+      "answers": [
+        "temperature",
+        "pH",
+        "enzyme concentration"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "As Water Activity (Aw) values are assigned to foodstuffs, they are also applied to microorganisms. Order the AW of the following from high (1) to low (4).\ngram negative bacteria ______ \nzerophillic molds ______ \nmolds ______\ngram positive bacteria	 ______",
+      "options": [],
+      "answers": [
+        "1",
+        "4",
+        "3",
+        "2"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Identify the following characteristics as true for anaerobic respiration, aerobic respiration, or both.",
+      "options": [],
+      "answers": [
+        "answers omitted"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "During intense exercise, can a muscle cell use fat as a concentrated source of chemical energy? Explain:",
+      "options": [],
+      "answers": [
+        "No, fat metabolism requires oxygen, which is limited during intense exercise."
+      ],
+      "difficulty": 0.7
+    }
+  ]
+}{
+  "Chemistry Lab": [
+    {
+      "question": "A solid ball has a mass of 50 grams and a volume of 20 cm3. What is the density?",
+      "options": [],
+      "answers": [
+        "2.5 g/cm3"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A solid cylinder has a radius of 2 cm and a length of 7 cm. It has a density of 3.1 g/cm3. What is the mass of the cylinder?",
+      "options": [],
+      "answers": [
+        "548.65 g"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Seawater contains approximately 3.5% salt by weight. How much seawater (in kg) contains 1 kg of salt? If the density of seawater is 1030 kg/m3, what is the volume of seawater, in liters, containing 1 kg of salt?",
+      "options": [],
+      "answers": [
+        "28.57 kg, 27.74 Liters"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The density of two liquids (A and B) is given as 1000 kg/m3 and 600 kg/m3, respectively. The two liquids are mixed in a certain proportion and the density of the resulting liquid is 850 kg/m3. How much of liquid B (in grams) does 1 kg of the mixture contain? Assume the volume of the two liquids is additive when mixed.",
+      "options": [],
+      "answers": [
+        "375 g"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "As in the case of unlike magnetic poles, unlike electric charges _____.",
+      "options": [
+        "Attract",
+        "Repel"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "The buildup of charges on an object is called _____.",
+      "options": [
+        "Static electricity",
+        "Current electricity",
+        "Voltage",
+        "Resistance"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "What causes charges to move in a circuit?",
+      "options": [
+        "Voltage",
+        "Resistance",
+        "Current",
+        "Switch"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "An electric current will always follow _____.",
+      "options": [
+        "The path of least resistance",
+        "The shortest path",
+        "The most direct path",
+        "Any available path"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "In a series circuit with three bulbs, adding another bulb will _____.",
+      "options": [
+        "Increase the current",
+        "Decrease the current",
+        "Not affect the current",
+        "Increase the voltage"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "In a parallel circuit with three bulbs, _____.",
+      "options": [
+        "Adding another bulb will increase the current",
+        "Adding another bulb will decrease the current",
+        "Adding another bulb will not affect the current",
+        "Adding another bulb will increase the voltage"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The charge on a proton is _____.",
+      "options": [
+        "Positive",
+        "Negative",
+        "Neutral",
+        "Varies"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "A complete, unbroken path through which electric charges can flow is a (an) _____.",
+      "options": [
+        "Circuit",
+        "Insulator",
+        "Conductor",
+        "Switch"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Materials that allow the charges of an electric current to move freely through them are called _____.",
+      "options": [
+        "Conductors",
+        "Insulators",
+        "Resistors",
+        "Semiconductors"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "An example of an insulator is _____.",
+      "options": [
+        "Copper",
+        "Aluminum",
+        "Rubber",
+        "Silver"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "A device used to open and close an electric circuit is a (an) _____.",
+      "options": [
+        "Switch",
+        "Resistor",
+        "Capacitor",
+        "Transistor"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Magnetic poles that are alike _____.",
+      "options": [
+        "Repel",
+        "Attract",
+        "Have no effect",
+        "Sometimes attract"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "The region around a magnet where the magnetic force is exerted is known as its _____.",
+      "options": [
+        "Magnetic field",
+        "Electric field",
+        "Gravitational field",
+        "Force field"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "One part of a freely swinging magnet always points _____.",
+      "options": [
+        "North",
+        "South",
+        "East",
+        "West"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Magnetic poles that are unlike _____.",
+      "options": [
+        "Attract",
+        "Repel",
+        "Have no effect",
+        "Sometimes repel"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "A temporary magnet _____.",
+      "options": [
+        "Loses its magnetism quickly",
+        "Retains its magnetism indefinitely",
+        "Has no magnetism",
+        "Requires no external energy"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "The closer together a magnet’s magnetic field lines are, _____.",
+      "options": [
+        "The stronger the field",
+        "The weaker the field",
+        "The field's direction is uniform",
+        "The field is non-existent"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which type of energy is associated with electric currents?",
+      "options": [
+        "Electrical energy",
+        "Magnetic energy",
+        "Kinetic energy",
+        "Potential energy"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "The type of current produced by a battery is _____.",
+      "options": [
+        "Direct current (DC)",
+        "Alternating current (AC)",
+        "Pulsating current",
+        "Variable current"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "A device that increases or decreases voltage is called a (an) _____.",
+      "options": [
+        "Transformer",
+        "Resistor",
+        "Capacitor",
+        "Diode"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "An alternating current consists of charges that _____.",
+      "options": [
+        "Flow in one direction only",
+        "Change direction periodically",
+        "Do not move",
+        "Move randomly"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "An electric current produces a (an) _____.",
+      "options": [
+        "Magnetic field",
+        "Electric field",
+        "Gravitational field",
+        "Sound wave"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Given the circuit diagrams A and B, which circuit—A or B—represents a series circuit?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Given the circuit diagrams A and B, which circuit—A or B—is a parallel circuit?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Given the circuit diagrams A and B, which circuit diagram represents circuit B?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Mass",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Boiling point",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Odor",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Melting point",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Length",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Density",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Volume",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Luster",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Temperature",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Ductility",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Area",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Conductivity",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Hardness",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Color",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Malleability",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Shape",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Weight",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Classify the following as Extensive or Intensive: Ductility",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Large amounts of nitrogen are used by the electronics industry to provide a gas blanket over a component during production. This ensures that undesired reactions with oxygen will not occur. Classify each statement as an Extensive property or Intensive property of nitrogen: Nitrogen is a colorless gas.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Large amounts of nitrogen are used by the electronics industry to provide a gas blanket over a component during production. This ensures that undesired reactions with oxygen will not occur. Classify each statement as an Extensive property or Intensive property of nitrogen: A volume of 22.4 L of nitrogen gas weighs 28 g at O oC.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Large amounts of nitrogen are used by the electronics industry to provide a gas blanket over a component during production. This ensures that undesired reactions with oxygen will not occur. Classify each statement as an Extensive property or Intensive property of nitrogen: Liquid nitrogen boils at 77.4 K.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Large amounts of nitrogen are used by the electronics industry to provide a gas blanket over a component during production. This ensures that undesired reactions with oxygen will not occur. Classify each statement as an Extensive property or Intensive property of nitrogen: Nitrogen gas has a density of 1.25 g/L at 0 oc",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Oxygen is the third most abundant element in the universe and makes up about 2/3 of the human body. Classify each statement as an Extensive property or Intensive property of oxygen: Liquid oxygen boils at 90.2 K.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Oxygen is the third most abundant element in the universe and makes up about 2/3 of the human body. Classify each statement as an Extensive property or Intensive property of oxygen: Liquid oxygen is pale blue.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "Oxygen is the third most abundant element in the universe and makes up about 2/3 of the human body. Classify each statement as an Extensive property or Intensive property of oxygen: A volume of 22.4 L of oxygen gas weighs 32 g at 0 oC.",
+      "options": [
+        "Extensive",
+        "Intensive"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.4
+    },
+    {
+      "question": "A 750g block of iron was heated using 0.75KJ of energy, if the starter temperature was 29 ˚C what was the final temperature? (c= 0.450 J/ g oC for Iron)",
+      "options": [],
+      "answers": [
+        "31.22˚C"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A gold sample that was being tested started at 31˚C, it then absorbed 1.29KJ of energy and ended up measuring at 48˚C what was the mass of the block?  (c= 0.13 J/ g oC for Gold)",
+      "options": [],
+      "answers": [
+        "582.20g"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Plumbing in old houses uses larges amount of copper pipes, in the winter the temperature plummets and these pipes may only have recorded a temperature of 2˚C before the start to encounter problems. To get the pipes to a safer temperature of 7˚C energy needs to be transferred, in this case by heat. If 0.95KJ of heat energy is put in to the pipes what is the mass of the pipe that will be safe?  (c= 0.387 J/ g oC for Copper)",
+      "options": [],
+      "answers": [
+        "492.25g"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A 750g mystery sample is heated by from 25˚C by the absorption of 14.5KJ of energy, the final temperature of 40˚C, what is the block made from?",
+      "options": [],
+      "answers": [
+        "Iron"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Identify the material that requires 60.70KJ of energy to increase the temperature of 1500g increase by 9˚C.",
+      "options": [],
+      "answers": [
+        "Copper"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A block of iron (c= 0.450 J/ g oC) with a mass of 9.10 g is at 73.6 oC. It is added to 99.3 g of water at 13.9 oC.  What is the final temperature of the iron and the water.",
+      "options": [],
+      "answers": [
+        "14.2 oC"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A 45.7 g block of an unknown metal at 74.2 oC is placed in 72.9 g of water at 15.9 oC. If the final temperature of the system is 22.9  oC, what is the specific heat of the metal?",
+      "options": [],
+      "answers": [
+        "0.54 J/g oC"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the specific heat of a substance that absorbs 2500 Joules of heat when a sample of 10,000 grams of the substance increases its temperature from 20 C to 70 C?",
+      "options": [],
+      "answers": [
+        "0.005 J/g C"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A 687 gram mass of water whose temperature was 50 C lost 23,900 Joules of heat as it cooled.  What was the temperature of the water after losing this heat?",
+      "options": [],
+      "answers": [
+        "41.7 C"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the mass of a piece of copper that undergoes a 25 C temperature change when it absorbs 751 joules of energy? Specific heat of Copper is .387 J/g C",
+      "options": [],
+      "answers": [
+        "77.42 g"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A 1.6 gram sample of a metal that has the appearance of gold requires 5.8 Joules of energy to change its temperature from 23 C to 41 C.  Is the metal pure gold?  Explain your answer.",
+      "options": [],
+      "answers": [
+        "No, the specific heat is approximately .20 J/g C, not 0.13 J/g C."
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "458 calories would be how many kilojoules (kJ)?",
+      "options": [],
+      "answers": [
+        "1.92 kJ"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "How much heat energy is absorbed by 6.2 x 102 g of ice as it melts at 0 C? Heat of Fusion of Water is 335 J/g",
+      "options": [],
+      "answers": [
+        "2.08 x 10^5 J"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "An ice cube at 0 C was dropped into 42 grams of water in a cup at 45 C.  At the instant that all of the ice was melted, the temperature of the water in the cup was 24 C.  What is the mass of the ice cube?",
+      "options": [],
+      "answers": [
+        "3.7 g"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Given the equation,  3CO  +   Fe2O3    2Fe   +   3CO2   +   24.7 kJ,    how much heat is released when 56 grams of CO react?",
+      "options": [],
+      "answers": [
+        "9.9 kJ"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Calculate the amount of heat needed to boil 190 grams of water at 18 C to steam at 125 C.",
+      "options": [],
+      "answers": [
+        "5.15 x 10^5 J"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "Calculate the heat required, in joules, to change 24 grams of ice at -23 C to 24 grams at water at 53 C.",
+      "options": [],
+      "answers": [
+        "10.97 x 10^3 J"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "The bright-line spectrum of sodium is produced when energy is",
+      "options": [
+        "absorbed as electrons move from higher to lower electron shells",
+        "absorbed as electrons move from lower to higher electron shells",
+        "released as electrons move from higher to lower electron shells",
+        "released as electrons move from lower to higher electron shell"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "The two forms of oxygen, O2(g) and O3(g), have",
+      "options": [
+        "different molecular structures and identical properties",
+        "different molecular structures and different properties",
+        "identical molecular structures and identical properties",
+        "identical molecular structures and different Properties"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which process results in a chemical change?",
+      "options": [
+        "tearing tin foil",
+        "melting an iron bar",
+        "crushing an aluminum can",
+        "burning magnesium ribbon"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which substance can not be broken down by chemical means?",
+      "options": [
+        "ammonia",
+        "antimony",
+        "methane",
+        "water"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which two physical properties allow a mixture to be separated by chromatography?",
+      "options": [
+        "hardness and boiling point",
+        "density and specific heat capacity",
+        "malleability and thermal conductivity",
+        "solubility and molecular polarity"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which element is malleable and a good conductor of electricity at STP?",
+      "options": [
+        "argon",
+        "carbon",
+        "iodine",
+        "silver"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which element has chemical properties that are most similar to the chemical properties of sodium?",
+      "options": [
+        "beryllium",
+        "calcium",
+        "lithium",
+        "magnesium"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which compound is insoluble in water?",
+      "options": [
+        "KOH",
+        "NH4Cl",
+        "Na3PO4",
+        "PbSO4"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which formula represents a mixture?",
+      "options": [
+        "C6H12O6(ℓ)",
+        "C6H12O6(s)",
+        "LiCl(aq)",
+        "LiCl(s)"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which element is present in all organic compounds?",
+      "options": [
+        "carbon",
+        "hydrogen",
+        "nitrogen",
+        "oxygen"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which statement describes a chemical property of aluminum?",
+      "options": [
+        "Aluminum is malleable.",
+        "Aluminum reacts with sulfuric acid.",
+        "Aluminum conducts an electric current.",
+        "Aluminum has a density of 2.698 g/cm3 at STP."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which statement describes a chemical property of bromine?",
+      "options": [
+        "Bromine is soluble in water.",
+        "Bromine has a reddish-brown color.",
+        "Bromine combines with aluminum to produce AlBr3.",
+        "Bromine changes from a liquid to a gas at 332 K and 1 atm."
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Changes in activation energy during a chemical reaction are represented by a",
+      "options": [
+        "cooling curve",
+        "heating curve",
+        "ionization energy diagram",
+        "potential energy diagram"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Magnesium and calcium have similar chemical properties because a magnesium atom and a calcium atom have the same",
+      "options": [
+        "atomic number",
+        "mass number",
+        "total number of electron shells",
+        "total number of valence electrons"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which equation represents a physical change?",
+      "options": [
+        "H2O(s) + 6.01 kJ 		H2O(ł)",
+        "2H2(g) + O2(g) 		2H2O(g) + 483.6 kJ",
+        "H2(g) + I2(g) + 53.0 kJ 		2HI(g)",
+        "N2(g) + 2O2(g) + 66.4 kJ 	2NO2(g)"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A solid substance is an excellent conductor of electricity. The chemical bonds in this substance are most likely",
+      "options": [
+        "ionic, because the valence electrons are shared between atoms",
+        "ionic, because the valence electrons are mobile",
+        "metallic, because the valence electrons are stationary",
+        "metallic, because the valence electrons are Mobile"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which substance can be broken down by a chemical change?",
+      "options": [
+        "antimony",
+        "carbon",
+        "hexane",
+        "sulfur"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which element has both metallic and nonmetallic properties?",
+      "options": [
+        "Rb",
+        "Rn",
+        "Si",
+        "Sr"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which statement describes a chemical property of the element magnesium?",
+      "options": [
+        "Magnesium is malleable.",
+        "Magnesium conducts electricity.",
+        "Magnesium reacts with an acid.",
+        "Magnesium has a high boiling point."
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which two characteristics are associated with metals?",
+      "options": [
+        "low first ionization energy and low electronegativity",
+        "low first ionization energy and high electronegativity",
+        "high first ionization energy and low electronegativity",
+        "high first ionization energy and high electronegativity"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0.6
+    }
+  ]
+}{
+  "Chemistry Lab": [
+    {
+      "question": "Calculate the heat (q) absorbed by the water in the calorimeter.  Be sure to write down the formula you are using and show work.  Don’t forget to refer to the useful information in the above data table.  Also, assume that the heat lost to the calorimeter is negligible. Formula:",
+      "options": [],
+      "answers": ["q = mcΔT"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Calculate the heat (q) lost by the reaction of the FRH contents reacting with water.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The FRH is a mixture containing magnesium, iron, sodium chloride and polyethylene.  The reactive component is the magnesium.  The FRH is approximately 55% Magnesium.  Using this information, calculate the moles of Magnesium in the your FRH sample.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The exothermic reaction taking place in the FRH is:  Mg(s)+ 2 H-OH(l) → Mg(OH)2(s) + H2(g) Calculate the experimental ΔHorxn for the reaction of magnesium with water in KJ.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Calculate the theoretical ΔHorxn using the ΔHof values provided.  Hof [Mg(OH)2(s)] = -924.7 kJ/mol, Hof [H2O(l)] = -285.83 kJ/mol,  Hof [Mg(s)] = 0 kJ/mol, Hof [H2(g)] = 0 kJ/mol",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Calculate the % error for your experiment.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Consider the following list of possible errors that could have occurred during this experiment.  For each one, indicate whether the error would cause an experimental Horxn to be HIGHER (H), LOWER (L), would have NO EFFECT (--) at all or could be either higher or lower (L/H). Please use the symbols H, L, -- or L/H. After measuring the volume of water, you mistakenly spilled some while transferring to the calorimeter.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Consider the following list of possible errors that could have occurred during this experiment.  For each one, indicate whether the error would cause an experimental Horxn to be HIGHER (H), LOWER (L), would have NO EFFECT (--) at all or could be either higher or lower (L/H). Please use the symbols H, L, -- or L/H. The FRH powder is actually non-uniform.  55% Mg is just a rough estimate.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Consider the following list of possible errors that could have occurred during this experiment.  For each one, indicate whether the error would cause an experimental Horxn to be HIGHER (H), LOWER (L), would have NO EFFECT (--) at all or could be either higher or lower (L/H). Please use the symbols H, L, -- or L/H. In the experiment, heat was lost to the environment (air, calorimeter, hands, etc).",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Consider the following list of possible errors that could have occurred during this experiment.  For each one, indicate whether the error would cause an experimental Horxn to be HIGHER (H), LOWER (L), would have NO EFFECT (--) at all or could be either higher or lower (L/H). Please use the symbols H, L, -- or L/H. You measured and recorded 80 mL of water in the calorimeter instead of 100 mL.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "How much heat would be released if the entire FRH were to react? Each FRH contains 4 segments and you only used ¼ of a segment. Assume all the segments to have approximately the same mass.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Let’s say you want to use the FHR to actually heat up your Cheese Tortellini in Tomato Sauce provided in your MRE.  YUM!!! This delightful food weights about 171 g.  Assuming the MRE was at room temperature to begin with, 22.5oC, to what  temperature would the food be raised to if you were to use one entire FHR to heat it up.  Assume the specific heat of the food to be 4.184 J/g.oC and that all of the food heats up uniformly.  And, of course, ALL of the heat generated gets absorbed by the food!",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.8
+    },
+    {
+      "question": "If 10.0 g samples of each of four elements are heated to 100.0oC and placed into 100 mL insulated containers of water at 25oC, which element’s container of water would show the greatest increase in temperature?  The specific heat of each element is listed next to its symbol.",
+      "options": [
+        "Cu   0.385  J/g∙oC",
+        "Ni   0.444  J/g∙oC",
+        "Al   0.900  J/g∙oC",
+        "Pb   0.129  J/g∙oC"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "An endothermic reaction is carried out in a coffee cup calorimeter.  Which of the following is TRUE for this process?  qreaction is the chemical reaction taking place and qsurroundings is the surrounding liquid in the coffee cup.  The heat capacity of the calorimeter is considered negligible.",
+      "options": [
+        "The enthalpy of the products is higher than the enthalpy of the reactants.",
+        "qreaction < 0",
+        "qreaction  +  qsurroundings  > 0",
+        "The temperature of the liquid increases."
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Choose the correct equation for the standard enthalpy of formation of CO(g).",
+      "options": [
+        "2 C(graphite)  +  O2 (g)  → 2 CO(g)       ∆Hºf = −110.5 kJ",
+        "C(graphite)  +  O (g)  → CO (g)                      ∆Hºf = −110.5 kJ",
+        "C(graphite)  +  ½ O2 (g)  →  CO (g)        ∆Hºf = −110.5 kJ",
+        "C(graphite)  +  CO2 (g) →  2 CO (g)           ∆Hºf = −110.5 kJ"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Consider the dissolution of CaCl2:  CaCl2 (s)  →  Ca2+ (aq)  +  2 Cl– (aq)    ΔH = – 81.5 kJ Which of the following reactions would absorb 27.2 kJ of heat?",
+      "options": [
+        "Ca2+ (aq)  +  2 Cl– (aq)    →  CaCl2 (s)",
+        "½ Ca2+ (aq)  +   Cl– (aq)    →  ½ CaCl2 (s)",
+        "2 CaCl2 (s)  →  2 Ca2+ (aq)  +  4 Cl– (aq)",
+        "1/3 Ca2+ (aq)  +  2/3 Cl– (aq)    →  1/3 CaCl2 (s)"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which reaction is written correctly to match its labeled ∆H value.",
+      "options": [
+        "NaCl(s)  →   Na (s)   +  Cl2 (g)            ∆H solution",
+        "Mg(s)   +    ½ O2 (g)    →    MgO(s)        ∆H neutralization",
+        "CH4(g)   +    2 O2 (g)     →    CO2(g)   +  2 H2O (ℓ)    ∆H formation",
+        "H2O (s)   →    H2O (l)          ∆H fusion"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The sign of ΔH for the process CO2 (s)  →  CO2 (g) is:",
+      "options": [
+        "positive and the process is endothermic.",
+        "negative and the process is endothermic.",
+        "positive and the process is exothermic.",
+        "negative and the process is exothermic."
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which of the following reactions is the most likely to be exothermic?",
+      "options": [
+        "CaCl2 (s) →  Ca2+(aq)  +  2 Cl- (aq)",
+        "CaCO3(s)  →   CaO(s) + CO2(g)",
+        "Cl2 (g)  →  2 Cl (g)",
+        "H2O (l)  →  H2O (g)"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which of the following would be exothermic processes?\n1. Combustion of ethyl alcohol\n2. Formation of Fe2O3 from iron metal and oxygen gas.\n3. Dehydration of copper sulfate pentahydrate",
+      "options": [
+        "1 only",
+        "2 only",
+        "2 and 3 only",
+        "1 and 2 only"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Consider the following energy diagram.  Which statement(s) below are true?\nThe products are more stable than the reactants.\nThe Hrxn for this process would be about 15 kJ                                      E\nEnergy is absorbed this reaction.",
+      "options": [
+        "1 only",
+        "2 only",
+        "3 only",
+        "2 and 3"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The standard enthalpy change for the synthesis reaction below is  −116 kJ.  What is the standard enthalpy of formation (ΔHof) of NO(g) given that the enthalpy of formation for NO2 (g) is 32 kJ/mol?\n\n                       2 NO (g)      +     O2 (g)    →      2 NO2 (g)                       ΔHrxn  =   − 116 kJ",
+      "options": [
+        "– 45 kJ/mol",
+        "– 62 kJ/mol",
+        "+90 kJ/mol",
+        "+148 kJ/mol"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "What is the change in enthalpy for the reaction of 0.500 mol of iron(II) oxide, FeO, with excess oxygen gas?\n6 FeO (s)   +   O2 (g)   →   2 Fe3O4 (s)               ∆Hrxn = − 635 kJ",
+      "options": [
+        "−635 kJ",
+        "−106 kJ",
+        "−53 kJ",
+        "+635 kJ"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "3 C2H2(g) → C6H6(g)\nWhat is the standard enthalpy change, ∆H˚, for the reaction represented above? (∆H˚f of C2H2(g) is 230 kJ∙mol−1; ∆H˚f  of C6H6(g) is 83 kJ∙mol−1.)",
+      "options": [
+        "–607 kJ",
+        "–147 kJ",
+        "–19 kJ",
+        "+19 kJ"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "A 40.2 g sample of a metal is heated to 99.3°C and then placed in a calorimeter containing 120.0 g of water (c = 4.18 J/g∙°C) at 21.8 °C.  The final temperature of the water is 24.5°C.  Which one of the following metals could have been the metal sample?",
+      "options": [
+        "Al, c = 0.90 J/g∙°C",
+        "Fe, c = 0.45 J/g∙°C",
+        "Cu, c = 0.20 J/g∙°C",
+        "Pb, c = 0.14 J/g∙°C"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Nitric oxide reacts with oxygen according to the equation:\n2 NO (g)  +  O2 (g)  →  2 NO2 (g)       ∆H = −56.5 kJ\n\nThe NO2 produced by the above reaction was 33.6 L at 40.0°C and 1.10 atm.  How much heat energy was released during this process?",
+      "options": [
+        "−19.0 x 103 kJ",
+        "– 81.3 kJ",
+        "−40.6 kJ",
+        "– 20.3 kJ"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Calculate the standard enthalpy of formation of solid Mg(OH)2, given the following data:\n\n2 Mg (s)  +  O2 (g)  →  2 MgO (s)           ΔH° = –1204 kJ\nMg(OH)2 (s)  →  MgO (s)  +  H2O (ℓ)      ΔH° =  +37 kJ\n2 H2 (g)  +  O2 (g)  →  2 H2O (ℓ)              ΔH° = – 572 kJ\n\nHeat of formation reaction:     Mg(s)  +  H2(g)  +  O2(g)  →  Mg(OH)2 (s)",
+      "options": [
+        "−1813 kJ",
+        "– 925 kJ",
+        "+925 kJ",
+        "+595 kJ"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "The specific heat of sodium is 1.225 J/g·°C.  If 475 J of heat is added to a 278 g piece of sodium at \n21.4°C, what is the final temperature of the sodium?",
+      "options": [
+        "21.9°C",
+        "22.4°C",
+        "22.8°C",
+        "23.5°C"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Calculate how much heat would be absorbed to melt a 35.00 g ice cube.          ΔHfusion = 6.02 kJ/mol",
+      "options": [
+        "0.523 kJ",
+        "1.09 kJ",
+        "16.7 kJ",
+        "11.7 kJ"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A 10.0 gram sample of Fe was placed in a chamber filled with an excess of oxygen gas.  The following reaction took place.\n4 Fe (s)   +  3 O2 (g)   →   2 Fe2O3 (s)               ∆Hrxn = − 824.2 kJ\n\nThe surrounding water and metal calorimeter was initially at a temperature of 23.0oC.  Calculate the final temperature of the surrounding water and metal calorimeter.  The heat capacity of the surrounding water and metal calorimeter together is 3.87 kJ/oC.",
+      "options": [
+        "27.8oC",
+        "32.5oC",
+        "38.1oC",
+        "61.1 oC"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The next two questions relate to this data table:  Consider the following calorimetry data collected by a student using a coffee-cup calorimeter to dissolve KBr in water.  Assume the density of the solution to be 1.00 g/mL.\nCalculate the qsurrounding liquid for this process.",
+      "options": [
+        "242 J",
+        "2,370 J",
+        "-2,130 J",
+        "-2,370 J"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "For the calorimetry experiment described above, calculate the enthalpy change when KBr dissolves in water.  KJ/mol",
+      "options": [
+        "15.5 kJ/mol",
+        "24.7 kJ/mol",
+        "-15.5 kJ/mol",
+        "-24.7 kJ/mol"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Based on their bond energies, estimate ΔHrxn for the reaction:   H2O2  +  CH3OH   →  H2CO    +  2 H2O\nH−O−O−H   +   H−C−O−H    →    H−C=O    +   H−O−H   +  H−O−H",
+      "options": [
+        "−491 kJ",
+        "− 345 kJ",
+        "− 199 kJ",
+        "−105 kJ"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "As solid MgSO4 readily dissolves in water, the solution becomes warmer.  Which are the correct signs of Go,Ho, and So for this process?\n		Go		Ho		So",
+      "options": [
+        " -\t    +\t    -",
+        " +\t    - \t    +",
+        " +\t    -\t    -",
+        " -\t    -\t    +"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "A mixture of sand and table salt can be separated by filtration because the substances in the mixture differ in",
+      "options": [
+        "boiling point",
+        "particle size",
+        "density at STP",
+        "solubility in water"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A solution consists of 0.50 mole of CaCl2 dissolved in 100. grams of H2O at 25°C. Compared to the boiling point and freezing point of 100. grams of H2O at standard pressure, the solution at standard pressure has",
+      "options": [
+        "a lower boiling point and a lower freezing point",
+        "a lower boiling point and a higher freezing point",
+        "a higher boiling point and a lower freezing point",
+        "a higher boiling point and a higher freezing point"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Use the diagram below to answer question 4. During which time interval is the average kinetic energy of the particles of the substance constant while the potential energy of the particles increases?",
+      "options": [
+        "AC",
+        "CD",
+        "BC",
+        "DF"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which element is a liquid at 305 K and 1.0 atmosphere?",
+      "options": [
+        "magnesium",
+        "gallium",
+        "fluorine",
+        "iodine"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "At STP, which physical property of aluminum always remains the same from sample to sample?",
+      "options": [
+        "mass",
+        "length",
+        "density",
+        "volume"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which diagram represents a mixture of two different molecular forms of the same element?",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A compound is broken down by chemical means during",
+      "options": [
+        "chromatography",
+        "electrolysis",
+        "distillation",
+        "filtration"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "What is the most likely electronegativity value for a metallic element?",
+      "options": [
+        "1.3",
+        "3.4",
+        "2.7",
+        "4.0"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which sample of matter sublimes at room temperature and standard pressure?",
+      "options": [
+        "Br2 (ℓ)",
+        "CO2 (s)",
+        "Cl2 (g)",
+        "SO2 (aq)"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Based on electron configurations, which sample would be paramagnetic (attracted to a magnet)?",
+      "options": [
+        "ZnCl2",
+        "CuCl2",
+        "AlCl3",
+        "MgCl2"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "According to the graph above, which substances would most likely FLOAT in water?",
+      "options": [
+        "E and F",
+        "G and H",
+        "H only",
+        "E, F, G and H"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A colored solution was placed in a spectrophotometer and exposed to the visible spectrum of wavelengths.  The absorbance spectrum is plotted below.  What is the best guess as to what color the solution was?",
+      "options": [
+        "Red",
+        "Orange",
+        "Green",
+        "Blue"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A 200. gram solid substance was heated according to the graph above.  Calculate the specific heat of the liquid state of matter for this substance.",
+      "options": [
+        "0.62 J/g.oC",
+        "1.7 J/g.oC",
+        "2.1 J/g.oC",
+        "4.2 J/g.oC"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Which element has the greatest Hall effect of any metal ?",
+      "options": [
+        "Al",
+        "Bi",
+        "Co",
+        "Si"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Starting as a gas at 206°C, a sample of a substance is allowed to cool for 16 minutes. This process is represented by the cooling curve below. What is the melting point of this substance?",
+      "options": [
+        "150℃",
+        "Between 150℃ and 90℃",
+        "90℃",
+        "Between 90℃ and 50℃"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the process called when a substances changes from the gas state of matter directly into the solid state of matter?",
+      "options": [
+        "Freezing",
+        "Sublimation",
+        "Plasma",
+        "Deposition"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "What is the process called when the plasma state of matter cools?",
+      "options": [
+        "Ionization",
+        "Vaporization",
+        "Condensation",
+        "Recombination"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "If you have 100.0 g of KClO3, KCl, NaCl and NH4Cl in a beaker and you add distilled water that is 50.°C, which compound would dissolve first?",
+      "options": [
+        "KClO3",
+        "KCl",
+        "NaCl",
+        "NH4Cl"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Based on the solubility curve, which substance is most likely a gas?",
+      "options": [
+        "SO2l",
+        "NaCl",
+        "KI",
+        "NH3"
+      ],
+      "answers": [
+        "4"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Based on the solubility curve, which substance would dissolve the most if thrown on ice?",
+      "options": [
+        "KClO3",
+        "KCl",
+        "KI",
+        "NaCl"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "At standard pressure, which substance becomes less soluble in water as temperature increases from 10.°C to 80.°C?",
+      "options": [
+        "HCl",
+        "NaCl",
+        "KCl",
+        "NH4Cl"
+      ],
+      "answers": [
+        "1"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which substance can dissolve 63.0 grams of solute in 100.g of water at a temperature of 40.°C?",
+      "options": [
+        "KNO3",
+        "NaNO3",
+        "NaCl",
+        "KClO3"
+      ],
+      "answers": [
+        "2"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A Canadian nickel which is made of pure nickel metal is attracted to a magnet.  If heated past a certain temperature, nickel will lose its magnetism and it will fall away from the magnet.  What is this temperature called at or above which a substance will lose its magnetism?",
+      "options": [
+        "Ferromagnetism temperature",
+        "Maxwell temperature",
+        "Curie temperature",
+        "Faraday temperature"
+      ],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Two drops each of the four pure liquids below were dropped on a clean lab bench surface.  The two drops were smeared across the table and the time they took to evaporate from the table was recorded.  Which of the four liquids below do you predict would have the longest recorded time?",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.8
+    }
+  ]
+}{
+  "Codebusters": [
+    {
+      "question": "Decode this quote from Rosalind Franklin which has been encoded with an Aristocrat Cipher:\nTJUHRJH XRN HAHKLNXL OUZH JXRRQD XRN TGQEON RQD VH\nTHSXKXDHN.",
+      "options": [],
+      "answers": ["Research is necessary to see things as they are rather than as they might be."],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The following symbols encode a quote by Toni Morrison using a Baconian Cipher. You are told that the deciphered text starts with IF:\nA BOOK A SHOT BADLY A PLAN BE OLD BABES A CASE ABBEY\nBE ITS BE ITS A PLAN A SHOT A BABY BADLY BADLY A PLAN\nBE OLD EARTH A CASE BE OLD ACRES BE ITS A PLAN AMPLE\nA BOOK BE OLD ACRES BE OLD ALPHA BE ITS EARTH ACRES\nBE ITS EARTH A BOOK ABBEY AMPLE BACON BE ITS EARTH\nA CASE BE ITS BABES ACRES A BOOK AMPLE EARTH BADLY\nA PLAN BE OLD A CALL A PLAN BABES ABBEY",
+      "options": [],
+      "answers": ["If you surrender to the air you can ride it"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The following quote by Emily Dickinson needs to be decoded with the Nihilist Substitution Cipher with a keyword of SIMPLER and polybius key of HOSPITABLE:\n24 27 55 39 39 38 65  24 40 62 25 39 67 78\n65 30 62 25 57 50 66  34 26 66 58 37 46 55\n35 36 55 39 68 56 55  38 28 56 56 45 36 69  26 27 86 38",
+      "options": [],
+      "answers": ["That it will never come again is what makes life so sweet"],
+      "difficulty": 0.9
+    },
+    {
+      "question": "A lyric by ABBA has been encoded using K1 Aristocrat Cipher for you to decode. What did they say?\nMPP FWRF VOEZ,IRFNW FWRF MNPQP, TOVVOQV FWP TRQNOQV\nDGPPQ",
+      "options": [],
+      "answers": ["All those moments,lost like tears in rain."],
+      "difficulty": 0.7
+    },
+    {
+      "question": "A lyric by George Michael has been encoded using K3 Aristocrat Cipher for you to decode. You are told that the letter P decodes to be E:\nWKGPU PMSQG GCHCG VPCSC WGSNW FZARP PZLCU PSQZG\nQMLAZ LK",
+      "options": [],
+      "answers": ["Every breath you take every move you make"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Decode the following quote written by Shakespeare which was encoded as a 2x2 Hill Cipher using a keyword of RASH:\n(R	A) ≡ (17	0)",
+      "options": [],
+      "answers": ["The course of true love never did run smooth"],
+      "difficulty": 0.9
+    },
+    {
+      "question": "A quote by F. Scott Fitzgerald has been encoded as the K1 Aristocrat Cipher for you to decode. You are told that the letter C decodes to S:\nZB KR RAVBFTN XBU KANT OVJBTNXDJT RTXNC KR EXYGTN\nFXOT KT CAKT XUOZWT YGXY Z’OT DTTB YVNBZBF AOTN ZB\nKR KZBU TOTN CZBWT",
+      "options": [],
+      "answers": ["So we beat on boats against the current borne back ceaselessly into the past"],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The following quote written by Shakespeare needs to be decoded with the Porta Cipher with a keyword of PIOUS.",
+      "options": [],
+      "answers": ["Brevity is the soul of wit"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The following symbols are a Baconian cipher of a common phrase said in Athens, Georgia. What is the decoded phrase?",
+      "options": [],
+      "answers": ["Go Dawgs Sic Em"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "A quote by Gabriel García Márquez has been encoded using the K1 Aristocrat Cipher for you to decode. You are told that the letter A maps to O:\nSWXP ZXPPDYE CB MCID CE BAP SWXP WXNNDBE PA UAQ FQP\nSWXP UAQ YDZDZFDY XBH WAS UAQ YDZDZFDY CP.",
+      "options": [],
+      "answers": ["Always remember that when one door closes another one opens."],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Decode the following quote by Albert Einstein needs to be decoded with the Nihilist Substitution Cipher with a keyword of SIMPLE and polybius key of SUPREMACY:\n62 88 65	64 76 50	54 68 32	35 56 30\n46 78 53	48 85 50	62 50 72	47 57 27\n54 70 73	28 56 26	26 57 64	44 76 27	32 57 64\n24 93 27	24 70 52	48 93 39	33 78 52	48 63 58\n55 86 32	25 56 30	33 60 65	25 93 66	45 50 33\n56 77 67	26 49 32	28",
+      "options": [],
+      "answers": ["Intellectuals solve problems geniuses prevent them"],
+      "difficulty": 0.9
+    },
+    {
+      "question": "The following Aristocrat is a lyric by Taylor Swift. What does it decode it?\nNJ BGCN CN EA NXKDDJXCUM EZ FWCQA, NBKUQCUM CU OWJUB\nJO ZJH NKZCUM C'E NJWWZ OJW BGKB UCMGB.",
+      "options": [],
+      "answers": ["My mind is alive you kill everything i touch everything i touch"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "A quote by Mahatma Gandhi has been encoded using the Fractionated Morse Cipher for you to decode. You are told that the quote starts with LIVE.\nR B B  H  U  T Q  E  A  H E  G  O  L H\nY L B  I  E  O L  V  B  B\nZ W O  O  L  R T  D  L  M Y  F  U  S R  V\nY N A  Q  Q  I V  L  K  Q P  M  U  R U  X  K\nY F Q  Q  S  E H  D  L  R U  C  N  T E",
+      "options": [],
+      "answers": ["Live as if you were to die tomorrow Learn as if you were to live forever"],
+      "difficulty": 0.9
+    },
+    {
+      "question": "The following quote written by Jane Austen has been encoded as an Aristocrat using a K1 alphabet. You are told the letter M decodes to N:\nCD CA F DPQDE QMCRIPAFYYU FHLMXSYIZWIZ, DEFD F\nACMWYI BFM CM NXAAIAACXM XJ F WXXZ JXPDQMI, BQAD GI\nCM SFMD XJ F SCJI.",
+      "options": [],
+      "answers": ["It is not uncommon to deceive oneself into the belief that one is loved"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Decode the following phrase said by UGA students which is encoded as a 2x2 Hill Cipher using the keyword HEAT:\n(H	E) ≡ (7	4 )",
+      "options": [],
+      "answers": ["How bout them dawgs"],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The following song lyric by Sabrina Carpenter needs to be decoded with the Porta Cipher with a keyword of JOYS",
+      "options": [],
+      "answers": ["Maybe I just like to overthink"],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Your friend who really has a problem typing and spelling has encoded a quote by Thomas Aquinas as an Aristocrat using a K2 alphabet for you to decode. What did they enter?\nLBCC FJADYAFWN WYL OE YEPJWCM AK LEE CDZPJC WDZ\nARLBKLWDZ ZWDMCKJ ZEMMCZNU JWLBCJ BLWD LRE WLLWYI\nLBCG.",
+      "options": [],
+      "answers": ["Love takes up where knowledge leaves off neither does the other ever desert"],
+      "difficulty": 0.9
+    },
+    {
+      "question": "¿TP HEFP OBAZY? ¡AZ GZA DT FGRZGB! ¡GZA FC OBAZY\nHEFP STF NBOBG UBG B ZHDFPFY!",
+      "options": [],
+      "answers": ["Do you smell propane? I smell barbecue! He said barbecue was medicinal!"],
+      "difficulty": 0.8
+    }
+  ]
+}{
+    "question": "What is the capital of France?",
+    "answer": "Paris"
+  },
+  {
+    "question": "Based on this diagram, what is the value of X?",
+    "answer": [""]
+  },
+  {
+    "question": "What year did World War II begin?",
+    "answer": "1939"
+  },
+  {
+    "question": "According to the figure, how does the curve behave at t=5?",
+    "answer": [""]
+  },
+  {
+    "question": "Solve this equation: 2x + 3 = 7",
+    "answer": "x = 2"
+  },
+  {
+    "question": "What is the name of this chemical compound?",
+    "answer": [""]
+  },
+  {
+    "question": "What is the speed of light?",
+    "answer": "299,792,458 m/s"
+  },
+  {
+    "question": "Based on the image, which animal is shown?",
+    "answer": [""]
+  }{
+  "Anatomy - Respiratory": [
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nWhat is your diagnosis?",
+      "options": [],
+      "answers": [
+        "Emphysema"
+      ]
+    },
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nExplain the anatomical properties of this disease? Which part of the respiratory system is affected and how does this differ from the anatomy of a healthy individual?",
+      "options": [],
+      "answers": [
+        "Emphysema destroys the alveoli in the lungs, reducing the surface area for gas exchange. The lungs lose their elasticity, making it difficult to exhale. A healthy individual has intact alveoli with ample surface area for gas exchange and elastic lungs."
+      ]
+    },
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nWhat do you figure the elevated white blood cell count has to do with the diagnosis?",
+      "options": [],
+      "answers": [
+        "The elevated white blood cell count indicates an inflammatory response in the lungs, likely due to the damage caused by the toxic gasses and the body's attempt to repair the tissue."
+      ]
+    },
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nDoes the patient provide any information that may indicate they are more susceptible to developing the disease?",
+      "options": [],
+      "answers": [
+        "Yes, the patient's family history of asthma indicates a genetic predisposition to respiratory conditions. Additionally, exposure to hazardous gasses at work increases the risk of developing emphysema."
+      ]
+    },
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nWhat are some possible complications if the condition is left untreated?",
+      "options": [],
+      "answers": [
+        "Possible complications include chronic bronchitis, frequent respiratory infections, heart problems (cor pulmonale), collapsed lung (pneumothorax), and large holes in the lungs (bullae)."
+      ]
+    },
+    {
+      "question": "Case 23UCH: A 65 year old male presents with shortness of breath and wheezing. After listening to the patient’s breath sounds, you denote a crackling noise when the patient inhales. Upon further questioning, you determine that the patient works as a Chemist at Argonne National Laboratory where they work on a project that involves the managing, handling, and removal of hazardous gasses from the air. These chemicals include Hydrogen Sulfide, Chlorine, and Sulfur Dioxide. The patient has a common family history of asthma; his mother and aunt both utilize an inhaler on a regular basis. You decide to run some tests and a medical resident presents you with the following results: elevated WBC count, abnormal arterial blood gas analysis, and a CT showing a dilation of airspaces and destruction of certain airspace wall areas. CT imaging also shows a lowering and flattening of the diaphragm.\n\nName one surgical and one therapeutic treatment for this condition.",
+      "options": [],
+      "answers": [
+        "Surgical treatment: Lung volume reduction surgery or lung transplant. Therapeutic treatment: Bronchodilators, inhaled corticosteroids, oxygen therapy, pulmonary rehabilitation."
+      ]
+    },
+    {
+      "question": "Questions 2 refers to the following spirometer trace:\n\n\nEach number below refers to its correspondent on the diagram. Please provide the full name for each section of the spirometer trace next to the numbers below, abbreviations will NOT be accepted.\n\n2.",
+      "options": [],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "On arriving to high altitude, many low land individuals will not be able to tolerate as much physical strain as they do at sea level. However, altitudes are classified by their height into the following categories: \n\nIntermediate Altitude: 1500- 2500 m\nHigh Altitude (HA) - 2500- 3500 m \nVery High Altitude - 3500-5800 m\nExtreme Altitude- above 5800m \n\nWhich of the following will have an impact on a hiker’s ability to climb Mount Foraker, elevation 5304m?",
+      "options": [
+        "VO2 max",
+        "Muscle Mass",
+        "PaO2 fall in O2 transport cascade",
+        "A and C",
+        "A only",
+        "A, B, and C"
+      ],
+      "answers": [
+        "6"
+      ]
+    },
+    {
+      "question": "Mount Logan is located in the North Cascades National park in the state of Washington. Its peak is at an elevation of about 2,770m. One who embarks on a journey to the peak of the mountain will experience all of the following after the completion of their journey except:",
+      "options": [
+        "Decrease in muscle mass",
+        "Sleep disturbances",
+        "Increase in ventilatory rate",
+        "Increased C.O.P",
+        "(A and B)",
+        "(A and C)"
+      ],
+      "answers": [
+        "4"
+      ]
+    },
+    {
+      "question": "Directions:\nFor Question 5 , please draw the appropriate breathing pattern wave for the breathing patterns indicated next to each letter. Indicate two possible causes for each breathing pattern. Please make sure to first draw a normal breathing pattern so judges may have a tool for comparison. \n\n5.\n\nNormal:\n\n\n\nApnea \n\n\n\nBradypnea\nTachypnea \n\n\n\nHyperpnea",
+      "options": [],
+      "answers": [
+        ""
+      ]
+    }
+  ],
+  "Anatomy - Digestive": [
+    {
+      "question": "Questions 6-9 refer to the following diagram:\n\n\n\n\n6. Labels 4-6 represent components of the",
+      "options": [
+        "Mucosa",
+        "Submucosa",
+        "Muscularis",
+        "Serosa"
+      ],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "Questions 6-9 refer to the following diagram:\n\n\n\n\n7. Labels 1-3 represent components of the",
+      "options": [
+        "Mucosa",
+        "Submucosa",
+        "Muscularis",
+        "Serosa"
+      ],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "Questions 6-9 refer to the following diagram:\n\n\n\n\n8. Labels 7-9 represent components of the",
+      "options": [
+        "Mucosa",
+        "Submucosa",
+        "Muscularis",
+        "Serosa"
+      ],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "Questions 6-9 refer to the following diagram:\n\n\n\n\n9. Label 10 represents the",
+      "options": [
+        "Mucosa",
+        "Submucosa",
+        "Muscularis",
+        "Serosa"
+      ],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "Questions 10 refers to Diagram D\n\n\n\n\n\n\n\n\n\n\n\n\n10. Label the diagram of the digestive system",
+      "options": [],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "11. Match the enzymes involved with digestion with their function.\n\nA.	______ breaks proteins down into peptides in the stomach	1. Carboxypeptidase\n\nB.	______ secreted by the pancreas, breaks down amino acids	2. Trypsin\n\nC.	______ breaks down polysaccharides, like starch, in the mouth	3. Lingual lipase\n\nD.	______ breaks down triglycerides, a kind of fat			4. Pepsin\n\nE.	______ breaks down proteins in the small intestinal wall		5. Chymotrypsin\n\nF.	______ activates other enzymes to help break down peptides  	6. Salivary amylase",
+      "options": [],
+      "answers": [
+        "A-4, B-1, C-6, D-3, E-5, F-2"
+      ]
+    },
+    {
+      "question": "12. Trypsin, Carboxypeptidase, Pepsin, and Chymotrypsin are all types of ________________?",
+      "options": [],
+      "answers": [
+        "Proteases/peptidases"
+      ]
+    },
+    {
+      "question": "13. Match the nutrients to the smaller part it is broken down to during chemical digestion.\n\nA.	______ breaks down into fatty acids and monoglycerides		1. Carbohydrates\n\nB.	______ breaks down into amino acids				2. Fats\n\nC.	______ breaks down into monosaccharides			3. Proteins",
+      "options": [],
+      "answers": [
+        "A-2, B-3, C-1"
+      ]
+    },
+    {
+      "question": "14. What are the accessory organs of the digestive system? What is the alimentary canal? Give two examples of accessory organs and two examples of organs in the alimentary canal.",
+      "options": [],
+      "answers": [
+        "Accessory organs: organs that aid in digestion but are not part of the continuous tube from the mouth to the anus.\nAlimentary canal: the continuous tube from the mouth to the anus, through which food passes during digestion.\nExamples of accessory organs: liver, pancreas.\nExamples of alimentary canal organs: stomach, small intestine."
+      ]
+    },
+    {
+      "question": "15. What is the difference between mechanical and chemical digestion? Where does the majority of each type of digestion occur?",
+      "options": [],
+      "answers": [
+        "Mechanical digestion involves the physical breakdown of food into smaller pieces, while chemical digestion involves the enzymatic breakdown of food into smaller molecules.\nMajority of mechanical digestion occurs in the mouth and stomach.\nMajority of chemical digestion occurs in the small intestine."
+      ]
+    },
+    {
+      "question": "16. What role does gut microbiota play in the digestive system? Give a few examples of species of microorganisms  that make up gut microbiota. What effect does physical activity have on gut microbiota and thus, digestion?",
+      "options": [],
+      "answers": [
+        "Gut microbiota aids in digestion, nutrient absorption, and immune system development.\nExamples of microorganisms: Bacteroides, Bifidobacterium, Lactobacillus.\nPhysical activity can promote a more diverse and balanced gut microbiota, which improves digestion."
+      ]
+    },
+    {
+      "question": "17. What is hepatitis? Please state the similarities and differences between the hepatitis viruses A, B, C, D, and E.",
+      "options": [],
+      "answers": [
+        "Hepatitis is the inflammation of the liver.\nSimilarities: All can cause liver inflammation.\nDifferences: Vary in transmission routes, chronicity, and severity. Hep A and E are typically acute and transmitted through contaminated food/water. Hep B, C, and D are transmitted through blood/bodily fluids, with B and C often leading to chronic infections."
+      ]
+    },
+    {
+      "question": "18. The innermost layer of the gastrointestinal tract is called the mucosa. The mucosa consists of the epithelium, lamina propria, and muscularis mucosae. The mucosa is the most highly differentiated layer of the gastrointestinal tract. Compare the function or characteristics of the epithelium, lamina propria, and muscularis mucosae in the esophagus, stomach, and small intestine.",
+      "options": [],
+      "answers": [
+        "Esophagus: Epithelium - stratified squamous for protection. Lamina propria - supports epithelium. Muscularis mucosae - involved in movement.\nStomach: Epithelium - columnar epithelium with gastric pits for secretion. Lamina propria - contains gastric glands. Muscularis mucosae - aids in gastric mixing.\nSmall intestine: Epithelium - columnar epithelium with microvilli for absorption. Lamina propria - contains lacteals and capillaries. Muscularis mucosae - involved in villi movement."
+      ]
+    },
+    {
+      "question": "Which of these choices may make lactose intolerance worse?",
+      "options": [
+        "Eating or drinking dairy products",
+        "Taking lactase enzyme supplements to help digest lactose",
+        "Age",
+        "Eating yogurt if possible"
+      ],
+      "answers": [
+        "1",
+        "3"
+      ]
+    },
+    {
+      "question": "20. The steps of digestion are ingestion, mechanical digestion, chemical digestion, absorption, and elimination. However, there can be deficits during these steps. Describe the function of absorption in digestion. How is water absorbed by the large intestine? How might water not be sufficiently absorbed? What is the result of this?",
+      "options": [],
+      "answers": [
+        "Absorption is the process by which digested nutrients move from the digestive tract into the bloodstream or lymphatic system.\nWater is absorbed in the large intestine through osmosis.\nInsufficient absorption can occur due to inflammation, rapid transit time, or diseases affecting the colon.\nThe result is diarrhea."
+      ]
+    },
+    {
+      "question": "21. Appendicitis describes a condition of the digestive system in which the appendix is inflamed. To treat this condition, surgery is usually required. Before surgery, patients may be given a dose of antibiotics. Use the believed function of the appendix to explain why antibiotics are part of the treatment for appendicitis.",
+      "options": [],
+      "answers": [
+        "The appendix is believed to serve as a reservoir for beneficial gut bacteria. In appendicitis, bacterial infection can lead to inflammation. Antibiotics are given to reduce the bacterial load and prevent further infection before surgical removal of the appendix."
+      ]
+    },
+    {
+      "question": "What types of medication are typically used to treat stomach or duodenal ulcers?",
+      "options": [
+        "Antibiotics",
+        "H2 blockers",
+        "Proton pump inhibitors (PPIs)",
+        "Chemotherapy",
+        "a, b, and c",
+        "Both b and c",
+        "All of the above"
+      ],
+      "answers": [
+        "5"
+      ]
+    },
+    {
+      "question": "23. Considering some risk factors for colon cancer include alcohol and tobacco use, obesity, diabetes, a low-fiber and high-fat diet, what lifestyle changes should people make to prevent the development of colon cancer?",
+      "options": [],
+      "answers": [
+        "Lifestyle changes include limiting alcohol and tobacco use, maintaining a healthy weight, managing diabetes, and adopting a high-fiber, low-fat diet."
+      ]
+    }
+  ],
+  "Anatomy - Immune": [
+    {
+      "question": "Fill in the blanks. T cells develop in the ____, and B cells develop in the ____.",
+      "options": [
+        "thymus; bone marrow",
+        "bone marrow; bone marrow",
+        "thymus; spleen",
+        "blood; bone marrow"
+      ],
+      "answers": [
+        "1"
+      ]
+    },
+    {
+      "question": "25. What is the difference between primary lymphoid organs and secondary lymphoid organs? Give examples for both.",
+      "options": [],
+      "answers": [
+        "Primary lymphoid organs are where lymphocytes develop and mature (e.g., thymus, bone marrow). Secondary lymphoid organs are where lymphocytes encounter antigens and become activated (e.g., spleen, lymph nodes)."
+      ]
+    },
+    {
+      "question": "What is the function of the spleen?",
+      "options": [
+        "Clear old or damaged red blood cells",
+        "Clear old or damaged white blood cells",
+        "Serves as a secondary lymphoid organ",
+        "a. and c.",
+        "b. and c.",
+        "a., b., and c."
+      ],
+      "answers": [
+        "4"
+      ]
+    },
+    {
+      "question": "Number the following elements of a bacterial immune response in the correct order (1-7):\n\n____ Neutrophils, DCs, and other cells are recruited to the site of infection.\n____ Sugars on the surface of bacteria are bound by TLRs on macrophages.\n____ Macrophages phagocytose antibody-coated bacteria.\n____ Bacteria enter an open wound in the skin.\n____ Bacterial antigen is trafficked by dendritic cells (DCs) to the lymph nodes.\n____ Macrophages secrete inflammatory cytokines.\n____ Plasma cells produce antibodies that bind the bacteria.",
+      "options": [],
+      "answers": [
+        "4 2 7 5 1 6 3"
+      ]
+    },
+    {
+      "question": "Which one of the following cell types is a major producer of histamine during an allergic reaction?",
+      "options": [
+        "Basophils",
+        "Eosinophils",
+        "Mast cells",
+        "Neutrophils"
+      ],
+      "answers": [
+        "3"
+      ]
+    },
+    {
+      "question": "There are multiple pathways in the complement system. Which of the following arranges these pathways in the correct order from first to last to activate during an immune response?",
+      "options": [
+        "Alternative, then Lectin, then Classic",
+        "Lectin, then Alternative, then Classic",
+        "Classic, then Alternative, then Lectin",
+        "They all start at the same time"
+      ],
+      "answers": [
+        "2"
+      ]
+    },
+    {
+      "question": "All three pathways of the complement system involve a protein that functions as a C3 convertase, which cleaves C3 into C3a and C3b. What is the role of C3b?",
+      "options": [
+        "C3b fixes to the pathogen surface and promotes its phagocytosis",
+        "C3b fixes to the pathogen surface and causes membrane perforation",
+        "C3b recruits T cells to the site of infection",
+        "C3b recruits innate immune cells to the site of infection",
+        "a. and b.",
+        "a. and d.",
+        "c. and d.",
+        "a., b., c., and d."
+      ],
+      "answers": [
+        "6"
+      ]
+    },
+    {
+      "question": "31. Contrast naïve B cells with memory B cells.",
+      "options": [],
+      "answers": [
+        "Naïve B cells are mature B cells that have not yet encountered their specific antigen, while memory B cells are long-lived cells that are generated after antigen encounter and provide a rapid response upon re-exposure to the same antigen."
+      ]
+    },
+    {
+      "question": "32. Match the immunoglobulin isotype with its description.\n\nA.	______ lower affinity; can exist as a pentamer			1. IgG\n\nB.	______ higher affinity; better at neutralizing pathogens		2. IgE\n\nC.	______ stimulates mast cell degranulation			3. IgM",
+      "options": [],
+      "answers": [
+        "A-3, B-1, C-2"
+      ]
+    },
+    {
+      "question": "33. Match the T helper subset with its function.\n\nA.	______ suppress cytotoxic T cells			    1. T regulatory cells\n\nB.	______ activate macrophages and cytotoxic T cells              2. Th2 cells\n\nC.	______ fight extracellular parasites; activate eosinophils      3. Th1\t\t  \n\nD.	______ help B cells become plasma cells                              4. T follicular helpers",
+      "options": [],
+      "answers": [
+        "A-1, B-3, C-2, D-4"
+      ]
+    },
+    {
+      "question": "34. Label the following in the lymphatic system (A-F).\n\n______________________\n\n\n______________________\n\n\n______________________\n\n\n______________________\n\n\n______________________\n\n\n______________________",
+      "options": [],
+      "answers": [
+        ""
+      ]
+    },
+    {
+      "question": "35. Human immunodeficiency virus (HIV) is an RNA virus that, if left untreated, can progress to Acquired immune deficiency syndrome (AIDS). Explain how HIV can cause infected individuals to become immunodeficient and why this can be fatal. Separately, explain a feature of RNA viruses that can make them challenging for the body to clear and how this relates to current HIV treatment.",
+      "options": [],
+      "answers": [
+        "HIV infects and destroys CD4+ T helper cells, which are crucial for coordinating the immune response. This leads to a weakened immune system, making individuals susceptible to opportunistic infections, which can be fatal.\nRNA viruses have a high mutation rate due to the lack of proofreading mechanisms during replication. This leads to the emergence of drug-resistant strains, making it difficult to clear the virus. Current HIV treatment involves a combination of antiretroviral drugs that target different stages of the viral life cycle to suppress viral replication and prevent drug resistance."
+      ]
+    },
+    {
+      "question": "36. Both Graves’ disease and Hashimoto’s disease are autoimmune conditions that affect the thymus. Both involve type II hypersensitivity, although Hashimoto’s disease also involves type IV hypersensitivity.  Define these two types of hypersensitivity, and briefly explain the difference between the two diseases.",
+      "options": [],
+      "answers": [
+        "Type II hypersensitivity involves antibody-mediated destruction of cells, while Type IV hypersensitivity is cell-mediated, involving T cells.\nGraves' disease is characterized by antibodies that stimulate the thyroid-stimulating hormone (TSH) receptor, leading to hyperthyroidism. Hashimoto's disease involves antibodies and T cells that destroy thyroid cells, leading to hypothyroidism."
+      ]
+    },
+    {
+      "question": "37. Autoimmune polyendocrinopathy-candidiasis-ectodermal dystrophy (APECED) is a genetic immunodeficiency caused by mutations in the AIRE gene, which prevents proper negative selection from occurring in the thymus. Briefly, explain why this can lead to autoimmune disease, and contrast APECED with common variable immunodeficiency (CVID).",
+      "options": [],
+      "answers": [
+        "Mutations in the AIRE gene disrupt the process of negative selection in the thymus, which is essential for eliminating self-reactive T cells. As a result, self-reactive T cells can escape into the periphery and attack the body's own tissues, leading to autoimmune disease.\nAPECED is a monogenic (single-gene) defect with a defined genetic cause, while CVID is a heterogeneous group of disorders characterized by impaired antibody production due to defects in B cell differentiation, but without a clear genetic etiology."
+      ]
+    },
+    {
+      "question": "38. Challenge question. Select cancer therapies work by activating the patient’s immune system to kill tumor cells. One drug that does this is the anti-CTLA-4 monoclonal antibody ipilimumab. Explain how ipilimumab works in context of T cell co-stimulation, and why this drug would be a bad choice for inducing acceptance to a transplanted organ.",
+      "options": [],
+      "answers": [
+        "CTLA-4 is a co-inhibitory receptor on T cells that, when engaged, suppresses T cell activation. Ipilimumab blocks CTLA-4, preventing its inhibitory effect and allowing T cells to become more readily activated, enhancing their ability to kill tumor cells.\nIpilimumab would be a bad choice for inducing acceptance to a transplanted organ because it promotes T cell activation, which would increase the likelihood of T cells attacking the transplanted organ, leading to rejection."
+      ]
+    }
+  ]
 }

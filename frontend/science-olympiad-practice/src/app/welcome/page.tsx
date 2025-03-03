@@ -533,16 +533,14 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "2/28/25",
+    date: "3/2/25",
     features: [
-      "🔐 Account system to save your progress across devices",
-      "🤼‍♂️ Support to contest an answer erroneously marked wrong",
-      "✨ Even better FRQ grading, explanations",
-      "📊 Weekly progress and performance tracking",
+      "💾 Larger question bank!",
+      "✨ Brand new UI",
     ],
     comingSoon: [
-      "🎯 More practice questions, events, and Div B support",
-      "📈 Improved analytics dashboard"
+      "🎯 Div B support, Potions & Poisons, Reach for the Stars",
+      "📈 Less unanswerable questions, answer hallucinations"
     ]
   };
 
