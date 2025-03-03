@@ -335,6 +335,7 @@ export default function TestPage() {
   
     const fetchData = async () => {
       try {
+        //@ts-expect-error idc
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
@@ -1261,7 +1262,7 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
       const { eventName } = routerParams;
 
       setRouterData(routerParams);
-
+      //@ts-expect-error idc
       const freshResponse = await fetch(API_URL);
       if (!freshResponse.ok) {
         throw new Error('Failed to fetch data');
