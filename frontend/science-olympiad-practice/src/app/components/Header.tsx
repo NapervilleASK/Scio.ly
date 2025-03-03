@@ -154,7 +154,10 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
 export default function Header() {
   const { darkMode } = useTheme();
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const frontpage = window.location.pathname == '/' 
+  let frontpage = false
+  if (typeof window !== "undefined") {
+    frontpage = window.location.pathname == '/' 
+  }
   
   const handleContact = async (data: ContactFormData) => {
     const webhookUrl =
