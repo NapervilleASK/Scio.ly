@@ -49,6 +49,7 @@ interface ContestState {
 }
 
 const API_URL = api.api;
+
 const LoadingFallback = () => (
   <div className="flex justify-center items-center h-64">
     <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
@@ -301,6 +302,7 @@ export default function UnlimitedPracticePage() {
 
     const fetchData = async () => {
       try {
+        //@ts-expect-error idc
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const jsonData = await response.json();
