@@ -15,6 +15,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Image from 'next/image';
 import { useTheme } from './contexts/ThemeContext';
+import { Suspense } from "react";
+import { Float, Points } from "@react-three/drei";
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
@@ -44,6 +46,12 @@ export default function HomePage() {
       button.style.boxShadow = '';
       button.style.border = '';
     }
+  }, [darkMode]);
+
+  useEffect(() => {
+    // Apply scrollbar styles based on theme
+    document.documentElement.classList.toggle('dark-scrollbar', darkMode);
+    document.documentElement.classList.toggle('light-scrollbar', !darkMode);
   }, [darkMode]);
 
   const backgroundImage = useMotionTemplate`radial-gradient(132% 132% at 50% 10%, rgba(2, 6, 23, 0.8) 50%, ${color})`;
@@ -98,7 +106,29 @@ export default function HomePage() {
         )}
         
         {!darkMode && (
-          <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-50 to-white"></div>
+          <>
+            <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-100 to-white"></div>
+            <div className="absolute inset-0 z-5 opacity-20">
+              <Canvas>
+                <ambientLight intensity={0.1} />
+                <directionalLight position={[0, 10, 5]} intensity={0.3} />
+                <Suspense fallback={null}>
+                  <Float
+                    speed={2}
+                    rotationIntensity={0.5}
+                    floatIntensity={1}
+                  >
+                    <Points count={800} size={0.6}>
+                      <pointsMaterial color="#4299e1" />
+                    </Points>
+                  </Float>
+                </Suspense>
+              </Canvas>
+            </div>
+            <div 
+              className="absolute inset-0 z-1 pointer-events-none static-gradient"
+            ></div>
+          </>
         )}
 
         <div className="relative z-20 h-screen flex items-center justify-center">
@@ -132,7 +162,7 @@ export default function HomePage() {
                   className={`group relative flex mx-auto items-center gap-1.5 rounded-full px-6 py-3 transition-all ${
                     darkMode 
                       ? 'bg-gray-950/10 text-gray-50 hover:bg-gray-950/50' 
-                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg'
+                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg light-button-halo'
                   }`}
                 >
                   Start Practicing
@@ -560,29 +590,75 @@ export default function HomePage() {
         )}
       </button>
 
-      <style jsx>{`
+      <style jsx global>{`
+        @keyframes breathe {
+          0% {
+            transform: scale(1);
+            opacity: 0.5;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.7;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 0.5;
+          }
+        }
+        
+        .breathing-gradient {
+          background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, rgba(255, 255, 255, 0) 70%, rgba(34, 197, 94, 0.05) 100%);
+          animation: breathe 15s ease-in-out infinite;
+        }
+
+        .static-gradient {
+          background: linear-gradient(180deg, 
+            rgba(56, 189, 248, 0.05) 0%, 
+            rgba(255, 255, 255, 0) 30%, 
+            rgba(34, 197, 94, 0.02) 70%,
+            rgba(59, 130, 246, 0.03) 100%);
+        }
+        
+        .light-button-halo {
+          box-shadow: 0 0 15px 5px rgba(37, 99, 235, 0.2);
+        }
+        
+        .light-button-halo:hover {
+          box-shadow: 0 0 20px 8px rgba(37, 99, 235, 0.3);
+        }
+
         ::-webkit-scrollbar {
           width: 8px;
         }
-        ::-webkit-scrollbar-thumb {
-          background: ${darkMode 
-            ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))' 
-            : 'linear-gradient(to bottom, rgb(219, 234, 254), rgb(96, 165, 250))'
-          };
+        
+        .dark-scrollbar::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72));
           border-radius: 4px;
           transition: background 1s ease;
         }
-        ::-webkit-scrollbar-thumb:hover {
-          background: ${darkMode 
-            ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))' 
-            : 'linear-gradient(to bottom, rgb(191, 219, 254), rgb(59, 130, 246))'
-          };
+        
+        .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54));
         }
-        ::-webkit-scrollbar-track {
-          background: ${darkMode ? 'black' : '#f1f5f9'};
+        
+        .dark-scrollbar::-webkit-scrollbar-track {
+          background: black;
         }
-      `}
-      </style>
+        
+        .light-scrollbar::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, rgb(219, 234, 254), rgb(96, 165, 250));
+          border-radius: 4px;
+          transition: background 1s ease;
+        }
+        
+        .light-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, rgb(191, 219, 254), rgb(59, 130, 246));
+        }
+        
+        .light-scrollbar::-webkit-scrollbar-track {
+          background: #f1f5f9;
+        }
+      `}</style>
     </div>
   );
 }
