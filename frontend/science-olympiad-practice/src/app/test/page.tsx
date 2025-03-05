@@ -39,8 +39,9 @@ interface RouterParams {
 interface ReportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (reason: string) => void;
+  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => void;
   darkMode: boolean;
+  question?: Question;
 }
 
 interface ReportState {
@@ -63,13 +64,26 @@ interface ContestState {
 const API_URL = api.api;
 const arr = api.arr
 
-const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) => {
+// Replace the global variable declaration of globalShareCode with a removal comment
+// let globalShareCode: string | null = null;
+
+const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question }: ReportModalProps) => {
   const [reason, setReason] = useState('');
+  const [action, setAction] = useState<'remove' | 'edit'>('remove');
+  const [editedQuestion, setEditedQuestion] = useState('');
+
+  useEffect(() => {
+    if (question) {
+      setEditedQuestion(question.question);
+    }
+  }, [question]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(reason);
+    onSubmit(reason, action, action === 'edit' ? editedQuestion : undefined);
     setReason('');
+    setAction('remove');
+    setEditedQuestion('');
     onClose();
   };
 
@@ -77,11 +91,64 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className={`rounded-lg p-6 w-96 transition-colors duration-300 ${
+      <div className={`rounded-lg p-6 w-[500px] max-w-full transition-colors duration-300 ${
         darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
       }`}>
         <h3 className="text-lg font-semibold mb-4">Report Question</h3>
         <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block mb-2 font-medium">Action</label>
+            <div className="flex space-x-4">
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  name="action"
+                  value="remove"
+                  checked={action === 'remove'}
+                  onChange={() => setAction('remove')}
+                  className="mr-2"
+                />
+                Remove Question
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  name="action"
+                  value="edit"
+                  checked={action === 'edit'}
+                  onChange={() => setAction('edit')}
+                  className="mr-2"
+                />
+                Edit Question
+              </label>
+            </div>
+          </div>
+
+          {action === 'edit' && (
+            <div className="mb-4">
+              <label className="block mb-2 font-medium">Original Question</label>
+              <div className={`p-3 rounded-md mb-3 transition-colors duration-300 ${
+                darkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900'
+              }`}>
+                {question?.question}
+              </div>
+              
+              <label className="block mb-2 font-medium">Edited Question</label>
+              <textarea
+                className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
+                  darkMode 
+                    ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                    : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+                }`}
+                rows={4}
+                placeholder="Enter your edited version of the question..."
+                value={editedQuestion}
+                onChange={(e) => setEditedQuestion(e.target.value)}
+                required={action === 'edit'}
+              />
+            </div>
+          )}
+
           <textarea
             className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
               darkMode 
@@ -89,7 +156,9 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) 
                 : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
             }`}
             rows={4}
-            placeholder="Please describe the issue with this question..."
+            placeholder={action === 'remove' 
+              ? "Please describe why this question should be removed..." 
+              : "Please explain your changes to the question..."}
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             required
@@ -110,7 +179,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode }: ReportModalProps) 
               type="submit"
               className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
             >
-              Submit Report
+              Submit {action === 'remove' ? 'Report' : 'Edit'}
             </button>
           </div>
         </form>
@@ -537,7 +606,7 @@ export default function TestPage() {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  const handleReport = async (reason: string) => {
+  const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => {
     if (reportState.questionIndex === null) return;
     
     const questionData = data[reportState.questionIndex];
@@ -546,11 +615,15 @@ export default function TestPage() {
     const summaryWebhookUrl =
       "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
 
+    const actionText = action === 'remove' ? 'Removal' : 'Edit';
+    const actionColor = action === 'remove' ? 0xFF0000 : 0xFFA500;
+    const actionEmoji = action === 'remove' ? '❌' : '✏️';
+
     const mainPayload = {
       embeds: [
         {
-          title: "Question Report",
-          color: 0xFF0000,
+          title: `Question ${actionText} Request`,
+          color: actionColor,
           fields: [
             {
               name: "Event",
@@ -561,13 +634,19 @@ export default function TestPage() {
               name: "Question",
               value: questionData.question,
             },
+            ...(action === 'edit' && editedQuestion ? [
+              {
+                name: "Edited Question",
+                value: editedQuestion,
+              }
+            ] : []),
             {
-              name: "Report Reason",
+              name: `${actionText} Reason`,
               value: reason,
             },
             {
               name: "Question Data",
-              value: `\json\n${JSON.stringify(questionData, null, 2)}\n`,
+              value: `\`\`\`json\n${JSON.stringify(questionData, null, 2)}\n\`\`\``,
             },
           ],
           timestamp: new Date().toISOString(),
@@ -578,51 +657,89 @@ export default function TestPage() {
     const summaryPayload = {
       embeds: [
         {
-          title: "❌ Question Reported",
+          title: `${actionEmoji} Question ${actionText} Requested`,
           description: questionData.question,
-          color: 0xFF0000,
+          color: actionColor,
           fields: [
             {
               name: "Event",
               value: routerData.eventName || "Unknown Event",
               inline: true,
             },
+            ...(action === 'edit' && editedQuestion ? [
+              {
+                name: "Edited Question",
+                value: editedQuestion,
+              }
+            ] : []),
           ],
           timestamp: new Date().toISOString(),
         },
       ],
     };
 
-    const toastId = toast.loading('Sending report...');
+    const toastId = toast.loading(`Sending ${action} request...`);
 
     try {
-      const [mainResponse, summaryResponse] = await Promise.all([
-        fetch(mainWebhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(mainPayload),
-        }),
-        fetch(summaryWebhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(summaryPayload),
-        }),
-      ]);
+      // First, send to our API to check if the report should be accepted
+      const apiEndpoint = action === 'remove' 
+        ? '/api/report/remove' 
+        : '/api/report/edit';
+      
+      const apiPayload = action === 'remove'
+        ? { 
+            question: questionData.question, 
+            event: routerData.eventName, 
+            reason 
+          }
+        : { 
+            originalQuestion: questionData.question, 
+            editedQuestion, 
+            event: routerData.eventName, 
+            reason 
+          };
+      
+      const apiResponse = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(apiPayload),
+      });
 
-      if (!mainResponse.ok || !summaryResponse.ok) {
-        throw new Error('Failed to send report');
+      if (!apiResponse.ok) {
+        throw new Error(`Failed to send ${action} request to API`);
+      }
+
+      const apiResult = await apiResponse.json();
+
+      // Only send to Discord webhooks if the API approved the report
+      if (apiResult.success) {
+        // Send to Discord webhooks
+        await Promise.all([
+          fetch(mainWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(mainPayload),
+          }),
+          fetch(summaryWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(summaryPayload),
+          }),
+        ]);
       }
 
       toast.update(toastId, {
-        render: 'Report sent successfully! We will fix this question soon. Thank you!',
-        type: 'success',
+        render: apiResult.success 
+          ? `${action === 'remove' ? 'Report' : 'Edit'} sent successfully! We will process this soon. Thank you!` 
+          : apiResult.message || `${action === 'remove' ? 'Report' : 'Edit'} was not accepted. ${apiResult.message || ''}`,
+        type: apiResult.success ? 'success' : 'info',
         isLoading: false,
         autoClose: 3000,
       });
     } catch (error) {
-      console.error('Error sending report:', error);
+      console.error(`Error sending ${action} request:`, error);
       toast.update(toastId, {
-        render: 'Failed to send report. Please try again.',
+        render: `Failed to send ${action} request. Please try again.`,
         type: 'error',
         isLoading: false,
         autoClose: 3000,
@@ -1094,6 +1211,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         onClose={() => setReportState({ isOpen: false, questionIndex: null })}
         onSubmit={handleReport}
         darkMode={darkMode}
+        question={reportState.questionIndex !== null ? data[reportState.questionIndex] : undefined}
       />
       <ContestModal
         isOpen={contestState.isOpen}

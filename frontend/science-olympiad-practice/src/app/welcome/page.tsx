@@ -656,6 +656,22 @@ export default function WelcomePage() {
           {/* Welcome Banner */}
           <WelcomeMessage darkMode={darkMode} currentUser={currentUser} />
 
+          {/* Practice Button - Moved higher and full width */}
+          <div className="mb-8">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              onClick={() => router.push('/dashboard')}
+              className={`rounded-md w-full py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'} shadow-lg`}
+            >
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold mb-2">Practice</span>
+                <span className="text-lg opacity-90">
+                  Start practicing with customized tests or unlimited questions
+                </span>
+              </div>
+            </motion.button>
+          </div>
+
           {/* Metrics Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className={`p-6 rounded-lg ${cardStyle} text-center md:text-left`}>
@@ -912,22 +928,14 @@ export default function WelcomePage() {
               </div>
             </div>
           </div>
+
+          {/* Remove the mobile practice button since we've moved it to the top */}
           { isMobile ? (
           <div className="flex w-full gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                onClick={() => router.push('/dashboard')}
-                className={`rounded-md w-full py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}
-              >
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold mb-1">Practice</span>
-                  <span className="text-base opacity-90">
-                    Start practicing with customized tests or unlimited questions
-                  </span>
-                </div>
-              </motion.button>
+              {/* Removed the practice button from here since it's now at the top */}
               </div> ) : (<></>)
             }
+
           {/* Practice/Test Code Button Area */}
           {isMobile ? (
             <>
@@ -962,19 +970,8 @@ export default function WelcomePage() {
             </>
           ) : (
             <div className="flex w-full gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                onClick={() => router.push('/dashboard')}
-                className={`rounded-md w-1/2 py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}
-              >
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold mb-1">Practice</span>
-                  <span className="text-base opacity-90">
-                    Start practicing with customized tests or unlimited questions
-                  </span>
-                </div>
-              </motion.button>
-              <div className="w-1/2 flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+              {/* Removed the practice button from here since it's now at the top */}
+              <div className="w-full flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
                 <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white border-white' : 'bg-white text-black border-black'} rounded-l-lg  border-r-4`}>
                   Test share code
                 </div>

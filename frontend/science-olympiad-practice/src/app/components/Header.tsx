@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import AuthButton from '@/app/components/AuthButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { usePathname } from 'next/navigation';
 
 interface ContactFormData {
   name: string;
@@ -150,14 +151,59 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
   );
 };
 
-
 export default function Header() {
   const { darkMode } = useTheme();
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  let frontpage = false
-  if (typeof window !== "undefined") {
-    frontpage = window.location.pathname == '/' 
-  }
+  const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  
+  // Determine if we're on the homepage
+  const isHomePage = pathname === '/';
+  
+  // Handle scroll events to change header appearance
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+  
+  useEffect(() => {
+    setMounted(true);
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check for scroll position
+    handleScroll();
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+  // The header should be transparent only on homepage when not scrolled
+  // For /welcome page, it should always be opaque
+  const shouldBeTransparent = isHomePage && !scrolled && mounted;
+  
+  // Set background classes based on page and scroll state
+  const navBgClass = shouldBeTransparent 
+    ? 'bg-transparent' 
+    : darkMode 
+      ? 'bg-gray-900/95 backdrop-blur-sm shadow-md' 
+      : 'bg-white/95 backdrop-blur-sm shadow-md';
+  
+  // Set text colors based on transparency and theme
+  const textColorClass = shouldBeTransparent || darkMode 
+    ? 'text-white' 
+    : 'text-gray-900';
+  
+  const linkColorClass = shouldBeTransparent || darkMode
+    ? 'text-gray-300 hover:text-white' 
+    : 'text-gray-700 hover:text-gray-900';
   
   const handleContact = async (data: ContactFormData) => {
     const webhookUrl =
@@ -236,13 +282,11 @@ export default function Header() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
         onSubmit={handleContact}
-        darkMode={darkMode || frontpage}
+        darkMode={darkMode || shouldBeTransparent}
       />
-      <ToastContainer theme={darkMode || frontpage ? "dark" : "light"} />
+      <ToastContainer theme={darkMode || shouldBeTransparent ? "dark" : "light"} />
 
-      <nav className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${
-        frontpage ? 'bg-transparent' : (darkMode || frontpage ? 'bg-gray-900/90' : 'bg-white/95 shadow-md')
-      }`}>
+      <nav className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${navBgClass}`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-between items-center h-16 px-4 sm:px-6">
             <div className="flex items-center space-x-2">
@@ -254,9 +298,7 @@ export default function Header() {
                   height={32}
                   className="mr-2"
                 />
-                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out hidden sm:inline ${
-                  darkMode || frontpage ? 'text-white' : 'text-gray-900'
-                }`}>
+                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out hidden sm:inline ${textColorClass}`}>
                   Scio.ly
                 </span>
               </Link>
@@ -264,25 +306,25 @@ export default function Header() {
             <div className="flex flex-wrap items-center space-x-4">
               <Link
                 href="/welcome"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
-                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
               >
                 Dashboard
               </Link>
               <Link
                 href="/dashboard"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${
-                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
               >
                 Practice
               </Link>
+              <Link
+                href="/reports"
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
+              >
+                Reports
+              </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${
-                  darkMode || frontpage ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-                }`}
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${linkColorClass}`}
               >
                 Contact
               </button>
