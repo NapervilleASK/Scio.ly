@@ -197,11 +197,11 @@ export default function Header() {
       : 'bg-white/95 backdrop-blur-sm shadow-md';
   
   // Set text colors based on transparency and theme
-  const textColorClass = shouldBeTransparent || darkMode 
+  const textColorClass = darkMode 
     ? 'text-white' 
     : 'text-gray-900';
   
-  const linkColorClass = shouldBeTransparent || darkMode
+  const linkColorClass = darkMode
     ? 'text-gray-300 hover:text-white' 
     : 'text-gray-700 hover:text-gray-900';
   
