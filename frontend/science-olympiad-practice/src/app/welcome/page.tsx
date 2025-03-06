@@ -544,13 +544,14 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "3/2/25",
+    date: "3/5/25",
     features: [
       "💾 Larger question bank!",
-      "✨ Brand new UI",
+      "✨ New UI and all-time accuracy tracking",
+      "🎯 New event! Potions & Poisons and more questions for Meteorology",
+      "📙Integrated Codebusters references"
     ],
     comingSoon: [
-      "🎯 Div B support, Potions & Poisons, Reach for the Stars",
       "📈 Less unanswerable questions, answer hallucinations"
     ]
   };
@@ -584,6 +585,40 @@ export default function WelcomePage() {
     } catch (error) {
       console.error(error);
       toast.error((error as Error).message);
+    }
+  };
+
+  // Handle paste event for test code input fields
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>, index: number) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').trim();
+    
+    // If the pasted data is empty, do nothing
+    if (!pastedData) return;
+    
+    // Create a new array with the pasted data distributed across the digits
+    const newDigits = [...testCodeDigits];
+    
+    // Fill in the digits starting from the current index
+    for (let i = 0; i < pastedData.length && index + i < newDigits.length; i++) {
+      const char = pastedData[i];
+      if (char.match(/^[A-Za-z0-9]$/)) {
+        newDigits[index + i] = char.toUpperCase();
+      }
+    }
+    
+    setTestCodeDigits(newDigits);
+    
+    // Focus the appropriate input after paste
+    const nextIndex = Math.min(index + pastedData.length, newDigits.length - 1);
+    const nextInput = document.getElementById(`digit-${nextIndex}`) as HTMLInputElement | null;
+    if (nextInput) {
+      nextInput.focus();
+    }
+    
+    // Auto-submit if all 6 boxes are filled
+    if (newDigits.every(digit => digit !== '')) {
+      handleLoadTest(newDigits.join(''));
     }
   };
 
@@ -1047,6 +1082,7 @@ export default function WelcomePage() {
                         value={digit}
                         onChange={(e) => handleDigitChange(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
+                        onPaste={(e) => handlePaste(e, index)}
                         className={`
                           ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'}
                           w-full aspect-square text-center text-4xl font-bold
@@ -1089,6 +1125,7 @@ export default function WelcomePage() {
                         value={digit}
                         onChange={(e) => handleDigitChange(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
+                        onPaste={(e) => handlePaste(e, index)}
                         className={
                           `${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'} w-full h-full text-center text-4xl font-bold transform focus:outline-none ${index === 0 ? '' : 'border-l'} ${index === testCodeDigits.length - 1 ? 'rounded-tr-lg rounded-br-lg' : 'border-r'} border-gray-300 ${index < 3 ? 'border-b sm:border-b-0' : 'border-t sm:border-t-0'}`
                         }

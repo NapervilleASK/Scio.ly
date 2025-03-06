@@ -65,7 +65,7 @@ export default function ReportsPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
             <div>
               <div className="flex items-center mb-4">
-                <Link href="/dashboard" className={`inline-flex items-center mr-4 px-3 py-2 rounded-md ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-colors duration-200`}>
+                <Link href="/welcome" className={`inline-flex items-center mr-4 px-3 py-2 rounded-md ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-colors duration-200`}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
