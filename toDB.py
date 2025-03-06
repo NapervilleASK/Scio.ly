@@ -317,8 +317,8 @@ titles = {
     'physical properties': 'Materials Science',
     'anatomy - physiology': 'Anatomy - Cardiovascular',
     'anatomy - disease': 'Disease Detectives',
-    'potions and poisons': 'Chemistry Lab',
-    'potions & poisons': 'Chemistry Lab',
+    'potions and poisons': 'Potions and Poisons',
+    'potions & poisons': 'Potions and Poisons',
     'road maps': 'Road Scholar',
     'materials science graph': 'Materials Science',
     'materials science short answer': 'Materials Science',
@@ -821,7 +821,17 @@ titles = {
     'wind power short answer': 'Wind Power',
     'anatomy - research analysis- cytidine deaminase': 'Anatomy - Immune', # Could also be Cell Biology or Designer Genes
     'remote sensing acronym identification': 'Remote Sensing',
-    'the electromagnetic spectrum': 'Physics Lab' # Could also be Optics or Astronomy
+    'the electromagnetic spectrum': 'Physics Lab', # Could also be Optics or Astronomy
+    'science bowl': 'Data Science',
+    'crispr-cas': 'Designer Genes',
+    'anatomy - immune fill in the blank': 'Anatomy - Immune',
+    'game on b test': 'Game On',
+    'aquatic flora and fauna': 'Dynamic Planet - Earth\'s Fresh Waters',
+    'mammology': 'Ecology',
+    'anatomy - respiratory fill in the blank': 'Anatomy - Respiratory',
+    'designer genes free response': 'Designer Genes',
+    'archaeology': 'Fossils',
+    'astronomy - free response': 'Astronomy'
 }
 
 print("All values:", [*set([f for f in titles.values() if f is not None])])
