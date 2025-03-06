@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -156,7 +156,9 @@ export default function Header() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   // Determine if we're on the homepage
   const isHomePage = pathname === '/';
@@ -183,6 +185,18 @@ export default function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+   
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
   
   // The header should be transparent only on homepage when not scrolled
@@ -288,7 +302,7 @@ export default function Header() {
 
       <nav className={`fixed top-0 w-screen z-50 transition-all duration-1000 ease-in-out ${navBgClass}`}>
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-between items-center h-16 px-4 sm:px-6">
+          <div className="flex justify-between items-center h-16 px-4 sm:px-6">
             <div className="flex items-center space-x-2">
               <Link href="/" className="flex items-center">
                 <Image
@@ -303,7 +317,9 @@ export default function Header() {
                 </span>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center space-x-4">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-4">
               <Link
                 href="/welcome"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
@@ -322,6 +338,87 @@ export default function Header() {
               >
                 Contact
               </button>
+              <Link
+                href="/about"
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
+              >
+                About Us
+              </Link>
+              <AuthButton />
+            </div>
+            
+            {/* Mobile Navigation */}
+            <div className="flex md:hidden items-center space-x-4" ref={dropdownRef}>
+              <div className="relative">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className={`flex items-center transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
+                >
+                  Menu
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className={`h-4 w-4 ml-1 transition-transform duration-300 ${mobileMenuOpen ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <AnimatePresence>
+                  {mobileMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 ${
+                        darkMode ? 'bg-gray-800' : 'bg-white'
+                      }`}
+                    >
+                      <Link
+                        href="/welcome"
+                        className={`block px-4 py-2 text-sm ${
+                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        href="/dashboard"
+                        className={`block px-4 py-2 text-sm ${
+                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Practice
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setContactModalOpen(true);
+                        }}
+                        className={`block w-full text-left px-4 py-2 text-sm ${
+                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                      >
+                        Contact
+                      </button>
+                      <Link
+                        href="/about"
+                        className={`block px-4 py-2 text-sm ${
+                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        About Us
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               <AuthButton />
             </div>
           </div>
