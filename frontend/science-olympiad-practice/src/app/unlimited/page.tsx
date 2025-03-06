@@ -9,6 +9,7 @@ import { auth } from '@/lib/firebase';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
+import PDFViewer from '@/app/components/PDFViewer';
 
 interface Question {
   question: string;
@@ -965,152 +966,100 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
   };
 
   return (
-    <>
-      <div className="relative min-h-screen">
-        {/* Background Layers */}
-        <div
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            darkMode ? 'opacity-100' : 'opacity-0'
-          } bg-gradient-to-br from-gray-800 to-black`}
-        ></div>
-        <div
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            darkMode ? 'opacity-0' : 'opacity-100'
-          } bg-gradient-to-br from-gray-50 to-blue-100`}
-        ></div>
+    <div className="min-h-screen transition-colors duration-1000 ease-in-out">
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${
+        darkMode ? 'opacity-100' : 'opacity-0'
+      } bg-gradient-to-br from-gray-900 to-gray-800`}></div>
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${
+        darkMode ? 'opacity-0' : 'opacity-100'
+      } bg-gradient-to-br from-blue-50 to-white`}></div>
 
-        <div className="relative flex flex-col items-center p-6 transition-all duration-1000 ease-in-out">
-          <header className="w-full max-w-3xl flex justify-between items-center py-4 transition-colors duration-1000 ease-in-out">
-            <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-              Scio.ly: {routerData.eventName || 'Loading...'}
-            </h1>
-          </header>
-
-          <main
-            className={`w-full max-w-3xl rounded-lg shadow-md p-6 mt-4 transition-all duration-1000 ease-in-out ${
-              darkMode ? 'bg-gray-800' : 'bg-white'
-            }`}
-          >
-            {isLoading ? (
-              <LoadingFallback />
-            ) : fetchError ? (
-              <div className="text-red-600 text-center">{fetchError}</div>
-            ) : routerData.eventName === "Codebusters" && routerData.types === 'multiple-choice' ? (
-              <div className="flex flex-col items-center justify-center h-64">
-                <p className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  No MCQs available for this event
-                </p>
-                <p className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Please select &quot;MCQ + FRQ&quot; in the dashboard to practice this event
-                </p>
-              </div>
-            ) : !currentQuestion ? (
-              <div>No questions available.</div>
-            ) : (
-              <div className="space-y-6">
-                {renderQuestion(currentQuestion)}
-
-                {/* Action Button */}
-                <div className="mt-6 text-center">
-                  {!isSubmitted ? (
-                    <button
-                      onClick={handleSubmit}
-                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                        darkMode
-                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                      }`}
-                    >
-                      {currentAnswer.length === 0 || currentAnswer[0] === null || currentAnswer[0] === '' ? 'Skip Question' : 'Check Answer'}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handleNext}
-                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                        darkMode
-                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                      }`}
-                    >
-                      Next Question
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
-          </main>
-
-          {/* Back Button (bottom-left) */}
-          <button
-            onClick={() => {
-              // Clear unlimited practice-related localStorage items
-              localStorage.removeItem('unlimitedQuestions');
-              localStorage.removeItem('testParams');
-              router.push('/dashboard');
-            }}
-            className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
-              darkMode
-                ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
-                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
-            } text-white`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      <div className="relative z-10 container mx-auto px-4 py-8">
+        <header className="flex justify-between items-center mb-8">
+          <h1 className={`text-2xl font-bold transition-colors duration-1000 ease-in-out ${
+            darkMode ? 'text-white' : 'text-gray-900'
+          }`}>
+            Unlimited Practice: {routerData.eventName || 'Loading...'}
+          </h1>
+          <div className="flex items-center gap-4">
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`p-2 rounded-full transition-all duration-300 ${
+                darkMode ? 'bg-gray-700 text-yellow-400' : 'bg-white text-blue-600 shadow'
+              }`}
+              aria-label="Toggle dark mode"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
-          </button>
+              {darkMode ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+              )}
+            </button>
+            <button
+              onClick={() => router.push('/dashboard')}
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                darkMode
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                  : 'bg-blue-500 hover:bg-blue-600 text-white'
+              }`}
+            >
+              Back to Dashboard
+            </button>
+          </div>
+        </header>
 
-          {/* Dark Mode Toggle (bottom-right) */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
-              darkMode ? 'bg-gray-700' : 'bg-white'
-            }`}
-          >
-            {darkMode ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-<circle cx="12" cy="12" r="4" fill="currentColor"/>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
-            />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
+        {isLoading ? (
+          <LoadingFallback />
+        ) : fetchError ? (
+          <div className="text-red-600 text-center">{fetchError}</div>
+        ) : routerData.eventName === "Codebusters" && routerData.types === 'multiple-choice' ? (
+          <div className="flex flex-col items-center justify-center h-64">
+            <p className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              No MCQs available for this event
+            </p>
+            <p className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              Please select &quot;MCQ + FRQ&quot; in the dashboard to practice this event
+            </p>
+          </div>
+        ) : !currentQuestion ? (
+          <div>No questions available.</div>
+        ) : (
+          <div className="space-y-6">
+            {renderQuestion(currentQuestion)}
+
+            {/* Action Button */}
+            <div className="mt-6 text-center">
+              {!isSubmitted ? (
+                <button
+                  onClick={handleSubmit}
+                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                    darkMode
+                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                  }`}
+                >
+                  {currentAnswer.length === 0 || currentAnswer[0] === null || currentAnswer[0] === '' ? 'Skip Question' : 'Check Answer'}
+                </button>
+              ) : (
+                <button
+                  onClick={handleNext}
+                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                    darkMode
+                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                  }`}
+                >
+                  Next Question
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       <ReportModal
@@ -1126,11 +1075,21 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         onSubmit={handleContest}
         darkMode={darkMode}
       />
+      {/* Add the reference button as sticky at the bottom */}
+      {routerData.eventName === 'Codebusters' && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30 mb-2">
+          <PDFViewer 
+            pdfPath="/2024_Div_C_Resource.pdf" 
+            buttonText="Codebusters Reference" 
+            darkMode={darkMode} 
+          />
+        </div>
+      )}
       <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
+        position="bottom-right"
+        autoClose={5000}
         hideProgressBar={false}
-        newestOnTop={false}
+        newestOnTop
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
@@ -1138,6 +1097,6 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         pauseOnHover
         theme={darkMode ? "dark" : "light"}
       />
-    </>
+    </div>
   );
 }

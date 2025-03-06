@@ -10,6 +10,7 @@ import { auth } from '@/lib/firebase';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
+import PDFViewer from '@/app/components/PDFViewer';
 
 interface Question {
   question: string;
@@ -948,7 +949,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
                     : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'
                 }`}
               >
-                Time Left: {formatTime(timeLeft)}
+                {formatTime(timeLeft)}
               </div>
             )}
           </header>
@@ -1301,6 +1302,17 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
           </svg>
         )}
       </button>
+
+      {/* Add the reference button as sticky at the bottom */}
+      {routerData.eventName === 'Codebusters' && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30 mb-2">
+          <PDFViewer 
+            pdfPath="/2024_Div_C_Resource.pdf" 
+            buttonText="Codebusters Reference" 
+            darkMode={darkMode} 
+          />
+        </div>
+      )}
     </>
   );
 }
