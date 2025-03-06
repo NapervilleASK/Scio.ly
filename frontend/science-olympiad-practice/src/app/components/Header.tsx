@@ -316,12 +316,6 @@ export default function Header() {
               >
                 Practice
               </Link>
-              <Link
-                href="/reports"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
-              >
-                Reports
-              </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${linkColorClass}`}

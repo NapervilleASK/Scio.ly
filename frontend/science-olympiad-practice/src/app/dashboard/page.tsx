@@ -498,6 +498,31 @@ function EventDashboard() {
         )}
       </button>
 
+      {/* Back Button (bottom-left) */}
+      <button
+        onClick={() => router.push('/welcome')}
+        className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
+          darkMode
+            ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
+            : 'bg-gradient-to-r from-blue-500 to-cyan-500'
+        } text-white z-50`}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+      </button>
+
       <ToastContainer theme={darkMode ? "dark" : "light"} />
     </div>
   );
