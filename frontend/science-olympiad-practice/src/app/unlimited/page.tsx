@@ -29,9 +29,7 @@ interface RouterParams {
 interface ReportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => void;
-  darkMode: boolean;
-  question?: Question;
+  onSubmit: (reason: string) => void;
 }
 
 interface ReportState {
@@ -59,23 +57,13 @@ const LoadingFallback = () => (
   </div>
 );
 
-const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question }: ReportModalProps) => {
+const ReportModal = ({ isOpen, onClose, onSubmit }: ReportModalProps) => {
   const [reason, setReason] = useState('');
-  const [action, setAction] = useState<'remove' | 'edit'>('remove');
-  const [editedQuestion, setEditedQuestion] = useState('');
-
-  useEffect(() => {
-    if (question) {
-      setEditedQuestion(question.question);
-    }
-  }, [question]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(reason, action, action === 'edit' ? editedQuestion : undefined);
+    onSubmit(reason);
     setReason('');
-    setAction('remove');
-    setEditedQuestion('');
     onClose();
   };
 
@@ -83,74 +71,13 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question }: ReportMo
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className={`rounded-lg p-6 w-[500px] max-w-full transition-colors duration-300 ${
-        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-      }`}>
-        <h3 className="text-lg font-semibold mb-4">Report Question</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96">
+        <h3 className="text-lg font-semibold mb-4 dark:text-white">Report Question</h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2 font-medium">Action</label>
-            <div className="flex space-x-4">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="action"
-                  value="remove"
-                  checked={action === 'remove'}
-                  onChange={() => setAction('remove')}
-                  className="mr-2"
-                />
-                Remove Question
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="action"
-                  value="edit"
-                  checked={action === 'edit'}
-                  onChange={() => setAction('edit')}
-                  className="mr-2"
-                />
-                Edit Question
-              </label>
-            </div>
-          </div>
-
-          {action === 'edit' && (
-            <div className="mb-4">
-              <label className="block mb-2 font-medium">Original Question</label>
-              <div className={`p-3 rounded-md mb-3 transition-colors duration-300 ${
-                darkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900'
-              }`}>
-                {question?.question}
-              </div>
-              
-              <label className="block mb-2 font-medium">Edited Question</label>
-              <textarea
-                className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
-                  darkMode 
-                    ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                    : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-                }`}
-                rows={4}
-                placeholder="Enter your edited version of the question..."
-                value={editedQuestion}
-                onChange={(e) => setEditedQuestion(e.target.value)}
-                required={action === 'edit'}
-              />
-            </div>
-          )}
-
           <textarea
-            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
-              darkMode 
-                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-            }`}
+            className="w-full p-2 border rounded-md mb-4 dark:bg-gray-700 dark:text-white"
             rows={4}
-            placeholder={action === 'remove' 
-              ? "Please describe why this question should be removed..." 
-              : "Please explain your changes to the question..."}
+            placeholder="Please describe the issue with this question..."
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             required
@@ -159,19 +86,15 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question }: ReportMo
             <button
               type="button"
               onClick={onClose}
-              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
-                darkMode
-                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
-              }`}
+              className="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
+              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
             >
-              Submit {action === 'remove' ? 'Report' : 'Edit'}
+              Submit Report
             </button>
           </div>
         </form>
@@ -524,21 +447,17 @@ export default function UnlimitedPracticePage() {
     }
   };
 
-  const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => {
+  const handleReport = async (reason: string) => {
     if (reportState.questionIndex === null) return;
 
     const questionData = data[reportState.questionIndex];
     const mainWebhookUrl = "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
     const summaryWebhookUrl = "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
 
-    const actionText = action === 'remove' ? 'Removal' : 'Edit';
-    const actionColor = action === 'remove' ? 0xFF0000 : 0xFFA500;
-    const actionEmoji = action === 'remove' ? '❌' : '✏️';
-
     const mainPayload = {
       embeds: [{
-        title: `Question ${actionText} Request`,
-        color: actionColor,
+        title: "Question Report",
+        color: 0xFF0000,
         fields: [
           {
             name: "Event",
@@ -549,14 +468,8 @@ export default function UnlimitedPracticePage() {
             name: "Question",
             value: questionData.question
           },
-          ...(action === 'edit' && editedQuestion ? [
-            {
-              name: "Edited Question",
-              value: editedQuestion
-            }
-          ] : []),
           {
-            name: `${actionText} Reason`,
+            name: "Report Reason",
             value: reason
           },
           {
@@ -570,88 +483,50 @@ export default function UnlimitedPracticePage() {
 
     const summaryPayload = {
       embeds: [{
-        title: `${actionEmoji} Question ${actionText} Requested`,
+        title: "❌ Question Reported",
         description: questionData.question,
-        color: actionColor,
+        color: 0xFF0000,
         fields: [
           {
             name: "Event",
             value: routerData.eventName || "Unknown Event",
             inline: true
-          },
-          ...(action === 'edit' && editedQuestion ? [
-            {
-              name: "Edited Question",
-              value: editedQuestion
-            }
-          ] : [])
+          }
         ],
         timestamp: new Date().toISOString()
       }]
     };
 
-    const toastId = toast.loading(`Sending ${action} request...`);
+    const toastId = toast.loading('Sending report...');
 
     try {
-      // First, send to our API to check if the report should be accepted
-      const apiEndpoint = action === 'remove' 
-        ? '/api/report/remove' 
-        : '/api/report/edit';
-      
-      const apiPayload = action === 'remove'
-        ? { 
-            question: questionData.question, 
-            event: routerData.eventName, 
-            reason 
-          }
-        : { 
-            originalQuestion: questionData.question, 
-            editedQuestion, 
-            event: routerData.eventName, 
-            reason 
-          };
-      
-      const apiResponse = await fetch(apiEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(apiPayload),
-      });
+      const [mainResponse, summaryResponse] = await Promise.all([
+        fetch(mainWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(mainPayload)
+        }),
+        fetch(summaryWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(summaryPayload)
+        })
+      ]);
 
-      if (!apiResponse.ok) {
-        throw new Error(`Failed to send ${action} request to API`);
-      }
-
-      const apiResult = await apiResponse.json();
-
-      // Only send to Discord webhooks if the API approved the report
-      if (apiResult.success) {
-        // Send to Discord webhooks
-        await Promise.all([
-          fetch(mainWebhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(mainPayload)
-          }),
-          fetch(summaryWebhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(summaryPayload)
-          })
-        ]);
+      if (!mainResponse.ok || !summaryResponse.ok) {
+        throw new Error('Failed to send report');
       }
 
       toast.update(toastId, {
-        render: apiResult.success 
-          ? `${action === 'remove' ? 'Report' : 'Edit'} sent successfully! We will process this soon. Thank you!` 
-          : apiResult.message || `${action === 'remove' ? 'Report' : 'Edit'} was not accepted. ${apiResult.message || ''}`,
-        type: apiResult.success ? 'success' : 'info',
+        render: 'Report sent successfully! We will fix this question soon. Thank you!',
+        type: 'success',
         isLoading: false,
         autoClose: 3000
       });
     } catch (error) {
-      console.error(`Error sending ${action} request:`, error);
+      console.error('Error sending report:', error);
       toast.update(toastId, {
-        render: `Failed to send ${action} request. Please try again.`,
+        render: 'Failed to send report. Please try again.',
         type: 'error',
         isLoading: false,
         autoClose: 3000
@@ -966,108 +841,158 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-1000 ease-in-out">
-      <div className={`absolute inset-0 transition-opacity duration-1000 ${
-        darkMode ? 'opacity-100' : 'opacity-0'
-      } bg-gradient-to-br from-gray-900 to-gray-800`}></div>
-      <div className={`absolute inset-0 transition-opacity duration-1000 ${
-        darkMode ? 'opacity-0' : 'opacity-100'
-      } bg-gradient-to-br from-blue-50 to-white`}></div>
+    <>
+      <div className="relative min-h-screen">
+        {/* Background Layers */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            darkMode ? 'opacity-100' : 'opacity-0'
+          } bg-gradient-to-br from-gray-800 to-black`}
+        ></div>
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            darkMode ? 'opacity-0' : 'opacity-100'
+          } bg-gradient-to-br from-gray-50 to-blue-100`}
+        ></div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className={`text-2xl font-bold transition-colors duration-1000 ease-in-out ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Unlimited Practice: {routerData.eventName || 'Loading...'}
-          </h1>
-          <div className="flex items-center gap-4">
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-full transition-all duration-300 ${
-                darkMode ? 'bg-gray-700 text-yellow-400' : 'bg-white text-blue-600 shadow'
-              }`}
-              aria-label="Toggle dark mode"
+        <div className="relative flex flex-col items-center p-6 transition-all duration-1000 ease-in-out">
+          <header className="w-full max-w-3xl flex justify-between items-center py-4 transition-colors duration-1000 ease-in-out">
+            <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
+              Scio.ly: {routerData.eventName || 'Loading...'}
+            </h1>
+          </header>
+
+          <main
+            className={`w-full max-w-3xl rounded-lg shadow-md p-6 mt-4 transition-all duration-1000 ease-in-out ${
+              darkMode ? 'bg-gray-800' : 'bg-white'
+            }`}
+          >
+            {isLoading ? (
+              <LoadingFallback />
+            ) : fetchError ? (
+              <div className="text-red-600 text-center">{fetchError}</div>
+            ) : routerData.eventName === "Codebusters" && routerData.types === 'multiple-choice' ? (
+              <div className="flex flex-col items-center justify-center h-64">
+                <p className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  No MCQs available for this event
+                </p>
+                <p className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Please select &quot;MCQ + FRQ&quot; in the dashboard to practice this event
+                </p>
+              </div>
+            ) : !currentQuestion ? (
+              <div>No questions available.</div>
+            ) : (
+              <div className="space-y-6">
+                {renderQuestion(currentQuestion)}
+
+                {/* Action Button */}
+                <div className="mt-6 text-center">
+                  {!isSubmitted ? (
+                    <button
+                      onClick={handleSubmit}
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                        darkMode
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      }`}
+                    >
+                      {currentAnswer.length === 0 || currentAnswer[0] === null || currentAnswer[0] === '' ? 'Skip Question' : 'Check Answer'}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleNext}
+                      className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
+                        darkMode
+                          ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      }`}
+                    >
+                      Next Question
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+          </main>
+
+          {/* Back Button (bottom-left) */}
+          <button
+            onClick={() => {
+              // Clear unlimited practice-related localStorage items
+              localStorage.removeItem('unlimitedQuestions');
+              localStorage.removeItem('testParams');
+              router.push('/dashboard');
+            }}
+            className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
+              darkMode
+                ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'
+                : 'bg-gradient-to-r from-blue-500 to-cyan-500'
+            } text-white`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              {darkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              )}
-            </button>
-            <button
-              onClick={() => router.push('/dashboard')}
-              className={`px-4 py-2 rounded-lg transition-all duration-300 ${
-                darkMode
-                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                  : 'bg-blue-500 hover:bg-blue-600 text-white'
-              }`}
-            >
-              Back to Dashboard
-            </button>
-          </div>
-        </header>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+          </button>
 
-        {isLoading ? (
-          <LoadingFallback />
-        ) : fetchError ? (
-          <div className="text-red-600 text-center">{fetchError}</div>
-        ) : routerData.eventName === "Codebusters" && routerData.types === 'multiple-choice' ? (
-          <div className="flex flex-col items-center justify-center h-64">
-            <p className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              No MCQs available for this event
-            </p>
-            <p className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Please select &quot;MCQ + FRQ&quot; in the dashboard to practice this event
-            </p>
-          </div>
-        ) : !currentQuestion ? (
-          <div>No questions available.</div>
-        ) : (
-          <div className="space-y-6">
-            {renderQuestion(currentQuestion)}
-
-            {/* Action Button */}
-            <div className="mt-6 text-center">
-              {!isSubmitted ? (
-                <button
-                  onClick={handleSubmit}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}
-                >
-                  {currentAnswer.length === 0 || currentAnswer[0] === null || currentAnswer[0] === '' ? 'Skip Question' : 'Check Answer'}
-                </button>
-              ) : (
-                <button
-                  onClick={handleNext}
-                  className={`w-full mt-6 px-4 py-2 font-semibold rounded-lg transition-all duration-1000 transform hover:scale-105 ${
-                    darkMode
-                      ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                  }`}
-                >
-                  Next Question
-                </button>
-              )}
-            </div>
-          </div>
-        )}
+          {/* Dark Mode Toggle (bottom-right) */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 ${
+              darkMode ? 'bg-gray-700' : 'bg-white'
+            }`}
+          >
+            {darkMode ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+<circle cx="12" cy="12" r="4" fill="currentColor"/>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05L5.636 5.636"
+            />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 1112 3v0a9 9 0 008.354 12.354z"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <ReportModal
         isOpen={reportState.isOpen}
         onClose={() => setReportState({ isOpen: false, questionIndex: null })}
         onSubmit={handleReport}
-        darkMode={darkMode}
-        question={currentQuestion}
       />
       <ContestModal
         isOpen={contestState.isOpen}
@@ -1075,6 +1000,19 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         onSubmit={handleContest}
         darkMode={darkMode}
       />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "dark" : "light"}
+      />
+
       {/* Add the reference button as sticky at the bottom */}
       {routerData.eventName === 'Codebusters' && (
         <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30 mb-2">
@@ -1085,18 +1023,6 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
           />
         </div>
       )}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={darkMode ? "dark" : "light"}
-      />
-    </div>
+    </>
   );
 }
