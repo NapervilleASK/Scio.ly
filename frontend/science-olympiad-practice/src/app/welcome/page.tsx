@@ -402,24 +402,30 @@ export default function WelcomePage() {
   };
 
   const generateWeeklyData = (): WeeklyData => {
+    // Get the last 7 days based on current date
     const days: DailyData[] = [];
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
       const dateStr = date.toISOString().split('T')[0];
-      const dayData = historyData[dateStr] || { questionsAttempted: 0 };
+      const dayData = historyData[dateStr] || { questionsAttempted: 0, correctAnswers: 0 };
       days.push({
         date: date.toLocaleDateString('en-US', { weekday: 'short' }),
         count: dayData.questionsAttempted || 0,
       });
     }
+
+    // Calculate weekly accuracy using the same date range
+    const weeklyAccuracy = calculateWeeklyAccuracy();
+    
     return {
       questions: days,
-      accuracy: metrics.accuracy,
+      accuracy: weeklyAccuracy,
     };
   };
 
   const getYAxisScale = () => {
+    // Use the same weekly data that's generated based on current date
     const weekData = generateWeeklyData().questions;
     const maxValue = Math.max(...weekData.map((day) => day.count), 1);
     const roundedMax = Math.ceil(maxValue / 5) * 5;
@@ -427,7 +433,21 @@ export default function WelcomePage() {
   };
 
   const calculateWeeklyAccuracy = (): number => {
-    const weekData = Object.entries(historyData).sort().slice(-7);
+    // Get the last 7 days based on current date
+    const last7Days: string[] = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      last7Days.push(dateStr);
+    }
+
+    // Filter history data to only include entries from the last 7 days
+    const weekData = last7Days
+      .map(dateStr => [dateStr, historyData[dateStr] || { questionsAttempted: 0, correctAnswers: 0 }] as [string, { questionsAttempted: number, correctAnswers: number }])
+      .filter(([, stats]) => stats.questionsAttempted > 0);
+
+    // Calculate accuracy from the filtered data
     const totals = weekData.reduce(
       (acc, [, stats]) => ({
         attempted: acc.attempted + (stats.questionsAttempted || 0),
@@ -435,6 +455,7 @@ export default function WelcomePage() {
       }),
       { attempted: 0, correct: 0 }
     );
+    
     return totals.attempted > 0 ? (totals.correct / totals.attempted) * 100 : 0;
   };
 
@@ -530,10 +551,6 @@ export default function WelcomePage() {
     darkMode
       ? 'bg-gray-800 transition-all duration-1000 ease-in-out'
       : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-1000 ease-in-out';
-
-  // Prepare data for the mobile horizontal chart.
-  const weekData = generateWeeklyData().questions;
-  const maxCount = Math.max(...weekData.map((day) => day.count), 1);
 
   // Determine if we are on a mobile screen (width 1000 or less)
   const isMobile = windowWidth !== null && windowWidth <= 1000;
@@ -887,12 +904,12 @@ export default function WelcomePage() {
                 Questions This Week
               </h2>
               <div className="flex flex-col space-y-3">
-                {weekData.map((day) => (
+                {generateWeeklyData().questions.map((day) => (
                   <div key={day.date} className="flex items-center">
                     <div className="w-16 text-sm">{day.date}</div>
                     <div className="flex-1 bg-gray-200 rounded h-4 relative">
                       <div
-                        style={{ width: `${(day.count / maxCount) * 100}%` }}
+                        style={{ width: `${(day.count / Math.max(...generateWeeklyData().questions.map(d => d.count), 1)) * 100}%` }}
                         className="bg-blue-500 h-4 rounded"
                       ></div>
                     </div>
