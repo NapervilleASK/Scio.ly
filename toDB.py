@@ -946,7 +946,7 @@ for key, questions in combined_bank.items():
             if 'answers' in q:
                 # If answers is a list
                 if isinstance(q['answers'], list):
-                    q['answers'] = [1 if a == 'A' else 2 if a == 'B' else 3 if a == 'C' else 4 if a == 'D' else 5 if a == 'E' else 6 if a == 'F' else a for a in q['answers']]
+                    q['answers'] = [a if isinstance(a,int) or isinstance(a,list) or a is None else 1 if a.upper() == 'A' else 2 if a.upper() == 'B' else 3 if a.upper() == 'C' else 4 if a.upper() == 'D' else 5 if a.upper() == 'E' else 6 if a.upper(    ) == 'F' else a for a in q['answers']]
                     # Check if every answer is numeric or a numeric string.
                     all_numeric = all(
                         isinstance(a, (int, float)) or (isinstance(a, str) and a.strip().isdigit())
