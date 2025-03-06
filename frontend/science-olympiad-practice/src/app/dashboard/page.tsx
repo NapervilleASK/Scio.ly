@@ -166,18 +166,81 @@ function EventDashboard() {
   // Preselect and scroll to the event if a query parameter is provided.
   useEffect(() => {
     const storedEventParams = localStorage.getItem('eventParams');
-    if (storedEventParams) {
+    if (storedEventParams && events.length > 0) {
         const eventToSelect = events.find(
           (event) => event.name === storedEventParams
         );
         if (eventToSelect) {
           setSelectedEvent(eventToSelect.id);
-          const element = document.getElementById(`event-${eventToSelect.id}`);
-          element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          localStorage.removeItem('eventParams')
+          
+          // Use setTimeout to ensure the DOM is updated before scrolling
+          setTimeout(() => {
+            const element = document.getElementById(`event-${eventToSelect.id}`);
+            if (element) {
+              // Find the scrollable container (the event list)
+              const container = element.closest('ul')?.parentElement;
+              
+              if (container) {
+                // Find the index of the selected event in the sorted events array
+                const sortedEventsInEffect = [...events].sort((a, b) => {
+                  if (sortOption === 'alphabetical') {
+                    return a.name.localeCompare(b.name);
+                  } else if (sortOption === 'subject') {
+                    return a.subject.localeCompare(b.subject);
+                  }
+                  return 0;
+                });
+                
+                const eventIndex = sortedEventsInEffect.findIndex(event => event.id === eventToSelect.id);
+                
+                if (eventIndex !== -1) {
+                  // Calculate the total height of the container
+                  const containerHeight = container.scrollHeight;
+                  
+                  // Calculate proportional scroll position based on event index
+                  // Add a small offset to center it better
+                  const itemCount = sortedEventsInEffect.length;
+                  const scrollRatio = eventIndex / itemCount;
+                  
+                  // Calculate a dynamic offset based on container height to better center the element
+                  // This will position the element more towards the center of the viewport
+                  const scrollOffset = containerHeight * 0.2; // 20% of container height
+                  
+                  // Calculate the scroll position
+                  const scrollTop = (containerHeight * scrollRatio) - scrollOffset;
+                  
+                  // Scroll the container
+                  container.scrollTo({
+                    top: Math.max(0, scrollTop),
+                    behavior: 'smooth'
+                  });
+                } else {
+                  // Fallback if index not found
+                  element.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center'
+                  });
+                }
+              } else {
+                // Fallback to standard scrollIntoView with adjusted options
+                element.scrollIntoView({ 
+                  behavior: 'smooth', 
+                  block: 'start'
+                });
+              }
+              
+              // Add a highlight animation
+              element.classList.add('highlight-animation');
+              // Remove the animation class after it completes
+              setTimeout(() => {
+                element.classList.remove('highlight-animation');
+              }, 2000);
+            }
+            localStorage.removeItem('eventParams');
+          }, 300);
         }
-  }
-  }, [events]);
+    }
+  }, [events, sortOption]);
 
   return (
     <div className="relative min-h-screen">
@@ -278,6 +341,22 @@ function EventDashboard() {
                     background: ${darkMode
                       ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
                       : 'linear-gradient(to bottom, #2563eb, #0284c7)'};
+                  }
+                  
+                  @keyframes highlight-pulse {
+                    0% {
+                      box-shadow: 0 0 0 0 ${darkMode ? 'rgba(59, 130, 246, 0.7)' : 'rgba(59, 130, 246, 0.4)'};
+                    }
+                    70% {
+                      box-shadow: 0 0 0 10px ${darkMode ? 'rgba(59, 130, 246, 0)' : 'rgba(59, 130, 246, 0)'};
+                    }
+                    100% {
+                      box-shadow: 0 0 0 0 ${darkMode ? 'rgba(59, 130, 246, 0)' : 'rgba(59, 130, 246, 0)'};
+                    }
+                  }
+                  
+                  :global(.highlight-animation) {
+                    animation: highlight-pulse 2s ease-in-out;
                   }
                 `}</style>
                 <ul className="space-y-1">
