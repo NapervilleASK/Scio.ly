@@ -590,7 +590,25 @@ export default function HomePage() {
         )}
       </button>
 
-      <style jsx global>{`
+      <style jsx>{`
+        :global(::-webkit-scrollbar) {
+          width: 8px;
+        }
+        :global(::-webkit-scrollbar-thumb) {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+            : 'linear-gradient(to bottom, #3b82f6, #0ea5e9)'};
+          border-radius: 4px;
+        }
+        :global(::-webkit-scrollbar-thumb:hover) {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+            : 'linear-gradient(to bottom, #2563eb, #0284c7)'};
+        }
+        :global(::-webkit-scrollbar-track) {
+          background: ${darkMode ? 'black' : '#f1f5f9'};
+        }
+
         @keyframes breathe {
           0% {
             transform: scale(1);
@@ -625,38 +643,6 @@ export default function HomePage() {
         
         .light-button-halo:hover {
           box-shadow: 0 0 20px 8px rgba(37, 99, 235, 0.3);
-        }
-
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        
-        .dark-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72));
-          border-radius: 4px;
-          transition: background 1s ease;
-        }
-        
-        .dark-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54));
-        }
-        
-        .dark-scrollbar::-webkit-scrollbar-track {
-          background: black;
-        }
-        
-        .light-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, rgb(219, 234, 254), rgb(96, 165, 250));
-          border-radius: 4px;
-          transition: background 1s ease;
-        }
-        
-        .light-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, rgb(191, 219, 254), rgb(59, 130, 246));
-        }
-        
-        .light-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
         }
       `}</style>
     </div>

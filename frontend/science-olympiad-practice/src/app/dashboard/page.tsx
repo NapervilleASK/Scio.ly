@@ -328,7 +328,8 @@ function EventDashboard() {
               </div>
               <div className="max-h-[60vh] overflow-y-auto p-2">
                 <style jsx>{`
-                  div::-webkit-scrollbar {
+                  div::-
+                  webkit-scrollbar {
                     width: 8px;
                   }
                   div::-webkit-scrollbar-thumb {

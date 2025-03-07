@@ -45,7 +45,7 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100]"
         onClick={(e) => {
           if (e.target === e.currentTarget) onClose();
         }}
@@ -169,6 +169,13 @@ export default function AboutPage() {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Add effect for scrollbar theme
+  useEffect(() => {
+    // Apply scrollbar styles based on theme
+    document.documentElement.classList.toggle('dark-scrollbar', darkMode);
+    document.documentElement.classList.toggle('light-scrollbar', !darkMode);
+  }, [darkMode]);
 
   const handleContact = async (data: ContactFormData) => {
     try {
@@ -456,6 +463,26 @@ export default function AboutPage() {
           </svg>
         )}
       </button>
+
+      <style jsx>{`
+        :global(::-webkit-scrollbar) {
+          width: 8px;
+        }
+        :global(::-webkit-scrollbar-thumb) {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+            : 'linear-gradient(to bottom, #3b82f6, #0ea5e9)'};
+          border-radius: 4px;
+        }
+        :global(::-webkit-scrollbar-thumb:hover) {
+          background: ${darkMode
+            ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+            : 'linear-gradient(to bottom, #2563eb, #0284c7)'};
+        }
+        :global(::-webkit-scrollbar-track) {
+          background: ${darkMode ? 'black' : '#f1f5f9'};
+        }
+      `}</style>
     </div>
   );
 } 
