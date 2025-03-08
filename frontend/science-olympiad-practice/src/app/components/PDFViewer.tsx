@@ -41,7 +41,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfPath, buttonText = "Reference 
           onClick={(e) => e.stopPropagation()}
         >
           <div className={`flex justify-between items-center p-4 ${darkMode ? 'bg-gray-800 text-white' : 'bg-blue-100 text-gray-800'} rounded-t-lg`}>
-            <h3 className="text-lg font-semibold">Codebusters Reference Material</h3>
+            <h3 className="text-lg font-semibold">Reference Material</h3>
             <button
               onClick={closePDF}
               className={`p-2 rounded-full hover:bg-opacity-20 ${darkMode ? 'hover:bg-white text-white' : 'hover:bg-gray-500 text-gray-700'}`}

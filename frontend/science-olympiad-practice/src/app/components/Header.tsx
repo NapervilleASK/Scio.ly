@@ -332,6 +332,12 @@ export default function Header() {
               >
                 Practice
               </Link>
+              <Link
+                href="/rules"
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
+              >
+                Rules
+              </Link>
               <button
                 onClick={() => setContactModalOpen(true)}
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${linkColorClass}`}
@@ -394,6 +400,15 @@ export default function Header() {
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Practice
+                      </Link>
+                      <Link
+                        href="/rules"
+                        className={`block px-4 py-2 text-sm ${
+                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Rules
                       </Link>
                       <button
                         onClick={() => {
