@@ -11,23 +11,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import PDFViewer from '@/app/components/PDFViewer';
-
-interface Question {
-  question: string;
-  options?: string[];
-  answers: (number | string)[];
-  difficulty: number;
-}
-
-interface ShareModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  setData: (data: Question[]) => void;
-  inputCode: string;
-  setInputCode: (code: string) => void;
-  setRouterData: (data: RouterParams) => void;
-  darkMode: boolean;
-}
+import ReportModal, { Question as ReportQuestion, ReportModalProps } from '@/app/components/ReportModal';
 
 interface RouterParams {
   eventName?: string;
@@ -35,14 +19,6 @@ interface RouterParams {
   difficulty?: string;
   types?: string;
   timeLimit?: string;
-}
-
-interface ReportModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => void;
-  darkMode: boolean;
-  question?: Question;
 }
 
 interface ReportState {
@@ -62,199 +38,24 @@ interface ContestState {
   questionIndex: number | null;
 }
 
+// Keep the Question type for backward compatibility
+type Question = ReportQuestion;
+
+interface ShareModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  setData: (data: Question[]) => void;
+  inputCode: string;
+  setInputCode: (code: string) => void;
+  setRouterData: (data: RouterParams) => void;
+  darkMode: boolean;
+}
+
 const API_URL = api.api;
 const arr = api.arr
 
 // Replace the global variable declaration of globalShareCode with a removal comment
 // let globalShareCode: string | null = null;
-
-const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question }: ReportModalProps) => {
-  const [reason, setReason] = useState('');
-  const [action, setAction] = useState<'remove' | 'edit'>('remove');
-  const [editedQuestion, setEditedQuestion] = useState('');
-
-  useEffect(() => {
-    if (question) {
-      setEditedQuestion(question.question);
-    }
-  }, [question]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(reason, action, action === 'edit' ? editedQuestion : undefined);
-    setReason('');
-    setAction('remove');
-    setEditedQuestion('');
-    onClose();
-  };
-
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className={`rounded-lg p-6 w-[500px] max-w-full transition-colors duration-300 ${
-        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-      }`}>
-        <h3 className="text-lg font-semibold mb-4">Report Question</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2 font-medium">Action</label>
-            <div className="flex space-x-4">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="action"
-                  value="remove"
-                  checked={action === 'remove'}
-                  onChange={() => setAction('remove')}
-                  className="mr-2"
-                />
-                Remove Question
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="action"
-                  value="edit"
-                  checked={action === 'edit'}
-                  onChange={() => setAction('edit')}
-                  className="mr-2"
-                />
-                Edit Question
-              </label>
-            </div>
-          </div>
-
-          {action === 'edit' && (
-            <div className="mb-4">
-              <label className="block mb-2 font-medium">Original Question</label>
-              <div className={`p-3 rounded-md mb-3 transition-colors duration-300 ${
-                darkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900'
-              }`}>
-                {question?.question}
-              </div>
-              
-              <label className="block mb-2 font-medium">Edited Question</label>
-              <textarea
-                className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
-                  darkMode 
-                    ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                    : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-                }`}
-                rows={4}
-                placeholder="Enter your edited version of the question..."
-                value={editedQuestion}
-                onChange={(e) => setEditedQuestion(e.target.value)}
-                required={action === 'edit'}
-              />
-            </div>
-          )}
-
-          <textarea
-            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
-              darkMode 
-                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-            }`}
-            rows={4}
-            placeholder={action === 'remove' 
-              ? "Please describe why this question should be removed..." 
-              : "Please explain your changes to the question..."}
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-            required
-          />
-          <div className="flex justify-end space-x-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
-                darkMode
-                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
-              }`}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
-            >
-              Submit {action === 'remove' ? 'Report' : 'Edit'}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-const ContestModal = ({ isOpen, onClose, onSubmit, darkMode }: ContestModalProps) => {
-  const [reason, setReason] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    await onSubmit(reason);
-    setReason('');
-    setIsProcessing(false);
-    onClose();
-  };
-
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className={`rounded-lg p-6 w-96 transition-colors duration-300 ${
-        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-      }`}>
-        <h3 className="text-lg font-semibold mb-4">Contest Question</h3>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
-              darkMode 
-                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-            }`}
-            rows={4}
-            placeholder="Please explain why your answer should be considered correct..."
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-            required
-          />
-          <div className="flex justify-end space-x-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
-                darkMode
-                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
-              }`}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isProcessing}
-              className={`px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300 flex items-center gap-2`}
-            >
-              {isProcessing ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                  Processing...
-                </>
-              ) : (
-                'Submit Contest'
-              )}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
 
 const difficultyMap: Record<string, number> = {
   easy: 0.33,
@@ -609,141 +410,37 @@ export default function TestPage() {
   const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => {
     if (reportState.questionIndex === null) return;
     
-    const questionData = data[reportState.questionIndex];
-    const mainWebhookUrl =
-      "https://discord.com/api/webhooks/1339786241742344363/x2BYAebIvT34tovkpQV5Nq93GTEisQ78asFivqQApS0Q9xPmSeC6o_3CrKs1MWbRKhGh";
-    const summaryWebhookUrl =
-      "https://discord.com/api/webhooks/1339794243467612170/Jeeq4QDsU5LMzN26bUX-e8Z_GzkvudeArmHPB7eAuswJw5PAY7Qgs050ueM51mO8xHMg";
-
-    const actionText = action === 'remove' ? 'Removal' : 'Edit';
-    const actionColor = action === 'remove' ? 0xFF0000 : 0xFFA500;
-    const actionEmoji = action === 'remove' ? '❌' : '✏️';
-
-    const mainPayload = {
-      embeds: [
-        {
-          title: `Question ${actionText} Request`,
-          color: actionColor,
-          fields: [
-            {
-              name: "Event",
-              value: routerData.eventName || "Unknown Event",
-              inline: true,
-            },
-            {
-              name: "Question",
-              value: questionData.question,
-            },
-            ...(action === 'edit' && editedQuestion ? [
-              {
-                name: "Edited Question",
-                value: editedQuestion,
-              }
-            ] : []),
-            {
-              name: `${actionText} Reason`,
-              value: reason,
-            },
-            {
-              name: "Question Data",
-              value: `\`\`\`json\n${JSON.stringify(questionData, null, 2)}\n\`\`\``,
-            },
-          ],
-          timestamp: new Date().toISOString(),
-        },
-      ],
-    };
-
-    const summaryPayload = {
-      embeds: [
-        {
-          title: `${actionEmoji} Question ${actionText} Requested`,
-          description: questionData.question,
-          color: actionColor,
-          fields: [
-            {
-              name: "Event",
-              value: routerData.eventName || "Unknown Event",
-              inline: true,
-            },
-            ...(action === 'edit' && editedQuestion ? [
-              {
-                name: "Edited Question",
-                value: editedQuestion,
-              }
-            ] : []),
-          ],
-          timestamp: new Date().toISOString(),
-        },
-      ],
-    };
-
-    const toastId = toast.loading(`Sending ${action} request...`);
-
+    // Close the modal first
+    setReportState({ isOpen: false, questionIndex: null });
+    
     try {
-      // First, send to our API to check if the report should be accepted
-      const apiEndpoint = action === 'remove' 
-        ? '/api/report/remove' 
-        : '/api/report/edit';
+      const question = data[reportState.questionIndex];
+      const endpoint = action === 'remove' ? '/api/report/remove' : '/api/report/edit';
       
-      const apiPayload = action === 'remove'
-        ? { 
-            question: questionData.question, 
-            event: routerData.eventName, 
-            reason 
-          }
-        : { 
-            originalQuestion: questionData.question, 
-            editedQuestion, 
-            event: routerData.eventName, 
-            reason 
-          };
-      
-      const apiResponse = await fetch(apiEndpoint, {
+      const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(apiPayload),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: question.question,
+          editedQuestion: editedQuestion,
+          event: routerData.eventName || 'Unknown Event',
+          reason
+        }),
       });
 
-      if (!apiResponse.ok) {
-        throw new Error(`Failed to send ${action} request to API`);
+      const result = await response.json();
+      
+      // Show appropriate toast after modal is closed
+      if (result.success) {
+        toast.success(`${action === 'remove' ? 'Report' : 'Edit'} submitted successfully!`);
+      } else {
+        toast.error(result.message || 'Failed to submit report');
       }
-
-      const apiResult = await apiResponse.json();
-
-      // Only send to Discord webhooks if the API approved the report
-      if (apiResult.success) {
-        // Send to Discord webhooks
-        await Promise.all([
-          fetch(mainWebhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(mainPayload),
-          }),
-          fetch(summaryWebhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(summaryPayload),
-          }),
-        ]);
-      }
-
-      toast.update(toastId, {
-        render: apiResult.success 
-          ? `${action === 'remove' ? 'Report' : 'Edit'} sent successfully! We will process this soon. Thank you!` 
-          : apiResult.message || `${action === 'remove' ? 'Report' : 'Edit'} was not accepted. ${apiResult.message || ''}`,
-        type: apiResult.success ? 'success' : 'info',
-        isLoading: false,
-        autoClose: 3000,
-      });
     } catch (error) {
-      console.error(`Error sending ${action} request:`, error);
-      toast.update(toastId, {
-        render: `Failed to send ${action} request. Please try again.`,
-        type: 'error',
-        isLoading: false,
-        autoClose: 3000,
-      });
+      // Show error toast after modal is closed
+      toast.error('Failed to submit report. Please try again.');
     }
   };
 
@@ -1211,7 +908,8 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         onClose={() => setReportState({ isOpen: false, questionIndex: null })}
         onSubmit={handleReport}
         darkMode={darkMode}
-        question={reportState.questionIndex !== null ? data[reportState.questionIndex] : undefined}
+        question={data[reportState.questionIndex ?? 0]}
+        event={routerData.eventName || 'Unknown Event'}
       />
       <ContestModal
         isOpen={contestState.isOpen}
@@ -1228,18 +926,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
         setRouterData={setRouterData}
         darkMode={darkMode}
       />
-      <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={darkMode ? "dark" : "light"}
-      />
+
 
       {/* Fixed Back Button */}
       <button
@@ -1493,3 +1180,70 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
 });
 
 ShareModal.displayName = 'ShareModal';
+
+const ContestModal = ({ isOpen, onClose, onSubmit, darkMode }: ContestModalProps) => {
+  const [reason, setReason] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsProcessing(true);
+    await onSubmit(reason);
+    setReason('');
+    setIsProcessing(false);
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className={`rounded-lg p-6 w-96 transition-colors duration-300 ${
+        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+      }`}>
+        <h3 className="text-lg font-semibold mb-4">Contest Question</h3>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
+              darkMode 
+                ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+            }`}
+            rows={4}
+            placeholder="Please explain why your answer should be considered correct..."
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            required
+          />
+          <div className="flex justify-end space-x-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                darkMode
+                  ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+              }`}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={isProcessing}
+              className={`px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300 flex items-center gap-2`}
+            >
+              {isProcessing ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                  Processing...
+                </>
+              ) : (
+                'Submit Contest'
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};

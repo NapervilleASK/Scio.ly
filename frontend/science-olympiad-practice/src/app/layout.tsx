@@ -30,7 +30,6 @@ export default function RootLayout({
 }>) {
   
   return (
-
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/site-logo.png" sizes="any" />
