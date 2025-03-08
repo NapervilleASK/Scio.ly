@@ -585,7 +585,9 @@ export default function WelcomePage() {
   // Replace the old handleLoadTest function with one that accepts a code parameter
   const handleLoadTest = async (code: string) => {
     if (!code) {
-      toast.error('Please enter a test code');
+      toast.error('Please enter a test code', {
+        position: "bottom-center"
+      });
       return;
     }
     try {
@@ -601,7 +603,9 @@ export default function WelcomePage() {
       router.push('/test');
     } catch (error) {
       console.error(error);
-      toast.error((error as Error).message);
+      toast.error((error as Error).message, {
+        position: "bottom-center"
+      });
     }
   };
 
@@ -1216,19 +1220,6 @@ export default function WelcomePage() {
         onClose={() => setContactModalOpen(false)}
         onSubmit={handleContact}
         darkMode={darkMode}
-      />
-
-      <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={darkMode ? 'dark' : 'light'}
       />
 
       <Transition show={hasCheckedStorage && showUpdatePopup && !hasSeenUpdate} as={Fragment}>

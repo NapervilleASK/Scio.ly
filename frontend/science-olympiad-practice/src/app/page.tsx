@@ -78,7 +78,7 @@ export default function HomePage() {
   const metrics = [
     { number: "4.3K", label: "Practice tests scraped" },
     { number: "38.4K+", label: "Questions solved" },
-    { number: "22.9K", label: "Page views" }
+    { number: "32.7K", label: "Page views" }
   ];
 
   const handleThemeToggle = () => {
@@ -469,7 +469,7 @@ export default function HomePage() {
             }`}>
               <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>How is AI being used?</h3>
               <p className={darkMode ? 'text-gray-300' : 'text-gray-600'}>
-                AI is primarily used for grading free response questions and providing detailed explanations. All questions are from real Science Olympiad tests - AI is not used to generate questions.
+                AI is primarily used for grading free response question, providing detailed explanations, and processing reports. All questions are from real Science Olympiad tests - AI is not used to generate questions.
               </p>
             </div>
             <div className={`rounded-xl p-6 border ${
@@ -489,7 +489,7 @@ export default function HomePage() {
             }`}>
               <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>How can I contribute?</h3>
               <p className={darkMode ? 'text-gray-300' : 'text-gray-600'}>
-                Although there is no way to directly help us code the site, we welcome any help you can offer! You can help by sending feedback through our contact form. Use the Contact Us button to get started.
+                Although there is no way to directly help us code the site (yet), we welcome any help you can offer! You can help by sending feedback through our contact form. Use the Contact Us button to get started.
               </p>
             </div>
           </div>
