@@ -6598,4 +6598,1047 @@
       ]
     }
   ]
+}{
+    "information": "Test Packet: 1x per team attending (tests are not to be reused across blocks since teams will write on them); preferably single-sided although double-sided is fine",
+    "answer": []
+  },
+  {
+    "information": "Resource Sheet: 3x per team in each block (with a decent amount of extras, if teams write on some of them), double-sided",
+    "answer": []
+  },
+  {
+    "information": "Answer Key: I don’t need one, so if anyone else is helping with grading, 1x per additional volunteer",
+    "answer": []
+  },
+  {
+    "information": "Color for everything is optional, since the only color comes from the HUSO logo",
+    "answer": []
+  }{
+  "Disease Detectives": [
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic.  _____ Inanimate objects that can transfer pathogens (e.g., doorknobs, utensils).",
+      "options": [],
+      "answers": ["C"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ Systematic error that occurs when study participants are not representative of the population.",
+      "options": [],
+      "answers": ["B"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ Occurrence of more cases of a disease than expected in a speciﬁc time and place.",
+      "options": [],
+      "answers": ["F"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic.  _____ The number of deaths caused by a speciﬁc disease in a population.",
+      "options": [],
+      "answers": ["A"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ A disease transmitted from animals to humans.",
+      "options": [],
+      "answers": ["I"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ The habitat where an infectious agent normally lives, grows, and multiplies.",
+      "options": [],
+      "answers": ["H"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ A living organism that transmits infectious agents (e.g., mosquitoes, ticks).",
+      "options": [],
+      "answers": ["E"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ Indirect protection from infectious disease when a signiﬁcant portion of a population is immune.",
+      "options": [],
+      "answers": ["G"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Match the following terms: A. Mortality, B. Volunteer bias, C. Fomites, D. SNP Mapping, E. Vector, F. Outbreak, G. Herd immunity, H. Reservoir, I. Zoonotic. _____ The process of locating disease-associated genes by analyzing variations in single nucleotides.",
+      "options": [],
+      "answers": ["D"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "Define the following terms: Host Factor",
+      "options": [],
+      "answers": ["Intrinsic (internal) factors that inﬂuence an individual's susceptibility or resistance to infection."],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Define the following terms: Cluster",
+      "options": [],
+      "answers": ["An aggregation of cases of a disease or other health-related condition (e.g. exposure) in a circumscribed area during a particular period without regard to whether the number of cases is more than expected."],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Define the following terms: Morbidity",
+      "options": [],
+      "answers": ["Any departure, subjective or objective, from a state of physiological or psychological well-being. Morbidity encompasses disease, injury, and disability."],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Define the following terms: Carrier",
+      "options": [],
+      "answers": ["A person or animal that harbors a speciﬁc infectious agent without discernible clinical disease, and serves as a potential source of infection."],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Define the following terms: Holoendemic",
+      "options": [],
+      "answers": ["A situation in which a large proportion of the population is infected with a disease, and this infection begins early in life and affects most of the population, resulting in a state of equilibrium. High levels of infection occur in children, affecting most of them, but the adult population displays a lower rate of infection."],
+      "difficulty": 0.5
+    },
+    {
+      "question": "James Lind treats a sailor for ship’s fever onboard the Salisbury. Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Clinical"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "James Lind treats a dozen sailors for ship’s fever onboard the Salisbury. Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Clinical"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "James Lind recommends quarantine measures to the captain to prevent additional cases of ship’s fever. Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Public Health"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "James Lind publishes a report on ship’s fever in which he suggests that sailors not be allowed to visit establishments in port in which ship’s fever is commonly encountered. Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Public Health"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "James Lind conducts a trial in which half of the sailors with scurvy are given citrus and half of the sailors are given water. Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Clinical"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "One of the sailors that was given water is very sick at the conclusion of the experiment. Lind declares the sailor unﬁt for duty and gives him several limes each day.  Is this a Clinical or Public Health approach?",
+      "options": [],
+      "answers": ["Clinical"],
+      "difficulty": 0.2
+    },
+    {
+      "question": "What type of study most closely ﬁts the patient notes James Lind collected?",
+      "options": ["Experimental", "Descriptive", "Analaytic", "Non-randomized"],
+      "answers": [2],
+      "difficulty": 0.5
+    },
+    {
+      "question": "What type of study would most closely ﬁt if Lind collated all of his notes on sailors on two diﬀerent ships without intentionally changing the conditions of either ship?",
+      "options": ["Experimental", "Descriptive", "Analytic", "Non-randomized"],
+      "answers": [3],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Write the genus of the infectious species that causes malaria.",
+      "options": [],
+      "answers": ["Plasmodium"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Write the Portal of Entry identiﬁed for malaria:",
+      "options": [],
+      "answers": ["Skin (through mosquito bite)"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Which of the following stages occur before symptom onset in malaria? a. Clinical Disease, b. Recovery, Disability or Death, c. Subclinical Disease, d. Susceptibility",
+      "options": ["Clinical Disease", "Recovery, Disability or Death", "Subclinical Disease", "Susceptibility"],
+      "answers": [3,4],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which stage of malaria development is the incubation period? (write number or name)",
+      "options": [],
+      "answers": ["Subclinical Disease"],
+      "difficulty": 0.4
+    },
+    {
+      "question": "A physician diagnoses a patient with malaria. She reports this case to her local health department. What kind of surveillance is this?",
+      "options": [],
+      "answers": ["Passive Surveillance"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "The CDC activates a program to collect data on potential malaria cases from New York, Chicago, Dallas, Atlanta, and Los Angeles health departments. These high-travel cities will be used as a way to gauge the possibility of a malaria outbreak in the US.  What is the next step in the Public Health Surveillance Process after an epidemiologist determines that an outbreak of malaria may be in progress and determines that the most likely source of the outbreak is a group of American archaeologists recently back from Angola?",
+      "options": ["Collecting blood samples from all of the patients diagnosed with malaria.", "Inform health departments, medical practitioners, and the general public about the rise of malaria in the US.", "Provide antimalarial drugs to public health departments in the US to treat cases.", "Use mosquito controlling liquids to reduce the vector threat."],
+      "answers": [2],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The CDC activates a program to collect data on potential malaria cases from New York, Chicago, Dallas, Atlanta, and Los Angeles health departments. These high-travel cities will be used as a way to gauge the possibility of a malaria outbreak in the US. What type of surveillance is this?",
+      "options": [],
+      "answers": ["Active Surveillance"],
+      "difficulty": 0.6
+    },
+    {
+      "question": "PFGE results below are from K. pneumoniae isolated from patients. Which sample(s) are from the same strain as sample 3?",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Epi maps 2 months apart show new K. Pneumoniae cases in the past week. K. Pneumoniae is one of the pathogens responsible for hospital acquired pneumonia (among other infectious diseases). Is the below data enough to declare an epidemic? Why or why not?",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Which of the following pathogens will be identiﬁed in PulseNet? (check all that apply)",
+      "options": ["Foodborne Salmonella (bacteria)", "Droplet-transmitted Flu (virus)", "Hospital acquired K. Pneumoniae (bacteria)", "Waterborne Shigella (bacteria)", "Contact spread ringworm (fungus)"],
+      "answers": [1, 3, 4],
+      "difficulty": 0.6
+    },
+    {
+      "question": "The National Adenovirus Type Reporting System (NATRS) is a laboratory-based surveillance system." What type of surveillance is this and what does it primarily rely on for collecting data?",
+      "options": [],
+      "answers": ["The NATRS is a passive surveillance system. It primarily relies on laboratory reports for collecting data."],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The increase in HAdV type 41 reporting coincided with a hepatitis cluster. Considering the steps in an outbreak investigation, what would be a crucial next step for public health oﬃcials upon noticing this correlation?",
+      "options": [],
+      "answers": ["Conducting a case-control study to compare exposures of those with and without hepatitis or conducting a cohort study to determine if infection with HAdV type 41 is associated with the development of hepatitis."],
+      "difficulty": 0.8
+    },
+    {
+      "question": "The report suggests \"enhanced participation in NATRS is needed.\" Identify one speciﬁc action that could be taken to enhance participation in this passive surveillance system.",
+      "options": [],
+      "answers": ["Implementing mandatory reporting of HAdV types by laboratories."],
+      "difficulty": 0.7
+    },
+    {
+      "question": "The existence of a vaccine for HAdV types 4 and 7 represents which type of disease prevention strategy?",
+      "options": [],
+      "answers": ["Primary prevention"],
+      "difficulty": 0.5
+    },
+    {
+      "question": "Between 2017 and 2019, a total of 1418 HAdV specimens with typing results were reported. Of these, assume the proportion of outbreak-related cases was the same as the overall proportion for the entire 2017-2023 period (17.0%). Between 2020 and 2023, a total of 823 HAdV specimens with typing results were reported. What is the approximate percentage decrease in the number of reported outbreak-related cases between the two time periods (2017-2019 compared to 2020-2023)? Show your work.",
+      "options": [],
+      "answers": ["(1418 * 0.17 = 241.06), (823 * 0.17 = 139.91), ((241.06 - 139.91) / 241.06) * 100 = 41.96%.  The percentage decrease is approximately 41.96%."],
+      "difficulty": 0.9
+    },
+    {
+      "question": "During a speciﬁc year, in a college dormitory with 500 residents, there were 25 reported cases of symptomatic HAdV infection. Of those 25 cases, sadly, 1 student with a severely compromised immune system passed away due to complications from the infection. Assume that at the beginning of the year, there were already 5 existing cases of chronic HAdV infection in residents with underlying conditions. Calculate the incidence rate of new symptomatic HAdV infections in this dormitory during the year, expressed per 1,000 residents.",
+      "options": [],
+      "answers": ["(25 / 500) * 1000 = 50.  The incidence rate of new symptomatic HAdV infections is 50 per 1,000 residents."],
+      "difficulty": 0.8
+    },
+    {
+      "question": "During a speciﬁc year, in a college dormitory with 500 residents, there were 25 reported cases of symptomatic HAdV infection. Of those 25 cases, sadly, 1 student with a severely compromised immune system passed away due to complications from the infection. Assume that at the beginning of the year, there were already 5 existing cases of chronic HAdV infection in residents with underlying conditions. Calculate the prevalence of HAdV infection (including both new and existing cases) at the end of the year, expressed per 1,000 residents.",
+      "options": [],
+      "answers": ["((25 + 5) / 500) * 1000 = 60.  The prevalence of HAdV infection at the end of the year is 60 per 1,000 residents."],
+      "difficulty": 0.8
+    },
+    {
+      "question": "During a speciﬁc year, in a college dormitory with 500 residents, there were 25 reported cases of symptomatic HAdV infection. Of those 25 cases, sadly, 1 student with a severely compromised immune system passed away due to complications from the infection. Assume that at the beginning of the year, there were already 5 existing cases of chronic HAdV infection in residents with underlying conditions. Calculate the case fatality rate for symptomatic HAdV infections in this dormitory during the year, expressed as a percentage.",
+      "options": [],
+      "answers": ["(1 / 25) * 100 = 4.  The case fatality rate for symptomatic HAdV infections is 4%."],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Given that HAdV type 41 was associated with a hepatitis cluster, and considering the known routes of HAdV transmission, which route of transmission is most likely to have played a signiﬁcant role in the spread of HAdV type 41 in this speciﬁc scenario? Explain your reasoning.",
+      "options": [],
+      "answers": ["Fecal-oral route, because HAdV type 41 is known to cause gastrointestinal illness and hepatitis, making the fecal-oral route the most plausible transmission pathway."],
+      "difficulty": 0.8
+    },
+    {
+      "question": "An outbreak of HAdV occurred at a summer camp. The following epi curve shows the number of new cases reported each day. Camp activities include shared meals, swimming in a lake, and communal living in cabins. Assuming a single point source of exposure, and considering the shape of the epi curve, what is the most likely range for the incubation period of this HAdV outbreak? Explain your reasoning.",
+      "options": [],
+      "answers": [""],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Investigators are studying the association between attending communal meals in the summer camp and the development of HAdV infection. Using the Bradford Hill criteria for causation, discuss how the criteria of strength of association and plausibility could be used to evaluate the potential causal link between attending communal meals and HAdV infection, while acknowledging the potential role of age as a confounder as older campers might have diﬀerent immune responses or communal eating habits.",
+      "options": [],
+      "answers": ["Strength of association: A strong association between attending communal meals and HAdV infection, even after adjusting for age, would support a causal link.  Plausibility: The route of HAdV transmission (fecal-oral or contact) makes the link plausible."],
+      "difficulty": 0.9
+    },
+    {
+      "question": "Imagine a new, more easily transmissible variant of HAdV emerges. Describe two distinct public health interventions, beyond vaccination, that could be implemented in a community setting to slow the spread of this new variant. For each intervention, brieﬂy explain how it disrupts the chain of infection.",
+      "options": [],
+      "answers": ["Implement mandatory masking to block respiratory droplets, thus preventing spread via the respiratory route; enhance sanitation measures in public places, disrupting the transmission through fomites."],
+      "difficulty": 0.9
+    }
+  ]
+}{
+  "Geologic Mapping": [
+    {
+      "question": "If you were drilling a well at point B, about how many feet down would you have to drill before you hit water?",
+      "options": [
+        "500 feet",
+        "230 feet",
+        "730 feet",
+        "270 feet"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Given the provided options, what is the correct option for the indicated area?",
+      "options": [
+        "pCm",
+        "Dm",
+        "Pl",
+        "Tsh"
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Are there any unconformities evident on the map?",
+      "options": [
+        "yes, between pCm and Dm only",
+        "yes, between pCm and Dm, and between Tsh and all the rocks it is in contact with",
+        "yes, between Dm and Mss only",
+        "no, all the beds are conformable"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "You are looking for some property where you can drill a well and get a good, reliable water supply. Which materials below would probably provide the poorest supply.\n\n1. very highly jointed and fractured volcanic rock\n\n2. outwash gravels from a continental glacier\n\n3. lake sediments\n\n4. fine-grained, compact glacial till\n\n5. greywacke sandstone",
+      "options": [
+        "1 and 2",
+        "3 and 4",
+        "2 and 5",
+        "1 and 4"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "A miner is studying a geologic map of a mine his company has bought. Which of the following can he best determine using the map?",
+      "options": [
+        "The quality of the ore deposit",
+        "The amount of minerals in the mine",
+        "How deep he will need to send his miners to reach the bottom of the mine",
+        "The rock type his miners will have to excavate to obtain key minerals"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Which profile most likely represents the landscape above?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Where would you most expect to find large normal faults?",
+      "options": [
+        "mostly in the central areas of continents",
+        "in places where lithospheric plates are sliding by one other",
+        "in areas of strong crustal extension or stretching such as on mid-oceanic ridges or in up arched continental areas",
+        "in areas of crustal shortening such as fold-mountain belts and subduction zones",
+        "mostly in volcanic arcs"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Which location has surface bedrock that consists mostly of gneiss, schist, or marble?",
+      "options": [
+        "46° N, 78° W",
+        "49° N, 71° W",
+        "43° N, 81° W",
+      "answers": [
+        ""
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Which rock should produce the least clay on thorough chemical weathering in a cool temperate climate?",
+      "options": [
+        "granite",
+        "quartz sandstone",
+        "greenstone",
+        "feldspar & endash; rich gabbro",
+        "they would all produce about the same amount"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "What do gray or red symbols denote on a topographic map?",
+      "options": [
+        "pond",
+        "garden",
+        "dense built up areas",
+        "building or structure"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "The features in this radar image are:",
+      "options": [
+        "Hills with no apparent vegetation on them",
+        "Lines of sand dunes in a very arid part of the world.",
+        "Glaciers in the northern part of Antarctica.",
+        "Convection cells expressed on the ocean surface."
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "This geologic law states that fossils succeed each other vertically in a specific, reliable order that can be identified over wide horizontal distances.",
+      "options": [
+        "Law of Faunal Succession",
+        "Law of Crosscutting Relationships",
+        "Law of Inclusions",
+        "Law of Superposition"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "In this common map projection, areas inflate with latitude.",
+      "options": [
+        "Mercator",
+        "Gall-Peters",
+        "Mollweide",
+        "Goode's Homolosine"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "A rock formed with 500 atoms of a radioactive parent element, but only contains 125 radioactive parent atoms today. If the half-life is 1000 years, how old is the rock?",
+      "options": [
+        "2000 years",
+        "500 years",
+        "250 years",
+        "125 years"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Which of the following is not a pluton?",
+      "options": [
+        "Laccolith",
+        "Rhyolith",
+        "Dike",
+        "Sill"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "What feature is indicated at the arrow?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the elevation of B?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the elevation of X?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the elevation of the peak in upper right of map?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "Match the cross section For the contour lines: 3",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Match the cross section For the contour lines: 4",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Match the cross section For the contour lines: 5",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Math the cross section to: 1",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Math the cross section to: 2",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Math the cross section to: 3",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "A map has a scale of 1.5 cm : 200 m. Find the actual distance, in km, between Paya Lebar MRT station to Dakota MRT station if distance on the map is 10.5 cm.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the elevation of A?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What is the elevation of B?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What is the distance from D to E?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Determine the contour interval.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "The difference between the highest and lowest points of an area on a topographical map?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What geologic feature does the v-shaped contour lines represent?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "Which contour map accurately represents the land form?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What type of map shows rock units and features, like faults and folds?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the coordinates of the tip of cape cod? N",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the coordinates of the tip of cape cod? W",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the difference in elevation between the location of the ranger (x) and the injured hiker (z) ?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the safest slope (direction) to bring injured higher down?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "The diagonal white line at the top right of the image is:",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "The main principle behind a map projection is to map projection translates the ______ coordinates of the Earth onto a flat surface",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "The main principle behind a map projection is to map projection translates the coordinates of the Earth onto a flat surface, using a _________ formula to determine the placement of geographic features on the map",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What are the three main categories of map projections? ____ projections (like Mercator),",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What are the three main categories of map projections? ____ projections (like Albers Equal Area),",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What are the three main categories of map projections? and ____projections (like Gnomonic)",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Which projection is best for showing accurate landmasses and relative sizes of continents? An ________ projection like the Albers Conic projection of this projection is preferred for accurately representing the relative sizes of landmasses",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the major drawback of the Mercator projection? The Mercator projection significantly distorts areas near the ____, making them appear much larger than they actually are.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "____________ is the projection is best for navigation",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "A ____________________is a visual tool used to show the level of distortion at different points on a map, often represented by small circles that change shape depending on the projection.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "How does a conic projection work? A cone is wrapped around the globe, with ________ distortion along the line where the cone touches the globe, usually used for mid-latitude regions.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "An azimuthal projection is useful for mapping _______ regions",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "An azimuthal projection is useful for mapping polar regions or showing great circle routes, as it preserves ________ from a central point.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "To plot a plane on Stereonets, you need to know its _________ (the horizontal direction of the plane)",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "To plot a plane on Stereonets, you need to know its strike and ______ (the angle it makes with the horizontal plane)",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "A line (like a fold axis) is plotted on a stereonet as a ________",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "A line (like a fold axis) is plotted on a stereonet as a vector, representing its plunge (angle from horizontal) and ________ (compass direction)",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "A lower hemisphere stereonet projects the lower half of the hemisphere onto the _____",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "A lower hemisphere stereonet projects the lower half of the hemisphere onto the plane, while an upper hemisphere stereonet projects the upper half, with the choice depending on the convention used in the _____.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "The \"pole\" of a plane is the point on the stereonet that represents the normal ____ to the plane",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "The \"pole\" of a plane is the point on the stereonet that represents the normal direction to the plane, which can be used to analyze the _________ of plane orientations.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "Hydrogeology: Understanding the flow ______ of groundwater by analyzing the orientation of ______.",
+      "options": [],
+      "answers": [
+        "",
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "Geotechnical engineering: Assessing the stability of _____ by analyzing the orientation of rock _____",
+      "options": [],
+      "answers": [
+        "",
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "When calculating bed thickness, the key question is usually how to determine the \"true\" thickness of a tilted or inclined rock layer, which requires considering the dip angle and using _______ functions",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "When calculating bed thickness, the key question is usually how to determine the \"true\" thickness of a tilted or inclined rock layer, which requires considering the dip angle and using trigonometric functions to calculate the actual thickness from the measured vertical thickness; essentially, you need to use the formula: \"True thickness = Measured vertical thickness * _____(dip angle)\"",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "The dip angle is the angle at which a rock layer is tilted from the horizontal plane, measured perpendicular to the________  (the direction of the layer).",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "You measure a rock layer to be 20 meters thick vertically, and the dip angle is 30 degrees. True thickness =",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "An ______ angle refers to the dip angle of a rock layer exposed at the surface, essentially how steeply the rock layer inclines from the horizontal plane at its location.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "If a geological compass reading shows a strike of N-S and a dip of 30 degrees to the east, what is the outcrop angle?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What factors affect the outcrop angle? ______ structure: The original inclination of the rock layer due to tectonic activity.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What factors affect the outcrop angle? ______ patterns: How it has sculpted the landscape, potentially affecting the exposure of the rock layer.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "What factors affect the outcrop angle? ______: The slope of the land surface where the outcrop is located",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 6.0
+    },
+    {
+      "question": "Geo mapping, particularly through Geographic Information Systems (GIS), is used to determine groundwater quality and contamination by overlaying various spatial data layers like land use, ______",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "Geo mapping, particularly through Geographic Information Systems (GIS), is used to determine groundwater quality and contamination by overlaying various spatial data layers like land use, soil type, well locations, contaminant measurements, and topography to identify potential pollution sources and model how contaminants might spread within an _________.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 4.0
+    },
+    {
+      "question": "What is the elevation of Grand Lake?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the elevation of the mine with the higher elevation?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What side of Glacier mountain has the steepest slope? (east, west, north, or south)( assume North IS top of map)",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "________ Lodge is the best lodge on the map as a ski lodge.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the contour interval of the map?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "As I drive north along I-176, am I ascending or descending in elevation?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "How many more feet in elevation is Stoneman Mountain over Mars Mountain?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the steepest slope of Mars Mountain?",
+      "options": [
+        "N",
+        "S",
+        "E",
+        "W"
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "Which 2 mountains could be considered a small mountain range?",
+      "options": [
+        "Little Mtn and Stoneman Mtn",
+        "Smith walker Mtn and Stoneman Mtn",
+        "Mars Mtn and Stoneman Mtn",
+        "Little Mtn and Mars Mtn"
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 2.0
+    },
+    {
+      "question": "What is the geologic Feature identified by A",
+      "options": [
+        "Mountain Peak",
+        "Lake",
+        "Plain",
+        "River"
+      ],
+      "answers": [
+        ""
+      ],
+      "difficulty": 1.0
+    },
+    {
+      "question": "Give 3 Examples of how geo mapping is used for groundwater quality:",
+      "options": [],
+      "answers": [
+        "Determining the flow direction of groundwater by analyzing the orientation of fractures.",
+        "Assessing the stability of slopes by analyzing the orientation of rock joints.",
+        "Calculating the 'true' thickness of a tilted or inclined rock layer by considering the dip angle and using trigonometric functions."
+      ],
+      "difficulty": 12.0
+    }
+  ]
 }

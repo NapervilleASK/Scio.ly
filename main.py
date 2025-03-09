@@ -25,7 +25,9 @@ from joblib import Parallel, delayed
 # '1tBevfGz0vVUfvhGj1x51NpPOMlOYGK8_', '1xAWXoJj12l7gEe8V-uGteRskrYssGim6', '1O3cmlJEC5AvUUc8IwOy2k9oMt8ifKPQq', '1Vz6d8PiGfYzk0QDA1cG0ESvFNf_hgW4H', '1u8e22PI_d65G-lxnYPiPz13B5zC1vKv3', '1kDL5X0l-hgUHF0dZDbA2g2au_7m9EtJR', '1nxQcwJ80HB0tfZnIXroGUNeou_yJsKsm', '15wSx7279Pnz8Voy_6Ca7j7MHEHlRBBvh', '1W9lanA5clZz7F-37ni0jn3zXr6Dv6qBt', '1SfRGTD4hto_3QMKW9kc4J6fQ4sJNfCQV', '1qPTWGCxwQmFc0jOCri7dcf1q8LHZ07tu', '1T5Oy_vs5VGG0X-H1IqQAYJ1DaS45pwAm', '15QaImPeZZ8DQqF0mJdDo7j81jpCgQGdD', '1AG-tp0_hyX1YlZfusrOISaq_6tu4u2Ah', '1NvgiSGFHW0VjA7WcAre-O0JYl2n6CoJH', '1IezNuPN-iMRXysBbIYx4SE817eXhvobp', '1jpxLXIQqPHINhUQAp3MH1BO0U_za_cTI', '1PSJ15uMXL9zzIMa-m8cLvf1PX7CiWqVo', '1z4ixSqqHfGeJd2JnZnSmftCSyxFyRLLb', '1ur-B7eWRyt70p7wkg7Wg1pGkkKaE1W0B', '1TMCWdLlOjnRFUy7SBuYbj6ur__xwkAk7', '13yNsNguUT7TDjLAdM3b6kffzSh7rgR5A', '1xoVEkV1YEXa6dTuFEzXKIo-QgZj84MAP', '1OML-ZgbV12_9CWKDCtjMhsQ1HuppWYu3', '17ounKibxg78Zs5K7ANTrKc2HZMbZWUdc', '1dOShoe9xFn0WOxvvlmdej2qJaKDqJtuj', '1hwbtfm8m2V6Hj4HYIo7SS45tmgf36g8v', '1WfsB8nqU5ho4CiWw9KjXEaC-CK4eV-_a', '1zsV_AM9dw_3hrbJEokkgELAI9Mctqafn', '1XdYRVuOHAr05HZSuHLSgbNroFl-kWnBl', '1xAQZDOqHEQh_O2G1evPyIorNiNPrgbtG', '1z-15Pu6jZeryJbhiV7QVkAuzbKir1CFm', '1iSR_xc48OuykFRPaUi_kJ1oQWFLgrW3q', '14a4cVDPXjLcyn97PnPNmh9nXc5B7rvIw', '1rpA0bVImjfH00Hzpuc7r4J7IY1UnEITX', '1uv_aNdDVI8ZS1jmfVil6X9VnU3MyuS55', '1cG61YoOH9sgUxEU4I0yiN3huv_4G3Gnq', '1Ci0C62oIbeLmZOQ_S5QGYibYA_ZxZo2e', '1as5mvrBbUYOkKc9Mpa8u7fy2XmBm8yXy', '1uOGAVgh2_V__z9lp-muA9lmBrZXms_IL', '1hq-CiT3Qu3gCxDqV2aHzZeKzSTrv7402', '1z8LwIB6p2ZGM8fqDC0oG3QL8JeV8aG5H', '1dOg4VfnQG8slPQVP887PEO0OmFhVSSzZ', '1_CWR_rg1XdDbo1eCwbYzCWP4gOgVnoua', '1v3ZNnfV9M2MBTkbfxXcUY5KetM_-V_2P', '11scWTMvMucVqpdFBUjkluL_Xrlbs8dGE', '10RudIkUKZe2ZIFySQcUOvDlVQGCeFiUd', '1LvjKVW1jNaYapxvY3qF19TLY0Zan8qpv', '152pUw9g81hZhBLB6MV8PJNoKWX3B4iai', '18va6_rBbYw05UaqcQQCD7BAkdh48UZN5', '1fGIDpV6a0ORRiUAbq6Wrdc0BdxEOovzh', '1UbCn9hftkUhTCfNduTbKPo0-FR0vJmmK', '1GbBQRng4pxKxykcRiJKR9MZ7vAHuPP6H', '1-tsYsrgpwDVHBQlSfGxM74qWPPaslYUr', '1Y7buTFhs7U3Kd525PF6eeI7BJhoJZOPC', '1zn5zzR_Nr-PPdjRJybrtQwKhfkRG3IJC', '1rzVRMu7W6SxLoQASux5yA3Ui9P1uZkfs', '1xwYa0Vpl3tHnPiBvGDGbuIK0nEeu1LbH', '1rX8xJlB30NtRHO3RTuIfhqEzNsQKVfL5', '1CA5XHwhdFOZCJ2ES7ITprWoksCWORtX8', '12FWeJAGtJMLNl23hwUICX8UtCxe82-nU', '1XYTB8A9UAI_fuMPZ945RHtihKrihpNS0',
 #  '1WjEGUQ1v0pwkxuvAoPuWFaWk_m9Atqjx', '1AlyoRMtJpxaxUen5g32QSr1RSsfb8ZLs', '1JNYgRW4INdGz4dWvGzvlugDuljzL8_s2', '1R4p-eoORhUaJfgd5Xx3SfSVaDtOE6Gge', '1oZCbJrUGCSDP5Ri06ZwxoEFziysMNAb5', '1HDZvUwrqPeYFIkbDlZ7RF8mGYMO8nnwJ', '1moQDbIwa8-BBg-zVl8zKLBrfdOIxrqMk', '1vwoNOyhkEiPYZoCP1k3lRfh5E9V7_Vvu',
 #  '1lTgv1XSHLPmnWXblO7wtjUmVhdiit0WX', '1WAWO-UMCnaYMd8AIFKefgl7Fdg5keGp2', '1-IvKrMX_vw-2MQjiL3payF1fnHeOmQyZ', '1OYqBkCYi44uxhJivexYW7FOpVnBOz_7K', '1UDWmwNkkoBw1X4tQ6-MX6yD2K59xs-G_', 
-folder_links = ['1vsuLDZ7IpImkHvWEejRvfm8V6jfrXPYM', '17wYpjKf1NpBbeLhlGmPR6aA8ovBVlIU', '1o0bnX6QG3krfssWCHkN3o2R_MBzZyjrw', '1BHd3wnXusrbyrf4xDgxQfd3upYIrnrZm'] #'1NL86PYG1ZBm1-AEKFwdG8t00iUGBEpOl', '1VxWl3crjSoA0_mB89Gg4KgpiT5nnHfEG', '12msP3XgqOJGMFjrFk7ZEnFtBz4pGdCuG', '1CC2sOz8P2mDImZ6BAsIeiUmVzH1c3Rb9', '11v3MGE07t8FIpDpLFHvijSr-qeRVb4Xp', '173fFK0af9iD1UJsgX2u6DiwMEb1tbgWf', '1w2Rqq6dYjzVlfdVFFdMgM_PxPtKEZgTH', '145UHXMxOCw3HD_96u6NThKGZOAz_E_VI', '1MQ3tvV9HZYVtBL5rgvEFKqCwIMX7n69g', '15J2z5LFEVw5viRTbIxpFHrzvkNxoDg3R', '19_dbGVXc0FGIM8Tnc7rOltC0itgIKiVu', '17vIUN2TB60Oh-6JSeQYsUoGhbGhyrTPs', '1iFWBirR_3XfMaMsUVFFDxRuQeavYRSIV', '1LZsgdiaV03jP3MmTnC6ecGrh7H8x_NrI', '1FK89x4X796k5EEt44tzOoF__5aDaaFON', '1boGp0TkwJhyXwA5m41lxOl_Af35VsNls', '1nEeX66uXjDt1x2SIsIJSekfvHdORlfXSs4WsX1piiuGPIKSyDduZtQtn6jZsDyvyD7Vv7S7t', '1UDUMUAmaoinPCNNGbMYAh4BdPHHwJjtb', '1q1Dp8UWoRnM9Lfks-CVsnTiARrTCvWgn', '1zw8FV7ckEzKLFxXKq8VKXvybEAEHRq45', '1-QxFq3Kb3EBH4MNGzVGFM4pJZIfL2OHp', '1GyVv6gRfdmnv6GjUIQ9cV2AN19GHMqle', '1dl9j-DcpJ1MwcsHhGh9KUuSqHAQ3BBba', '1Zkx8Ff2AU8dQnEw-mV9Dgpy9cuZvK-0b', '1DzDpuDSMsQ4rype0KjGV0eCz-05NkZAz', '1yueokX907oLJwn0ciuH5frr76higotKC', '1TMNILZO9AJoX2F59BiYI9WW6SO4BdPkN', '1LmOcZmFC031XqLHQjyqCQqTDH7vUIj3E', '1EJsqz6WLyjMOVAXd8FcU72q2e49Yyzxm', '1hHuR5gT0RzM3kddQJUEYxxVtj2E1oMqJ', '16Bq3Sd-tFdfJNg_zvYhXRLdkqoByaP2l', '1S2rEBjyC5coFC8reDAlGrEly8oTaYdTc', '1bYsvKo-Sr1iqLKSkKZS4x4H40r4xegBe', '1HVPILYcjVVgm0Xh6TEgO8eaQobKox5BE', '1CIN0Yq0nU0PokLvJ2RNIVZt2WmbJ492M', '1WrhBeK56tbBmvTn2k6Hx6aBObxxv_GPv', '1t67OdhZRW7FkenNQUKV7svAGme3j5lVG']
+folder_links = ['1KqXCDYmATTcN6ARd0djOTziEXTdYAdmy','1csEVP9EV9Y6-nhZ6-NfAsEi15H-V2Bqi','1ThcmyQZGiIZN66miKHKXg68muQ51CnNg','1EAtrOyeBiUWaeVZl12tb30kUyBFG6UJe','1wmuuttG_ul2_Mjic5xBQ0asmHocoYHvG','1s6pki2WtRz_zK_tqwvT724n7IovYw5Ve','19moRp7wksYgS3eZjo1bTqknKJIRmiygB','1-sadF0VSJON3IMnLbh985W6eWCbMFzZz', '1IDizVjKY653tirK8mXY2nr8v6vULSigj', '1aUVSo-q37Q4r4jIEo7u4dC_SFTNEhtUQ', '1DlT2W76zwsQTtQ4R1TM4pzX0LJjTlrOg', '1pmMKZCNCSRvzjMz6yJJX08yyFJqqUk6p', '1ebGfMbno4w_onAaER4weiSiCK-v69662', '1qA75580QHXEzt14oXi37niBbWnz4h6qt']
+#['1vsuLDZ7IpImkHvWEejRvfm8V6jfrXPYM', '17wYpjKf1NpBbeLhlGmPR6aA8ovBVlIU', '1o0bnX6QG3krfssWCHkN3o2R_MBzZyjrw', '1BHd3wnXusrbyrf4xDgxQfd3upYIrnrZm'] #'1NL86PYG1ZBm1-AEKFwdG8t00iUGBEpOl', '1VxWl3crjSoA0_mB89Gg4KgpiT5nnHfEG', '12msP3XgqOJGMFjrFk7ZEnFtBz4pGdCuG', '1CC2sOz8P2mDImZ6BAsIeiUmVzH1c3Rb9', '11v3MGE07t8FIpDpLFHvijSr-qeRVb4Xp', '173fFK0af9iD1UJsgX2u6DiwMEb1tbgWf', '1w2Rqq6dYjzVlfdVFFdMgM_PxPtKEZgTH', '145UHXMxOCw3HD_96u6NThKGZOAz_E_VI', '1MQ3tvV9HZYVtBL5rgvEFKqCwIMX7n69g', '15J2z5LFEVw5viRTbIxpFHrzvkNxoDg3R', '19_dbGVXc0FGIM8Tnc7rOltC0itgIKiVu', '17vIUN2TB60Oh-6JSeQYsUoGhbGhyrTPs', '1iFWBirR_3XfMaMsUVFFDxRuQeavYRSIV', '1LZsgdiaV03jP3MmTnC6ecGrh7H8x_NrI', '1FK89x4X796k5EEt44tzOoF__5aDaaFON', '1boGp0TkwJhyXwA5m41lxOl_Af35VsNls', '1nEeX66uXjDt1x2SIsIJSekfvHdORlfXSs4WsX1piiuGPIKSyDduZtQtn6jZsDyvyD7Vv7S7t', '1UDUMUAmaoinPCNNGbMYAh4BdPHHwJjtb', '1q1Dp8UWoRnM9Lfks-CVsnTiARrTCvWgn', '1zw8FV7ckEzKLFxXKq8VKXvybEAEHRq45', '1-QxFq3Kb3EBH4MNGzVGFM4pJZIfL2OHp', '1GyVv6gRfdmnv6GjUIQ9cV2AN19GHMqle', '1dl9j-DcpJ1MwcsHhGh9KUuSqHAQ3BBba', '1Zkx8Ff2AU8dQnEw-mV9Dgpy9cuZvK-0b', '1DzDpuDSMsQ4rype0KjGV0eCz-05NkZAz', '1yueokX907oLJwn0ciuH5frr76higotKC', '1TMNILZO9AJoX2F59BiYI9WW6SO4BdPkN', '1LmOcZmFC031XqLHQjyqCQqTDH7vUIj3E', '1EJsqz6WLyjMOVAXd8FcU72q2e49Yyzxm', '1hHuR5gT0RzM3kddQJUEYxxVtj2E1oMqJ', '16Bq3Sd-tFdfJNg_zvYhXRLdkqoByaP2l', '1S2rEBjyC5coFC8reDAlGrEly8oTaYdTc', '1bYsvKo-Sr1iqLKSkKZS4x4H40r4xegBe', '1HVPILYcjVVgm0Xh6TEgO8eaQobKox5BE', '1CIN0Yq0nU0PokLvJ2RNIVZt2WmbJ492M', '1WrhBeK56tbBmvTn2k6Hx6aBObxxv_GPv', '1t67OdhZRW7FkenNQUKV7svAGme3j5lVG']
+# '1egVORNPbZQE9YNJKJggjtunUvWXyNz7T', '18BTa-l6MYxlHtCVtAdMpsVIKFNPyebRk', '1EybtPvcXlncBvk89xJsR4U5yWx1fOz7D', '1EybtPvcXlncBvk89xJsR4U5yWx1fOz7D', 
 events = [
     "Anatomy - Skeletal",
     "Anatomy - Muscular",
@@ -71,10 +73,12 @@ events = [
     "Materials Science",
     "Microbe Mission",
     "Mission Possible",
+    "Meteorology",
     "Mousetrap Vehicle",
     "Optics",
     "Ornithology",
     "Rocks and Minerals",
+    "Reach for the Stars",
     "Sounds of Music",
     "Thermodynamics",
     "Wind Power",
@@ -215,7 +219,7 @@ def extract_questions_with_gemini(text, events, idx):
             return None
     except Exception as e:
         print("Error interacting with Gemini API: ", e)
-        time.sleep(10)
+        time.sleep(3)
         return extract_questions_with_gemini(text, events, idx+1)
 def clean_question_with_gemini(text, idx):
     client = genai.Client(api_key=GEMINI_API_KEY[idx % len(GEMINI_API_KEY)])
@@ -311,7 +315,7 @@ def process_pdf(file_info, drive_service, events, output_dir, idx_offset):
 
 # --- Main Execution ---
 GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'
-GEMINI_API_KEY = ["AIzaSyBqDPJDjcKHihrgldXgnO32ejtkIk2U8m4", "AIzaSyCM1yL6m9vAEqBqWYg8F4YR-g90UEMx_ok", "AIzaSyDWxWcWFFnOUJZ3uVVw2mwCZeZmC0A1PhU", "AIzaSyDOoFXveOtF4MdVxt-ean7g7P2ZJ0OF0HU", "AIzaSyCef88gupo0zexs-1H16RWQTCRPcfR2WZc", "AIzaSyBWHxReSto4eX312f7_QMNg9p9ekEXiv7o", "AIzaSyBlLyiTdq8nV_klzZILiNRFwxBNWMMO5mE", "AIzaSyCDzXG_lJx4AMebOf7TOvEnmn4Vt8x8tLg", "AIzaSyAtDw2Mcer_SRPFEiYQejlPB18nuh9ujN0", "AIzaSyBJO3vzH_CpWiszQ10XvDsDdzghn9Le5pY",  "AIzaSyA3_dpqOA67d0tiQ3ayCL69lr2UD3OkDV8", "AIzaSyDHGciTN4papPucYcVU50xMZxii_CeJImE", "AIzaSyDX_lsfZLPdy-ZJtwj6z6V03vUoHRIVNYU", "AIzaSyDfi2QkcMCh1JoQgxA70VeZjZONUWMhm4A", "AIzaSyACCMbTVB7yCGXFNktKbIXF_NiTEZVw698", "AIzaSyDhXgviXgz03pdZ7yPMUiRrlquuvOUcuYo", "AIzaSyDkWDMtwWYKNOs-xlqHD8j4ekWZx6ivqWY", "AIzaSyBLRJQoy4icrP3_fVPyP7Ri7W-yULvrU-A", "AIzaSyCcc1SPuC_MIMtbLL3Tm35jjtez9ob6d8s", "AIzaSyCUmZWb4pgY_b_4I9vyWf12dWB_ja3DZzo", "AIzaSyDkoP82SFpZxXdOAa3-gqI8AEjlzcsXwNM", "AIzaSyCOiVGlfw_UOLKliNst8m-Uy24CZuh_OM0", "AIzaSyAXt1_c7U7mWodul8DZZQbMH3-8cflQmOk", "AIzaSyBqBzKaa51_VlOb7QzgeQ5MO3Z9gBtYHsE", "AIzaSyAasbhNf4HGN9xkRpPVKOMzq-kGKHcDTfA", "AIzaSyAE3Ndo-2aMlnTgPyAd2smuVxJNkHe6BtY", "AIzaSyCBd5I8hYiRlxKyy6CpvJtUNeeyoUR16wg", "AIzaSyCwZwBK6DJax10pnws8rGIS6_UJ_OkorJU", "AIzaSyCtKTk_YYHSHoIK_c_YFnZi4738QeXbJ64", "AIzaSyAjDwM_zDF-nzrWSt3JlR0F05cdDfUuj9c", "AIzaSyBgk6SZrk1wIZocBTW-Oh44jwl4PbiQBH4", "AIzaSyADNEoPaG47ZOLXmXXyhFwBFgl2l0fpqGE", "AIzaSyDKeOpq_xy7dzKtYvlSeovdRHg5vcWhlN8" ]
+GEMINI_API_KEY = ["AIzaSyBqDPJDjcKHihrgldXgnO32ejtkIk2U8m4", "AIzaSyCM1yL6m9vAEqBqWYg8F4YR-g90UEMx_ok", "AIzaSyDWxWcWFFnOUJZ3uVVw2mwCZeZmC0A1PhU", "AIzaSyDOoFXveOtF4MdVxt-ean7g7P2ZJ0OF0HU", "AIzaSyCef88gupo0zexs-1H16RWQTCRPcfR2WZc", "AIzaSyBWHxReSto4eX312f7_QMNg9p9ekEXiv7o", "AIzaSyBlLyiTdq8nV_klzZILiNRFwxBNWMMO5mE", "AIzaSyCDzXG_lJx4AMebOf7TOvEnmn4Vt8x8tLg", "AIzaSyAtDw2Mcer_SRPFEiYQejlPB18nuh9ujN0", "AIzaSyBJO3vzH_CpWiszQ10XvDsDdzghn9Le5pY",  "AIzaSyA3_dpqOA67d0tiQ3ayCL69lr2UD3OkDV8", "AIzaSyDHGciTN4papPucYcVU50xMZxii_CeJImE", "AIzaSyDX_lsfZLPdy-ZJtwj6z6V03vUoHRIVNYU", "AIzaSyDfi2QkcMCh1JoQgxA70VeZjZONUWMhm4A", "AIzaSyACCMbTVB7yCGXFNktKbIXF_NiTEZVw698", "AIzaSyDhXgviXgz03pdZ7yPMUiRrlquuvOUcuYo", "AIzaSyDkWDMtwWYKNOs-xlqHD8j4ekWZx6ivqWY", "AIzaSyBLRJQoy4icrP3_fVPyP7Ri7W-yULvrU-A", "AIzaSyCcc1SPuC_MIMtbLL3Tm35jjtez9ob6d8s", "AIzaSyCUmZWb4pgY_b_4I9vyWf12dWB_ja3DZzo", "AIzaSyDkoP82SFpZxXdOAa3-gqI8AEjlzcsXwNM", "AIzaSyCOiVGlfw_UOLKliNst8m-Uy24CZuh_OM0", "AIzaSyCnRaIf4RCsTyfaRGzyql95b7I-XA8zZmE","AIzaSyCccQyuuaf90jx5UVcUkW4nV3Pt3WBDZYY","AIzaSyBuzg5JV4Ck4BffXjMtWQiflLLeAaEDQcQ","AIzaSyA96Y2L7Q4NAEnHtk8mmIm49kwu3R6DxG0","AIzaSyBxjj1wKBz-NrZppDPEXbDXJRdpuAzRMpQ","AIzaSyASiDjSIajx-dljiNkXjjFyN6Nn50P_fVg","AIzaSyCyiJMWHYlLzshARZx8cKYsDScgsDSBq2k","AIzaSyBDNdafVXAWybaBYyC7sVGpTden_yU9OGc","AIzaSyDHvNqPBefEY98SkCKrnKJuTrmFH1fUOHw"]
 
 OUTPUT_DIR = "extracted_questions"
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
@@ -341,6 +345,17 @@ with open("beta_bank.json", 'a') as writefile:
                  or f['mimeType'] == 'application/vnd.google-apps.document'
                  )
             ]
+        index = -1
+        for i, obj in enumerate(pdf_files_in_folder):
+            if obj.get('id') == "19moRp7wksYgS3eZjo1bTqknKJIRmiygB":
+                index = i
+                break
+        if index != -1:
+            print("found odd one out")
+            pdf_files_in_folder = pdf_files_in_folder[index + 1:]
+        
+
+
 
         if not pdf_files_in_folder:
             print(f"No PDF files found in folder: {folder_id}")
