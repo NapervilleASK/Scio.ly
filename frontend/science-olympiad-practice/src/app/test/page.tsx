@@ -53,7 +53,6 @@ interface ShareModalProps {
 
 const API_URL = api.api;
 const arr = api.arr
-alert(arr)
 // Replace the global variable declaration of globalShareCode with a removal comment
 // let globalShareCode: string | null = null;
 
