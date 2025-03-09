@@ -595,7 +595,6 @@ function EventDashboard() {
               : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
           }
         `}</style>
-
     </div>
   );
 }

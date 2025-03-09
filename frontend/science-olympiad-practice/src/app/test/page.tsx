@@ -3,7 +3,7 @@ import React from 'react';
 import { FaRegClipboard, FaShareAlt } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
@@ -999,6 +999,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
           />
         </div>
       )}
+      <ToastContainer theme={`${darkMode ? "dark" : "light"}`}/>
     </>
   );
 }
@@ -1008,8 +1009,12 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
   const [loadingLoad, setLoadingLoad] = useState(false);
   const [shareCode, setShareCode] = useState<string | null>(null);
   const hasGeneratedRef = useRef(false);
-
   const generateShareCode = async () => {
+  if (localStorage.getItem("shareCode")) {
+    setShareCode(localStorage.getItem("shareCode"))
+    localStorage.removeItem("shareCode")
+    loadSharedTest()
+  }
     const selectedIndicesRaw = localStorage.getItem('selectedIndices');
     if (!selectedIndicesRaw) {
       toast.error('No selected test questions found to share.');

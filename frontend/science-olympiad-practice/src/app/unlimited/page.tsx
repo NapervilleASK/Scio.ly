@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
@@ -904,6 +904,7 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
           />
         </div>
       )}
+      <ToastContainer theme={`${darkMode ? "dark" : "light"}`}/>
     </>
   );
 }

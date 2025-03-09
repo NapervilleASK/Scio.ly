@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/app/utils/metrics';
 import { useTheme } from '@/app/contexts/ThemeContext';
@@ -561,12 +561,12 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "3/5/25",
+    date: "3/8/25",
     features: [
-      "💾 Larger question bank!",
-      "✨ New UI and all-time accuracy tracking",
+      "💾 Better question bank!",
+      "✨ Fixes to test-sharing, explanations",
       "🎯 New event! Potions & Poisons and more questions for Meteorology",
-      "📙Integrated Codebusters references"
+      "📙Integrated Rulebook"
     ],
     comingSoon: [
       "📈 Less unanswerable questions, answer hallucinations"
@@ -590,23 +590,9 @@ export default function WelcomePage() {
       });
       return;
     }
-    try {
-      const response = await fetch(`/api/share?code=${code}`);
-      if (!response.ok) {
-        throw new Error('Invalid or expired test code');
-      }
-      const data = await response.json();
-      if (data.testParamsRaw) {
-        localStorage.setItem('testParams', JSON.stringify(data.testParamsRaw));
-      }
-      toast.success('Test loaded successfully!');
-      router.push('/test');
-    } catch (error) {
-      console.error(error);
-      toast.error((error as Error).message, {
-        position: "bottom-center"
-      });
-    }
+    localStorage.setItem("shareCode", code)
+    router.push('/test');
+
   };
 
   // Handle paste event for test code input fields
@@ -1328,6 +1314,7 @@ export default function WelcomePage() {
         }
       `}</style>
       <br/><br/>
+      <ToastContainer theme={`${darkMode ? "dark" : "light"}`}/>
     </div>
   );
 }
