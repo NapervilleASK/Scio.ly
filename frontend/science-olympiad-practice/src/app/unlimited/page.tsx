@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState, useRef } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
@@ -10,8 +10,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import PDFViewer from '@/app/components/PDFViewer';
-import Header from '@/app/components/Header';
-import ReportModal, { Question, ReportModalProps } from '@/app/components/ReportModal';
+import ReportModal, { Question } from '@/app/components/ReportModal';
 
 interface RouterParams {
   eventName?: string;
@@ -418,7 +417,7 @@ export default function UnlimitedPracticePage() {
       } else {
         toast.error(result.message || 'Failed to submit report');
       }
-    } catch (error) {
+    } catch {
       // Show error toast after modal is closed
       toast.error('Failed to submit report. Please try again.');
     }

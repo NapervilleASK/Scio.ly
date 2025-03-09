@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { auth } from '@/lib/firebase';
 import { getDailyMetrics } from '@/app/utils/metrics';
 import { useTheme } from '@/app/contexts/ThemeContext';

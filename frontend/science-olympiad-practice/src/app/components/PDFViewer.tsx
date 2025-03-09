@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaFilePdf, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import { createPortal } from 'react-dom';
 
 interface PDFViewerProps {
@@ -67,13 +67,18 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfPath, buttonText = "Reference 
     <>
       <button
         onClick={openPDF}
-        className={`flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 ${
+        className={`${ buttonText == "Rulebook" ? (darkMode
+          ? 'text-gray-300 hover:text-white' 
+          : 'text-gray-700 hover:text-gray-900'
+        ) : 'flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105'} ${
+          buttonText == "Rulebook"
+          ? 'transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium '
+          :
           darkMode
             ? 'bg-blue-600 hover:bg-blue-700 text-white'
             : 'bg-blue-500 hover:bg-blue-600 text-white'
         }`}
       >
-        <FaFilePdf />
         {buttonText}
       </button>
 

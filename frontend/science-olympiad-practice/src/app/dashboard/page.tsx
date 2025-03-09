@@ -264,7 +264,7 @@ function EventDashboard() {
           <h2 className={`text-3xl font-bold transition-colors duration-500 ${
             darkMode ? 'text-white' : 'text-gray-900'
           }`}>
-            Practice Dashboard
+            Practice
           </h2>
           <p className={`mt-2 transition-colors duration-500 ${
             darkMode ? 'text-gray-400' : 'text-gray-600'
@@ -327,39 +327,7 @@ function EventDashboard() {
                 </div>
               </div>
               <div className="max-h-[60vh] overflow-y-auto p-2">
-                <style jsx>{`
-                  div::-
-                  webkit-scrollbar {
-                    width: 8px;
-                  }
-                  div::-webkit-scrollbar-thumb {
-                    background: ${darkMode
-                      ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
-                      : 'linear-gradient(to bottom, #3b82f6, #0ea5e9)'};
-                    border-radius: 4px;
-                  }
-                  div::-webkit-scrollbar-thumb:hover {
-                    background: ${darkMode
-                      ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
-                      : 'linear-gradient(to bottom, #2563eb, #0284c7)'};
-                  }
-                  
-                  @keyframes highlight-pulse {
-                    0% {
-                      box-shadow: 0 0 0 0 ${darkMode ? 'rgba(59, 130, 246, 0.7)' : 'rgba(59, 130, 246, 0.4)'};
-                    }
-                    70% {
-                      box-shadow: 0 0 0 10px ${darkMode ? 'rgba(59, 130, 246, 0)' : 'rgba(59, 130, 246, 0)'};
-                    }
-                    100% {
-                      box-shadow: 0 0 0 0 ${darkMode ? 'rgba(59, 130, 246, 0)' : 'rgba(59, 130, 246, 0)'};
-                    }
-                  }
-                  
-                  :global(.highlight-animation) {
-                    animation: highlight-pulse 2s ease-in-out;
-                  }
-                `}</style>
+      
                 <ul className="space-y-1">
                   {sortedEvents.map((event) => (
                     <li
@@ -604,6 +572,30 @@ function EventDashboard() {
       </button>
 
       <ToastContainer theme={darkMode ? "dark" : "light"} />
+      <style jsx global>{`
+          ::-webkit-scrollbar {
+            width: 8px;
+            transition: background 1s ease;
+            ${darkMode
+              ? 'background: black;'
+              : 'background: white;'
+            }
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(36, 36, 36), rgb(111, 35, 72))'
+              : 'linear-gradient(to bottom, #3b82f6, #06b6d4)'};
+            border-radius: 4px;
+            transition: background 1s ease;
+          }     
+          ::-webkit-scrollbar-thumb:hover {
+            background: ${darkMode
+              ? 'linear-gradient(to bottom, rgb(23, 23, 23), rgb(83, 26, 54))'
+              : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
+          }
+        `}</style>
+
     </div>
   );
 }

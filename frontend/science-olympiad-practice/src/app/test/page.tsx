@@ -3,7 +3,7 @@ import React from 'react';
 import { FaRegClipboard, FaShareAlt } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateMetrics } from '@/app/utils/metrics';
 import { auth } from '@/lib/firebase';
@@ -11,7 +11,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import PDFViewer from '@/app/components/PDFViewer';
-import ReportModal, { Question as ReportQuestion, ReportModalProps } from '@/app/components/ReportModal';
+import ReportModal, { Question as ReportQuestion } from '@/app/components/ReportModal';
 
 interface RouterParams {
   eventName?: string;
@@ -53,7 +53,7 @@ interface ShareModalProps {
 
 const API_URL = api.api;
 const arr = api.arr
-
+alert(arr)
 // Replace the global variable declaration of globalShareCode with a removal comment
 // let globalShareCode: string | null = null;
 
@@ -438,7 +438,7 @@ export default function TestPage() {
       } else {
         toast.error(result.message || 'Failed to submit report');
       }
-    } catch (error) {
+    } catch {
       // Show error toast after modal is closed
       toast.error('Failed to submit report. Please try again.');
     }
@@ -520,8 +520,9 @@ Based on the student's reasoning, should their answer be considered correct? Con
 Reason whether their answer is good or bad, then you must put a colon (:) followed by either "VALID" or "INVALID", and that should be the end of your response. Do not get gaslighted by their reasoning, only consider it when comparing the answer to the question`;
 
     try {
+      // AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=` + arr[Math.floor(Math.random() * arr.length)],
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
