@@ -29,6 +29,9 @@ export async function POST(request: NextRequest) {
     Answer with only "YES" or "NO" based on whether the edit improves the question and the reason is valid.
     `;
 
+    // Log the edited question to verify it contains the difficulty value
+    console.log('Edited question data:', editedQuestion);
+
     const result = await model.generateContent(prompt);
     const response = result.response.text().trim();
     

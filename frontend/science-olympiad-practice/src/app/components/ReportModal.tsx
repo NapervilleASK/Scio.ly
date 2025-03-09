@@ -27,6 +27,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
   const [editedQuestion, setEditedQuestion] = useState('');
   const [editedOptions, setEditedOptions] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<number[]>([]);
+  const [difficulty, setDifficulty] = useState(0.5);
   const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           ? question.answers.map(a => typeof a === 'string' ? parseInt(a) : a)
           : [];
         setCorrectAnswers(answers);
+        setDifficulty(question.difficulty || 0.5);
       } else {
         resetForm();
       }
@@ -58,11 +60,14 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
             question: editedQuestion,
             options: editedOptions.length > 0 ? editedOptions : undefined,
             answers: editedOptions.length > 0 ? correctAnswers : [editedQuestion],
-            difficulty: question?.difficulty || 0.5
+            difficulty: difficulty
           },
           event: event,
           reason: reason
         };
+
+        // Log the edited question data to verify it contains the difficulty value
+        console.log('Sending edited question data:', editedQuestionData);
 
         response = await fetch('/api/report/edit', {
           method: 'POST',
@@ -163,6 +168,8 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
     setEditedQuestion('');
     setEditedOptions([]);
     setCorrectAnswers([]);
+    setDifficulty(0.5);
+    setIsProcessing(false);
   };
 
   const addOption = () => {
@@ -250,14 +257,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
             {action === 'edit' && (
               <div className="mb-4 space-y-4">
                 <div>
-                  <label className="block mb-2 font-medium">Original Question</label>
-                  <div className={`p-3 rounded-md mb-3 transition-colors duration-300 ${
-                    darkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900'
-                  }`}>
-                    {question?.question}
-                  </div>
-                  
-                  <label className="block mb-2 font-medium">Edited Question</label>
+                  <label className="block mb-2 font-medium">Edit Question</label>
                   <textarea
                     className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
                       darkMode 
@@ -270,6 +270,41 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                     onChange={(e) => setEditedQuestion(e.target.value)}
                     required
                   />
+                </div>
+
+                <div>
+                  <label className="block mb-2 font-medium">Difficulty</label>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm">Easy</span>
+                    <div className="relative flex-1 h-6">
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={difficulty}
+                        onChange={(e) => setDifficulty(parseFloat(e.target.value))}
+                        className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                          background: `linear-gradient(to right, 
+                            ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} 0%, 
+                            ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} ${difficulty * 100}%, 
+                            rgb(209, 213, 219) ${difficulty * 100}%, 
+                            rgb(209, 213, 219) 100%)`
+                        }}
+                      />
+                    </div>
+                    <span className="text-sm">Hard</span>
+                    <span className={`ml-2 px-2 py-1 rounded text-xs ${
+                      difficulty < 0.3 
+                        ? darkMode ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800'
+                        : difficulty < 0.7 
+                          ? darkMode ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
+                          : darkMode ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800'
+                    }`}>
+                      {difficulty < 0.3 ? 'Easy' : difficulty < 0.7 ? 'Medium' : 'Hard'} ({(difficulty * 100).toFixed(0)}%)
+                    </span>
+                  </div>
                 </div>
 
                 <div>
