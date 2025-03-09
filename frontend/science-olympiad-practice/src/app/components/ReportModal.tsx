@@ -233,9 +233,9 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
 
                 <div>
                   <label className="block mb-2 font-medium">Difficulty</label>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm">Easy</span>
-                    <div className="relative flex-1 h-6">
+                  <div className="flex items-center">
+                    <span className="text-sm w-10">Easy</span>
+                    <div className="relative w-48 mx-2 h-6">
                       <input
                         type="range"
                         min="0"
@@ -253,16 +253,18 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                         }}
                       />
                     </div>
-                    <span className="text-sm">Hard</span>
-                    <span className={`ml-2 px-2 py-1 rounded text-xs ${
-                      difficulty < 0.3 
-                        ? darkMode ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800'
-                        : difficulty < 0.7 
-                          ? darkMode ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
-                          : darkMode ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800'
-                    }`}>
-                      {difficulty < 0.3 ? 'Easy' : difficulty < 0.7 ? 'Medium' : 'Hard'} ({(difficulty * 100).toFixed(0)}%)
-                    </span>
+                    <span className="text-sm w-10">Hard</span>
+                    <div className="ml-2">
+                      <div className={`w-16 text-center px-2 py-1 rounded text-xs ${
+                        difficulty < 0.3 
+                          ? darkMode ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800'
+                          : difficulty < 0.7 
+                            ? darkMode ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
+                            : darkMode ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800'
+                      }`}>
+                        {difficulty < 0.3 ? 'Easy' : difficulty < 0.7 ? 'Medium' : 'Hard'}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
