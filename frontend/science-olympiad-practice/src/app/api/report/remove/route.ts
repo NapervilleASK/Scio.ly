@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '
 
 export async function POST(request: NextRequest) {
   try {
-    const { question, event, reason } = await request.json();
+    const { question, originalQuestion, event, reason } = await request.json();
     
     if (!question || !event) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -36,11 +36,25 @@ export async function POST(request: NextRequest) {
       const blacklistKey = `blacklist:${event}`;
       
       // Get existing blacklist or create new one
-      const existingBlacklist = await kv.get<string[]>(blacklistKey) || [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const existingBlacklist = await kv.get<any[]>(blacklistKey) || [];
+      
+      // Use the full question object if available, otherwise just use the question text
+      const questionToStore = originalQuestion || question;
+      
+      // Check if question is already in blacklist
+      const questionExists = existingBlacklist.some(item => {
+        if (typeof item === 'string' && typeof questionToStore === 'string') {
+          return item === questionToStore;
+        } else if (typeof item === 'object' && typeof questionToStore === 'object') {
+          return item.question === questionToStore.question;
+        }
+        return false;
+      });
       
       // Add question to blacklist if not already present
-      if (!existingBlacklist.includes(question)) {
-        await kv.set(blacklistKey, [...existingBlacklist, question]);
+      if (!questionExists) {
+        await kv.set(blacklistKey, [...existingBlacklist, questionToStore]);
       }
       
       return NextResponse.json({ success: true, message: 'Question added to blacklist' });

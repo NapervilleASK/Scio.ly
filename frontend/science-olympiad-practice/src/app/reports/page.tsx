@@ -18,26 +18,49 @@ const parseQuestion = (questionData: string | unknown): Question | null => {
   if (typeof questionData === 'string') {
     try {
       // Try to parse as JSON
-      return JSON.parse(questionData);
+      const parsed = JSON.parse(questionData);
+      
+      // If parsed is an object with a 'question' property, it's likely a question object
+      if (typeof parsed === 'object' && parsed !== null && 'question' in parsed) {
+        return {
+          question: parsed.question,
+          options: parsed.options || [],
+          answers: parsed.answers || [],
+          difficulty: typeof parsed.difficulty === 'number' ? parsed.difficulty : 0.5
+        };
+      }
+      
+      // Otherwise, treat the parsed value as the question text
+      return {
+        question: parsed,
+        answers: [],
+        difficulty: 0.5
+      };
     } catch {
       // If not valid JSON, return a simple question object
       return {
         question: questionData,
         answers: [],
-        difficulty: 0
+        difficulty: 0.5
       };
     }
   } else if (typeof questionData === 'object' && questionData !== null) {
-    return questionData as Question;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const q = questionData as any;
+    return {
+      question: q.question || 'Unknown question',
+      options: q.options || [],
+      answers: q.answers || [],
+      difficulty: typeof q.difficulty === 'number' ? q.difficulty : 0.5
+    };
   }
   return null;
 };
 
-// Component to render a question card
-const QuestionCard = ({ questionData, darkMode, type = 'normal' }: { 
+// Component for blacklisted questions to avoid double box effect
+const BlacklistedQuestionCard = ({ questionData, darkMode }: { 
   questionData: string | unknown, 
-  darkMode: boolean, 
-  type?: 'normal' | 'original' | 'edited' 
+  darkMode: boolean
 }) => {
   const question = parseQuestion(questionData);
   
@@ -49,19 +72,8 @@ const QuestionCard = ({ questionData, darkMode, type = 'normal' }: {
     );
   }
 
-  // Determine border color based on type
-  const borderColor = type === 'original' 
-    ? darkMode ? 'border-red-600' : 'border-red-500'
-    : type === 'edited'
-      ? darkMode ? 'border-green-600' : 'border-green-500'
-      : darkMode ? 'border-gray-600' : 'border-gray-300';
-
   return (
-    <div className={`border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
-      darkMode
-        ? 'bg-gray-700 border-gray-600 text-white'
-        : 'bg-gray-50 border-gray-300 text-black'
-    } ${type !== 'normal' ? `border-l-4 ${borderColor}` : ''}`}>
+    <div>
       <h3 className="font-semibold text-lg mb-2">Question</h3>
       <p className="mb-4 break-words whitespace-normal overflow-x-auto">
         {question.question}
@@ -132,7 +144,109 @@ const QuestionCard = ({ questionData, darkMode, type = 'normal' }: {
               ? 'Easy' 
               : question.difficulty < 0.7 
                 ? 'Medium' 
-                : 'Hard'}
+                : 'Hard'} ({Math.round(question.difficulty * 100)}%)
+          </span>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Component to render a question card
+const QuestionCard = ({ questionData, darkMode, type = 'normal', className }: { 
+  questionData: string | unknown, 
+  darkMode: boolean, 
+  type?: 'normal' | 'original' | 'edited',
+  className?: string
+}) => {
+  const question = parseQuestion(questionData);
+  
+  if (!question) {
+    return (
+      <div className={`p-4 rounded-md ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+        Invalid question format
+      </div>
+    );
+  }
+
+  // Use a simpler style for the card
+  return (
+    <div className={`${
+      darkMode
+        ? 'text-white'
+        : 'text-black'
+    } ${type === 'original' ? 'original-question' : type === 'edited' ? 'edited-question' : ''} ${className || ''}`}>
+      <h3 className="font-semibold text-lg mb-2">Question</h3>
+      <p className="mb-4 break-words whitespace-normal overflow-x-auto">
+        {question.question}
+      </p>
+
+      {question.options && question.options.length > 0 && (
+        <div className="mt-4">
+          <h4 className="font-medium mb-2">Options:</h4>
+          <div className="space-y-2">
+            {question.options.map((option, idx) => {
+              const isCorrect = question.answers.includes(idx + 1) || 
+                               (typeof question.answers[0] === 'string' && 
+                                question.answers.includes(option));
+              
+              return (
+                <div 
+                  key={idx} 
+                  className={`p-2 rounded-md ${
+                    darkMode 
+                      ? isCorrect ? 'bg-green-800/30' : 'bg-gray-600' 
+                      : isCorrect ? 'bg-green-100' : 'bg-gray-200'
+                  }`}
+                >
+                  <span className="mr-2">{idx + 1}.</span>
+                  {option}
+                  {isCorrect && (
+                    <span className={`ml-2 ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+                      ✓ Correct
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {(!question.options || question.options.length === 0) && question.answers.length > 0 && (
+        <div className="mt-4">
+          <h4 className="font-medium mb-2">Answer:</h4>
+          <div className={`p-2 rounded-md ${
+            darkMode ? 'bg-green-800/30' : 'bg-green-100'
+          }`}>
+            {Array.isArray(question.answers) 
+              ? question.answers.join(', ')
+              : String(question.answers)}
+          </div>
+        </div>
+      )}
+
+      {question.difficulty !== undefined && (
+        <div className="mt-4 flex items-center">
+          <span className="text-sm">Difficulty: </span>
+          <div className="ml-2 w-24 h-2 bg-gray-300 rounded-full overflow-hidden">
+            <div 
+              className={`h-full ${
+                question.difficulty < 0.3 
+                  ? 'bg-green-500' 
+                  : question.difficulty < 0.7 
+                    ? 'bg-yellow-500' 
+                    : 'bg-red-500'
+              }`}
+              style={{ width: `${question.difficulty * 100}%` }}
+            ></div>
+          </div>
+          <span className="ml-2 text-xs">
+            {question.difficulty < 0.3 
+              ? 'Easy' 
+              : question.difficulty < 0.7 
+                ? 'Medium' 
+                : 'Hard'} ({Math.round(question.difficulty * 100)}%)
           </span>
         </div>
       )}
@@ -299,10 +413,9 @@ export default function ReportsPage() {
                             <div className="space-y-3">
                               {questions.map((question, index) => (
                                 <div key={index} className={`${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} p-4 rounded-md border-l-4 ${darkMode ? 'border-red-600' : 'border-red-500'}`}>
-                                  <QuestionCard 
+                                  <BlacklistedQuestionCard 
                                     questionData={question} 
                                     darkMode={darkMode} 
-                                    type="original" 
                                   />
                                 </div>
                               ))}

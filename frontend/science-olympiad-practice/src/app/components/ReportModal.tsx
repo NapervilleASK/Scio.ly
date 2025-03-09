@@ -51,7 +51,6 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
     setIsProcessing(true);
 
     try {
-      let response;
       if (action === 'edit') {
         const editedQuestionData = {
           originalQuestion: question?.question,
@@ -69,82 +68,42 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
         // Log the edited question data to verify it contains the difficulty value
         console.log('Sending edited question data:', editedQuestionData);
 
-        response = await fetch('/api/report/edit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(editedQuestionData)
+        // Instead of making the API call directly, pass the data to the parent component
+        onSubmit(
+          reason, 
+          action, 
+          JSON.stringify(editedQuestionData.editedQuestion),
+          JSON.stringify(question)
+        );
+        
+        resetForm();
+        onClose();
+        
+        toast.success('Edit submitted for review.', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: darkMode ? "dark" : "light"
         });
-
-        const data = await response.json();
-      
-        if (data.success) {
-          onSubmit(
-            reason, 
-            action, 
-            JSON.stringify(editedQuestionData.editedQuestion),
-            JSON.stringify(question)
-          );
-          toast.success('Edit request approved by AI. Changes will be reviewed.', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: darkMode ? "dark" : "light"
-          });
-          // Close and reset after showing toast
-          resetForm();
-          onClose();
-        } else {
-          toast.error(data.message || 'AI rejected the edit. Please revise and try again.', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: darkMode ? "dark" : "light"
-          });
-        }
       } else {
-        response = await fetch('/api/report/remove', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            question: question?.question,
-            event: event,
-            reason: reason
-          })
+        // For remove action, just pass the data to the parent component
+        onSubmit(reason, action);
+        
+        resetForm();
+        onClose();
+        
+        toast.success('Report submitted for review.', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: darkMode ? "dark" : "light"
         });
-
-        const data = await response.json();
-      
-        if (data.success) {
-          onSubmit(reason, action);
-          toast.success('Remove request approved by AI. Question will be reviewed.', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: darkMode ? "dark" : "light"
-          });
-          // Close and reset after showing toast
-          resetForm();
-          onClose();
-        } else {
-          toast.error(data.message || 'AI rejected the removal. Please provide more details.', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: darkMode ? "dark" : "light"
-          });
-        }
       }
     } catch (error) {
       console.error('Error processing report:', error);

@@ -42,12 +42,31 @@ export async function POST(request: NextRequest) {
       // Get existing edits or create new one
       const existingEdits = await kv.get<Array<{original: string, edited: string, timestamp: string}>>(editsKey) || [];
       
-      // Add edit to the list
-      await kv.set(editsKey, [...existingEdits, {
-        original: originalQuestion,
-        edited: editedQuestion,
-        timestamp: new Date().toISOString()
-      }]);
+      // Check if this question has already been edited
+      const originalQuestionStr = typeof originalQuestion === 'string' ? originalQuestion : JSON.stringify(originalQuestion);
+      
+      // Look for existing edits with the same original question
+      const existingEditIndex = existingEdits.findIndex(edit => {
+        const editOriginal = typeof edit.original === 'string' ? edit.original : JSON.stringify(edit.original);
+        return editOriginal === originalQuestionStr;
+      });
+      
+      if (existingEditIndex !== -1) {
+        // Update the existing edit instead of adding a new one
+        existingEdits[existingEditIndex] = {
+          original: originalQuestion,
+          edited: editedQuestion,
+          timestamp: new Date().toISOString()
+        };
+        await kv.set(editsKey, existingEdits);
+      } else {
+        // Add a new edit to the list
+        await kv.set(editsKey, [...existingEdits, {
+          original: originalQuestion,
+          edited: editedQuestion,
+          timestamp: new Date().toISOString()
+        }]);
+      }
       
       return NextResponse.json({ success: true, message: 'Question edit saved' });
     } else {
