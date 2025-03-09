@@ -148,7 +148,7 @@ function EventDashboard() {
                 ?.category || event.subject,
           }));
         setEvents(eventsFromURL);
-
+        setLoading(false);
         const response = await fetch(api.api);
         const raw = await response.json();
         console.log(Object.keys(raw))
