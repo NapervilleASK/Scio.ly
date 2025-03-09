@@ -98,9 +98,9 @@ export default function HomePage() {
         )}
         
         {darkMode && (
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-5">
             <Canvas>
-              <Stars radius={42} count={2500} factor={4} fade speed={1} />
+              <Stars radius={100} count={2000} factor={10} saturation={100} fade speed={1} />
             </Canvas>
           </div>
         )}

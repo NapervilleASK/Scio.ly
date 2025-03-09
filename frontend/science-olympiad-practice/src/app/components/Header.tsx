@@ -305,7 +305,7 @@ export default function Header() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
         onSubmit={handleContact}
-        darkMode={darkMode || shouldBeTransparent}
+        darkMode={darkMode}
       />
       <ToastContainer theme={darkMode || shouldBeTransparent ? "dark" : "light"} />
 
@@ -342,13 +342,14 @@ export default function Header() {
                 Practice
               </Link>
               <PDFViewer 
-          pdfPath="/scioly-rules.pdf"
-          buttonText="Rulebook"
-          darkMode={darkMode}
-        />
+                pdfPath="/scioly-rules.pdf"
+                buttonText="Rulebook"
+                darkMode={darkMode}
+                data-pdf-viewer="rulebook"
+              />
               <button
                 onClick={() => setContactModalOpen(true)}
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm ${linkColorClass}`}
+                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
               >
                 Contact
               </button>
@@ -409,15 +410,22 @@ export default function Header() {
                       >
                         Practice
                       </Link>
-                      <Link
-                        href="/rules"
-                        className={`block px-4 py-2 text-sm ${
+                      <button
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setTimeout(() => {
+                            const pdfViewerButton = document.querySelector('[data-pdf-viewer="rulebook"]') as HTMLButtonElement;
+                            if (pdfViewerButton) {
+                              pdfViewerButton.click();
+                            }
+                          }, 100);
+                        }}
+                        className={`block w-full text-left px-4 py-2 text-sm ${
                           darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
                         }`}
-                        onClick={() => setMobileMenuOpen(false)}
                       >
-                        Rules
-                      </Link>
+                        Rulebook
+                      </button>
                       <button
                         onClick={() => {
                           setMobileMenuOpen(false);
