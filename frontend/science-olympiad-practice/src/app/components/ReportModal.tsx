@@ -15,7 +15,7 @@ interface Question {
 interface ReportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => void;
+  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string, originalQuestion?: string) => void;
   darkMode: boolean;
   question?: Question;
   event: string;
@@ -53,6 +53,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
       if (action === 'edit') {
         const editedQuestionData = {
           originalQuestion: question?.question,
+          originalQuestionFull: question,
           editedQuestion: {
             question: editedQuestion,
             options: editedOptions.length > 0 ? editedOptions : undefined,
@@ -72,7 +73,12 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
         const data = await response.json();
       
         if (data.success) {
-          onSubmit(reason, action, JSON.stringify(editedQuestionData.editedQuestion));
+          onSubmit(
+            reason, 
+            action, 
+            JSON.stringify(editedQuestionData.editedQuestion),
+            JSON.stringify(question)
+          );
           toast.success('Edit request approved by AI. Changes will be reviewed.', {
             position: "top-right",
             autoClose: 3000,

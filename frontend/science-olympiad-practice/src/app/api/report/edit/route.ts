@@ -7,9 +7,9 @@ const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '
 
 export async function POST(request: NextRequest) {
   try {
-    const { originalQuestion, editedQuestion, event, reason } = await request.json();
+    const { originalQuestion, originalQuestion: originalQuestionText, editedQuestion, event, reason } = await request.json();
     
-    if (!originalQuestion || !editedQuestion || !event) {
+    if (!originalQuestionText || !editedQuestion || !event) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
     You are evaluating an edit for a Science Olympiad question. 
     The user wants to edit this question in the question bank.
     
-    Original Question: ${originalQuestion}
-    Edited Question: ${editedQuestion}
+    Original Question: ${typeof originalQuestionText === 'string' ? originalQuestionText : JSON.stringify(originalQuestionText)}
+    Edited Question: ${typeof editedQuestion === 'string' ? editedQuestion : JSON.stringify(editedQuestion)}
     Event: ${event}
     Reason for edit: ${reason}
     
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       const editsKey = `edits:${event}`;
       
       // Get existing edits or create new one
-      const existingEdits = await kv.get<Array<{original: string, edited: string}>>(editsKey) || [];
+      const existingEdits = await kv.get<Array<{original: string, edited: string, timestamp: string}>>(editsKey) || [];
       
       // Add edit to the list
       await kv.set(editsKey, [...existingEdits, {

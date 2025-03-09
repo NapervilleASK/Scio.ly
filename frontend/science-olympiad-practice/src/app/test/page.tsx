@@ -406,7 +406,7 @@ export default function TestPage() {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string) => {
+  const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string, originalQuestion?: string) => {
     if (reportState.questionIndex === null) return;
     
     // Close the modal first
@@ -423,6 +423,7 @@ export default function TestPage() {
         },
         body: JSON.stringify({
           question: question.question,
+          originalQuestion: originalQuestion || JSON.stringify(question), // Use the full original question JSON if available
           editedQuestion: editedQuestion,
           event: routerData.eventName || 'Unknown Event',
           reason

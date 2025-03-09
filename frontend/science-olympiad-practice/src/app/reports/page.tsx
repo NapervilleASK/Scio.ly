@@ -1,9 +1,144 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import Link from 'next/link';
 import Image from 'next/image';
+
+// Add Question interface
+interface Question {
+  question: string;
+  options?: string[];
+  answers: (number | string)[];
+  difficulty: number;
+}
+
+// Helper function to parse question data
+const parseQuestion = (questionData: string | unknown): Question | null => {
+  if (typeof questionData === 'string') {
+    try {
+      // Try to parse as JSON
+      return JSON.parse(questionData);
+    } catch {
+      // If not valid JSON, return a simple question object
+      return {
+        question: questionData,
+        answers: [],
+        difficulty: 0
+      };
+    }
+  } else if (typeof questionData === 'object' && questionData !== null) {
+    return questionData as Question;
+  }
+  return null;
+};
+
+// Component to render a question card
+const QuestionCard = ({ questionData, darkMode, type = 'normal' }: { 
+  questionData: string | unknown, 
+  darkMode: boolean, 
+  type?: 'normal' | 'original' | 'edited' 
+}) => {
+  const question = parseQuestion(questionData);
+  
+  if (!question) {
+    return (
+      <div className={`p-4 rounded-md ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+        Invalid question format
+      </div>
+    );
+  }
+
+  // Determine border color based on type
+  const borderColor = type === 'original' 
+    ? darkMode ? 'border-red-600' : 'border-red-500'
+    : type === 'edited'
+      ? darkMode ? 'border-green-600' : 'border-green-500'
+      : darkMode ? 'border-gray-600' : 'border-gray-300';
+
+  return (
+    <div className={`border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+      darkMode
+        ? 'bg-gray-700 border-gray-600 text-white'
+        : 'bg-gray-50 border-gray-300 text-black'
+    } ${type !== 'normal' ? `border-l-4 ${borderColor}` : ''}`}>
+      <h3 className="font-semibold text-lg mb-2">Question</h3>
+      <p className="mb-4 break-words whitespace-normal overflow-x-auto">
+        {question.question}
+      </p>
+
+      {question.options && question.options.length > 0 && (
+        <div className="mt-4">
+          <h4 className="font-medium mb-2">Options:</h4>
+          <div className="space-y-2">
+            {question.options.map((option, idx) => {
+              const isCorrect = question.answers.includes(idx + 1) || 
+                               (typeof question.answers[0] === 'string' && 
+                                question.answers.includes(option));
+              
+              return (
+                <div 
+                  key={idx} 
+                  className={`p-2 rounded-md ${
+                    darkMode 
+                      ? isCorrect ? 'bg-green-800/30' : 'bg-gray-600' 
+                      : isCorrect ? 'bg-green-100' : 'bg-gray-200'
+                  }`}
+                >
+                  <span className="mr-2">{idx + 1}.</span>
+                  {option}
+                  {isCorrect && (
+                    <span className={`ml-2 ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+                      ✓ Correct
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {(!question.options || question.options.length === 0) && question.answers.length > 0 && (
+        <div className="mt-4">
+          <h4 className="font-medium mb-2">Answer:</h4>
+          <div className={`p-2 rounded-md ${
+            darkMode ? 'bg-green-800/30' : 'bg-green-100'
+          }`}>
+            {Array.isArray(question.answers) 
+              ? question.answers.join(', ')
+              : String(question.answers)}
+          </div>
+        </div>
+      )}
+
+      {question.difficulty !== undefined && (
+        <div className="mt-4 flex items-center">
+          <span className="text-sm">Difficulty: </span>
+          <div className="ml-2 w-24 h-2 bg-gray-300 rounded-full overflow-hidden">
+            <div 
+              className={`h-full ${
+                question.difficulty < 0.3 
+                  ? 'bg-green-500' 
+                  : question.difficulty < 0.7 
+                    ? 'bg-yellow-500' 
+                    : 'bg-red-500'
+              }`}
+              style={{ width: `${question.difficulty * 100}%` }}
+            ></div>
+          </div>
+          <span className="ml-2 text-xs">
+            {question.difficulty < 0.3 
+              ? 'Easy' 
+              : question.difficulty < 0.7 
+                ? 'Medium' 
+                : 'Hard'}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function ReportsPage() {
   const { darkMode } = useTheme();
@@ -164,13 +299,11 @@ export default function ReportsPage() {
                             <div className="space-y-3">
                               {questions.map((question, index) => (
                                 <div key={index} className={`${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} p-4 rounded-md border-l-4 ${darkMode ? 'border-red-600' : 'border-red-500'}`}>
-                                  <p className={secondaryTextColor}>
-                                    {typeof question === 'string' 
-                                      ? question 
-                                      : typeof question === 'object' && question !== null
-                                        ? JSON.stringify(question)
-                                        : 'Invalid question format'}
-                                  </p>
+                                  <QuestionCard 
+                                    questionData={question} 
+                                    darkMode={darkMode} 
+                                    type="original" 
+                                  />
                                 </div>
                               ))}
                             </div>
@@ -228,13 +361,11 @@ export default function ReportsPage() {
                                         Original
                                       </h4>
                                       <div className={`${cardBgColor} p-4 rounded-md border ${borderColor} shadow-sm`}>
-                                        <p className={secondaryTextColor}>
-                                          {typeof edit.original === 'string' 
-                                            ? edit.original 
-                                            : typeof edit.original === 'object' && edit.original !== null
-                                              ? JSON.stringify(edit.original)
-                                              : 'Invalid question format'}
-                                        </p>
+                                        <QuestionCard 
+                                          questionData={edit.original} 
+                                          darkMode={darkMode} 
+                                          type="original" 
+                                        />
                                       </div>
                                     </div>
                                     <div>
@@ -245,13 +376,11 @@ export default function ReportsPage() {
                                         Edited
                                       </h4>
                                       <div className={`${cardBgColor} p-4 rounded-md border ${darkMode ? 'border-green-700' : 'border-green-300'} shadow-sm`}>
-                                        <p className={darkMode ? 'text-green-300' : 'text-green-700'}>
-                                          {typeof edit.edited === 'string' 
-                                            ? edit.edited 
-                                            : typeof edit.edited === 'object' && edit.edited !== null
-                                              ? JSON.stringify(edit.edited)
-                                              : 'Invalid question format'}
-                                        </p>
+                                        <QuestionCard 
+                                          questionData={edit.edited} 
+                                          darkMode={darkMode} 
+                                          type="edited" 
+                                        />
                                       </div>
                                     </div>
                                   </div>
