@@ -1009,12 +1009,8 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
   const [loadingLoad, setLoadingLoad] = useState(false);
   const [shareCode, setShareCode] = useState<string | null>(null);
   const hasGeneratedRef = useRef(false);
+
   const generateShareCode = async () => {
-  if (localStorage.getItem("shareCode")) {
-    setShareCode(localStorage.getItem("shareCode"))
-    localStorage.removeItem("shareCode")
-    loadSharedTest()
-  }
     const selectedIndicesRaw = localStorage.getItem('selectedIndices');
     if (!selectedIndicesRaw) {
       toast.error('No selected test questions found to share.');
@@ -1057,13 +1053,18 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
   };
 
   const loadSharedTest = async () => {
-    if (!inputCode) {
+    let code = inputCode
+    if (!code) {
+      if (localStorage.getItem("shareCode")) {
+        code = localStorage.getItem("shareCode") || ""
+      } else {
       toast.error('Please enter a share code');
       return;
+      }
     }
     setLoadingLoad(true);
     try {
-      const response = await fetch(`/api/share?code=${inputCode}`);
+      const response = await fetch(`/api/share?code=${code}`);
       if (!response.ok) {
         throw new Error('Invalid or expired share code');
       }
@@ -1110,9 +1111,12 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
       setLoadingLoad(false);
     }
   };
-
   // Listen for localStorage changes on testParams and regenerate share code if it changes
   useEffect(() => {
+    if (localStorage.getItem("shareCode")) {
+      loadSharedTest()
+      localStorage.removeItem("shareCode")
+    }
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === 'testParams') {
         generateShareCode();
