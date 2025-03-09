@@ -590,9 +590,34 @@ export default function WelcomePage() {
       });
       return;
     }
-    localStorage.setItem("shareCode", code)
-    router.push('/test');
-
+    
+    try {
+      // Validate the code with the API before redirecting
+      const response = await fetch(`/api/share?code=${code}`);
+      
+      if (!response.ok) {
+        // If the code is invalid, show an error toast and keep the user on the welcome page
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Invalid or expired test code', {
+          position: "bottom-center"
+        });
+        return;
+      }
+      
+      // If the code is valid, store it and redirect to the test page
+      const data = await response.json();
+      if (data.testParamsRaw) {
+        localStorage.setItem('testParams', JSON.stringify(data.testParamsRaw));
+      }
+      localStorage.setItem("shareCode", code);
+      // Navigate to the test page
+      router.push('/test');
+    } catch (error) {
+      console.error('Error validating test code:', error);
+      toast.error('Failed to validate test code. Please try again.', {
+        position: "bottom-center"
+      });
+    }
   };
 
   // Handle paste event for test code input fields

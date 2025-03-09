@@ -30,7 +30,7 @@ export async function GET(request: Request) {
     // Retrieve the document with the matching code
     const data = await collection.findOne({ code });
     if (!data) {
-      return NextResponse.json({ error: 'Invalid or expired share code?' }, { status: 404 });
+      return NextResponse.json({ error: 'Invalid or expired share code' }, { status: 404 });
     }
 
     return NextResponse.json(data);
