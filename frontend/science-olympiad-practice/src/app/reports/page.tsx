@@ -164,7 +164,13 @@ export default function ReportsPage() {
                             <div className="space-y-3">
                               {questions.map((question, index) => (
                                 <div key={index} className={`${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} p-4 rounded-md border-l-4 ${darkMode ? 'border-red-600' : 'border-red-500'}`}>
-                                  <p className={secondaryTextColor}>{question}</p>
+                                  <p className={secondaryTextColor}>
+                                    {typeof question === 'string' 
+                                      ? question 
+                                      : typeof question === 'object' && question !== null
+                                        ? JSON.stringify(question)
+                                        : 'Invalid question format'}
+                                  </p>
                                 </div>
                               ))}
                             </div>
@@ -222,7 +228,13 @@ export default function ReportsPage() {
                                         Original
                                       </h4>
                                       <div className={`${cardBgColor} p-4 rounded-md border ${borderColor} shadow-sm`}>
-                                        <p className={secondaryTextColor}>{edit.original}</p>
+                                        <p className={secondaryTextColor}>
+                                          {typeof edit.original === 'string' 
+                                            ? edit.original 
+                                            : typeof edit.original === 'object' && edit.original !== null
+                                              ? JSON.stringify(edit.original)
+                                              : 'Invalid question format'}
+                                        </p>
                                       </div>
                                     </div>
                                     <div>
@@ -233,7 +245,13 @@ export default function ReportsPage() {
                                         Edited
                                       </h4>
                                       <div className={`${cardBgColor} p-4 rounded-md border ${darkMode ? 'border-green-700' : 'border-green-300'} shadow-sm`}>
-                                        <p className={darkMode ? 'text-green-300' : 'text-green-700'}>{edit.edited}</p>
+                                        <p className={darkMode ? 'text-green-300' : 'text-green-700'}>
+                                          {typeof edit.edited === 'string' 
+                                            ? edit.edited 
+                                            : typeof edit.edited === 'object' && edit.edited !== null
+                                              ? JSON.stringify(edit.edited)
+                                              : 'Invalid question format'}
+                                        </p>
                                       </div>
                                     </div>
                                   </div>
