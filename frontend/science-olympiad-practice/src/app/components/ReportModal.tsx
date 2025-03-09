@@ -27,18 +27,37 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
   const [editedQuestion, setEditedQuestion] = useState('');
   const [editedOptions, setEditedOptions] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<number[]>([]);
+  const [frqAnswer, setFrqAnswer] = useState('');
   const [difficulty, setDifficulty] = useState(0.5);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isFRQ, setIsFRQ] = useState(false);
 
   useEffect(() => {
     if (question) {
       if (isOpen) {
         setEditedQuestion(question.question);
-        setEditedOptions(question.options || []);
-        const answers = question.options 
-          ? question.answers.map(a => typeof a === 'string' ? parseInt(a) : a)
-          : [];
-        setCorrectAnswers(answers);
+        
+        // Determine if this is a free response question (no options)
+        const hasMCQOptions = question.options && question.options.length > 0;
+        setIsFRQ(!hasMCQOptions);
+        
+        if (hasMCQOptions) {
+          // Handle MCQ
+          setEditedOptions(question.options || []);
+          const answers = question.options 
+            ? question.answers.map(a => typeof a === 'string' ? parseInt(a) : a)
+            : [];
+          setCorrectAnswers(answers);
+        } else {
+          // Handle FRQ
+          const answer = Array.isArray(question.answers) && question.answers.length > 0
+            ? typeof question.answers[0] === 'string' 
+              ? question.answers[0]
+              : String(question.answers[0])
+            : '';
+          setFrqAnswer(answer);
+        }
+        
         setDifficulty(question.difficulty || 0.5);
       } else {
         resetForm();
@@ -57,8 +76,8 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           originalQuestionFull: question,
           editedQuestion: {
             question: editedQuestion,
-            options: editedOptions.length > 0 ? editedOptions : undefined,
-            answers: editedOptions.length > 0 ? correctAnswers : [editedQuestion],
+            options: isFRQ ? undefined : editedOptions.length > 0 ? editedOptions : undefined,
+            answers: isFRQ ? [frqAnswer] : editedOptions.length > 0 ? correctAnswers : [editedQuestion],
             difficulty: difficulty
           },
           event: event,
@@ -127,8 +146,10 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
     setEditedQuestion('');
     setEditedOptions([]);
     setCorrectAnswers([]);
+    setFrqAnswer('');
     setDifficulty(0.5);
     setIsProcessing(false);
+    setIsFRQ(false);
   };
 
   const addOption = () => {
@@ -268,55 +289,76 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                   </div>
                 </div>
 
-                <div>
-                  <label className="block mb-2 font-medium">Answer Options</label>
-                  <div className="space-y-2">
-                    {editedOptions.map((option, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          checked={correctAnswers.includes(index + 1)}
-                          onChange={() => toggleCorrectAnswer(index)}
-                          className="mr-2"
-                        />
-                        <input
-                          type="text"
-                          value={option}
-                          onChange={(e) => updateOption(index, e.target.value)}
-                          className={`flex-1 p-2 border rounded-md transition-colors duration-300 ${
-                            darkMode 
-                              ? 'bg-gray-700 text-white border-gray-600' 
-                              : 'bg-white text-gray-900 border-gray-300'
-                          }`}
-                          placeholder={`Option ${index + 1}`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeOption(index)}
-                          className="text-red-500 hover:text-red-700"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    ))}
+                {/* Conditional rendering based on question type */}
+                {isFRQ ? (
+                  // Free Response Question Answer
+                  <div>
+                    <label className="block mb-2 font-medium">Correct Answer</label>
+                    <textarea
+                      className={`w-full p-2 border rounded-md transition-colors duration-300 ${
+                        darkMode 
+                          ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                          : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+                      }`}
+                      rows={3}
+                      placeholder="Enter the correct answer for this free response question..."
+                      value={frqAnswer}
+                      onChange={(e) => setFrqAnswer(e.target.value)}
+                      required
+                    />
                   </div>
-                  <button
-                    type="button"
-                    onClick={addOption}
-                    className={`mt-2 px-3 py-1 rounded-md text-sm ${
-                      darkMode
-                        ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                        : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                    }`}
-                  >
-                    + Add Option
-                  </button>
-                  {editedOptions.length > 0 && (
-                    <p className="mt-2 text-sm text-gray-500">
-                      Check the boxes next to the correct answer(s)
-                    </p>
-                  )}
-                </div>
+                ) : (
+                  // Multiple Choice Question Options
+                  <div>
+                    <label className="block mb-2 font-medium">Answer Options</label>
+                    <div className="space-y-2">
+                      {editedOptions.map((option, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <input
+                            type="checkbox"
+                            checked={correctAnswers.includes(index + 1)}
+                            onChange={() => toggleCorrectAnswer(index)}
+                            className="mr-2"
+                          />
+                          <input
+                            type="text"
+                            value={option}
+                            onChange={(e) => updateOption(index, e.target.value)}
+                            className={`flex-1 p-2 border rounded-md transition-colors duration-300 ${
+                              darkMode 
+                                ? 'bg-gray-700 text-white border-gray-600' 
+                                : 'bg-white text-gray-900 border-gray-300'
+                            }`}
+                            placeholder={`Option ${index + 1}`}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeOption(index)}
+                            className="text-red-500 hover:text-red-700"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={addOption}
+                      className={`mt-2 px-3 py-1 rounded-md text-sm ${
+                        darkMode
+                          ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                          : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                      }`}
+                    >
+                      + Add Option
+                    </button>
+                    {editedOptions.length > 0 && (
+                      <p className="mt-2 text-sm text-gray-500">
+                        Check the boxes next to the correct answer(s)
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             )}
 
