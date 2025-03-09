@@ -831,7 +831,15 @@ titles = {
     'anatomy - respiratory fill in the blank': 'Anatomy - Respiratory',
     'designer genes free response': 'Designer Genes',
     'archaeology': 'Fossils',
-    'astronomy - free response': 'Astronomy'
+    'astronomy - free response': 'Astronomy',
+    'fermi questions measurement': 'Fermi Questions',
+    'geologic mapping free response': 'Geologic Mapping',
+    'skeletal fill in the blank': 'Anatomy - Skeletal',
+    'marine & estuary ecology': 'Ecology',
+    'case study 1 - the survivor of the cordyceps apocalypse': None,
+    'case study 2 - the penitent thief': 'Anatomy - Muscular',
+    'case study 3 - hero of the wild': 'Anatomy - Muscular'
+
 }
 
 print("All values:", [*set([f for f in titles.values() if f is not None])])
