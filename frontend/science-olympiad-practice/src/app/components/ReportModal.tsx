@@ -199,11 +199,30 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
 
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className={`rounded-lg p-6 w-[90%] sm:w-[800px] max-h-[90vh] overflow-y-auto mx-4 transition-colors duration-300 ${
-          darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-        }`}>
-          <h3 className="text-lg font-semibold mb-4">Report Question</h3>
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) handleClose();
+        }}
+      >
+        <div 
+          className={`rounded-lg p-6 w-[90%] sm:w-[800px] max-h-[90vh] overflow-y-auto mx-4 transition-colors duration-300 ${
+            darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold">Report Question</h3>
+            <button 
+              onClick={handleClose} 
+              className={`text-gray-500 hover:${darkMode ? 'text-gray-300' : 'text-gray-700'} transition-colors`}
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block mb-2 font-medium">Action</label>

@@ -269,10 +269,10 @@ export default function HomePage() {
                 Test Features
               </div>
               <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Everything You Need</h2>
-              <p className="text-gray-400 mb-6">
+              <p className={darkMode ? 'text-gray-300 mb-6' : 'text-gray-700 mb-6'}>
                 Practice smarter with our comprehensive testing platform:
               </p>
-              <ul className="space-y-3 text-gray-400">
+              <ul className={darkMode ? 'space-y-3 text-gray-300' : 'space-y-3 text-gray-700'}>
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span> Share tests with teammates using unique codes
                 </li>
@@ -406,15 +406,15 @@ export default function HomePage() {
             {metrics.map((metric, index) => (
               <div key={index} className="p-6">
                 <div className={`text-4xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{metric.number}</div>
-                <div className={darkMode ? 'text-gray-400' : 'text-gray-600'}>{metric.label}</div>
+                <div className={darkMode ? 'text-gray-300' : 'text-gray-600'}>{metric.label}</div>
               </div>
             ))}
           </div>
           <div className="mt-12 flex justify-center gap-4">
-            <a href="https://github.com/NapervilleASK/Scio.ly" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
+            <a href="https://github.com/NapervilleASK/Scio.ly" className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
               <FaGithub className="w-6 h-6" />
             </a>
-            <a href="https://discord.gg/hXSkrD33gu" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
+            <a href="https://discord.gg/hXSkrD33gu" className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
               <FaDiscord className="w-6 h-6" />
             </a>
           </div>
