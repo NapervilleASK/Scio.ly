@@ -803,7 +803,7 @@ export default function WelcomePage() {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.95, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className={`rounded-lg p-6 w-[600px] max-h-[90vh] overflow-y-auto ${
+                        className={`rounded-lg p-6 w-[85vw] sm:w-[600px] max-h-[90vh] overflow-y-auto mx-4 ${
                           darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
                         }`}
                         onClick={(e) => e.stopPropagation()}
