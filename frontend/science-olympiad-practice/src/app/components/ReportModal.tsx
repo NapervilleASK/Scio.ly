@@ -57,7 +57,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           setFrqAnswer(answer);
         }
         
-        setDifficulty(question.difficulty || 0.5);
+        setDifficulty(question.difficulty === 0 ? 0.1 : question.difficulty || 0.5);
       } else {
         resetForm();
       }
@@ -77,7 +77,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
             question: editedQuestion,
             options: isFRQ ? undefined : editedOptions.length > 0 ? editedOptions : undefined,
             answers: isFRQ ? [frqAnswer] : editedOptions.length > 0 ? correctAnswers : [editedQuestion],
-            difficulty: difficulty
+            difficulty: difficulty === 0 ? 0.1 : difficulty
           },
           event: event,
           reason: reason
@@ -281,7 +281,11 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                         max="1"
                         step="0.01"
                         value={difficulty}
-                        onChange={(e) => setDifficulty(parseFloat(e.target.value))}
+                        onChange={(e) => {
+                          const value = parseFloat(e.target.value);
+                          // Ensure difficulty is at least 0.1 (10%)
+                          setDifficulty(value === 0 ? 0.1 : value);
+                        }}
                         className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
                         style={{
                           background: `linear-gradient(to right, 
