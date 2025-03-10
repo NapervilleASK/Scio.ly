@@ -200,7 +200,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
   return (
     <>
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className={`rounded-lg p-6 w-[800px] max-w-full max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
+        <div className={`rounded-lg p-6 w-[90%] sm:w-[800px] max-h-[90vh] overflow-y-auto mx-4 transition-colors duration-300 ${
           darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
         }`}>
           <h3 className="text-lg font-semibold mb-4">Report Question</h3>
