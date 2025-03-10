@@ -77,8 +77,8 @@ export default function HomePage() {
 
   const metrics = [
     { number: "4.3K", label: "Practice tests scraped" },
-    { number: "38.4K+", label: "Questions solved" },
-    { number: "32.7K", label: "Page views" }
+    { number: "38.4K", label: "Questions solved" },
+    { number: "3.5K", label: "Active users" }
   ];
 
   const handleThemeToggle = () => {
@@ -146,7 +146,7 @@ export default function HomePage() {
               transition={{ delay: 0.1 }}
               className={`text-xl mb-8 w-[85vw] md:max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
             >
-              Over 3000 Science Olympiad tests into one website, designed for the ultimate studying experience.
+              Over 4000 Science Olympiad tests into one website, designed for the ultimate studying experience.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
