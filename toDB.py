@@ -540,7 +540,7 @@ titles = {
     'nobel prize': None,
     'applied game theory': 'Fun',
     'weather terms': 'Meteorology',
-    'reach for the stars': 'Astronomy',
+    'reach for the stars': 'Reach for the Stars',
     'anatomy - cancer': 'Disease Detectives',
     'diseases': 'Disease Detectives',
     'anatomy - immune/nervous': 'Anatomy - Nervous',
@@ -757,7 +757,7 @@ titles = {
     'satellite map short answer ii': 'Remote Sensing',
     'physics, modern': 'Physics Lab',
     'earth/space science': 'Astronomy',
-
+    'machines - free response': 'Machines',
     'solar system': 'Astronomy',
     'image analysis': None,
     'remote sensing image a': 'Remote Sensing',

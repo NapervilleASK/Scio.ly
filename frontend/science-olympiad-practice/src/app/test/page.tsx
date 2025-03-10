@@ -51,7 +51,7 @@ interface ShareModalProps {
   darkMode: boolean;
 }
 
-const API_URL = api.api;
+const API_URL = api.api;  
 const arr = api.arr
 // Replace the global variable declaration of globalShareCode with a removal comment
 // let globalShareCode: string | null = null;
@@ -405,10 +405,11 @@ export default function TestPage() {
     const secs = seconds % 60;
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
-
+  const updateContext = (bool, msg) => {
+    (bool ? toast.success : toast.error)(msg);
+  }
   const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string, originalQuestion?: string) => {
     if (reportState.questionIndex === null) return;
-    
     // Close the modal first
     setReportState({ isOpen: false, questionIndex: null });
     
@@ -431,16 +432,10 @@ export default function TestPage() {
       });
 
       const result = await response.json();
-      
-      // Show appropriate toast after modal is closed
-      if (result.success) {
-        toast.success(`${action === 'remove' ? 'Report' : 'Edit'} submitted successfully!`);
-      } else {
-        toast.error(result.message || 'Failed to submit report');
-      }
+      updateContext(result.success,result.success ? `${action === 'remove' ? 'Report' : 'Edit'} submitted successfully!` : result.message || 'Failed to submit report')
+
     } catch {
-      // Show error toast after modal is closed
-      toast.error('Failed to submit report. Please try again.');
+      updateContext(false,'Failed to submit report. Please try again.');
     }
   };
 
@@ -577,6 +572,8 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
   }
   return (
     <>
+
+      {/* <ToastContainer theme={`${darkMode ? "dark" : "light"}`} style={{zIndex:99999}}/> */}
       <div className="relative min-h-screen">
         {/* Background Layers */}
         <div
@@ -1000,7 +997,18 @@ Reason whether their answer is good or bad, then you must put a colon (:) follow
           />
         </div>
       )}
-      <ToastContainer theme={`${darkMode ? "dark" : "light"}`}/>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "dark" : "light"}
+      />
     </>
   );
 }

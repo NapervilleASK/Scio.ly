@@ -563,9 +563,9 @@ export default function WelcomePage() {
   const UPDATE_INFO: UpdateInfo = {
     date: "3/8/25",
     features: [
-      "💾 Better question bank!",
-      "✨ Fixes to test-sharing, explanations",
-      "🎯 New event! Potions & Poisons and more questions for Meteorology",
+      "💾 Fixes to test-sharing, explanations",
+      "✨ Reach for the Stars support",
+      "🎯 Overhauled question reporting system",
       "📙Integrated Rulebook"
     ],
     comingSoon: [
