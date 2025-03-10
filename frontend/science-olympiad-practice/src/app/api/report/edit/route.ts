@@ -1,9 +1,11 @@
 import { kv } from '@vercel/kv';
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import api from '@/app/api';
 
+const arr = api.arr
 // Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(arr[Math.floor(Math.random() * arr.length)]);
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check with Gemini if the edit is valid
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
     
     const prompt = `
     You are evaluating an edit for a Science Olympiad question. 

@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { toast, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 
 interface Question {
   question: string;
@@ -88,12 +87,6 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
         console.log('Sending edited question data:', editedQuestionData);
 
         // Instead of making the API call directly, pass the data to the parent component
-        onSubmit(
-          reason, 
-          action, 
-          JSON.stringify(editedQuestionData.editedQuestion),
-          JSON.stringify(question)
-        );
         
         resetForm();
         onClose();
@@ -107,12 +100,18 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           draggable: true,
           theme: darkMode ? "dark" : "light"
         });
+        onSubmit(
+          reason, 
+          action, 
+          JSON.stringify(editedQuestionData.editedQuestion),
+          JSON.stringify(question)
+        );
       } else {
         // For remove action, just pass the data to the parent component
-        onSubmit(reason, action);
         
         resetForm();
         onClose();
+        onSubmit(reason, action);
         
         toast.success('Report submitted for review.', {
           position: "top-right",
@@ -407,18 +406,6 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           </form>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={darkMode ? "dark" : "light"}
-      />
     </>
   );
 };

@@ -7641,4 +7641,151 @@
       "difficulty": 12.0
     }
   ]
+}{
+  "Codebusters": [
+    {
+      "question": "What is the output of the following Java code?\npublic class One { \n    public static void main(String args[]) { \n        int j = 10; \n        for (int i = 0; i <= 9; i++) \n            j=(j+3*i/2)/3; \n        System.out.println(j); \n    } \n}",
+      "options": [],
+      "answers": [
+        "3"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Two { \n    public static void main(String args[]) { \n        double j = 5; \n        for (int i = 0; i < 7; i++) \n            j = i%2==0&&j<=10 ? j+i/2 : j-i/3; \n    System.out.println(j); \n    } \n}",
+      "options": [],
+      "answers": [
+        "2.6666666666666665"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Three { \n    public static void main(String args[]) { \n        int a = 8; \n        int b = 6; \n        System.out.print(a<<(~b+a<<1)); \n    } \n}",
+      "options": [],
+      "answers": [
+        "16"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Four { \n    public static void main(String args[]) { \n        for (int i = 1; i <= 10; i++)  \n            if (((i % 5) == 0) || ((i % 4) == 0)) \n                System.out.print(\"A\"); \n            else if ((i % 3) == 0) \n                System.out.print(\"B\"); \n            else if ((i % 2) == 0) \n                System.out.print(\"C\"); \n            else \n                System.out.print(\"D\"); \n    } \n}",
+      "options": [],
+      "answers": [
+        "DADCADBCAB"
+      ],
+      "difficulty": 0.5
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Five { \n    public static void main(String args[]) { \n        int[] A = {1,3,2,1,0,1}; \n        String B = \"SciOly\"; \n        for(int i = 0; i <= 5; i++) \n            System.out.print(B.substring(i,i+A[i])); \n    } \n}",
+      "options": [],
+      "answers": [
+        "ScilOyly"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Six { \n    public static void main(String args[]) { \n        int i = 0; \n        int j = 's'; \n        while((i + j)/2 < 'Z') \n            i++; \n        System.out.print((char) i); \n    } \n}",
+      "options": [],
+      "answers": [
+        "!"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Seven { \n    public static void main(String args[]) { \n        String string = \"Strings are things\"; \n        int i = string.indexOf(\"ing\"); \n        int j = string.lastIndexOf(\"ing\"); \n        System.out.println(string.substring(i,j)); \n    } \n}",
+      "options": [],
+      "answers": [
+        "ings are th"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class Eight { \n    public static void main(String args[]) { \n        int x = 2; \n        int y = 3; \n        while(x < y) { \n            x = 2*(x+1); \n            y = y + 7; \n        } \n        System.out.println(x); \n        System.out.println(y); \n    } \n}",
+      "options": [],
+      "answers": [
+        "12\n17"
+      ],
+      "difficulty": 0.6
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class One { \n2      public static void main(String args[]) { \n3          double j = 10; \n4          boolean i = true; \n5          int k = -5; \n6          System.out.println((int) j + (int) i + (int) k); \n7      } \n8  }",
+      "options": [],
+      "answers": [
+        "no error"
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Two { \n2      public static void main(String args[]) { \n3          int x = 3.0 > 2.0 ?int(2.0) : 3; \n4          System.out.print(x); \n5      } \n6  }",
+      "options": [],
+      "answers": [
+        "Line 3: int(2.0) cannot be casted to int. Change to (int) 2.0"
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Three { \n2      public static void main(String args[]) { \n3          int i = 2; \n4          int[] j = new int[1]; \n5          j += i; \n6      } \n7  }",
+      "options": [],
+      "answers": [
+        "Line 5: Cannot increment the array in that fashion. Use j[0] += i;"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Four { \n2      public Static Void Main(String args[]) { \n3          int x = 0; \n4          int y = 2; \n5          int z = 5; \n6          while(x+y+z < y*z){ \n7              x = y; \n8              y++; \n9          } \n10     } \n11 }",
+      "options": [],
+      "answers": [
+        "Line 2: \"Static\" and \"Void\" are incorrect. Should be \"static\" and \"void\""
+      ],
+      "difficulty": 0.7
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Five { \n2      public static void main(String args[]) { \n3          double[] array[] = {{1,2},{3,4},{5,6}}; \n4          for (int i=0 ; i<(array.length) ; i++ ) { \n5              for (int j=0 ; j<array[i].length ; j++) \n6                  System.out.println(array[i,j]); \n7          } \n8      } \n9  }",
+      "options": [],
+      "answers": [
+        "Line 6: array[i,j] is incorrect. Should be array[i][j]"
+      ],
+      "difficulty": 0.8
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Six { \n2      public static void main(String args[]) { \n3          String string = \"Lemony Snicket\"; \n4          if (string.charAt(string.length()- 5) == 'c'){ \n5              System.out.print(\"true\"); \n6          } \n7      } \n8  }",
+      "options": [],
+      "answers": [
+        "no error"
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Seven { \n2      public static void main(String args[]) { \n3          String s = \"\\\\\'\\\\\"\\\\\"; \n4          System.out.printf(%%%s,s); \n5      } \n6  }",
+      "options": [],
+      "answers": [
+        "Line 4: Format string is invalid. Should be System.out.printf(\"%s\",s);"
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "Troubleshooting: What is the error in the following Java code and how to correct it?\n1  public class Eight { \n2      public static void main(String args[]) { \n3          double k = 5; \n4          for (int i = 0; i <= 6; i++){ \n5              k += --k- --k+-k++; \n6          } \n7      System.out.println(k); \n8      }",
+      "options": [],
+      "answers": [
+        "no error"
+      ],
+      "difficulty": 0.3
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class BigOne { \n    static void functionOne(int arr[][]){ \n        int[][] arr2 = new int[2][5]; \n        int k1 = 0; \n        int k2 = 0; \n        for(int i = 0; i < 2; i++){ \n            for(int j = 0; j < 5; j++){ \n                int a = arr[i][j]; \n                if(a%2==0){ \n                    arr2[0][k1] = a; \n                    k1++; \n                } \n                else{\n                    arr2[1][k2] = a; \n                    k2++; \n                } \n\n            } \n        } \n        functionThree(arr2); \n        functionTwo(arr2); \n    } \n    static void functionTwo(int arr[][]){ \n        int[][] arr2 = new int[2][5]; \n        boolean flag = false; \n        for(int i = 0; i < 4; i++){ \n            if(arr2[0][i]==0){ \n                if(arr[0][i]%10>arr[0][i+1]%10){ \n                    flag = true; \n                    arr2[0][i] = arr[0][i]; \n                } \n                else{\n                    arr2[0][i] = arr[0][i+1]; \n                    arr2[0][i+1] = arr[0][i]; \n                } \n            } \n        } \n        if(arr2[0][4]==0){ \n                arr2[0][4] = arr[0][4]; \n        } \n        for(int j = 0; j < 4; j++){ \n            if(arr2[1][j]==0){ \n                if(arr[1][j]%9>arr[1][j+1]%9){ \n                    flag = true; \n                    arr2[1][j] = arr[1][j]; \n                } \n                else{\n                    arr2[1][j] = arr[1][j+1]; \n                    arr2[1][j+1] = arr[1][j]; \n                } \n            } \n        } \n        if(arr2[0][4]==0){ \n                arr2[0][4] = arr[0][4]; \n        } \n        if(flag){ \n            functionTwo(arr2); \n        } \n        else{\n            functionThree(arr2); \n        } \n    } \n    static void functionThree(int arr[][]){ \n        for(int i = 0; i < 2; i++){ \n            for(int j = 0; j < 5; j++){ \n                System.out.print(arr[i][j] + \" \"); \n            } \n        } \n        System.out.println(\"\"); \n    } \n    public static void main(String args[]){\n        int arr[][] = {{28, 1, 17, 10, 5},{13, 2, 26, 15, 24}};\n        functionOne(arr); \n    } \n}",
+      "options": [],
+      "answers": [
+        "28 10 26 24 0 1 17 5 13 2 "
+      ],
+      "difficulty": 0.9
+    },
+    {
+      "question": "What is the output of the following Java code?\npublic class BigTwo{\n    public static boolean flag = false; //This can be used and modified by any function\n    public static int add = 0; //This can be used and modified by any function\n\n    public static boolean functionOne(){\n        if(flag){\n            flag = false;\n            return(flag);\n        }\n        else{\n            flag = true;\n            return(!flag);\n        }\n    }\n\n    public static void functionTwo(int a){\n        if(a%2 == 0){\n            functionOne();\n            add += 3;\n        }\n        if(a%3 == 0){\n            add += 1;\n            if(functionOne() == flag){\n                add += 2;\n            }\n        }\n        if(a%5 == 0){\n            add += 2;\n            if(functionOne() || flag){\n                add += 2;\n            }\n        }\n        functionThree(a);\n    }\n\n    public static void functionThree(int a){\n        System.out.print(a+add);\n        System.out.print(\" \");\n        System.out.println(flag);\n    }\n\n    public static void main(String args[]){\n         int arr[] = {7, 25, 21, 16, 45, 20, 36, 30};\n         for(int i = 0; i < arr.length; i++){\n             flag = false;\n             add = 0;\n             functionTwo(arr[i]);\n         }\n    }\n}",
+      "options": [],
+      "answers": [
+        "7 0 false\n31 4 true\n24 3 true\n19 3 true\n51 6 true\n25 7 true\n40 4 true\n36 7 true\n"
+      ],
+      "difficulty": 1.0
+    }
+  ]
 }
