@@ -144,7 +144,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className={`text-xl mb-8 max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              className={`text-xl mb-8 w-[85vw] md:max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
             >
               Over 3000 Science Olympiad tests into one website, designed for the ultimate studying experience.
             </motion.p>
