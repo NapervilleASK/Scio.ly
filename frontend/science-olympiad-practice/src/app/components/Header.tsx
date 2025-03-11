@@ -9,7 +9,6 @@ import AuthButton from '@/app/components/AuthButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { usePathname } from 'next/navigation';
-import dynamic from 'next/dynamic';
 
 interface ContactFormData {
   name: string;
@@ -404,22 +403,6 @@ export default function Header() {
                       >
                         Practice
                       </Link>
-                      <button
-                        onClick={() => {
-                          setMobileMenuOpen(false);
-                        //   setTimeout(() => {
-                        //     const pdfViewerButton = document.querySelector('[data-pdf-viewer="rulebook"]') as HTMLButtonElement;
-                        //     if (pdfViewerButton) {
-                        //       pdfViewerButton.click();
-                        //     }
-                        //   }, 100);
-                        // }}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
-                      >
-                        Rulebook
-                      </button>
                       <button
                         onClick={() => {
                           setMobileMenuOpen(false);
