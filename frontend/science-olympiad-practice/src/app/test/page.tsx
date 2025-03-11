@@ -173,7 +173,23 @@ export default function TestPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    localStorage.removeItem('testTimeLeft');
+    
+    // Load user answers from localStorage if they exist
+    const storedUserAnswers = localStorage.getItem('testUserAnswers');
+    if (storedUserAnswers) {
+      setUserAnswers(JSON.parse(storedUserAnswers));
+    }
+    
+    // Don't remove testTimeLeft here, so it can be loaded when the page is reloaded
+    
+    // Cleanup function that runs when component unmounts (user navigates away)
+    return () => {
+      // Only clear user answers if the test wasn't submitted
+      // This preserves the behavior where submitted tests generate new ones on reload
+      if (!localStorage.getItem('testSubmitted')) {
+        localStorage.removeItem('testUserAnswers');
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -291,18 +307,32 @@ export default function TestPage() {
   ) => {
     setUserAnswers((prev) => {
       const currentAnswers = prev[questionIndex] || [];
+      let newAnswers;
+      
       if (multiselect) {
-        const updatedAnswers = currentAnswers.includes(answer)
+        newAnswers = currentAnswers.includes(answer)
           ? currentAnswers.filter((ans) => ans !== answer)
           : [...currentAnswers, answer];
-        return { ...prev, [questionIndex]: updatedAnswers };
+      } else {
+        newAnswers = [answer];
       }
-      return { ...prev, [questionIndex]: [answer] };
+      
+      const updatedAnswers = { ...prev, [questionIndex]: newAnswers };
+      
+      // Save user answers to localStorage
+      localStorage.setItem('testUserAnswers', JSON.stringify(updatedAnswers));
+      
+      return updatedAnswers;
     });
   };
 
   const handleSubmit = async () => {
     setIsSubmitted(true);
+    // Set a flag in localStorage to indicate that the test has been submitted
+    localStorage.setItem('testSubmitted', 'true');
+    // Clear saved user answers since the test is now submitted
+    localStorage.removeItem('testUserAnswers');
+    
     let totalAttempted = 0;
     let totalScore = 0;
     
