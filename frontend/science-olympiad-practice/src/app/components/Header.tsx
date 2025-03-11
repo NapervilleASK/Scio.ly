@@ -17,14 +17,14 @@ interface ContactFormData {
   topic: string;
   message: string;
 }
-const PDFViewer = dynamic(() => import('@/app/components/PDFViewer'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-96">
-      <div className="animate-pulse">Loading PDF viewer...</div>
-    </div>
-  ),
-});
+// const PDFViewer = dynamic(() => import('@/app/components/PDFViewer'), {
+//   ssr: false,
+//   loading: () => (
+//     <div className="flex items-center justify-center h-96">
+//       <div className="animate-pulse">Loading PDF viewer...</div>
+//     </div>
+//   ),
+// });
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
   isOpen: boolean;
@@ -341,12 +341,6 @@ export default function Header() {
               >
                 Practice
               </Link>
-              <PDFViewer 
-                pdfPath="/scioly-rules.pdf"
-                buttonText="Rulebook"
-                darkMode={darkMode}
-                data-pdf-viewer="rulebook"
-              />
               <button
                 onClick={() => setContactModalOpen(true)}
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
@@ -413,13 +407,13 @@ export default function Header() {
                       <button
                         onClick={() => {
                           setMobileMenuOpen(false);
-                          setTimeout(() => {
-                            const pdfViewerButton = document.querySelector('[data-pdf-viewer="rulebook"]') as HTMLButtonElement;
-                            if (pdfViewerButton) {
-                              pdfViewerButton.click();
-                            }
-                          }, 100);
-                        }}
+                        //   setTimeout(() => {
+                        //     const pdfViewerButton = document.querySelector('[data-pdf-viewer="rulebook"]') as HTMLButtonElement;
+                        //     if (pdfViewerButton) {
+                        //       pdfViewerButton.click();
+                        //     }
+                        //   }, 100);
+                        // }}
                         className={`block w-full text-left px-4 py-2 text-sm ${
                           darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
                         }`}
