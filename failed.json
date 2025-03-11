@@ -7788,4 +7788,586 @@
       "difficulty": 1.0
     }
   ]
+}{
+  "Detector Building": [
+    {
+      "question": "A 9 V battery is connected in series with a resistor and an LED in forward bias. If the recommended current and voltage for the LED are 20 mA and 3.2 V respectively, what resistance in ohms should be used for the resistor? Answer in ohms (Ω) rounded to the nearest ohm, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "290"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What resistor color code corresponds to the resistance value from the previous question of 290 ohms? Answer with the first three colors of the resistor color code in order (ignoring the tolerance band).",
+      "options": [],
+      "answers": [
+        "red violet brown"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is/are true as more ideal bulbs are added in series to a circuit powered by a single ideal battery? Select all that apply.\na. The brightness of individual bulbs increases as more bulbs are added to the series.\nb. The resistance of each bulb in the circuit increases.\nc. The current through the circuit decreases.\nd. The potential difference across all of the bulbs together in series remains unchanged.\ne. None of the above are correct.",
+      "options": [],
+      "answers": [
+        3,
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What does the initialism LED stand for? Enter your answer as three separate words using only letters.",
+      "options": [],
+      "answers": [
+        "light emitting diode"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is NOT a type of LED?\na. COB (chips-on-board)\nb. ABC (active button chips)\nc. SMD (surface-mount diodes)\nd. Through-hole packages\ne. All of the above are LEDs.",
+      "options": [
+        "COB (chips-on-board)",
+        "ABC (active button chips)",
+        "SMD (surface-mount diodes)",
+        "Through-hole packages",
+        "All of the above are LEDs."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is NOT an application of LEDs?\na. Machine vision systems\nb. Water and air purification\nc. Data communication and signaling\nd. Measuring oxygen saturation\ne. All of the above are applications of LEDs.",
+      "options": [
+        "Machine vision systems",
+        "Water and air purification",
+        "Data communication and signaling",
+        "Measuring oxygen saturation",
+        "All of the above are applications of LEDs."
+      ],
+      "answers": [
+        5
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is an advantage of LEDs compared to conventional light-emitting sources?\na. LEDs have a lower initial cost per lumen.\nb. LEDs cause less light pollution compared to incandescent alternatives.\nc. LEDs do not cause blue-light hazard.\nd. LEDs are not dependent on ambient temperature.\ne. All of the above are disadvantages of LEDs.",
+      "options": [
+        "LEDs have a lower initial cost per lumen.",
+        "LEDs cause less light pollution compared to incandescent alternatives.",
+        "LEDs do not cause blue-light hazard.",
+        "LEDs are not dependent on ambient temperature.",
+        "All of the above are disadvantages of LEDs."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is NOT an advantage of LEDs compared to conventional light-emitting sources?\na. LEDs do not contain harmful gasses.\nb. LEDs have less of an impact on insects when placed outdoors.\nc. LEDs can be dimmed or pulsed easily.\nd. LEDs are more shock resistant.\ne. All of the above are advantages of LEDs.",
+      "options": [
+        "LEDs do not contain harmful gasses.",
+        "LEDs have less of an impact on insects when placed outdoors.",
+        "LEDs can be dimmed or pulsed easily.",
+        "LEDs are more shock resistant.",
+        "All of the above are advantages of LEDs."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following is implemented with several color emitters that are switched internally by varying voltages?\na. Flashing LEDs\nb. Bi-color LEDs\nc. Digital RGB LEDs\nd. Filament LEDs\ne. Decorative-multicolor LEDs",
+      "options": [
+        "Flashing LEDs",
+        "Bi-color LEDs",
+        "Digital RGB LEDs",
+        "Filament LEDs",
+        "Decorative-multicolor LEDs"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following contains an integrated voltage regulator and a multivibrator?\na. Flashing LEDs\nb. Bi-color LEDs\nc. Digital RGB LEDs\nd. Filament LEDs\ne. Decorative-multicolor LEDs",
+      "options": [
+        "Flashing LEDs",
+        "Bi-color LEDs",
+        "Digital RGB LEDs",
+        "Filament LEDs",
+        "Decorative-multicolor LEDs"
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following uses two dies that are connected to the same two leads which are antiparallel to each other?\na. Flashing LEDs\nb. Bi-color LEDs\nc. Digital RGB LEDs\nd. Filament LEDs\e. Decorative-multicolor LEDs",
+      "options": [
+        "Flashing LEDs",
+        "Bi-color LEDs",
+        "Digital RGB LEDs",
+        "Filament LEDs",
+        "Decorative-multicolor LEDs"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following involves connections in a daisy chain and contains control electronics that provide connections for data-in and data-out between nodes?\na. Flashing LEDs\nb. Bi-color LEDs\nc. Digital RGB LEDs\nd. Filament LEDs\ne. Decorative-multicolor LEDs",
+      "options": [
+        "Flashing LEDs",
+        "Bi-color LEDs",
+        "Digital RGB LEDs",
+        "Filament LEDs",
+        "Decorative-multicolor LEDs"
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following contains multiple LED chips connected in series on a common longitudinal substrate?\na. Flashing LEDs\nb. Bi-color LEDs\nc. Digital RGB LEDs\nd. Filament LEDs\e. Decorative-multicolor LEDs",
+      "options": [
+        "Flashing LEDs",
+        "Bi-color LEDs",
+        "Digital RGB LEDs",
+        "Filament LEDs",
+        "Decorative-multicolor LEDs"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What does the color rendering index (CRI) say about a light source?\na. How many colors are shown when the light is on\nb. How accurately a light source reveals the true colors of objects when compared to how colors are shown in incandescent lighting or daylight\nc. The hue, tone, and temperature of white light emitted from a specific bulb or fixture\nd. Whether the bulb will be bright or dim when displaying particular colors\ne. None of the above are correct.",
+      "options": [
+        "How many colors are shown when the light is on",
+        "How accurately a light source reveals the true colors of objects when compared to how colors are shown in incandescent lighting or daylight",
+        "The hue, tone, and temperature of white light emitted from a specific bulb or fixture",
+        "Whether the bulb will be bright or dim when displaying particular colors",
+        "None of the above are correct."
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Fill in the blanks: The process of ____________________ involves adding impurities to semiconductors to modify their optoelectric properties. A(n) __________ -type material is a semiconductor with extra electrons (compared to holes), whereas a(n) __________ -type material is a semiconductor with extra holes (compared to electrons).",
+      "options": [],
+      "answers": [
+        "doping n p"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following dopants that would turn aluminum phosphide into a P-type semiconductor? Select all that apply.\na. Zinc\nb. Boron\nc. Arsenic\nd. Selenium\ne. Beryllium\nf. Gallium",
+      "options": [],
+      "answers": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Gallium nitride (GaN) has a band gap of 3.4 eV (5.45 × 10^-19 J). What wavelength in nanometers does this correspond to? Answer in nanometers (nm) with two significant figures, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "370"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "When the positive end of a circuit is connected to the N-type layer and the negative end is connected to the P-type layer of an LED, what is the resulting effect on the depletion zone?\na. The depletion zone becomes smaller.\nb. The depletion zone remains unchanged.\nc. The depletion zone becomes larger.\nd. The depletion zone initially becomes smaller, then becomes larger over time.\ne. The depletion zone initially becomes larger, then becomes smaller over time.",
+      "options": [
+        "The depletion zone becomes smaller.",
+        "The depletion zone remains unchanged.",
+        "The depletion zone becomes larger.",
+        "The depletion zone initially becomes smaller, then becomes larger over time.",
+        "The depletion zone initially becomes larger, then becomes smaller over time."
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "For the previous question about depletion zones, when the positive end of a circuit is connected to the N-type layer and the negative end is connected to the P-type layer of an LED, what is the resulting effect on the depletion zone? Explain why the resulting effect you selected occurs.",
+      "options": [],
+      "answers": [
+        "The depletion zone becomes smaller. The reason is that applying a positive voltage to the p-type material and a negative voltage to the n-type material reduces the potential barrier and allows current to flow more easily across the junction. This causes the depletion zone to shrink as more charge carriers are available to neutralize the fixed ions in the depletion region."
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What are the analogues to the valence band and the conduction band respectively in OLEDs (organic LEDs)? Answer using only letters and no spaces or hyphens.",
+      "options": [],
+      "answers": [
+        "HOMO",
+        "LUMO"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "In which color or wavelength of LED will the cathode current increase the slowest as forward voltage increases?\na. Red\nb. Blue\nc. Infrared\nd. Orange\ne. The current for all wavelengths of LEDs increase at the same rate.",
+      "options": [
+        "Red",
+        "Blue",
+        "Infrared",
+        "Orange",
+        "The current for all wavelengths of LEDs increase at the same rate."
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "A patent filed in 1962 for a “semiconductor radiant diode” describes the mechanisms of early infrared LEDs. For this design, it was important to reduce absorption by minimizing the thickness of the ________________________________________ which would increase the ________________________________________.",
+      "options": [],
+      "answers": [
+        "semiconductor infrared emission"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following statements about LEDs or temperature-sensing components is/are true? Select all that apply.\na. Self-heating effects of LEDs increase their brightness and contribute to their electrical efficiency.\nb. Thermistors that increase current in response to increased temperature are prone to thermal runway.\nc. The current through a resistance temperature detector at a given temperature is dependent on its size and metallic makeup.\nd. LEDs are usually more compact than incandescent bulbs, with higher brightness and lower heat output by area.\ne. Self-heating effects are least pronounced when the thermal mass of the sensor and subject are small.\nf. None of the above are correct.",
+      "options": [],
+      "answers": [
+        2,
+        3,
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "A functioning temperature-sensing device with a B value of 1832 K and R_50 value of 13.4 Ω is measured by an ohmmeter to have a resistance of 8.2 Ω. What is the temperature of the device? Answer in degrees Celsius (˚C) rounded to the nearest degree, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "66"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following factor(s) can affect the rate at which a temperature change is detected by a temperature-sensing device? Select all that apply.\na. The size of the temperature-sensing element\nb. The thermal conductivity of the container in which the measured water is stored\nc. The sampling frequency of the temperature-sensing device\nd. The thermal conductivity of the material used to waterproof the temperature sensor\ne. The temperature of the room where the temperature-sensing device is used\nf. None of the above have an effect on the rate at which a temperature change is detected by a temperature-sensing device.",
+      "options": [],
+      "answers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "For the previous question regarding which factor(s) can affect the rate at which a temperature change is detected by a temperature-sensing device, explain how each of the answers you have selected affects the rate at which a temperature change is detected.",
+      "options": [],
+      "answers": [
+        "a. The size of the temperature-sensing element - A smaller element will heat up/cool down faster due to lower thermal mass.\nb. The thermal conductivity of the container in which the measured water is stored - Higher thermal conductivity will allow heat to transfer faster.\nc. The sampling frequency of the temperature-sensing device - Higher sampling frequency allows for quicker detection of changes.\nd. The thermal conductivity of the material used to waterproof the temperature sensor - Higher thermal conductivity will allow heat to transfer faster to the sensor."
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Of the following pairs of materials and starting temperatures, which has the slowest rate of increase in resistance given a linear increase in temperature?\na. Gold, starting at 10 Kelvin\nb. Aluminum, starting at 100 Kelvin\nc. Tungsten, starting at 200 Kelvin\nd. Platinum, starting at 400 Kelvin\ne. Nichrome, starting at 500 Kelvin",
+      "options": [
+        "Gold, starting at 10 Kelvin",
+        "Aluminum, starting at 100 Kelvin",
+        "Tungsten, starting at 200 Kelvin",
+        "Platinum, starting at 400 Kelvin",
+        "Nichrome, starting at 500 Kelvin"
+      ],
+      "answers": [
+        5
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Given the circuit diagram, what is the name of the physical effect that governs the temperature sensor depicted? Answer with a single word.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Given a silver resistor with a resistance of 10.5 ohms at an initial temperature of 5.42°C, to what temperature does the resistor need to be heated in order for its final resistance to be 12.3 ohms? Use the temperature coefficient of silver as 3.80 × 10^-3/°C.\na. 32.7°C\nb. 50.5°C\nc. -8.20°C\nd. 44.1°C\ne. None of the above are correct.",
+      "options": [
+        "32.7°C",
+        "50.5°C",
+        "-8.20°C",
+        "44.1°C",
+        "None of the above are correct."
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "The Steinhart-Hart equation models the resistance of a semiconductor at different temperatures and is given by 1 / T = A + B ln R + C (ln R)^3. Which of the following is/are sufficient to characterize the Steinhart-Hart coefficients A, B, and C for an NTC thermistor? Select all that are sufficient.\na. The B parameter for the thermistor used as well as a temperature and resistance reading\nb. The electrical conductivity of the semiconductor used and the specific heat of the semiconductor\nc. The thermal conductivity of the electrodes used and the electrical impedance of the thermistor\nd. Three pairs of temperature and resistance readings\ne. None of the above are sufficient.",
+      "options": [],
+      "answers": [
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "True or false: In the thermistor equation, the B parameter, when solved for, is proportional to the natural log (ln) of the initial temperature plus the natural log of the final temperature.",
+      "options": [],
+      "answers": [
+        "false"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "How does resistance vary as temperature is decreased for an NTC thermistor?\na. Resistance increases exponentially.\nb. Resistance increases linearly.\nc. Resistance remains the same.\nd. Resistance decreases exponentially.\ne. Resistance decreases linearly.",
+      "options": [
+        "Resistance increases exponentially.",
+        "Resistance increases linearly.",
+        "Resistance remains the same.",
+        "Resistance decreases exponentially.",
+        "Resistance decreases linearly."
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following best describes an appropriate reason for using an epoxy thermistor over a glass thermistor?\na. Epoxy thermistors are better suited for harsh environments.\nb. Epoxy thermistors are better suited for low-cost projects.\nc. Epoxy thermistors are better suited for environmental conservation.\nd. Epoxy thermistors are better suited for lower temperatures.\ne. Epoxy thermistors can be interchangeably used with glass thermistors.",
+      "options": [
+        "Epoxy thermistors are better suited for harsh environments.",
+        "Epoxy thermistors are better suited for low-cost projects.",
+        "Epoxy thermistors are better suited for environmental conservation.",
+        "Epoxy thermistors are better suited for lower temperatures.",
+        "Epoxy thermistors can be interchangeably used with glass thermistors."
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "No-contact thermometers are currently a popular choice for screening entrants for fever. Which one of the following sensors is most likely employed by such thermometers?\na. NTC thermistors\nb. PTC thermistors\nc. Resistance temperature detectors\nd. Infrared thermometers\ne. Near-ultraviolet LEDs",
+      "options": [
+        "NTC thermistors",
+        "PTC thermistors",
+        "Resistance temperature detectors",
+        "Infrared thermometers",
+        "Near-ultraviolet LEDs"
+      ],
+      "answers": [
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "As a security feature, Apple's built-in FaceTime camera (the webcam) on MacBook laptops is engineered not to turn on unless the green LED adjacent to the camera is lit. Which of the following circuit arrangements would most likely allow this behavior?\na. The camera and indicator LED in parallel with resistors added to each branch such that they have equal current\nb. The camera and indicator LED in series sharing a common input\nc. The camera and indicator LED in parallel with a Zener diode in the branch containing the camera\nd. A bipolar switch that directs current to the camera only if the indicator LED receives power",
+      "options": [
+        "The camera and indicator LED in parallel with resistors added to each branch such that they have equal current",
+        "The camera and indicator LED in series sharing a common input",
+        "The camera and indicator LED in parallel with a Zener diode in the branch containing the camera",
+        "A bipolar switch that directs current to the camera only if the indicator LED receives power"
+      ],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "This question references the datasheet for Vishay's Silicon PIN Photodiode (https://www.vishay.com/docs/81503/bpv10nf.pdf). Which of the following statements is/are correct? Select all that apply.\na. The photodiode should be used at 0.050 A with at most a potential difference of 1.3 V across the unit.\nb. In reverse bias, the photodiode will conduct electricity at voltages up to 60 V.\nc. The datasheet indicates that this photodiode contains elemental lead and therefore should be disposed of accordingly.\nd. The photodiode has a nominal diameter of 5 mm and will necessarily fit through an opening of 5 ± 0.15 mm.\ne. Sensing by the photodiode is wavelength-dependent and is most responsive in the infrared (IR) spectrum.",
+      "options": [],
+      "answers": [
+        2,
+        5
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "The analogRead function of the Arduino library reads voltages between 0 and 5 V as integer values between 0 and 1023, inclusive. What is the theoretical input voltage resolution of an Arduino circuit board? Answer in degrees millivolts (mV) rounded to the nearest 0.1 mV, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "4.9"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "After collecting voltage readings across a range of temperature values, a student models their voltage-temperature curve as a linear relationship with the equation T = [(18.28 V^-1) * V - 13.37]˚C, where T corresponds to temperature in degrees Celsius and V corresponds to voltage in Volts. What is the temperature range their Arduino-based device can measure? Answer in degrees Celsius (˚C) rounded to the nearest degree, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "79"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "After collecting voltage readings across a range of temperature values, a student models their voltage-temperature curve as a linear relationship with the equation T = [(18.28 V^-1) * V - 13.37]˚C, where T corresponds to temperature in degrees Celsius and V corresponds to voltage in Volts. What is the temperature resolution of the student’s temperature-sensing device? Answer in degrees Celsius (˚C) rounded to the nearest 0.01˚C, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "0.09"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "The following Python function is used to process an array containing all temperature readings before displaying a measured temperature on the digital display of a temperature-sensing device. Which of the following effects will occur when this function is used (compared to just displaying the latest reading unprocessed)? Select all that apply. (Do not worry if you are not familiar with Python; the variables are named and code commented such that you should be able to understand what is happening if you are familiar with another popular coding language.)\n\n# this function `report_temperature` takes as input an array of `temperature_readings` that are ordered from oldest to latest\ndef report_temperature(temperature_readings):\n  number_of_readings = len(temperature_readings)\n  final_reading = 0\n  if number_of_readings >= 5:\n    # use the last five readings if there are five or more readings\n    for temperature in temperature_readings[-5:]:\n      final_reading += temperature / 5\n  else:\n    # otherwise use all the readings that are in the array\n    final_reading = sum(temperature_readings) / number_of_readings\n  return final_reading;\n\na. The temperature-sensing device will display temperature readings that are more stable.\nb. Running these additional processor-intensive computational steps will cause overheating of the thermistor and introduce more error in temperature readings.\nc. The temperature ranges in which each LED color turns on will be different.\nd. The temperature-sensing device will take longer to respond to sudden temperature changes.\ne. The temperature readings will be scaled to a constant reference value.\nf. None of the above are correct.",
+      "options": [],
+      "answers": [
+        1,
+        4
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What are two steps that can be taken in data collection to ensure accuracy of a temperature-resistance model? How does each proposed step improve accuracy of the model?",
+      "options": [],
+      "answers": [
+        "1. Use high-precision instruments for both temperature and resistance measurement to minimize measurement error. 2. Collect data over a wide temperature range to capture the full behavior of the sensor."
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What does traceability mean in the context of calibration?\na. The process by which an instrument can be redesigned to be made more accurate\nb. The process by which an instrument is aligned or balanced\nc. The process by which a measured value can be compared to a higher standard\nd. None of the above are correct.",
+      "options": [
+        "The process by which an instrument can be redesigned to be made more accurate",
+        "The process by which an instrument is aligned or balanced",
+        "The process by which a measured value can be compared to a higher standard",
+        "None of the above are correct."
+      ],
+      "answers": [
+        3
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the follow best describes a calibration standard?\na. Another measurement device of known accuracy\nb. Another measurement device for correcting malfunction\nc. A device for reading physical properties of instruments\nd. A measurement device for adjusting alignments\ne. None of the above are correct.",
+      "options": [
+        "Another measurement device of known accuracy",
+        "Another measurement device for correcting malfunction",
+        "A device for reading physical properties of instruments",
+        "A measurement device for adjusting alignments",
+        "None of the above are correct."
+      ],
+      "answers": [
+        1
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "The General Electric (GE) Calibration Assessment Workflow is an organized process for performing calibrations and verifying results. What step follows if the answer to “As Left Calibration Pass?” is “No”?",
+      "options": [],
+      "answers": [
+        "Adjust"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "True or false: The standard instrument for calibrating a scale is a dead weight tester.",
+      "options": [],
+      "answers": [
+        "true"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following examples of linearization is/are correct? Select all that apply.\na. A quadratic relationship can be linearized by taking the square root of both the independent and dependent variables.\nb. An exponential relationship can be linearized by taking the log of the responding variable.\nc. A power relationship can be linearized by taking the (multiplicative) inverse of the independent variable.\nd. An exponential relationship can be linearized by taking the exponent of the manipulated variable.\ne. None of the above are correct.",
+      "options": [],
+      "answers": [
+        1,
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "A linear regression of a dataset yields an R-squared value of 0.98. Which of the following statements is/are necessarily true? Select all that apply.\na. The relationship modeled must be a linear relationship.\nb. A linear relationship is a good approximation for the data.\nc. Exactly half of the points in the dataset will lie above the regression curve.\nd. The dataset follows a positive trend.\ne. None of the above are correct.",
+      "options": [],
+      "answers": [
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Which of the following reasons for linearizing non-linear experimental data is/are valid? Select all that are generally true.\na. Linearizing allows verifying predicted mathematical relationships between variables.\nb. Linear relationships are mathematically simpler to work with.\nc. Linearized relationships usually involve units that are more intuitive.\nd. Linearizing data ensures that collected data points are only increasing or only decreasing.\ne. None of the above are correct.",
+      "options": [],
+      "answers": [
+        1,
+        2
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "In a household kitchen, there are 2 appliances connected in parallel to a 50 Volt circuit: an 800-Watt toaster and a 1,200-Watt microwave. These appliances were designed and rated in a 20°C environment, but due to climate change, the ambient temperature has risen to 100°C. What is the minimum amperage (roundest to the nearest ampere) to which a circuit breaker should be set such that both appliances can be run at the same time at this new temperature, assuming both appliances contain copper filament resistors (which have resistivity 1.68 × 10^-8 Ω m and temperature coefficient 0.004/°C)?\na. 11 amperes\nb. 21 amperes\nc. 31 amperes\nd. 40 amperes\ne. 45 amperes\nf. None of the above are correct.",
+      "options": [
+        "11 amperes",
+        "21 amperes",
+        "31 amperes",
+        "40 amperes",
+        "45 amperes",
+        "None of the above are correct."
+      ],
+      "answers": [
+        5
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What is the circuit element depicted below known as?",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Using the circuit diagram provided in the previous question, what is R_1 if R_2 = 4.7 kΩ, V_1 = 3.3 V, and V_2 = 1.4 V? Answer in kiloohms (kΩ) with two significant figures, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "11"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "True or false: Resistance is inversely proportional to the cross-sectional area of a wire.",
+      "options": [],
+      "answers": [
+        "true"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "What is the resistance of a 20.0 m long platinum wire with a diameter of 2.05 mm. (If needed, assume that the resistivity of platinum is 9.80 × 10^-8 Ω m and the temperature coefficient of platinum is 3.92 × 10^-3/°C.) Answer in ohms (Ω) rounded to the nearest 0.01 Ω, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "0.19"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Use the calculated value from the previous question (involving the platinum wire) as the initial resistance of the filament in a lightbulb. If the entire lightbulb increases in temperature by 52.1°C, what is the new resistance of the platinum resistor filament? (If needed, assume that the resistivity of platinum is 9.80 × 10^-8 Ω m and the temperature coefficient of platinum is 3.92 × 10^-3/°C.) Answer in ohms (Ω) rounded to the nearest 0.1 Ω, and input your answer without units.",
+      "options": [],
+      "answers": [
+        "0.2"
+      ],
+      "difficulty": 0
+    },
+    {
+      "question": "Consider the circuit shown above where at 20˚C, the voltage difference measured across the voltmeter is 3.00 V. Resistors A, B, C, and D are made of different materials with unique temperature coefficients of resistance (denoted by α). At 30˚C, the voltage difference measured across the voltmeter is -2.33 V. What are the resistance and temperature coefficients for resistor D? Enter your answers in this order. For resistance, answer in ohms (Ω) rounded to the nearest 1 Ω. For the temperature coefficient, follow the format shown in the table, rounding to the nearest 0.01. Input both answer without units.",
+      "options": [],
+      "answers": [
+        ""
+      ],
+      "difficulty": 0
+    }
+  ]
 }
