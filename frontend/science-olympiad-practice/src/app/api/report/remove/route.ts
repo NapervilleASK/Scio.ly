@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(arr[Math.floor(Math.random() * arr.length)]
 
 export async function POST(request: NextRequest) {
   try {
-    const { question, originalQuestion, event, reason } = await request.json();
+    const { question, originalQuestion, event, reason, answers } = await request.json();
     
     if (!question || !event) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -21,20 +21,38 @@ export async function POST(request: NextRequest) {
     
     const prompt = `
     You are evaluating a report for a Science Olympiad question. 
-    The user wants to remove this question from the question bank.
+    The user wants to remove this question (MCQ or FRQ) from the question bank.
+    This is all the information the question has:
     
     Question: ${question}
     Event: ${event}
+    Answer: ${answers}
     Reason for removal: ${reason}
     
-    Should this question be removed from the question bank? 
-    Answer with only "YES" or "NO" based on whether the reason is valid and the question appears problematic.
+    Evaluate whether this question should be removed from the question bank.
+    
+    A question should ONLY be removed if:
+    1. It is FUNDAMENTALLY FLAWED in a way that makes it IMPOSSIBLE to answer correctly
+    2. It is completely inappropriate, offensive, or entirely unrelated to Science Olympiad
+    3. The question makes no sense (What is it asking?)
+    
+    A question should NOT be removed if:
+    1. It has minor issues that could be fixed with an edit
+    2. It's difficult but still answerable
+    3. It has formatting or clarity issues that could be improved
+    4. It's a valid question that the reporter simply doesn't like or finds challenging
+    
+    IMPORTANT: If the question could be improved through editing rather than removed, you MUST reject the removal request.
+    
+    Reason through your evaluation step by step, then conclude with either "VALID" for removal or "INVALID" if it should not be removed, that should be the end of your response, no period.
     `;
-
     const result = await model.generateContent(prompt);
     const response = result.response.text().trim();
-    
-    if (response.includes("YES")) {
+    console.log(response)
+    // Use a more robust pattern matching approach
+    const isValid = !response.endsWith("INVALID")
+    console.log(isValid)
+    if (isValid) {
       // Add to blacklist in Vercel KV
       const blacklistKey = `blacklist:${event}`;
       

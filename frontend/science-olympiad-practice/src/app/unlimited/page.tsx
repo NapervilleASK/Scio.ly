@@ -403,6 +403,7 @@ export default function UnlimitedPracticePage() {
         },
         body: JSON.stringify({
           question: question.question,
+          answer: question.answers,
           originalQuestion: originalQuestion || JSON.stringify(question), // Use the full original question JSON if available
           editedQuestion: editedQuestion,
           event: routerData.eventName || 'Unknown Event',

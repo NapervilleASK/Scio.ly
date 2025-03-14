@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import Link from 'next/link';
-import Image from 'next/image';
 
 // Add Question interface
 interface Question {
@@ -338,17 +337,6 @@ export default function ReportsPage() {
               </div>
             </div>
             <div className="hidden md:block">
-              <Image 
-                src="/report-illustration.svg" 
-                alt="Reports Illustration" 
-                width={120} 
-                height={120}
-                className="opacity-80"
-                onError={(e) => {
-                  // Fallback if the image doesn't exist
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
             </div>
           </div>
         </div>

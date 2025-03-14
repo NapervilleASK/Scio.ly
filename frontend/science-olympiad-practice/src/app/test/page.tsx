@@ -446,7 +446,6 @@ export default function TestPage() {
     try {
       const question = data[reportState.questionIndex];
       const endpoint = action === 'remove' ? '/api/report/remove' : '/api/report/edit';
-      
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -454,6 +453,7 @@ export default function TestPage() {
         },
         body: JSON.stringify({
           question: question.question,
+          answer: question.answers,
           originalQuestion: originalQuestion || JSON.stringify(question), // Use the full original question JSON if available
           editedQuestion: editedQuestion,
           event: routerData.eventName || 'Unknown Event',
@@ -1163,7 +1163,7 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
     };
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
+  });
 
   useEffect(() => {
     if (isOpen && !hasGeneratedRef.current && !shareCode) {
