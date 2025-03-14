@@ -1,0 +1,62 @@
+{
+	"Anatomy - Integumentary": [
+	  "{\"question\":\"In Row C, what was used as the control in the western blot?\",\"options\":[\"RIPK1\",\"RIPK3\",\"pMLKL\",\"MLKL\",\"GAPDH\"],\"answers\":[5],\"difficulty\":0.5}"
+	],
+	"Astronomy": [
+	  "{\"question\":\"What is the name of the following DSO? (Image of K2-18b)\",\"options\":[\"TRAPPIST-1d\",\"K2-18b\",\"TOI-270d\",\"LHS 3844b\"],\"answers\":[1],\"difficulty\":1,\"originalIndex\":60}",
+	  "{\"question\":\"Polish doughnuts are accretion disks with which of the following properties?\",\"options\":[\"High viscosity\",\"Optically thin\",\"Supported by radiation\",\"Cooled by diffusion\",\"Radiatively efficient\"],\"answers\":[5],\"difficulty\":0.7}"
+	],
+	"Crime Busters": [
+	  "{\"question\":\"Identify powder A3, writing both its common name and its chemical formula. If the powder does not have a chemical formula, simply write “N/A”.\",\"options\":[],\"answers\":[\"Cornstarch, N/A\"],\"difficulty\":0.7,\"originalIndex\":68}"
+	],
+	"Disease Detectives": [
+	  "{\"question\":\"Why might the study described in Section I have only included people over the age of 16?\",\"options\":[],\"answers\":[\"Because it is illegal for those under 16 to be driving, so including them in the study would be irrelevant.\"],\"difficulty\":0.5,\"originalIndex\":4146}",
+	  "{\"question\":\"What are some barriers to effective public health policy?\",\"options\":[\"I, II, and III\",\"I and III\",\"II, III, and V\",\"II and IV\",\"I, II, and IV\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":5328}",
+	  "{\"question\":\"The CDC, when verifying the pathogen, discovered that the pathogen was not actually Campylobacter jejuni. Select all of the following that the pathogen could reasonably be, assuming all typical cases.\",\"options\":[\"Listeria monocytogenes\",\"Norovirus\",\"Bacillus cereus\",\"Salmonella\",\"E. coli\",\"Shigella Shigellosis\"],\"answers\":[2,3,4,5,6],\"difficulty\":0.7}"
+	  ],
+	"Ecology": [
+	  "{\"question\":\"Use the graph of a predator prey interaction to answer the following questions. Which function represents the predator and which one represents the prey?\",\"options\":[\"A represents the predator and B represents the prey\",\"A represents the prey and B represents the predator\"],\"answers\":[2],\"difficulty\":0.4}",
+	  "{\"question\":\"The organisms listed in rule in rule 3.b of this Water Quality event are ______ species.\",\"options\":[],\"answers\":[\"Indicator\"],\"difficulty\":0.5}",
+	  "{\"question\":\"Corey’s garden currently has sweet corn planted and wants to add another vegetable. She wants to potentially grow lettuce, tomatoes, bell peppers, or zucchini. Given that Corey already planted the sweet corn on the east side of her garden and it is early spring, which of the vegetables would most likely grow the best with the sweet corn?\",\"options\":[\"Lettuce\",\"Tomatoes\",\"Bell Peppers\",\"Zucchini\"],\"answers\":[1],\"difficulty\":0.6}",
+	  "{\"question\":\"If a tree is not thinned prior to the fruit blossoms opening, what would happen?\",\"options\":[\"More regular sized fruit grows with a more bitter flavor\",\"Fruits grow together in clusters more\",\"Immature fruits drop\",\"More leaves are grown creating denser foliage\",\"Nothing changes\"],\"answers\":[2],\"difficulty\":0.7}",
+	  "{\"question\":\"PCBs (polychlorinated biphenyls) are often found in what devices?\",\"options\":[],\"answers\":[\"Electrical transformers, capacitors\"],\"difficulty\":0.5}",
+	  "{\"question\":\"Alkalinity is the result of three negatively charged ions which shift pH to the alkaline side of neutrality. Name these three charged ions.\",\"options\":[],\"answers\":[\"Carbonate (CO3^2-), Bicarbonate (HCO3^-), Hydroxide (OH^-)\"],\"difficulty\":0.8}",
+	  "{\"question\":\"What type of relationship does the graph show?\",\"options\":[\"Predator-prey relationship\",\"Seasonal variation\",\"Species-area relationship\",\"Survivorship-curve\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":1937}"
+	],
+	"Entomology": [
+	  "{\"question\":\"Insect X contributes to its ecosystem by:\",\"options\":[\"Pollinating flowering plants\",\"Controlling pest populations\",\"Decomposing organic material\",\"Direct predation of other insects and cannibalism\"],\"answers\":[2],\"difficulty\":1}"
+	],
+	"Fossils": [
+	  "{\"question\":\"Which of these creatures have living descendants?\",\"options\":[\"A & B\",\"A C & D\",\"B & E\",\"All\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":881}"
+	],
+	"Geologic Mapping": [
+	  "{\"question\":\"What Sector and Township is Redmond Watershed Park in?\",\"options\":[\"T26N R6E Sector: 28\",\"T26N R6E Sector: 31\",\"T25N R6E Sector: 10\",\"T26N R6E Sector: 27\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":928}"
+	],
+	"Meteorology": [
+	  "{\"question\":\"Given: Climographs are used to depict a location’s average monthly temperature and rainfall over a period of a year. Two climographs describe locations at the same latitude. Which explanation best describes the difference between climograph data in Locations C and D.\",\"options\":[\"Climograph C represents a maritime location, and Climograph D represents a non-maritime location.\",\"Climograph D represents a maritime location, and Climograph C represents a non-maritime location.\",\"Climograph C represents a location near a warm surface ocean current, and Climograph D does not.\",\"Climograph D represents a location near a warm surface ocean current, and Climograph C does not.\"],\"answers\":[1],\"difficulty\":0.7}",
+	  "{\"question\":\"After initial capture, either beta particle emission for \\\\ufffdssion might occur. But these could only occur under certain conditions such as the velocity of the passing neutron and on the particular heavy nucleus involved. Low-energy or slow neutrons are able to cause \\\\ufffdssion in which of the following isotopes?\",\"options\":[\"U-232\",\"U-234\",\"U-235\"],\"answers\":[3],\"difficulty\":0.7}",
+	  "{\"question\":\"Given: Climographs are used to depict a location’s average monthly temperature and rainfall over a period of a year. These two climographs represent locations of differing latitude. Which explanation best accounts for the difference between climograph data in Locations A and B.\",\"options\":[\"Location A is at a latitude further South of the equator, and Location B is at a latitude closer to the equator.\",\"Location B is at a latitude further South of the equator, and Location A is at a latitude closer to the equator.\",\"Location A is at a latitude further North of the equator, and Location B is at a latitude closer to the equator.\",\"Location B is at a latitude further North of the equator, and Location A is at a latitude closer to the equator.\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":2254}",
+	  "{\"question\":\"What range is the most likely closest pH range of Katara\\\\ufffds precipitation?\",\"options\":[\"1.0 - 2.0\",\"3.0 - 4.0\",\"7.0 - 8.0\",\"10.0 - 11.0\"],\"answers\":[2],\"difficulty\":0.7}"
+	],
+	"Microbe Mission": [
+	  "{\"question\":\"The above figures shows…\",\"options\":[\"serial dilution\",\"serial centrifugation\",\"streaking\",\"autoclaving\",\"Koch’s four postulates\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":1759}"
+	],
+	"Reach for the Stars": [
+	  "{\"question\":\"Where is 30 Doradus located?\",\"options\":[\"The center of the Milky Way\",\"The galactic halo\",\"The Orion arm of the Milky Way\",\"The LMC\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":428}",
+	  "{\"question\":\"For questions 19-21, we’ll be discussing the star Algol and its special properties. As a result of this type of system being discovered, the Algol Variable binary star type was coined.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+	  "{\"question\":\"The DSO from two questions ago is known for displaying strong evidence of the presence of dark matter. Which of the following statements about dark matter in this galaxy is true?\",\"options\":[\"The dark matter for this galaxy is in a disk shape\",\"The dark matter extends far beyond the dense visible portion of the galaxy\",\"The dark matter is heating the gas into emitting x-rays\",\"The dark matter is signiﬁcantly less massive than the visible matter for this galaxy\",\"All of the Above are True\"],\"answers\":[2],\"difficulty\":0.6}",
+	  "{\"question\":\"Which of these statements about a camera’s f-stop is true?\",\"options\":[\"Increasing f-stop: increases the aperture opening and increases depth of view\",\"Increasing f-stop: increases the aperture opening but decreases depth of view\",\"Increasing f-stop: decreases the aperture opening and decreases depth of view\",\"Increasing f-stop: decreases the aperture opening but increases depth of view\"],\"answers\":[4],\"difficulty\":0.7}",
+	  "{\"question\":\"According to the text, how is the accuracy score (AS) calculated, where α is the horizontal distance from the TP to the center of where the laser strikes a wall measured in mm?\",\"options\":[\"AS = max(0, 25 − α) × 10 points\",\"AS = max(0, 25 − α/10) points\",\"AS = max(0, 25 − 10α) points\",\"AS = max(0, 25 − α) points\"],\"answers\":[2],\"difficulty\":0.5}",
+	  "{\"question\":\"Create a formula to convert from decibels isotropic (dBi) to a fictional unit dBf, which is the unit corresponding with a fictional antenna that produces EM waves at a max radiant intensity of 0.639 W, and an average radiant intensity of 0.211 W.\",\"options\":[],\"answers\":[\"dBf = dBi + 4.798\"],\"difficulty\":0.9}",
+	  "{\"question\":\"Which wavelength was the previous image most likely taken in?\",\"options\":[\"Optical\",\"Infrared\",\"Ultraviolet\",\"Radio\",\"X-Ray\",\"Gamma Ray\"],\"answers\":[1],\"difficulty\":0.4}",
+	  "{\"question\":\"(Mark ALL correct answers) A) ? B) Aliens are trying to send us a message C) James Webb has discovered the secrets of the universe D) It's not one of the DSOs we shouldn't be testing you on this\",\"options\":[\"?\",\"Aliens are trying to send us a message\",\"James Webb has discovered the secrets of the universe\",\"It's not one of the DSOs we shouldn't be testing you on this\"],\"answers\":[4],\"difficulty\":0.01}",
+	  "{\"question\":\"True or False: Barnard 68 is opaque when viewed at visible light wavelengths.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
+	  "{\"question\":\"What is the approximate age of the Trapezium Cluster, and how does it relate to the overall star formation history of Messier 42?\",\"options\":[\"10 million years; it represents the oldest stars in the nebula.\",\"1 billion years; it represents a later generation of stars in the nebula.\",\"100,000 years; it marks a recent burst of star formation.\",\"1 million years; it represents the youngest stars in the nebula.\"],\"answers\":[4],\"difficulty\":0.7}",
+	  "{\"question\":\"HD 95086 is a pre-main-sequence star. An amount of gaseous carbon monoxide was detected around its outer disk. What does this trace amount of carbon monoxide indicate?\",\"options\":[\"It indicates that the star is somewhat metal-deficient in comparison to the Sun\",\"It indicates that the massive debris disk is separated by gaps\",\"Carbon monoxide indicates that the star has at least one exoplanet known as HD 95086 b\",\"It indicates a recent collisional cascaded that was followed by cometary activity\"],\"answers\":[4],\"difficulty\":0.7}",
+	  "{\"question\":\"As a result of this type of system being discovered, the Algol Variable binary star type was coined.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.4}",
+	  "{\"question\":\"For questions 19-21, we’ll be discussing the star Algol and its special properties. As a result of this type of system being discovered, the Algol Variable binary star type was coined. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}"
+	],
+	"Wind Power": [
+	  "{\"question\":\"When initially mounted, no part of the blade assembly including fastening materials may extend onto the back of the disc or behind the mounting plane of the disc. There is no limit on how far forward the blade assembly may extend. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}"
+	]
+  }

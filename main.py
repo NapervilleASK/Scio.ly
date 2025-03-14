@@ -315,8 +315,7 @@ def process_pdf(file_info, drive_service, events, output_dir, idx_offset):
 
 # --- Main Execution ---
 GOOGLE_DRIVE_CREDENTIALS_FILE = 'credentials.json'
-GEMINI_API_KEY = ["AIzaSyBqDPJDjcKHihrgldXgnO32ejtkIk2U8m4", "AIzaSyCM1yL6m9vAEqBqWYg8F4YR-g90UEMx_ok", "AIzaSyDWxWcWFFnOUJZ3uVVw2mwCZeZmC0A1PhU", "AIzaSyDOoFXveOtF4MdVxt-ean7g7P2ZJ0OF0HU", "AIzaSyCef88gupo0zexs-1H16RWQTCRPcfR2WZc", "AIzaSyBWHxReSto4eX312f7_QMNg9p9ekEXiv7o", "AIzaSyBlLyiTdq8nV_klzZILiNRFwxBNWMMO5mE", "AIzaSyCDzXG_lJx4AMebOf7TOvEnmn4Vt8x8tLg", "AIzaSyAtDw2Mcer_SRPFEiYQejlPB18nuh9ujN0", "AIzaSyBJO3vzH_CpWiszQ10XvDsDdzghn9Le5pY",  "AIzaSyA3_dpqOA67d0tiQ3ayCL69lr2UD3OkDV8", "AIzaSyDHGciTN4papPucYcVU50xMZxii_CeJImE", "AIzaSyDX_lsfZLPdy-ZJtwj6z6V03vUoHRIVNYU", "AIzaSyDfi2QkcMCh1JoQgxA70VeZjZONUWMhm4A", "AIzaSyACCMbTVB7yCGXFNktKbIXF_NiTEZVw698", "AIzaSyDhXgviXgz03pdZ7yPMUiRrlquuvOUcuYo", "AIzaSyDkWDMtwWYKNOs-xlqHD8j4ekWZx6ivqWY", "AIzaSyBLRJQoy4icrP3_fVPyP7Ri7W-yULvrU-A", "AIzaSyCcc1SPuC_MIMtbLL3Tm35jjtez9ob6d8s", "AIzaSyCUmZWb4pgY_b_4I9vyWf12dWB_ja3DZzo", "AIzaSyDkoP82SFpZxXdOAa3-gqI8AEjlzcsXwNM", "AIzaSyCOiVGlfw_UOLKliNst8m-Uy24CZuh_OM0", "AIzaSyCnRaIf4RCsTyfaRGzyql95b7I-XA8zZmE","AIzaSyCccQyuuaf90jx5UVcUkW4nV3Pt3WBDZYY","AIzaSyBuzg5JV4Ck4BffXjMtWQiflLLeAaEDQcQ","AIzaSyA96Y2L7Q4NAEnHtk8mmIm49kwu3R6DxG0","AIzaSyBxjj1wKBz-NrZppDPEXbDXJRdpuAzRMpQ","AIzaSyASiDjSIajx-dljiNkXjjFyN6Nn50P_fVg","AIzaSyCyiJMWHYlLzshARZx8cKYsDScgsDSBq2k","AIzaSyBDNdafVXAWybaBYyC7sVGpTden_yU9OGc","AIzaSyDHvNqPBefEY98SkCKrnKJuTrmFH1fUOHw"]
-
+GEMINI_API_KEY = []
 OUTPUT_DIR = "extracted_questions"
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 CREDENTIALS_FILE = 'credentials.json'
