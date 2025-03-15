@@ -203,14 +203,10 @@ export default function TestPage() {
     setRouterData(routerParams);
   
     if (routerParams.timeLimit) {
-      const storedTimeLeft = localStorage.getItem('testTimeLeft');
-      if (storedTimeLeft) {
-        setTimeLeft(parseInt(storedTimeLeft, 10));
-      } else {
-        setTimeLeft(parseInt(routerParams.timeLimit, 10) * 60);
-      }
+      setTimeLeft(parseInt(routerParams.timeLimit, 10) * 60);
+    } else {
+      setTimeLeft(parseInt(localStorage.getItem('testTimeLeft')??"30" ,10))
     }
-
     // Check if we have stored questions
     const storedQuestions = localStorage.getItem('testQuestions');
     if (storedQuestions) {
@@ -285,7 +281,7 @@ export default function TestPage() {
     if (timeLeft === null || isSubmitted) return;
 
     if (timeLeft === 0) {
-      setIsSubmitted(true);
+      handleSubmit()
     }
 
     // Store timeLeft in localStorage whenever it changes
@@ -425,7 +421,7 @@ export default function TestPage() {
   // Reset the test while preserving test parameters
   const handleResetTest = () => {
     localStorage.removeItem('testQuestions');
-    localStorage.removeItem('testTimeLeft');
+    localStorage.set('testTimeLeft','30');
     // testParams is preserved to regenerate a new test using the same parameters
     window.location.reload()
   };
