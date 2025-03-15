@@ -421,7 +421,8 @@ export default function TestPage() {
   // Reset the test while preserving test parameters
   const handleResetTest = () => {
     localStorage.removeItem('testQuestions');
-    localStorage.set('testTimeLeft','30');
+    localStorage.removeItem('testUserAnswers');
+    localStorage.setItem('testTimeLeft',JSON.parse(localStorage.getItem("testParams") ?? "{}")?.timeLimit.toString() || "30");
     // testParams is preserved to regenerate a new test using the same parameters
     window.location.reload()
   };
