@@ -38,7 +38,8 @@
     "react-pdf": "^9.2.1",
     "react-toastify": "^11.0.5",
     "three": "^0.172.0",
-    "vercel": "^41.3.0"
+    "vercel": "^41.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
