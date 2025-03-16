@@ -153,7 +153,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Link href="/welcome">
+              <Link href="/dashboard">
                 <motion.button
                   ref={buttonRef}
                   style={darkMode ? { border, boxShadow } : {}}
@@ -519,12 +519,12 @@ export default function HomePage() {
               <h3 className={`font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Quick Links</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/welcome" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
+                  <Link href="/dashboard" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
                     Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
+                  <Link href="/practice" className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>
                     Practice
                   </Link>
                 </li>

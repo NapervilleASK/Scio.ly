@@ -329,13 +329,13 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4">
               <Link
-                href="/welcome"
+                href="/dashboard"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
               >
                 Dashboard
               </Link>
               <Link
-                href="/dashboard"
+                href="/practice"
                 className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
               >
                 Practice

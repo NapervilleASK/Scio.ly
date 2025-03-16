@@ -9,13 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: 'https://scio.ly/welcome',
+      url: 'https://scio.ly/dashboard',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.6,
     },
     {
-      url: 'https://scio.ly/dashboard',
+      url: 'https://scio.ly/practice',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.4,

@@ -335,7 +335,6 @@ export default function WelcomePage() {
       console.log(`Cached DB. First event: ${Object.keys(raw)[0]}`)
     })()
   useEffect(() => {
-    
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setAuthInitialized(true);
       setCurrentUser(user);
@@ -564,7 +563,7 @@ export default function WelcomePage() {
 
   const handleLinkClick = event => {
     localStorage.setItem('eventParams', event); 
-    router.push('/dashboard'); // Navigate using router
+    router.push('/practice'); // Navigate using router
   };
 
   const UPDATE_INFO: UpdateInfo = {
@@ -747,7 +746,7 @@ export default function WelcomePage() {
           <div className="mb-8">
             <motion.button
               whileHover={{ scale: 1.02 }}
-              onClick={() => router.push('/dashboard')}
+              onClick={() => router.push('/practice')}
               className={`rounded-md w-full py-8 px-6 text-white text-left transition-all duration-300 ${darkMode ? 'bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900' : 'bg-gradient-to-r from-blue-500 to-cyan-500'} shadow-lg`}
             >
               <div className="flex flex-col">
@@ -1349,7 +1348,3 @@ export default function WelcomePage() {
     </div>
   );
 }
-export const metadata = {
-  title: "Scio.ly - Welcome",
-  description: "Track your Scioly test-taking stats and performance."
-};
