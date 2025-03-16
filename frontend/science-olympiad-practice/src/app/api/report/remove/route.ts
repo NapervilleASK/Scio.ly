@@ -29,12 +29,13 @@ export async function POST(request: NextRequest) {
     Answer: ${answers}
     Reason for removal: ${reason}
     
-    Evaluate whether this question should be removed from the question bank.
+    Evaluate whether this question should be removed from the question bank for ${event}.
     
     A question should ONLY be removed if:
     1. It is FUNDAMENTALLY FLAWED in a way that makes it IMPOSSIBLE to answer correctly
     2. It is completely inappropriate, offensive, or entirely unrelated to Science Olympiad
     3. The question makes no sense (What is it asking?)
+    4. The question is not obviously a ${event} problem.
     
     A question should NOT be removed if:
     1. It has minor issues that could be fixed with an edit
@@ -44,13 +45,13 @@ export async function POST(request: NextRequest) {
     
     IMPORTANT: If the question could be improved through editing rather than removed, you MUST reject the removal request.
     
-    Reason through your evaluation step by step, then conclude with either "VALID" for removal or "INVALID" if it should not be removed, that should be the end of your response, no period.
+    Reason through your evaluation step by step, then conclude with either "REMOVE" for removal or "KEEP" if it should not be removed, that should be the end of your response, no period.
     `;
     const result = await model.generateContent(prompt);
     const response = result.response.text().trim();
     console.log(response)
     // Use a more robust pattern matching approach
-    const isValid = !response.endsWith("INVALID")
+    const isValid = !response.endsWith("KEEP")
     console.log(isValid)
     if (isValid) {
       // Add to blacklist in Vercel KV

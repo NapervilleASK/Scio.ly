@@ -62,7 +62,9 @@ function EventDashboard() {
     };
 
     localStorage.setItem('testParams', JSON.stringify(testParams));
+    localStorage.setItem('testTimeLeft',testParams.timeLimit.toString());
     localStorage.removeItem('testQuestions');
+    localStorage.removeItem('testUserAnswers');
     router.push('/test');
   };
 
@@ -152,7 +154,7 @@ function EventDashboard() {
         setLoading(false);
         const response = await fetch(api.api);
         const raw = await response.json();
-        console.log(Object.keys(raw))
+        console.log(`Cached DB. First event: ${Object.keys(raw)[0]}`)
       } catch (err) {
         console.error('Error fetching events:', err);
         setError('Failed to load events. Please try again later.');
@@ -297,7 +299,7 @@ function EventDashboard() {
         ) : (
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Event List */}
-            <div className={`flex-1 transition-all duration-500 rounded-xl overflow-hidden ${
+            <div className={`flex-1 rounded-xl overflow-hidden ${
               darkMode ? 'bg-palenight-100' : 'bg-white shadow-md'
             }`}>
               <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
@@ -364,7 +366,7 @@ function EventDashboard() {
             </div>
 
             {/* Test Configuration */}
-            <div className={`w-full lg:w-96 transition-all duration-500 rounded-xl ${
+            <div className={`w-full lg:w-96 rounded-xl ${
               darkMode ? 'bg-palenight-100' : 'bg-white shadow-md'
             }`}>
               <div className="p-6">

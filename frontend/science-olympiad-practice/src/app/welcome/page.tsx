@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Header from '../components/Header';
+import api from '../api';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -293,11 +294,10 @@ export default function WelcomePage() {
   const [showUpdatePopup, setShowUpdatePopup] = useState(false);
   const [hasSeenUpdate, setHasSeenUpdate] = useState(false);
   const [hasCheckedStorage, setHasCheckedStorage] = useState(false);
-
+  const [loaded,setLoaded] = useState(false);
   // --- New: Compute window width and extra height on mobile ---
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
   const [extraHeight, setExtraHeight] = useState(0);
-
   useEffect(() => {
     function handleResize() {
       const width = window.innerWidth;
@@ -327,8 +327,15 @@ export default function WelcomePage() {
     windowWidth === null || windowWidth < 1000
       ? `calc(195vh + ${extraHeight}vh)`
       : '110vh';
-
+    (async () => {
+      if (loaded) return;
+      setLoaded(true)
+      const response = await fetch(api.api);
+      const raw = await response.json();
+      console.log(`Cached DB. First event: ${Object.keys(raw)[0]}`)
+    })()
   useEffect(() => {
+    
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setAuthInitialized(true);
       setCurrentUser(user);
@@ -561,15 +568,14 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "3/8/25",
+    date: "3/15/25",
     features: [
-      "💾 Fixes to test-sharing, explanations",
-      "✨ Reach for the Stars support",
-      "🎯 Overhauled question reporting system",
-      "📙Integrated Rulebook"
+      "🪳 Removed tons of test-taking related bugs!",
+      "⏰ Warning on low time",
+      "🎯 Even better question reporting, streamlined contest-a-question feature",
     ],
     comingSoon: [
-      "📈 Less unanswerable questions, answer hallucinations"
+      "📈 Improvement of question bank thanks to your reports!"
     ]
   };
 
