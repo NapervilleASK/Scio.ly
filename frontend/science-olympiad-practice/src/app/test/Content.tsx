@@ -704,6 +704,13 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                             {isSubmitted && (
                               <button
                                 onClick={async () => {
+                                  const now = Date.now();
+                                  if (now - lastCallTime < RATE_LIMIT_DELAY) {
+                                    toast.error('Please wait a moment before contesting again');
+                                    return;
+                                  }
+                                  setLastCallTime(now);
+                              
                                   const isValid = await validateContest(question, userAnswers[index] ?? []); // You can replace "Contest reason" with a specific reason if needed
                                   if (isValid) {
                                     setGradingResults(prev => ({ ...prev, [index]: 1 }));
