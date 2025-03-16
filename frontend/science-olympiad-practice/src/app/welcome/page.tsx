@@ -1349,3 +1349,7 @@ export default function WelcomePage() {
     </div>
   );
 }
+export const metadata = {
+  title: "Scio.ly - Welcome",
+  description: "Track your Scioly test-taking stats and performance."
+};

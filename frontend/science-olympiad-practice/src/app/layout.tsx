@@ -17,10 +17,36 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Scio.ly",
-  description: "The Ultimate Study Guide",
+  description: "Scio.ly provides a comprehensive test-taking platform carefully designed and crafted for Science Olympiad students – available to everyone, for free.",
   icons: {
     icon: "/site-logo.png"
-  }
+  },
+  keywords: ['Science Olympiad', 'Scioly practice tests', 'Scioly practice', 'Scioly tests', 'Biodiversity'],
+  metadataBase: new URL("https://scio.ly"),
+  openGraph: {
+    siteName: "Scio.ly",
+    description: "Scio.ly provides a comprehensive, organized platform carefully designed and crafted for Science Olympiad students – available to everyone, for free.",
+    type: "website",
+    locale: "en_US"
+  },
+  authors: [
+    { name: 'Kundan Baliga', url: 'https://github.com/Kudostoy0u' },
+    { name: 'Aiden Xie', url: 'https://github.com/thetinfoilhat' },
+    { name: 'Steven He', url: 'https://github.com/the-evens' }
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+    googleBot: "index, follow"
+  },
+  appleWebApp: {
+    title: "Scio.ly",
+    statusBarStyle: "default",
+    capable: true
+  },
 };
 
 export default function RootLayout({

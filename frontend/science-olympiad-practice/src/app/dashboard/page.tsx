@@ -603,3 +603,7 @@ function EventDashboard() {
 }
 
 export default EventDashboard;
+export const metadata = {
+  title: "Scio.ly - Dashboard",
+  description: "Practice up to 24 events with over 30K questions from real Science Olympiad tests."
+};
