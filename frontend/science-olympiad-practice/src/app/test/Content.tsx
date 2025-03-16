@@ -761,12 +761,14 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                               <label
                                 key={optionIndex}
                                 className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                                  isSubmitted && currentAnswers.includes(option)
-                                    ? (gradingResults[index] ?? 0) === 1
+                                  isSubmitted && currentAnswers.includes(option) && currentAnswers[0]
+                                    ? question.options?.length && question.answers.indexOf(optionIndex+1) != -1
                                       ? darkMode ? 'bg-green-800' : 'bg-green-200'
-                                      : (gradingResults[index] ?? 0) === 0
-                                      ? darkMode ? 'bg-red-900' : 'bg-red-200'
-                                      : darkMode ? 'bg-amber-400' : 'bg-amber-400'
+                                      : darkMode ? 'bg-red-900' : 'bg-red-200'
+                                    : isSubmitted && question.options?.length && question.answers.indexOf(optionIndex+1) != -1
+                                      ? question.answers?.length == 1 && currentAnswers[0]
+                                      ? darkMode ? 'bg-green-800' : 'bg-green-200'
+                                      : darkMode ? 'bg-blue-700' : 'bg-blue-200'
                                     : darkMode ? 'bg-gray-700' : 'bg-gray-200'
                                 } ${!isSubmitted && (darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300')}`}
                               >
