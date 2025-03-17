@@ -1,5 +1,5 @@
 const api = {
-    api: "https://gist.githubusercontent.com/Kudostoy0u/ee9940af5336487345c8577d8da1948d/raw/f5341a3878aa55d8b92a535285e8313fab97bdd4/final2.json",
+    api: "https://gist.githubusercontent.com/Kudostoy0u/908a8cc7c2c4887f9654dda754a2c85f/raw/d5bbcbf3966fd8773e07ce21150c2b177bf6a5ca/final.json",
     arr: JSON.parse(process.env.NEXT_PUBLIC_API_KEYS || "[]"),
 };
 
