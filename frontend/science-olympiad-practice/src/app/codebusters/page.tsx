@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
-const XLSX = require('xlsx');
+import * as XLSX from 'xlsx';
 
 interface QuoteData {
     author: string;
@@ -130,17 +130,17 @@ const FrequencyTable = ({
     return (
         <div className={`mt-4 p-2 rounded ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
             <p className={`text-sm mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Frequency Analysis</p>
-            <div className="flex justify-between space-x-1">
+            <div className="flex flex-wrap gap-2">
                 {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter => (
-                    <div key={letter} className="flex flex-col items-center">
-                        <div className={`text-sm font-bold ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{letter}</div>
-                        <div className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{frequencies[letter]}</div>
+                    <div key={letter} className="flex flex-col items-center min-w-[2rem]">
+                        <div className={`text-xs sm:text-sm font-bold ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{letter}</div>
+                        <div className={`text-[10px] sm:text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{frequencies[letter]}</div>
                         <input
                             type="text"
                             maxLength={1}
                             value={frequencyNotes?.[letter] || ''}
                             onChange={(e) => onNoteChange(letter, e.target.value)}
-                            className={`w-6 h-6 text-center border rounded text-sm mt-1 ${
+                            className={`w-5 h-5 sm:w-6 sm:h-6 text-center border rounded text-xs sm:text-sm mt-1 ${
                                 darkMode 
                                     ? 'bg-gray-800 border-gray-600 text-gray-300 focus:border-blue-500' 
                                     : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
@@ -200,17 +200,17 @@ const HillDisplay = ({
     return (
         <div className="font-mono">
             {/* Matrix display section */}
-            <div className="flex gap-8 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-6">
                 <div>
                     <p className={`text-sm mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Encryption Matrix:</p>
                     <div className="grid grid-cols-2 gap-2">
                         {matrix.map((row, i) => 
                             row.map((num, j) => (
-                                <div key={`${i}-${j}`} className={`w-12 h-12 flex flex-col items-center justify-center border rounded ${
+                                <div key={`${i}-${j}`} className={`w-10 h-10 sm:w-12 sm:h-12 flex flex-col items-center justify-center border rounded ${
                                     darkMode ? 'bg-gray-700/50 border-gray-600' : 'bg-gray-50 border-gray-200'
                                 }`}>
-                                    <span className={`text-lg font-bold ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{num}</span>
-                                    <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>({numberToLetter(num)})</span>
+                                    <span className={`text-base sm:text-lg font-bold ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{num}</span>
+                                    <span className={`text-[10px] sm:text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>({numberToLetter(num)})</span>
                                 </div>
                             ))
                         )}
@@ -232,7 +232,7 @@ const HillDisplay = ({
                                         newMatrix[i][j] = e.target.value;
                                         onSolutionChange('matrix', newMatrix);
                                     }}
-                                    className={`w-12 h-12 text-center border rounded text-lg ${
+                                    className={`w-10 h-10 sm:w-12 sm:h-12 text-center border rounded text-base sm:text-lg ${
                                         darkMode 
                                             ? 'bg-gray-800 border-gray-600 text-gray-300 focus:border-blue-500' 
                                             : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
@@ -246,7 +246,7 @@ const HillDisplay = ({
             </div>
 
             {/* Encrypted text and solution section */}
-            <div className="flex flex-wrap gap-y-8">
+            <div className="flex flex-wrap gap-y-8 text-sm sm:text-base">
                 {text.split('').map((char, i) => {
                     const isLetter = /[A-Z]/.test(char);
                     const value = solution?.plaintext?.charAt(i) || '';
@@ -255,9 +255,9 @@ const HillDisplay = ({
 
                     return (
                         <div key={i} className="flex flex-col items-center mx-0.5">
-                            <span className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{char}</span>
+                            <span className={`text-base sm:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{char}</span>
                             {isLetter && (
-                                <div className="relative h-14">
+                                <div className="relative h-12 sm:h-14">
                                     <input
                                         type="text"
                                         maxLength={1}
@@ -272,7 +272,7 @@ const HillDisplay = ({
                                             newPlaintext = newPlaintext.substring(0, i) + newValue + newPlaintext.substring(i + 1);
                                             onSolutionChange('plaintext', newPlaintext);
                                         }}
-                                        className={`w-6 h-6 text-center border rounded mt-1 text-sm ${
+                                        className={`w-5 h-5 sm:w-6 sm:h-6 text-center border rounded mt-1 text-xs sm:text-sm ${
                                             darkMode 
                                                 ? 'bg-gray-800 border-gray-600 text-gray-300 focus:border-blue-500' 
                                                 : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
@@ -285,7 +285,7 @@ const HillDisplay = ({
                                         }`}
                                     />
                                     {isTestSubmitted && !isCorrect && correctLetter && (
-                                        <div className={`absolute top-10 left-1/2 -translate-x-1/2 text-xs ${
+                                        <div className={`absolute top-8 sm:top-10 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs ${
                                             darkMode ? 'text-red-400' : 'text-red-600'
                                         }`}>
                                             {correctLetter}
@@ -293,7 +293,7 @@ const HillDisplay = ({
                                     )}
                                 </div>
                             )}
-                            {!/[A-Z]/.test(char) && <div className="w-6 h-14 mt-1" />}
+                            {!/[A-Z]/.test(char) && <div className="w-5 h-12 sm:w-6 sm:h-14 mt-1" />}
                         </div>
                     );
                 })}
@@ -318,7 +318,6 @@ const HillDisplay = ({
 
 export default function CodeBusters() {
     const { darkMode, setDarkMode } = useTheme();
-    const [showResources, setShowResources] = useState(false);
     const [quotes, setQuotes] = useState<QuoteData[]>([]);
     const [autoFill, setAutoFill] = useState(true);
     const [progress, setProgress] = useState<{ [key: number]: boolean }>({});
@@ -493,7 +492,7 @@ export default function CodeBusters() {
 
         return (
             <div className="font-mono">
-                <div className="flex flex-wrap gap-y-8">
+                <div className="flex flex-wrap gap-y-8 text-sm sm:text-base">
                     {text.split('').map((char, i) => {
                         const isLetter = /[A-Z]/.test(char);
                         const value = autoFill 
@@ -505,9 +504,9 @@ export default function CodeBusters() {
                         
                         return (
                             <div key={i} className="flex flex-col items-center mx-0.5">
-                                <span className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{char}</span>
+                                <span className={`text-base sm:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>{char}</span>
                                 {isLetter && (
-                                    <div className="relative h-14">
+                                    <div className="relative h-12 sm:h-14">
                                         <input
                                             type="text"
                                             maxLength={1}
@@ -518,7 +517,7 @@ export default function CodeBusters() {
                                                 char,
                                                 e.target.value
                                             )}
-                                            className={`w-6 h-6 text-center border rounded mt-1 text-sm ${
+                                            className={`w-5 h-5 sm:w-6 sm:h-6 text-center border rounded mt-1 text-xs sm:text-sm ${
                                                 darkMode 
                                                     ? 'bg-gray-800 border-gray-600 text-gray-300 focus:border-blue-500' 
                                                     : 'bg-white border-gray-300 text-gray-900 focus:border-blue-500'
@@ -531,7 +530,7 @@ export default function CodeBusters() {
                                             }`}
                                         />
                                         {showCorrectAnswer && !isCorrect && (
-                                            <div className={`absolute top-10 left-1/2 -translate-x-1/2 text-xs ${
+                                            <div className={`absolute top-8 sm:top-10 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs ${
                                                 darkMode ? 'text-red-400' : 'text-red-600'
                                             }`}>
                                                 {correctMapping[char]}
@@ -539,7 +538,7 @@ export default function CodeBusters() {
                                         )}
                                     </div>
                                 )}
-                                {!isLetter && <div className="w-6 h-14 mt-1" />}
+                                {!isLetter && <div className="w-5 h-12 sm:w-6 sm:h-14 mt-1" />}
                             </div>
                         );
                     })}
@@ -562,11 +561,11 @@ export default function CodeBusters() {
                 const workbook = XLSX.read(arrayBuffer);
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
                 
-                const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as string[][];
                 
                 const allQuotes = rows
-                    .filter((row: any[]) => row.length >= 2)
-                    .map((row: any[]) => ({
+                    .filter((row: string[]) => row.length >= 2)
+                    .map((row: string[]) => ({
                         author: row[0],
                         quote: row[1],
                         encrypted: '',
@@ -605,37 +604,37 @@ export default function CodeBusters() {
         <div className="relative min-h-screen">
             {/* Background Layers */}
             <div
-                className={`absolute inset-0 transition-opacity duration-1000 ${
+                className={`fixed inset-0 transition-opacity duration-1000 ${
                     darkMode ? 'opacity-100' : 'opacity-0'
                 } bg-gradient-to-br from-regalblue-100 to-regalred-100`}
             ></div>
             <div
-                className={`absolute inset-0 transition-opacity duration-1000 ${
+                className={`fixed inset-0 transition-opacity duration-1000 ${
                     darkMode ? 'opacity-0' : 'opacity-100'
                 } bg-gradient-to-br from-blue-100 via-white to-cyan-100`}
             ></div>
 
             {/* Main Content */}
-            <main className="relative p-8">
-                <div className="flex justify-between items-center mb-6">
+            <main className="relative p-4 md:p-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                     <div className="flex items-center gap-4">
-                        <h1 className={`text-left text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                        <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                             Codebusters Practice
                         </h1>
                         {isTestSubmitted && testScore !== null && (
-                            <span className={`ml-4 px-3 py-1 rounded-full text-sm font-medium ${
+                            <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                                 darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-900'
                             }`}>
                                 Score: {Math.round(testScore)}%
                             </span>
                         )}
                     </div>
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-4 w-full md:w-auto">
+                        <div className="flex items-center gap-2 flex-1 md:flex-none">
                             <span className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                                 Progress: {Math.round(totalProgress)}%
                             </span>
-                            <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="flex-1 md:w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <div 
                                     className="h-full bg-green-500 transition-all duration-300"
                                     style={{ width: `${totalProgress}%` }}
@@ -644,96 +643,57 @@ export default function CodeBusters() {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <h2 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                            Test
-                        </h2>
-                        <div className="mt-4">
 
-                            <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-4">
-                                {quotes.map((item, index) => (
-                                    <div 
-                                        key={index} 
-                                        className={`p-4 border rounded shadow-sm hover:shadow-md transition-shadow ${
-                                            darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
-                                        }`}
-                                    >
-                                        <div className="flex justify-between items-center mb-2">
-                                            <p className={`font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
-                                                {item.author}
-                                            </p>
-                                            <span className={`px-2 py-1 rounded text-sm ${
-                                                darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
-                                            }`}>
-                                                {item.cipherType.charAt(0).toUpperCase() + item.cipherType.slice(1)}
-                                            </span>
-                                        </div>
-                                        {item.cipherType === 'aristocrat' && item.key && (
-                                            <div className={`mb-2 p-2 rounded ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
-                                                <p className={`text-sm mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                                                    Substitution Key:
-                                                </p>
-                                                <div className={`font-mono text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                                                    <div>Plain:  ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
-                                                    <div>Cipher: {item.key}</div>
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {item.cipherType === 'aristocrat' ? (
-                                            <AristocratDisplay 
-                                                text={item.encrypted} 
-                                                quoteIndex={index}
-                                                solution={item.solution}
-                                                frequencyNotes={item.frequencyNotes}
-                                            />
-                                        ) : (
-                                            <HillDisplay
-                                                text={item.encrypted}
-                                                matrix={item.matrix!}
-                                                quoteIndex={index}
-                                                solution={item.hillSolution}
-                                                onSolutionChange={(type, value) => handleHillSolutionChange(index, type, value)}
-                                                isTestSubmitted={isTestSubmitted}
-                                                quotes={quotes}
-                                            />
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h2 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                            Resource Page
-                        </h2>
-                        <button
-                            className={`${
-                                darkMode 
-                                    ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30' 
-                                    : 'bg-blue-500 hover:bg-blue-700 text-white'
-                            } font-bold py-2 px-4 rounded transition-colors`}
-                            onClick={() => setShowResources(!showResources)}
+                <div className="space-y-6 max-w-4xl mx-auto">
+                    {quotes.map((item, index) => (
+                        <div 
+                            key={index} 
+                            className={`p-4 border rounded shadow-sm hover:shadow-md transition-shadow ${
+                                darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
+                            }`}
                         >
-                            {showResources ? 'Hide Resources' : 'Show Resources'}
-                        </button>
-                        {showResources && (
-                            <div className={`mt-4 p-4 border rounded ${
-                                darkMode ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-white'
-                            }`}>
-                                <h2 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                                    Resource Sheet
-                                </h2>
-                                <iframe
-                                    src="/2024_Div_C_Resource.pdf"
-                                    className="w-full h-[600px]"
-                                    title="Resource Sheet PDF"
-                                />
+                            <div className="flex justify-between items-center mb-2">
+                                <p className={`font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                                    {item.author}
+                                </p>
+                                <span className={`px-2 py-1 rounded text-sm ${
+                                    darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
+                                }`}>
+                                    {item.cipherType.charAt(0).toUpperCase() + item.cipherType.slice(1)}
+                                </span>
                             </div>
-                        )}
-                    </div>
+                            {item.cipherType === 'aristocrat' && item.key && (
+                                <div className={`mb-2 p-2 rounded ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
+                                    <p className={`text-sm mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                        Substitution Key:
+                                    </p>
+                                    <div className={`font-mono text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                        <div>Plain:  ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                                        <div>Cipher: {item.key}</div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {item.cipherType === 'aristocrat' ? (
+                                <AristocratDisplay 
+                                    text={item.encrypted} 
+                                    quoteIndex={index}
+                                    solution={item.solution}
+                                    frequencyNotes={item.frequencyNotes}
+                                />
+                            ) : (
+                                <HillDisplay
+                                    text={item.encrypted}
+                                    matrix={item.matrix!}
+                                    quoteIndex={index}
+                                    solution={item.hillSolution}
+                                    onSolutionChange={(type, value) => handleHillSolutionChange(index, type, value)}
+                                    isTestSubmitted={isTestSubmitted}
+                                    quotes={quotes}
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
 
                 {/* Submit Test Button */}
