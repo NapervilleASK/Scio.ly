@@ -62,10 +62,16 @@ function EventDashboard() {
     };
 
     localStorage.setItem('testParams', JSON.stringify(testParams));
-    localStorage.setItem('testTimeLeft',testParams.timeLimit.toString());
+    localStorage.setItem('testTimeLeft', testParams.timeLimit.toString());
     localStorage.removeItem('testQuestions');
     localStorage.removeItem('testUserAnswers');
-    router.push('/test');
+
+    // Redirect to Codebusters page if Codebusters is selected
+    if (selectedEventObj.name === 'Codebusters') {
+      router.push('/codebusters');
+    } else {
+      router.push('/test');
+    }
   };
 
   const handleUnlimited = () => {
@@ -76,6 +82,12 @@ function EventDashboard() {
 
     const selectedEventObj = events.find((event) => event.id === selectedEvent);
     if (!selectedEventObj) return;
+
+    // Disable unlimited practice for Codebusters
+    if (selectedEventObj.name === 'Codebusters') {
+      toast.error('Unlimited practice is not available for Codebusters');
+      return;
+    }
 
     const unlimitedParams = {
       eventName: selectedEventObj.name,
@@ -442,6 +454,7 @@ function EventDashboard() {
                           ? 'bg-gray-700 text-white focus:ring-blue-500'
                           : 'bg-gray-50 text-gray-900 focus:ring-blue-600'
                       } shadow-sm focus:ring-1 focus:outline-none`}
+                      disabled={Boolean(selectedEvent && events.find(event => event.id === selectedEvent)?.name === 'Codebusters')}
                     >
                       <option value="any">Any</option>
                       <option value="easy">Easy</option>
@@ -467,6 +480,7 @@ function EventDashboard() {
                           ? 'bg-gray-700 text-white focus:ring-blue-500'
                           : 'bg-gray-50 text-gray-900 focus:ring-blue-600'
                       } shadow-sm focus:ring-1 focus:outline-none`}
+                      disabled={Boolean(selectedEvent && events.find(event => event.id === selectedEvent)?.name === 'Codebusters')}
                     >
                       <option value="multiple-choice">MCQ only</option>
                       <option value="both">MCQ + FRQ</option>
@@ -489,9 +503,9 @@ function EventDashboard() {
                     </button>
                     <button
                       onClick={handleUnlimited}
-                      disabled={!selectedEvent}
+                      disabled={Boolean(!selectedEvent || (selectedEvent && events.find(event => event.id === selectedEvent)?.name === 'Codebusters'))}
                       className={`w-full py-2.5 px-4 rounded-lg font-medium transition-all duration-300 ${
-                        !selectedEvent 
+                        !selectedEvent || (selectedEvent && events.find(event => event.id === selectedEvent)?.name === 'Codebusters')
                           ? 'opacity-50 cursor-not-allowed ' + (darkMode ? 'bg-gray-700 text-gray-400' : 'bg-gray-200 text-gray-500')
                           : darkMode
                             ? 'bg-indigo-600 hover:bg-indigo-700 text-white'

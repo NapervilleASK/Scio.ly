@@ -2,13 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import * as XLSX from 'xlsx';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface QuoteData {
     author: string;
     quote: string;
     encrypted: string;
-    cipherType: 'aristocrat' | 'hill';
-    key?: string;        // For aristocrat
+    cipherType: 'aristocrat' | 'patristocrat' | 'hill' | 'baconian';
+    key?: string;        // For aristocrat/patristocrat
     matrix?: number[][]; // For hill
     solution?: { [key: string]: string };
     frequencyNotes?: { [key: string]: string };
@@ -25,6 +27,40 @@ const numberToLetter = (num: number): string => String.fromCharCode(mod26(num) +
 
 // Aristocrat cipher with unique mapping
 const encryptAristocrat = (text: string): { encrypted: string; key: string } => {
+    // Generate a random substitution key where no letter maps to itself
+    const generateKey = (): string => {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        let result = new Array(26);
+        let available = [...alphabet];
+        
+        // For each position in the alphabet
+        for (let i = 0; i < 26; i++) {
+            // Remove the current letter from available options
+            available = available.filter(char => char !== alphabet[i]);
+            
+            // Randomly select from remaining letters
+            const randomIndex = Math.floor(Math.random() * available.length);
+            result[i] = available[randomIndex];
+            
+            // Restore available letters except the one we just used
+            available = [...alphabet].filter(char => 
+                !result.includes(char) && char !== alphabet[i]
+            );
+        }
+        
+        return result.join('');
+    };
+
+    const key = generateKey();
+    const encrypted = text.toUpperCase().replace(/[A-Z]/g, char => 
+        key[letterToNumber(char)] || char
+    );
+
+    return { encrypted, key };
+};
+
+// Patristocrat cipher with unique mapping
+const encryptPatristocrat = (text: string): { encrypted: string; key: string } => {
     // Generate a random substitution key where no letter maps to itself
     const generateKey = (): string => {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -94,6 +130,22 @@ const encryptHill = (text: string): { encrypted: string; matrix: number[][] } =>
     encrypted = encrypted.match(/.{1,5}/g)?.join(' ') || encrypted;
     
     return { encrypted, matrix };
+};
+
+// Baconian cipher encryption function
+const encryptBaconian = (text: string): { encrypted: string } => {
+    const baconianAlphabet = {
+        'A': 'AAAAA', 'B': 'AAAAB', 'C': 'AAABA', 'D': 'AAABB', 'E': 'AABAA',
+        'F': 'AABAB', 'G': 'AABBA', 'H': 'AABBB', 'I': 'ABAAA', 'J': 'ABAAA', // I/J are the same
+        'K': 'ABABA', 'L': 'ABABB', 'M': 'ABBAA', 'N': 'ABBAB', 'O': 'ABBBA',
+        'P': 'BAAAA', 'Q': 'BAAAB', 'R': 'BAABA', 'S': 'BAABB', 'T': 'BABAA',
+        'U': 'BABAB', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA',
+        'Z': 'BBAAB'
+    };
+
+    return {
+        encrypted: text.toUpperCase().split('').map(char => baconianAlphabet[char] || '').join(' ')
+    };
 };
 
 // New helper function to calculate letter frequencies
@@ -324,6 +376,32 @@ export default function CodeBusters() {
     const [showAnswers, setShowAnswers] = useState<{ [key: number]: boolean }>({});
     const [isTestSubmitted, setIsTestSubmitted] = useState(false);
     const [testScore, setTestScore] = useState<number | null>(null);
+    const [timeLeft, setTimeLeft] = useState<number>(30 * 60); // 30 minutes in seconds
+
+    // Format time helper function
+    const formatTime = (seconds: number): string => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    };
+
+    // Timer effect
+    useEffect(() => {
+        if (timeLeft === 0 || isTestSubmitted) return;
+
+        if (timeLeft === 30) {
+            toast.warning("Warning: Thirty seconds left");
+        }
+        if (timeLeft === 60) {
+            toast.warning("Warning: One minute left");
+        }
+
+        const timer = setInterval(() => {
+            setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [timeLeft, isTestSubmitted]);
 
     // Calculate progress for each quote
     const calculateQuoteProgress = (quote: QuoteData, index: number): number => {
@@ -375,10 +453,10 @@ export default function CodeBusters() {
         );
     };
 
-    // Handle checking answer for aristocrat cipher
+    // Handle checking answer for aristocrat/patristocrat cipher
     const checkAristocratAnswer = (quoteIndex: number): boolean => {
         const quote = quotes[quoteIndex];
-        if (quote.cipherType !== 'aristocrat' || !quote.solution) return false;
+        if ((quote.cipherType !== 'aristocrat' && quote.cipherType !== 'patristocrat') || !quote.solution) return false;
 
         // Create a mapping from cipher text to plain text using the key
         const correctMapping: { [key: string]: string } = {};
@@ -427,12 +505,12 @@ export default function CodeBusters() {
         return isCorrect;
     };
 
-    // Handle input change for aristocrat solution
+    // Handle input change for aristocrat/patristocrat solution
     const handleSolutionChange = (quoteIndex: number, cipherLetter: string, plainLetter: string) => {
         setQuotes(prevQuotes => {
             const newQuotes = [...prevQuotes];
             const quote = newQuotes[quoteIndex];
-            if (quote.cipherType === 'aristocrat') {
+            if (quote.cipherType === 'aristocrat' || quote.cipherType === 'patristocrat') {
                 quote.solution = {
                     ...quote.solution,
                     [cipherLetter]: plainLetter.toUpperCase()
@@ -473,7 +551,7 @@ export default function CodeBusters() {
         });
     };
 
-    // Component for displaying aristocrat cipher with input boxes
+    // Component for displaying aristocrat/patristocrat cipher with input boxes
     const AristocratDisplay = ({ text, quoteIndex, solution, frequencyNotes }: { 
         text: string; 
         quoteIndex: number;
@@ -556,6 +634,15 @@ export default function CodeBusters() {
     useEffect(() => {
         const loadQuotes = async () => {
             try {
+                // Get test parameters from localStorage
+                const testParamsStr = localStorage.getItem('testParams');
+                const testParams = testParamsStr ? JSON.parse(testParamsStr) : null;
+                const questionCount = testParams?.questionCount || 20;
+                const timeLimit = testParams?.timeLimit || 30;
+
+                // Set time limit in seconds
+                setTimeLeft(timeLimit * 60);
+
                 const response = await fetch('/quotes.xlsx');
                 const arrayBuffer = await response.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer);
@@ -575,15 +662,25 @@ export default function CodeBusters() {
 
                 // Randomly select and assign cipher types
                 const shuffled = [...allQuotes].sort(() => Math.random() - 0.5);
+                
+                // Calculate number of each cipher type (60% Aristocrat, 20% Patristocrat, 20% Hill)
+                const aristocratCount = Math.floor(questionCount * 0.6);
+                const patristocratCount = Math.floor(questionCount * 0.2);
+                const hillCount = questionCount - aristocratCount - patristocratCount;
+                
                 const selectedQuotes = [
-                    ...shuffled.slice(0, 15).map(q => ({ ...q, cipherType: 'aristocrat' as const })),
-                    ...shuffled.slice(15, 20).map(q => ({ ...q, cipherType: 'hill' as const }))
+                    ...shuffled.slice(0, aristocratCount).map(q => ({ ...q, cipherType: 'aristocrat' as const })),
+                    ...shuffled.slice(aristocratCount, aristocratCount + patristocratCount).map(q => ({ ...q, cipherType: 'patristocrat' as const })),
+                    ...shuffled.slice(aristocratCount + patristocratCount, questionCount).map(q => ({ ...q, cipherType: 'hill' as const }))
                 ].sort(() => Math.random() - 0.5);
 
                 // Encrypt each quote
                 const encryptedQuotes = selectedQuotes.map(quote => {
                     if (quote.cipherType === 'aristocrat') {
                         const { encrypted, key } = encryptAristocrat(quote.quote);
+                        return { ...quote, encrypted, key };
+                    } else if (quote.cipherType === 'patristocrat') {
+                        const { encrypted, key } = encryptPatristocrat(quote.quote);
                         return { ...quote, encrypted, key };
                     } else {
                         const { encrypted, matrix } = encryptHill(quote.quote);
@@ -618,8 +715,8 @@ export default function CodeBusters() {
             <main className="relative p-4 md:p-8">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                     <div className="flex items-center gap-4">
-                        <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                            Codebusters Practice
+                        <h1 className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Scio.ly: Codebusters
                         </h1>
                         {isTestSubmitted && testScore !== null && (
                             <span className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -636,11 +733,24 @@ export default function CodeBusters() {
                             </span>
                             <div className="flex-1 md:w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <div 
-                                    className="h-full bg-green-500 transition-all duration-300"
+                                    className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300"
                                     style={{ width: `${totalProgress}%` }}
                                 />
                             </div>
                         </div>
+                        {timeLeft > 0 && !isTestSubmitted && (
+                            <div
+                                className={`text-xl font-semibold transition-colors duration-1000 ease-in-out ${
+                                    timeLeft <= 300
+                                        ? 'text-red-600'
+                                        : darkMode
+                                        ? 'text-white'
+                                        : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'
+                                }`}
+                            >
+                                {formatTime(timeLeft)}
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -662,19 +772,8 @@ export default function CodeBusters() {
                                     {item.cipherType.charAt(0).toUpperCase() + item.cipherType.slice(1)}
                                 </span>
                             </div>
-                            {item.cipherType === 'aristocrat' && item.key && (
-                                <div className={`mb-2 p-2 rounded ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
-                                    <p className={`text-sm mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                                        Substitution Key:
-                                    </p>
-                                    <div className={`font-mono text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                                        <div>Plain:  ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
-                                        <div>Cipher: {item.key}</div>
-                                    </div>
-                                </div>
-                            )}
 
-                            {item.cipherType === 'aristocrat' ? (
+                            {(item.cipherType === 'aristocrat' || item.cipherType === 'patristocrat') ? (
                                 <AristocratDisplay 
                                     text={item.encrypted} 
                                     quoteIndex={index}
