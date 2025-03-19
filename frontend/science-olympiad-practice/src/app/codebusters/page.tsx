@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import * as XLSX from 'xlsx';
 import { toast } from 'react-toastify';
@@ -27,10 +27,9 @@ const numberToLetter = (num: number): string => String.fromCharCode(mod26(num) +
 
 // Aristocrat cipher with unique mapping
 const encryptAristocrat = (text: string): { encrypted: string; key: string } => {
-    // Generate a random substitution key where no letter maps to itself
     const generateKey = (): string => {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        let result = new Array(26);
+        const result = new Array(26);
         let available = [...alphabet];
         
         // For each position in the alphabet
@@ -61,10 +60,9 @@ const encryptAristocrat = (text: string): { encrypted: string; key: string } => 
 
 // Patristocrat cipher with unique mapping
 const encryptPatristocrat = (text: string): { encrypted: string; key: string } => {
-    // Generate a random substitution key where no letter maps to itself
     const generateKey = (): string => {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        let result = new Array(26);
+        const result = new Array(26);
         let available = [...alphabet];
         
         // For each position in the alphabet
@@ -132,22 +130,6 @@ const encryptHill = (text: string): { encrypted: string; matrix: number[][] } =>
     return { encrypted, matrix };
 };
 
-// Baconian cipher encryption function
-const encryptBaconian = (text: string): { encrypted: string } => {
-    const baconianAlphabet = {
-        'A': 'AAAAA', 'B': 'AAAAB', 'C': 'AAABA', 'D': 'AAABB', 'E': 'AABAA',
-        'F': 'AABAB', 'G': 'AABBA', 'H': 'AABBB', 'I': 'ABAAA', 'J': 'ABAAA', // I/J are the same
-        'K': 'ABABA', 'L': 'ABABB', 'M': 'ABBAA', 'N': 'ABBAB', 'O': 'ABBBA',
-        'P': 'BAAAA', 'Q': 'BAAAB', 'R': 'BAABA', 'S': 'BAABB', 'T': 'BABAA',
-        'U': 'BABAB', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA',
-        'Z': 'BBAAB'
-    };
-
-    return {
-        encrypted: text.toUpperCase().split('').map(char => baconianAlphabet[char] || '').join(' ')
-    };
-};
-
 // New helper function to calculate letter frequencies
 const getLetterFrequencies = (text: string): { [key: string]: number } => {
     const frequencies: { [key: string]: number } = {};
@@ -167,12 +149,10 @@ const getLetterFrequencies = (text: string): { [key: string]: number } => {
 // Frequency table component
 const FrequencyTable = ({ 
     text, 
-    quoteIndex,
     frequencyNotes,
     onNoteChange 
 }: { 
     text: string;
-    quoteIndex: number;
     frequencyNotes?: { [key: string]: string };
     onNoteChange: (letter: string, note: string) => void;
 }) => {
@@ -229,8 +209,6 @@ const HillDisplay = ({
     // Create a mapping of positions to correct letters, preserving spaces and punctuation
     const correctMapping: { [key: number]: string } = {};
     if (isTestSubmitted) {
-        let letterIndex = 0;
-        const encryptedLetters = text.replace(/[^A-Z]/g, '');
         const originalQuote = quote.quote.toUpperCase();
         let plainTextIndex = 0;
         
@@ -368,44 +346,82 @@ const HillDisplay = ({
     );
 };
 
-export default function CodeBusters() {
-    const { darkMode, setDarkMode } = useTheme();
-    const [quotes, setQuotes] = useState<QuoteData[]>([]);
-    const [autoFill, setAutoFill] = useState(true);
-    const [progress, setProgress] = useState<{ [key: number]: boolean }>({});
-    const [showAnswers, setShowAnswers] = useState<{ [key: number]: boolean }>({});
-    const [isTestSubmitted, setIsTestSubmitted] = useState(false);
-    const [testScore, setTestScore] = useState<number | null>(null);
-    const [timeLeft, setTimeLeft] = useState<number>(30 * 60); // 30 minutes in seconds
+// Add this new component before the main CodeBusters component
+const Timer = ({ 
+    timeLeft, 
+    isTestSubmitted, 
+    onTimeUp 
+}: { 
+    timeLeft: number;
+    isTestSubmitted: boolean;
+    onTimeUp: () => void;
+}) => {
+    const { darkMode } = useTheme();
+    const [displayTime, setDisplayTime] = useState(timeLeft);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Format time helper function
+    useEffect(() => {
+        if (timeLeft === 0 || isTestSubmitted) return;
+
+        if (timeLeft === 300) { // 5 minutes
+            toast.warning("Warning: Five minutes left");
+        }
+        if (timeLeft === 60) {
+            toast.warning("Warning: One minute left");
+        }
+        if (timeLeft === 30) {
+            toast.warning("Warning: Thirty seconds left");
+        }
+
+        setDisplayTime(timeLeft);
+        timerRef.current = setInterval(() => {
+            setDisplayTime(prev => {
+                if (prev <= 1) {
+                    onTimeUp();
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => {
+            if (timerRef.current) {
+                clearInterval(timerRef.current);
+            }
+        };
+    }, [timeLeft, isTestSubmitted, onTimeUp]);
+
     const formatTime = (seconds: number): string => {
         const minutes = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
-    // Timer effect
-    useEffect(() => {
-        if (timeLeft === 0 || isTestSubmitted) return;
+    return (
+        <div
+            className={`text-xl font-semibold transition-colors duration-1000 ease-in-out ${
+                displayTime <= 300
+                    ? 'text-red-600'
+                    : darkMode
+                    ? 'text-white'
+                    : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'
+            }`}
+        >
+            {formatTime(displayTime)}
+        </div>
+    );
+};
 
-        if (timeLeft === 30) {
-            toast.warning("Warning: Thirty seconds left");
-        }
-        if (timeLeft === 60) {
-            toast.warning("Warning: One minute left");
-        }
-
-        const timer = setInterval(() => {
-            setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, [timeLeft, isTestSubmitted]);
+export default function CodeBusters() {
+    const { darkMode, setDarkMode } = useTheme();
+    const [quotes, setQuotes] = useState<QuoteData[]>([]);
+    const [isTestSubmitted, setIsTestSubmitted] = useState(false);
+    const [testScore, setTestScore] = useState<number | null>(null);
+    const [timeLeft, setTimeLeft] = useState<number>(30 * 60); // 30 minutes in seconds
 
     // Calculate progress for each quote
-    const calculateQuoteProgress = (quote: QuoteData, index: number): number => {
-        if (quote.cipherType === 'aristocrat') {
+    const calculateQuoteProgress = (quote: QuoteData): number => {
+        if (quote.cipherType === 'aristocrat' || quote.cipherType === 'patristocrat') {
             const totalLetters = [...new Set(quote.encrypted.match(/[A-Z]/g) || [])].length;
             const filledLetters = quote.solution ? Object.keys(quote.solution).length : 0;
             return totalLetters > 0 ? (filledLetters / totalLetters) * 100 : 0;
@@ -420,38 +436,14 @@ export default function CodeBusters() {
     };
 
     // Calculate overall progress
-    const totalProgress = quotes.reduce((acc, quote, index) => 
-        acc + calculateQuoteProgress(quote, index), 0) / (quotes.length || 1);
+    const totalProgress = quotes.reduce((acc, quote) => 
+        acc + calculateQuoteProgress(quote), 0) / (quotes.length || 1);
 
-    // Handle submitting the entire test
-    const handleSubmitTest = () => {
-        let correctCount = 0;
-        const results = quotes.map((quote, index) => {
-            let isCorrect = false;
-            if (quote.cipherType === 'aristocrat') {
-                isCorrect = checkAristocratAnswer(index);
-            } else {
-                isCorrect = checkHillAnswer(index);
-            }
-            if (isCorrect) correctCount++;
-            return isCorrect;
-        });
-
-        // Calculate score as percentage
-        const score = (correctCount / quotes.length) * 100;
-        setTestScore(score);
+    // Add this new handler
+    const handleTimeUp = useCallback(() => {
         setIsTestSubmitted(true);
-
-        // Show all answers
-        setShowAnswers(
-            results.reduce((acc, _, index) => ({ ...acc, [index]: true }), {})
-        );
-
-        // Update progress
-        setProgress(
-            results.reduce((acc, isCorrect, index) => ({ ...acc, [index]: isCorrect }), {})
-        );
-    };
+        setTestScore(0);
+    }, []);
 
     // Handle checking answer for aristocrat/patristocrat cipher
     const checkAristocratAnswer = (quoteIndex: number): boolean => {
@@ -467,21 +459,9 @@ export default function CodeBusters() {
         }
 
         // Check if all mappings in the solution are correct
-        const isCorrect = Object.entries(quote.solution).every(([cipher, plain]) => 
+        return Object.entries(quote.solution).every(([cipher, plain]) => 
             correctMapping[cipher] === plain.toUpperCase()
         );
-
-        setProgress(prev => ({
-            ...prev,
-            [quoteIndex]: isCorrect
-        }));
-
-        setShowAnswers(prev => ({
-            ...prev,
-            [quoteIndex]: true
-        }));
-
-        return isCorrect;
     };
 
     // Handle checking answer for Hill cipher
@@ -490,19 +470,23 @@ export default function CodeBusters() {
         if (quote.cipherType !== 'hill' || !quote.hillSolution) return false;
 
         // For Hill cipher, we'll check if the decrypted text matches the original quote
-        const isCorrect = quote.hillSolution.plaintext.toUpperCase() === quote.quote.toUpperCase().replace(/[^A-Z]/g, '');
+        return quote.hillSolution.plaintext.toUpperCase() === quote.quote.toUpperCase().replace(/[^A-Z]/g, '');
+    };
 
-        setProgress(prev => ({
-            ...prev,
-            [quoteIndex]: isCorrect
-        }));
+    // Handle submitting the entire test
+    const handleSubmitTest = () => {
+        let correctCount = 0;
+        quotes.forEach((quote, index) => {
+            const isCorrect = quote.cipherType === 'aristocrat' || quote.cipherType === 'patristocrat'
+                ? checkAristocratAnswer(index)
+                : checkHillAnswer(index);
+            if (isCorrect) correctCount++;
+        });
 
-        setShowAnswers(prev => ({
-            ...prev,
-            [quoteIndex]: true
-        }));
-
-        return isCorrect;
+        // Calculate score as percentage
+        const score = (correctCount / quotes.length) * 100;
+        setTestScore(score);
+        setIsTestSubmitted(true);
     };
 
     // Handle input change for aristocrat/patristocrat solution
@@ -511,6 +495,7 @@ export default function CodeBusters() {
             const newQuotes = [...prevQuotes];
             const quote = newQuotes[quoteIndex];
             if (quote.cipherType === 'aristocrat' || quote.cipherType === 'patristocrat') {
+                if (!quote.solution) quote.solution = {};
                 quote.solution = {
                     ...quote.solution,
                     [cipherLetter]: plainLetter.toUpperCase()
@@ -526,7 +511,10 @@ export default function CodeBusters() {
             const newQuotes = [...prevQuotes];
             const quote = newQuotes[quoteIndex];
             if (!quote.frequencyNotes) quote.frequencyNotes = {};
-            quote.frequencyNotes[letter] = note.toUpperCase();
+            quote.frequencyNotes = {
+                ...quote.frequencyNotes,
+                [letter]: note.toUpperCase()
+            };
             return newQuotes;
         });
     };
@@ -543,9 +531,15 @@ export default function CodeBusters() {
                 };
             }
             if (type === 'matrix') {
-                quote.hillSolution.matrix = value as string[][];
+                quote.hillSolution = {
+                    ...quote.hillSolution,
+                    matrix: value as string[][]
+                };
             } else {
-                quote.hillSolution.plaintext = value as string;
+                quote.hillSolution = {
+                    ...quote.hillSolution,
+                    plaintext: value as string
+                };
             }
             return newQuotes;
         });
@@ -573,10 +567,7 @@ export default function CodeBusters() {
                 <div className="flex flex-wrap gap-y-8 text-sm sm:text-base">
                     {text.split('').map((char, i) => {
                         const isLetter = /[A-Z]/.test(char);
-                        const value = autoFill 
-                            ? solution?.[char] || ''
-                            : solution?.[`${char}_${[...text].slice(0, i).filter(c => c === char).length}`] || '';
-                        
+                        const value = solution?.[char] || '';
                         const isCorrect = isLetter && value === correctMapping[char];
                         const showCorrectAnswer = isTestSubmitted && isLetter;
                         
@@ -623,7 +614,6 @@ export default function CodeBusters() {
                 </div>
                 <FrequencyTable 
                     text={text}
-                    quoteIndex={quoteIndex}
                     frequencyNotes={frequencyNotes}
                     onNoteChange={(letter, note) => handleFrequencyNoteChange(quoteIndex, letter, note)}
                 />
@@ -666,8 +656,6 @@ export default function CodeBusters() {
                 // Calculate number of each cipher type (60% Aristocrat, 20% Patristocrat, 20% Hill)
                 const aristocratCount = Math.floor(questionCount * 0.6);
                 const patristocratCount = Math.floor(questionCount * 0.2);
-                const hillCount = questionCount - aristocratCount - patristocratCount;
-                
                 const selectedQuotes = [
                     ...shuffled.slice(0, aristocratCount).map(q => ({ ...q, cipherType: 'aristocrat' as const })),
                     ...shuffled.slice(aristocratCount, aristocratCount + patristocratCount).map(q => ({ ...q, cipherType: 'patristocrat' as const })),
@@ -739,17 +727,11 @@ export default function CodeBusters() {
                             </div>
                         </div>
                         {timeLeft > 0 && !isTestSubmitted && (
-                            <div
-                                className={`text-xl font-semibold transition-colors duration-1000 ease-in-out ${
-                                    timeLeft <= 300
-                                        ? 'text-red-600'
-                                        : darkMode
-                                        ? 'text-white'
-                                        : 'bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent'
-                                }`}
-                            >
-                                {formatTime(timeLeft)}
-                            </div>
+                            <Timer 
+                                timeLeft={timeLeft}
+                                isTestSubmitted={isTestSubmitted}
+                                onTimeUp={handleTimeUp}
+                            />
                         )}
                     </div>
                 </div>
