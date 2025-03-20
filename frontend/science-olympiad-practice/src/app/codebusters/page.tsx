@@ -16,7 +16,7 @@ interface QuoteData {
     frequencyNotes?: { [key: string]: string };
     hillSolution?: {
         matrix: string[][];
-        plaintext: string;
+        plaintext: { [key: number]: string };
     };
 }
 
@@ -198,8 +198,8 @@ const HillDisplay = ({
     text: string;
     matrix: number[][];
     quoteIndex: number;
-    solution?: { matrix: string[][]; plaintext: string };
-    onSolutionChange: (type: 'matrix' | 'plaintext', value: string[][] | string) => void;
+    solution?: { matrix: string[][]; plaintext: { [key: number]: string } };
+    onSolutionChange: (type: 'matrix' | 'plaintext', value: string[][] | { [key: number]: string }) => void;
     isTestSubmitted: boolean;
     quotes: QuoteData[];
 }) => {
@@ -275,11 +275,11 @@ const HillDisplay = ({
                 </div>
             </div>
 
-            {/* Encrypted text and solution section */}
+            {/* Updated Encrypted text and solution section */}
             <div className="flex flex-wrap gap-y-8 text-sm sm:text-base">
                 {text.split('').map((char, i) => {
                     const isLetter = /[A-Z]/.test(char);
-                    const value = solution?.plaintext?.charAt(i) || '';
+                    const value = solution?.plaintext?.[i] || '';
                     const correctLetter = isTestSubmitted && isLetter ? correctMapping[i] : '';
                     const isCorrect = value.toUpperCase() === correctLetter;
 
@@ -295,11 +295,8 @@ const HillDisplay = ({
                                         value={value}
                                         onChange={(e) => {
                                             const newValue = e.target.value.toUpperCase();
-                                            let newPlaintext = solution?.plaintext || '';
-                                            while (newPlaintext.length <= i) {
-                                                newPlaintext += ' ';
-                                            }
-                                            newPlaintext = newPlaintext.substring(0, i) + newValue + newPlaintext.substring(i + 1);
+                                            const newPlaintext = { ...(solution?.plaintext || {}) };
+                                            newPlaintext[i] = newValue;
                                             onSolutionChange('plaintext', newPlaintext);
                                         }}
                                         className={`w-5 h-5 sm:w-6 sm:h-6 text-center border rounded mt-1 text-xs sm:text-sm ${
@@ -323,7 +320,7 @@ const HillDisplay = ({
                                     )}
                                 </div>
                             )}
-                            {!/[A-Z]/.test(char) && <div className="w-5 h-12 sm:w-6 sm:h-14 mt-1" />}
+                            {!isLetter && <div className="w-5 h-12 sm:w-6 sm:h-14 mt-1" />}
                         </div>
                     );
                 })}
@@ -429,8 +426,8 @@ export default function CodeBusters() {
             // For Hill cipher
             const matrixProgress = quote.hillSolution?.matrix.reduce((acc, row) => 
                 acc + row.filter(cell => cell !== '').length, 0) || 0;
-            const plaintextProgress = (quote.hillSolution?.plaintext.replace(/\s/g, '').length || 0) / 
-                (quote.encrypted.replace(/\s/g, '').length || 1);
+            const plaintextProgress = Object.keys(quote.hillSolution?.plaintext || {}).length / 
+                (quote.encrypted.match(/[A-Z]/g)?.length || 1);
             return ((matrixProgress / 4) * 50) + (plaintextProgress * 50); // Weight matrix and plaintext equally
         }
     };
@@ -469,8 +466,12 @@ export default function CodeBusters() {
         const quote = quotes[quoteIndex];
         if (quote.cipherType !== 'hill' || !quote.hillSolution) return false;
 
-        // For Hill cipher, we'll check if the decrypted text matches the original quote
-        return quote.hillSolution.plaintext.toUpperCase() === quote.quote.toUpperCase().replace(/[^A-Z]/g, '');
+        // Convert the plaintext object to a string, preserving spaces and punctuation
+        const plaintext = quote.encrypted.split('').map((char, i) => 
+            /[A-Z]/.test(char) ? (quote.hillSolution?.plaintext?.[i] || '') : char
+        ).join('');
+
+        return plaintext.toUpperCase() === quote.quote.toUpperCase();
     };
 
     // Handle submitting the entire test
@@ -520,14 +521,14 @@ export default function CodeBusters() {
     };
 
     // Handle Hill cipher solution changes
-    const handleHillSolutionChange = (quoteIndex: number, type: 'matrix' | 'plaintext', value: string[][] | string) => {
+    const handleHillSolutionChange = (quoteIndex: number, type: 'matrix' | 'plaintext', value: string[][] | { [key: number]: string }) => {
         setQuotes(prevQuotes => {
             const newQuotes = [...prevQuotes];
             const quote = newQuotes[quoteIndex];
             if (!quote.hillSolution) {
                 quote.hillSolution = {
                     matrix: [['', ''], ['', '']],
-                    plaintext: ''
+                    plaintext: {}
                 };
             }
             if (type === 'matrix') {
@@ -538,7 +539,7 @@ export default function CodeBusters() {
             } else {
                 quote.hillSolution = {
                     ...quote.hillSolution,
-                    plaintext: value as string
+                    plaintext: value as { [key: number]: string }
                 };
             }
             return newQuotes;
