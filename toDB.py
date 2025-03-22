@@ -838,8 +838,30 @@ titles = {
     'marine & estuary ecology': 'Ecology',
     'case study 1 - the survivor of the cordyceps apocalypse': None,
     'case study 2 - the penitent thief': 'Anatomy - Muscular',
-    'case study 3 - hero of the wild': 'Anatomy - Muscular'
-
+    'case study 3 - hero of the wild': 'Anatomy - Muscular',
+    'plant disease': 'Plant Biology',
+    'anatomy - disease and injuries': 'Disease Detectives', # Could also be general Anatomy, but disease detectives is more specific to "disease" part
+    'thermodynamics math': 'Thermodynamics',
+    'dynamic planet - glaciers - ice cores - case #2': 'Dynamic Planet - Glaciers',
+    'anatomy - muscular (matching)': 'Anatomy - Muscular',
+    'anatomy - muscular & skeletal': 'Anatomy - Muscular', # Could also be Anatomy - Skeletal, choosing muscular as it's listed first, or could consider both if needed to be more precise
+    'plant physiology': 'Plant Biology',
+    'materials science free response': 'Materials Science',
+    'materials science lab': 'Materials Science',
+    'anatomy - skeletal bones - bone structure': 'Anatomy - Skeletal',
+    'dynamic planet - glaciers - identification': 'Dynamic Planet - Glaciers',
+    'plant photosynthetic pathways': 'Plant Biology',
+    'dynamic planet - glaciers - isostatic rebound and ice sheet melt - case #3': 'Dynamic Planet - Glaciers',
+    'anatomy - skeletal (cells)': 'Anatomy - Skeletal',
+    'anatomy - skeletal (vertebrae)': 'Anatomy - Skeletal',
+    'anatomy - muscular diseases': 'Anatomy - Muscular',
+    'desert and grasslands': 'Ecology', # Could also be Dynamic Planet - ... or Environmental Science, but Ecology is a good general fit for biomes
+    'plant conditions and function': 'Plant Biology',
+    'human impact on ecosystems': 'Human Impact on Environment',
+    'anatomy - skeletal (microstructure)': 'Anatomy - Skeletal',
+    'dynamic planet - glaciers - remote sensing - case #1': 'Dynamic Planet - Glaciers',
+    'seed dormancy': 'Plant Biology',
+    'anatomy - skeletal bones': 'Anatomy - Skeletal'
 }
 
 print("All values:", [*set([f for f in titles.values() if f is not None])])
@@ -880,7 +902,7 @@ def combine_bank_data(filename="beta_bank.json"):
                     combined_data[key].extend([
                         item
                         for item in value
-                        if item.get('answers') and isinstance(item['answers'],list) and len(item['answers']) > 0 and item.get("question") and len(item['options']) != 1
+                        if item.get('answers') and isinstance(item['answers'],list) and len(item['answers']) > 0 and item.get("question") and ('options' not in item or len(item['options']) != 1)
                         and not (item['answers'][0] == "" or isinstance(item['answers'][0],list) and (item['answers'][0] == [""] or item['answers'][0] == [[]] or item['answers'][0] == [[""]]))
                         and len(item['question']) > 8
                         and not (isinstance(item['answers'][0], str) and "see answer" in item['answers'][0].lower())

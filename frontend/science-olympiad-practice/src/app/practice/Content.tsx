@@ -125,9 +125,11 @@ function EventDashboard() {
           { name: "Astronomy", category: "Earth and Space Science" },
           { name: "Cell Biology", category: "Life & Social Science" },
           { name: "Chemistry Lab", category: "Physical Science & Chemistry" },
+          { name: "Circuit Lab", category: "Inquiry & Nature of Science" },
           { name: "Codebusters", category: "Inquiry & Nature of Science" },
           { name: "Crime Busters", category: "Physical Science & Chemistry" },
           { name: "Disease Detectives", category: "Life & Social Science" },
+          { name: "Designer Genes", category: "Life & Social Science" },
           { name: "Dynamic Planet - Glaciers", category: "Earth and Space Science" },
           { name: "Ecology", category: "Life & Social Science" },
           { name: "Entomology", category: "Life & Social Science" },
@@ -143,10 +145,13 @@ function EventDashboard() {
           { name: "Optics", category: "Physical Science & Chemistry" },
           { name: "Potions and Poisons", category: "Physical Science & Chemistry" },
           { name: "Reach for the Stars", category: "Earth and Space Science" },
+          { name: "Remote Sensing", category: "Earth and Space Science" },
+          { name: "Rocks and Minerals", category: "Earth and Space Science" },
+          { name: "Water Quality", category: "Life & Social Science" },
           { name: "Wind Power", category: "Physical Science & Chemistry" },
         ];
 
-        const data = ['Astronomy', 'Fun', 'Fermi Questions', 'Entomology', 'Geologic Mapping', 'Optics', 'Codebusters', 'Anatomy - Integumentary', 'Anatomy - Nervous', 'Anatomy - Skeletal', 'Anatomy - Muscular', 'Thermodynamics', 'Wind Power', 'Dynamic Planet - Glaciers', 'Materials Science', 'Chemistry Lab', 'Ecology', 'Meteorology', 'Forensics', 'Disease Detectives', 'Fossils', 'Microbe Mission', 'Gravity Vehicle', 'Forestry', 'Crime Busters', "Dynamic Planet - Earth's Fresh Waters", 'Anatomy - Respiratory', 'Anatomy - Digestive', 'Anatomy - Cardiovascular', 'Trajectory', 'Scrambler', 'Road Scholar', 'Environmental Chemistry', 'Remote Sensing', 'Game On', 'Physics Lab', 'Plant Biology', 'Cell Biology', 'Experimental Design', 'Detector Building', "It's About Time", 'Mission Possible', 'Technical Problem Solving', 'Tower', 'Anatomy - Sense Organs', 'Protein Modeling', 'Rocks and Minerals', 'Robot Arm', 'Electric Vehicle', 'Designer Genes', 'Interrogating the Brain', 'Anatomy - Lymphatic', 'Anatomy - Excretory', 'Anatomy - Immune', 'Anatomy - Endocrine', 'Compound Machines', 'Green Generation', 'Herpetology', 'Hovercraft', 'Invasive Species', 'Machines', 'Mousetrap Vehicle', 'Ornithology', 'Sounds of Music', 'Dynamic Planet - Tectonics', 'Flight', 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics', 'Cybersecurity', 'Crave the Wave', 'Human Impact on Environment', 'Neuroscience', 'Data Science', 'Food Science', 'Dynamic Planet - Oceanography', 'Roller Coaster', 'WiFi Lab', 'Agricultural Science', 'Circuit Lab', 'Water Quality', 'Wright Stuff', 'Potions and Poisons', 'Reach for the Stars']
+        const data = ['Water Quality','Rocks and Minerals','Designer Genes','Circuit Lab', 'Remote Sensing', 'Astronomy', 'Fun', 'Fermi Questions', 'Entomology', 'Geologic Mapping', 'Optics', 'Codebusters', 'Anatomy - Integumentary', 'Anatomy - Nervous', 'Anatomy - Skeletal', 'Anatomy - Muscular', 'Thermodynamics', 'Wind Power', 'Dynamic Planet - Glaciers', 'Materials Science', 'Chemistry Lab', 'Ecology', 'Meteorology', 'Forensics', 'Disease Detectives', 'Fossils', 'Microbe Mission', 'Gravity Vehicle', 'Forestry', 'Crime Busters', "Dynamic Planet - Earth's Fresh Waters", 'Anatomy - Respiratory', 'Anatomy - Digestive', 'Anatomy - Cardiovascular', 'Trajectory', 'Scrambler', 'Road Scholar', 'Environmental Chemistry', 'Remote Sensing', 'Game On', 'Physics Lab', 'Plant Biology', 'Cell Biology', 'Experimental Design', 'Detector Building', "It's About Time", 'Mission Possible', 'Technical Problem Solving', 'Tower', 'Anatomy - Sense Organs', 'Protein Modeling', 'Rocks and Minerals', 'Robot Arm', 'Electric Vehicle', 'Designer Genes', 'Interrogating the Brain', 'Anatomy - Lymphatic', 'Anatomy - Excretory', 'Anatomy - Immune', 'Anatomy - Endocrine', 'Compound Machines', 'Green Generation', 'Herpetology', 'Hovercraft', 'Invasive Species', 'Machines', 'Mousetrap Vehicle', 'Ornithology', 'Sounds of Music', 'Dynamic Planet - Tectonics', 'Flight', 'Dynamic Planet - Earthquakes, Volcanoes, and Tectonics', 'Cybersecurity', 'Crave the Wave', 'Human Impact on Environment', 'Neuroscience', 'Data Science', 'Food Science', 'Dynamic Planet - Oceanography', 'Roller Coaster', 'WiFi Lab', 'Agricultural Science', 'Circuit Lab', 'Water Quality', 'Wright Stuff', 'Potions and Poisons', 'Reach for the Stars']
         const eventsFromURL: Event[] = data
           .map((key, index) => ({
             id: index + 1,

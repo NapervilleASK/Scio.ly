@@ -1,62 +1,502 @@
 {
-	"Anatomy - Integumentary": [
-	  "{\"question\":\"In Row C, what was used as the control in the western blot?\",\"options\":[\"RIPK1\",\"RIPK3\",\"pMLKL\",\"MLKL\",\"GAPDH\"],\"answers\":[5],\"difficulty\":0.5}"
+	"Anatomy - Muscular": [
+	  "{\"question\":\"An alpha helix has approximately how many amino acid residues per turn?\",\"options\":[\"3.0\",\"3.6\",\"4.2\",\"6.5\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":221}"
+	],
+	"Anatomy - Skeletal": [
+	  "{\"question\":\"In which numbered zone of the epiphyseal plate do chondrocytes first begin to die in large numbers?\",\"options\":[\"1\",\"2\",\"3\",\"4\",\"5\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":322}",
+	  "{\"question\":\"Based on our knowledge of RANK/RANKL/OPG and the data we've collected from previous experiments, which of the following mechanisms are plausible? \",\"options\":[\"Mechanism A: POGGERS causes osteoblasts to be unable to produce RANKL, even in response to stimulation by hormones or paracrine signals\",\"Mechanism B: POGGERS binds to and inhibits OPG, removing its inhibitory eﬀects on RANKL\",\"Mechanism C: POGGERS competitively inhibits RANKL by binding to RANK instead of RANKL, occupying the binding spots so RANKL can no longer bind\",\"Mechanism D: POGGERS stimulates osteoclasts to produce more RANK receptors\",\"Mechanism E: POGGERS changes the conformation of RANKL, making it more likely to bind to RANK receptors on osteoclasts\"],\"answers\":[2,3],\"difficulty\":0.8}"
 	],
 	"Astronomy": [
-	  "{\"question\":\"What is the name of the following DSO? (Image of K2-18b)\",\"options\":[\"TRAPPIST-1d\",\"K2-18b\",\"TOI-270d\",\"LHS 3844b\"],\"answers\":[1],\"difficulty\":1,\"originalIndex\":60}",
-	  "{\"question\":\"Polish doughnuts are accretion disks with which of the following properties?\",\"options\":[\"High viscosity\",\"Optically thin\",\"Supported by radiation\",\"Cooled by diffusion\",\"Radiatively efficient\"],\"answers\":[5],\"difficulty\":0.7}"
+	  "{\"question\":\"From the Road Scholar test: A small UFO named Charlie could change his shape and color, but currently he looked a little bit like a green tea kettle. When was Charlie always blue? \",\"options\":[\"When he was curious and excited\",\"When he was upset\",\"When he was near National Monuments\",\"When he was being chased\"],\"answers\":[2],\"difficulty\":0.6}",
+	  "{\"question\":\"Given the following light curve, identify the most likely event taking place\",\"options\":[\"A planet eclipse with a star\",\"A blackhole swallowing a star\",\"The collision of two planets\",\"A supernova\",\"A planetary Nebula forming\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":3359}",
+	  "{\"question\":\"Assuming that k ≈ 0, the expansion of Gojo’s domain is\",\"options\":[\"Linear\",\"Quadratic\",\"Cubic\",\"Exponential\"],\"answers\":[4],\"difficulty\":0.9,\"originalIndex\":3667}",
+	  "{\"question\":\"Would Satoru Gojo be able to destroy the Earth in a millisecond?\",\"options\":[\"Yes\",\"No\"],\"answers\":[2],\"difficulty\":1}",
+	  "{\"question\":\"Would Gojo’s star collapse into a black hole?\",\"options\":[\"Yes\",\"No\"],\"answers\":[2],\"difficulty\":1}",
+	  "{\"question\":\"You already have the following test scores: 84.5%, 82%, 78%, and 86%. What grade would you need on the next test to get a test average of 80%? ______% (tenth place)\",\"options\":[],\"answers\":[\"69.5\"],\"difficulty\":0.5}"
+	],
+	"Codebusters": [
+	  "{\"question\":\"Decode this quote that was encoded using the Pollux cipher. You are given that 1=×, 2=●, 3=×, 4=–, 5=●, 6=–, and that this quote contains numbers. 62440649185430255758557699088608455095800481872554151868 30566356235944406728299732963669443298145835555873824 352522024969762194577627554744148850222647542388555\",\"options\":[],\"answers\":[\"LEARNFROMYESTERDAYLIVETODAYHOPETOMORROWTHEIMPORTANTTHINGISTONOTSTOPQUESTIONINGALBERTEINSTEIN\"],\"difficulty\":0.9,\"originalIndex\":2752}",
+	  "{\"question\":\"A quote has been encoded using the Morbit Cipher for you to decode. You are told that 1=×●, 2=●●, 3=××, 4=–×, 5=●–, 6=–● 6  8  9  4  7  5  4  9  4  2  4  1  6  8  2  7  5  1  3  6  8  9  4  9  8   2  8  7  9  1  6  3  6  6  1  4  4  2  8  7  4  9  4  5  8  8  1  9  8  8   5  8  2  8  9  4  6  1  4  5  2  1  6  8  6  9  3  2  3  5  2  1  8  6  4   8  1  6  8  2  7  6  8  5  1  6  7  2  1  2\",\"options\":[],\"answers\":[\"THE GREATEST GLORY IN LIVING LIES NOT IN NEVER FALLING BUT IN RISING EVERY TIME WE FALL\"],\"difficulty\":0.7,\"originalIndex\":2797}"
 	],
 	"Crime Busters": [
-	  "{\"question\":\"Identify powder A3, writing both its common name and its chemical formula. If the powder does not have a chemical formula, simply write “N/A”.\",\"options\":[],\"answers\":[\"Cornstarch, N/A\"],\"difficulty\":0.7,\"originalIndex\":68}"
+	  "{\"question\":\"Which of the following best describes the Western Diamondback Rattlesnake?\",\"options\":[\"Venomous\",\"Poisonous\",\"Both of the Above\"],\"answers\":[1],\"difficulty\":0.2}"
 	],
 	"Disease Detectives": [
-	  "{\"question\":\"Why might the study described in Section I have only included people over the age of 16?\",\"options\":[],\"answers\":[\"Because it is illegal for those under 16 to be driving, so including them in the study would be irrelevant.\"],\"difficulty\":0.5,\"originalIndex\":4146}",
-	  "{\"question\":\"What are some barriers to effective public health policy?\",\"options\":[\"I, II, and III\",\"I and III\",\"II, III, and V\",\"II and IV\",\"I, II, and IV\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":5328}",
-	  "{\"question\":\"The CDC, when verifying the pathogen, discovered that the pathogen was not actually Campylobacter jejuni. Select all of the following that the pathogen could reasonably be, assuming all typical cases.\",\"options\":[\"Listeria monocytogenes\",\"Norovirus\",\"Bacillus cereus\",\"Salmonella\",\"E. coli\",\"Shigella Shigellosis\"],\"answers\":[2,3,4,5,6],\"difficulty\":0.7}"
-	  ],
+	  "{\"question\":\"After you calculate the relative risk for each group of classes, which set of students seem to be particularly aﬀected?\",\"options\":[\"Spanish\",\"CS\",\"Math\",\"Art\"],\"answers\":[1],\"difficulty\":0.8}"
+	],
 	"Ecology": [
-	  "{\"question\":\"Use the graph of a predator prey interaction to answer the following questions. Which function represents the predator and which one represents the prey?\",\"options\":[\"A represents the predator and B represents the prey\",\"A represents the prey and B represents the predator\"],\"answers\":[2],\"difficulty\":0.4}",
-	  "{\"question\":\"The organisms listed in rule in rule 3.b of this Water Quality event are ______ species.\",\"options\":[],\"answers\":[\"Indicator\"],\"difficulty\":0.5}",
-	  "{\"question\":\"Corey’s garden currently has sweet corn planted and wants to add another vegetable. She wants to potentially grow lettuce, tomatoes, bell peppers, or zucchini. Given that Corey already planted the sweet corn on the east side of her garden and it is early spring, which of the vegetables would most likely grow the best with the sweet corn?\",\"options\":[\"Lettuce\",\"Tomatoes\",\"Bell Peppers\",\"Zucchini\"],\"answers\":[1],\"difficulty\":0.6}",
-	  "{\"question\":\"If a tree is not thinned prior to the fruit blossoms opening, what would happen?\",\"options\":[\"More regular sized fruit grows with a more bitter flavor\",\"Fruits grow together in clusters more\",\"Immature fruits drop\",\"More leaves are grown creating denser foliage\",\"Nothing changes\"],\"answers\":[2],\"difficulty\":0.7}",
-	  "{\"question\":\"PCBs (polychlorinated biphenyls) are often found in what devices?\",\"options\":[],\"answers\":[\"Electrical transformers, capacitors\"],\"difficulty\":0.5}",
-	  "{\"question\":\"Alkalinity is the result of three negatively charged ions which shift pH to the alkaline side of neutrality. Name these three charged ions.\",\"options\":[],\"answers\":[\"Carbonate (CO3^2-), Bicarbonate (HCO3^-), Hydroxide (OH^-)\"],\"difficulty\":0.8}",
-	  "{\"question\":\"What type of relationship does the graph show?\",\"options\":[\"Predator-prey relationship\",\"Seasonal variation\",\"Species-area relationship\",\"Survivorship-curve\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":1937}"
+	  "{\"question\":\"For questions 22 to 26, match each term with the correct description. specialist species descriptions:\",\"options\":[\"are more important than their abundance would suggest\",\"use only one form of a given resource\",\"naturally occur in a given area\",\"are used to judge the health of an ecosystem\",\"has a tendency to spread and cause damage\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":479}",
+	  "{\"question\":\"For the identical population of rabbits described above in Problem 6, where the population of rabbits in the quaint, forested town of Gravity Falls obeys the logistic growth equation—with a carrying capacity of 100 rabbits and a per capita growth rate of r = 0.2 rabbits / (rabbits * days) and the population on the initial sampling date is 10 rabbits, which of the following best describes the rabbit population behavior after the initial sampling date?\",\"options\":[\"The population will exponentially accelerate upward, briefly rising above the carrying capacity of 100 rabbits before leveling off.\",\"The population will grow nearly exponentially until reaching 50 rabbits; then, the growth will cool down and approach the carrying capacity of 100 rabbits.\",\"The population will continually decrease down to zero rabbits, due to the relatively small initial population compared with the carrying capacity.\",\"Population behavior cannot be determined from the above information.\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":949}"
 	],
 	"Entomology": [
-	  "{\"question\":\"Insect X contributes to its ecosystem by:\",\"options\":[\"Pollinating flowering plants\",\"Controlling pest populations\",\"Decomposing organic material\",\"Direct predation of other insects and cannibalism\"],\"answers\":[2],\"difficulty\":1}"
+	  "{\"question\":\"Identify the following insect: a.  Super Family:\",\"options\":[],\"answers\":[\"asilidae\"],\"difficulty\":0.7,\"originalIndex\":180}"
+	],
+	"Forensics": [
+	  "{\"question\":\"What is the critical angle for a glass with an index of refraction of 0.5 and the external medium is air?\",\"options\":[\"0\",\"30\",\"60\",\"90\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":933}",
+	  "{\"question\":\"Who stole the cake?\",\"options\":[\"Viswa Janapati\",\"Terry Lin\",\"Nitish Nandineni\",\"Kevin Wang\",\"Eric Zeng\"],\"answers\":[4],\"difficulty\":0.9,\"originalIndex\":636}",
+	  "{\"question\":\"A light ray travels from air (n = 1.00) into water (n = 1.33). The angle of refraction is 30°. What is the angle of incidence?\",\"options\":[\"25.6°\",\"41.9°\",\"35.2°\",\"47.3°\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":2094}",
+	  "{\"question\":\"Where was blood sample 4 collected?\",\"options\":[\"Floor near the downed shelves a few feet in front of the counter\",\"The counter\",\"At the scene\"],\"answers\":[3],\"difficulty\":0.3}",
+	  "{\"question\":\"In Polymers analysis, how many points are awarded for identifying the sample?\",\"options\":[\"1 point\",\"1.5 points\",\"2 points\",\"2.5 points\"],\"answers\":[3],\"difficulty\":0.3,\"originalIndex\":2027}",
+	  "{\"question\":\"Which side do concentric fractures occur?\",\"options\":[],\"answers\":[\"On the same side as the force\"],\"difficulty\":0.3,\"originalIndex\":1656}",
+	  "{\"question\":\"In Blood Spatter, how many points are awarded for correctly identifying the spatter pattern?\",\"options\":[\"0.5 point\",\"1 point\",\"2 points\",\"3 points\"],\"answers\":[3],\"difficulty\":0.3,\"originalIndex\":2034}"
 	],
 	"Fossils": [
-	  "{\"question\":\"Which of these creatures have living descendants?\",\"options\":[\"A & B\",\"A C & D\",\"B & E\",\"All\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":881}"
+	  "{\"question\":\"What is the stratigraphic age range of the specimen? (Options: Devonian to Holocene, Silurian to Holocene, Silurian to Cretaceous, Eocene to Holocene)\",\"options\":[\"Devonian to Holocene\",\"Silurian to Holocene\",\"Silurian to Cretaceous\",\"Eocene to Holocene\"],\"answers\":[2],\"difficulty\":0.6}",
+	  "{\"question\":\"Match Species M. primigenius\",\"options\":[],\"answers\":[\"Species M. primigenius\"],\"difficulty\":0.1,\"originalIndex\":173}",
+	  "{\"question\":\"In which of the following time ranges would you have not been able to ﬁnd a specimen such as the one above on Earth?\",\"options\":[\"3 billion years ago\",\"1 billion years ago\",\"450 million years ago\",\"1 million years ago\",\"None of the above\"],\"answers\":[5],\"difficulty\":0.6,\"originalIndex\":951}",
+	  "{\"question\":\"Is D extant?\",\"options\":[\"Yes\",\"No\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":1125}",
+	  "{\"question\":\"How would you best describe the mode of life of A, C and E?\",\"options\":[\"vagrant\",\"planktonic\",\"sedentary\",\"infaunal\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":880}",
+	  "{\"question\":\"Is A a good index fossil?\",\"options\":[\"Yes\",\"No\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":1131}",
+	  "{\"question\":\"Given the equation A = A 0 · (1/2)^(t/n), Which of the following graphs best describes A(t) given n = 1.194e9 years?\",\"options\":[\"Plot A\",\"Plot B\",\"Plot C\",\"Plot D\"],\"answers\":[1,2,3,4],\"difficulty\":0.6}",
+	  "{\"question\":\"The perfectly straight lines on Specimen “C” are a clue that this Precambrian animal…\",\"options\":[\"Was oriented toward the Sun.\",\"Was not a predator.\",\"Hybernated during the winter.\",\"Performed photosynthesis.\"],\"answers\":[2],\"difficulty\":0.5}",
+	  "{\"question\":\"In which of the following time ranges would you have not been able to ﬁnd a specimen such as the one above on Earth?\",\"options\":[\"3 billion years ago\",\"1 billion years ago\",\"450 million years ago\",\"1 million years ago\",\"None of the above\"],\"answers\":[5],\"difficulty\":0.6}",
+	  "{\"question\":\"Which genus do the following belong to: Latimeria\",\"options\":[],\"answers\":[\"Genus Latimeria\"],\"difficulty\":0.1}",
+	  "{\"question\":\"What does specimen J’s name mean?\",\"options\":[],\"answers\":[\"Winged Finger\"],\"difficulty\":0.1}",
+	  "{\"question\":\"Identify the: 1. GENUS of the fossil 2. Environment in which it lived: marine, freshwater, or terrestrial (Fill in the blank)\",\"options\":[],\"answers\":[\"Acidaspis\",\"marine\"],\"difficulty\":0.7}",
+	  "{\"question\":\"Which of those two parent isotopes would be more useful?\",\"options\":[],\"answers\":[\"Potassium-40\"],\"difficulty\":0.5}"
 	],
 	"Geologic Mapping": [
-	  "{\"question\":\"What Sector and Township is Redmond Watershed Park in?\",\"options\":[\"T26N R6E Sector: 28\",\"T26N R6E Sector: 31\",\"T25N R6E Sector: 10\",\"T26N R6E Sector: 27\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":928}"
+	  "{\"question\":\"What was the panemone windmill used for?\",\"options\":[\"Grinding grain\",\"Driving ventilation in homes\",\"Powering small boats\",\"Producing textiles\",\"A and D\"],\"answers\":[5],\"difficulty\":1}",
+	  "{\"question\":\"There’s turbulence around the wind farm because Allen, in his inﬁnite wisdom, placed it near some hills. What aerodynamic factor should Allen be seriously worried about when designing the blades?\",\"options\":[\"Blade solidity\",\"Tip loss correction \",\"Stall delay\",\"Boundary layer separation\"],\"answers\":[4],\"difficulty\":0.7}",
+	  "{\"question\":\"The SI unit of capacitance is known as the\",\"options\":[\"Henry\",\"Farad\",\"Ohm\",\"Sievert\"],\"answers\":[2],\"difficulty\":1}",
+	  "{\"question\":\"How does a transformer change voltage levels?\",\"options\":[\"Conversion from electrical energy to mechanical energy, then back to electrical energy\",\"Using electromagnetic induction to transfer energy\",\"Turning from a car into a super cool robot mech\",\"Storing charge in parallel capacitors\"],\"answers\":[2],\"difficulty\":1}",
+	  "{\"question\":\"What is the predominant turbine design in use today?\",\"options\":[\"Horizontal axis wind turbines (HAWT)\",\"Vertical axis wind turbines (VAWT)\"],\"answers\":[1],\"difficulty\":0.6}",
+	  "{\"question\":\"Which of the following are used for large scale battery energy storage?\",\"options\":[\"Li-ion batteries\",\"Capacitors\",\"Lead-acid batteries\",\"Reservoirs\"],\"answers\":[1],\"difficulty\":0.6}",
+	  "{\"question\":\"If the load current decreases, the power factor\",\"options\":[\"Will also decrease\",\"Will increase\",\"Will remains unchanged\",\"None of these\"],\"answers\":[2],\"difficulty\":0.1}",
+	  "{\"question\":\"Recalling Bernoulli's theorem, is this concern based in reality that a new wind farm upwind of his ranch will change the air pressure and possibly hurt his ears?\",\"options\":[\"Yes\",\"No\"],\"answers\":[2],\"difficulty\":0.3}",
+	  "{\"question\":\"All of the following correctly match the battery with its limitation except. . .\",\"options\":[\"Lead-acid batteries - low energy density\",\"NiCd batteries - toxic materials\",\"Li-ion battery - prone to memory effect\",\"Alkaline batteries - single-use\"],\"answers\":[3],\"difficulty\":0.6}"
+	],
+	"Materials Science": [
+	  "{\"question\":\"Which one of the following shows the bonding pattern for a block copolymer made up of monomers “R” and “L”?\",\"options\":[\"… − 𝑅 − 𝐿 − 𝐶 − 𝑅 − 𝐿 − 𝐶 − 𝑅 − 𝐿 − 𝐶 − 𝑅 − 𝐿 − 𝐶 − …\",\"… − 𝑅 − 𝑅 − 𝑅 − 𝐿 − 𝐿 − 𝐿 − 𝑅 − 𝑅 − 𝑅 − 𝐿 − 𝐿 − 𝐿 − …\",\"… − 𝑅 − 𝐿 − 𝑅 − 𝐿 − 𝑅 − 𝐿 − 𝑅 − 𝐿 − 𝑅 − 𝐿 − 𝑅 − 𝐿 − …\",\"… − 𝑅 − 𝐿 − 𝑅 − 𝐿 − 𝐿 − 𝐿 − 𝐿 − 𝑅 − 𝑅 − 𝐿 − 𝑅 − 𝐿 − …\"],\"answers\":[2],\"difficulty\":0.2}",
+	  "{\"question\":\"How does the amoeba consume the algae?\",\"options\":[\"Phagocytosis\",\"Pinocytosis\",\"Facilitated Diffusion\",\"Passive Diffusion\",\"Photosynthesis\",\"Cellular Respiration\"],\"answers\":[1],\"difficulty\":0.1}"
 	],
 	"Meteorology": [
-	  "{\"question\":\"Given: Climographs are used to depict a location’s average monthly temperature and rainfall over a period of a year. Two climographs describe locations at the same latitude. Which explanation best describes the difference between climograph data in Locations C and D.\",\"options\":[\"Climograph C represents a maritime location, and Climograph D represents a non-maritime location.\",\"Climograph D represents a maritime location, and Climograph C represents a non-maritime location.\",\"Climograph C represents a location near a warm surface ocean current, and Climograph D does not.\",\"Climograph D represents a location near a warm surface ocean current, and Climograph C does not.\"],\"answers\":[1],\"difficulty\":0.7}",
-	  "{\"question\":\"After initial capture, either beta particle emission for \\\\ufffdssion might occur. But these could only occur under certain conditions such as the velocity of the passing neutron and on the particular heavy nucleus involved. Low-energy or slow neutrons are able to cause \\\\ufffdssion in which of the following isotopes?\",\"options\":[\"U-232\",\"U-234\",\"U-235\"],\"answers\":[3],\"difficulty\":0.7}",
-	  "{\"question\":\"Given: Climographs are used to depict a location’s average monthly temperature and rainfall over a period of a year. These two climographs represent locations of differing latitude. Which explanation best accounts for the difference between climograph data in Locations A and B.\",\"options\":[\"Location A is at a latitude further South of the equator, and Location B is at a latitude closer to the equator.\",\"Location B is at a latitude further South of the equator, and Location A is at a latitude closer to the equator.\",\"Location A is at a latitude further North of the equator, and Location B is at a latitude closer to the equator.\",\"Location B is at a latitude further North of the equator, and Location A is at a latitude closer to the equator.\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":2254}",
-	  "{\"question\":\"What range is the most likely closest pH range of Katara\\\\ufffds precipitation?\",\"options\":[\"1.0 - 2.0\",\"3.0 - 4.0\",\"7.0 - 8.0\",\"10.0 - 11.0\"],\"answers\":[2],\"difficulty\":0.7}"
+	  "{\"question\":\"The neutron is the particle that acts as the starting point for everything in a nuclear reactor. When a neutron passes near a heavy nucleus it might be captured and could or could not lead to \\\\ufffdssion. Which of the following represent neutron capture?\",\"options\":[\"U-238 + n to U-239\",\"U-238 - n to U-237\",\"U-238 + n to Np-239\",\"U-238 - n to Np-239\"],\"answers\":[1],\"difficulty\":0.5}",
+	  "{\"question\":\"Use Diagram 2 to answer Questions 4-7. How does sea level rise exacerbate the effects of severe weather storms?\",\"options\":[\"It cools the ocean\",\"It reduces precipitation\",\"It enhances nitrogen input\",\"It increases oxygen concentration\",\"It increases the height of storm surges\"],\"answers\":[5],\"difficulty\":0.6,\"originalIndex\":123}",
+	  "{\"question\":\"Which of the following accurately lists the conventional “synoptic times” ?\",\"options\":[\"00Z, 03Z, 06Z, 09Z, 12Z, 15Z, 18Z, and 21Z\",\"10Z, 13Z, 16Z, 19Z, 112Z, 115Z, 118Z, and 121Z\",\"00P, 03P, 06P, 09P, 12Z, 15Z, 18Z, and 21Z\",\"10P, 13P, 16P, 19P, 112Z, 115Z, 118Z, and 121Z\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":713}"
 	],
 	"Microbe Mission": [
-	  "{\"question\":\"The above figures shows…\",\"options\":[\"serial dilution\",\"serial centrifugation\",\"streaking\",\"autoclaving\",\"Koch’s four postulates\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":1759}"
+	  "{\"question\":\"What is the name of the procedure Sill is executing? (4)\",\"options\":[],\"answers\":[\"Serial Dilution\"],\"difficulty\":0.5,\"originalIndex\":23}",
+	  "{\"question\":\"John wants to thank you for your (hopefully) valiant effort to get him a girlfriend. However, his trials and tribulations have yet to end, as after the date he has his microbiology final. Given that John still does not know what a microbe is, give the nucleic acid composition of these microbes ex. dsDNA linear. Canine parvo\",\"options\":[],\"answers\":[\"ssDNA linear\"],\"difficulty\":0.5,\"originalIndex\":1422}",
+	  "{\"question\":\"For questions 36 to 41, refer to the following table of 6 fictional bacterial species and 4 traits. 1 denotes the presence of a trait, while 0 denotes its absence: Why do we say \\\"most accurate/probable/etc.\\\" instead of \\\"correct\\\" when referring to phylogenetic trees? Give one reason why.\",\"options\":[],\"answers\":[\"Phylogenetic trees are hypotheses based on available data, and new data or different analytical methods can lead to revised trees. Furthermore, convergent evolution or horizontal gene transfer can obscure the true evolutionary relationships.\"],\"difficulty\":1,\"originalIndex\":776}",
+	  "{\"question\":\"Match the microorganisms with their characteristic: Rickettsia\",\"options\":[\"Much similar, contains one type of nucleic acid, do not reproduce by binary fission\",\"Gram+ arranged in chains\",\"Living organism, unicellular, motile, microscopic and show reproduction\",\"Grow atmospheric oxygen, visible without microscope, produces, disease\",\"Tiny organism, enable to grow outside living cells, retained by bacteria proof filters\"],\"answers\":[4],\"difficulty\":0.6}"
+	],
+	"Optics": [
+	  "{\"question\":\"An electron in the hydrogen atom transitions from the n= 4 to the n= 2 energy state. Sunlight, which contains wavelengths of all the colors, f[]irst passes through an absorption f[]ilter with the same color in part (iii). That light then passes through a second f[]ilter. What color would we then observe if the second f[]ilter was colored Red?\",\"options\":[\"Red\",\"Black\",\"Cannot determine\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":883}",
+	  "{\"question\":\"What color would the material that produced the absorption spectrum appear to be?\",\"options\":[\"Green\",\"Yellow\",\"Blue\",\"Red\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":2740}"
+	],
+	"Potions and Poisons": [
+	  "{\"question\":\"Given the previous information, would Dr. A have been able to give 12 mg of atropine and scopolamine to his participants without losing his job?\",\"options\":[],\"answers\":[\"No\"],\"difficulty\":0.9}",
+	  "{\"question\":\"Which of the following is known for their threat to dogs?\",\"options\":[\"Brown recluse spider\",\"Cane toad\",\"Mayapple\",\"Ongaonga\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":313}",
+	  "{\"question\":\"23. Which of the following is the correctly balanced form of the equation: 𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"options\":[\"𝐻12𝑂6 → 6𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 6𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":12}"
 	],
 	"Reach for the Stars": [
-	  "{\"question\":\"Where is 30 Doradus located?\",\"options\":[\"The center of the Milky Way\",\"The galactic halo\",\"The Orion arm of the Milky Way\",\"The LMC\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":428}",
-	  "{\"question\":\"For questions 19-21, we’ll be discussing the star Algol and its special properties. As a result of this type of system being discovered, the Algol Variable binary star type was coined.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
-	  "{\"question\":\"The DSO from two questions ago is known for displaying strong evidence of the presence of dark matter. Which of the following statements about dark matter in this galaxy is true?\",\"options\":[\"The dark matter for this galaxy is in a disk shape\",\"The dark matter extends far beyond the dense visible portion of the galaxy\",\"The dark matter is heating the gas into emitting x-rays\",\"The dark matter is signiﬁcantly less massive than the visible matter for this galaxy\",\"All of the Above are True\"],\"answers\":[2],\"difficulty\":0.6}",
-	  "{\"question\":\"Which of these statements about a camera’s f-stop is true?\",\"options\":[\"Increasing f-stop: increases the aperture opening and increases depth of view\",\"Increasing f-stop: increases the aperture opening but decreases depth of view\",\"Increasing f-stop: decreases the aperture opening and decreases depth of view\",\"Increasing f-stop: decreases the aperture opening but increases depth of view\"],\"answers\":[4],\"difficulty\":0.7}",
-	  "{\"question\":\"According to the text, how is the accuracy score (AS) calculated, where α is the horizontal distance from the TP to the center of where the laser strikes a wall measured in mm?\",\"options\":[\"AS = max(0, 25 − α) × 10 points\",\"AS = max(0, 25 − α/10) points\",\"AS = max(0, 25 − 10α) points\",\"AS = max(0, 25 − α) points\"],\"answers\":[2],\"difficulty\":0.5}",
-	  "{\"question\":\"Create a formula to convert from decibels isotropic (dBi) to a fictional unit dBf, which is the unit corresponding with a fictional antenna that produces EM waves at a max radiant intensity of 0.639 W, and an average radiant intensity of 0.211 W.\",\"options\":[],\"answers\":[\"dBf = dBi + 4.798\"],\"difficulty\":0.9}",
-	  "{\"question\":\"Which wavelength was the previous image most likely taken in?\",\"options\":[\"Optical\",\"Infrared\",\"Ultraviolet\",\"Radio\",\"X-Ray\",\"Gamma Ray\"],\"answers\":[1],\"difficulty\":0.4}",
-	  "{\"question\":\"(Mark ALL correct answers) A) ? B) Aliens are trying to send us a message C) James Webb has discovered the secrets of the universe D) It's not one of the DSOs we shouldn't be testing you on this\",\"options\":[\"?\",\"Aliens are trying to send us a message\",\"James Webb has discovered the secrets of the universe\",\"It's not one of the DSOs we shouldn't be testing you on this\"],\"answers\":[4],\"difficulty\":0.01}",
-	  "{\"question\":\"True or False: Barnard 68 is opaque when viewed at visible light wavelengths.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
-	  "{\"question\":\"What is the approximate age of the Trapezium Cluster, and how does it relate to the overall star formation history of Messier 42?\",\"options\":[\"10 million years; it represents the oldest stars in the nebula.\",\"1 billion years; it represents a later generation of stars in the nebula.\",\"100,000 years; it marks a recent burst of star formation.\",\"1 million years; it represents the youngest stars in the nebula.\"],\"answers\":[4],\"difficulty\":0.7}",
-	  "{\"question\":\"HD 95086 is a pre-main-sequence star. An amount of gaseous carbon monoxide was detected around its outer disk. What does this trace amount of carbon monoxide indicate?\",\"options\":[\"It indicates that the star is somewhat metal-deficient in comparison to the Sun\",\"It indicates that the massive debris disk is separated by gaps\",\"Carbon monoxide indicates that the star has at least one exoplanet known as HD 95086 b\",\"It indicates a recent collisional cascaded that was followed by cometary activity\"],\"answers\":[4],\"difficulty\":0.7}",
-	  "{\"question\":\"As a result of this type of system being discovered, the Algol Variable binary star type was coined.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.4}",
-	  "{\"question\":\"For questions 19-21, we’ll be discussing the star Algol and its special properties. As a result of this type of system being discovered, the Algol Variable binary star type was coined. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}"
+	  "{\"question\":\"Which of the following best describes the object from the previous image?\",\"options\":[\"Elliptical Galaxy\",\"Spiral Galaxy\",\"Irregular Galaxy\",\"Dwarf Irregular Galaxy\",\"Nebula\",\"Cloud Complex\"],\"answers\":[4],\"difficulty\":0.5}"
 	],
 	"Wind Power": [
-	  "{\"question\":\"When initially mounted, no part of the blade assembly including fastening materials may extend onto the back of the disc or behind the mounting plane of the disc. There is no limit on how far forward the blade assembly may extend. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}"
+	  "{\"question\":\"Identify the parts of a wind turbine using the answer bank below: A, B, C, D, E, F, G, H. Answer Bank: Drive Shaft, Gearbox, Generator, High Speed Shaft, Hub, Rotating Bearing, Rotor Blades, Tower Support\",\"options\":[],\"answers\":[\"A: Rotor Blades\",\"B: Hub\",\"C: Rotating Bearing\",\"D: Gearbox\",\"E: High Speed Shaft\",\"F: Generator\",\"G: Drive Shaft\",\"H: Tower Support\"],\"difficulty\":0.1}",
+	  "{\"question\":\"Before this rotation, our turbine produced 97% of its total possible power output. Following this, our turbine did not have to yaw for 12 hours. Calculate the turbine's energy output for the 12 hours after the yaw. Give your answer in MWh.\",\"options\":[],\"answers\":[\"Energy output = 1.5 MW * 0.97 * 12 hours = 17.46 MWh\"],\"difficulty\":0.5,\"originalIndex\":1081}"
+	]
+  }
+  Edited Questions
+  {
+	"Anatomy - Integumentary": [
+	  {
+		"original": "{\"question\":\"Cells in the stratum spinosum are attached to each other through which of the following?\",\"options\":[\"Tight junctions\",\"Desmosomes\",\"Gap junctions\",\"Cadherins\"],\"answers\":[2,4],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Cells in the stratum spinosum are attached to each other through which of the following?\",\"options\":[\"Tight junctions\",\"Desmosomes\",\"Gap junctions\",\"Cadherins\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-16T01:18:48.012Z"
+	  },
+	  {
+		"original": "{\"question\":\"Bronzing may be a sign of which of the following?\",\"options\":[\"Addison’s disease\",\"Alzheimer’s disease\",\"Huntington’s disease\",\"Grave’s disease\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":408}",
+		"edited": "{\"question\":\"Bronzing may be a sign of which of the following?\",\"options\":[\"Addison’s disease\",\"Alzheimer’s disease\",\"Huntington’s disease\",\"Grave’s disease\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.67}",
+		"timestamp": "2025-03-16T03:50:08.111Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the distribution of vellus hair in adults\",\"options\":[\"10% on women\",\"10% on men\",\"90% on men\",\"90% on women\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":98}",
+		"edited": "{\"question\":\"What is the distribution of vellus hair in adults\",\"options\":[\"10% on women\",\"10% on men\",\"90% on men\",\"90% on women\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-22T03:43:42.245Z"
+	  }
+	],
+	"Anatomy - Skeletal": [
+	  {
+		"original": "{\"question\":\"Which of the following bones would one expect to occur most superiorly?\",\"options\":[\"Vomer\",\"Calcaneus\",\"Hyoid\",\"Os coxae\",\"Humerus\"],\"answers\":[3],\"difficulty\":0.4,\"originalIndex\":38}",
+		"edited": "{\"question\":\"Which of the following bones would one expect to occur most superiorly?\",\"options\":[\"Vomer\",\"Calcaneus\",\"Hyoid\",\"Os coxae\",\"Humerus\"],\"answers\":[1],\"difficulty\":0.03}",
+		"timestamp": "2025-03-15T19:35:55.707Z"
+	  },
+	  {
+		"original": "{\"question\":\"This type of bone marrow contains mesenchymal stem cells.\",\"options\":[\"Red Marrow\",\"Yellow Marrow\",\"White Marrow\"],\"answers\":[1],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"This type of bone marrow contains mesenchymal stem cells.\",\"options\":[\"Red Marrow\",\"Yellow Marrow\",\"White Marrow\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-20T19:35:07.460Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the main difference between a longitudinal fracture and a pathological fracture?\",\"options\":[\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone.\",\"A longitudinal fracture occurs due to excessive twisting of the bone, while a pathological fracture is caused by a sudden impact\",\"A longitudinal fracture runs along the short axis of the bone, while a pathological fracture occurs in healthy bones without pre-existing conditions\",\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone\",\"A longitudinal fracture results from a disease, while a pathological fracture occurs due to trauma or stress\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":231}",
+		"edited": "{\"question\":\"What is the main difference between a longitudinal fracture and a pathological fracture?\",\"options\":[\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone.\",\"A longitudinal fracture occurs due to excessive twisting of the bone, while a pathological fracture is caused by a sudden impact\",\"A longitudinal fracture runs along the short axis of the bone, while a pathological fracture occurs in healthy bones without pre-existing conditions\",\"A longitudinal fracture results from a disease, while a pathological fracture occurs due to trauma or stress\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-20T21:29:57.240Z"
+	  }
+	],
+	"Astronomy": [
+	  {
+		"original": "{\"question\":\"Protoplanetary disks form at the equator as a consequence of:\",\"options\":[\"Conservation of translational momentum\",\"Conservation of angular acceleration\",\"Conservation of angular momentum\",\"Conservation of angular velocity\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":589}",
+		"edited": "{\"question\":\"Protoplanetary disks form at the equator as a consequence of:\",\"options\":[\"Conservation of translational momentum\",\"Conservation of angular acceleration\",\"Conservation of angular momentum\",\"Conservation of angular velocity\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-16T04:05:00.363Z"
+	  },
+	  {
+		"original": "{\"question\":\"From lowest to highest temperature, what are the spectral classifications found on a Hertzsprung-Russell (H-R) diagram?\",\"options\":[\"OBAFGKM\",\"OBAFKGM\",\"MKGFABO\",\"MGKFABO\"],\"answers\":[4],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"From lowest to highest temperature, what are the spectral classifications found on a Hertzsprung-Russell (H-R) diagram?\",\"options\":[\"OBAFGKM\",\"OBAFKGM\",\"MKGFABO\",\"MGKFABO\"],\"answers\":[3],\"difficulty\":0.3}",
+		"timestamp": "2025-03-17T15:53:04.942Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which stellar remnant is left behind after a Type Ia supernova?\",\"options\":[\"Black hole\",\"White Dwarf\",\"Neutron Star\",\"There is no remnant.\"],\"answers\":[4],\"difficulty\":1,\"originalIndex\":26}",
+		"edited": "{\"question\":\"Which stellar remnant is left behind after a Type Ia supernova?\",\"options\":[\"Black hole\",\"White Dwarf\",\"Neutron Star\",\"There is no compact remnant\"],\"answers\":[4],\"difficulty\":1}",
+		"timestamp": "2025-03-17T17:35:06.657Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which space telescope first observed K2-18b?\",\"options\":[\"James Webb Space Telescope (JWST)\",\"Transiting Exoplanet Survey Satellite (TESS)\",\"Kepler Space Telescope (K2)\",\"Hubble Space Telescope (HST)\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"Which space telescope first observed K2-18b?\",\"options\":[\"James Webb Space Telescope (JWST)\",\"Transiting Exoplanet Survey Satellite (TESS)\",\"Kepler Space Telescope (K2)\",\"Hubble Space Telescope (HST)\"],\"answers\":[3],\"difficulty\":1}",
+		"timestamp": "2025-03-22T00:07:57.034Z"
+	  }
+	],
+	"Chemistry Lab": [
+	  {
+		"original": "{\"question\":\"Which of the following trace elements are the most abundant in the seawater\",\"options\":[\"aluminum\",\"phosphorus\",\"iodine\",\"iron\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":3562}",
+		"edited": "{\"question\":\"Which of the following trace elements are the most abundant in the seawater?\",\"options\":[\"aluminum\",\"phosphorus\",\"iodine\",\"iron\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-15T22:59:46.877Z"
+	  }
+	],
+	"Codebusters": [
+	  {
+		"original": "{\"question\":\"Solve this Patristocrat:\\nJPKRH MKRJX MFMWX PWYLJ RFRWH LTREV RWHMJ GZOHL\\nPCWRR QHPJC VVRRQ QPWPH XRHMW LPCEP GWZRO QHPPK CVZ\",\"options\":[],\"answers\":[\"SUCCESS ISCOUNTED SWEETEST BYTHOSEWHONEERSUCCEED\"],\"difficulty\":0.1,\"originalIndex\":1506}",
+		"edited": "{\"question\":\"Solve this Patristocrat:\\nJPKRH MKRJX MFMWX PWYLJ RFRWH LTREV RWHMJ GZOHL\\nPCWRR QHPJC VVRRQ QPWPH XRHMW LPCEP GWZRO QHPPK CVZ\",\"answers\":[\"SUCCESS ISCOUNTED SWEETEST BYTHOSEWHONEERSUCCEED\"],\"difficulty\":1}",
+		"timestamp": "2025-03-17T01:02:50.898Z"
+	  },
+	  {
+		"original": "{\"question\":\"Solve this Aristocrat: SA V OSIEZJSJI TKOZ IPJPNVZPG PJKCIE POPLZNSLSZD ZK XKRPN 56 EKCGPG AKN V BVD, RED EVGJ’Z VJDKJP ZNSPB?\",\"options\":[],\"answers\":[\"TO A THINKING MIND NOTHING IS SO NATURAL AS QUESTIONS BUT CAN WE QUESTION ANYTHING AT LEAST SOMETHING ELSE ITSELF?\"],\"difficulty\":0.6,\"originalIndex\":1991}",
+		"edited": "{\"question\":\"Solve this Aristocrat: SA V OSIEZJSJI TKOZ IPJPNVZPG PJKCIE POPLZNSLSZD ZK XKRPN 56 EKCGPG AKN V BVD, RED EVGJ’Z VJDKJP ZNSPB?\",\"answers\":[\"TO A THINKING MIND NOTHING IS SO NATURAL AS QUESTIONS BUT CAN WE QUESTION ANYTHING AT LEAST SOMETHING ELSE ITSELF?\"],\"difficulty\":0.6}",
+		"timestamp": "2025-03-17T01:03:25.496Z"
+	  }
+	],
+	"Crime Busters": [
+	  {
+		"original": "{\"question\":\"A piece of plastic was found by the stained walls. The plastic burns a yellow color and will sink in a brine solution. What is the identity of the plastic?\",\"options\":[\"PETE\",\"HDPE\",\"PVC\",\"PMMA\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A piece of plastic was found by the stained walls. The plastic burns a yellow color and will sink in a brine solution. What is the identity of the plastic?\",\"options\":[\"PETE\",\"HDPE\",\"PVC\",\"PMMA\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-20T20:53:53.937Z"
+	  },
+	  {
+		"original": "{\"question\":\"Alka-Seltzer is a common medication used to treat indigestion. What biological impact does Alka-Seltzer have on the body?\",\"options\":[\"increases the body’s sensitivity to signaling hormones\",\"lowers pH of stomach acid\",\"reduces inflammation in the stomach\",\"releases enzymes which speed digestion of food\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":18}",
+		"edited": "{\"question\":\"Alka-Seltzer is a common medication used to treat indigestion. What biological impact does Alka-Seltzer have on the body?\",\"options\":[\"Increases the body’s sensitivity to signaling hormones\",\"Increases pH of stomach acid\",\"reduces inflammation in the stomach\",\"releases enzymes which speed digestion of food\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-20T21:24:51.035Z"
+	  }
+	],
+	"Disease Detectives": [
+	  {
+		"original": "{\"question\":\"Most accurate type of study and can tell causality\",\"options\":[\"Sentinel\",\"Health Indicator\",\"Nosocomial\",\"Dose-response relationship\",\"Point outbreak\",\"Etiology\",\"Hypoendemic\",\"Isolation\",\"Convalescent Carrier\",\"Cross-sectional Study\",\"Case-control Study\",\"Endemic\",\"Cohort Study\",\"Iatrogenic\",\"Incubation period\",\"Index case\",\"Hyperendemic\",\"Incubatory Carrier\",\"Latency period\",\"Prenatal transmission\",\"Pandemic\",\"Holoendemic\",\"Healthy Carrier\",\"R0\",\"Efficacy\",\"Syndromic\",\"Epitope\",\"Mechanical Vector\",\"Vertical transmission\",\"Biological Vector\",\"Propagated outbreak\",\"Intermittent Carrier\",\"Risk factor\",\"Proxy\",\"Virulence\"],\"answers\":[13],\"difficulty\":0.8,\"originalIndex\":2186}",
+		"edited": "{\"question\":\"Most accurate type of study and can tell causality\",\"options\":[\"Sentinel\",\"Health Indicator\",\"Nosocomial\",\"Dose-response relationship\",\"Point outbreak\",\"Etiology\",\"Hypoendemic\",\"Isolation\",\"Convalescent Carrier\",\"Cross-sectional Study\",\"Case-control Study\",\"Endemic\",\"Cohort Study\",\"Iatrogenic\",\"Incubation period\",\"Index case\",\"Hyperendemic\",\"Incubatory Carrier\",\"Latency period\",\"Prenatal transmission\",\"Pandemic\",\"Holoendemic\",\"Healthy Carrier\",\"Clinical trial\",\"Efficacy\",\"Syndromic\",\"Epitope\",\"Mechanical Vector\",\"Vertical transmission\",\"Biological Vector\",\"Propagated outbreak\",\"Intermittent Carrier\",\"Risk factor\",\"Proxy\",\"Virulence\"],\"answers\":[13,24],\"difficulty\":0.1}",
+		"timestamp": "2025-03-18T12:53:32.419Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the definition of Etiology?\",\"options\":[\"The probability that an event will occur\",\"the first identified case in a group of related cases of a particular communicable or heritable disease\",\"the cause, set of causes, or manner of causation of a disease or condition\",\"living organisms that can transmit infectious pathogens between humans\",\"the period between exposure to an infection and the appearance of the first symptoms\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":871}",
+		"edited": "{\"question\":\"What is the definition of Etiology?\",\"options\":[\"The probability that an event will occur\",\"the first identified case in a group of related cases of a particular communicable or heritable disease\",\"the cause, set of causes, or manner of causation of a disease or condition\",\"living organisms that can transmit infectious pathogens between humans\",\"the period between exposure to an infection and the appearance of the first symptoms\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-18T12:55:43.495Z"
+	  }
+	],
+	"Dynamic Planet - Glaciers": [
+	  {
+		"original": "{\"question\":\"An increase in subglacial pore water pressure will:\",\"options\":[\"Increase bed deformation\",\"Decrease bed deformation\",\"Have no impact on bed deformation\",\"Allow for bed decoupling\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":114}",
+		"edited": "{\"question\":\"An increase in subglacial pore water pressure will:\",\"options\":[\"Increase bed deformation\",\"Decrease bed deformation\",\"Have no impact on bed deformation\",\"Allow for bed decoupling\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-03-19T12:36:17.763Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is NOT a type of non-tabular iceberg?\",\"options\":[\"Wedge\",\"Blocky\",\"Rounded\",\"Drydock\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":435}",
+		"edited": "{\"question\":\"Which of the following is NOT a type of non-tabular iceberg?\",\"options\":[\"Wedge\",\"Blocky\",\"Rounded\",\"Drydock\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-19T21:05:58.442Z"
+	  }
+	],
+	"Ecology": [
+	  {
+		"original": "{\"question\":\"Which of the following are characteristics of all deserts? (select all that apply)\",\"options\":[\"Hot, often very much so\",\"Little precipitation\",\"Lack of life\",\"Sandy\"],\"answers\":[1,2],\"difficulty\":0.5,\"originalIndex\":3667}",
+		"edited": "{\"question\":\"Which of the following are characteristics of all deserts? (select all that apply)\",\"options\":[\"Hot, often very much so\",\"Little precipitation\",\"Lack of life\",\"Sandy\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-14T16:13:44.672Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which one of the following populations would be less likely to undergo extinction?\",\"options\":[\"A population with a high frequency of inbreeding\",\"A population with a reduced ef[]ective population size\",\"A population with high population density\",\"A population that suf[]ers a natural catastrophe\"],\"answers\":[3],\"difficulty\":0.6,\"originalIndex\":969}",
+		"edited": "{\"question\":\"Which one of the following populations would be less likely to undergo extinction?\",\"options\":[\"A population with a high frequency of inbreeding\",\"A population with a reduced effective population size\",\"A population with high population density\",\"A population that suffers a natural catastrophe\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-15T00:48:14.867Z"
+	  },
+	  {
+		"original": "{\"question\":\"A group of individuals of the same species living in a particular place is known as a(an)\",\"options\":[\"population\",\"community\",\"biosphere\",\"population\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":1658}",
+		"edited": "{\"question\":\"A group of individuals of the same species living in a particular place is known as a(an)\",\"options\":[\"population\",\"community\",\"biosphere\",\"\"],\"answers\":[1],\"difficulty\":0.54}",
+		"timestamp": "2025-03-15T03:23:56.055Z"
+	  },
+	  {
+		"original": "{\"question\":\"Roughly what percentage of plant species use C3 photosynthesis (1 point)?\",\"options\":[\"75%\",\"85%\",\"60%\",\"92%\",\"70%\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":117}",
+		"edited": "{\"question\":\"Roughly what percentage of plant species use C3 photosynthesis?\",\"options\":[\"75%\",\"85%\",\"60%\",\"92%\",\"70%\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-15T03:25:03.068Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which method reduces the volume of waste but could release toxic emissions into the atmosphere?\",\"options\":[\"Sanitary Landfill\",\"Incineration\",\"Chemical Treatment\",\"Discharge to sewers, streams, and rivers\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":3418}",
+		"edited": "{\"question\":\"Which method reduces the volume of waste but could release toxic emissions into the atmosphere?\",\"options\":[\"Sanitary Landfill\",\"Incineration\",\"Chemical Treatment\",\"Discharge to sewers, streams, and rivers\"],\"answers\":[2],\"difficulty\":0.76}",
+		"timestamp": "2025-03-15T05:36:48.404Z"
+	  },
+	  {
+		"original": "{\"question\":\"The increase of species that expand into new habitats and take on new ecological niches following a mass extinction is referred to as?\",\"options\":[\"Adaptive evolution\",\"Adaptive radiation\",\"Alpha diversity\",\"Biological magnif[]cation\"],\"answers\":[2],\"difficulty\":0.4,\"originalIndex\":958}",
+		"edited": "{\"question\":\"The increase of species that expand into new habitats and take on new ecological niches following a mass extinction is referred to as?\",\"options\":[\"Adaptive evolution\",\"Adaptive radiation\",\"Alpha diversity\",\"Biological magnification\"],\"answers\":[2],\"difficulty\":0.4}",
+		"timestamp": "2025-03-15T22:23:54.616Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which human activity is largely responsible for the human impact on the carbon cycle?\",\"options\":[\"Deforestation\",\"Burning fossil fuels\",\"Calcination of limestone\",\"Human0caused land use and land cover change\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":1935}",
+		"edited": "{\"question\":\"Which human activity is largely responsible for the human impact on the carbon cycle?\",\"options\":[\"Deforestation\",\"Burning fossil fuels\",\"Calcination of limestone\",\"Human-caused land use and land cover change\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-15T22:25:44.296Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is a seral community?\",\"options\":[\"A community that catalyzes restoration of habitat and organisms\",\"The intermediate stage in succession\",\"Community that is in equilibrium with biodiversity and biomass\",\"A community that halts succession during the middle of its lifespan\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":133}",
+		"edited": "{\"question\":\"What is a seral community?\",\"options\":[\"A community that catalyzes restoration of habitat and organisms\",\"The intermediate stage in succession\",\"Community that is in equilibrium with biodiversity and biomass\",\"A community that halts succession during the middle of its lifespan\"],\"answers\":[2],\"difficulty\":0.48}",
+		"timestamp": "2025-03-15T22:27:16.580Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the most common GMO in the US?\",\"options\":[\"Corn\",\"Potato\",\"Cotton\",\"Soy\"],\"answers\":[[1,4]],\"difficulty\":0.6,\"originalIndex\":1731}",
+		"edited": "{\"question\":\"What is the most common GMO in the US? (should say which TWO of the following)\",\"options\":[\"Corn\",\"Potato\",\"Cotton\",\"Soy\"],\"answers\":[[1,4]],\"difficulty\":0.6}",
+		"timestamp": "2025-03-17T21:30:56.703Z"
+	  },
+	  {
+		"original": "{\"question\":\"What effect does Evaporation have on seawater salinity?\",\"options\":[\"increase\",\"decrease\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"What effect does evaporation have on seawater salinity?\",\"options\":[\"increase\",\"decrease\"],\"answers\":[1],\"difficulty\":0.12}",
+		"timestamp": "2025-03-18T17:38:14.267Z"
+	  },
+	  {
+		"original": "{\"question\":\"An organism that can only tolerate a large range of temperatures is called\",\"options\":[\"niche specialist\",\"stenothermal\",\"poikilothermic\",\"extremeophilic\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"An organism that can tolerate a large range of temperatures is called\",\"options\":[\"niche specialist\",\"stenothermal\",\"poikilothermic\",\"extremeophilic\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-18T17:39:57.180Z"
+	  },
+	  {
+		"original": "{\"question\":\"If large carnivores in an ecosystem are killed off, the number of primary producers in the area may also decrease dramatically, even though the carnivores don't eat the primary producers. How do you explain this effect?\",\"options\":[\"It is the result of a trophic inversion\",\"The death of the carnivores leads to a decrease in the herbivore population\",\"The carnivores are most likely keeping the herbivore population in check\",\"Nutrient reuptake is inhibited in the biome overall without the carnivores\"],\"answers\":[3],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"If large carnivores in an ecosystem are killed off, the number of primary producers in the area may also decrease dramatically, even though the carnivores don't eat the primary producers. How do you explain this effect?\",\"options\":[\"It is the result of a trophic inversion\",\"The death of the carnivores leads to a decrease in the herbivore population\",\"The carnivores are most likely keeping the herbivore population in check\",\"Nutrient reuptake is inhibited in the biome overall without the carnivores\"],\"answers\":[3],\"difficulty\":0.29}",
+		"timestamp": "2025-03-18T17:45:51.533Z"
+	  },
+	  {
+		"original": "{\"question\":\"For questions 69 to 75, match each of the following. using resources responsibly\",\"options\":[\"conservation\",\"preservation\",\"keystone species\",\"indicator species\",\"endangered species\",\"invasive species\",\"threatened species\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Match each of the following. \\\"using resources responsibly\\\"\",\"options\":[\"conservation\",\"preservation\",\"keystone species\",\"indicator species\",\"endangered species\",\"invasive species\",\"threatened species\"],\"answers\":[1,2],\"difficulty\":0.36}",
+		"timestamp": "2025-03-18T23:55:03.382Z"
+	  },
+	  {
+		"original": "{\"question\":\"Mangrove trees serve a critical role in swamp biomes due to their large biomass. What are mangrove trees an example of?\",\"options\":[\"Keystone species\",\"Dominant species\",\"Indicator species\",\"Founder species\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Mangrove trees serve a critical role in swamp biomes due to their large biomass. What are mangrove trees an example of?\",\"options\":[\"Keystone species\",\"Dominant species\",\"Indicator species\",\"Founder species\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-18T23:57:33.891Z"
+	  },
+	  {
+		"original": "{\"question\":\"Minimum waste treatment requirements established by the Department are called…\",\"options\":[\"Technology-Based Effluent Limitation\",\"Water Quality-Based Effluent Limitation\",\"Substantial modification\",\"Design capacity\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Minimum waste treatment requirements established by the Department are called…\",\"options\":[\"Technology-Based Effluent Limitation\",\"Water Quality-Based Effluent Limitation\",\"Substantial modification\",\"Design capacity\"],\"answers\":[1],\"difficulty\":0.39}",
+		"timestamp": "2025-03-19T17:35:57.556Z"
+	  },
+	  {
+		"original": "{\"question\":\"Indicate whether the following theory is True or False based on what is generally accepted in contemporary studies of ecology and indicate your reasoning in the following question: By the 20th century, scientists were placing greater emphasis on study inter-species interactions. One scientists in particular proposed that predator survival closely follows how well that predator's prey survives. Is their hypothesis true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Indicate whether the following theory is True or False based on what is generally accepted in contemporary studies of ecology and indicate your reasoning in the following question: By the 20th century, scientists were placing greater emphasis on study inter-species interactions. One scientists in particular proposed that predator survival closely follows how well that predator's prey survives. Is their hypothesis true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.34}",
+		"timestamp": "2025-03-19T23:20:55.394Z"
+	  }
+	],
+	"Entomology": [
+	  {
+		"original": "{\"question\":\"What insect is farmed in the millions, especially in China to be used in traditional medicines and cosmetics?\",\"options\":[\"Cockroaches\",\"Bees\",\"Flies\",\"Fleas\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"What insect is farmed in the millions, especially in China to be used in traditional medicines and cosmetics?\",\"options\":[\"Cockroaches\",\"Bees\",\"Flies\",\"Fleas\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-03-14T12:31:38.110Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: Insects the of the Acrididae family have hind legs that are longs than their front legs.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"True or False: Insects the of the Acrididae family have hind legs that are longs than their front legs.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
+		"timestamp": "2025-03-16T17:17:14.458Z"
+	  },
+	  {
+		"original": "{\"question\":\"The genus Cicindela belongs to which family of insects?\",\"options\":[\"Carabidae\",\"Scarabaeidae\",\"Cerambycidae\",\"Vespidae\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":21}",
+		"edited": "{\"question\":\"The genus Cicindela belongs to which family of insects?\",\"options\":[\"Carabidae\",\"Scarabaeidae\",\"Vespidae\",\"Cicindelidae\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-18T03:57:20.945Z"
+	  },
+	  {
+		"original": "{\"question\":\"The ecdysial suture is area commonly found on insects heads where the frontal, coronal, and epicranial sutures + ecdysial and cleavage lines all meet. Helping separate the left and right part of the insects. The lines that diverge from it are called frontogenal sutures, anatomically what would this be important for in the insect? Select all that apply\",\"options\":[\"Mechanical support to area around head\",\"Allow insect head to molt easily\",\"Helps insects thermoregulate themselves\"],\"answers\":[1,2],\"difficulty\":0.7,\"originalIndex\":8}",
+		"edited": "{\"question\":\"The ecdysial suture is an area commonly found on insects' heads where the frontal, coronal, and epicranial sutures + ecdysial and cleavage lines meet. This separates the left and right part of the insects. The lines that diverge from it are called frontogenal sutures. Anatomically, why would this be important for the insect? Select all that apply\",\"options\":[\"Mechanical support to area around head\",\"Allow insect head to molt easily\",\"Helps insects thermoregulate themselves\"],\"answers\":[1,2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-21T02:14:04.977Z"
+	  },
+	  {
+		"original": "{\"question\":\"From the following choices, they can be used more than once: A. Near Threatened B. Vulnerable C. Endangered D. Critically Endangered. What is the IUCN conservation status of the Karkloof Blue (Orachrysops ariadne)?\",\"options\":[\"Near Threatened\",\"Vulnerable\",\"Endangered\",\"Critically Endangered\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":283}",
+		"edited": "{\"question\":\"From the following choices, they can be used more than once: A. Near Threatened B. Vulnerable C. Endangered D. Critically Endangered. What is the IUCN conservation status of the Karkloof Blue (Orachrysops ariadne)?\",\"options\":[\"Near Threatened\",\"Vulnerable\",\"Endangered\",\"Critically Endangered\"],\"answers\":[3],\"difficulty\":0.35}",
+		"timestamp": "2025-03-21T23:16:52.755Z"
+	  }
+	],
+	"Forensics": [
+	  {
+		"original": "{\"question\":\"Hydrochloric acid can help determine if a sample contains:\",\"options\":[\"Sodium carbonate\",\"Sodium chloride\",\"Magnesium sulfate\",\"More than one of the above\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":2126}",
+		"edited": "{\"question\":\"Hydrochloric acid can help determine if a sample contains:\",\"options\":[\"Sodium carbonate\",\"Sodium chloride\",\"Magnesium sulfate\",\"More than one of the above\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-15T20:57:30.392Z"
+	  },
+	  {
+		"original": "{\"question\":\"If you were to conduct a flame test, which of the following fibers would leave behind a crushable black bead?\",\"options\":[\"Wool\",\"Silk\",\"Linen\",\"Nylon\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":2078}",
+		"edited": "{\"question\":\"If you were to conduct a flame test, which of the following fibers would leave behind a crushable black bead?\",\"options\":[\"Wool\",\"Silk\",\"Linen\",\"Nylon\"],\"answers\":[1,2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-15T21:04:29.057Z"
+	  },
+	  {
+		"original": "{\"question\":\"Given the context of the test, is the following statement true or false? Can a B+ blood type donor give blood to an O- recipient?\",\"options\":[\"True\",\"False\"],\"answers\":[1,2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Given the context of the test, is the following statement true or false? Can a B+ blood type donor give blood to an O- recipient?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-20T21:11:01.848Z"
+	  }
+	],
+	"Meteorology": [
+	  {
+		"original": "{\"question\":\"How much of the total mass of the atmosphere is located below the 750 mb level?\",\"options\":[\"Approximately 25%\",\"Approximately 50%\",\"Approximately 75%\"],\"answers\":[1,2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"How much of the total mass of the atmosphere is located below the 750 mb level?\",\"options\":[\"Approximately 25%\",\"Approximately 50%\",\"Approximately 75%\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-15T00:14:27.242Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which is true?\",\"options\":[\"high thin clouds are transparent to longwave radiation.\",\"low thick clouds hold shortwave block radiation.\",\"clouds do not help with regulating radiation.\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Which is true?\",\"options\":[\"high thin clouds are transparent to longwave radiation.\",\"low thick clouds block shortwave radiation.\",\"clouds do not help with regulating radiation.\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-20T19:37:34.218Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is the largest contribution to sea level rise?\",\"options\":[\"changes in land liquid water storage\",\"melting of glaciers and ice sheets\",\"melting of sea ice\",\"thermal expansion\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following is the largest contribution to sea level rise?\",\"options\":[\"changes in land liquid water storage\",\"melting of glaciers and ice sheets\",\"melting of sea ice\",\"thermal expansion\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-21T21:24:47.847Z"
+	  }
+	],
+	"Microbe Mission": [
+	  {
+		"original": "{\"question\":\"Convert the listed metric measurements to micrometers (μm). Each answer must have a unit, or it will be counted wrong. Answers must be in scientific notation, ex: 2 x 10^5, 3 x 10^-2 etc. 150 nm\",\"options\":[],\"answers\":[\"1.5 x 10^-1 μm\"],\"difficulty\":0.8,\"originalIndex\":1700}",
+		"edited": "{\"question\":\"Convert 150 nm to micrometers (μm). Each answer must have a unit, or it will be counted wrong. Answers must be in scientific notation, ex: 2 x 10^5, 3 x 10^-2 etc. \",\"answers\":[\"1.5 x 10^-1 μm\"],\"difficulty\":0.8}",
+		"timestamp": "2025-03-14T04:01:06.206Z"
+	  },
+	  {
+		"original": "{\"question\":\"Select the true statement regarding the process of Osmosis:\",\"options\":[\"Osmosis is the process by which solutes diffuse across a permeable membrane from an area of high solute concentration to an area of low solute concentration.\",\"Osmosis is the process by which water diffuses across a permeable membrane from an area of low solute concentration to high concentration.\",\"Osmosis is the process by which solutes diffuse across a semi-permeable membrane from an area of high solute concentration to an area of low solute concentration.\",\"Osmosis is the process by which water diffuses across a semi-permeable membrane from an area of low solute concentration to high concentration.\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Select the true statement regarding the process of Osmosis:\",\"options\":[\"Osmosis is the process by which solutes diffuse across a permeable membrane from an area of high solute concentration to an area of low solute concentration.\",\"Osmosis is the process by which water diffuses across a permeable membrane from an area of low solute concentration to high concentration.\",\"Osmosis is the process by which solutes diffuse across a semi-permeable membrane from an area of high solute concentration to an area of low solute concentration.\",\"Osmosis is the process by which water diffuses across a semi-permeable membrane from an area of low solute concentration to high concentration.\"],\"answers\":[2,4],\"difficulty\":0.2}",
+		"timestamp": "2025-03-14T22:23:30.402Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following best describes the symbiof[]c relaf[]onship between rhizobacteria and plants during nitrogen ﬁxaf[]on?\",\"options\":[\"Rhizobacteria ﬁx nitrogen into a usable form for plants, while plants provide rhizobacteria with sugars and organic compounds as an energy source.\",\"Rhizobacteria absorb nitrogen from the soil, which is then used by plants for growth, while plants secrete nitrogen compounds for the bacteria.\",\"Rhizobacteria compete with plants for nitrogen in the soil, but nitrogen ﬁxaf[]on helps them coexist in the rhizosphere.\",\"Rhizobacteria act as parasites, consuming plant nutrients for their own growth, while plants beneﬁt from the nitrogen ﬁxaf[]on process.\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":2152}",
+		"edited": "{\"question\":\"Which of the following best describes the symbiotic relationship between rhizobacteria and plants during nitrogen ﬁxation?\",\"options\":[\"Rhizobacteria ﬁx nitrogen into a usable form for plants, while plants provide rhizobacteria with sugars and organic compounds as an energy source.\",\"Rhizobacteria absorb nitrogen from the soil, which is then used by plants for growth, while plants secrete nitrogen compounds for the bacteria.\",\"Rhizobacteria compete with plants for nitrogen in the soil, but nitrogen ﬁxation helps them coexist in the rhizosphere.\",\"Rhizobacteria act as parasites, consuming plant nutrients for their own growth, while plants beneﬁt from the nitrogen ﬁxation process.\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-03-15T21:05:05.028Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or false: Some viruses incorporate double-stranded RNA as their genetic material. Convert to MCQ.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2,\"originalIndex\":474}",
+		"edited": "{\"question\":\"True or false: Some viruses incorporate double-stranded RNA as their genetic material. Convert to MCQ.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
+		"timestamp": "2025-03-21T16:16:53.730Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is not an adaptation mechanism of parasites to increase transmission?\",\"options\":[\"Borrelia pathogens use ticks as a vector to transmit Lyme disease infections\",\"Many bacterial pathogens form spores that can withstand harsh environmental conditions\",\"Mycobacteria infect immune cells to evade the host immune system\",\"A single SARS-CoV2 infection can produce billions of viral particles\",\"More than one of the above (select answers)\"],\"answers\":[5],\"difficulty\":0.7,\"originalIndex\":2125}",
+		"edited": "{\"question\":\"Which of the following is not an adaptation mechanism of pathogens to increase transmission?\",\"options\":[\"Borrelia pathogens use ticks as a vector to transmit Lyme disease infections\",\"Many bacterial pathogens form spores that can withstand harsh environmental conditions\",\"Mycobacteria infect immune cells to evade the host immune system\",\"A single SARS-CoV2 infection can produce billions of viral particles\",\"More than one of the above (select answers)\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-21T17:16:15.304Z"
+	  }
+	],
+	"Optics": [
+	  {
+		"original": "{\"question\":\"Derive the prism equation from Snell's Law.\",\"options\":[],\"answers\":[\"Answer Required\"],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Derive the prism equation from Snell's Law.\",\"answers\":[\"proper derivation should be inserted\"],\"difficulty\":0.79}",
+		"timestamp": "2025-03-14T23:27:37.867Z"
+	  },
+	  {
+		"original": "{\"question\":\"How does the human eye detect color?\",\"options\":[],\"answers\":[\"Using cone cells in the retina that are sensitive to different wavelengths of light (red, green, blue).\"],\"difficulty\":1}",
+		"edited": "{\"question\":\"How does the human eye detect color?\",\"answers\":[\"Using cone cells in the retina that are sensitive to different wavelengths of light (red, green, blue).\"],\"difficulty\":0.1}",
+		"timestamp": "2025-03-14T23:28:43.146Z"
+	  },
+	  {
+		"original": "{\"question\":\"A combination of green and yellow light is shined onto a magenta pigment. What is the resulting perceived color?\",\"options\":[\"red\",\"blue-green\",\"black\",\"blue\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"A combination of green and yellow light is shined onto a magenta pigment. What is the resulting perceived color?\",\"options\":[\"red\",\"blue-green\",\"black\",\"blue\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-14T23:40:09.436Z"
+	  },
+	  {
+		"original": "{\"question\":\"(1 point) Nevin has eye issues, and finds that the lens from the previous problem, with radii of curvature R1 = 4 cm and R2 = 5 cm, fixes his eyesight. What is the power of the lens from the previous problem in diopters, and what disease does Nevin most likely have? (ignore whether this lens would be practical in reality).\",\"options\":[\"Myopia; 0.255 D\",\"Hyperopia; 25.53 D\",\"Myopia; 25.53 D\",\"Hyperopia; 0.255 D\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":205}",
+		"edited": "{\"question\":\"(1 point) Nevin has eye issues, and finds that the lens from the previous problem, with radii of curvature R1 = 4 cm and R2 = 5 cm, fixes his eyesight. What is the power of the lens from the previous problem in diopters, and what disease does Nevin most likely have? (ignore whether this lens would be practical in reality).\",\"options\":[\"Myopia; 0.255 D\",\"Hyperopia; 25.53 D\",\"Myopia; 25.53 D\",\"Hyperopia; 0.255 D\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-16T17:10:38.671Z"
+	  },
+	  {
+		"original": "{\"question\":\"The RGB combinations of two colors are C1 = (224, 175, 255) and C2 = (128, 0, 0). To the nearest integers, what is the RGB combination obtained by mixing C1 and C2 in a two-to-one ratio?\",\"options\":[\"(255, 175, 255)\",\"(199, 80, 244)\",\"(176, 88, 128)\",\"(192, 117, 170)\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":2071}",
+		"edited": "{\"question\":\"The RGB combinations of two colors are C1 = (224, 175, 255) and C2 = (128, 0, 0). To the nearest integers, what is the RGB combination obtained by mixing C1 and C2 in a two-to-one ratio?\",\"options\":[\"(255, 175, 255)\",\"(199, 80, 244)\",\"(176, 88, 128)\",\"(192, 117, 170)\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-16T17:14:28.413Z"
+	  },
+	  {
+		"original": "{\"question\":\"An object looks blue when viewed under a white light source. What color will the object appear when it is illuminated by a white light source and viewed through a yellow filter?\",\"options\":[\"blue\",\"Cyan\",\"green\",\"Magenta\",\"Red\",\"Yellow\",\"None of the Above\"],\"answers\":[3],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"An object looks blue when viewed under a white light source. What color will the object appear when it is illuminated by a white light source and viewed through a yellow filter?\",\"options\":[\"blue\",\"Cyan\",\"green\",\"Magenta\",\"Red\",\"Yellow\",\"None of the Above\"],\"answers\":[7],\"difficulty\":0.6}",
+		"timestamp": "2025-03-19T10:41:34.138Z"
+	  },
+	  {
+		"original": "{\"question\":\"Diffuse reflection is different than regular (or specular) reflection. In diffuse reflection, light _____; this is not the case for regular reflection. Select all that apply.\",\"options\":[\"reflects off a rough surface\",\"rays within a narrow beam reflect and remain in a beam\",\"does not follow the law of reflection\",\"does follow the law of reflection\",\"None of these apply.\"],\"answers\":[1,3],\"difficulty\":0.6,\"originalIndex\":1873}",
+		"edited": "{\"question\":\"Diffuse reflection is different than regular (or specular) reflection. In diffuse reflection, light _____; this is not the case for regular reflection. Select all that apply.\",\"options\":[\"reflects off a rough surface\",\"rays within a narrow beam reflect and remain in a beam\",\"does not follow the law of reflection\",\"does follow the law of reflection\",\"None of these apply.\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-03-19T18:59:02.852Z"
+	  },
+	  {
+		"original": "{\"question\":\"Suppose a light ray traveling through air enters water, then glass, then water, and glass again and finally exits back to air. How many times will the light ray refract?\",\"options\":[\"one time\",\"two times\",\"three times\",\"four times\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Suppose a light ray traveling through air enters water, then glass, then water, and glass again and finally exits back to air. How many times will the light ray refract?\",\"options\":[\"two time\",\"three times\",\"four times\",\"five times\"],\"answers\":[4],\"difficulty\":0.17}",
+		"timestamp": "2025-03-20T17:41:50.319Z"
+	  },
+	  {
+		"original": "{\"question\":\"In a camera, the aperture controls the intensity of light reaching the film or sensor, similar to the pupil in a human eye. Is this true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"In a camera, the aperture controls the intensity of light reaching the film or sensor, similar to the pupil in a human eye. Is this true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2}",
+		"timestamp": "2025-03-20T19:19:52.283Z"
+	  }
+	],
+	"Potions and Poisons": [
+	  {
+		"original": "{\"question\":\"Which of the following is NOT considered a toxic living organism?\",\"options\":[\"Poison Dart Frog\",\"Pufferfish\",\"Poison Ivy\",\"Honey Bee\"],\"answers\":[3],\"difficulty\":0.4,\"originalIndex\":161}",
+		"edited": "{\"question\":\"Which of the following is NOT considered a toxic living organism?\",\"options\":[\"Poison Dart Frog\",\"Pufferfish\",\"Poison Ivy\",\"Honey Bee\"],\"answers\":[4],\"difficulty\":0.4}",
+		"timestamp": "2025-03-19T19:41:40.617Z"
+	  },
+	  {
+		"original": "{\"question\":\"A TLC was developed in 30% ethyl acetate and 70% hexanes. By increasing the percentage of the polar solvent, what change would you expect to observe?\",\"options\":[\"All retention factors increase\",\"All retention factors decrease\",\"Some retention factors decrease\",\"Some retention factors increase\",\"No change\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":499}",
+		"edited": "{\"question\":\"A TLC was developed in 30% ethyl acetate and 70% hexanes. By increasing the percentage of the polar solvent, what change would you expect to observe?\",\"options\":[\"All retention factors increase\",\"All retention factors decrease\",\"Some retention factors decrease\",\"Some retention factors increase\",\"No change\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-20T20:24:00.692Z"
+	  }
+	],
+	"Reach for the Stars": [
+	  {
+		"original": "{\"question\":\"There is a known mass-luminosity relationship with main sequence stars, where L is proportional to M raised to what power?\",\"options\":[\"2\",\"3\",\"3.5\",\"2.5\"],\"answers\":[2],\"difficulty\":0.2,\"originalIndex\":406}",
+		"edited": "{\"question\":\"There is a known mass-luminosity relationship with main sequence stars, where L is proportional to M raised to what power?\",\"options\":[\"2\",\"3\",\"3.5\",\"2.5\"],\"answers\":[3],\"difficulty\":0.19}",
+		"timestamp": "2025-03-19T20:58:00.816Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is some evidence that supports SN 1604 being a type Ia supernova? Select all that apply.\",\"options\":[\"Large amounts of iron in the remnant\",\"Nitrogen rich surroundings\",\"Presence of a neutron star at its core\",\"Absence of a neutron star at its core\"],\"answers\":[1,4],\"difficulty\":0.7,\"originalIndex\":111}",
+		"edited": "{\"question\":\"What is some evidence that supports SN 1604 being a type Ia supernova? Select all that apply.\",\"options\":[\"Large amounts of iron in the remnant\",\"Nitrogen rich surroundings\",\"Presence of a neutron star at its core\",\"Absence of a neutron star at its core\"],\"answers\":[1,3],\"difficulty\":0.71}",
+		"timestamp": "2025-03-16T16:36:37.007Z"
+	  }
+	],
+	"Wind Power": [
+	  {
+		"original": "{\"question\":\"Blade element momentum (BEM) theory consists of multiple conservation laws: mass, momentum, and energy. You are considering installing a wind turbine at three dif[]erent sites. Laser power transmission is a promising method for long-range wireless power transmission (WPT). [1] Which has more signif[]cant eddy current losses?\",\"options\":[\"CPT\",\"IPT\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":426}",
+		"edited": "{\"question\":\"Blade element momentum (BEM) theory consists of multiple conservation laws: mass, momentum, and energy. You are considering installing a wind turbine at three different sites. Laser power transmission is a promising method for long-range wireless power transmission (WPT). [1] Which has more significant eddy current losses?\",\"options\":[\"CPT\",\"IPT\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-14T16:07:00.249Z"
+	  },
+	  {
+		"original": "{\"question\":\"A flywheel with a moment of inertia of 0.1 kgm2 is rotating at a constant angular velocity of 300 rad/s. The energy stored in the flywheel is:\",\"options\":[\"150 J\",\"1500 J\",\"450 J\",\"4500 J\"],\"answers\":[3],\"difficulty\":0.9,\"originalIndex\":463}",
+		"edited": "{\"question\":\"A flywheel with a moment of inertia of 0.1 kgm2 is rotating at a constant angular velocity of 300 rad/s. The energy stored in the flywheel is:\",\"options\":[\"150 J\",\"1500 J\",\"450 J\",\"4500 J\"],\"answers\":[4],\"difficulty\":0.9}",
+		"timestamp": "2025-03-15T20:24:42.301Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following strategies have been studied to reduce animal collisions with turbines? Select all that apply.\",\"options\":[\"ultrasonic deterrents\",\"painting turbines black\",\"ultraviolet lighting\",\"caged turbines\"],\"answers\":[1,2,3,4],\"difficulty\":0.7,\"originalIndex\":780}",
+		"edited": "{\"question\":\"Which of the following strategies have been studied to reduce animal collisions with turbines? Select all that apply.\",\"options\":[\"ultrasonic deterrents\",\"painting turbines black\",\"ultraviolet lighting\",\"caged turbines\"],\"answers\":[1,2,3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-15T20:26:43.541Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the primary disadvantage of HVDC over AC for long distance power transmission?\",\"options\":[\"Greater construction cost\",\"High power loss in transmission\",\"Danger to birds\",\"Difficulty to integrate with renewable energy sources.\",\"Expensive conversion stations\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":513}",
+		"edited": "{\"question\":\"What is the primary disadvantage of HVDC over AC for long distance power transmission?\",\"options\":[\"Greater construction cost\",\"High power loss in transmission\",\"Danger to birds\",\"Difficulty to integrate with renewable energy sources.\",\"Expensive conversion stations\"],\"answers\":[5],\"difficulty\":0.6}",
+		"timestamp": "2025-03-15T20:45:23.030Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the function of the wedges in a generator stator?\",\"options\":[\"To increase magnetic flux\",\"To reduce vibration\",\"To hold the bars in place\",\"To provide insulation\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":978}",
+		"edited": "{\"question\":\"What is the function of the wedges in a generator stator?\",\"options\":[\"To increase magnetic flux\",\"To reduce vibration\",\"To hold the bars in place\",\"To provide insulation\"],\"answers\":[2,3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-15T23:25:05.968Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the most common type of wind turbine?\",\"options\":[\"Floating\",\"Horizontal Axis\",\"Vertical Axis\",\"VAWT\"],\"answers\":[2],\"difficulty\":0.4,\"originalIndex\":920}",
+		"edited": "{\"question\":\"What is the most common type of wind turbine?\",\"options\":[\"Floating\",\"Horizontal Axis\",\"Vertical Axis\"],\"answers\":[2],\"difficulty\":0.4}",
+		"timestamp": "2025-03-17T16:57:23.908Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following are reasons DC is preferred over AC in power transmission? (Mark ALL correct answers)\",\"options\":[\"The quantum hall effect causes losses\",\"The hall effect causes losses\",\"Only AC induces eddy currents\",\"AC radiates a lot of its energy as induced magnetic fields surrounding the wires\",\"Only AC induces eddy currents\"],\"answers\":[3,4],\"difficulty\":0.8,\"originalIndex\":1189}",
+		"edited": "{\"question\":\"Which of the following are reasons DC is preferred over AC in power transmission? (Mark ALL correct answers)\",\"options\":[\"The quantum hall effect causes losses\",\"The hall effect causes losses\",\"Only AC induces eddy currents\",\"AC radiates a lot of its energy as induced magnetic fields surrounding the wires\"],\"answers\":[3,4],\"difficulty\":0.8}",
+		"timestamp": "2025-03-17T16:59:43.481Z"
+	  },
+	  {
+		"original": "{\"question\":\"Mario has a propeller power up that lets him jump even higher! But what if he wanted to fly? The lift generated by his propellor hat is given by  𝐿 = 1/2 ρ𝑉^2 π𝑟^2𝐶𝑙 , where  ρ  is the density of air (1. 293 𝑘𝑔/𝑚^3),  𝑉 = 90 𝑚/𝑠 is the velocity of his propellor blades,  𝐶𝑙  is the efficiency of the blades,  𝑟 = 30 𝑐𝑚 is the length of one of the propellor blades. If Mario weighs 70 kg, what is the minimum  𝐶𝑙  efficiency to allow for flight? The gravitational constant is g= -9. 8 𝑚/𝑠^2.\",\"options\":[],\"answers\":[\"4.88\"],\"difficulty\":0.8,\"originalIndex\":1597}",
+		"edited": "{\"question\":\"Mario has a propeller power up that lets him jump even higher! But what if he wanted to fly? The lift generated by his propellor hat is given by  𝐿 = 1/2 ρ𝑉^2 π𝑟^2𝐶𝑙 , where  ρ  is the density of air (1. 293 𝑘𝑔/𝑚^3),  𝑉 = 90 𝑚/𝑠 is the velocity of his propellor blades,  𝐶𝑙  is the efficiency of the blades,  𝑟 = 30 𝑐𝑚 is the length of one of the propellor blades. If Mario weighs 70 kg, what is the minimum  𝐶𝑙  efficiency to allow for flight? The gravitational constant is g= -9. 8 𝑚/𝑠^2.\",\"answers\":[\"0.46\"],\"difficulty\":0.8}",
+		"timestamp": "2025-03-17T20:44:16.060Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following methods of power generation does not utilize a steam turbine in most commercial installations?\",\"options\":[\"Nuclear\",\"Coal\",\"Hydroelectric\",\"None of the above\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":1304}",
+		"edited": "{\"question\":\"Which of the following methods of power generation does not utilize a steam turbine in most commercial installations?\",\"options\":[\"Nuclear\",\"Coal\",\"Hydroelectric\",\"None of the above\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-18T02:56:05.045Z"
+	  }
 	]
   }

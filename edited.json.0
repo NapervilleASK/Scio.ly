@@ -1,0 +1,275 @@
+{
+	"Anatomy - Integumentary": [
+	  {
+		"original": "{\"question\":\"How do goosebumps help keep the body warm?\",\"options\":[\"The muscle identified above contracts, generating heat\",\"The hair follicle is raised, closing the pores in the skin\",\"The raised hair follicles trap air near the skin to retain body heat\",\"All of the above\"],\"answers\":[3],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"How do goosebumps help keep the body warm?\",\"options\":[\"The muscles contract, generating heat\",\"The hair follicle is raised, closing the pores in the skin\",\"The raised hair follicles trap air near the skin to retain body heat\",\"All of the above\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-12T16:17:30.166Z"
+	  },
+	  {
+		"original": "{\"question\":\"What was once regarded as “house dust allergy” has been identified as an allergy to the inhaled feces of Dematophagoides.\",\"options\":[\"True L\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"What was once regarded as “house dust allergy” has been identified as an allergy to the inhaled feces of Dematophagoides.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-12T16:23:22.116Z"
+	  }
+	],
+	"Anatomy - Muscular": [
+	  {
+		"original": "{\"question\":\"Label muscles of the body. (Free Response)\",\"options\":[],\"answers\":[\"Answers should include the identification of various muscles throughout the body, such as biceps brachii, triceps brachii, pectoralis major, deltoid, latissimus dorsi, rectus abdominis, quadriceps femoris, hamstrings, gastrocnemius, etc.\"],\"difficulty\":0.5,\"originalIndex\":968}",
+		"edited": "{\"question\":\"Label muscles of the body. (Free Response)\",\"answers\":[\"Answers should include the identification of various muscles throughout the body, such as biceps brachii, triceps brachii, pectoralis major, deltoid, latissimus dorsi, rectus abdominis, quadriceps femoris, hamstrings, gastrocnemius, etc.\"],\"difficulty\":0.5}",
+		"timestamp": "2025-03-12T23:38:40.695Z"
+	  },
+	  {
+		"original": "{\"question\":\"Hypocalcemia (low calcium levels) can cause:\",\"options\":[\"Muscle strain\",\"Muscle spasms\",\"Muscle tension\",\"Muscle cramps\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":398}",
+		"edited": "{\"question\":\"Hypocalcemia (low calcium levels) can cause:\",\"options\":[\"Muscle strain\",\"Muscle spasms\",\"Muscle tension\",\"Muscle cramps\"],\"answers\":[1,2,3,4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-12T23:40:00.453Z"
+	  }
+	],
+	"Anatomy - Skeletal": [
+	  {
+		"original": "{\"question\":\"Which of the following is the correct metabolic order of the development of calcitriol?\",\"options\":[\"7-dehydrocholesterol > calcidiol > cholecalciferol > calcitriol\",\"Calcidiol > 7-dehydrocholesterol > cholecalciferol > calcitriol\",\"Cacidiol > cholecalciferol > 7-dehydrocholesterol > calcitriol\",\"7-dehydrocholesterol > cholecalciferol > calcidiol > calciferol\",\"Cholecalciferol > 7-dehydrocholesterol > calcidiol > calciferol\"],\"answers\":[4],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Which of the following is the correct metabolic order of the development of calcitriol?\",\"options\":[\"7-dehydrocholesterol > calcidiol > cholecalciferol > calcitriol\",\"Calcidiol > 7-dehydrocholesterol > cholecalciferol > calcitriol\",\"Cacidiol > cholecalciferol > 7-dehydrocholesterol > calcitriol\",\"7-dehydrocholesterol > cholecalciferol > calcidiol > calcitriol\",\"Cholecalciferol > 7-dehydrocholesterol > calcidiol > calciferol\"],\"answers\":[4],\"difficulty\":0.8}",
+		"timestamp": "2025-03-12T16:58:35.532Z"
+	  }
+	],
+	"Crime Busters": [
+	  {
+		"original": "{\"question\":\"A powder was found on Heracles. The powder is insoluble in water, does not react with HCl, and has a bad odor when added to iodine. What is the identity of the powder?\",\"options\":[\"Sugar\",\"Cornstarch\",\"Table salt\",\"Flour\",\"Sand\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A powder was found on Heracles. The powder is insoluble in water, does not react with HCl, and has a bad odor when added to iodine. What is the identity of the powder?\",\"options\":[\"Sugar\",\"Cornstarch\",\"Table salt\",\"Flour\",\"Sand\"],\"answers\":[5],\"difficulty\":0.4}",
+		"timestamp": "2025-03-13T16:56:04.350Z"
+	  }
+	],
+	"Disease Detectives": [
+	  {
+		"original": "{\"question\":\"The Stanford Three-Community study tested the link between media campaigns and what disease?\",\"options\":[\"Influenza\",\"HIV\",\"Bacterial Meningitis\",\"Cardiovascular\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":3412}",
+		"edited": "{\"question\":\"The Stanford Three-Community study tested the link between media campaigns and what disease?\",\"options\":[\"Influenza\",\"HIV\",\"Bacterial Meningitis\",\"Cardiovascular\"],\"answers\":[4],\"difficulty\":1}",
+		"timestamp": "2025-03-11T22:37:31.648Z"
+	  },
+	  {
+		"original": "{\"question\":\"Public health surveillance includes which activities? (Mark ALL correct answers)\",\"options\":[\"Data collection.\",\"Data analysis.\",\"Data interpretation\",\"Data dissemination.\",\"Disease control.\"],\"answers\":[1,2,3,4],\"difficulty\":0.9,\"originalIndex\":734}",
+		"edited": "{\"question\":\"Public health surveillance includes which activities? (Mark ALL correct answers)\",\"options\":[\"Data collection.\",\"Data analysis.\",\"Data interpretation\",\"Data dissemination.\",\"Link to Action\"],\"answers\":[1,2,3,4,5],\"difficulty\":0.9}",
+		"timestamp": "2025-03-11T22:44:39.572Z"
+	  },
+	  {
+		"original": "{\"question\":\"Who discovered the vaccine for rabies and disproved the theory of spontaneous generation?\",\"options\":[\"Louis Pasteur\",\"Edward Jenner\",\"Jonas Salk\",\"John Graunt\"],\"answers\":[1],\"difficulty\":1,\"originalIndex\":3860}",
+		"edited": "{\"question\":\"Who discovered the vaccine for rabies and disproved the theory of spontaneous generation?\",\"options\":[\"Louis Pasteur\",\"Edward Jenner\",\"Jonas Salk\",\"John Graunt\"],\"answers\":[1],\"difficulty\":0.46}",
+		"timestamp": "2025-03-11T22:46:57.319Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the Descriptive Epidemiological Triad?\",\"options\":[\"Person, Place, Environment\",\"Person, Disease type, environment\",\"Transmission method, Agent, Victim\",\"Vector, Host, Time\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"What is the Descriptive Epidemiological Triad?\",\"options\":[\"Person, Place, Time\",\"Person, Disease type, environment\",\"Transmission method, Agent, Victim\",\"Vector, Host, Time\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-12T15:26:48.229Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which scenario below is an example of sentinel surveillance?\",\"options\":[\"Patients or providers voluntarily report adverse reactions following vaccination to the Vaccine Adverse Event Reporting System (VAERS)\",\"Every fifth person at a primary care office gets tested for COVID in a high prevalence area\",\"Searching for reports of influenza-like illness in the area following a suspected anthrax attack\",\"Following an outbreak of listeria associated with a restaurant, the CDC contacts healthcare providers for a list of patients with listeria symptoms\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Which scenario below is an example of sentinel surveillance?\",\"options\":[\"Patients or providers voluntarily report adverse reactions following vaccination to the Vaccine Adverse Event Reporting System (VAERS)\",\"Every fifth person at a primary care office gets tested for COVID in a high prevalence area\",\"Searching for reports of influenza-like illness in the area following a suspected anthrax attack\",\"Following an outbreak of listeria associated with a restaurant, the CDC contacts healthcare providers for a list of patients with listeria symptoms\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-12T15:27:45.314Z"
+	  },
+	  {
+		"original": "{\"question\":\"Explain how the local, state, and national government contribute to healthcare.\",\"options\":[],\"answers\":[[]],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Explain how the local, state, and national government contribute to healthcare.\",\"answers\":[\"Explanation: Healthcare in the United States is a complex system involving multiple players, including the local, state, and national governments. Each level plays a distinct role in funding, regulating, and providing healthcare services to ensure the health and well-being of its citizens. Here's a breakdown of each level's contributions:\\n\\nLocal Government:\\n\\nPublic Health Services: Local governments are directly responsible for many public health services. This includes things like health inspections of restaurants and other establishments, mosquito control, and sanitation services. They also often run local health departments that offer services such as immunizations, health education, and disease surveillance.\\nDirect Provision of Care: Many local governments operate public hospitals and clinics, particularly in underserved areas, providing essential care to low-income and uninsured individuals. They may also run emergency medical services (EMS) and provide substance abuse treatment programs.\\nCommunity Health Initiatives: Local governments often implement targeted programs to address specific health needs within their communities, such as programs to combat obesity, reduce smoking rates, or promote mental health awareness.\\nState Government:\\n\\nMedicaid Administration: States are primarily responsible for administering the Medicaid program, which provides health coverage to low-income individuals and families. States determine eligibility criteria (within federal guidelines), manage provider networks, and oversee program operations. They also have some flexibility in designing their Medicaid programs to meet the unique needs of their populations.\\nRegulation and Licensing: State governments regulate healthcare professionals (doctors, nurses, pharmacists, etc.) through licensing boards, ensuring they meet certain standards of education and competence. They also regulate healthcare facilities, such as hospitals and nursing homes, to ensure quality of care and patient safety.\\nPublic Health Programs: States often run statewide public health programs, such as cancer screening programs, immunization registries, and programs to address chronic diseases. They also play a role in responding to public health emergencies, such as pandemics or natural disasters.\\nInsurance Regulation: States regulate health insurance companies operating within their borders, ensuring they offer adequate coverage, adhere to fair pricing practices, and protect consumers' rights.\\nNational Government (Federal):\\n\\nMedicare Administration: The federal government runs the Medicare program, which provides health insurance to seniors and individuals with disabilities. Medicare is primarily funded through payroll taxes and general revenue.\\nRegulation of Pharmaceuticals and Medical Devices: The Food and Drug Administration (FDA), a federal agency, regulates the safety and efficacy of pharmaceuticals, medical devices, and other health-related products.\\nFunding for Research and Training: The National Institutes of Health (NIH) is the primary federal agency for conducting and supporting medical research. The federal government also provides funding for training healthcare professionals through various programs.\\nEnactment of Healthcare Laws and Policies: The federal government passes laws that significantly impact healthcare, such as the Affordable Care Act (ACA), which expanded health insurance coverage and implemented various healthcare reforms. The Centers for Medicare & Medicaid Services (CMS) sets regulations for federal healthcare programs and enforces compliance.\\nSetting National Health Goals: The federal government, through agencies like the Department of Health and Human Services (HHS), sets national health goals and priorities, such as reducing preventable diseases and improving access to care.\"],\"difficulty\":0.1}",
+		"timestamp": "2025-03-12T23:07:13.909Z"
+	  },
+	  {
+		"original": "{\"question\":\"Given mononucleosis is caused by the Epstein-Barr Virus (EBV), which can be transmitted through saliva, blood, and aerosol droplets and illness is characterized by extreme fatigue, sore throat, and fever, which of the following study designs is best suited to establishing a causal relationship between Aqua-Pure and leukemia from the Aqua-Pure Crisis?\",\"options\":[\"Randomized-controlled trial\",\"Prospective cohort\",\"Retrospective cohort\",\"Case-control\",\"Case-series\",\"Cross-sectional\"],\"answers\":[1],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"Given mononucleosis is caused by the Epstein-Barr Virus (EBV), which can be transmitted through saliva, blood, and aerosol droplets and illness is characterized by extreme fatigue, sore throat, and fever, which of the following study designs is best suited to establishing a causal relationship between Aqua-Pure and leukemia from the Aqua-Pure Crisis?\",\"options\":[\"Randomized-controlled trial\",\"Prospective cohort\",\"Retrospective cohort\",\"Case-control\",\"Case-series\",\"Cross-sectional\"],\"answers\":[3],\"difficulty\":0.4}",
+		"timestamp": "2025-03-13T16:10:33.539Z"
+	  }
+	],
+	"Dynamic Planet - Glaciers": [
+	  {
+		"original": "{\"question\":\"Given that the oldest and most stable continental glacier is in East Antarctica, what type of glacier is it?\",\"options\":[\"Tidewater glacier\",\"Continental glacier\",\"Piedmont glacier\",\"Hanging glacier\"],\"answers\":[2],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"Given that the oldest and most stable glacier is in East Antarctica, what type of glacier is it?\",\"options\":[\"Tidewater glacier\",\"Continental glacier\",\"Piedmont glacier\",\"Hanging glacier\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-11T18:04:49.519Z"
+	  },
+	  {
+		"original": "{\"question\":\"What general shape do glacial valleys take?\",\"options\":[\"U\",\"V\",\"Your mom\"],\"answers\":[1],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"What general shape do glacial valleys take?\",\"options\":[\"U\",\"V\",\"Your mom\"],\"answers\":[1],\"difficulty\":0.04}",
+		"timestamp": "2025-03-11T18:07:00.675Z"
+	  },
+	  {
+		"original": "{\"question\":\"In 10,000 years, the Earth’s new obliquity will cause the Earth to have: Select all that apply\",\"options\":[\"Warmer summers\",\"Warmer winters\",\"Colder summers\",\"Colder winters\"],\"answers\":[3,4],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"In 10,000 years, the Earth’s new obliquity will cause the Earth to have: Select all that apply\",\"options\":[\"Warmer summers\",\"Warmer winters\",\"Colder summers\",\"Colder winters\"],\"answers\":[3,4],\"difficulty\":0.45}",
+		"timestamp": "2025-03-11T18:08:57.883Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of moraine forms along the sides of a glacier?\",\"options\":[\"Terminal Moraine\",\"Medial Moraine\",\"Lateral Moraine\",\"Ground Moraine\"],\"answers\":[3],\"difficulty\":1}",
+		"edited": "{\"question\":\"What type of moraine forms along the sides of a glacier?\",\"options\":[\"Terminal Moraine\",\"Medial Moraine\",\"Lateral Moraine\",\"Ground Moraine\"],\"answers\":[3],\"difficulty\":0.18}",
+		"timestamp": "2025-03-13T20:51:43.301Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the primary cause of glacial abrasion?\",\"options\":[\"Subglacial water flow\",\"Rock fragments within the ice\",\"Wind erosion\",\"Volcanic activity under glaciers\"],\"answers\":[2],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the primary cause of glacial abrasion?\",\"options\":[\"Subglacial water flow\",\"Rock fragments within the ice\",\"Wind erosion\",\"Volcanic activity under glaciers\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-13T20:52:11.413Z"
+	  }
+	],
+	"Ecology": [
+	  {
+		"original": "{\"question\":\"Which process leads to an increase in atmospheric nitrogen?\",\"options\":[\"Ammoni\\\\ufffdcation\",\"Denitri\\\\ufffdcation\",\"Nitri\\\\ufffdcation\",\"Deamination\",\"Assimilation\"],\"answers\":[2],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"Which process leads to an increase in atmospheric nitrogen?\",\"options\":[\"Ammonification\",\"Denitrification\",\"Nitrification\",\"Deamination\",\"Assimilation\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-10T12:53:04.519Z"
+	  },
+	  {
+		"original": "{\"question\":\"An organism which puts energy into rapid growth and reproduction but is likely to face high mortality rates is known as a:\",\"options\":[\"l-selected organism\",\"K-selected organism\",\"M-selected organism\",\"r-selected organism\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"An organism which puts energy into rapid growth and reproduction but is likely to face high mortality rates is known as a:\",\"options\":[\"l-selected organism\",\"K-selected organism\",\"M-selected organism\",\"r-selected organism\"],\"answers\":[4],\"difficulty\":0.26}",
+		"timestamp": "2025-03-10T22:49:07.891Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of these is an adaptation of crossbills?\",\"options\":[\"Special mouth to pry off tree bark for insects\",\"Special mouth to open pine cones\",\"Special mouth to hunt lemmings\",\"Special mouth to efficiently eat pine needles\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Which of these is an adaptation of crossbills?\",\"options\":[\"Special mouth to pry off tree bark for insects\",\"Special mouth to open pine cones\",\"Special mouth to hunt lemmings\",\"Special mouth to efficiently eat pine needles\"],\"answers\":[2],\"difficulty\":0.52}",
+		"timestamp": "2025-03-10T22:49:38.989Z"
+	  },
+	  {
+		"original": "{\"question\":\"Ecological Concepts: For 27-32 What term best describes the following relationships: Plants exchange nutrients with underground fungi in mycorrhizal connections:\",\"options\":[],\"answers\":[\"Mutualism\"],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"What term best describes the following relationships: Plants exchange nutrients with underground fungi in mycorrhizal connections:\",\"answers\":[\"Mutualism\"],\"difficulty\":0.84}",
+		"timestamp": "2025-03-11T18:20:07.150Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the IUCN red list?\",\"options\":[],\"answers\":[\"The IUCN Red List of Threatened Species is the world's most comprehensive inventory of the global conservation status of biological species\"],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the IUCN red list?\",\"answers\":[\"The IUCN Red List of Threatened Species is the world's most comprehensive inventory of the global conservation status of biological species\"],\"difficulty\":0.22}",
+		"timestamp": "2025-03-11T18:23:57.910Z"
+	  },
+	  {
+		"original": "{\"question\":\"What biome would you expect to find a xerocole in? What general group of organisms does it refer to?\",\"options\":[\"Desert, animal\",\"Desert, plant\",\"Grassland, animal\",\"Grassland, plant\",\"None of the above\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"What biome would you expect to find a xerocole in? What general group of organisms does it refer to?\",\"options\":[\"Desert, animal\",\"Desert, plant\",\"Grassland, animal\",\"Grassland, plant\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-12T19:03:05.944Z"
+	  },
+	  {
+		"original": "{\"question\":\"Winters in a desert are never cold.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.4,\"originalIndex\":104}",
+		"edited": "{\"question\":\"Winters in a desert are never cold.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-13T04:43:01.260Z"
+	  },
+	  {
+		"original": "{\"question\":\"Within deciduous forests, which of the following factors is typically positively correlated with bird species diversity?\\nA. Forest height\\nB. Tree density\\nC. Number of tree layers\\nD. A and C\\nE. All of the above\",\"options\":[\"Forest height\",\"Tree density\",\"Number of tree layers\",\"A and C\",\"All of the above\"],\"answers\":[4,5],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Within deciduous forests, which of the following factors is typically positively correlated with bird species diversity?\\nA. Forest height\\nB. Tree density\\nC. Number of tree layers\\nD. A and C\\nE. All of the above\",\"options\":[\"Forest height\",\"Tree density\",\"Number of tree layers\",\"A and C\",\"All of the above\"],\"answers\":[5],\"difficulty\":0.6}",
+		"timestamp": "2025-03-13T22:24:01.259Z"
+	  }
+	],
+	"Entomology": [
+	  {
+		"original": "{\"question\":\"True or False: Insects of this family have hind legs that are shorter than their front wings.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"True or False: Insects the of the Acrididae family have hind legs that are longs than their front legs.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2}",
+		"timestamp": "2025-03-11T22:39:23.159Z"
+	  },
+	  {
+		"original": "{\"question\":\"True/false: We’ve all seen those people who wave the red f[]ag in an arena and the bulls run towards it as entertainment, or at least heard about it somewhere in our childhood. If you were a red f[]ag bearer in a arena but for wasps the red color would irritate them and make them swarm around you\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"True/false: The banderilleros wave a red flag in an arena to have bulls run at them, a common sport in Portugal. Imagine you replace the bulls with wasps. Would the red color irritate them?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-11T22:43:14.394Z"
+	  },
+	  {
+		"original": "{\"question\":\"Integrated Pest Management (IPM) integrates multiple pest control strategies. Which of the following approaches is often considered antithetical to the core tenets of IPM, and why is it viewed as detrimental to sustainable pest management?\",\"options\":[\"Utilization of monitoring techniques to track pest populations\",\"Sole reliance on broad-spectrum insecticides, which can lead to resistance development and disruption of non-target species\",\"Incorporation of biological control agents to mitigate pest populations\",\"Implementation of cultural practices that minimize pest establishment\"],\"answers\":[2],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Integrated Pest Management (IPM) integrates multiple pest control strategies. Which of the following approaches is often considered antithetical to the core tenets of IPM, and why is it viewed as detrimental to sustainable pest management?\",\"options\":[\"Utilization of monitoring techniques to track pest populations.\",\"Sole reliance on broad-spectrum insecticides.\",\"Incorporation of biological control agents to mitigate pest populations.\",\"Implementation of cultural practices that minimize pest establishment.\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-11T22:45:32.968Z"
+	  },
+	  {
+		"original": "{\"question\":\"William (specimen A) has f[]nally manned up and of[]cially become an adult. What is one physical defense trait that has stayed with him from his caterpillar years to his adult years.\",\"options\":[\"Formic acid production\",\"Pyrrolizidine alkaloid sequestration\",\"Mimicry\",\"Regurgitation of plant compounds\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"William (specimen A) has f[]nally manned up and of[]cially become an adult. What is one physical defense trait that has stayed with him from his caterpillar years to his adult years.\",\"options\":[\"Formic acid production\",\"Pyrrolizidine alkaloid sequestration\",\"Mimicry\",\"Regurgitation of plant compounds\"],\"answers\":[2,3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-11T22:49:20.980Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following terms refers to complete metamorphosis?\",\"options\":[\"Telometabolous\",\"Hemimetabolous\",\"Ametabolous\",\"Holometabolous\"],\"answers\":[4],\"difficulty\":1}",
+		"edited": "{\"question\":\"Which of the following terms refers to complete metamorphosis?\",\"options\":[\"Telometabolous\",\"Hemimetabolous\",\"Ametabolous\",\"Holometabolous\"],\"answers\":[4],\"difficulty\":0.17}",
+		"timestamp": "2025-03-11T22:50:29.115Z"
+	  },
+	  {
+		"original": "{\"question\":\"Where would you find the Mesopleuron?\",\"options\":[\"Front of the belly\",\"Side wall, last (posterior) thoracic segment\",\"Middle of the first (anterior) thoracic segment\",\"Side wall, middle throracic segment\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Where would you find the Mesopleuron?\",\"options\":[\"Front of the belly\",\"Side wall, last (posterior) thoracic segment\",\"Middle of the first (anterior) thoracic segment\",\"Side wall, middle throracic segment\"],\"answers\":[4],\"difficulty\":1}",
+		"timestamp": "2025-03-11T22:51:16.867Z"
+	  }
+	],
+	"Materials Science": [
+	  {
+		"original": "{\"question\":\"Qualitative Analysis I: Powder Identification. What flame color does CaCO3 produce?\",\"options\":[\"Red\",\"Purple\",\"N/A\",\"Orange\"],\"answers\":[2],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"Qualitative Analysis I: Powder Identification. What flame color does CaCO3 produce?\",\"options\":[\"Red\",\"Purple\",\"N/A\",\"Orange\"],\"answers\":[4],\"difficulty\":0.2}",
+		"timestamp": "2025-03-10T17:02:19.224Z"
+	  }
+	],
+	"Meteorology": [
+	  {
+		"original": "{\"question\":\"The type of clouds responsible for producing lightning, hail, and tornadoes.\",\"options\":[\"Cirrus\",\"Cumulus\",\"Stratus\",\"Nimbostratus\",\"Cumulonimbus\",\"Altostratus\",\"Altocumulus\",\"Stratocummulus\",\"Cirrostratus\",\"Cirrocumulus\"],\"answers\":[5],\"difficulty\":0.9}",
+		"edited": "{\"question\":\"The type of clouds responsible for producing lightning, hail, and tornadoes.\",\"options\":[\"Cirrus\",\"Cumulus\",\"Stratus\",\"Nimbostratus\",\"Cumulonimbus\",\"Altostratus\",\"Altocumulus\",\"Stratocummulus\",\"Cirrostratus\",\"Cirrocumulus\"],\"answers\":[5],\"difficulty\":0.23}",
+		"timestamp": "2025-03-12T03:49:25.394Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is an example of katabatic winds?\",\"options\":[\"Folen winds\",\"Fall winds\",\"Planetary winds\",\"Mountain breeze\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following is an example of katabatic winds?\",\"options\":[\"Folen winds\",\"Fall winds\",\"Planetary winds\",\"Mountain breeze\"],\"answers\":[2,4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-12T23:28:57.088Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following connects equal points of atmospheric pressure?\",\"options\":[\"Isotach\",\"Isobar\",\"Isohypse\",\"Isotherm\"],\"answers\":[2],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"Which of the following connects equal points of atmospheric pressure?\",\"options\":[\"Isotach\",\"Isobar\",\"Isohypse\",\"Isotherm\"],\"answers\":[2],\"difficulty\":0.01}",
+		"timestamp": "2025-03-13T18:05:01.038Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the feature that separates supercells from other thunderstorms?\",\"options\":[\"Mesocyclone\",\"Inflow jets\",\"Gust front\",\"Forward flank downdraft\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the feature that separates supercells from other thunderstorms?\",\"options\":[\"Mesocyclone\",\"Inflow jets\",\"Gust front\",\"Forward flank downdraft\"],\"answers\":[1],\"difficulty\":0.23}",
+		"timestamp": "2025-03-13T18:07:11.406Z"
+	  },
+	  {
+		"original": "{\"question\":\"In what layer of the atmosphere is there a temperature inversion? Select all that applies.\",\"options\":[\"Troposphere\",\"Stratosphere\",\"Mesosphere\",\"Ionosphere\",\"Thermosphere\"],\"answers\":[1,2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"In what layer of the atmosphere is there a temperature inversion? Select all that applies.\",\"options\":[\"Troposphere\",\"Stratosphere\",\"Mesosphere\",\"Ionosphere\",\"Thermosphere\"],\"answers\":[2,5],\"difficulty\":0.1}",
+		"timestamp": "2025-03-13T18:16:27.013Z"
+	  },
+	  {
+		"original": "{\"question\":\"Weather is determined by the conditions in the:\",\"options\":[\"Troposphere\",\"Stratosphere\",\"Mesosphere\",\"Thermosphere\"],\"answers\":[1],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"Weather is determined by the conditions in the:\",\"options\":[\"Troposphere\",\"Stratosphere\",\"Mesosphere\",\"Thermosphere\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-13T18:23:04.073Z"
+	  }
+	],
+	"Optics": [
+	  {
+		"original": "{\"question\":\"A laser strikes the surface of a pane of glass (n=1.56) at 67° from the normal line, what is the angle of refraction?\",\"options\":[\"35.21°\",\"27.90°\",\"59.02°\",\"36.16°\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A laser strikes the surface of a pane of glass (n=1.56) at 67° from the normal line, what is the angle of refraction?\",\"options\":[\"35.21°\",\"27.90°\",\"59.02°\",\"36.16°\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-11T11:32:57.292Z"
+	  },
+	  {
+		"original": "{\"question\":\"If a light ray strikes a flat mirror at an angle of 30° from the normal, the ray will be reflected at an angle of\",\"options\":[\"30° from the mirror’s surface.\",\"60° from the mirror’s surface.\",\"60° from the normal.\",\"90° from the normal.\"],\"answers\":[3],\"difficulty\":0.6,\"originalIndex\":1862}",
+		"edited": "{\"question\":\"If a light ray strikes a flat mirror at an angle of 30° from the normal, the ray will be reflected at an angle of\",\"options\":[\"30° from the mirror’s surface.\",\"60° from the mirror’s surface.\",\"60° from the normal.\",\"90° from the normal.\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-13T14:25:51.181Z"
+	  }
+	],
+	"Potions and Poisons": [
+	  {
+		"original": "{\"question\":\"What is the closest pKA of acetic acid in water?\",\"options\":[\"2\",\"3\",\"4\",\"5\"],\"answers\":[5],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"What is the closest pKA of acetic acid in water?\",\"options\":[\"2\",\"3\",\"4\",\"5\"],\"answers\":[4,5],\"difficulty\":0.1}",
+		"timestamp": "2025-03-10T20:34:32.865Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following does NOT represent rubbing alcohol?\",\"options\":[\"Isopropanol\",\"C  3  H  8  O\",\"CH  3  CHOHCH  3\",\"All of the above\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Which of the following represents rubbing alcohol?\",\"options\":[\"Isopropanol\",\"C  3  H  8  O\",\"CH  3  CHOHCH  3\",\"All of the above\"],\"answers\":[4],\"difficulty\":0.33}",
+		"timestamp": "2025-03-12T18:47:46.983Z"
+	  },
+	  {
+		"original": "{\"question\":\"In Sodium Chloride or NaCl, when the two atoms bond they are held together by _________ bonds\",\"options\":[\"Metallic\",\"Ionic\",\"Hydrogen\",\"Covalent\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"In Sodium Chloride or NaCl, when the two atoms bond they are held together by _________ bonds\",\"options\":[\"Metallic\",\"Ionic\",\"Hydrogen\",\"Covalent\"],\"answers\":[2],\"difficulty\":1}",
+		"timestamp": "2025-03-12T19:28:29.002Z"
+	  }
+	],
+	"Reach for the Stars": [
+	  {
+		"original": "{\"question\":\"If a star’s luminosity doubled, by what factor did its temperature change given its radius doubled?\",\"options\":[\"1/(2^(¼))\",\"2^(¼))\",\"1/2\",\"2^(½)\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"If a star’s luminosity doubled, by what factor did its temperature change given its radius doubled?\",\"options\":[\"1/(2^(¼))\",\"2^(¼))\",\"1/2\",\"2^(½)\"],\"answers\":[1],\"difficulty\":0.75}",
+		"timestamp": "2025-03-12T16:17:08.589Z"
+	  },
+	  {
+		"original": "{\"question\":\"What are some characteristics of a hypergiant?\",\"options\":[\"Low mass, low luminosity, extremely common\",\"Large mass, medium luminosity, rare\",\"Medium mass, medium luminosity, very rare\",\"Large mass, high luminosity, very rare\"],\"answers\":[4],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"What are some characteristics of a hypergiant?\",\"options\":[\"Low mass, low luminosity, extremely common\",\"Large mass, medium luminosity, rare\",\"Medium mass, medium luminosity, very rare\",\"Large mass, high luminosity, very rare\"],\"answers\":[4],\"difficulty\":0.31}",
+		"timestamp": "2025-03-12T16:27:46.555Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is a star?\",\"options\":[\"Jupiter\",\"Moon\",\"SN 1987A\",\"A Mira Variable\"],\"answers\":[3],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following is a star?\",\"options\":[\"Jupiter\",\"Moon\",\"SN 1987A\",\"A Mira Variable\"],\"answers\":[4],\"difficulty\":0.04}",
+		"timestamp": "2025-03-12T23:22:40.216Z"
+	  },
+	  {
+		"original": "{\"question\":\"There is a known mass-luminosity relationship with main sequence stars, where L is proportional to M raised to what power?\",\"options\":[\"2\",\"3\",\"3.5\",\"2.5\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":408}",
+		"edited": "{\"question\":\"There is a known mass-luminosity relationship with main sequence stars, where L is proportional to M raised to what power?\",\"options\":[\"2\",\"3\",\"3.5\",\"2.5\"],\"answers\":[2],\"difficulty\":0.2}",
+		"timestamp": "2025-03-13T17:19:40.439Z"
+	  }
+	],
+	"Wind Power": [
+	  {
+		"original": "{\"question\":\"____ is an organism that transmits a pathogen from one host to another\",\"options\":[],\"answers\":[\"B\"],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"____ is an organism that transmits a pathogen from one host to another\",\"answers\":[\"vector\"],\"difficulty\":0.2}",
+		"timestamp": "2025-03-13T21:57:33.597Z"
+	  }
+	]
+  }
