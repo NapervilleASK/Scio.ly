@@ -107,6 +107,21 @@ const isMultiSelectQuestion = (question: string, answers?: (number | string)[]):
   return false;
 };
 
+// Add this new function to check if a question has already been contested
+const hasQuestionBeenContested = (index: number): boolean => {
+  const contestedQuestions = JSON.parse(localStorage.getItem('contestedUnlimitedQuestions') || '[]');
+  return contestedQuestions.includes(index);
+};
+
+// Add this new function to mark a question as contested
+const markQuestionAsContested = (index: number): void => {
+  const contestedQuestions = JSON.parse(localStorage.getItem('contestedUnlimitedQuestions') || '[]');
+  if (!contestedQuestions.includes(index)) {
+    contestedQuestions.push(index);
+    localStorage.setItem('contestedUnlimitedQuestions', JSON.stringify(contestedQuestions));
+  }
+};
+
 export default function UnlimitedPracticePage() {
   const router = useRouter();
 
@@ -202,6 +217,7 @@ export default function UnlimitedPracticePage() {
       if (window.location.pathname !== '/unlimited') {
         localStorage.removeItem('unlimitedQuestions');
         localStorage.removeItem('testParams');
+        localStorage.removeItem('contestedUnlimitedQuestions');
       }
     };
   }, []);
@@ -459,14 +475,34 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
             {isSubmitted && (
               <button
               onClick={async () => {
-                const isValid = await validateContest(data[currentQuestionIndex], currentAnswer ?? []); // You can replace "Contest reason" with a specific reason if needed
-                if (isValid) {
-                  setGradingResults(() => ({ [currentQuestionIndex]: 1 }));
-                  toast.success('Contest accepted! Your answer has been marked as correct.', {
+                // Check if question has already been contested
+                if (hasQuestionBeenContested(currentQuestionIndex)) {
+                  toast.error('This question has already been contested', {
                     autoClose: 5000
                   });
-                } else {
-                  toast.error('Contest rejected. The original grade stands.', {
+                  return;
+                }
+                
+                try {
+                  // Validate contest and wait for it to finish completely
+                  const isValid = await validateContest(data[currentQuestionIndex], currentAnswer ?? []);
+                  
+                  if (isValid) {
+                    setGradingResults(() => ({ [currentQuestionIndex]: 1 }));
+                    toast.success('Contest accepted! Your answer has been marked as correct.', {
+                      autoClose: 5000
+                    });
+                  } else {
+                    toast.error('Contest rejected. The original grade stands.', {
+                      autoClose: 5000
+                    });
+                  }
+                  
+                  // Mark as contested only after all notifications and processing is complete
+                  markQuestionAsContested(currentQuestionIndex);
+                } catch (error) {
+                  console.error('Error during contest validation:', error);
+                  toast.error('An error occurred during contest validation', {
                     autoClose: 5000
                   });
                 }
@@ -638,6 +674,22 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
     );
   };
 
+  const handleResetTest = () => {
+    setCurrentAnswer([]);
+    setCurrentQuestionIndex(0);
+    setData([]);
+    setGradingResults({});
+    setIsSubmitted(false);
+    setExplanations({});
+    
+    // Clear unlimited practice-related localStorage items
+    localStorage.removeItem('unlimitedQuestions');
+    localStorage.removeItem('testParams');
+    localStorage.removeItem('contestedUnlimitedQuestions');
+    
+    router.push('/');
+  };
+
   return (
     <>
       <div className="relative min-h-screen">
@@ -716,12 +768,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
 
           {/* Back Button (bottom-left) */}
           <button
-            onClick={() => {
-              // Clear unlimited practice-related localStorage items
-              localStorage.removeItem('unlimitedQuestions');
-              localStorage.removeItem('testParams');
-              router.push('/practice');
-            }}
+            onClick={handleResetTest}
             className={`fixed bottom-8 left-8 p-4 rounded-full shadow-lg transition-transform duration-300 hover:scale-110 transition-colors duration-1000 ease-in-out ${
               darkMode
                 ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100'

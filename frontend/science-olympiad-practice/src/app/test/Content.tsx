@@ -314,94 +314,149 @@ export default function TestPage() {
 
   const handleSubmit = async () => {
     setIsSubmitted(true);
-    // Set a flag in localStorage to indicate that the test has been submitted
-    localStorage.setItem('testSubmitted', 'true');
-    // Clear saved user answers since the test is now submitted
-    localStorage.removeItem('testUserAnswers');
     
-    let totalAttempted = 0;
-    let totalScore = 0;
-    
-    // Process multiple-choice questions individually.
-    await Promise.all(
-      data.map(async (question, index) => {
-        if (question.options && question.options.length > 0) {
-          const answers = userAnswers[index];
-          if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
-            totalAttempted++;
-            // Get correct answers from options using 1-based indices
-            const correctAnswers = question.answers.map(
-              (ans) => question.options![ans as number - 1]
-            );
-            
-            // Handle multi-select questions
-            if (question.answers.length > 1) {
-              const filteredAnswers = answers.filter((a): a is string => a !== null);
-              const numCorrectSelected = filteredAnswers.filter((a) => correctAnswers.includes(a)).length;
-              const hasIncorrectAnswers = filteredAnswers.some(a => !correctAnswers.includes(a));
-              
-              // Set score: 1 for perfect, 0.5 for partial (but count as wrong), 0 for completely wrong
-              if (numCorrectSelected === correctAnswers.length && !hasIncorrectAnswers) {
-                setGradingResults((prev) => ({ ...prev, [index]: 1 }));
-                totalScore += 1;
-              } else if (numCorrectSelected > 0) {
-                setGradingResults((prev) => ({ ...prev, [index]: 0.5 })); // Shows amber but counts as wrong
-              } else {
-                setGradingResults((prev) => ({ ...prev, [index]: 0 }));
-              }
-            } else {
-              // Single select questions
-              const filteredAnswers = answers.filter((a): a is string => a !== null);
-              const isCorrect = filteredAnswers.length === 1 && filteredAnswers[0] === correctAnswers[0];
-              setGradingResults((prev) => ({ ...prev, [index]: isCorrect ? 1 : 0 }));
-              if (isCorrect) totalScore += 1;
-            }
-          } else {
-            setGradingResults((prev) => ({ ...prev, [index]: 0 }));
-          }
-        }
-      })
-    );
-    
-    // Gather free-response questions for batch grading.
-    const freeResponseIndices: number[] = [];
-    const freeResponses: { question: string; correctAnswers: (string | number)[]; studentAnswer: string }[] = [];
-    data.forEach((question, index) => {
-      if (!question.options || question.options.length === 0) {
-        const answers = userAnswers[index];
-        if (answers && answers.length > 0 && answers[0] !== null && answers[0] !== '') {
-          freeResponseIndices.push(index);
-          freeResponses.push({
-            question: question.question,
-            correctAnswers: question.answers,
-            studentAnswer: answers[0] as string
-          });
-          totalAttempted++;
-        } else {
-          setGradingResults((prev) => ({ ...prev, [index]: 0 }));
-        }
-      }
-    });
-    
-    if (freeResponses.length > 0) {
-      const scores = await gradeFreeResponses(freeResponses);
-      scores.forEach((score, idx) => {
-        const index = freeResponseIndices[idx];
-        setGradingResults((prev) => ({ ...prev, [index]: score }));
-        if (score >= 0.5) totalScore += score;
-      });
+    // Extract questions that need to be graded
+    interface FRQToGrade {
+      index: number;
+      question: string;
+      correctAnswers: (string | number)[];
+      studentAnswer: string;
     }
     
-    await updateMetrics(auth.currentUser?.uid || null, {
-      questionsAttempted: totalAttempted,
-      correctAnswers: Math.round(totalScore),
-      eventName: routerData.eventName || undefined
-    });
+    const frqsToGrade: FRQToGrade[] = [];
     
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    // Calculate scores for multiple-choice questions
+    let mcqScore = 0;
+    let mcqTotal = 0;
+    
+    for (let i = 0; i < data.length; i++) {
+      const question = data[i];
+      const answer = userAnswers[i] || [];
+      
+      // Skip if this question has already been graded via contest
+      if (gradingResults[i] === 1) {
+        mcqScore += 1;
+        mcqTotal += 1;
+        continue;
+      }
+      
+      // Skip questions with no answer
+      if (!answer.length || !answer[0]) continue;
+      
+      // For MCQ
+      if (question.options && question.options.length) {
+        mcqTotal++;
+        
+        // Simple matching for MCQ
+        const correct = Array.isArray(question.answers)
+          ? question.answers
+          : [question.answers];
+        
+        // Convert option index to 1-based for comparison with correct answers (if numeric)
+        const userNumericAnswers = answer
+          .map(ans => {
+            const idx = question.options?.indexOf(ans ?? "");
+            return idx !== undefined && idx >= 0 ? idx + 1 : -1;
+          })
+          .filter(idx => idx > 0);
+        
+        // Get the text of correct answers
+        const correctTexts = correct
+          .filter(ans => typeof ans === 'number')
+          .map(ans => {
+            const idx = (ans as number) - 1;
+            return question.options && idx >= 0 && idx < question.options.length 
+              ? question.options[idx] 
+              : undefined;
+          })
+          .filter((text): text is string => text !== undefined);
+        
+        // If fully correct (exact match)
+        if (
+          // If user chose all correct options for multi-select...
+          (isMultiSelectQuestion(question.question, question.answers) &&
+            correct.every(correctAns => {
+              if (typeof correctAns === 'number') {
+                return userNumericAnswers.includes(correctAns);
+              } else {
+                return answer.some(ans => ans === correctAns);
+              }
+            }) &&
+            userNumericAnswers.length === correct.filter(ans => typeof ans === 'number').length)
+          ||
+          // ...or single correct answer for single-select
+          (!isMultiSelectQuestion(question.question, question.answers) &&
+            (correct.includes(userNumericAnswers[0]) ||
+             answer.some(ans => ans !== null && (correct.includes(ans as string) || correctTexts.includes(ans)))))
+        ) {
+          mcqScore++;
+          // Store the grade for this question
+          setGradingResults(prev => ({ ...prev, [i]: 1 }));
+        } else {
+          // Store that this question was incorrect
+          setGradingResults(prev => ({ ...prev, [i]: 0 }));
+        }
+      } else {
+        // For FRQ
+        if (answer[0] !== null) {
+          frqsToGrade.push({
+            index: i,
+            question: question.question,
+            correctAnswers: question.answers,
+            studentAnswer: answer[0] as string
+          });
+        }
+      }
+    }
+    
+    // Grade FRQs using Gemini if there are any
+    if (frqsToGrade.length > 0) {
+      try {
+        const scores = await gradeFreeResponses(
+          frqsToGrade.map(item => ({
+            question: item.question,
+            correctAnswers: item.correctAnswers,
+            studentAnswer: item.studentAnswer
+          }))
+        );
+        
+        // Process the FRQ scores
+        scores.forEach((score, idx) => {
+          const questionIndex = frqsToGrade[idx].index;
+          setGradingResults(prev => ({ ...prev, [questionIndex]: score }));
+          
+          // Add to the total score
+          if (score >= 0.5) {
+            mcqScore += score;
+            mcqTotal += 1;
+          }
+        });
+      } catch (error) {
+        console.error("Error grading FRQs:", error);
+        // If there's an error, mark all FRQs as incorrect
+        frqsToGrade.forEach(item => {
+          setGradingResults(prev => ({ ...prev, [item.index]: 0 }));
+        });
+      }
+    }
+    
+    // Set a flag in localStorage to indicate that the test has been submitted
+    localStorage.setItem('testSubmitted', 'true');
+    
+    // Clear user answers from localStorage to allow a new test to be generated if the page is refreshed
+    localStorage.removeItem('testUserAnswers');
+    
+    // Don't remove contestedQuestions from localStorage after submission
+    // This ensures that if user views the same test again, they cannot re-contest questions
+    
+    // Update user metrics
+    if (auth.currentUser && routerData.eventName) {
+      updateMetrics(auth.currentUser.uid, {
+        questionsAttempted: mcqTotal,
+        correctAnswers: Math.round(mcqScore),
+        eventName: routerData.eventName
+      });
+    }
   };
 
   const handleBackToMain = () => {
@@ -410,11 +465,15 @@ export default function TestPage() {
 
   // Reset the test while preserving test parameters
   const handleResetTest = () => {
+    setIsSubmitted(false);
+    setUserAnswers({});
+    setGradingResults({});
+    setExplanations({});
     localStorage.removeItem('testQuestions');
     localStorage.removeItem('testUserAnswers');
+    localStorage.removeItem('contestedQuestions');
     localStorage.setItem('testTimeLeft',JSON.parse(localStorage.getItem("testParams") ?? "{}")?.timeLimit.toString() || "30");
-    // testParams is preserved to regenerate a new test using the same parameters
-    window.location.reload()
+    router.push('/practice');
   };
 
   const formatTime = (seconds: number): string => {
@@ -511,6 +570,21 @@ export default function TestPage() {
       toast.error(`Failed to get explanation: ${(error as Error).message}`);
     } finally {
       setLoadingExplanation((prev) => ({ ...prev, [index]: false }));
+    }
+  };
+
+  // Add this new function to check if a question has already been contested
+  const hasQuestionBeenContested = (index: number): boolean => {
+    const contestedQuestions = JSON.parse(localStorage.getItem('contestedQuestions') || '[]');
+    return contestedQuestions.includes(index);
+  };
+
+  // Add this new function to mark a question as contested
+  const markQuestionAsContested = (index: number): void => {
+    const contestedQuestions = JSON.parse(localStorage.getItem('contestedQuestions') || '[]');
+    if (!contestedQuestions.includes(index)) {
+      contestedQuestions.push(index);
+      localStorage.setItem('contestedQuestions', JSON.stringify(contestedQuestions));
     }
   };
 
@@ -704,6 +778,14 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                             {isSubmitted && (
                               <button
                                 onClick={async () => {
+                                  // Check if question has already been contested
+                                  if (hasQuestionBeenContested(index)) {
+                                    toast.error('This question has already been contested', {
+                                      autoClose: 5000
+                                    });
+                                    return;
+                                  }
+
                                   const now = Date.now();
                                   if (now - lastCallTime < RATE_LIMIT_DELAY) {
                                     toast.error('Please wait a moment before contesting again');
@@ -711,14 +793,26 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                                   }
                                   setLastCallTime(now);
                               
-                                  const isValid = await validateContest(question, userAnswers[index] ?? []); // You can replace "Contest reason" with a specific reason if needed
-                                  if (isValid) {
-                                    setGradingResults(prev => ({ ...prev, [index]: 1 }));
-                                    toast.success('Contest accepted! Your answer has been marked as correct.', {
-                                      autoClose: 5000
-                                    });
-                                  } else {
-                                    toast.error('Contest rejected. The original grade stands.', {
+                                  try {
+                                    // Validate contest and wait for it to finish completely
+                                    const isValid = await validateContest(question, userAnswers[index] ?? []);
+                                    
+                                    if (isValid) {
+                                      setGradingResults(prev => ({ ...prev, [index]: 1 }));
+                                      toast.success('Contest accepted! Your answer has been marked as correct.', {
+                                        autoClose: 5000
+                                      });
+                                    } else {
+                                      toast.error('Contest rejected. The original grade stands.', {
+                                        autoClose: 5000
+                                      });
+                                    }
+                                    
+                                    // Mark as contested only after all notifications and processing is complete
+                                    markQuestionAsContested(index);
+                                  } catch (error) {
+                                    console.error('Error during contest validation:', error);
+                                    toast.error('An error occurred during contest validation', {
                                       autoClose: 5000
                                     });
                                   }
