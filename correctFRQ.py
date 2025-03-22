@@ -3,14 +3,8 @@ import google.generativeai as genai
 import random
 from joblib import Parallel, delayed
 
-# Replace these with your actual Gemini API keys.
-GEMINI_API_KEYS = [
-    "AIzaSyAGInMj66MuPgMyCQWZkXist9HYQIQKhXo",
-    "AIzaSyB0LVzvI2qZARHYckGF5xAZcDDcSLv_G4c",
-    "AIzaSyBHtubyKwYj2J4N0ONNMN9SNqQDhfFUr6c",
-    "AIzaSyA5LYpfW01qntmc9Ifb-5-RYr_nixG0S84"
-]
 
+GEMINI_API_KEYS = []
 def call_gemini(prompt: str) -> str:
     """
     Calls the Gemini 2 API with the provided prompt using one of the API keys.

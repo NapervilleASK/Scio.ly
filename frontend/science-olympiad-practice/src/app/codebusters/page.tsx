@@ -4,6 +4,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import * as XLSX from 'xlsx';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation';
 
 interface QuoteData {
     author: string;
@@ -411,6 +412,7 @@ const Timer = ({
 
 export default function CodeBusters() {
     const { darkMode, setDarkMode } = useTheme();
+    const router = useRouter();
     const [quotes, setQuotes] = useState<QuoteData[]>([]);
     const [isTestSubmitted, setIsTestSubmitted] = useState(false);
     const [testScore, setTestScore] = useState<number | null>(null);
@@ -862,6 +864,30 @@ export default function CodeBusters() {
                         : 'linear-gradient(to bottom, #2563eb, #0891b2)'};
                 }
             `}</style>
+                  <button
+        onClick={() => {
+            // Clear unlimited practice-related localStorage items
+            localStorage.removeItem('unlimitedQuestions');
+            localStorage.removeItem('testParams');
+            router.push('/practice');
+          }}
+        className={`fixed bottom-8 left-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
+          darkMode
+            ? 'bg-gradient-to-r from-regalblue-100 to-regalred-100 text-white hover:shadow-regalblue-100/50'
+            : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:shadow-blue-500/50'
+        }`}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </button>
+
         </div>
     );
 }

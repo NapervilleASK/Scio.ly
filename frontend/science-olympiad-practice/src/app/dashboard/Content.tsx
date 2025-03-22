@@ -567,14 +567,14 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "3/15/25",
+    date: "3/21/25",
     features: [
-      "🪳 Removed tons of test-taking related bugs!",
-      "⏰ Warning on low time",
-      "🎯 Even better question reporting, streamlined contest-a-question feature",
+      "📈 Improvement of question bank thanks to your reports!",
+      "✨ Added in 2025-26 season events for preparation",
+      "🎯 All new Codebusters interface!!!",
     ],
     comingSoon: [
-      "📈 Improvement of question bank thanks to your reports!"
+      "⏰ Division B!"
     ]
   };
 
