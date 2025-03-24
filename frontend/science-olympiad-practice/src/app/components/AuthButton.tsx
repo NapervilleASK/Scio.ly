@@ -318,7 +318,15 @@ export default function AuthButton() {
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                      5. Contact Us
+                      5. Age Eligibility
+                    </h3>
+                    <p className="mb-4">You must be at least 13 years old to access or use Scio.ly.</p>
+                    <p>If you are located within the European Union, you must be at least 16 years old to access or use our site.</p>
+                  </section>
+
+                  <section>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      6. Contact Us
                     </h3>
                     <p>For any privacy-related questions or concerns, please contact us with the form on the top of the dashboard page.</p>
                   </section>
