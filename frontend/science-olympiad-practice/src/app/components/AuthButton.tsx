@@ -276,59 +276,56 @@ export default function AuthButton() {
                   </button>
                 </div>
                 <div className={`space-y-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                  <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
+                  <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
                   
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       1. Information We Collect
                     </h3>
-                    <p>We collect minimal information necessary to provide our Science Olympiad practice services:</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Authentication information if you choose to sign in (email address only)</li>
-                      <li>Practice test performance data</li>
-                      <li>Usage statistics to improve our service</li>
-                    </ul>
+                    <p>We collect only the minimum necessary information to provide our Science Olympiad practice services. This includes authentication information if you choose to create an account, specifically your email address for authentication and account management purposes. We also collect practice test performance data related to your test attempts and performance to help track progress and improve our services, as well as non-identifiable usage statistics to analyze and enhance our services.</p>
                   </section>
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       2. How We Use Your Information
                     </h3>
-                    <p>We use collected information to:</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Track your progress and performance</li>
-                      <li>Improve our question bank and services</li>
-                      <li>Provide personalized practice experiences</li>
-                    </ul>
+                    <p>We use the collected information to provide and manage our services, including tracking progress, offering practice tests, and personalizing user experiences. Additionally, we analyze trends, improve our question bank, and enhance our services. Authentication information is used to manage user accounts.</p>
                   </section>
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       3. Data Security
                     </h3>
-                    <p>Your practice and authentication data is stored securely and is not shared with third parties.</p>
+                    <p>We implement industry-standard security measures to safeguard your personal data. Your authentication and practice data are stored securely and are not shared with third parties except as required by law.</p>
                   </section>
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       4. Your Rights
                     </h3>
-                    <p>You have the right to request deletion of your data at any time.</p>
+                    <p>You have the right to request access to the personal data we hold about you, request corrections to inaccurate or incomplete data, request deletion of your personal data, and where applicable, request a copy of your data in a portable format. To exercise these rights, please contact us using the information provided in Section 6.</p>
                   </section>
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       5. Age Eligibility
                     </h3>
-                    <p className="mb-4">You must be at least 13 years old to access or use Scio.ly.</p>
-                    <p>If you are located within the European Union, you must be at least 16 years old to access or use our site.</p>
+                    <p className="mb-4">You must be at least 13 years old to access or use Scio.ly if you are located in the United States or other non-EU regions. By using our services, you represent and warrant that you meet this age requirement. If you are under 13, you are strictly prohibited from using our services.</p>
+                    <p>If you are located in the European Union, you must be at least 16 years old to access or use Scio.ly. By using our services, you represent and warrant that you meet this age requirement. If you are under 16, you are strictly prohibited from using our services. We do not knowingly collect personal data from individuals under the applicable minimum age, and if we become aware that we have inadvertently collected data from an ineligible user, we will take steps to delete such information.</p>
                   </section>
 
                   <section>
                     <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       6. Contact Us
                     </h3>
-                    <p>For any privacy-related questions or concerns, please contact us with the form on the top of the dashboard page.</p>
+                    <p>For any privacy-related questions, concerns, or data requests, please contact us using the form available at the top of the dashboard page.</p>
+                  </section>
+
+                  <section>
+                    <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      7. Changes to This Policy
+                    </h3>
+                    <p>We reserve the right to update this Privacy Policy at any time. Any changes will be posted with an updated effective date. Continued use of our services after changes constitute acceptance of the revised policy. If you do not agree with the updated policy, you must discontinue use of our services and may request data deletion as outlined in this policy.</p>
                   </section>
                 </div>
                 <div className="mt-6 flex justify-end">
