@@ -33,7 +33,6 @@ type Question = ReportQuestion;
 interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
-  setData: (data: Question[]) => void;
   inputCode: string;
   setInputCode: (code: string) => void;
   setRouterData: (data: RouterParams) => void;
@@ -158,7 +157,12 @@ export default function TestPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    
+    if (localStorage.getItem("loaded")) {
+      localStorage.removeItem('testUserAnswers')
+
+      toast.success('Shared test loaded successfully!');
+      localStorage.removeItem("loaded");
+    }
     // Load user answers from localStorage if they exist
     const storedUserAnswers = localStorage.getItem('testUserAnswers');
     if (storedUserAnswers) {
@@ -1020,7 +1024,6 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
       <ShareModal
         isOpen={shareModalOpen}
         onClose={closeShareModal}
-        setData={setData}
         inputCode={inputCode}
         setInputCode={setInputCode}
         setRouterData={setRouterData}
@@ -1115,7 +1118,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
   );
 }
 
-const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, setData, inputCode, setInputCode, setRouterData, darkMode }) => {
+const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, inputCode, setInputCode, setRouterData, darkMode }) => {
   const [loadingGenerate, setLoadingGenerate] = useState(false);
   const [loadingLoad, setLoadingLoad] = useState(false);
   const [shareCode, setShareCode] = useState<string | null>(null);
@@ -1192,8 +1195,8 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
         throw new Error('No test parameters found');
       }
       const routerParams = JSON.parse(storedParams);
-      const { eventName } = routerParams;
-
+      const { eventName, timeLimit } = routerParams;
+      localStorage.setItem("testTimeLeft",timeLimit)
       setRouterData(routerParams);
       const freshResponse = await fetch(API_URL);
       if (!freshResponse.ok) {
@@ -1211,10 +1214,9 @@ const ShareModal: React.FC<ShareModalProps> = React.memo(({ isOpen, onClose, set
         throw new Error('No matching questions found for this share code');
       }
       localStorage.setItem("testQuestions",JSON.stringify(newQuestions))
-      setData(newQuestions);
-      toast.success('Shared test loaded successfully!');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      onClose();
+      localStorage.setItem("loaded","1")
+      window.location.reload()
+      
     } catch (error) {
       console.error(error);
       toast.error((error as Error).message);

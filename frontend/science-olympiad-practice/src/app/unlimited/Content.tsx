@@ -310,6 +310,7 @@ export default function UnlimitedPracticePage() {
   const handleNext = () => {
     if (data.length > 0) { // Ensure there are questions to pick from
       const randomIndex = Math.floor(Math.random() * data.length);
+      console.log(randomIndex)
       setCurrentQuestionIndex(randomIndex);
       setCurrentAnswer([]);
       setIsSubmitted(false);

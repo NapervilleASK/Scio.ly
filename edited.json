@@ -14,6 +14,11 @@
 		"original": "{\"question\":\"What is the distribution of vellus hair in adults\",\"options\":[\"10% on women\",\"10% on men\",\"90% on men\",\"90% on women\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":98}",
 		"edited": "{\"question\":\"What is the distribution of vellus hair in adults\",\"options\":[\"10% on women\",\"10% on men\",\"90% on men\",\"90% on women\"],\"answers\":[4],\"difficulty\":0.5}",
 		"timestamp": "2025-03-22T03:43:42.245Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is NOT part of the skin?\",\"options\":[\"Adipose Tissue\",\"Hair\",\"Glands\",\"None of the Above\"],\"answers\":[4],\"difficulty\":0.2,\"originalIndex\":922}",
+		"edited": "{\"question\":\"Which of the following is NOT part of the skin?\",\"options\":[\"Adipose Tissue\",\"Hair\",\"Glands\",\"None of the Above\"],\"answers\":[1],\"difficulty\":0.2}",
+		"timestamp": "2025-03-23T16:09:58.635Z"
 	  }
 	],
 	"Anatomy - Skeletal": [
@@ -53,6 +58,11 @@
 		"original": "{\"question\":\"Which space telescope first observed K2-18b?\",\"options\":[\"James Webb Space Telescope (JWST)\",\"Transiting Exoplanet Survey Satellite (TESS)\",\"Kepler Space Telescope (K2)\",\"Hubble Space Telescope (HST)\"],\"answers\":[1],\"difficulty\":1}",
 		"edited": "{\"question\":\"Which space telescope first observed K2-18b?\",\"options\":[\"James Webb Space Telescope (JWST)\",\"Transiting Exoplanet Survey Satellite (TESS)\",\"Kepler Space Telescope (K2)\",\"Hubble Space Telescope (HST)\"],\"answers\":[3],\"difficulty\":1}",
 		"timestamp": "2025-03-22T00:07:57.034Z"
+	  },
+	  {
+		"original": "{\"question\":\"Out of the Science Olympiad 2018 DSO list, which one is known for being 12.7 billion light years from Earth?\",\"options\":[\"NGC 4993\",\"Phoenix Cluster\",\"IC 10\",\"SPT 0346-52\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":2873}",
+		"edited": "{\"question\":\"Out of the Science Olympiad 2018 DSO list, which one is known for being 12.7 billion light years from Earth?\",\"options\":[\"NGC 4993\",\"Phoenix Cluster\",\"IC 10\",\"SPT 0346-52\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-23T22:49:54.698Z"
 	  }
 	],
 	"Chemistry Lab": [
@@ -96,6 +106,11 @@
 		"original": "{\"question\":\"What is the definition of Etiology?\",\"options\":[\"The probability that an event will occur\",\"the first identified case in a group of related cases of a particular communicable or heritable disease\",\"the cause, set of causes, or manner of causation of a disease or condition\",\"living organisms that can transmit infectious pathogens between humans\",\"the period between exposure to an infection and the appearance of the first symptoms\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":871}",
 		"edited": "{\"question\":\"What is the definition of Etiology?\",\"options\":[\"The probability that an event will occur\",\"the first identified case in a group of related cases of a particular communicable or heritable disease\",\"the cause, set of causes, or manner of causation of a disease or condition\",\"living organisms that can transmit infectious pathogens between humans\",\"the period between exposure to an infection and the appearance of the first symptoms\"],\"answers\":[3],\"difficulty\":0.1}",
 		"timestamp": "2025-03-18T12:55:43.495Z"
+	  },
+	  {
+		"original": "{\"question\":\"Rabies is a zoonotic disease, which means that it can be spread between people and animals. Suppose a dog gave their owner rabies. The dog would be a:\",\"options\":[\"Vector\",\"Vehicle\",\"Agent\",\"Fomite\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":5116}",
+		"edited": "{\"question\":\"Rabies is a zoonotic disease, which means that it can be spread between people and animals. Suppose a dog gave their owner rabies. The dog would be a:\",\"options\":[\"Vector\",\"Vehicle\",\"Agent\",\"Fomite\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-23T23:39:50.025Z"
 	  }
 	],
 	"Dynamic Planet - Glaciers": [
@@ -190,6 +205,11 @@
 		"original": "{\"question\":\"Indicate whether the following theory is True or False based on what is generally accepted in contemporary studies of ecology and indicate your reasoning in the following question: By the 20th century, scientists were placing greater emphasis on study inter-species interactions. One scientists in particular proposed that predator survival closely follows how well that predator's prey survives. Is their hypothesis true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.7}",
 		"edited": "{\"question\":\"Indicate whether the following theory is True or False based on what is generally accepted in contemporary studies of ecology and indicate your reasoning in the following question: By the 20th century, scientists were placing greater emphasis on study inter-species interactions. One scientists in particular proposed that predator survival closely follows how well that predator's prey survives. Is their hypothesis true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.34}",
 		"timestamp": "2025-03-19T23:20:55.394Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: Traditional Ecological Knowledge and Indigenous Knowledge are the same thing. (1pt)\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"True or False: Traditional Ecological Knowledge and Indigenous Knowledge are the same thing. (1pt)\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-22T20:25:55.248Z"
 	  }
 	],
 	"Entomology": [
@@ -236,6 +256,13 @@
 		"timestamp": "2025-03-20T21:11:01.848Z"
 	  }
 	],
+	"Materials Science": [
+	  {
+		"original": "{\"question\":\"A ceramic coating needs to be applied to a titanium alloy substrate (αT i = 8.6 × 10−6/K). Which ceramic material would be LEAST likely to experience thermal shock failure during temperature cycling?\",\"options\":[\"Al2O3 (α = 8.1 × 10−6/K)\",\"SiC (α = 4.0 × 10−6/K)\",\"ZrO2 (α = 10.5 × 10−6/K)\",\"Si3N4 (α = 3.3 × 10−6/K)\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":1077}",
+		"edited": "{\"question\":\"A ceramic coating needs to be applied to a titanium alloy substrate (αT i = 8.6 × 10−6/K). Which ceramic material would be LEAST likely to experience thermal shock failure during temperature cycling?\",\"options\":[\"Al2O3 (α = 8.1 × 10−6/K)\",\"SiC (α = 4.0 × 10−6/K)\",\"ZrO2 (α = 10.5 × 10−6/K)\",\"Si3N4 (α = 3.3 × 10−6/K)\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-03-23T02:50:50.849Z"
+	  }
+	],
 	"Meteorology": [
 	  {
 		"original": "{\"question\":\"How much of the total mass of the atmosphere is located below the 750 mb level?\",\"options\":[\"Approximately 25%\",\"Approximately 50%\",\"Approximately 75%\"],\"answers\":[1,2],\"difficulty\":0.6}",
@@ -278,6 +305,21 @@
 		"original": "{\"question\":\"Which of the following is not an adaptation mechanism of parasites to increase transmission?\",\"options\":[\"Borrelia pathogens use ticks as a vector to transmit Lyme disease infections\",\"Many bacterial pathogens form spores that can withstand harsh environmental conditions\",\"Mycobacteria infect immune cells to evade the host immune system\",\"A single SARS-CoV2 infection can produce billions of viral particles\",\"More than one of the above (select answers)\"],\"answers\":[5],\"difficulty\":0.7,\"originalIndex\":2125}",
 		"edited": "{\"question\":\"Which of the following is not an adaptation mechanism of pathogens to increase transmission?\",\"options\":[\"Borrelia pathogens use ticks as a vector to transmit Lyme disease infections\",\"Many bacterial pathogens form spores that can withstand harsh environmental conditions\",\"Mycobacteria infect immune cells to evade the host immune system\",\"A single SARS-CoV2 infection can produce billions of viral particles\",\"More than one of the above (select answers)\"],\"answers\":[3],\"difficulty\":0.7}",
 		"timestamp": "2025-03-21T17:16:15.304Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the term for a protective structure formed by bacteria that allows them to survive harsh environmental conditions?\",\"options\":[\"Capsule\",\"Nucleus\",\"Chloroplast\",\"Endoplasmic reticulum\"],\"answers\":[1],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"What is the term for a protective structure formed by bacteria that allows them to survive harsh environmental conditions?\",\"options\":[\"Capsule\",\"Nucleus\",\"Chloroplast\",\"Endospore\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-23T02:45:15.400Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following accurately describes the key difference between the lytic cycle and the lysogenic cycle?\",\"options\":[\"The lytic cycle leads to the destruction of the host cell, while the lysogenic cycle integrates the viral genome into the host’s DNA.\",\"The lytic cycle results in the integration of the viral genome, while the lysogenic cycle destroys the host cell.\",\"The lytic cycle involves conjugation, whereas the lysogenic cycle involves transduction.\",\"The lytic cycle occurs only in bacteria, while the lysogenic cycle occurs only in eukaryotic cells.\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Which of the following accurately describes the key difference between the lytic cycle and the lysogenic cycle?\",\"options\":[\"The lytic cycle leads to the destruction of the host cell, while the lysogenic cycle integrates the viral genome into the host’s DNA.\",\"The lytic cycle results in the integration of the viral genome, while the lysogenic cycle destroys the host cell.\",\"The lytic cycle involves conjugation, whereas the lysogenic cycle involves transduction.\",\"The lytic cycle occurs only in bacteria, while the lysogenic cycle occurs only in eukaryotic cells.\"],\"answers\":[1],\"difficulty\":0.31}",
+		"timestamp": "2025-03-23T20:06:06.933Z"
+	  },
+	  {
+		"original": "{\"question\":\"Match the following to their description: These produce CH4\",\"options\":[\"halophiles\",\"cyanobacteria\",\"thermophiles\",\"proteobacteria\",\"methanogens\"],\"answers\":[5],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Match the following to their description: These produce CH4\",\"options\":[\"halophiles\",\"cyanobacteria\",\"thermophiles\",\"proteobacteria\",\"methanogens\"],\"answers\":[5],\"difficulty\":0.1}",
+		"timestamp": "2025-03-23T20:09:09.378Z"
 	  }
 	],
 	"Optics": [
@@ -325,6 +367,31 @@
 		"original": "{\"question\":\"In a camera, the aperture controls the intensity of light reaching the film or sensor, similar to the pupil in a human eye. Is this true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
 		"edited": "{\"question\":\"In a camera, the aperture controls the intensity of light reaching the film or sensor, similar to the pupil in a human eye. Is this true or false?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.2}",
 		"timestamp": "2025-03-20T19:19:52.283Z"
+	  },
+	  {
+		"original": "{\"question\":\"A person deep underwater is looking up at the surface. The minimum angle to the vertical that will yield total internal reflection is 32°. What is the index of refraction of the water, given that θair = 1.00?\",\"options\":[\"2.21\",\"1.89\",\"0.53\",\"1.18\"],\"answers\":[4],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"A person deep underwater is looking up at the surface. The minimum angle to the vertical that will yield total internal reflection is 32°. What is the index of refraction of the water, given that θair = 1.00?\",\"options\":[\"2.21\",\"1.89\",\"0.53\",\"1.18\"],\"answers\":[2],\"difficulty\":0.8}",
+		"timestamp": "2025-03-22T16:10:25.173Z"
+	  },
+	  {
+		"original": "{\"question\":\"The critical angle for light traveling from glass (n = 1.5) to water (n = 1.33) is closest to:\",\"options\":[\"42.1◦\",\"48.8◦\",\"62.5◦\",\"63.3◦\",\"None of the above\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"The critical angle for light traveling from glass (n = 1.5) to water (n = 1.33) is closest to:\",\"options\":[\"42.1◦\",\"48.8◦\",\"62.5◦\",\"63.3◦\",\"None of the above\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-22T19:31:09.473Z"
+	  },
+	  {
+		"original": "{\"question\":\"Vertically polarized light goes through an ideal polarizer angled 45◦ from the vertical, and then through another ideal vertical polarizer. If the light initially had an intensity 100 W/m2, what is the intensity of the outputted light?\",\"options\":[\"25 W/m2\",\"30 W/m2\",\"40 W/m2\",\"50 W/m2\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Vertically polarized light goes through an ideal polarizer angled 45◦ from the vertical, and then through another ideal vertical polarizer. If the light initially had an intensity 100 W/m2, what is the intensity of the outputted light?\",\"options\":[\"25 W/m2\",\"30 W/m2\",\"40 W/m2\",\"50 W/m2\"],\"answers\":[1],\"difficulty\":0.89}",
+		"timestamp": "2025-03-22T19:32:33.597Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following lasers operates within the visible light spectrum? (Select all that apply)\",\"options\":[\"Excimer Laser\",\"Polariton Laser\",\"Gold Vapor Laser\",\"Argon Laser\",\"Ruby Laser\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":2827}",
+		"edited": "{\"question\":\"Which of the following lasers operates within the visible light spectrum? (Select all that apply)\",\"options\":[\"Excimer Laser\",\"Polariton Laser\",\"Gold Vapor Laser\",\"Argon Laser\",\"Ruby Laser\"],\"answers\":[3,4,5],\"difficulty\":0.1}",
+		"timestamp": "2025-03-23T00:04:53.147Z"
+	  },
+	  {
+		"original": "{\"question\":\"A thin film of oil (n1 = 1.40) rests on top of water (n2 = 1.33). Light with a wavelength of 500 nm is incident perpendicular to the oil surface, making it appear very bright in the reflected light. What is the minimum thickness of the oil film?\",\"options\":[\"89 nm\",\"179 nm\",\"358 nm\",\"475 nm\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":267}",
+		"edited": "{\"question\":\"A thin film of oil (n1 = 1.40) rests on top of water (n2 = 1.33). Light with a wavelength of 500 nm is incident perpendicular to the oil surface, making it appear very bright in the reflected light. What is the minimum thickness of the oil film?\",\"options\":[\"89 nm\",\"179 nm\",\"358 nm\",\"475 nm\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-23T17:10:11.435Z"
 	  }
 	],
 	"Potions and Poisons": [
@@ -337,6 +404,31 @@
 		"original": "{\"question\":\"A TLC was developed in 30% ethyl acetate and 70% hexanes. By increasing the percentage of the polar solvent, what change would you expect to observe?\",\"options\":[\"All retention factors increase\",\"All retention factors decrease\",\"Some retention factors decrease\",\"Some retention factors increase\",\"No change\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":499}",
 		"edited": "{\"question\":\"A TLC was developed in 30% ethyl acetate and 70% hexanes. By increasing the percentage of the polar solvent, what change would you expect to observe?\",\"options\":[\"All retention factors increase\",\"All retention factors decrease\",\"Some retention factors decrease\",\"Some retention factors increase\",\"No change\"],\"answers\":[3],\"difficulty\":0.1}",
 		"timestamp": "2025-03-20T20:24:00.692Z"
+	  },
+	  {
+		"original": "{\"question\":\"Describe the condition of the penny after finishing the reaction in the Pennies Experiment.\",\"options\":[],\"answers\":[\"Shiny or cleaned\"],\"difficulty\":0.1,\"originalIndex\":333}",
+		"edited": "{\"question\":\"Describe the condition of the penny after finishing the reaction in the Pennies Experiment. The Pennies Experiment is...\",\"answers\":[\"Shiny or cleaned\"],\"difficulty\":0.1}",
+		"timestamp": "2025-03-22T15:57:23.190Z"
+	  },
+	  {
+		"original": "{\"question\":\"Pick one correct answer and document on the answer sheet. The burning of a candle considered a:\",\"options\":[\"Chemical Change\",\"Physical Change\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":278}",
+		"edited": "{\"question\":\"The burning of a candle is considered a:\",\"options\":[\"Chemical Change\",\"Physical Change\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-22T17:12:18.043Z"
+	  },
+	  {
+		"original": "{\"question\":\"In the catalytic converter of a car, the following reaction takes place, combining carbon monoxide and oxygen into carbon dioxide: 2 CO + O2 --Pt/Pd--> 2 CO2. At standard temperature and pressure, if 4 liters of carbon dioxide are outputted by the car’s engine, then\",\"options\":[\"1/2 a liter of oxygen is used.\",\"1 liter of oxygen is used\",\"2 liters of oxygen are used.\",\"4 liters of oxygen are used.\",\"8 liters of oxygen are used.\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":142}",
+		"edited": "{\"question\":\"In the catalytic converter of a car, the following reaction takes place, combining carbon monoxide and oxygen into carbon dioxide: 2 CO + O2 --Pt/Pd--> 2 CO2. At standard temperature and pressure, if 4 liters of carbon dioxide are outputted by the car’s engine, then\",\"options\":[\"1/2 a liter of oxygen is used.\",\"1 liter of oxygen is used\",\"2 liters of oxygen are used.\",\"4 liters of oxygen are used.\",\"8 liters of oxygen are used.\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-23T00:24:53.152Z"
+	  },
+	  {
+		"original": "{\"question\":\"Quimica Chemical recently designed a new synthesis using hydrogen peroxide as an oxidizing reagent. To scale this synthesis for mass production, they opened a chemical manufacturing plant near Lake Lago. Hydrogen peroxide can decompose to form free radicals. Which kind of bond is broken to generate these radicals?\",\"options\":[\"Ionic\",\"Polar Covalent\",\"Nonpolar Covalent\",\"Hydrogen Bonds\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":510}",
+		"edited": "{\"question\":\"Quimica Chemical recently designed a new synthesis using hydrogen peroxide as an oxidizing reagent. To scale this synthesis for mass production, they opened a chemical manufacturing plant near Lake Lago. Hydrogen peroxide can decompose to form free radicals. Which kind of bond is broken to generate these radicals?\",\"options\":[\"Ionic\",\"Polar Covalent\",\"Nonpolar Covalent\",\"Hydrogen Bonds\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-23T15:59:09.713Z"
+	  },
+	  {
+		"original": "{\"question\":\"Kool-aid powder would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":39}",
+		"edited": "{\"question\":\"Kool-aid powder would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-23T17:09:29.371Z"
 	  }
 	],
 	"Reach for the Stars": [
@@ -349,6 +441,18 @@
 		"original": "{\"question\":\"What is some evidence that supports SN 1604 being a type Ia supernova? Select all that apply.\",\"options\":[\"Large amounts of iron in the remnant\",\"Nitrogen rich surroundings\",\"Presence of a neutron star at its core\",\"Absence of a neutron star at its core\"],\"answers\":[1,4],\"difficulty\":0.7,\"originalIndex\":111}",
 		"edited": "{\"question\":\"What is some evidence that supports SN 1604 being a type Ia supernova? Select all that apply.\",\"options\":[\"Large amounts of iron in the remnant\",\"Nitrogen rich surroundings\",\"Presence of a neutron star at its core\",\"Absence of a neutron star at its core\"],\"answers\":[1,3],\"difficulty\":0.71}",
 		"timestamp": "2025-03-16T16:36:37.007Z"
+	  },
+	  {
+		"original": "{\"question\":\"If a star is massive enough, it can go on to fuse even heavier elements. Typically, even the most massive stars can only fuse elements up to what?\",\"options\":[\"helium\",\"carbon\",\"oxygen\",\"uranium\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":1008}",
+		"edited": "{\"question\":\"If a star is massive enough, it can go on to fuse even heavier elements. Typically, even the most massive stars can only fuse elements up to what?\",\"options\":[\"helium\",\"Iron\",\"oxygen\",\"uranium\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-23T18:55:25.853Z"
+	  }
+	],
+	"Remote Sensing": [
+	  {
+		"original": "{\"question\":\"What state is Kansas City located in?\",\"options\":[\"Missouri\",\"Nebraska\",\"Kansas\",\"Virginia\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":673}",
+		"edited": "{\"question\":\"What state is Kansas City located in?\",\"options\":[\"Missouri\",\"Nebraska\",\"Kansas\",\"Virginia\"],\"answers\":[1,3],\"difficulty\":0.27}",
+		"timestamp": "2025-03-24T00:56:38.129Z"
 	  }
 	],
 	"Wind Power": [

@@ -1,6 +1,12 @@
 {
+	"Anatomy - Endocrine": [
+	  "{\"question\":\"According to the study, which factors were NOT associated with the risk of prostate cancer?\",\"options\":[\"Height, weight and recreational and occupational physical activity\",\"Height, weight and tobacco use\",\"Height, weight and body mass index\",\"All of the above\"],\"answers\":[1],\"difficulty\":0.4,\"originalIndex\":11}",
+	  "{\"question\":\"According to the study mentioned in the text, what is the relative risk (RR) of prostate cancer for men who consume >6.4 grams of alcohol per week?\",\"options\":[\"RR = 1.5\",\"RR = 2.4\",\"RR = 3.1\",\"The study did not measure risk of prostate cancer in men who consume this amount of alcohol per week\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":7}",
+	  "{\"question\":\"According to the study mentioned in the text, what is the relative risk (RR) of prostate cancer for men who consume >20 grams of alcohol per week, compared with non-users?\",\"options\":[\"RR = 0.5\",\"RR = 1.1\",\"RR = 2.4\",\"RR = 3.1\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":6}"
+	],
 	"Anatomy - Muscular": [
-	  "{\"question\":\"An alpha helix has approximately how many amino acid residues per turn?\",\"options\":[\"3.0\",\"3.6\",\"4.2\",\"6.5\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":221}"
+	  "{\"question\":\"An alpha helix has approximately how many amino acid residues per turn?\",\"options\":[\"3.0\",\"3.6\",\"4.2\",\"6.5\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":221}",
+	  "{\"question\":\"Which of the following treatments for HIV would be effective? Select ALL that apply. A drug that:\",\"options\":[\"Inhibits reverse transcriptase\",\"Increases the activity of regulatory T cells\",\"Blocks co-receptors on B cells\",\"Blocks co-receptors on CD8 T cells\",\"Blocks co-receptors on CD4 T cells\"],\"answers\":[1,5],\"difficulty\":0.7,\"originalIndex\":53}"
 	],
 	"Anatomy - Skeletal": [
 	  "{\"question\":\"In which numbered zone of the epiphyseal plate do chondrocytes first begin to die in large numbers?\",\"options\":[\"1\",\"2\",\"3\",\"4\",\"5\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":322}",
@@ -22,7 +28,8 @@
 	  "{\"question\":\"Which of the following best describes the Western Diamondback Rattlesnake?\",\"options\":[\"Venomous\",\"Poisonous\",\"Both of the Above\"],\"answers\":[1],\"difficulty\":0.2}"
 	],
 	"Disease Detectives": [
-	  "{\"question\":\"After you calculate the relative risk for each group of classes, which set of students seem to be particularly aﬀected?\",\"options\":[\"Spanish\",\"CS\",\"Math\",\"Art\"],\"answers\":[1],\"difficulty\":0.8}"
+	  "{\"question\":\"After you calculate the relative risk for each group of classes, which set of students seem to be particularly aﬀected?\",\"options\":[\"Spanish\",\"CS\",\"Math\",\"Art\"],\"answers\":[1],\"difficulty\":0.8}",
+	  "{\"question\":\"All of the following are relatively true of this type of study except (choose all correct answers):\\na. relatively less time consuming\\nb. relatively low cost\\nc. can be used to study many diseases in one study\\nd. can be used to study exposures that no longer exist\\ne. eliminates population bias\\nf. people dropping out of the study is no problem\",\"options\":[\"relatively less time consuming\",\"relatively low cost\",\"can be used to study many diseases in one study\",\"can be used to study exposures that no longer exist\",\"eliminates population bias\",\"people dropping out of the study is no problem\"],\"answers\":[5],\"difficulty\":0.8,\"originalIndex\":1065}"
 	],
 	"Ecology": [
 	  "{\"question\":\"For questions 22 to 26, match each term with the correct description. specialist species descriptions:\",\"options\":[\"are more important than their abundance would suggest\",\"use only one form of a given resource\",\"naturally occur in a given area\",\"are used to judge the health of an ecosystem\",\"has a tendency to spread and cause damage\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":479}",
@@ -38,7 +45,9 @@
 	  "{\"question\":\"Where was blood sample 4 collected?\",\"options\":[\"Floor near the downed shelves a few feet in front of the counter\",\"The counter\",\"At the scene\"],\"answers\":[3],\"difficulty\":0.3}",
 	  "{\"question\":\"In Polymers analysis, how many points are awarded for identifying the sample?\",\"options\":[\"1 point\",\"1.5 points\",\"2 points\",\"2.5 points\"],\"answers\":[3],\"difficulty\":0.3,\"originalIndex\":2027}",
 	  "{\"question\":\"Which side do concentric fractures occur?\",\"options\":[],\"answers\":[\"On the same side as the force\"],\"difficulty\":0.3,\"originalIndex\":1656}",
-	  "{\"question\":\"In Blood Spatter, how many points are awarded for correctly identifying the spatter pattern?\",\"options\":[\"0.5 point\",\"1 point\",\"2 points\",\"3 points\"],\"answers\":[3],\"difficulty\":0.3,\"originalIndex\":2034}"
+	  "{\"question\":\"In Blood Spatter, how many points are awarded for correctly identifying the spatter pattern?\",\"options\":[\"0.5 point\",\"1 point\",\"2 points\",\"3 points\"],\"answers\":[3],\"difficulty\":0.3,\"originalIndex\":2034}",
+	  "{\"question\":\"Is kai clear?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":1767}",
+	  "{\"question\":\"What is Mr. Krabs transitioning the Krabby Patty to?\",\"options\":[\"A vegetarian restaurant\",\"A vegan restaurant\",\"A pescatarian restaurant\",\"A shellfish restaurant\"],\"answers\":[1],\"difficulty\":0.2,\"originalIndex\":2572}"
 	],
 	"Fossils": [
 	  "{\"question\":\"What is the stratigraphic age range of the specimen? (Options: Devonian to Holocene, Silurian to Holocene, Silurian to Cretaceous, Eocene to Holocene)\",\"options\":[\"Devonian to Holocene\",\"Silurian to Holocene\",\"Silurian to Cretaceous\",\"Eocene to Holocene\"],\"answers\":[2],\"difficulty\":0.6}",
@@ -79,7 +88,10 @@
 	  "{\"question\":\"What is the name of the procedure Sill is executing? (4)\",\"options\":[],\"answers\":[\"Serial Dilution\"],\"difficulty\":0.5,\"originalIndex\":23}",
 	  "{\"question\":\"John wants to thank you for your (hopefully) valiant effort to get him a girlfriend. However, his trials and tribulations have yet to end, as after the date he has his microbiology final. Given that John still does not know what a microbe is, give the nucleic acid composition of these microbes ex. dsDNA linear. Canine parvo\",\"options\":[],\"answers\":[\"ssDNA linear\"],\"difficulty\":0.5,\"originalIndex\":1422}",
 	  "{\"question\":\"For questions 36 to 41, refer to the following table of 6 fictional bacterial species and 4 traits. 1 denotes the presence of a trait, while 0 denotes its absence: Why do we say \\\"most accurate/probable/etc.\\\" instead of \\\"correct\\\" when referring to phylogenetic trees? Give one reason why.\",\"options\":[],\"answers\":[\"Phylogenetic trees are hypotheses based on available data, and new data or different analytical methods can lead to revised trees. Furthermore, convergent evolution or horizontal gene transfer can obscure the true evolutionary relationships.\"],\"difficulty\":1,\"originalIndex\":776}",
-	  "{\"question\":\"Match the microorganisms with their characteristic: Rickettsia\",\"options\":[\"Much similar, contains one type of nucleic acid, do not reproduce by binary fission\",\"Gram+ arranged in chains\",\"Living organism, unicellular, motile, microscopic and show reproduction\",\"Grow atmospheric oxygen, visible without microscope, produces, disease\",\"Tiny organism, enable to grow outside living cells, retained by bacteria proof filters\"],\"answers\":[4],\"difficulty\":0.6}"
+	  "{\"question\":\"Match the microorganisms with their characteristic: Rickettsia\",\"options\":[\"Much similar, contains one type of nucleic acid, do not reproduce by binary fission\",\"Gram+ arranged in chains\",\"Living organism, unicellular, motile, microscopic and show reproduction\",\"Grow atmospheric oxygen, visible without microscope, produces, disease\",\"Tiny organism, enable to grow outside living cells, retained by bacteria proof filters\"],\"answers\":[4],\"difficulty\":0.6}",
+	  "{\"question\":\"I. The final plate is 1:100,000 dilution.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.4,\"originalIndex\":2476}",
+	  "{\"question\":\"In the provided test, which of the following infection is caused by penicillins used by its treatments?\",\"options\":[\"C. burnetii\",\"C. difficile\",\"C. trachomatis\",\"C. tetani\"],\"answers\":[2],\"difficulty\":0.8,\"originalIndex\":3019}",
+	  "{\"question\":\"Use the graph below to answer the questions. Include all units in your answers. Which of the following statements best summarizes the graph?\",\"options\":[\"Growth rate decreases as the temperature increases\",\"Growth rate increases as the temperature decreases\",\"Growth rate decreases as the temperature decreases\",\"Growth rate stays the same as the temperature increases\",\"Answer not given\"],\"answers\":[5],\"difficulty\":0.5,\"originalIndex\":1723}"
 	],
 	"Optics": [
 	  "{\"question\":\"An electron in the hydrogen atom transitions from the n= 4 to the n= 2 energy state. Sunlight, which contains wavelengths of all the colors, f[]irst passes through an absorption f[]ilter with the same color in part (iii). That light then passes through a second f[]ilter. What color would we then observe if the second f[]ilter was colored Red?\",\"options\":[\"Red\",\"Black\",\"Cannot determine\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":883}",
@@ -88,10 +100,18 @@
 	"Potions and Poisons": [
 	  "{\"question\":\"Given the previous information, would Dr. A have been able to give 12 mg of atropine and scopolamine to his participants without losing his job?\",\"options\":[],\"answers\":[\"No\"],\"difficulty\":0.9}",
 	  "{\"question\":\"Which of the following is known for their threat to dogs?\",\"options\":[\"Brown recluse spider\",\"Cane toad\",\"Mayapple\",\"Ongaonga\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":313}",
-	  "{\"question\":\"23. Which of the following is the correctly balanced form of the equation: 𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"options\":[\"𝐻12𝑂6 → 6𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 6𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":12}"
+	  "{\"question\":\"23. Which of the following is the correctly balanced form of the equation: 𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"options\":[\"𝐻12𝑂6 → 6𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 6𝐶𝑂2 + 6𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 𝐶𝑂2 + 𝑂2\",\"6𝐻12𝑂6 → 𝐶𝑂2 + 3𝐶𝑂2 + 6𝑂2\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":12}",
+	  "{\"question\":\"The toxins from the Death Cap Mushroom inhibits the formation of proteins created in the:\",\"options\":[\"i and ii\",\"i and iii\",\"ii and iv\",\"iii and iv\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":309}",
+	  "{\"question\":\"What does Regigigas' ability do?\",\"options\":[],\"answers\":[\"Halves the user’s attack and speed stats during the first five turns of it being in battle (resets if it is switched out)\"],\"difficulty\":0.5,\"originalIndex\":563}",
+	  "{\"question\":\"What is the full name of the orphaned boy that lived in the woods of Unova, accompanied by Pokémon as his only friends?\",\"options\":[],\"answers\":[\"Natural Harmonia Gropius\"],\"difficulty\":0.5,\"originalIndex\":573}",
+	  "{\"question\":\"What are Apricorns used to make?\",\"options\":[],\"answers\":[\"Pokeballs\"],\"difficulty\":0.5,\"originalIndex\":593}",
+	  "{\"question\":\"You are given the equation for boiling point elevation below: Define what molality is in this context.\",\"options\":[],\"answers\":[\"Molality is the number of moles of solute per kilogram of solvent.\"],\"difficulty\":0.6,\"originalIndex\":543}"
 	],
 	"Reach for the Stars": [
 	  "{\"question\":\"Which of the following best describes the object from the previous image?\",\"options\":[\"Elliptical Galaxy\",\"Spiral Galaxy\",\"Irregular Galaxy\",\"Dwarf Irregular Galaxy\",\"Nebula\",\"Cloud Complex\"],\"answers\":[4],\"difficulty\":0.5}"
+	],
+	"Remote Sensing": [
+	  "{\"question\":\"If all the ice melted (and assuming total cloud cover remains unchanged), estimate the equilibrium temperature of the Earth using the above model.\",\"options\":[\"220 K\",\"245 K\",\"270 K\",\"295 K\",\"320 K\",\"345 K\"],\"answers\":[3],\"difficulty\":0.9,\"originalIndex\":286}"
 	],
 	"Wind Power": [
 	  "{\"question\":\"Identify the parts of a wind turbine using the answer bank below: A, B, C, D, E, F, G, H. Answer Bank: Drive Shaft, Gearbox, Generator, High Speed Shaft, Hub, Rotating Bearing, Rotor Blades, Tower Support\",\"options\":[],\"answers\":[\"A: Rotor Blades\",\"B: Hub\",\"C: Rotating Bearing\",\"D: Gearbox\",\"E: High Speed Shaft\",\"F: Generator\",\"G: Drive Shaft\",\"H: Tower Support\"],\"difficulty\":0.1}",
