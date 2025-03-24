@@ -318,7 +318,7 @@ export default function TestPage() {
 
   const handleSubmit = async () => {
     setIsSubmitted(true);
-    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     // Extract questions that need to be graded
     interface FRQToGrade {
       index: number;
@@ -477,7 +477,7 @@ export default function TestPage() {
     localStorage.removeItem('testUserAnswers');
     localStorage.removeItem('contestedQuestions');
     localStorage.setItem('testTimeLeft',JSON.parse(localStorage.getItem("testParams") ?? "{}")?.timeLimit.toString() || "30");
-    router.push('/practice');
+    window.location.reload()
   };
 
   const formatTime = (seconds: number): string => {
