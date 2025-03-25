@@ -802,7 +802,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                                     const isValid = await validateContest(question, userAnswers[index] ?? []);
                                     
                                     if (isValid) {
-                                      setGradingResults(prev => ({ ...prev, [index]: 1 }));
+                                      setGradingResults(prev => ({ ...prev, [index]: 2 }));
                                       toast.success('Contest accepted! Your answer has been marked as correct.', {
                                         autoClose: 5000
                                       });
@@ -866,7 +866,9 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                               <label
                                 key={optionIndex}
                                 className={`block p-2 rounded-md transition-colors duration-1000 ease-in-out ${
-                                  isSubmitted && currentAnswers.includes(option) && currentAnswers[0]
+                                  (gradingResults[index] ?? 0) == 2
+                                  ? darkMode ? 'bg-green-800' : 'bg-green-200'
+                                  : isSubmitted && currentAnswers.includes(option) && currentAnswers[0]
                                     ? question.options?.length && question.answers.indexOf(optionIndex+1) != -1
                                       ? darkMode ? 'bg-green-800' : 'bg-green-200'
                                       : darkMode ? 'bg-red-900' : 'bg-red-200'
@@ -912,7 +914,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                               if (!currentAnswers[0]) {
                                 resultText = 'Skipped';
                                 resultColor = 'text-blue-500';
-                              } else if (score === 1) {
+                              } else if (score === 1 || score === 2) {
                                 resultText = 'Correct!';
                                 resultColor = 'text-green-600';
                               } else if (score === 0) {

@@ -19,6 +19,11 @@
 		"original": "{\"question\":\"Which of the following is NOT part of the skin?\",\"options\":[\"Adipose Tissue\",\"Hair\",\"Glands\",\"None of the Above\"],\"answers\":[4],\"difficulty\":0.2,\"originalIndex\":922}",
 		"edited": "{\"question\":\"Which of the following is NOT part of the skin?\",\"options\":[\"Adipose Tissue\",\"Hair\",\"Glands\",\"None of the Above\"],\"answers\":[1],\"difficulty\":0.2}",
 		"timestamp": "2025-03-23T16:09:58.635Z"
+	  },
+	  {
+		"original": "{\"question\":\"Lanugo describes hair that is short, fine, pale, and barely visible to the eye.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":297}",
+		"edited": "{\"question\":\"Lanugo describes hair that is short, fine, pale, and barely visible to the eye.\",\"options\":[\"True\",\"False\"],\"answers\":[],\"difficulty\":0.3}",
+		"timestamp": "2025-03-25T01:05:43.133Z"
 	  }
 	],
 	"Anatomy - Skeletal": [
@@ -63,6 +68,16 @@
 		"original": "{\"question\":\"Out of the Science Olympiad 2018 DSO list, which one is known for being 12.7 billion light years from Earth?\",\"options\":[\"NGC 4993\",\"Phoenix Cluster\",\"IC 10\",\"SPT 0346-52\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":2873}",
 		"edited": "{\"question\":\"Out of the Science Olympiad 2018 DSO list, which one is known for being 12.7 billion light years from Earth?\",\"options\":[\"NGC 4993\",\"Phoenix Cluster\",\"IC 10\",\"SPT 0346-52\"],\"answers\":[4],\"difficulty\":0.7}",
 		"timestamp": "2025-03-23T22:49:54.698Z"
+	  },
+	  {
+		"original": "{\"question\":\"The ‘ultraviolet catastrophe’ refers to the failure of which radiation law? (1)\",\"options\":[\"Planck law\",\"Wien’s law\",\"Stefan-Boltzmann law\",\"Rayleigh-Jeans law\"],\"answers\":[4],\"difficulty\":1}",
+		"edited": "{\"question\":\"The ‘ultraviolet catastrophe’ refers to the failure of which radiation law? (1)\",\"options\":[\"Planck law\",\"Wien’s law\",\"Stefan-Boltzmann law\",\"Rayleigh-Jeans law\"],\"answers\":[4],\"difficulty\":0.58}",
+		"timestamp": "2025-03-24T18:51:34.264Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following correctly lists the standard Harvard spectral classification scheme in order of increasing temperature?\",\"options\":[\"OBAFGKM\",\"MKGFABO\",\"OFGKAMB\",\"MFGKOBA\",\"MBGAFOK\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":1975}",
+		"edited": "{\"question\":\"Which of the following correctly lists the standard Harvard spectral classification scheme in order of increasing temperature?\",\"options\":[\"OBAFGKM\",\"MKGFABO\",\"OFGKAMB\",\"MFGKOBA\",\"MBGAFOK\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-24T21:21:57.194Z"
 	  }
 	],
 	"Chemistry Lab": [
@@ -94,6 +109,21 @@
 		"original": "{\"question\":\"Alka-Seltzer is a common medication used to treat indigestion. What biological impact does Alka-Seltzer have on the body?\",\"options\":[\"increases the body’s sensitivity to signaling hormones\",\"lowers pH of stomach acid\",\"reduces inflammation in the stomach\",\"releases enzymes which speed digestion of food\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":18}",
 		"edited": "{\"question\":\"Alka-Seltzer is a common medication used to treat indigestion. What biological impact does Alka-Seltzer have on the body?\",\"options\":[\"Increases the body’s sensitivity to signaling hormones\",\"Increases pH of stomach acid\",\"reduces inflammation in the stomach\",\"releases enzymes which speed digestion of food\"],\"answers\":[2],\"difficulty\":0.5}",
 		"timestamp": "2025-03-20T21:24:51.035Z"
+	  },
+	  {
+		"original": "{\"question\":\"30-35% of the population has what kind of fingerprint pattern?\",\"options\":[\"Arch\",\"Whorl\",\"Loop\",\"Accidental\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":355}",
+		"edited": "{\"question\":\"30-35% of the population has what kind of fingerprint pattern?\",\"options\":[\"Arch\",\"Whorl\",\"Loop\",\"Accidental\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-24T23:38:57.352Z"
+	  },
+	  {
+		"original": "{\"question\":\"A powder was found on Zagreus. The powder has a pH of 9 and fizzes when added to HCl. What is the identity of the powder?\",\"options\":[\"Baking soda\",\"Powdered gelatin\",\"Sodium acetate\",\"Yeast\",\"Limestone\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":113}",
+		"edited": "{\"question\":\"A powder was found on Zagreus. The powder has a pH of 9 and fizzes when added to HCl. What is the identity of the powder?\",\"options\":[\"Baking soda\",\"Powdered gelatin\",\"Sodium acetate\",\"Yeast\",\"Limestone\"],\"answers\":[5],\"difficulty\":0.7}",
+		"timestamp": "2025-03-25T00:51:22.481Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of  the following are found in the cortex?\",\"options\":[\"pigment granules\",\"ovoid bodies\",\"cortical fusi\",\"melanin\"],\"answers\":[1,3,4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Which of  the following are found in the cortex?\",\"options\":[\"pigment granules\",\"ovoid bodies\",\"cortical fusi\",\"melanin\"],\"answers\":[1,2,3,4],\"difficulty\":0.6}",
+		"timestamp": "2025-03-25T01:58:39.881Z"
 	  }
 	],
 	"Disease Detectives": [
@@ -123,6 +153,11 @@
 		"original": "{\"question\":\"Which of the following is NOT a type of non-tabular iceberg?\",\"options\":[\"Wedge\",\"Blocky\",\"Rounded\",\"Drydock\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":435}",
 		"edited": "{\"question\":\"Which of the following is NOT a type of non-tabular iceberg?\",\"options\":[\"Wedge\",\"Blocky\",\"Rounded\",\"Drydock\"],\"answers\":[3],\"difficulty\":0.5}",
 		"timestamp": "2025-03-19T21:05:58.442Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-25T02:08:48.665Z"
 	  }
 	],
 	"Ecology": [
@@ -210,6 +245,11 @@
 		"original": "{\"question\":\"True or False: Traditional Ecological Knowledge and Indigenous Knowledge are the same thing. (1pt)\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
 		"edited": "{\"question\":\"True or False: Traditional Ecological Knowledge and Indigenous Knowledge are the same thing. (1pt)\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
 		"timestamp": "2025-03-22T20:25:55.248Z"
+	  },
+	  {
+		"original": "{\"question\":\"How much of earth's land surface do deserts cover?\",\"options\":[\"1/2\",\"1/3\",\"1/4\",\"1/5\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"How much of earth's land surface do deserts cover?\",\"options\":[\"1/2\",\"1/3\",\"1/4\",\"1/5\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-25T01:59:15.166Z"
 	  }
 	],
 	"Entomology": [
@@ -392,6 +432,11 @@
 		"original": "{\"question\":\"A thin film of oil (n1 = 1.40) rests on top of water (n2 = 1.33). Light with a wavelength of 500 nm is incident perpendicular to the oil surface, making it appear very bright in the reflected light. What is the minimum thickness of the oil film?\",\"options\":[\"89 nm\",\"179 nm\",\"358 nm\",\"475 nm\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":267}",
 		"edited": "{\"question\":\"A thin film of oil (n1 = 1.40) rests on top of water (n2 = 1.33). Light with a wavelength of 500 nm is incident perpendicular to the oil surface, making it appear very bright in the reflected light. What is the minimum thickness of the oil film?\",\"options\":[\"89 nm\",\"179 nm\",\"358 nm\",\"475 nm\"],\"answers\":[2],\"difficulty\":0.7}",
 		"timestamp": "2025-03-23T17:10:11.435Z"
+	  },
+	  {
+		"original": "{\"question\":\"Question: The index of refraction is the same for any two light rays in the same medium. TRUE OR FALSE\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"Question: The index of refraction is the same for any two light rays in the same medium. TRUE OR FALSE\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-24T10:57:14.160Z"
 	  }
 	],
 	"Potions and Poisons": [
@@ -429,6 +474,21 @@
 		"original": "{\"question\":\"Kool-aid powder would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":39}",
 		"edited": "{\"question\":\"Kool-aid powder would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[2],\"difficulty\":0.1}",
 		"timestamp": "2025-03-23T17:09:29.371Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: Both male AND female black widow spiders are venomous.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"True or False: Both male AND female black widow spiders are venomous.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"timestamp": "2025-03-24T21:08:28.868Z"
+	  },
+	  {
+		"original": "{\"question\":\"True/false: The blue ringed octopus toxin targets the same general cell type as the black widow’s toxin.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"True/false: The blue ringed octopus toxin targets the same general cell type as the black widow’s toxin.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-25T00:43:29.005Z"
+	  },
+	  {
+		"original": "{\"question\":\"The estimated fatal dose of the toxin from the Jequirity bean plant in humans is\",\"options\":[\"2-10 μg/kg\",\"100-1000 μg/kg\",\"0.1-1 μg/kg\",\"0.01-0.25 μg/kg\"],\"answers\":[1],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"The estimated fatal dose of the toxin from the Jequirity bean plant in humans is\",\"options\":[\"2-10 μg/kg\",\"100-1000 μg/kg\",\"0.1-1 μg/kg\",\"0.01-0.25 μg/kg\"],\"answers\":[4],\"difficulty\":0.8}",
+		"timestamp": "2025-03-25T01:23:57.062Z"
 	  }
 	],
 	"Reach for the Stars": [
@@ -446,6 +506,11 @@
 		"original": "{\"question\":\"If a star is massive enough, it can go on to fuse even heavier elements. Typically, even the most massive stars can only fuse elements up to what?\",\"options\":[\"helium\",\"carbon\",\"oxygen\",\"uranium\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":1008}",
 		"edited": "{\"question\":\"If a star is massive enough, it can go on to fuse even heavier elements. Typically, even the most massive stars can only fuse elements up to what?\",\"options\":[\"helium\",\"Iron\",\"oxygen\",\"uranium\"],\"answers\":[2],\"difficulty\":0.1}",
 		"timestamp": "2025-03-23T18:55:25.853Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following lists the order of the main spectral types from coolest to hottest?\",\"options\":[\"MKGFABO\",\"BGOAKMF\",\"OBAFGKM\",\"AFGKMOB\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Which of the following lists the order of the main spectral types from coolest to hottest?\",\"options\":[\"MKGFABO\",\"BGOAKMF\",\"OBAFGKM\",\"AFGKMOB\"],\"answers\":[4],\"difficulty\":0.6}",
+		"timestamp": "2025-03-24T03:45:06.282Z"
 	  }
 	],
 	"Remote Sensing": [

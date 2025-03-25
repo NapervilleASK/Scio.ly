@@ -25,7 +25,12 @@ from joblib import Parallel, delayed
 # '1tBevfGz0vVUfvhGj1x51NpPOMlOYGK8_', '1xAWXoJj12l7gEe8V-uGteRskrYssGim6', '1O3cmlJEC5AvUUc8IwOy2k9oMt8ifKPQq', '1Vz6d8PiGfYzk0QDA1cG0ESvFNf_hgW4H', '1u8e22PI_d65G-lxnYPiPz13B5zC1vKv3', '1kDL5X0l-hgUHF0dZDbA2g2au_7m9EtJR', '1nxQcwJ80HB0tfZnIXroGUNeou_yJsKsm', '15wSx7279Pnz8Voy_6Ca7j7MHEHlRBBvh', '1W9lanA5clZz7F-37ni0jn3zXr6Dv6qBt', '1SfRGTD4hto_3QMKW9kc4J6fQ4sJNfCQV', '1qPTWGCxwQmFc0jOCri7dcf1q8LHZ07tu', '1T5Oy_vs5VGG0X-H1IqQAYJ1DaS45pwAm', '15QaImPeZZ8DQqF0mJdDo7j81jpCgQGdD', '1AG-tp0_hyX1YlZfusrOISaq_6tu4u2Ah', '1NvgiSGFHW0VjA7WcAre-O0JYl2n6CoJH', '1IezNuPN-iMRXysBbIYx4SE817eXhvobp', '1jpxLXIQqPHINhUQAp3MH1BO0U_za_cTI', '1PSJ15uMXL9zzIMa-m8cLvf1PX7CiWqVo', '1z4ixSqqHfGeJd2JnZnSmftCSyxFyRLLb', '1ur-B7eWRyt70p7wkg7Wg1pGkkKaE1W0B', '1TMCWdLlOjnRFUy7SBuYbj6ur__xwkAk7', '13yNsNguUT7TDjLAdM3b6kffzSh7rgR5A', '1xoVEkV1YEXa6dTuFEzXKIo-QgZj84MAP', '1OML-ZgbV12_9CWKDCtjMhsQ1HuppWYu3', '17ounKibxg78Zs5K7ANTrKc2HZMbZWUdc', '1dOShoe9xFn0WOxvvlmdej2qJaKDqJtuj', '1hwbtfm8m2V6Hj4HYIo7SS45tmgf36g8v', '1WfsB8nqU5ho4CiWw9KjXEaC-CK4eV-_a', '1zsV_AM9dw_3hrbJEokkgELAI9Mctqafn', '1XdYRVuOHAr05HZSuHLSgbNroFl-kWnBl', '1xAQZDOqHEQh_O2G1evPyIorNiNPrgbtG', '1z-15Pu6jZeryJbhiV7QVkAuzbKir1CFm', '1iSR_xc48OuykFRPaUi_kJ1oQWFLgrW3q', '14a4cVDPXjLcyn97PnPNmh9nXc5B7rvIw', '1rpA0bVImjfH00Hzpuc7r4J7IY1UnEITX', '1uv_aNdDVI8ZS1jmfVil6X9VnU3MyuS55', '1cG61YoOH9sgUxEU4I0yiN3huv_4G3Gnq', '1Ci0C62oIbeLmZOQ_S5QGYibYA_ZxZo2e', '1as5mvrBbUYOkKc9Mpa8u7fy2XmBm8yXy', '1uOGAVgh2_V__z9lp-muA9lmBrZXms_IL', '1hq-CiT3Qu3gCxDqV2aHzZeKzSTrv7402', '1z8LwIB6p2ZGM8fqDC0oG3QL8JeV8aG5H', '1dOg4VfnQG8slPQVP887PEO0OmFhVSSzZ', '1_CWR_rg1XdDbo1eCwbYzCWP4gOgVnoua', '1v3ZNnfV9M2MBTkbfxXcUY5KetM_-V_2P', '11scWTMvMucVqpdFBUjkluL_Xrlbs8dGE', '10RudIkUKZe2ZIFySQcUOvDlVQGCeFiUd', '1LvjKVW1jNaYapxvY3qF19TLY0Zan8qpv', '152pUw9g81hZhBLB6MV8PJNoKWX3B4iai', '18va6_rBbYw05UaqcQQCD7BAkdh48UZN5', '1fGIDpV6a0ORRiUAbq6Wrdc0BdxEOovzh', '1UbCn9hftkUhTCfNduTbKPo0-FR0vJmmK', '1GbBQRng4pxKxykcRiJKR9MZ7vAHuPP6H', '1-tsYsrgpwDVHBQlSfGxM74qWPPaslYUr', '1Y7buTFhs7U3Kd525PF6eeI7BJhoJZOPC', '1zn5zzR_Nr-PPdjRJybrtQwKhfkRG3IJC', '1rzVRMu7W6SxLoQASux5yA3Ui9P1uZkfs', '1xwYa0Vpl3tHnPiBvGDGbuIK0nEeu1LbH', '1rX8xJlB30NtRHO3RTuIfhqEzNsQKVfL5', '1CA5XHwhdFOZCJ2ES7ITprWoksCWORtX8', '12FWeJAGtJMLNl23hwUICX8UtCxe82-nU', '1XYTB8A9UAI_fuMPZ945RHtihKrihpNS0',
 #  '1WjEGUQ1v0pwkxuvAoPuWFaWk_m9Atqjx', '1AlyoRMtJpxaxUen5g32QSr1RSsfb8ZLs', '1JNYgRW4INdGz4dWvGzvlugDuljzL8_s2', '1R4p-eoORhUaJfgd5Xx3SfSVaDtOE6Gge', '1oZCbJrUGCSDP5Ri06ZwxoEFziysMNAb5', '1HDZvUwrqPeYFIkbDlZ7RF8mGYMO8nnwJ', '1moQDbIwa8-BBg-zVl8zKLBrfdOIxrqMk', '1vwoNOyhkEiPYZoCP1k3lRfh5E9V7_Vvu',
 #  '1lTgv1XSHLPmnWXblO7wtjUmVhdiit0WX', '1WAWO-UMCnaYMd8AIFKefgl7Fdg5keGp2', '1-IvKrMX_vw-2MQjiL3payF1fnHeOmQyZ', '1OYqBkCYi44uxhJivexYW7FOpVnBOz_7K', '1UDWmwNkkoBw1X4tQ6-MX6yD2K59xs-G_', 
-folder_links = ['1EAtrOyeBiUWaeVZl12tb30kUyBFG6UJe','1wmuuttG_ul2_Mjic5xBQ0asmHocoYHvG','1s6pki2WtRz_zK_tqwvT724n7IovYw5Ve','19moRp7wksYgS3eZjo1bTqknKJIRmiygB','1-sadF0VSJON3IMnLbh985W6eWCbMFzZz', '1IDizVjKY653tirK8mXY2nr8v6vULSigj', '1aUVSo-q37Q4r4jIEo7u4dC_SFTNEhtUQ', '1DlT2W76zwsQTtQ4R1TM4pzX0LJjTlrOg', '1pmMKZCNCSRvzjMz6yJJX08yyFJqqUk6p', '1ebGfMbno4w_onAaER4weiSiCK-v69662', '1qA75580QHXEzt14oXi37niBbWnz4h6qt']
+folder_links = [ "1BpxlARTpcOZnPEXB42jwdlYNqyvIu3yl", "1fgSfCMwJC1VNVcYiTpACMlPciyCq2fbp"]
+#  "1IizO4wRXAalfo6Z0ynj8syv8J9Kq4QhJ", "1VTmMW_hzG4oJY3BKvtMCMbYzrEMxhQBf", "11AnFuPyuTstiovCIYNV7wBh8lYKO3Sad", "1yiXfUn9aTdkMiBpWc05TYWb1EjPONbuh", "1ZKlmk15VpRL2LO-4PxQ1Syq13dXlPmPL", "1ddHswRBxDZAzWuxo3iCfBm3db6zdXHli", "1oh9T8XmcnivHcocaOUg3qyeXQh3Hkyuj", "12rBfEdhG2ZvYphgIZmbebrvAMuPycWSe", "1-PgyUnuQPMXemGOQkrhxVOT3RUMkamcu", "1crPGoX6t7Qzf71fRHQU9Uu4dmMU37Y7N",
+# "14VQ-fQtM6KX1sgjYViVVAAyjqe2S5ZIb", "1xiUztzwYyjxVdZ0gbHteSd-gVxr4ubTX", "1bFdLElj8-D1OYCeJJiw9HdChftAzBYs2", "1OxUV9xfSR9FFyIf7yPSD7Mt6YUWuF3TV", "1Uz3_v4IeYNDVh1G8dl_fxwFESccCBGXA", "1CfJPGl8aH6Mttlb-OwmWSp2BxuHpt99q", "1UE2DSnlDThEBWEejMpXrejlQBetO5Koa", "1LXjZvlMHBGJAAIBrjkL1e82yKzGx7IGk", "16TAv-p0HLFn0gv1FDV1cmdfbXP6GCF82", "1lLjX1tYePKkSdC3kh35pzkPr0CZq2vLO", "1M5xsUqF_AN5qsD5-Kg4X22Q-oSb4Ol2X",
+# "1nyZ7V9PThLyYaQGOH4i1vNfReuTlOD6-", "1j1f4LA4YTClgEbP0dFYMf6hggadH-xmK", "1n2ZWpvswOJ7YVO1ynbTkJxsG45k1BYgX", "1fyW0fef7rMpRisrD6u1dqAYAg8jjBt-K", "11IFLbY-SibPkwNc7y2g70lghdinhQlXA", "1BPWIOiaKwqGPLm37CMQRNtyLpoB4i77J", "1VACGwliNbioHwPsKhvn_usScit36zLL_", "1T66k0fCIu5pO52UDZWnb71CbpLahN_8a", "1RhK-_Y5a6elhWOluddCQ0mmzD4pBEjS2", "1X0HmM4JTtJnTFqO752xqcFiN0UL99k7l", "1UJQhPqrM_oSCNBYKdhg-_6zmdr6MvIVB", 
+# ["1qJ7lA2Gb1RowkVLaDbKHMNhy1V2GmsIY", "1Wr5ebMbEwV0S_RTS13Opz-5Ft-opEQHC", "15eKiKVT2_Zr7w9npq6pecZnDDRVdOEyG", "1pAF8uvT0A47dN4GQ6A7X6JTbZRumw48t", "1GI-v3SqPtVJPasx0K7zUqQd7MsMBPL56", "1LT1SKs1qx4gKQ5fFJIJ9VCnGAbyjEvCo", "1I0PnhIRW2iRedi9xI_HYgcjboaMNzGSL", "1WX4E5Uvom5stooo0Dh8aMBygZun3BS_m", "1pgrZVW23m0vfNd_K-qjhe4TV1hsGOmfP", "1_vXDzeBfqltKsAnnFVkrVEL1d5CbX4cW", "1zvNHH3UwCqonMzkozcKKA9Sfl-tfHVpF", "1SR2ZO78eFtGhl-nnyP5JsiHCAOcm0dBK", "1y219yYorJ81NpmGm-7QQ4VQ3xrj8AiAi"]
+# ["1zJkjmAh6-ZddC771HUtnIvEL8qFUli5u", "1AoSuX06mjjEGmDOEYTgbvFS7jn-15NfO", "1aCrH8QyW8iUCRG2AMjF7StTLPkZPl1jq", "19mzkomcuvs-C_93WsP33v2HA8aEgccUh", "1AQ8P7YtjTcftAWbu_wWoI5aa5Yvn4CY7", '1EAtrOyeBiUWaeVZl12tb30kUyBFG6UJe','1wmuuttG_ul2_Mjic5xBQ0asmHocoYHvG','1s6pki2WtRz_zK_tqwvT724n7IovYw5Ve','19moRp7wksYgS3eZjo1bTqknKJIRmiygB','1-sadF0VSJON3IMnLbh985W6eWCbMFzZz', '1IDizVjKY653tirK8mXY2nr8v6vULSigj', '1aUVSo-q37Q4r4jIEo7u4dC_SFTNEhtUQ', '1DlT2W76zwsQTtQ4R1TM4pzX0LJjTlrOg', '1pmMKZCNCSRvzjMz6yJJX08yyFJqqUk6p', '1ebGfMbno4w_onAaER4weiSiCK-v69662', '1qA75580QHXEzt14oXi37niBbWnz4h6qt']
 #['1vsuLDZ7IpImkHvWEejRvfm8V6jfrXPYM', '17wYpjKf1NpBbeLhlGmPR6aA8ovBVlIU', '1o0bnX6QG3krfssWCHkN3o2R_MBzZyjrw', '1BHd3wnXusrbyrf4xDgxQfd3upYIrnrZm'] #'1NL86PYG1ZBm1-AEKFwdG8t00iUGBEpOl', '1VxWl3crjSoA0_mB89Gg4KgpiT5nnHfEG', '12msP3XgqOJGMFjrFk7ZEnFtBz4pGdCuG', '1CC2sOz8P2mDImZ6BAsIeiUmVzH1c3Rb9', '11v3MGE07t8FIpDpLFHvijSr-qeRVb4Xp', '173fFK0af9iD1UJsgX2u6DiwMEb1tbgWf', '1w2Rqq6dYjzVlfdVFFdMgM_PxPtKEZgTH', '145UHXMxOCw3HD_96u6NThKGZOAz_E_VI', '1MQ3tvV9HZYVtBL5rgvEFKqCwIMX7n69g', '15J2z5LFEVw5viRTbIxpFHrzvkNxoDg3R', '19_dbGVXc0FGIM8Tnc7rOltC0itgIKiVu', '17vIUN2TB60Oh-6JSeQYsUoGhbGhyrTPs', '1iFWBirR_3XfMaMsUVFFDxRuQeavYRSIV', '1LZsgdiaV03jP3MmTnC6ecGrh7H8x_NrI', '1FK89x4X796k5EEt44tzOoF__5aDaaFON', '1boGp0TkwJhyXwA5m41lxOl_Af35VsNls', '1nEeX66uXjDt1x2SIsIJSekfvHdORlfXSs4WsX1piiuGPIKSyDduZtQtn6jZsDyvyD7Vv7S7t', '1UDUMUAmaoinPCNNGbMYAh4BdPHHwJjtb', '1q1Dp8UWoRnM9Lfks-CVsnTiARrTCvWgn', '1zw8FV7ckEzKLFxXKq8VKXvybEAEHRq45', '1-QxFq3Kb3EBH4MNGzVGFM4pJZIfL2OHp', '1GyVv6gRfdmnv6GjUIQ9cV2AN19GHMqle', '1dl9j-DcpJ1MwcsHhGh9KUuSqHAQ3BBba', '1Zkx8Ff2AU8dQnEw-mV9Dgpy9cuZvK-0b', '1DzDpuDSMsQ4rype0KjGV0eCz-05NkZAz', '1yueokX907oLJwn0ciuH5frr76higotKC', '1TMNILZO9AJoX2F59BiYI9WW6SO4BdPkN', '1LmOcZmFC031XqLHQjyqCQqTDH7vUIj3E', '1EJsqz6WLyjMOVAXd8FcU72q2e49Yyzxm', '1hHuR5gT0RzM3kddQJUEYxxVtj2E1oMqJ', '16Bq3Sd-tFdfJNg_zvYhXRLdkqoByaP2l', '1S2rEBjyC5coFC8reDAlGrEly8oTaYdTc', '1bYsvKo-Sr1iqLKSkKZS4x4H40r4xegBe', '1HVPILYcjVVgm0Xh6TEgO8eaQobKox5BE', '1CIN0Yq0nU0PokLvJ2RNIVZt2WmbJ492M', '1WrhBeK56tbBmvTn2k6Hx6aBObxxv_GPv', '1t67OdhZRW7FkenNQUKV7svAGme3j5lVG']
 # '1egVORNPbZQE9YNJKJggjtunUvWXyNz7T', '18BTa-l6MYxlHtCVtAdMpsVIKFNPyebRk', '1EybtPvcXlncBvk89xJsR4U5yWx1fOz7D', '1EybtPvcXlncBvk89xJsR4U5yWx1fOz7D', 
 events = [
@@ -70,7 +75,9 @@ events = [
     "Invasive Species",
     "It's About Time",
     "Machines",
-    "Materials Science",
+    "Materials Science - Ceramics",
+    "Materials Science - Polymers and Plastics",
+    "Materials Science - General"
     "Microbe Mission",
     "Mission Possible",
     "Meteorology",
@@ -82,7 +89,6 @@ events = [
     "Sounds of Music",
     "Thermodynamics",
     "Wind Power",
-    "Reach for the Stars", 
     "Potions and Poisons"
 ]
 def authenticate_google_drive():
@@ -172,6 +178,16 @@ def pdf_to_text(pdf_path):
     """Converts a PDF file to plain text."""
     try:
         text = extract_text(pdf_path)
+        # if len(text) < 50:
+        #     # convert to image using resolution 600 dpi 
+        #     pages = convert_from_path(pdf_path, 600)
+
+        #     # extract text
+        #     text = ''
+        #     for page in pages:
+        #         t = pytesseract.image_to_string(page)
+        #         text += t + '\n'
+        # print(text)
         return text
     except Exception as e:
         print(f"Error converting PDF to text: {e}")
@@ -187,7 +203,7 @@ def docx_to_text(docx_path):
         print("Error getting docx")
         return None
 def extract_questions_with_gemini(text, events, idx):
-    key = GEMINI_API_KEY[idx % len(GEMINI_API_KEY)]
+    key = GEMINI_API_KEY[random.randint(0,len(GEMINI_API_KEY)-1)]
     print("using key: ", key)
     client = genai.Client(api_key=key)
     prompt = f"""
@@ -198,7 +214,7 @@ def extract_questions_with_gemini(text, events, idx):
 
     Multiple choice answers MUST be 1-indexed if possible to answer, and usually have only one correct answer but sometimes multiple.
 
-    Anatomy tests may have multiple systems, so you can use multiple upper level keys for anatomy ONLY.
+    Anatomy tests may have multiple systems, so you can use multiple upper level keys if and only if the event is anatomy.
 
     If the question is free response, leave the option field blank, but have one element in the answers array providing a correct response. If the question is intended to be true/false, turn it into mcq
 
@@ -218,17 +234,20 @@ def extract_questions_with_gemini(text, events, idx):
             print("Gemini API returned an empty response.")
             return None
     except Exception as e:
-        print("Error interacting with Gemini API: ", e)
-        time.sleep(3)
+        print(key, ": Error interacting with Gemini API: ", e)
+        time.sleep(8)
+        print("slept!")
         return extract_questions_with_gemini(text, events, idx+1)
 def clean_question_with_gemini(text, idx):
-    client = genai.Client(api_key=GEMINI_API_KEY[idx % len(GEMINI_API_KEY)])
+    key = GEMINI_API_KEY[random.randint(0,len(GEMINI_API_KEY)-1)]
+    client = genai.Client(api_key=key)
     prompt = f"""
     I want you to process these questions stored in a JSON dataset based on whether they can be
     solved with the question itself or not.
     If it refers to an image, diagram, figure, or a non-textual component that's not in the question itself,
     make the answer field be an array with an empty string inside like this: [""]. This is especially prevalant when the question
     mentions "this" without any context. Otherwise, do nothing.
+    Additionally, review the 1-indexed answer and ensure its validity, as well as the difficulty. 
     Here's the test:
     {text}
 
@@ -241,8 +260,9 @@ def clean_question_with_gemini(text, idx):
             print("Gemini API returned an empty response.")
             return None
     except Exception as e:
-        print("Error interacting with Gemini API: ", e)
-        time.sleep(10)
+        print(key, ": Error interacting with Gemini API: ", e)
+        time.sleep(8)
+        print("slept!")
         return clean_question_with_gemini(text, idx+1)
 # --- Processing function for a single PDF ---
 def process_pdf(file_info, drive_service, events, output_dir, idx_offset):
@@ -252,7 +272,7 @@ def process_pdf(file_info, drive_service, events, output_dir, idx_offset):
     # download_name = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(5))
     file_id = file_info['id']
 
-    if re.search(r"experiment|road|( map )|statemap|forestry|widi|write it|tower|scrambler|robot|trajectory|helicopter|electric|bungee", file_name.lower()) or re.search(r"key|sheet|answer|result|image|response|checklist|distribution", file_name.lower()):
+    if not "no answer" in file_name.lower() and re.search(r"experiment|road|( map )|statemap|forestry|widi|write it|tower|scrambler|robot|trajectory|helicopter|electric|bungee", file_name.lower()) or re.search(r"key|sheet|answer|result|image|response|checklist|distribution", file_name.lower()):
         print(f'{file_name} was not a pdf that contained the text "test" or "exam"')
         return None
 
@@ -343,10 +363,11 @@ with open("beta_bank.json", 'a') as writefile:
                  or f['mimeType'] == 'application/pdf'
                  or f['mimeType'] == 'application/vnd.google-apps.document'
                  )
+            and not (not "no answer" in f['name'].lower() and re.search(r"experiment|road|( map )|statemap|forestry|widi|write it|tower|scrambler|robot|trajectory|helicopter|electric|bungee", f['name'].lower()) or re.search(r"key|sheet|answer|result|image|response|checklist|distribution", f['name'].lower()))
             ]
         index = -1
         for i, obj in enumerate(pdf_files_in_folder):
-            if obj.get('id') == "19moRp7wksYgS3eZjo1bTqknKJIRmiygB":
+            if obj.get('id') == "1DggM5EvrEI6d0Ys-aeVbsbIouU3KXYOh":
                 index = i
                 break
         if index != -1:
@@ -363,9 +384,9 @@ with open("beta_bank.json", 'a') as writefile:
         print(f"Processing folder: {folder_id}")
 
         # Process files in batches of 5
-        for i in range(0, len(pdf_files_in_folder), 4):
-            batch_files = pdf_files_in_folder[i:i + 4]
-            batch_results = Parallel(n_jobs=8)(
+        for i in range(0, len(pdf_files_in_folder), 5):
+            batch_files = pdf_files_in_folder[i:i + 5]
+            batch_results = Parallel(n_jobs=5)(
                 delayed(process_pdf)(file_info, drive_service, events, OUTPUT_DIR, idx + j)
                 for j, file_info in enumerate(batch_files)
             )

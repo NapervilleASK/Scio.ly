@@ -126,7 +126,6 @@ function EventDashboard() {
           { name: "Anatomy - Sense Organs", category: "Life & Social Science" },
           { name: "Anatomy - Endocrine", category: "Life & Social Science" },
           { name: "Astronomy", category: "Earth and Space Science" },
-          { name: "Cell Biology", category: "Life & Social Science" },
           { name: "Chemistry Lab", category: "Physical Science & Chemistry" },
           { name: "Circuit Lab", category: "Inquiry & Nature of Science" },
           { name: "Codebusters", category: "Inquiry & Nature of Science" },
@@ -134,6 +133,7 @@ function EventDashboard() {
           { name: "Disease Detectives", category: "Life & Social Science" },
           { name: "Designer Genes", category: "Life & Social Science" },
           { name: "Dynamic Planet - Glaciers", category: "Earth and Space Science" },
+          { name: "Dynamic Planet - Oceanography", category: "Earth and Space Science" },
           { name: "Ecology", category: "Life & Social Science" },
           { name: "Entomology", category: "Life & Social Science" },
           { name: "Environmental Chemistry", category: "Life & Social Science" },
@@ -292,7 +292,7 @@ function EventDashboard() {
           <p className={`mt-2 transition-colors duration-500 ${
             darkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            Select an event and configure your practice session
+            Select an event from the 2025 or 2026 season and configure your practice session
           </p>
         </div>
 

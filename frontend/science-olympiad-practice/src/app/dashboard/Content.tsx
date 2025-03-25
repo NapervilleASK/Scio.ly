@@ -567,14 +567,15 @@ export default function WelcomePage() {
   };
 
   const UPDATE_INFO: UpdateInfo = {
-    date: "3/21/25",
+    date: "3/24/25",
     features: [
-      "📈 Improvement of question bank thanks to your reports!",
-      "✨ Added in 2025-26 season events for preparation",
-      "🎯 All new Codebusters interface!!!",
+      "📈 Larger Test Bank!!!",
+      "✨ Potions and Poisons, RFTS have much larger question banks",
+      "🎯 Minor changes, bugfixes",
     ],
     comingSoon: [
-      "⏰ Division B!"
+      "⏰ Division B/C toggle",
+      "⏰ Small Codebusters fixes"
     ]
   };
 
