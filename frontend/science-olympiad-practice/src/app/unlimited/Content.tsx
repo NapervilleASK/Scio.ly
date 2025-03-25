@@ -688,7 +688,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
     localStorage.removeItem('testParams');
     localStorage.removeItem('contestedUnlimitedQuestions');
     
-    router.push('/');
+    router.push('/practice');
   };
 
   return (
