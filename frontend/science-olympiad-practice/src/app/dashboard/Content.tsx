@@ -17,7 +17,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Header from '../components/Header';
 import api from '../api';
-import { getBookmarkedQuestions } from '@/app/bookmarks/Content';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -53,6 +52,18 @@ interface UpdateInfo {
   date: string;
   features: string[];
   comingSoon: string[];
+}
+
+interface BookmarkedQuestion {
+  question: {
+    question: string;
+    options?: string[];
+    answers: (string | number)[];
+    difficulty: number;
+  };
+  eventName: string;
+  source: string;
+  timestamp: number;
 }
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps) => {
@@ -299,6 +310,8 @@ export default function WelcomePage() {
   // --- New: Compute window width and extra height on mobile ---
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
   const [extraHeight, setExtraHeight] = useState(0);
+  const [bookmarkedQuestions, setBookmarkedQuestions] = useState<BookmarkedQuestion[]>([]);
+
   useEffect(() => {
     function handleResize() {
       const width = window.innerWidth;
@@ -319,7 +332,6 @@ export default function WelcomePage() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [extraHeight]);
-  // ------------------------------------------------------------
 
   // Compute the minimum height style:
   // - On mobile (width below 414px): baseline 220vw + extra (1vh per 10px below 414px)
@@ -397,6 +409,31 @@ export default function WelcomePage() {
     setHasSeenUpdate(!!hasSeenUpdateThisSession);
     setHasCheckedStorage(true);
   }, []);
+
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      if (currentUser) {
+        try {
+          const bookmarksRef = doc(db, 'bookmarks', currentUser.uid);
+          const bookmarksDoc = await getDoc(bookmarksRef);
+          
+          if (bookmarksDoc.exists()) {
+            const data = bookmarksDoc.data();
+            setBookmarkedQuestions(data.questions || []);
+          } else {
+            setBookmarkedQuestions([]);
+          }
+        } catch (error) {
+          console.error('Error fetching bookmarks:', error);
+          setBookmarkedQuestions([]);
+        }
+      } else {
+        setBookmarkedQuestions([]);
+      }
+    };
+    
+    fetchBookmarks();
+  }, [currentUser]);
 
   const metrics = {
     questionsAttempted: dailyStats.questionsAttempted,
@@ -1223,53 +1260,61 @@ export default function WelcomePage() {
                 <span>Practice Bookmarked Questions</span>
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {getBookmarkedQuestions().slice(0, 6).map((bookmarked, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
-                    darkMode
-                      ? 'bg-gray-700 border-gray-600 text-white'
-                      : 'bg-gray-50 border-gray-300 text-black'
-                  } border`}
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <span className={`text-sm font-medium ${
-                      darkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
-                      {bookmarked.eventName}
-                    </span>
-                    <span className={`text-xs ${
-                      darkMode ? 'text-gray-400' : 'text-gray-500'
-                    }`}>
-                      {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
-                    </span>
+            {!currentUser ? (
+              <div className="text-center py-8">
+                <p className={`text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Please sign in to view your bookmarked questions
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {bookmarkedQuestions.slice(0, 6).map((bookmarked, index) => (
+                  <div
+                    key={index}
+                    className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+                      darkMode
+                        ? 'bg-gray-700 border-gray-600 text-white'
+                        : 'bg-gray-50 border-gray-300 text-black'
+                    } border`}
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <span className={`text-sm font-medium ${
+                        darkMode ? 'text-gray-300' : 'text-gray-600'
+                      }`}>
+                        {bookmarked.eventName}
+                      </span>
+                      <span className={`text-xs ${
+                        darkMode ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
+                        {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
+                      </span>
+                    </div>
+                    <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
+                    <div className="text-right">
+                      <span className={`text-xs ${
+                        darkMode ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
+                        {new Date(bookmarked.timestamp).toLocaleDateString()}
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
-                  <div className="text-right">
-                    <span className={`text-xs ${
-                      darkMode ? 'text-gray-400' : 'text-gray-500'
-                    }`}>
-                      {new Date(bookmarked.timestamp).toLocaleDateString()}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {getBookmarkedQuestions().length === 0 ? (
+                ))}
+              </div>
+            )}
+            {currentUser && bookmarkedQuestions.length === 0 ? (
               <p className={`text-center mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                No bookmarked questions yet. Questions you bookmark while practicing will appear here.
+                No bookmarked questions yet. Bookmark questions while practicing!
               </p>
-            ) : getBookmarkedQuestions().length > 6 && (
+            ) : currentUser && bookmarkedQuestions.length > 6 ? (
               <div className="text-center mt-4">
                 <button
                   onClick={() => router.push('/bookmarks')}
                   className={`text-sm ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
                 >
-                  View all {getBookmarkedQuestions().length} bookmarked questions
+                  View all {bookmarkedQuestions.length} bookmarked questions
                 </button>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

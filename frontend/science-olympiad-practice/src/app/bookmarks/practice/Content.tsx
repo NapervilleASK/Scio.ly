@@ -6,6 +6,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import { toast, ToastContainer } from 'react-toastify';
 import { auth } from '@/lib/firebase';
 import { updateMetrics } from '@/app/utils/metrics';
+import { removeBookmark } from '@/app/utils/bookmarks';
 import ReportModal from '@/app/components/ReportModal';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import 'react-toastify/dist/ReactToastify.css';
@@ -51,11 +52,12 @@ export default function Content() {
   const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
   const [practiceQuestions, setPracticeQuestions] = useState<BookmarkedQuestion[]>([]);
   const [eventName, setEventName] = useState<string>('');
+  const [removedBookmarks, setRemovedBookmarks] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const loadQuestions = () => {
-      const questionsJson = localStorage.getItem('practiceQuestions');
-      const event = localStorage.getItem('currentPracticeEvent');
+      const questionsJson = sessionStorage.getItem('practiceQuestions');
+      const event = sessionStorage.getItem('currentPracticeEvent');
       if (!questionsJson || !event) {
         router.push('/bookmarks');
         return;
@@ -227,6 +229,53 @@ export default function Content() {
     router.push('/bookmarks');
   };
 
+  const handleRemoveBookmark = async (index: number) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to manage bookmarks');
+      return;
+    }
+    
+    try {
+      const bookmarked = practiceQuestions[index];
+      
+      setRemovedBookmarks(prev => {
+        const newSet = new Set(prev);
+        newSet.add(index);
+        return newSet;
+      });
+      
+      await removeBookmark(auth.currentUser.uid, bookmarked.question, bookmarked.source);
+      toast.success('Bookmark removed!');
+      
+      if (index === currentQuestionIndex) {
+        if (practiceQuestions.length > 1) {
+          if (currentQuestionIndex >= practiceQuestions.length - 1) {
+            setCurrentQuestionIndex(0);
+          }
+          setPracticeQuestions(questions => questions.filter((_, i) => i !== index));
+        } else {
+          toast.info('No more bookmarked questions for this event');
+          setTimeout(() => {
+            router.push('/bookmarks');
+          }, 1500);
+        }
+      } else {
+        setPracticeQuestions(questions => questions.filter((_, i) => i !== index));
+        if (index < currentQuestionIndex) {
+          setCurrentQuestionIndex(prev => prev - 1);
+        }
+      }
+    } catch (error) {
+      setRemovedBookmarks(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(index);
+        return newSet;
+      });
+      console.error('Error removing bookmark:', error);
+      toast.error('Failed to remove bookmark');
+    }
+  };
+
   const renderQuestion = (bookmarked: BookmarkedQuestion) => {
     const question = bookmarked.question;
     const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
@@ -247,6 +296,26 @@ export default function Content() {
             </p>
           </div>
           <div className="flex gap-2">
+            <button
+              onClick={() => handleRemoveBookmark(currentQuestionIndex)}
+              className="text-gray-500 hover:text-yellow-500 transition-colors duration-200"
+              title="Remove from bookmarks"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+            </button>
             <button
               onClick={() => setReportState({ isOpen: true, questionIndex: currentQuestionIndex })}
               className="text-gray-500 hover:text-red-500 transition-colors duration-200"

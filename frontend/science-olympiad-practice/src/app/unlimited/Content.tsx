@@ -130,39 +130,42 @@ const markQuestionAsContested = (index: number): void => {
   }
 };
 
-// Add helper functions for bookmark management
-const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
-  const bookmarked = localStorage.getItem('bookmarkedQuestions');
-  return bookmarked ? JSON.parse(bookmarked) : [];
-};
+// Remove the helper functions for bookmark management that use localStorage
+// const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
+//   const bookmarked = localStorage.getItem('bookmarkedQuestions');
+//   return bookmarked ? JSON.parse(bookmarked) : [];
+// };
 
-const isQuestionBookmarked = (question: Question): boolean => {
-  const bookmarked = getBookmarkedQuestions();
-  return bookmarked.some(bq => 
+const isQuestionBookmarked = async (userId: string | null, question: Question): Promise<boolean> => {
+  if (!userId) return false;
+  
+  const bookmarks = await loadBookmarksFromFirebase(userId);
+  return bookmarks.some(bq => 
     bq.question.question === question.question && 
     bq.source === 'unlimited'
   );
 };
 
-const toggleBookmark = (question: Question, eventName: string): void => {
-  const bookmarked = getBookmarkedQuestions();
-  const isBookmarked = isQuestionBookmarked(question);
-  
-  if (isBookmarked) {
-    const newBookmarked = bookmarked.filter(bq => 
-      !(bq.question.question === question.question && bq.source === 'unlimited')
-    );
-    localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-  } else {
-    const newBookmarked = [...bookmarked, {
-      question,
-      eventName,
-      source: 'unlimited' as const,
-      timestamp: Date.now()
-    }];
-    localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-  }
-};
+// No longer needed as we handle this in the bookmark utils
+// const toggleBookmark = (question: Question, eventName: string): void => {
+//   const bookmarked = getBookmarkedQuestions();
+//   const isBookmarked = isQuestionBookmarked(question);
+//   
+//   if (isBookmarked) {
+//     const newBookmarked = bookmarked.filter(bq => 
+//       !(bq.question.question === question.question && bq.source === 'unlimited')
+//     );
+//     localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
+//   } else {
+//     const newBookmarked = [...bookmarked, {
+//       question,
+//       eventName,
+//       source: 'unlimited' as const,
+//       timestamp: Date.now()
+//     }];
+//     localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
+//   }
+// };
 
 export default function UnlimitedPracticePage() {
   const router = useRouter();
@@ -186,6 +189,7 @@ export default function UnlimitedPracticePage() {
   const RATE_LIMIT_DELAY = 2000;
   // Updated gradingResults now holds a numeric score.
   const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
+  const [bookmarkedQuestions, setBookmarkedQuestions] = useState<Record<string, boolean>>({});
 
   // Fetch and filter questions on mount
   useEffect(() => {
@@ -252,10 +256,21 @@ export default function UnlimitedPracticePage() {
     fetchData();
   }, [router]);
 
+  // Update the useEffect that loads bookmarks
   useEffect(() => {
     const loadUserBookmarks = async () => {
       if (auth.currentUser) {
-        await loadBookmarksFromFirebase(auth.currentUser.uid);
+        const bookmarks = await loadBookmarksFromFirebase(auth.currentUser.uid);
+        
+        // Create a map of question text to bookmark status
+        const bookmarkMap: Record<string, boolean> = {};
+        bookmarks.forEach(bookmark => {
+          if (bookmark.source === 'unlimited') {
+            bookmarkMap[bookmark.question.question] = true;
+          }
+        });
+        
+        setBookmarkedQuestions(bookmarkMap);
       }
     };
     
@@ -509,20 +524,54 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
   };
 
   const handleBookmark = async (question: Question) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to bookmark questions');
+      return;
+    }
+    
     try {
-      await addBookmark(auth.currentUser?.uid || null, question, routerData.eventName || 'Unknown Event', 'unlimited');
-      toast.success('Question bookmarked successfully!');
+      // Update local state immediately to reflect change in UI
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: true
+      }));
+      
+      // Then update Firebase in the background
+      await addBookmark(auth.currentUser.uid, question, routerData.eventName || 'Unknown Event', 'unlimited');
+      toast.success('Question bookmarked!');
     } catch (error) {
+      // Revert the local state if there was an error
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: false
+      }));
       console.error('Error bookmarking question:', error);
       toast.error('Failed to bookmark question');
     }
   };
 
   const handleRemoveBookmark = async (question: Question) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to manage bookmarks');
+      return;
+    }
+    
     try {
-      await removeBookmark(auth.currentUser?.uid || null, question, 'unlimited');
-      toast.success('Bookmark removed successfully!');
+      // Update local state immediately to reflect change in UI
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: false
+      }));
+      
+      // Then update Firebase in the background
+      await removeBookmark(auth.currentUser.uid, question, 'unlimited');
+      toast.success('Bookmark removed!');
     } catch (error) {
+      // Revert the local state if there was an error
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: true
+      }));
       console.error('Error removing bookmark:', error);
       toast.error('Failed to remove bookmark');
     }
@@ -531,7 +580,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
   const renderQuestion = (question: Question) => {
     const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
     const currentAnswers = currentAnswer || [];
-    const isBookmarked = isQuestionBookmarked(question);
+    const isBookmarked = bookmarkedQuestions[question.question] || false;
 
     return (
       <div className={`relative border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
@@ -591,9 +640,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
               </button>
             )}
             <button
-              onClick={() => {
-                handleRemoveBookmark(question);
-              }}
+              onClick={() => isBookmarked ? handleRemoveBookmark(question) : handleBookmark(question)}
               className={`text-gray-500 hover:text-yellow-500 transition-colors duration-200`}
               title={isBookmarked ? "Remove from bookmarks" : "Bookmark question"}
             >

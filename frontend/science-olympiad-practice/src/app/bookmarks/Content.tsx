@@ -22,11 +22,6 @@ interface BookmarkedQuestion {
   timestamp: number;
 }
 
-export const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
-  const bookmarked = localStorage.getItem('bookmarkedQuestions');
-  return bookmarked ? JSON.parse(bookmarked) : [];
-};
-
 export default function Content() {
   const router = useRouter();
   const [bookmarkedQuestions, setBookmarkedQuestions] = useState<Record<string, BookmarkedQuestion[]>>({});
@@ -38,16 +33,10 @@ export default function Content() {
       try {
         // Load bookmarks from Firebase if user is logged in
         if (auth.currentUser) {
-          await loadBookmarksFromFirebase(auth.currentUser.uid);
-        }
-
-        // Get bookmarks from localStorage
-        const bookmarked = localStorage.getItem('bookmarkedQuestions');
-        if (bookmarked) {
-          const questions = JSON.parse(bookmarked) as BookmarkedQuestion[];
+          const bookmarks = await loadBookmarksFromFirebase(auth.currentUser.uid);
           
           // Group questions by event
-          const groupedQuestions = questions.reduce((acc, question) => {
+          const groupedQuestions = bookmarks.reduce((acc, question) => {
             if (!acc[question.eventName]) {
               acc[question.eventName] = [];
             }
@@ -57,6 +46,9 @@ export default function Content() {
 
           // Sort events by number of questions
           setBookmarkedQuestions(groupedQuestions);
+        } else {
+          // No bookmarks for logged out users, show empty state
+          setBookmarkedQuestions({});
         }
       } catch (error) {
         console.error('Error loading bookmarks:', error);
@@ -70,13 +62,14 @@ export default function Content() {
   }, []);
 
   const handlePracticeEvent = (eventName: string, questions: BookmarkedQuestion[]) => {
-    localStorage.setItem('practiceQuestions', JSON.stringify(questions));
-    localStorage.setItem('currentPracticeEvent', eventName);
+    // Use sessionStorage instead of localStorage for temporary storage
+    sessionStorage.setItem('practiceQuestions', JSON.stringify(questions));
+    sessionStorage.setItem('currentPracticeEvent', eventName);
     router.push('/bookmarks/practice');
   };
 
   const handleBackToPractice = () => {
-    router.push('/practice');
+    router.push('/dashboard');
   };
 
   return (
@@ -106,6 +99,12 @@ export default function Content() {
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
               <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+            </div>
+          ) : !auth.currentUser ? (
+            <div className="text-center py-8">
+              <p className={`text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Please sign in to view your bookmarks
+              </p>
             </div>
           ) : Object.keys(bookmarkedQuestions).length === 0 ? (
             <div className="text-center py-8">

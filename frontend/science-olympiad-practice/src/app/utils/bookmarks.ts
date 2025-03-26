@@ -1,5 +1,5 @@
 import { db } from '@/lib/firebase';
-import { collection, doc, setDoc, deleteDoc, getDoc, getDocs } from 'firebase/firestore';
+import { collection, doc, setDoc, deleteDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 
 interface Question {
   question: string;
@@ -15,20 +15,6 @@ interface BookmarkedQuestion {
   timestamp: number;
 }
 
-export const syncBookmarksToFirebase = async (userId: string) => {
-  if (!userId) return;
-  
-  const localBookmarks = localStorage.getItem('bookmarkedQuestions');
-  if (!localBookmarks) return;
-  
-  const bookmarksRef = collection(db, 'bookmarks');
-  const userBookmarksDoc = doc(bookmarksRef, userId);
-  
-  await setDoc(userBookmarksDoc, {
-    questions: JSON.parse(localBookmarks)
-  });
-};
-
 export const loadBookmarksFromFirebase = async (userId: string): Promise<BookmarkedQuestion[]> => {
   if (!userId) return [];
   
@@ -37,8 +23,7 @@ export const loadBookmarksFromFirebase = async (userId: string): Promise<Bookmar
   
   if (bookmarksDoc.exists()) {
     const data = bookmarksDoc.data();
-    localStorage.setItem('bookmarkedQuestions', JSON.stringify(data.questions));
-    return data.questions;
+    return data.questions || [];
   }
   
   return [];
@@ -50,29 +35,38 @@ export const addBookmark = async (
   eventName: string,
   source: string
 ) => {
+  if (!userId) return;
+
   const bookmark: BookmarkedQuestion = {
     question,
     eventName,
     source,
     timestamp: Date.now()
   };
-
-  // Update local storage
-  const existingBookmarks = localStorage.getItem('bookmarkedQuestions');
-  const bookmarks: BookmarkedQuestion[] = existingBookmarks ? JSON.parse(existingBookmarks) : [];
   
-  if (!bookmarks.some(b => 
-    b.question.question === question.question && 
-    b.eventName === eventName && 
-    b.source === source
-  )) {
-    bookmarks.push(bookmark);
-    localStorage.setItem('bookmarkedQuestions', JSON.stringify(bookmarks));
+  const bookmarksRef = doc(db, 'bookmarks', userId);
+  const bookmarksDoc = await getDoc(bookmarksRef);
+  
+  if (bookmarksDoc.exists()) {
+    const data = bookmarksDoc.data();
+    const questions: BookmarkedQuestion[] = data.questions || [];
     
-    // Sync with Firebase if user is logged in
-    if (userId) {
-      await syncBookmarksToFirebase(userId);
+    // Check if the question is already bookmarked
+    if (!questions.some(b => 
+      b.question.question === question.question && 
+      b.eventName === eventName && 
+      b.source === source
+    )) {
+      // Add the bookmark to the array
+      await updateDoc(bookmarksRef, {
+        questions: arrayUnion(bookmark)
+      });
     }
+  } else {
+    // Create new document with the bookmark
+    await setDoc(bookmarksRef, {
+      questions: [bookmark]
+    });
   }
 };
 
@@ -81,19 +75,25 @@ export const removeBookmark = async (
   question: Question,
   source: string
 ) => {
-  // Update local storage
-  const existingBookmarks = localStorage.getItem('bookmarkedQuestions');
-  if (!existingBookmarks) return;
+  if (!userId) return;
 
-  const bookmarks: BookmarkedQuestion[] = JSON.parse(existingBookmarks);
-  const filteredBookmarks = bookmarks.filter(b => 
-    !(b.question.question === question.question && b.source === source)
-  );
+  const bookmarksRef = doc(db, 'bookmarks', userId);
+  const bookmarksDoc = await getDoc(bookmarksRef);
   
-  localStorage.setItem('bookmarkedQuestions', JSON.stringify(filteredBookmarks));
-  
-  // Sync with Firebase if user is logged in
-  if (userId) {
-    await syncBookmarksToFirebase(userId);
+  if (bookmarksDoc.exists()) {
+    const data = bookmarksDoc.data();
+    const questions: BookmarkedQuestion[] = data.questions || [];
+    
+    // Find the bookmark to remove
+    const bookmarkToRemove = questions.find(b => 
+      b.question.question === question.question && b.source === source
+    );
+    
+    if (bookmarkToRemove) {
+      // Remove the bookmark
+      await updateDoc(bookmarksRef, {
+        questions: arrayRemove(bookmarkToRemove)
+      });
+    }
   }
 }; 

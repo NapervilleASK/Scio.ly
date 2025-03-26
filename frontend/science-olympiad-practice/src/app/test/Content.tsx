@@ -158,6 +158,7 @@ export default function TestPage() {
   const [isMounted, setIsMounted] = useState(false);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [inputCode, setInputCode] = useState<string>('');
+  const [bookmarkedQuestions, setBookmarkedQuestions] = useState<Record<string, boolean>>({});
 
   const closeShareModal = useCallback(() => {
     setShareModalOpen(false);
@@ -647,43 +648,24 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
   };
 
   // Add helper functions for bookmark management
-  const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
-    const bookmarked = localStorage.getItem('bookmarkedQuestions');
-    return bookmarked ? JSON.parse(bookmarked) : [];
-  };
-
   const isQuestionBookmarked = (question: Question): boolean => {
-    const bookmarked = getBookmarkedQuestions();
-    return bookmarked.some(bq => 
-      bq.question.question === question.question && 
-      bq.source === 'test'
-    );
-  };
-
-  const toggleBookmark = (question: Question, eventName: string): void => {
-    const bookmarked = getBookmarkedQuestions();
-    const isBookmarked = isQuestionBookmarked(question);
-    
-    if (isBookmarked) {
-      const newBookmarked = bookmarked.filter(bq => 
-        !(bq.question.question === question.question && bq.source === 'test')
-      );
-      localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-    } else {
-      const newBookmarked = [...bookmarked, {
-        question,
-        eventName,
-        source: 'test' as const,
-        timestamp: Date.now()
-      }];
-      localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-    }
+    return bookmarkedQuestions[question.question] || false;
   };
 
   useEffect(() => {
     const loadUserBookmarks = async () => {
       if (auth.currentUser) {
-        await loadBookmarksFromFirebase(auth.currentUser.uid);
+        const bookmarks = await loadBookmarksFromFirebase(auth.currentUser.uid);
+        
+        // Create a map of question text to bookmark status
+        const bookmarkMap: Record<string, boolean> = {};
+        bookmarks.forEach(bookmark => {
+          if (bookmark.source === 'test') {
+            bookmarkMap[bookmark.question.question] = true;
+          }
+        });
+        
+        setBookmarkedQuestions(bookmarkMap);
       }
     };
     
@@ -691,20 +673,54 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
   }, []);
 
   const handleBookmark = async (question: Question) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to bookmark questions');
+      return;
+    }
+    
     try {
-      await addBookmark(auth.currentUser?.uid || null, question, routerData.eventName || 'Unknown Event', 'test');
-      toast.success('Question bookmarked successfully!');
+      // Update the local state immediately to make the UI responsive
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: true
+      }));
+      
+      // Then update Firebase in the background
+      await addBookmark(auth.currentUser.uid, question, routerData.eventName || 'Unknown Event', 'test');
+      toast.success('Question bookmarked!');
     } catch (error) {
+      // Revert the local state if there was an error
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: false
+      }));
       console.error('Error bookmarking question:', error);
       toast.error('Failed to bookmark question');
     }
   };
 
   const handleRemoveBookmark = async (question: Question) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to manage bookmarks');
+      return;
+    }
+    
     try {
-      await removeBookmark(auth.currentUser?.uid || null, question, 'test');
-      toast.success('Bookmark removed successfully!');
+      // Update the local state immediately to make the UI responsive
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: false
+      }));
+      
+      // Then update Firebase in the background
+      await removeBookmark(auth.currentUser.uid, question, 'test');
+      toast.success('Bookmark removed!');
     } catch (error) {
+      // Revert the local state if there was an error
+      setBookmarkedQuestions(prev => ({
+        ...prev,
+        [question.question]: true
+      }));
       console.error('Error removing bookmark:', error);
       toast.error('Failed to remove bookmark');
     }
@@ -908,10 +924,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                               </button>
                             )}
                             <button
-                              onClick={() => {
-                                toggleBookmark(question, routerData.eventName || 'Unknown Event');
-                                toast.success(isBookmarked ? 'Question removed from bookmarks' : 'Question bookmarked');
-                              }}
+                              onClick={() => isBookmarked ? handleRemoveBookmark(question) : handleBookmark(question)}
                               className={`text-gray-500 hover:text-yellow-500 transition-colors duration-200`}
                               title={isBookmarked ? "Remove from bookmarks" : "Bookmark question"}
                             >
