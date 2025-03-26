@@ -11,6 +11,7 @@ import api from '../api';
 import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import PDFViewer from '@/app/components/PDFViewer';
 import ReportModal, { Question } from '@/app/components/ReportModal';
+import { addBookmark, removeBookmark, loadBookmarksFromFirebase } from '@/app/utils/bookmarks';
 
 interface RouterParams {
   eventName?: string;
@@ -23,6 +24,13 @@ interface ReportState {
   questionIndex: number | null;
 }
 
+// Add new interface for bookmarked questions
+interface BookmarkedQuestion {
+  question: Question;
+  eventName: string;
+  source: 'unlimited' | 'test';
+  timestamp: number;
+}
 
 const API_URL = api.api;
 const arr = api.arr;
@@ -122,6 +130,40 @@ const markQuestionAsContested = (index: number): void => {
   }
 };
 
+// Add helper functions for bookmark management
+const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
+  const bookmarked = localStorage.getItem('bookmarkedQuestions');
+  return bookmarked ? JSON.parse(bookmarked) : [];
+};
+
+const isQuestionBookmarked = (question: Question): boolean => {
+  const bookmarked = getBookmarkedQuestions();
+  return bookmarked.some(bq => 
+    bq.question.question === question.question && 
+    bq.source === 'unlimited'
+  );
+};
+
+const toggleBookmark = (question: Question, eventName: string): void => {
+  const bookmarked = getBookmarkedQuestions();
+  const isBookmarked = isQuestionBookmarked(question);
+  
+  if (isBookmarked) {
+    const newBookmarked = bookmarked.filter(bq => 
+      !(bq.question.question === question.question && bq.source === 'unlimited')
+    );
+    localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
+  } else {
+    const newBookmarked = [...bookmarked, {
+      question,
+      eventName,
+      source: 'unlimited' as const,
+      timestamp: Date.now()
+    }];
+    localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
+  }
+};
+
 export default function UnlimitedPracticePage() {
   const router = useRouter();
 
@@ -210,9 +252,16 @@ export default function UnlimitedPracticePage() {
     fetchData();
   }, [router]);
 
-
-  // Cleanup effect to clear localStorage on unmount
   useEffect(() => {
+    const loadUserBookmarks = async () => {
+      if (auth.currentUser) {
+        await loadBookmarksFromFirebase(auth.currentUser.uid);
+      }
+    };
+    
+    loadUserBookmarks();
+
+    // Cleanup effect to clear localStorage on unmount
     return () => {
       if (window.location.pathname !== '/unlimited') {
         localStorage.removeItem('unlimitedQuestions');
@@ -459,10 +508,30 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
     }
   };
 
+  const handleBookmark = async (question: Question) => {
+    try {
+      await addBookmark(auth.currentUser?.uid || null, question, routerData.eventName || 'Unknown Event', 'unlimited');
+      toast.success('Question bookmarked successfully!');
+    } catch (error) {
+      console.error('Error bookmarking question:', error);
+      toast.error('Failed to bookmark question');
+    }
+  };
+
+  const handleRemoveBookmark = async (question: Question) => {
+    try {
+      await removeBookmark(auth.currentUser?.uid || null, question, 'unlimited');
+      toast.success('Bookmark removed successfully!');
+    } catch (error) {
+      console.error('Error removing bookmark:', error);
+      toast.error('Failed to remove bookmark');
+    }
+  };
 
   const renderQuestion = (question: Question) => {
     const isMultiSelect = isMultiSelectQuestion(question.question, question.answers);
     const currentAnswers = currentAnswer || [];
+    const isBookmarked = isQuestionBookmarked(question);
 
     return (
       <div className={`relative border p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
@@ -521,6 +590,28 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                 </svg>
               </button>
             )}
+            <button
+              onClick={() => {
+                handleRemoveBookmark(question);
+              }}
+              className={`text-gray-500 hover:text-yellow-500 transition-colors duration-200`}
+              title={isBookmarked ? "Remove from bookmarks" : "Bookmark question"}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill={isBookmarked ? "currentColor" : "none"}
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+            </button>
             <button
               onClick={() => setReportState({ isOpen: true, questionIndex: currentQuestionIndex })}
               className="text-gray-500 hover:text-red-500 transition-colors duration-200"

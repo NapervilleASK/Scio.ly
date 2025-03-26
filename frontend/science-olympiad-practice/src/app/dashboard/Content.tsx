@@ -17,6 +17,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Header from '../components/Header';
 import api from '../api';
+import { getBookmarkedQuestions } from '@/app/bookmarks/Content';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -1188,6 +1189,88 @@ export default function WelcomePage() {
               </div>
             </div>
           )}
+
+          {/* Bookmarked Questions Section */}
+          <div className={`mt-8 p-6 rounded-lg mb-8 transition-colors duration-1000 ease-in-out ${
+            darkMode ? 'bg-gray-800' : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)]'
+          }`}>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Bookmarked Questions
+              </h2>
+              <button
+                onClick={() => router.push('/bookmarks')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                  darkMode
+                    ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                    : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                  />
+                </svg>
+                <span>Practice Bookmarked Questions</span>
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {getBookmarkedQuestions().slice(0, 6).map((bookmarked, index) => (
+                <div
+                  key={index}
+                  className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+                    darkMode
+                      ? 'bg-gray-700 border-gray-600 text-white'
+                      : 'bg-gray-50 border-gray-300 text-black'
+                  } border`}
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <span className={`text-sm font-medium ${
+                      darkMode ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
+                      {bookmarked.eventName}
+                    </span>
+                    <span className={`text-xs ${
+                      darkMode ? 'text-gray-400' : 'text-gray-500'
+                    }`}>
+                      {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
+                    </span>
+                  </div>
+                  <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
+                  <div className="text-right">
+                    <span className={`text-xs ${
+                      darkMode ? 'text-gray-400' : 'text-gray-500'
+                    }`}>
+                      {new Date(bookmarked.timestamp).toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {getBookmarkedQuestions().length === 0 ? (
+              <p className={`text-center mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                No bookmarked questions yet. Questions you bookmark while practicing will appear here.
+              </p>
+            ) : getBookmarkedQuestions().length > 6 && (
+              <div className="text-center mt-4">
+                <button
+                  onClick={() => router.push('/bookmarks')}
+                  className={`text-sm ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
+                >
+                  View all {getBookmarkedQuestions().length} bookmarked questions
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
