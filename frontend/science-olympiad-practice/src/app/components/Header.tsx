@@ -395,7 +395,7 @@ export default function Header() {
                         Dashboard
                       </Link>
                       <Link
-                        href="/dashboard"
+                        href="/practice"
                         className={`block px-4 py-2 text-sm ${
                           darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
                         }`}

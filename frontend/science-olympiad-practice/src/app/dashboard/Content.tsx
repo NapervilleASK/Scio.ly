@@ -1237,7 +1237,7 @@ export default function WelcomePage() {
               </h2>
               <button
                 onClick={() => router.push('/bookmarks')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                   darkMode
                     ? 'bg-gray-700 hover:bg-gray-600 text-white'
                     : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
@@ -1267,54 +1267,89 @@ export default function WelcomePage() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {bookmarkedQuestions.slice(0, 6).map((bookmarked, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+              <>
+                {/* Mobile view - simple button for small screens */}
+                <div className="md:hidden">
+                  <button
+                    onClick={() => router.push('/bookmarks')}
+                    className={`w-full p-3 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 transform hover:scale-105 ${
                       darkMode
-                        ? 'bg-gray-700 border-gray-600 text-white'
-                        : 'bg-gray-50 border-gray-300 text-black'
-                    } border`}
+                        ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                        : 'bg-blue-50 hover:bg-blue-100 text-blue-500'
+                    }`}
                   >
-                    <div className="flex justify-between items-start mb-2">
-                      <span className={`text-sm font-medium ${
-                        darkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {bookmarked.eventName}
-                      </span>
-                      <span className={`text-xs ${
-                        darkMode ? 'text-gray-400' : 'text-gray-500'
-                      }`}>
-                        {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
-                      </span>
-                    </div>
-                    <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
-                    <div className="text-right">
-                      <span className={`text-xs ${
-                        darkMode ? 'text-gray-400' : 'text-gray-500'
-                      }`}>
-                        {new Date(bookmarked.timestamp).toLocaleDateString()}
-                      </span>
-                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                      />
+                    </svg>
+                    <span>{bookmarkedQuestions.length > 0 ? `View ${bookmarkedQuestions.length} Bookmarks` : 'View Bookmarks'}</span>
+                  </button>
+                </div>
+                
+                {/* Desktop view - grid of bookmark cards and message */}
+                <div className="hidden md:block">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    {bookmarkedQuestions.slice(0, 6).map((bookmarked, index) => (
+                      <div
+                        key={index}
+                        className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
+                          darkMode
+                            ? 'bg-gray-700 border-gray-600 text-white'
+                            : 'bg-gray-50 border-gray-300 text-black'
+                        } border`}
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <span className={`text-sm font-medium ${
+                            darkMode ? 'text-gray-300' : 'text-gray-600'
+                          }`}>
+                            {bookmarked.eventName}
+                          </span>
+                          <span className={`text-xs ${
+                            darkMode ? 'text-gray-400' : 'text-gray-500'
+                          }`}>
+                            {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
+                          </span>
+                        </div>
+                        <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
+                        <div className="text-right">
+                          <span className={`text-xs ${
+                            darkMode ? 'text-gray-400' : 'text-gray-500'
+                          }`}>
+                            {new Date(bookmarked.timestamp).toLocaleDateString()}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                  
+                  {/* Only show these messages on desktop */}
+                  {bookmarkedQuestions.length === 0 ? (
+                    <p className={`text-center mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                      No bookmarked questions yet. Bookmark questions while practicing!
+                    </p>
+                  ) : bookmarkedQuestions.length > 6 ? (
+                    <div className="text-center mt-4">
+                      <button
+                        onClick={() => router.push('/bookmarks')}
+                        className={`text-sm ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
+                      >
+                        View all {bookmarkedQuestions.length} bookmarked questions
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </>
             )}
-            {currentUser && bookmarkedQuestions.length === 0 ? (
-              <p className={`text-center mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                No bookmarked questions yet. Bookmark questions while practicing!
-              </p>
-            ) : currentUser && bookmarkedQuestions.length > 6 ? (
-              <div className="text-center mt-4">
-                <button
-                  onClick={() => router.push('/bookmarks')}
-                  className={`text-sm ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
-                >
-                  View all {bookmarkedQuestions.length} bookmarked questions
-                </button>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>
