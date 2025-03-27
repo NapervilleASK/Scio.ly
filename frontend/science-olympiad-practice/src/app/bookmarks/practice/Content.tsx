@@ -52,7 +52,6 @@ export default function Content() {
   const [gradingResults, setGradingResults] = useState<{ [key: string]: number }>({});
   const [practiceQuestions, setPracticeQuestions] = useState<BookmarkedQuestion[]>([]);
   const [eventName, setEventName] = useState<string>('');
-  const [removedBookmarks, setRemovedBookmarks] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const loadQuestions = () => {
@@ -238,12 +237,6 @@ export default function Content() {
     try {
       const bookmarked = practiceQuestions[index];
       
-      setRemovedBookmarks(prev => {
-        const newSet = new Set(prev);
-        newSet.add(index);
-        return newSet;
-      });
-      
       await removeBookmark(auth.currentUser.uid, bookmarked.question, bookmarked.source);
       toast.success('Bookmark removed!');
       
@@ -266,11 +259,6 @@ export default function Content() {
         }
       }
     } catch (error) {
-      setRemovedBookmarks(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(index);
-        return newSet;
-      });
       console.error('Error removing bookmark:', error);
       toast.error('Failed to remove bookmark');
     }

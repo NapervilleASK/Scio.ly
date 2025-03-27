@@ -27,14 +27,6 @@ interface ReportState {
   questionIndex: number | null;
 }
 
-// Add new interface for bookmarked questions
-interface BookmarkedQuestion {
-  question: Question;
-  eventName: string;
-  source: 'unlimited' | 'test';
-  timestamp: number;
-}
-
 // Keep the Question type for backward compatibility
 type Question = ReportQuestion;
 
@@ -275,30 +267,6 @@ export default function TestPage() {
     fetchData();
   }, [router]);
 
-  useEffect(() => {
-    if (timeLeft === null || isSubmitted) return;
-
-    if (timeLeft === 0) {
-      handleSubmit()
-    }
-    if (timeLeft === 30) {
-      toast.warning("Warning: Thirty seconds left")
-    }
-    if (timeLeft === 60) {
-      toast.warning("Warning: One minute left")
-    }
-    // Store timeLeft in localStorage whenever it changes
-    if (timeLeft > 0) {
-      localStorage.setItem('testTimeLeft', timeLeft.toString());
-    }
-
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev !== null ? prev - 1 : null));
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft, isSubmitted]);
-
   const handleAnswerChange = (
     questionIndex: number,
     answer: string | null,
@@ -325,7 +293,7 @@ export default function TestPage() {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Extract questions that need to be graded
@@ -470,7 +438,31 @@ export default function TestPage() {
         eventName: routerData.eventName
       });
     }
-  };
+  }, [data, userAnswers, gradingResults, routerData, setGradingResults]);
+
+  useEffect(() => {
+    if (timeLeft === null || isSubmitted) return;
+
+    if (timeLeft === 0) {
+      handleSubmit()
+    }
+    if (timeLeft === 30) {
+      toast.warning("Warning: Thirty seconds left")
+    }
+    if (timeLeft === 60) {
+      toast.warning("Warning: One minute left")
+    }
+    // Store timeLeft in localStorage whenever it changes
+    if (timeLeft > 0) {
+      localStorage.setItem('testTimeLeft', timeLeft.toString());
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => (prev !== null ? prev - 1 : null));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, isSubmitted, handleSubmit]);
 
   const handleBackToMain = () => {
     router.push('/practice');

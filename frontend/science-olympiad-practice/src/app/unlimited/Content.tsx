@@ -24,14 +24,6 @@ interface ReportState {
   questionIndex: number | null;
 }
 
-// Add new interface for bookmarked questions
-interface BookmarkedQuestion {
-  question: Question;
-  eventName: string;
-  source: 'unlimited' | 'test';
-  timestamp: number;
-}
-
 const API_URL = api.api;
 const arr = api.arr;
 const LoadingFallback = () => (
@@ -129,43 +121,6 @@ const markQuestionAsContested = (index: number): void => {
     localStorage.setItem('contestedUnlimitedQuestions', JSON.stringify(contestedQuestions));
   }
 };
-
-// Remove the helper functions for bookmark management that use localStorage
-// const getBookmarkedQuestions = (): BookmarkedQuestion[] => {
-//   const bookmarked = localStorage.getItem('bookmarkedQuestions');
-//   return bookmarked ? JSON.parse(bookmarked) : [];
-// };
-
-const isQuestionBookmarked = async (userId: string | null, question: Question): Promise<boolean> => {
-  if (!userId) return false;
-  
-  const bookmarks = await loadBookmarksFromFirebase(userId);
-  return bookmarks.some(bq => 
-    bq.question.question === question.question && 
-    bq.source === 'unlimited'
-  );
-};
-
-// No longer needed as we handle this in the bookmark utils
-// const toggleBookmark = (question: Question, eventName: string): void => {
-//   const bookmarked = getBookmarkedQuestions();
-//   const isBookmarked = isQuestionBookmarked(question);
-//   
-//   if (isBookmarked) {
-//     const newBookmarked = bookmarked.filter(bq => 
-//       !(bq.question.question === question.question && bq.source === 'unlimited')
-//     );
-//     localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-//   } else {
-//     const newBookmarked = [...bookmarked, {
-//       question,
-//       eventName,
-//       source: 'unlimited' as const,
-//       timestamp: Date.now()
-//     }];
-//     localStorage.setItem('bookmarkedQuestions', JSON.stringify(newBookmarked));
-//   }
-// };
 
 export default function UnlimitedPracticePage() {
   const router = useRouter();
