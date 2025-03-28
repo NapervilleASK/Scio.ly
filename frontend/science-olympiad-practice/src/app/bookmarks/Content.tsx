@@ -133,10 +133,15 @@ export default function Content() {
                       <h2 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                         {eventName}
                       </h2>
-                      <div className={`flex gap-4 mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {/* Statistics for desktop only */}
+                      <div className={`hidden md:flex gap-4 mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                         <p>{questions.length} question{questions.length !== 1 ? 's' : ''}</p>
                         <p>From Test Mode: {questions.filter(q => q.source === 'test').length}</p>
-                        <p>From Practice Mode: {questions.filter(q => q.source === 'unlimited').length}</p>
+                        <p>From Unlimited Mode: {questions.filter(q => q.source === 'unlimited').length}</p>
+                      </div>
+                      {/* Simple count for mobile only */}
+                      <div className={`md:hidden mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                        <p>{questions.length} question{questions.length !== 1 ? 's' : ''}</p>
                       </div>
                     </div>
                     <button
