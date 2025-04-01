@@ -29,6 +29,13 @@ function EventDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState('alphabetical');
+  const [cipherTypes, setCipherTypes] = useState<{[key: string]: boolean}>({
+    aristocrat: false,
+    patristocrat: false,
+    hill: false,
+    baconian: false,
+    porta: false
+  });
   const [settings, setSettings] = useState<Settings>({
     questionCount: 10,
     timeLimit: 15,
@@ -44,6 +51,13 @@ function EventDashboard() {
     }));
   };
 
+  const handleCipherTypeChange = (cipher: string) => {
+    setCipherTypes(prev => ({
+      ...prev,
+      [cipher]: !prev[cipher]
+    }));
+  };
+
   const handleGenerateTest = () => {
     if (!selectedEvent) {
       toast.error('Please select an event first');
@@ -52,6 +66,34 @@ function EventDashboard() {
 
     const selectedEventObj = events.find((event) => event.id === selectedEvent);
     if (!selectedEventObj) return;
+
+    // Check if Codebusters is selected and validate cipher types
+    if (selectedEventObj.name === 'Codebusters') {
+      const selectedCiphers = Object.entries(cipherTypes)
+        .filter((entry) => entry[1])
+        .map(([cipher]) => cipher);
+      
+      if (selectedCiphers.length === 0) {
+        toast.error('Please select at least one cipher type');
+        return;
+      }
+
+      const testParams = {
+        eventName: selectedEventObj.name,
+        questionCount: settings.questionCount,
+        timeLimit: settings.timeLimit,
+        difficulty: settings.difficulty,
+        types: settings.types,
+        cipherTypes: selectedCiphers
+      };
+
+      localStorage.setItem('testParams', JSON.stringify(testParams));
+      localStorage.setItem('testTimeLeft', testParams.timeLimit.toString());
+      localStorage.removeItem('testQuestions');
+      localStorage.removeItem('testUserAnswers');
+      router.push('/codebusters');
+      return;
+    }
 
     const testParams = {
       eventName: selectedEventObj.name,
@@ -283,7 +325,7 @@ function EventDashboard() {
 
       {/* Main Content */}
       <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20">
-        <div className="mb-8">
+        <div className="mb-8 mt-8">
           <h2 className={`text-3xl font-bold transition-colors duration-500 ${
             darkMode ? 'text-white' : 'text-gray-900'
           }`}>
@@ -495,6 +537,39 @@ function EventDashboard() {
                       <option value="free-response">FRQ only</option>
                     </select>
                   </div>
+
+                  {/* Cipher Types Section for Codebusters */}
+                  {selectedEvent && events.find(event => event.id === selectedEvent)?.name === 'Codebusters' && (
+                    <div className="mt-4 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                      <label className={`block text-sm font-medium mb-3 ${
+                        darkMode ? 'text-gray-300' : 'text-gray-700'
+                      }`}>
+                        Select Cipher Types
+                      </label>
+                      <div className="space-y-2">
+                        {Object.entries(cipherTypes).map(([cipher, isSelected]) => (
+                          <label key={cipher} className="flex items-center space-x-2">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={() => handleCipherTypeChange(cipher)}
+                              className={`rounded border-gray-300 ${
+                                darkMode
+                                  ? 'bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500'
+                                  : 'bg-white border-gray-300 text-blue-600 focus:ring-blue-500'
+                              }`}
+                            />
+                            <span className={`text-sm ${
+                              darkMode ? 'text-gray-300' : 'text-gray-700'
+                            }`}>
+                              {cipher.charAt(0).toUpperCase() + cipher.slice(1)}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="pt-4 space-y-3">
                     <button
                       onClick={handleGenerateTest}

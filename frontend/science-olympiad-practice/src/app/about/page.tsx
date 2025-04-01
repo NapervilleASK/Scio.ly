@@ -240,7 +240,7 @@ export default function AboutPage() {
       />
 
       {/* Main Content */}
-      <main className="relative z-10 pt-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <main className="relative z-10 pt-36 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export default function AboutPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className={`mb-20 p-8 rounded-xl transition-colors duration-1000 ${
+          className={`mb-16 p-6 rounded-xl max-w-4xl mx-auto transition-colors duration-1000 ${
             darkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white/90 shadow-lg backdrop-blur-sm'
           }`}
         >
@@ -321,7 +321,7 @@ export default function AboutPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className={`mb-20 p-8 rounded-xl transition-colors duration-1000 ${
+          className={`mb-16 p-6 rounded-xl max-w-4xl mx-auto transition-colors duration-1000 ${
             darkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white/90 shadow-lg backdrop-blur-sm'
           }`}
         >
@@ -399,7 +399,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className={`mb-20 p-8 rounded-xl text-center transition-colors duration-1000 ${
+          className={`mb-16 p-6 rounded-xl text-center max-w-4xl mx-auto transition-colors duration-1000 ${
             darkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white/90 shadow-lg backdrop-blur-sm'
           }`}
         >

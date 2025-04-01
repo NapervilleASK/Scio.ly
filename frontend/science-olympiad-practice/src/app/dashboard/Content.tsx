@@ -878,7 +878,7 @@ export default function WelcomePage() {
                   </AnimatePresence>
                 ) : (
                   <div
-                    className="absolute left-0 top-[15vh] z-10"
+                    className="absolute left-0 top-[12vh] z-10"
                     onMouseEnter={() => setShowEventsTooltip(true)}
                     onMouseLeave={() => setShowEventsTooltip(false)}
                   >
@@ -1188,7 +1188,7 @@ export default function WelcomePage() {
           ) : (
             <div className="flex w-full gap-4">
               <div className="w-1/2 flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
-                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white border-white' : 'bg-white text-black border-black'} rounded-l-lg  border-r-4`}>
+                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white border-white' : 'bg-white text-black border-gray-500'} rounded-l-lg  border-r-4`}>
                   Test share code
                 </div>
                 <div className="w-4/5 flex flex-wrap">

@@ -66,7 +66,7 @@ export default function HomePage() {
     {
       icon: <FaRobot className="w-8 h-8" />,
       title: "AI Explanations",
-      description: "Get instant, detailed explanations for every question using our advanced AI system"
+      description: "Get instant, detailed explanations for every question using our Gemini 2.0 system"
     },
     {
       icon: <FaChartPie className="w-8 h-8" />,
@@ -136,7 +136,7 @@ export default function HomePage() {
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`text-7xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}
+              className={`text-8xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}
             >
               Scio.ly
             </motion.h1>
@@ -144,9 +144,9 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className={`text-xl mb-8 w-[85vw] md:max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
+              className={`text-2xl mb-8 w-[85vw] md:max-w-2xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
             >
-              Over 4000 Science Olympiad tests into one website, designed for the ultimate studying experience.
+              Over <span className="font-bold text-blue-500">4000</span> Science Olympiad tests compiled into one website, designed for the <span className="font-bold text-blue-500">ultimate studying experience</span>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -479,7 +479,7 @@ export default function HomePage() {
             }`}>
               <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Is this an official practice platform?</h3>
               <p className={darkMode ? 'text-gray-300' : 'text-gray-600'}>
-                No, Scio.ly is not not endorsed by Science Olympiad Inc. - Our platform provides practice materials based on past exams but we do not make any guarantees about content on future exams.
+                No, Scio.ly is not not endorsed by Science Olympiad Inc. Our platform provides practice materials based on past exams but we do not make any guarantees about content on future exams.
               </p>
             </div>
             <div className={`rounded-xl p-6 border ${
