@@ -477,7 +477,9 @@ export default function TestPage() {
     localStorage.removeItem('testQuestions');
     localStorage.removeItem('testUserAnswers');
     localStorage.removeItem('contestedQuestions');
-    localStorage.setItem('testTimeLeft',JSON.parse(localStorage.getItem("testParams") ?? "{}")?.timeLimit.toString() || "30");
+    const timeLimit = JSON.parse(localStorage.getItem("testParams") ?? "{}")?.timeLimit || "30";
+    localStorage.setItem('testTimeLeft', timeLimit);
+    setTimeLeft(parseInt(timeLimit) * 60);
     window.location.reload()
   };
 
