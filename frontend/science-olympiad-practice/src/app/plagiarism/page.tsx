@@ -6,11 +6,14 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import Fuse from 'fuse.js';
 import * as pdfjsLib from 'pdfjs-dist';
 
+
 // Initialize PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 // Initialize Gemini
-const genAI = new GoogleGenerativeAI('AIzaSyAwFolmYf8r4nis8yIla_78X1KxsVpcZ-Q');
+
+const arr = api.arr
+const genAI = new GoogleGenerativeAI(arr[Math.floor(Math.random() * arr.length)]);
 
 interface ProcessedQuestions {
   questions: string[];  // Questions extracted from user input
@@ -66,6 +69,7 @@ const SCIENCE_OLYMPIAD_EVENTS = [
   "Wind Power"
 ];
 
+
 export default function PlagiarismPage() {
   const [selectedEvent, setSelectedEvent] = useState<string>('');
   const [status, setStatus] = useState<string>('Select an event and click display');
@@ -118,7 +122,6 @@ export default function PlagiarismPage() {
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
-
     setSelectedFile(file);
     setStatus('Processing PDF...');
     setLoadingState('loading');
@@ -227,7 +230,7 @@ export default function PlagiarismPage() {
               <ol className="list-decimal list-inside space-y-1">
                 <li>Select a Science Olympiad event from the dropdown</li>
                 <li>Click &quot;Load Data&quot; to fetch the questions</li>
-                <li>Paste your text into the input box</li>
+                <li>Paste your text into the input box or upload a PDF</li>
                 <li>Click &quot;Check Plagiarism&quot; to analyze</li>
                 <li>Review the results showing potential matches</li>
               </ol>
