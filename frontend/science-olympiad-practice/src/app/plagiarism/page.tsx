@@ -1,9 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import api from '../api';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Fuse from 'fuse.js';
+import * as pdfjsLib from 'pdfjs-dist';
+
+// Initialize PDF.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI('AIzaSyAwFolmYf8r4nis8yIla_78X1KxsVpcZ-Q');
@@ -71,6 +75,8 @@ export default function PlagiarismPage() {
   const [inputtedQuestions, setInputtedQuestions] = useState<ProcessedQuestions | null>(null);
   const [officialQuestions, setOfficialQuestions] = useState<string[]>([]);  // Questions from official Science Olympiad event data
   const [plagiarismMatches, setPlagiarismMatches] = useState<PlagiarismMatch[]>([]);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDisplay = () => {
     if (!selectedEvent) {
@@ -109,6 +115,35 @@ export default function PlagiarismPage() {
       });
   };
 
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setSelectedFile(file);
+    setStatus('Processing PDF...');
+    setLoadingState('loading');
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      
+      let fullText = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items.map((item) => 'str' in item ? item.str : '').join(' ');
+        fullText += pageText + '\n';
+      }
+      
+      setInputText(fullText);
+      setStatus('PDF processed successfully');
+      setLoadingState('loaded');
+    } catch (error) {
+      setStatus('Error processing PDF: ' + (error as Error).message);
+      setLoadingState('error');
+    }
+  };
+
   const handlePlagiarismCheck = async () => {
     if (!inputText) return;
 
@@ -143,7 +178,7 @@ export default function PlagiarismPage() {
         // Initialize Fuse.js with official questions
         const fuse = new Fuse(officialQuestions, {
           includeScore: true,
-          threshold: 0.4, // Adjust this value to control how strict the matching is
+          threshold: 0.4,
         });
 
         // Check each inputted question for matches
@@ -155,7 +190,7 @@ export default function PlagiarismPage() {
             matches.push({
               inputQuestion: question,
               matchedQuestion: bestMatch.item,
-              similarity: 1 - (bestMatch.score || 0), // Convert score to similarity percentage
+              similarity: 1 - (bestMatch.score || 0),
             });
           }
         }
@@ -231,13 +266,36 @@ export default function PlagiarismPage() {
               <label htmlFor="text-input" className="block text-xs font-medium text-slate-600 mb-1.5 uppercase tracking-wider">
                 Enter Text to Check
               </label>
-              <textarea
-                id="text-input"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-white/50 text-slate-700 text-sm transition-colors h-32"
-                placeholder="Paste the text you want to check for plagiarism here..."
-              />
+              <div className="space-y-2">
+                <textarea
+                  id="text-input"
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-white/50 text-slate-700 text-sm transition-colors h-32"
+                  placeholder="Paste the text you want to check for plagiarism here..."
+                />
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-slate-500">or</span>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileUpload}
+                    accept=".pdf"
+                    className="hidden"
+                  />
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                  >
+                    Upload PDF
+                  </button>
+                  {selectedFile && (
+                    <span className="text-xs text-slate-600">
+                      {selectedFile.name}
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
 
             <button 
