@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import api from '../api';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Fuse from 'fuse.js';
-import * as pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from 'pdfjs-dist/webpack';
 
 
 // Initialize PDF.js worker
