@@ -467,7 +467,13 @@ export default function TestPage() {
   const handleBackToMain = () => {
     router.push('/practice');
   };
-
+  // const storedParams = localStorage.getItem('testParams');
+  // if (!storedParams) {
+  //   throw new Error('No test parameters found');
+  // }
+  // const routerParams = JSON.parse(storedParams);
+  // const { eventName, timeLimit } = routerParams;
+  // localStorage.setItem("testTimeLeft",timeLimit)
   // Reset the test while preserving test parameters
   const handleResetTest = () => {
     setIsSubmitted(false);

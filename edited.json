@@ -24,6 +24,36 @@
 		"original": "{\"question\":\"Lanugo describes hair that is short, fine, pale, and barely visible to the eye.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":297}",
 		"edited": "{\"question\":\"Lanugo describes hair that is short, fine, pale, and barely visible to the eye.\",\"options\":[\"True\",\"False\"],\"answers\":[],\"difficulty\":0.3}",
 		"timestamp": "2025-03-25T01:05:43.133Z"
+	  },
+	  {
+		"original": "{\"question\":\"Akshay accidentally stabs himself in the palm with a knife. List the order in which the knife travels through the skin.\",\"options\":[\"Stratum basale, Stratum corneum, stratum lucidum, stratum granulosum\",\"Stratum basale, stratum spinosum, stratum granulosum, stratum lucidum, stratum corneum\",\"Stratum basale, Stratum corneum, stratum granulosum, stratum lucidum, stratum corneum\",\"Stratum germinativum, stratum basale, stratum spinosum, stratum corneum\"],\"answers\":[2],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Akshay accidentally stabs himself in the palm with a knife. List the order in which the knife travels through the skin.\",\"options\":[\"Stratum basale, Stratum corneum, stratum lucidum, stratum granulosum\",\"Stratum basale, stratum spinosum, stratum granulosum, stratum lucidum, stratum corneum\",\"stratum corneum, stratum lucidum, stratum granulosum, statum spinosum, stratum basale\",\"Stratum germinativum, stratum basale, stratum spinosum, stratum corneum\"],\"answers\":[3],\"difficulty\":0.8}",
+		"timestamp": "2025-03-25T23:00:44.189Z"
+	  },
+	  {
+		"original": "{\"question\":\"If you cut yourself and bacteria enter the wound, which of the following would help get rid of the bacteria?\",\"options\":[\"Merkel cells\",\"Keratinocytes\",\"Langerhans cells\",\"Melanocytes\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":296}",
+		"edited": "{\"question\":\"If you cut yourself and bacteria enter the wound, which of the following would help get rid of the bacteria?\",\"options\":[\"Merkel cells\",\"Keratinocytes\",\"Langerhans cells\",\"Melanocytes\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-27T07:14:07.873Z"
+	  },
+	  {
+		"original": "{\"question\":\"Name a skin disease.\",\"options\":[],\"answers\":[\"Eczema, psoriasis, acne, dermatitis, skin cancer\"],\"difficulty\":0.5,\"originalIndex\":1006}",
+		"edited": "{\"question\":\"Name a skin disease.\",\"answers\":[\"Eczema, psoriasis, acne, dermatitis, skin cancer\"],\"difficulty\":0.01}",
+		"timestamp": "2025-03-28T04:55:53.955Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following about ceruminous glands are true? Choose all that apply.\",\"options\":[\"cerumen can activate an immune response against bacteria in the ear canal\",\"ceruminous glands are a type of apocrine gland\",\"ceruminous glands are specialized sebaceous glands\",\"ceruminous glands secrete a substance called cerumen\",\"the secretions of these glands combine with other secretions to form earwax\"],\"answers\":[1,3,4,5],\"difficulty\":0.9}",
+		"edited": "{\"question\":\"Which of the following about ceruminous glands are true? Choose all that apply.\",\"options\":[\"cerumen can activate an immune response against bacteria in the ear canal\",\"ceruminous glands are a type of apocrine gland\",\"ceruminous glands are specialized sebaceous glands\",\"ceruminous glands secrete a substance called cerumen\",\"the secretions of these glands combine with other secretions to form earwax\"],\"answers\":[1,2,4,5],\"difficulty\":0.9}",
+		"timestamp": "2025-03-29T01:57:09.871Z"
+	  },
+	  {
+		"original": "{\"question\":\"For Questions 32 - 37, identify which of the following integumentary accessory structures matches the given description. If there are multiple possible answers, provide only one.  Enter only the letter of your choice.\\na) Hair\\nb) Nails \\nc) Eccrine Sudoriferous Glands \\nd) Apocrine Sudoriferous Glands \\ne) Sebaceous Glands \\nf) Mammary Glands \\ng) Ceruminous Glands \\n\\nBegins functioning at puberty\",\"options\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":424}",
+		"edited": "{\"question\":\"For Questions 32 - 37, identify which of the following integumentary accessory structures matches the given description. If there are multiple possible answers, provide only one.  Enter only the letter of your choice.\\na) Hair\\nb) Nails \\nc) Eccrine Sudoriferous Glands \\nd) Apocrine Sudoriferous Glands \\ne) Sebaceous Glands \\nf) Mammary Glands \\ng) Ceruminous Glands \\n\\nDescription: Begins functioning at puberty\",\"options\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-04-02T23:07:46.370Z"
+	  },
+	  {
+		"original": "{\"question\":\"During what month of fetal development do fingerprints develop?\",\"options\":[\"3rd month\",\"4th month\",\"8th month\",\"6th month\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":239}",
+		"edited": "{\"question\":\"During what month of fetal development do fingerprints develop?\",\"options\":[\"3rd month\",\"4th month\",\"8th month\",\"6th month\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-04-04T03:14:59.522Z"
 	  }
 	],
 	"Anatomy - Skeletal": [
@@ -41,6 +71,26 @@
 		"original": "{\"question\":\"What is the main difference between a longitudinal fracture and a pathological fracture?\",\"options\":[\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone.\",\"A longitudinal fracture occurs due to excessive twisting of the bone, while a pathological fracture is caused by a sudden impact\",\"A longitudinal fracture runs along the short axis of the bone, while a pathological fracture occurs in healthy bones without pre-existing conditions\",\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone\",\"A longitudinal fracture results from a disease, while a pathological fracture occurs due to trauma or stress\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":231}",
 		"edited": "{\"question\":\"What is the main difference between a longitudinal fracture and a pathological fracture?\",\"options\":[\"A longitudinal fracture occurs along the long axis of the bone, while a pathological fracture occurs due to a disease that weakens the bone.\",\"A longitudinal fracture occurs due to excessive twisting of the bone, while a pathological fracture is caused by a sudden impact\",\"A longitudinal fracture runs along the short axis of the bone, while a pathological fracture occurs in healthy bones without pre-existing conditions\",\"A longitudinal fracture results from a disease, while a pathological fracture occurs due to trauma or stress\"],\"answers\":[1],\"difficulty\":0.7}",
 		"timestamp": "2025-03-20T21:29:57.240Z"
+	  },
+	  {
+		"original": "{\"question\":\"Referring to the Spreadsheet of FILL IN THE BLANK answers. The __________ joint is the most flexible, and easiest to dislocate.\",\"options\":[],\"answers\":[\"ball and socket\"],\"difficulty\":0.7,\"originalIndex\":284}",
+		"edited": "{\"question\":\"Referring to the Spreadsheet of FILL IN THE BLANK answers. The __________ joint is the most flexible, and easiest to dislocate.\",\"answers\":[\"ball and socket\"],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T11:59:32.630Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: There are 28 phalanges in the human body.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"True or False: There are 28 phalanges in the human body.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-27T19:57:00.990Z"
+	  },
+	  {
+		"original": "{\"question\":\"True (A)/ False (B): The skeleton does not receive any blood ﬂow.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":1}",
+		"edited": "{\"question\":\"True (A)/ False (B): The skeleton does not receive any blood ﬂow.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-28T05:04:14.462Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following statements are true?\",\"options\":[\"An average human has 12 ribs.\",\"Spinal stenosis may provoke leukemia.\",\"A Salter-Harris fracture is an injury to the growth plate area of a child’s bone.\",\"Torsion fractures are the most common type of fracture.\"],\"answers\":[3],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following statements are true?\",\"options\":[\"An average human has 12 ribs.\",\"Spinal stenosis may provoke leukemia.\",\"A Salter-Harris fracture is an injury to the growth plate area of a child’s bone.\",\"Torsion fractures are the most common type of fracture.\"],\"answers\":[1,3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-28T15:04:07.106Z"
 	  }
 	],
 	"Astronomy": [
@@ -78,6 +128,136 @@
 		"original": "{\"question\":\"Which of the following correctly lists the standard Harvard spectral classification scheme in order of increasing temperature?\",\"options\":[\"OBAFGKM\",\"MKGFABO\",\"OFGKAMB\",\"MFGKOBA\",\"MBGAFOK\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":1975}",
 		"edited": "{\"question\":\"Which of the following correctly lists the standard Harvard spectral classification scheme in order of increasing temperature?\",\"options\":[\"OBAFGKM\",\"MKGFABO\",\"OFGKAMB\",\"MFGKOBA\",\"MBGAFOK\"],\"answers\":[2],\"difficulty\":0.5}",
 		"timestamp": "2025-03-24T21:21:57.194Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which is an example of a X-Ray binary star?\",\"options\":[\"A. Orionis\",\"Cygnus x-1\",\"Delta cep\",\"IC-1396\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":3084}",
+		"edited": "{\"question\":\"Which is an example of a X-Ray binary star?\",\"options\":[\"Orionis\",\"Cygnus x-1\",\"Delta cep\",\"IC-1396\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-25T04:34:28.173Z"
+	  },
+	  {
+		"original": "{\"question\":\"The central optical depth is defined as the number of mean free paths from the center to the surface of a star. For the Sun, this optical depth is 1011. The random walk argument says that after N steps, the root mean square distance from the origin is √N. Approximately how many times would a photon have to scatter between the core and the surface?\",\"options\":[\"3.16x105\",\"1011\",\"2x1011\",\"1022\"],\"answers\":[4],\"difficulty\":0.8,\"originalIndex\":4028}",
+		"edited": "{\"question\":\"The central optical depth is defined as the number of mean free paths from the center to the surface of a star. For the Sun, this optical depth is 1011. The random walk argument says that after N steps, the root mean square distance from the origin is √N. Approximately how many times would a photon have to scatter between the core and the surface?\",\"options\":[\"3.16x10^5\",\"10^11\",\"2x10^11\",\"10^22\"],\"answers\":[4],\"difficulty\":0.81}",
+		"timestamp": "2025-03-25T19:48:51.522Z"
+	  },
+	  {
+		"original": "{\"question\":\"When YSOs are in its protoplanetary phase, which two of the following mechanisms help them to get rid of the extra surrounding gas?\",\"options\":[\"Photoevaporation\",\"Stellar wind outflow\",\"Ion neutral transport\",\"Decrease in angular momentum of the young stellar object\"],\"answers\":[1,2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"When young stellar objects are in their protoplanetary phase, which two of the following mechanisms help them to get rid of the extra surrounding gas?\",\"options\":[\"Photoevaporation\",\"Stellar wind outflow\",\"Ion neutral transport\",\"Decrease in angular momentum of the young stellar object\"],\"answers\":[1,2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-27T19:00:21.504Z"
+	  },
+	  {
+		"original": "{\"question\":\"The theory of general relativity predicts that two orbiting bodies emit what?\",\"options\":[\"quantum coherence\",\"distance from the source\",\"orbital angular velocity\",\"temperature\"],\"answers\":[3],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"The theory of general relativity predicts that two orbiting bodies emit what?\",\"options\":[\"quantum coherence\",\"distance from the source\",\"orbital angular velocity\",\"Gravitational Waves\"],\"answers\":[],\"difficulty\":0.5}",
+		"timestamp": "2025-03-27T19:02:30.372Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following correctly lists the stellar classes of the Morgan-Keenan system in order from smallest to largest main-sequence radius?\",\"options\":[\"ABFGKMO\",\"AOMBFKG\",\"OBAFGKM\",\"MKGFABO\"],\"answers\":[3],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Which of the following correctly lists the stellar classes of the Morgan-Keenan system in order from smallest to largest main-sequence radius?\",\"options\":[\"ABFGKMO\",\"AOMBFKG\",\"OBAFGKM\",\"MKGFABO\"],\"answers\":[4],\"difficulty\":0.1}",
+		"timestamp": "2025-03-27T19:05:38.286Z"
+	  },
+	  {
+		"original": "{\"question\":\"A “dwarf” type stellar object that is unable to undergo conventional hydrogen fusion via main sequence, but can also undergo deuterium (2H) and occasionally lithium fusion to generate heat and light is called:\",\"options\":[\"Red Dwarf\",\"Maroon Dwarf\",\"Vermillion Dwarf\",\"Orange Dwarf\",\"Yellow Dwarf\",\"Green Dwarf\",\"Blue Dwarf\",\"Cyan Dwarf\",\"Aquamarine Dwarf\",\"Turquoise Dwarf\",\"Violet Dwarf\",\"Purple Dwarf\",\"Indigo Dwarf\",\"Pink Dwarf\",\"Chartreuse Dwarf\",\"White Dwarf\",\"Brown Dwarf\",\"Black Dwarf\",\"Rainbow Dwarf\",\"Hill Dwarf\"],\"answers\":[17],\"difficulty\":0.8,\"originalIndex\":159}",
+		"edited": "{\"question\":\"A “dwarf” type stellar object that is unable to undergo conventional hydrogen fusion via main sequence, but can also undergo deuterium (2H) and occasionally lithium fusion to generate heat and light is called:\",\"options\":[\"Red Dwarf\",\"Orange Dwarf\",\"Yellow Dwarf\",\"Violet Dwarf\",\"Chartreuse Dwarf\",\"White Dwarf\",\"Brown Dwarf\",\"Black Dwarf\"],\"answers\":[17],\"difficulty\":0.8}",
+		"timestamp": "2025-03-28T13:05:05.437Z"
+	  },
+	  {
+		"original": "{\"question\":\"Protoplanetary disks are found around what objects?\\nI. Protostars\\nII. T Tauri stars\\nIII. Herbig Ae/Be stars\\nIV. Newly formed stars\\nV. Main sequence stars\",\"options\":[\"I, II, and III\",\"II, III, and IV\",\"III, IV, and V\",\"II, III, IV, and V\",\"I, II, III, IV, and V\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":164}",
+		"edited": "{\"question\":\"Protoplanetary disks are found around what objects?\\nI. Protostars\\nII. T Tauri stars\\nIII. Herbig Ae/Be stars\\nIV. Newly formed stars\\nV. Main sequence stars\",\"options\":[\"I, II, and III\",\"II, III, and IV\",\"III, IV, and V\",\"II, III, IV, and V\",\"I, II, III, and IV\"],\"answers\":[5],\"difficulty\":0.69}",
+		"timestamp": "2025-03-30T13:11:53.946Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the name of the following DSO? (Image of 30 Doradus)\",\"options\":[\"30 Doradus\",\"Epsilon Eridani\",\"PSR B1257+12\",\"Orion Nebula\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the name of the following DSO? (Image of 30 Doradus)\",\"options\":[\"30 Doradus\",\"Epsilon Eridani\",\"PSR B1257+12\",\"Orion Nebula\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-28T17:40:23.023Z"
+	  },
+	  {
+		"original": "{\"question\":\"Neutron stars are one of the main sources of what?\",\"options\":[\"Uranium and Iron\",\"Gold and Uranium\",\"Gold and Uranium\",\"Mercury and Copper\"],\"answers\":[2],\"difficulty\":0.1,\"originalIndex\":1625}",
+		"edited": "{\"question\":\"Neutron stars are one of the main sources of what?\",\"options\":[\"Uranium and Iron\",\"Gold and Uranium\",\"Mercury and Uranium\",\"Mercury and Copper\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-29T00:53:27.290Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following best describes the eccentricity of a planet?\",\"options\":[\"e=0\",\"e≤1\",\"-1<e<1\",\"0<e<1\",\"None of the above\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":2295}",
+		"edited": "{\"question\":\"Which of the following best describes the eccentricity of a planet?\",\"options\":[\"e=0\",\"e≤1\",\"-1<e<1\",\"0≤e<1\",\"None of the above\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-29T00:56:18.108Z"
+	  },
+	  {
+		"original": "{\"question\":\"Of the four inner planets (Mercury, Venus, Earth, and Mars), Mars has the coolest surface temperature.\",\"options\":[\"TRUE\",\"FALSE\"],\"answers\":[2],\"difficulty\":0.3,\"originalIndex\":4224}",
+		"edited": "{\"question\":\"Of the four inner planets (Mercury, Venus, Earth, and Mars), Mars has the coolest surface temperature.\",\"options\":[\"TRUE\",\"FALSE\"],\"answers\":[1],\"difficulty\":0.3}",
+		"timestamp": "2025-03-29T01:02:32.735Z"
+	  },
+	  {
+		"original": "{\"question\":\"On average, galaxies are redder in the past than they are today. (True or False)\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"On average, galaxies had longer wavelength emissions in the past than they have today. (True or False)\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.4}",
+		"timestamp": "2025-04-01T13:13:30.755Z"
+	  },
+	  {
+		"original": "{\"question\":\"You are an astronomer validating the existence of V1298 Tauri b. You have the exact mass of V1298 Tauri, orbit period of V1298 Tauri b, and a perfect (i.e. no noise or error) light curve of a transit. However, you overestimate the distance to the system and assume (incorrectly) the impact parameter of the exoplanet is 0. How would your estimate of the host star’s temperature T* and exoplanet radius Rp compare to the real values T* and Rp?\",\"options\":[\"T* > T*, Rp < Rp\",\"T* < T*, Rp > Rp\",\"T* < T*, Rp < Rp\",\"T* > T*, Rp > Rp\"],\"answers\":[3],\"difficulty\":0.9}",
+		"edited": "{\"question\":\"You are an astronomer validating the existence of V1298 Tauri b. You have the exact mass of V1298 Tauri, orbit period of V1298 Tauri b, and a perfect (i.e. no noise or error) light curve of a transit. However, you overestimate the distance to the system and assume (incorrectly) the impact parameter of the exoplanet is 0. How would your estimate of the host star’s temperature T* and exoplanet radius Rp* compare to the real values T and Rp?\",\"options\":[\"T* > T*, Rp < Rp*\",\"T < T*, Rp* > Rp\",\"T* < T, Rp* < Rp\",\"T* > T*, Rp > Rp\"],\"answers\":[3],\"difficulty\":0.9}",
+		"timestamp": "2025-04-01T13:32:06.683Z"
+	  },
+	  {
+		"original": "{\"question\":\"If you are given any weight on the Earth's surface, you can divide by ____ (what number?) to find its approximate weight on the moon?\",\"options\":[\"3\",\"4\",\"5\",\"6\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"If you are given any weight on the Earth's surface, you can divide by ____ (what number?) to find its approximate weight on the moon?\",\"options\":[\"3\",\"4\",\"5\",\"6\"],\"answers\":[4],\"difficulty\":0.15}",
+		"timestamp": "2025-04-01T13:33:23.754Z"
+	  },
+	  {
+		"original": "{\"question\":\"Imagine a scenario wherein a planet is a Keplerian orbit around its host star with a period of 2 days and a semi-major axis of 5 AU. Magically, the planet teleports into a new orbit where the orbital semi-major axis suddenly becomes 20 AU. What is the new orbital period of the planet?\",\"options\":[\"8 days\",\"4 days\",\"1/4 days\",\"64 days\",\"1/64 days\",\"None of the above\"],\"answers\":[1],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Imagine a scenario wherein a planet is a Keplerian orbit around its host star with a period of 2 days and a semi-major axis of 5 AU. Magically, the planet teleports into a new orbit where the orbital semi-major axis suddenly becomes 20 AU. What is the new orbital period of the planet?\",\"options\":[\"8 days\",\"4 days\",\"1/4 days\",\"64 days\",\"1/64 days\",\"None of the above\"],\"answers\":[6],\"difficulty\":0.8}",
+		"timestamp": "2025-04-01T14:46:10.236Z"
+	  },
+	  {
+		"original": "{\"question\":\"In the study of gravitational microlensing, if the mass of the lensing object (a planet in orbit around a star) is 5 Jupiter masses and the Einstein radius is measured to be 2 AU, the lensing time scale can be approximated by:\",\"options\":[\"5.8 days\",\"58 days\",\"580 days\",\"5.8 years\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"In the study of gravitational microlensing, if the mass of the lensing object (a planet in orbit around a star) is 5 Jupiter masses and the Einstein radius is measured to be 2 AU, the lensing time scale can be approximated by (assuming typical planetary distances and velocity for an exoplanet of 5 Jupiter masses):\",\"options\":[\"5.8 days\",\"58 days\",\"580 days\",\"5.8 years\"],\"answers\":[2],\"difficulty\":1}",
+		"timestamp": "2025-04-01T19:37:55.348Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: in comparison to all stars in our galaxy, the Sun is below-average in terms of mass\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3,\"originalIndex\":2050}",
+		"edited": "{\"question\":\"True or False: in comparison to all stars in our galaxy, the Sun is below-average in terms of mass\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-04-03T17:08:01.308Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is a prototype of Type I (Classical) Cepheids?\",\"options\":[\"W Virginis\",\"Beta Cephei\",\"BL Herculis\",\"Delta Cephei\",\"RV Tauri\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following is a prototype of Type I (Classical) Cepheids?\",\"options\":[\"W Virginis\",\"Beta Cephei\",\"BL Herculis\",\"Delta Cephei\",\"RV Tauri\"],\"answers\":[4],\"difficulty\":0.1}",
+		"timestamp": "2025-04-03T19:31:46.569Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following instruments was designed specifically to detect this phenomenon from the merger of two black holes?\",\"options\":[\"Chandra\",\"VWA\",\"LIGO\",\"James Webb\"],\"answers\":[3],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which of the following instruments was designed specifically to detect a phenomenon from the merger of two black holes?\",\"options\":[\"Chandra\",\"VWA\",\"LIGO\",\"James Webb\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-04-03T19:32:46.684Z"
+	  },
+	  {
+		"original": "{\"question\":\"On an infrared image, active vegetation appears\",\"options\":[\"Dark Green\",\"Bright Green\",\"Red\",\"White\",\"Black\"],\"answers\":[4],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"On an infrared image, active vegetation appears\",\"options\":[\"Dark Green\",\"Bright Green\",\"Red\",\"White\",\"Black\"],\"answers\":[3],\"difficulty\":0.4}",
+		"timestamp": "2025-04-03T19:36:18.769Z"
+	  },
+	  {
+		"original": "{\"question\":\"These exoplanets have Similar chemical composition to conventional stars\",\"options\":[\"Hot Jupiters\",\"Mini Neptunes\",\"Super Earths\",\"Terrestrial Planets\",\"Gas Giants\",\"Ice Giants\"],\"answers\":[5],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"These exoplanets have similar chemical composition to conventional stars\",\"options\":[\"Hot Jupiters\",\"Mini Neptunes\",\"Super Earths\",\"Terrestrial Planets\",\"Gas Giants\",\"Ice Giants\"],\"answers\":[1,5],\"difficulty\":0.8}",
+		"timestamp": "2025-04-03T19:40:44.003Z"
+	  },
+	  {
+		"original": "{\"question\":\"Type Ib and Ic supernovae have 1 distinct difference. What is that difference?\",\"options\":[\"Type Ib lacks a hydrogen spectrum line\",\"Type Ib contains a silicon spectrum line\",\"Type Ic lacks a helium spectrum line\",\"Type Ic contains a helium spectrum line\"],\"answers\":[1],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Type Ib and Ic supernovae have 1 distinct difference. What is that difference?\",\"options\":[\"Type Ib lacks a hydrogen spectrum line\",\"Type Ib contains a silicon spectrum line\",\"Type Ic lacks a helium spectrum line\",\"Type Ic contains a helium spectrum line\"],\"answers\":[3],\"difficulty\":0.8}",
+		"timestamp": "2025-04-04T01:17:44.595Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the order of the “borders” that separate different materials in a circumstellar disk? (From inside to outside of the system)\",\"options\":[\"Soot line - Frost line\",\"Cold line - Hot line\",\"PAH line - Ice line\",\"Asteroid line - Comet line\"],\"answers\":[3],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the order of the “borders” that separate different materials in a circumstellar disk? (From inside to outside of the system)\",\"options\":[\"Soot line - Frost line\",\"Cold line - Hot line\",\"PAH line - Ice line\",\"Asteroid line - Comet line\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-04-04T22:56:08.613Z"
+	  },
+	  {
+		"original": "{\"question\":\"All elements heavier than carbon were formed in supernova explosions.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Most elements heavier than carbon were formed in supernova explosions.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-04-04T23:02:44.395Z"
+	  },
+	  {
+		"original": "{\"question\":\"Princeton’s space physics lab is sending an extremely fast satellite, Scully, to land on exoplanet PUSO 17c. However, PUSO 17 has lots of debris in its solar system, and Scully can only land on objects that are 3.4 AU from PUSO 17 (to avoid the debris). If PUSO 17c’s perihelion distance is 1.6 AU and eccentricity is 0.4, is it possible for Scully to land on PUSO 17c? Round your answer.\",\"options\":[\"No, the aphelion distance is 3.3 AU.\",\"No, the aphelion distance is 3.2 AU.\",\"Yes, the aphelion distance is 3.7 AU.\",\"Yes, the aphelion distance is 3.5 AU.\"],\"answers\":[4],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Princeton’s space physics lab is sending an extremely fast satellite, Scully, to land on exoplanet PUSO 17c. However, PUSO 17 has lots of debris in its solar system, and Scully can only land on objects that are 3.4 AU from PUSO 17 (to avoid the debris). If PUSO 17c’s perihelion distance is 1.6 AU and eccentricity is 0.4, is it possible for Scully to land on PUSO 17c? Round your answer.\",\"options\":[\"No, the aphelion distance is 3.3 AU.\",\"No, the aphelion distance is 3.2 AU.\",\"Yes, the aphelion distance is 3.7 AU.\",\"Yes, the aphelion distance is 3.5 AU.\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-04-04T23:08:35.327Z"
+	  },
+	  {
+		"original": "{\"question\":\"Now consider a Star C with absolute magnitude V = 0 mag, at a heliocentric distance of 100 pc, and a Star D with absolute magnitude V = -4 mag at a distance of 1 kpc. Rank the four stars (A,B,C,D) by their apparent V-band magnitudes, from brightest to faintest. (Star A has apparent magnitude V = 7 mag, Star B has apparent magnitude V = 12 mag.)\",\"options\":[\"B, C, D, A\",\"A, C, D, B\",\"A, B, C, D\",\"C, D, A, B\",\"D, C, A, B\",\"The correct answer is not listed above\"],\"answers\":[6],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Now consider a Star C with absolute magnitude V = 0 mag, at a heliocentric distance of 100 pc, and a Star D with absolute magnitude V = -4 mag at a distance of 1 kpc. Rank the four stars (A,B,C,D) by their apparent V-band magnitudes, from brightest to faintest. (Star A has apparent magnitude V = 7 mag, Star B has apparent magnitude V = 12 mag.)\",\"options\":[\"B, C, D, A\",\"A, C, D, B\",\"A, B, C, D\",\"C, D, A, B\",\"D, C, A, B\",\"The correct answer is not listed above\"],\"answers\":[4],\"difficulty\":0.8}",
+		"timestamp": "2025-04-05T12:20:15.108Z"
 	  }
 	],
 	"Chemistry Lab": [
@@ -85,6 +265,56 @@
 		"original": "{\"question\":\"Which of the following trace elements are the most abundant in the seawater\",\"options\":[\"aluminum\",\"phosphorus\",\"iodine\",\"iron\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":3562}",
 		"edited": "{\"question\":\"Which of the following trace elements are the most abundant in the seawater?\",\"options\":[\"aluminum\",\"phosphorus\",\"iodine\",\"iron\"],\"answers\":[3],\"difficulty\":0.7}",
 		"timestamp": "2025-03-15T22:59:46.877Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the total amount of charge needed to produce N moles of electrons in a reaction that transfers n electrons?\",\"options\":[\"Q = eNAN\",\"Q = I/t\",\"Q = Qin – Qout\",\"Q = neNAN\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":1511}",
+		"edited": "{\"question\":\"What is the total amount of charge needed to produce N moles of electrons in a reaction that transfers n electrons?\",\"options\":[\"Q = eNAN\",\"Q = I/t\",\"Q = Qin – Qout\",\"Q = NnF\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-29T00:20:56.162Z"
+	  },
+	  {
+		"original": "{\"question\":\"The end point is the point in a titration at which the pH is _? (2 pts)\",\"options\":[\"14\",\"6\",\"7\",\"9\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":1671}",
+		"edited": "{\"question\":\"The end point is the point in a titration of strong acid with strong base at which the pH is _? (2 pts)\",\"options\":[\"14\",\"6\",\"7\",\"9\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-29T01:04:58.422Z"
+	  },
+	  {
+		"original": "{\"question\":\"In a titration experiment, you forgot to add the indicator initially. You add two drops of phenolphthalein to 28.3 mL of an NaOH solution of unknown concentration, and fill the buret with 50.0 mL of 0.250 M HCl. As you approach the endpoint, you realize you went too far. Which of the following solutions is the most appropriate titrant for a back titration?\",\"options\":[\"0.1 M ammonia\",\"0.1 M methanoic acid\",\"0.1 M ammonium\",\"0.1 M propane\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":2522}",
+		"edited": "{\"question\":\"In a titration experiment, you forgot to add the indicator initially. You add two drops of phenolphthalein to 28.3 mL of an NaOH solution of unknown concentration, and fill the buret with 50.0 mL of 0.250 M HCl. As you approach the endpoint, you realize you went too far. Which of the following solutions is the most appropriate titrant for a back titration?\",\"options\":[\"0.1 M ammonia\",\"0.1 M methanoic acid\",\"0.1 M ammonium\",\"0.1 M propane\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-03-29T01:09:50.163Z"
+	  },
+	  {
+		"original": "{\"question\":\"There is a drop of NaOH hanging on the tip of the burette after the titration is over. How will this affect the results?\",\"options\":[],\"answers\":[\"It will lead to an overestimation of the volume of NaOH added, resulting in an underestimation of the acid concentration.\"],\"difficulty\":0.7,\"originalIndex\":4040}",
+		"edited": "{\"question\":\"There is a drop of NaOH hanging on the tip of the burette after the titration is over. How will this affect the results?\",\"answers\":[\"It will lead to an overestimation of the volume of NaOH added, resulting in an overestimation of the acid concentration.\"],\"difficulty\":0.7}",
+		"timestamp": "2025-03-29T01:58:22.809Z"
+	  },
+	  {
+		"original": "{\"question\":\"Consider the following reaction: 𝑃4𝑂10(𝑠) + 6𝑃𝐶𝑙5(𝑔) →  10𝐶𝑙3𝑃𝑂(𝑔) in a closed system. All the following assume the gasses are ideal. The two reactants at exact stoichiometric ratios, with 6 moles of phosphorus pentachloride, are placed in a piston at a pressure of 7.8954 atm and a temperature of 63⁰C. What is the volume of the piston before any reaction occurs? Answer to 1 decimal place.\",\"options\":[],\"answers\":[\"23.8 L\"],\"difficulty\":0.1,\"originalIndex\":2857}",
+		"edited": "{\"question\":\"Consider the following reaction: 𝑃4𝑂10(𝑠) + 6𝑃𝐶𝑙5(𝑔) →  10𝐶𝑙3𝑃𝑂(𝑔) in a closed system. All the following assume the gasses are ideal. The two reactants at exact stoichiometric ratios, with 6 moles of phosphorus pentachloride, are placed in a piston at a pressure of 7.8954 atm and a temperature of 63⁰C. What is the volume of the piston before any reaction occurs? Answer to 1 decimal place.\",\"answers\":[\"20.8 L\"],\"difficulty\":0.1}",
+		"timestamp": "2025-03-29T01:59:01.533Z"
+	  },
+	  {
+		"original": "{\"question\":\"A rubber stopper sinks in water, but floats in methylene chloride. Place these three substances in order from least density to greatest density.\",\"options\":[\"Water < methylene chloride < rubber stopper\",\"Methylene chloride < rubber stopper < water\",\"Rubber stopper < water < methylene chloride\",\"Water < rubber stopper < methylene chloride\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":5768}",
+		"edited": "{\"question\":\"A rubber stopper sinks in water, but floats in methylene chloride. Place these three substances in order from least density to greatest density.\",\"options\":[\"Water < methylene chloride < rubber stopper\",\"Methylene chloride < rubber stopper < water\",\"Rubber stopper < water < methylene chloride\",\"Water < rubber stopper < methylene chloride\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-29T02:10:34.742Z"
+	  },
+	  {
+		"original": "{\"question\":\"A substance that forms a vapor is generally in what physical state at room temperature?\",\"options\":[\"solid\",\"liquid\",\"Gas\",\"liquid or solid\"],\"answers\":[3],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"A substance that forms a vapor is generally in what physical state at room temperature?\",\"options\":[\"solid\",\"liquid\",\"Gas\",\"liquid or solid\"],\"answers\":[4],\"difficulty\":0.3}",
+		"timestamp": "2025-03-29T16:29:06.334Z"
+	  },
+	  {
+		"original": "{\"question\":\"At what temperatures is the following reaction become spontaneous?\\nFeO (s) + CO (g) -> CO2 (g) + Fe (g)   ∆H = -11.0 kJ  ∆S = -17.4 J/k\",\"options\":[\"191K\",\"632K\",\"298K\",\"Always spontaneous\"],\"answers\":[2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"At what temperatures is the following reaction become spontaneous?\\nFeO (s) + CO (g) -> CO2 (g) + Fe (g)   ∆H = -11.0 kJ  ∆S = -17.4 J/k\",\"options\":[\"191K\",\"632K\",\"298K\",\"Always spontaneous\"],\"answers\":[1,2,3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-29T16:44:17.596Z"
+	  },
+	  {
+		"original": "{\"question\":\"Buffer Creation Prompt: You are tasked with creating a buffer with a pH of 9.5. Which of the following acid-base pairs is most suitable for this buffer? \\n   A) CH3COOH/CH3COO- (Ka 1.8 x 10^-5)\\n   B) H2PO4-/HPO42- (Ka 7.1 x 10^-3)\\n   C) HCN/CN- (Ka 6.2 x 10^-10)\\n   D) CH3OH/CH3O- (Ka 1.8 x 10^-4)\",\"options\":[\"CH3COOH/CH3COO- (Ka 1.8 x 10^-5)\",\"H2PO4-/HPO42- (Ka 7.1 x 10^-3)\",\"HCN/CN- (Ka 6.2 x 10^-10)\",\"CH3OH/CH3O- (Ka 1.8 x 10^-4)\"],\"answers\":[2],\"difficulty\":0.1,\"originalIndex\":2147}",
+		"edited": "{\"question\":\"Buffer Creation Prompt: You are tasked with creating a buffer with a pH of 9.5. Which of the following acid-base pairs is most suitable for this buffer? \\n   A) CH3COOH/CH3COO- (Ka 1.8 x 10^-5)\\n   B) H2PO4-/HPO42- (Ka 7.1 x 10^-3)\\n   C) HCN/CN- (Ka 6.2 x 10^-10)\\n   D) CH3OH/CH3O- (Ka 1.8 x 10^-4)\",\"options\":[\"CH3COOH/CH3COO- (Ka 1.8 x 10^-5)\",\"H2PO4-/HPO42- (Ka 7.1 x 10^-3)\",\"HCN/CN- (Ka 6.2 x 10^-10)\",\"CH3OH/CH3O- (Ka 1.8 x 10^-4)\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-04-04T16:03:42.275Z"
+	  },
+	  {
+		"original": "{\"question\":\"Halogens: (check all that apply)\",\"options\":[\"Will not react with each other\",\"Are strong electron donors\",\"Form strong oxyacids of the formula HX3O\",\"Form strong covalent bond with Group 1A metals\"],\"answers\":[4],\"difficulty\":0.4,\"originalIndex\":1254}",
+		"edited": "{\"question\":\"Halogens: (check all that apply)\",\"options\":[\"Will not react with each other\",\"Are strong electron donors\",\"Form strong oxyacids of the formula HX3O\",\"Form strong ionic bonds with Group 1A metals\"],\"answers\":[4],\"difficulty\":0.4}",
+		"timestamp": "2025-04-04T16:19:01.644Z"
 	  }
 	],
 	"Codebusters": [
@@ -124,6 +354,26 @@
 		"original": "{\"question\":\"Which of  the following are found in the cortex?\",\"options\":[\"pigment granules\",\"ovoid bodies\",\"cortical fusi\",\"melanin\"],\"answers\":[1,3,4],\"difficulty\":0.6}",
 		"edited": "{\"question\":\"Which of  the following are found in the cortex?\",\"options\":[\"pigment granules\",\"ovoid bodies\",\"cortical fusi\",\"melanin\"],\"answers\":[1,2,3,4],\"difficulty\":0.6}",
 		"timestamp": "2025-03-25T01:58:39.881Z"
+	  },
+	  {
+		"original": "{\"question\":\"An off-white powder mixture was found on the stained walls. The powder is lumpy when added to water, has a pH of 7, does not react with HCl, and blackens/clumps in iodine. What is the identity of the mixture? (Select two)\",\"options\":[\"Yeast\",\"Table salt\",\"Alka-Seltzer\",\"Sand\",\"Flour\",\"Gypsum\"],\"answers\":[2,5],\"difficulty\":0.9,\"originalIndex\":31}",
+		"edited": "{\"question\":\"An off-white powder mixture was found on the stained walls. The powder is lumpy when added to water, has a pH of 7, does not react with HCl, and blackens/clumps in iodine. What is the identity of the mixture? \",\"options\":[\"Yeast\",\"Alka-Seltzer\",\"Sand\",\"Flour\",\"Gypsum\"],\"answers\":[4],\"difficulty\":0.69}",
+		"timestamp": "2025-03-26T01:24:35.621Z"
+	  },
+	  {
+		"original": "{\"question\":\"The length of Dumblewindow’s foot is approximately 11 ¼ inches. Which of the following is his likely height?\",\"options\":[\"5’ 2”\",\"5’ 6”\",\"6’\",\"6’ 5”\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":26}",
+		"edited": "{\"question\":\"The length of Dumblewindow’s foot is approximately 11 ¼ inches. Which of the following is his likely height?\",\"options\":[\"5’ 2”\",\"5’ 6”\",\"6’\",\"6’ 5”\"],\"answers\":[4],\"difficulty\":0.78}",
+		"timestamp": "2025-03-26T01:26:23.387Z"
+	  },
+	  {
+		"original": "{\"question\":\"An Iodine test is used primarily to detect the presence of ______.\",\"options\":[\"Protein\",\"Monosaccharides\",\"Starch\",\"H2O\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"An Iodine test is used primarily to detect the presence of ______.\",\"options\":[\"Protein\",\"Monosaccharides\",\"Starch\",\"H2O\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-03-26T23:19:44.696Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the identity of mixture CS2?\",\"options\":[\"Salt and sugar\",\"Salt and sand\",\"Sand and gelatin\",\"Gelatin and sugar\"],\"answers\":[1],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"What is the identity of mixture CS2? It is white, with a pH of almost exactly 7, and it consists of both cubic crystals, and hexagonal crystals.\",\"options\":[\"Salt and sugar\",\"Salt and sand\",\"Sand and gelatin\",\"Gelatin and sugar\"],\"answers\":[1],\"difficulty\":0.26}",
+		"timestamp": "2025-03-29T13:38:26.479Z"
 	  }
 	],
 	"Disease Detectives": [
@@ -141,6 +391,41 @@
 		"original": "{\"question\":\"Rabies is a zoonotic disease, which means that it can be spread between people and animals. Suppose a dog gave their owner rabies. The dog would be a:\",\"options\":[\"Vector\",\"Vehicle\",\"Agent\",\"Fomite\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":5116}",
 		"edited": "{\"question\":\"Rabies is a zoonotic disease, which means that it can be spread between people and animals. Suppose a dog gave their owner rabies. The dog would be a:\",\"options\":[\"Vector\",\"Vehicle\",\"Agent\",\"Fomite\"],\"answers\":[1],\"difficulty\":0.5}",
 		"timestamp": "2025-03-23T23:39:50.025Z"
+	  },
+	  {
+		"original": "{\"question\":\"Many young college students may be asymptomatic or report very mild symptoms. According to the CDC, what percent of overall transmissions can be roughly attributed to individuals without symptoms?\",\"options\":[\"20%\",\"Over 80%\",\"60%\",\"75%\"],\"answers\":[3],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Many young college students may be asymptomatic or report very mild symptoms when infected with the Covid 19 Virus. According to the CDC, what percent of overall transmissions can be roughly attributed to individuals without symptoms?\",\"options\":[\"20%\",\"Over 80%\",\"60%\",\"75%\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-29T15:28:09.041Z"
+	  },
+	  {
+		"original": "{\"question\":\"Select the choices that lists all the true statements out of the following:\\nI. Observational studies work backward from an effect to a suspected cause\\nII. Cohort studies work forward from the cause to the effect\\nIII. Cohort studies can be performed retrospectively or prospectively\",\"options\":[\"I and II\",\"None\",\"II and III\",\"I, II, and III\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Select the choices that lists all the true statements out of the following:\\nI. Observational studies work backward from an effect to a suspected cause\\nII. Cohort studies work forward from the cause to the effect\\nIII. Cohort studies can be performed retrospectively or prospectively\",\"options\":[\"I and II\",\"None\",\"II and III\",\"I, II, and III\"],\"answers\":[3],\"difficulty\":0.74}",
+		"timestamp": "2025-03-29T15:38:22.820Z"
+	  },
+	  {
+		"original": "{\"question\":\"A true epidemiologist must analyze tables and charts.  Please use this chart showing the number of cases of illness from food contamination at a birthday party. (please round answers) Ate Cake: Yes-Contracted illness: 4, No-Contracted Illness: 14, Total: 18, Ate Cake: No-Contracted illness: 25, No-Contracted Illness: 12, Total: 37, Totals: Contracted illness: 29, No-Contracted Illness: 26, Total: 55 What is the attack rate for those that ate cake?\",\"options\":[\"13.7%\",\"16%\",\"86.2%\",\"21%\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A true epidemiologist must analyze tables and charts.  Please use this chart showing the number of cases of illness from food contamination at a birthday party. (please round answers) Ate Cake: Yes-Contracted illness: 4, No-Contracted Illness: 14, Total: 18, Ate Cake: No-Contracted illness: 25, No-Contracted Illness: 12, Total: 37, Totals: Contracted illness: 29, No-Contracted Illness: 26, Total: 55 What is the attack rate for those that ate cake?\",\"options\":[\"13.7%\",\"16%\",\"86.2%\",\"21%\"],\"answers\":[4],\"difficulty\":0.14}",
+		"timestamp": "2025-03-29T21:15:25.734Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of study would you use a McNemar test for? Circle all that apply.\\ncase-control\\ncross-sectional\\nexperimental\\ncohort\",\"options\":[\"case-control\",\"cross-sectional\",\"experimental\",\"cohort\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":4795}",
+		"edited": "{\"question\":\"What type of study would you use a McNemar test for? Circle all that apply.\",\"options\":[\"case-control\",\"cross-sectional\",\"experimental\",\"cohort\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-31T06:19:13.925Z"
+	  },
+	  {
+		"original": "{\"question\":\"True/False: There is a different species of body lice than there are head lice.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3,\"originalIndex\":1672}",
+		"edited": "{\"question\":\"True/False: There is a different species of body lice than there are head lice.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-04-01T19:55:55.645Z"
+	  },
+	  {
+		"original": "{\"question\":\"Match the following term with the correct definition: an aggregation of cases over a particular period esp. cancer & birth defects closely grouped in time and space regardless of whether the number is more than the expected number. (often the expected number of cases is not known.)\",\"options\":[],\"answers\":[\"Outbreak\"],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Match the following term with the correct definition: an aggregation of cases over a particular period esp. cancer & birth defects closely grouped in time and space regardless of whether the number is more than the expected number. (often the expected number of cases is not known.)\",\"answers\":[\"CLUSTER \"],\"difficulty\":0.7}",
+		"timestamp": "2025-04-04T17:19:36.314Z"
+	  },
+	  {
+		"original": "{\"question\":\"Over the next 12 months, 13,000 additional cases of RSV occurred in Athens and 4,000 additional cases of RSV occurred in Thessaloniki. What is the incidence of RSV over the last 12 months in Athens. Write your answer per 100,000 people.\",\"options\":[],\"answers\":[\"433.33\"],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Over the next 12 months, 13,000 additional cases of RSV occurred in Athens and 4,000 additional cases of RSV occurred in Thessaloniki. Provided that Athens has a total population of 3,100,000, calculate the incidence of RSV over the last 12 months in Athens. Write your answer per 100,000 people.\",\"answers\":[\"419.35\"],\"difficulty\":0.7}",
+		"timestamp": "2025-04-04T20:39:48.626Z"
 	  }
 	],
 	"Dynamic Planet - Glaciers": [
@@ -158,6 +443,66 @@
 		"original": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
 		"edited": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
 		"timestamp": "2025-03-25T02:08:48.665Z"
+	  },
+	  {
+		"original": "{\"question\":\"True/False: Subglacial lakes remain in a liquid state due to pressure-melting.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
+		"edited": "{\"question\":\"True/False: Subglacial lakes remain in a liquid state due to pressure-melting.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.55}",
+		"timestamp": "2025-03-25T16:32:24.487Z"
+	  },
+	  {
+		"original": "{\"question\":\"A recent study found that the Tonga volcanic eruption in January 2022 could be the f[]rst in recorded history to have a warming, rather than cooling, ef[]ect on the atmosphere. Which of the following greenhouse gases is primarily responsible for this warming ef[]ect?\",\"options\":[\"Carbon dioxide\",\"Sulfur dioxide\",\"Nitrous oxide\",\"Water vapor\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A recent study found that the Tonga volcanic eruption in January 2022 could be the first in recorded history to have a warming, rather than cooling, effect on the atmosphere. Which of the following greenhouse gases is primarily responsible for this warming effect?\",\"options\":[\"Carbon dioxide\",\"Sulfur dioxide\",\"Nitrous oxide\",\"Water vapor\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T16:29:11.968Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which glaciation is considered the first of the two Ediacaran period glaciations?\",\"options\":[\"Gaskiers\",\"Baykonurian\",\"Marinoan\",\"Sturtian\"],\"answers\":[1],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Which glaciation is considered the first of the two Ediacaran period glaciations?\",\"options\":[\"Gaskiers\",\"Baykonurian\",\"Marinoan\",\"Sturtian\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-28T23:52:57.091Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False 7: Glaciers form over very short periods of time\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":77}",
+		"edited": "{\"question\":\"True or False 7: Glaciers form over very short periods of time\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-30T03:57:34.312Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":73}",
+		"edited": "{\"question\":\"True or False 3: Glaciers are primarily made of rock\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-30T03:59:31.075Z"
+	  },
+	  {
+		"original": "{\"question\":\"Drumlins are not formed by glacial deposition.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1,\"originalIndex\":42}",
+		"edited": "{\"question\":\"Drumlins are not formed by glacial deposition.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-30T04:05:20.274Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the term for a bowl-shaped depression at the head of a glacier?\",\"options\":[\"Horn\",\"Cirque\",\"Arête\",\"Tarn\"],\"answers\":[2],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"What is the term for a bowl-shaped depression at the head of a glacier?\",\"options\":[\"Horn\",\"Cirque\",\"Arête\",\"Tarn\"],\"answers\":[2],\"difficulty\":0.26}",
+		"timestamp": "2025-03-31T02:29:37.535Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following does not belong to the group of greenhouse gases known as F-gases?\",\"options\":[\"Chlorof[]uorocarbons\",\"Nitrogen heptaf[]uoride\",\"Perf[]uorocarbons\",\"Sulfur hexaf[]uoride\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":426}",
+		"edited": "{\"question\":\"Which of the following does not belong to the group of greenhouse gases known as F-gases?\",\"options\":[\"Chlorofluorocarbons\",\"Nitrogen heptafluoride\",\"Perfluorocarbons\",\"Sulfur hexafluoride\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-04-02T00:00:35.782Z"
+	  },
+	  {
+		"original": "{\"question\":\"Ogives, our banded buddies, have alternating bands. What do they indicate? (this is referring to the colors of the bands)\",\"options\":[\"Dark - Summer. Light - Winter\",\"Dark - Winter. Light - Summer\",\"Coarse- Summer. Fine- Winter\",\"Coarse - Winter. Fine- Summer\",\"They’re just chill guys\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":1485}",
+		"edited": "{\"question\":\"Ogives, our banded buddies, have alternating bands. What do they indicate? (this is referring to the colors of the bands)\",\"options\":[\"Dark - Summer. Light - Winter\",\"Dark - Winter. Light - Summer\",\"Coarse - Summer. Fine - Winter\",\"Coarse - Winter. Fine - Summer\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-04-02T00:01:16.156Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the term for a bowl-shaped depression at the head of a glacier?\",\"options\":[\"Horn\",\"Cirque\",\"Arête\",\"Tarn\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":938}",
+		"edited": "{\"question\":\"What is the term for a bowl-shaped depression at the head of a glacier?\",\"options\":[\"Horn\",\"Cirque\",\"Arête\",\"Tarn\"],\"answers\":[2],\"difficulty\":0.19}",
+		"timestamp": "2025-04-02T16:56:51.612Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which hemisphere has longer summers?\",\"options\":[\"Northern, because of the orbit of the Earth.\",\"Northern, because of the shape of the Earth.\",\"Southern, because of the orbit of the Earth.\",\"Southern, because of the shape of the Earth.\",\"They have equal length summers, but one experiences more extreme temperatures because of either the orbit or the shape of the Earth.\"],\"answers\":[3],\"difficulty\":0.6,\"originalIndex\":381}",
+		"edited": "{\"question\":\"Which hemisphere has longer summers?\",\"options\":[\"Northern, because of the orbit of the Earth.\",\"Northern, because of the shape of the Earth.\",\"Southern, because of the orbit of the Earth.\",\"Southern, because of the shape of the Earth.\",\"They have equal length summers, but one experiences more extreme temperatures because of either the orbit or the shape of the Earth.\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-04-03T22:44:56.085Z"
+	  },
+	  {
+		"original": "{\"question\":\"The largest flooding events are thought to be caused by glacial activity.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3,\"originalIndex\":769}",
+		"edited": "{\"question\":\"The largest flooding events are thought to be caused by glacial activity.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-04-03T22:46:04.921Z"
 	  }
 	],
 	"Ecology": [
@@ -250,6 +595,91 @@
 		"original": "{\"question\":\"How much of earth's land surface do deserts cover?\",\"options\":[\"1/2\",\"1/3\",\"1/4\",\"1/5\"],\"answers\":[4],\"difficulty\":0.5}",
 		"edited": "{\"question\":\"How much of earth's land surface do deserts cover?\",\"options\":[\"1/2\",\"1/3\",\"1/4\",\"1/5\"],\"answers\":[2],\"difficulty\":0.5}",
 		"timestamp": "2025-03-25T01:59:15.166Z"
+	  },
+	  {
+		"original": "{\"question\":\"Of the following limiting factors affecting a population of prairie dogs on a prairie in Nebraska, which is/are density-independent rather than density-dependent?\",\"options\":[\"depth of the local drinking pond\",\"heat wave\",\"bacterial pneumonia\",\"bacterial pneumonia\"],\"answers\":[2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Of the following limiting factors affecting a population of prairie dogs on a prairie in Nebraska, which is/are density-independent rather than density-dependent?\",\"options\":[\"depth of the local drinking pond\",\"heat wave\",\"bacterial pneumonia\",\"predation\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-27T01:42:24.878Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following important environmental factors is not associated with the tundra?\",\"options\":[\"Carbon Storage\",\"Water Filtration\",\"Temperature Regulation\",\"Two of the answers are correct\",\"All three of the answers are correct\"],\"answers\":[5],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Which of the following important environmental factors is associated with the tundra?\",\"options\":[\"Carbon Storage\",\"Water Filtration\",\"Temperature Regulation\",\"Two of the answers are correct\",\"All three of the answers are correct\"],\"answers\":[5],\"difficulty\":0.7}",
+		"timestamp": "2025-03-27T22:17:20.910Z"
+	  },
+	  {
+		"original": "{\"question\":\"In a forest in North Carolina, you saw several fox squirrels, which are a K-selected species. Based on the information you were given, what is the closest approximate number of offspring this green bird species may have?\",\"options\":[\"3\",\"30\",\"300\",\"3000\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"In a forest in North Carolina, you saw several fox squirrels, which are a K-selected species. Based on the information you were given, what is the closest approximate number of offspring this species may have?\",\"options\":[\"3\",\"30\",\"300\",\"3000\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-27T22:20:23.698Z"
+	  },
+	  {
+		"original": "{\"question\":\"What kinds of consumers only eat plants? (1pt)\",\"options\":[\"Omnivores\",\"Herbivores\",\"Carnivores\",\"Detritivores\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"What kinds of consumers only eat plants? (1pt)\",\"options\":[\"Omnivores\",\"Herbivores\",\"Carnivores\",\"Detritivores\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-28T02:18:01.637Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which is an example of ecological exploitation between species that can be resolved by niche diﬀerentiation?\\nA. Two birds that nest in the same branches of the tree.\\nB. Two raccoon species that are trying to forage for food in the city area.\\nC. Two plants that absorb nitrogen from the same soil.\\nD. Two bees that pollinate the same ﬂowers in the garden.\\nE. Two monkeys that get water from the same small stream.\",\"options\":[\"Two birds that nest in the same branches of the tree.\",\"Two raccoon species that are trying to forage for food in the city area.\",\"Two plants that absorb nitrogen from the same soil.\",\"Two bees that pollinate the same ﬂowers in the garden.\",\"Two monkeys that get water from the same small stream.\"],\"answers\":[3,4],\"difficulty\":0.6,\"originalIndex\":1314}",
+		"edited": "{\"question\":\"Which is an example of ecological exploitation between species that can be resolved by niche diﬀerentiation?\",\"options\":[\"Two birds that nest in the same branches of the tree.\",\"Two raccoon species that are trying to forage for food in the city area.\",\"Two plants that absorb nitrogen from the same soil.\",\"Two bees that pollinate the same ﬂowers in the garden.\",\"Two monkeys that get water from the same small stream.\"],\"answers\":[3,4],\"difficulty\":0.68}",
+		"timestamp": "2025-03-29T00:43:27.215Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of growth model would typically be seen in a gull population?\",\"options\":[\"Exponential growth\",\"Logistic growth\",\"Linear growth\",\"Cyclical growth\"],\"answers\":[2],\"difficulty\":0.2,\"originalIndex\":448}",
+		"edited": "{\"question\":\"What type of growth model would typically be seen in a gull population?\",\"options\":[\"Exponential growth\",\"Logistic growth\",\"Linear growth\",\"Cyclical growth\"],\"answers\":[2],\"difficulty\":0.41}",
+		"timestamp": "2025-03-29T00:44:30.457Z"
+	  },
+	  {
+		"original": "{\"question\":\"For questions 1 to 7, which of the terms listed best describes the two organisms’ relationship: Remora that eat the leftover food from sharks\",\"options\":[\"commensalism\",\"mutualism\",\"parasitism\",\"predation\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":1942}",
+		"edited": "{\"question\":\"Which of the terms listed best describes the two organisms’ relationship: Remora that eat the leftover food from sharks\",\"options\":[\"commensalism\",\"mutualism\",\"parasitism\",\"predation\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-29T02:18:35.825Z"
+	  },
+	  {
+		"original": "{\"question\":\"The population of cherry blossom trees on Amphibia Island increases by 20% each day. Calculate the doubling time of this population—rounded to the nearest day.\",\"options\":[\"3 days\",\"4 days\",\"6 days\",\"8 days\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":1567}",
+		"edited": "{\"question\":\"The population of cherry blossom trees on Amphibia Island increases by 20% each day. Calculate the doubling time of this population—rounded to the nearest day.\",\"options\":[\"3 days\",\"4 days\",\"6 days\",\"8 days\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-29T17:21:54.615Z"
+	  },
+	  {
+		"original": "{\"question\":\"The farmers decide to have a separate conference on the side to coordinate their efforts. As a board member, you predict that the energy source they will reject the most will be...\",\"options\":[\"Wind\",\"Geothermal\",\"Hydroelectric\",\"Nuclear\",\"Marine\",\"None of the above\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"The farmers decide to have a separate conference on the side to coordinate their efforts. As a board member, you predict that the energy source they will reject the most will be...\",\"options\":[\"Wind\",\"Geothermal\",\"Hydroelectric\",\"Nuclear\",\"Marine\",\"None of the above\"],\"answers\":[3],\"difficulty\":1}",
+		"timestamp": "2025-03-30T00:49:43.462Z"
+	  },
+	  {
+		"original": "{\"question\":\"What percentage of energy is transferred in between trophic levels?\",\"options\":[\"90%\",\"50%\",\"10%\",\"1%\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"What percentage of energy is transferred in between trophic levels?\",\"options\":[\"90%\",\"50%\",\"10%\",\"1%\"],\"answers\":[3],\"difficulty\":0.08}",
+		"timestamp": "2025-03-30T16:12:09.757Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is not an accurate way to categorize arctic tundras and alpine tundras?\",\"options\":[\"Alpine tundras have better soil drainage than arctic tundras.\",\"Arctic tundras are found at high altitudes, while alpine tundras are found at high elevations.\",\"Alpine tundras have longer growing seasons than arctic tundras.\",\"Arctic tundras have plants that are short (close to the ground) but with deep root systems.\"],\"answers\":[2],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Which of the following is not an accurate way to categorize arctic tundras and alpine tundras?\",\"options\":[\"Alpine tundras have better soil drainage than arctic tundras.\",\"Arctic tundras are found at high latitudes, while alpine tundras are found at high elevations.\",\"Alpine tundras have longer growing seasons than arctic tundras.\",\"Arctic tundras have plants that are short (close to the ground) but with deep root systems.\"],\"answers\":[2],\"difficulty\":0.8}",
+		"timestamp": "2025-03-31T18:29:00.124Z"
+	  },
+	  {
+		"original": "{\"question\":\"An inverted food pyramid of an ecosystem is caused by which of the following reasons:\",\"options\":[\"The predator lives longer than the prey, creating a lower biomass of producers\",\"The prey lives longer than the predator, creating a higher biomass of producers\",\"Exponential growth occurred in primary producers\",\"Logistic growth occurred in detritivores\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":794}",
+		"edited": "{\"question\":\"An inverted food pyramid of an ecosystem is caused by which of the following reasons:\",\"options\":[\"The predator lives longer than the prey, creating a lower biomass of producers\",\"The prey lives longer than the predator, creating a higher biomass of producers\",\"Exponential growth occurred in primary producers\",\"Logistic growth occurred in detritivores\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-04-02T15:49:20.210Z"
+	  },
+	  {
+		"original": "{\"question\":\"Westlake Invitational Ecology Division C January 6, 2018 is the test event. What is the primary role of decomposers in an ecosystem?\",\"options\":[\"Producing energy\",\"Breaking down dead organic matter\",\"Consuming producers\",\"Providing shelter\"],\"answers\":[2],\"difficulty\":0.8,\"originalIndex\":3634}",
+		"edited": "{\"question\":\"What is the primary role of decomposers in an ecosystem?\",\"options\":[\"Producing energy\",\"Breaking down dead organic matter\",\"Consuming producers\",\"Providing shelter\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-04-02T20:58:12.821Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following refers to a species whose absence, presence, or abundance reflects the environmental conditions?\",\"options\":[\"Indicator species\",\"Keystone species\",\"Umbrella species\",\"Pioneer species\"],\"answers\":[1],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Which one of the following refers to a species whose absence, presence, or abundance reflects the environmental conditions?\",\"options\":[\"Indicator species\",\"Keystone species\",\"Umbrella species\",\"Pioneer species\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-04-02T21:11:55.178Z"
+	  },
+	  {
+		"original": "{\"question\":\"Droughts in the grassland are not severe.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"Droughts in the grassland are severe.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-04-02T21:12:21.459Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following correctly characterizes a major dif[]erence between alpine tundra and Arctic tundra?\",\"options\":[\"Alpine tundra is typically warmer than Arctic tundra.\",\"Alpine tundra is typically found at higher latitudes than Arctic tundra\",\"Alpine tundra is typically found at lower elevations than Arctic tundra.\",\"The soil in alpine tundra is typically well-drained, while the soil in Arctic tundra is not.\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":1718}",
+		"edited": "{\"question\":\"Which of the following correctly characterizes a major difference between alpine tundra and Arctic tundra?\",\"options\":[\"Alpine tundra is typically warmer than Arctic tundra.\",\"Alpine tundra is typically found at higher latitudes than Arctic tundra\",\"Alpine tundra is typically found at lower elevations than Arctic tundra.\",\"The soil in alpine tundra is typically well-drained, while the soil in Arctic tundra is not.\"],\"answers\":[4],\"difficulty\":0.6}",
+		"timestamp": "2025-04-03T01:49:53.069Z"
+	  },
+	  {
+		"original": "{\"question\":\"Species that have smaller of[]spring allow for ___________.\",\"options\":[\"Further dispersal\",\"Dispersal close to birth place\",\"A shorter state of suspended growth\",\"Expedited growth in unfavorable conditions\"],\"answers\":[1],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"Species that have smaller offspring allow for ___________.\",\"options\":[\"Further dispersal\",\"Dispersal close to birth place\",\"A shorter state of suspended growth\",\"Expedited growth in unfavorable conditions\"],\"answers\":[1],\"difficulty\":0.4}",
+		"timestamp": "2025-04-04T14:56:36.057Z"
 	  }
 	],
 	"Entomology": [
@@ -277,6 +707,21 @@
 		"original": "{\"question\":\"From the following choices, they can be used more than once: A. Near Threatened B. Vulnerable C. Endangered D. Critically Endangered. What is the IUCN conservation status of the Karkloof Blue (Orachrysops ariadne)?\",\"options\":[\"Near Threatened\",\"Vulnerable\",\"Endangered\",\"Critically Endangered\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":283}",
 		"edited": "{\"question\":\"From the following choices, they can be used more than once: A. Near Threatened B. Vulnerable C. Endangered D. Critically Endangered. What is the IUCN conservation status of the Karkloof Blue (Orachrysops ariadne)?\",\"options\":[\"Near Threatened\",\"Vulnerable\",\"Endangered\",\"Critically Endangered\"],\"answers\":[3],\"difficulty\":0.35}",
 		"timestamp": "2025-03-21T23:16:52.755Z"
+	  },
+	  {
+		"original": "{\"question\":\"According to the Food and Agriculture Organization of the United Nations, how much money in damage do pests cost the economy every year?\",\"options\":[\"200 million\",\"70 billion\",\"40 billion\",\"100 billion\"],\"answers\":[1],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"According to the Food and Agriculture Organization of the United Nations, how much money in damage do pests cost the economy every year?\",\"options\":[\"200 million\",\"70 billion\",\"40 billion\",\"100 billion\"],\"answers\":[2],\"difficulty\":0.4}",
+		"timestamp": "2025-03-27T15:42:46.911Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: Insects the of the Acrididae family have hind legs that are longs than their front legs.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2,\"originalIndex\":118}",
+		"edited": "{\"question\":\"True or False: Insects the of the Acrididae family have hind legs that are longer than their front legs.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.2}",
+		"timestamp": "2025-04-02T22:43:30.972Z"
+	  },
+	  {
+		"original": "{\"question\":\"Strepsiptera has…\",\"options\":[\"Refractive eyes\",\"Apposition eyes\",\"Aperture eyes\",\"Superposition eyes\"],\"answers\":[3],\"difficulty\":0.6,\"originalIndex\":27}",
+		"edited": "{\"question\":\"Strepsiptera has…\",\"options\":[\"Refractive eyes\",\"Apposition eyes\",\"Aperture eyes\",\"Superposition eyes\"],\"answers\":[3],\"difficulty\":1}",
+		"timestamp": "2025-04-04T19:14:46.029Z"
 	  }
 	],
 	"Forensics": [
@@ -294,6 +739,80 @@
 		"original": "{\"question\":\"Given the context of the test, is the following statement true or false? Can a B+ blood type donor give blood to an O- recipient?\",\"options\":[\"True\",\"False\"],\"answers\":[1,2],\"difficulty\":0.6}",
 		"edited": "{\"question\":\"Given the context of the test, is the following statement true or false? Can a B+ blood type donor give blood to an O- recipient?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.6}",
 		"timestamp": "2025-03-20T21:11:01.848Z"
+	  },
+	  {
+		"original": "{\"question\":\"The identity of Unknown O is ____(31)____.  Given: Unknown O. Slow burn, self-extinguishing\",\"options\":[],\"answers\":[\"PVC (Polyvinyl Chloride)\"],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"The identity of Unknown Plastic O is ____(31)____.  Given: Unknown O. Slow burn, self-extinguishing\",\"answers\":[\"PVC (Polyvinyl Chloride)\"],\"difficulty\":0.5}",
+		"timestamp": "2025-03-27T20:05:41.360Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following accurately match the fingerprint development method with the molecule it reacts with? (I) Amido black - fats (II) Ninhydrin - amino acids (III) Silver nitrate - salts (IV) Iodine fuming - fats\",\"options\":[\"II only\",\"II and III only\",\"I and IV only\",\"I, III, and IV only\"],\"answers\":[4],\"difficulty\":0.8,\"originalIndex\":112}",
+		"edited": "{\"question\":\"Which of the following accurately match the fingerprint development method with the molecule it reacts with? (I) Amido black - fats (II) Ninhydrin - amino acids (III) Silver nitrate - salts (IV) Iodine fuming - fats\",\"options\":[\"II only\",\"II and III only\",\"I and IV only\",\"II, III, and IV only\"],\"answers\":[4],\"difficulty\":0.8}",
+		"timestamp": "2025-04-03T16:55:25.543Z"
+	  },
+	  {
+		"original": "{\"question\":\"Out of the following, which is least dense?\",\"options\":[\"Gravel\",\"Water\",\"Loam\",\"Sand\",\"Clay\",\"Silt\"],\"answers\":[3],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Out of the following, which is least dense?\",\"options\":[\"Gravel\",\"Water\",\"Loam\",\"Sand\",\"Clay\",\"Silt\"],\"answers\":[2],\"difficulty\":0.6}",
+		"timestamp": "2025-04-04T03:45:48.636Z"
+	  },
+	  {
+		"original": "{\"question\":\"Would you approve of a blood transfusion with donor blood type O+ and recipient blood type A+?\\nA) Approve B) Disapprove\",\"options\":[\"Approve\",\"Disapprove\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"Would you approve of a blood transfusion with donor blood type O+ and recipient blood type A+?\\nA) Approve B) Disapprove\",\"options\":[\"Approve\",\"Disapprove\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-04-04T04:13:25.258Z"
+	  },
+	  {
+		"original": "{\"question\":\"The medulla provides strength to the hair, as well as color and texture. True or False.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"The medulla provides strength to the hair, as well as color and texture. True or False.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-04-04T04:19:39.301Z"
+	  }
+	],
+	"Fossils": [
+	  {
+		"original": "{\"question\":\"The most refined radiometric dating is\",\"options\":[\"Carbon 14 dating\",\"Lead-Lead dating\",\"Uranium-Lead dating\",\"Phosphorus-Argon dating\",\"Argon-Argon dating\"],\"answers\":[5],\"difficulty\":0.6,\"originalIndex\":840}",
+		"edited": "{\"question\":\"The most refined radiometric dating is\",\"options\":[\"Carbon 14 dating\",\"Lead-Lead dating\",\"Uranium-Lead dating\",\"Phosphorus-Argon dating\",\"Argon-Argon dating\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-25T11:13:06.928Z"
+	  },
+	  {
+		"original": "{\"question\":\"Station Eight: Geological Time Scales Tie Breaker: What period did land plants first appear?\",\"options\":[\"Ordovician\",\"Devonian\",\"Silurian\",\"Cambrian\",\"D and A\",\"B and C\"],\"answers\":[6],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Station Eight: Geological Time Scales Tie Breaker: What period did land plants first appear?\",\"options\":[\"Ordovician\",\"Devonian\",\"Silurian\",\"Cambrian\",\"D and A\",\"B and C\"],\"answers\":[1],\"difficulty\":0.8}",
+		"timestamp": "2025-03-25T11:30:03.674Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which adaptation below is not one found in the earliest reptiles that freed them from a life tied to water?\",\"options\":[\"Internal fertilization inside the female\",\"Horny scales that often overlap\",\"More developed lungs\",\"Endothermic body\",\"Laying eggs that have an amniotic sac\",\"All of the above allowed early reptiles to lead a fully terrestrial life freed from water\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"Which adaptation below is not one found in the earliest amphibians that freed them from a life tied to water?\",\"options\":[\"Internal fertilization inside the female\",\"Horny scales that often overlap\",\"More developed lungs\",\"Endothermic body\",\"Laying eggs that have an amniotic sac\",\"All of the above allowed early reptiles to lead a fully terrestrial life freed from water\"],\"answers\":[1,2,4,5],\"difficulty\":0.6}",
+		"timestamp": "2025-03-25T11:39:41.951Z"
+	  },
+	  {
+		"original": "{\"question\":\"About how many times higher is the rate of extinction of the Pleistocene-Holocene extinction than that of any other major mass extinction?\",\"options\":[\"10 times\",\"15 times\",\"30 times\",\"50 times\",\"70 times\",\"100 times\"],\"answers\":[6],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"About how many times higher is the rate of extinction of the Pleistocene-Holocene extinction than background levels of extinction?\",\"options\":[\"10 times\",\"15 times\",\"30 times\",\"50 times\",\"70 times\",\"100-1000 times\"],\"answers\":[6],\"difficulty\":0.8}",
+		"timestamp": "2025-03-25T11:43:39.060Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which period are the fossils from Mazon Creek from?\",\"options\":[\"Pennsylvanian\",\"Californian\",\"Ordovician\",\"Triassic\",\"Eocene\"],\"answers\":[1],\"difficulty\":1,\"originalIndex\":49}",
+		"edited": "{\"question\":\"Which period are the fossils from Mazon Creek from?\",\"options\":[\"Pennsylvanian\",\"Californian\",\"Ordovician\",\"Triassic\",\"Carboniferous\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-03-27T17:45:48.557Z"
+	  }
+	],
+	"Geologic Mapping": [
+	  {
+		"original": "{\"question\":\"A sedimentary bed with a true thickness of 20 meters dips at 30°. What is the apparent thickness of the bed if measured horizontally?\",\"options\":[\"10 m\",\"30 m\",\"40 m\",\"20 m\"],\"answers\":[4],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"A sedimentary bed with a true thickness of 20 meters dips at 30°. What is the apparent thickness of the bed if measured horizontally?\",\"options\":[\"10 m\",\"30 m\",\"40 m\",\"20 m\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-27T17:25:12.916Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the relationship between the speeds between P, S, Rayleigh (R), and Love (L) waves?\",\"options\":[\"L < R < P < S\",\"R < L < S < P\",\"L < R < S < P\",\"S < R < P < L\",\"P < S < R < L\"],\"answers\":[3],\"difficulty\":1}",
+		"edited": "{\"question\":\"What is the relationship between the speeds between P, S, Rayleigh (R), and Love (L) waves?\",\"options\":[\"L < R < P < S\",\"R < L < S < P\",\"L < R < S < P\",\"S < R < P < L\",\"P < S < R < L\"],\"answers\":[2],\"difficulty\":1}",
+		"timestamp": "2025-04-02T05:11:15.566Z"
+	  },
+	  {
+		"original": "{\"question\":\"What force causes boudinage? (Mark ALL correct answers)\",\"options\":[\"Compression\",\"Weathering\",\"Erosion\",\"Extension\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"What force causes boudinage? (Mark ALL correct answers)\",\"options\":[\"Compression\",\"Weathering\",\"Erosion\",\"Extension\"],\"answers\":[1,4],\"difficulty\":0.7}",
+		"timestamp": "2025-04-05T00:53:04.584Z"
+	  },
+	  {
+		"original": "{\"question\":\"Select all of the following US states that are considered landlocked\",\"options\":[\"New Hampshire\",\"Tennessee\",\"Alabama\",\"West Virginia\",\"Arkansas\",\"Mississippi\"],\"answers\":[4,5],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Select all of the following US states that are considered landlocked\",\"options\":[\"New Hampshire\",\"Tennessee\",\"Alabama\",\"West Virginia\",\"Arkansas\",\"Mississippi\"],\"answers\":[2,4,5],\"difficulty\":0.7}",
+		"timestamp": "2025-04-05T01:12:38.687Z"
 	  }
 	],
 	"Materials Science": [
@@ -301,6 +820,21 @@
 		"original": "{\"question\":\"A ceramic coating needs to be applied to a titanium alloy substrate (αT i = 8.6 × 10−6/K). Which ceramic material would be LEAST likely to experience thermal shock failure during temperature cycling?\",\"options\":[\"Al2O3 (α = 8.1 × 10−6/K)\",\"SiC (α = 4.0 × 10−6/K)\",\"ZrO2 (α = 10.5 × 10−6/K)\",\"Si3N4 (α = 3.3 × 10−6/K)\"],\"answers\":[4],\"difficulty\":0.6,\"originalIndex\":1077}",
 		"edited": "{\"question\":\"A ceramic coating needs to be applied to a titanium alloy substrate (αT i = 8.6 × 10−6/K). Which ceramic material would be LEAST likely to experience thermal shock failure during temperature cycling?\",\"options\":[\"Al2O3 (α = 8.1 × 10−6/K)\",\"SiC (α = 4.0 × 10−6/K)\",\"ZrO2 (α = 10.5 × 10−6/K)\",\"Si3N4 (α = 3.3 × 10−6/K)\"],\"answers\":[1],\"difficulty\":0.6}",
 		"timestamp": "2025-03-23T02:50:50.849Z"
+	  },
+	  {
+		"original": "{\"question\":\"A material has an elastic modulus of 210 GPa and a Poisson’s ratio of 0.3. Calculate the bulk modulus.\",\"options\":[\"160 GPa\",\"140 GPa\",\"175 GPa\",\"150 GPa\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":43}",
+		"edited": "{\"question\":\"A material has an elastic modulus of 210 GPa and a Poisson’s ratio of 0.3. Calculate the bulk modulus.\",\"options\":[\"160 GPa\",\"140 GPa\",\"175 GPa\",\"150 GPa\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T18:50:23.062Z"
+	  },
+	  {
+		"original": "{\"question\":\"Indicate whether the following polymers are thermoset, thermoplastic or neither. Item: Unvulcanized rubber\",\"options\":[\"Thermoset\",\"Thermoplastic\",\"Neither\"],\"answers\":[2],\"difficulty\":0.1,\"originalIndex\":434}",
+		"edited": "{\"question\":\"Indicate whether the following polymers are thermoset, thermoplastic or neither. Item: Unvulcanized rubber\",\"options\":[\"Thermoset\",\"Thermoplastic\",\"Neither\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-04-01T20:11:21.581Z"
+	  },
+	  {
+		"original": "{\"question\":\"What happens if clay is heated beyond 537 degrees Celsius?\",\"options\":[\"It vitrifies, forming a glass-like surface that adds strength to the clay\",\"It sinters, fusing the particles together to make the clay stronger\",\"It goes through a quartz inversion, making the clay slightly smaller, but stronger\",\"It goes through a quartz inversion, making the clay slightly larger, but more fragile\"],\"answers\":[3],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"What happens if clay is heated beyond 537 degrees Celsius?\",\"options\":[\"It vitrifies, forming a glass-like surface that adds strength to the clay\",\"It sinters, fusing the particles together to make the clay stronger\",\"It goes through a quartz inversion, making the clay slightly smaller, but stronger\",\"It goes through a quartz inversion, making the clay slightly larger, but more fragile\"],\"answers\":[4],\"difficulty\":0.6}",
+		"timestamp": "2025-04-02T21:46:50.658Z"
 	  }
 	],
 	"Meteorology": [
@@ -318,6 +852,11 @@
 		"original": "{\"question\":\"Which of the following is the largest contribution to sea level rise?\",\"options\":[\"changes in land liquid water storage\",\"melting of glaciers and ice sheets\",\"melting of sea ice\",\"thermal expansion\"],\"answers\":[4],\"difficulty\":0.5}",
 		"edited": "{\"question\":\"Which of the following is the largest contribution to sea level rise?\",\"options\":[\"changes in land liquid water storage\",\"melting of glaciers and ice sheets\",\"melting of sea ice\",\"thermal expansion\"],\"answers\":[2],\"difficulty\":0.5}",
 		"timestamp": "2025-03-21T21:24:47.847Z"
+	  },
+	  {
+		"original": "{\"question\":\"Hurricanes form around high pressure systems. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":1}",
+		"edited": "{\"question\":\"Hurricanes form around high pressure systems. True or False?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-04-04T19:32:46.105Z"
 	  }
 	],
 	"Microbe Mission": [
@@ -360,6 +899,61 @@
 		"original": "{\"question\":\"Match the following to their description: These produce CH4\",\"options\":[\"halophiles\",\"cyanobacteria\",\"thermophiles\",\"proteobacteria\",\"methanogens\"],\"answers\":[5],\"difficulty\":0.7}",
 		"edited": "{\"question\":\"Match the following to their description: These produce CH4\",\"options\":[\"halophiles\",\"cyanobacteria\",\"thermophiles\",\"proteobacteria\",\"methanogens\"],\"answers\":[5],\"difficulty\":0.1}",
 		"timestamp": "2025-03-23T20:09:09.378Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of microbes are responsible for the formation of a Hartig net?\",\"options\":[\"Protists\",\"Fungi\",\"Bacteria\",\"Viruses\"],\"answers\":[2],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"What type of microbes are responsible for the formation of a Hartig net?\",\"options\":[\"Protists\",\"Fungi\",\"Bacteria\",\"Viruses\"],\"answers\":[2],\"difficulty\":0.3}",
+		"timestamp": "2025-03-25T20:44:56.704Z"
+	  },
+	  {
+		"original": "{\"question\":\"Match the correct description to the correct letter. Some letters are used more than once.\\n3. Many are edible and cultivated world wide – others are major decomposers in the soil\",\"options\":[\"A. Bacteria\",\"B. Algae\",\"C. Protozoa\",\"D. Fungi\",\"E. Viruses\",\"F. Prions\",\"G. Parasitic Worms\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":711}",
+		"edited": "{\"question\":\"Match the correct description to the correct letter. Some letters are used more than once.\\n3. Many are edible and cultivated world wide – others are major decomposers in the soil\",\"options\":[\"A. Bacteria\",\"B. Algae\",\"C. Protozoa\",\"D. Fungi\",\"E. Viruses\",\"F. Prions\",\"G. Parasitic Worms\"],\"answers\":[1,4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T05:28:26.467Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of nucleic acid genomes do virophages typically possess?\",\"options\":[\"RNA only\",\"Single-stranded DNA only\",\"Circular or linear double-stranded DNA\",\"Both RNA and single-stranded DNA\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":412}",
+		"edited": "{\"question\":\"What type of nucleic acid genomes do virophages typically possess?\",\"options\":[\"Single-stranded DNA only\",\"Circular or linear double-stranded DNA\",\"Both RNA and single-stranded DNA\",\"ds/ssRNA, ds/ssDNA.\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T05:45:37.346Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is one dif[]erence between the life cycle of eukaryotic viruses dif[]er from bacteriophages?\",\"options\":[\"Bacteriophages inject DNA while eukaryotic viruses inject RNA\",\"Bacteriophages enter host cells through fusion while eukaryotic viruses do not\",\"Bacteriophages do not have capsomeres while eukaryotic viruses do\",\"Eukaryotic viruses can enter the host cell whole while bacteriophages do not\",\"Eukaryotic viruses have helical symmetry while bacteriophages have icosahedral symmetry\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"What is one difference between the life cycle of eukaryotic viruses difer from bacteriophages?\",\"options\":[\"Bacteriophages inject DNA while eukaryotic viruses inject RNA\",\"Bacteriophages enter host cells through fusion while eukaryotic viruses do not\",\"Bacteriophages do not have capsomeres while eukaryotic viruses do\",\"Eukaryotic viruses can enter the host cell whole while bacteriophages do not\",\"Eukaryotic viruses have helical symmetry while bacteriophages have icosahedral symmetry\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-31T17:53:33.968Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is FALSE about the endosymbiotic theory?\",\"options\":[\"It proposes that the mitochondria and chloroplasts originated from eukaryotic cells.\",\"It suggests that mitochondria and chloroplasts originated from prokaryotic cells. It states that ALL organelles within eukaryotic cells evolved independently of\",\"prokaryotic cells.\",\"It argues that eukaryotic cells did not acquire any organelles through symbiotic relationships with other cells.\",\"Linear DNA of mitochondria and chloroplasts is used as evidence for the theory\"],\"answers\":[3,4],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Which of the following is FALSE about the endosymbiotic theory?\",\"options\":[\"It proposes that the mitochondria and chloroplasts originated from eukaryotic cells.\",\"It suggests that mitochondria and chloroplasts originated from prokaryotic cells. It states that ALL organelles within eukaryotic cells evolved independently of prokaryotic cells.\",\"It argues that eukaryotic cells did not acquire any organelles through symbiotic relationships with other cells.\",\"Linear DNA of mitochondria and chloroplasts is used as evidence for the theory\"],\"answers\":[2,3],\"difficulty\":0.8}",
+		"timestamp": "2025-03-31T18:15:00.067Z"
+	  },
+	  {
+		"original": "{\"question\":\"Match the use with the type of microbe involved: Production of bleu cheese\",\"options\":[\"A. virus\",\"B. Eubacterium\",\"C. Fungus\",\"D. Protozoan\",\"E. Algae\",\"F. Parasitic worm\",\"G. Answer not given\"],\"answers\":[3],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Match the use with the type of microbe involved: Production of blue cheese\",\"options\":[\"A. virus\",\"B. Eubacterium\",\"C. Fungus\",\"D. Protozoan\",\"E. Algae\",\"F. Parasitic worm\",\"G. Answer not given\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-04-02T04:07:39.482Z"
+	  },
+	  {
+		"original": "{\"question\":\"Cyanobacteria are able to metabolize sulfur in anaerobic condif[]ons.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"edited": "{\"question\":\"Cyanobacteria are able to metabolize sulfur in anaerobic conditions.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
+		"timestamp": "2025-04-02T17:18:47.327Z"
+	  },
+	  {
+		"original": "{\"question\":\"Given that opossums are unable to contract rabies, what should you do about the animal you believe to be rabid after being bitten?\",\"options\":[\"Drive it to your local vet and drop it off with the trained staff there\",\"Call Animal Control and wait around until they can pick up the animal\",\"Bring it with you to the doctor’s office so it can be tested for rabies\",\"Nothing, you should focus on getting yourself to the doctor right away!\"],\"answers\":[2],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Given that opossums are unable to contract rabies, what should you do about the animal you believe to be rabid after being bitten?\",\"options\":[\"Drive it to your local vet and drop it off with the trained staff there\",\"Call Animal Control and wait around until they can pick up the animal\",\"Bring it with you to the doctor’s office so it can be tested for rabies\",\"Nothing, you should focus on getting yourself to the doctor right away!\"],\"answers\":[4],\"difficulty\":0.41}",
+		"timestamp": "2025-04-02T22:29:27.621Z"
+	  },
+	  {
+		"original": "{\"question\":\"Which of the following is not caused by bacteria?\",\"options\":[\"Dysphagia\",\"Strep throat\",\"Histoplasmosis\",\"Trichinosis\"],\"answers\":[3],\"difficulty\":1}",
+		"edited": "{\"question\":\"Which of the following is not caused by bacteria?\",\"options\":[\"Dysphagia\",\"Strep throat\",\"Histoplasmosis\",\"Trichinosis\"],\"answers\":[3,4],\"difficulty\":0.55}",
+		"timestamp": "2025-04-04T20:14:16.165Z"
+	  },
+	  {
+		"original": "{\"question\":\"A student is looking through a microscope through the 10X objective, a cell appears to be half of the length of the visual field. What is the approximate length of the cell?\",\"options\":[\"5 mm\",\".5 mm\",\"10 mm\",\".25 mm\",\"1 mm\"],\"answers\":[2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"A student is looking through a microscope through the 10X objective, a cell appears to be half of the length of the visual field. What is the approximate length of the cell?\",\"options\":[\"5 mm\",\".5 mm\",\"10 mm\",\".25 mm\",\"1 mm\"],\"answers\":[5],\"difficulty\":0.6}",
+		"timestamp": "2025-04-04T20:33:45.876Z"
+	  },
+	  {
+		"original": "{\"question\":\"Taking the 3 strains above, a student notices that the only difference between 2 of the strains is the presence of a plasmid. Which of the following are true? Select all that apply.\",\"options\":[\"Strain B is the strain with the plasmid, and Strain C is the one without\",\"The strain without the plasmid is considered a lactose prototroph\",\"The strain with the plasmid is considered a lactose auxotroph\",\"If the 2 observed strains were placed in close enough contact for conjugation, some colonies of each would be expected to grow in a minimal media\",\"The presence of the plasmid has the capability to change the bacterial strain’s Gram-staining result\"],\"answers\":[4],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Taking the 3 strains above, a student notices that the only difference between 2 of the strains is the presence of a plasmid. Which of the following are true? Select all that apply.\",\"options\":[\"Strain B is the strain with the plasmid, and Strain C is the one without\",\"The strain without the plasmid is considered a lactose prototroph\",\"The strain with the plasmid is considered a lactose auxotroph\",\"If the 2 observed strains were placed in close enough contact for conjugation, some colonies of each would be expected to grow in a minimal media\",\"The presence of the plasmid has the capability to change the bacterial strain’s Gram-staining result\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-04-04T22:57:58.012Z"
 	  }
 	],
 	"Optics": [
@@ -437,6 +1031,141 @@
 		"original": "{\"question\":\"Question: The index of refraction is the same for any two light rays in the same medium. TRUE OR FALSE\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.3}",
 		"edited": "{\"question\":\"Question: The index of refraction is the same for any two light rays in the same medium. TRUE OR FALSE\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.3}",
 		"timestamp": "2025-03-24T10:57:14.160Z"
+	  },
+	  {
+		"original": "{\"question\":\"A friend wants to create a custom lens. With a quick google search, he ﬁnds the lensmaker equation: \\n\\nBased on this formula, he concludes that if both sides of a thin biconvex lens have the same radius of curvature, the lens will have an inﬁnite focal length. Is he right?\",\"options\":[\"Yes, since 1/R1 - 1/R2 will equal zero exactly.\",\"No, since the thickness of the lens isn’t taken into account.\",\"No, since the radius of curvature is negative for one side.\",\"No, since the index of refraction of any material is larger than one.\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":183}",
+		"edited": "{\"question\":\"A friend wants to create a custom lens. With a quick google search, he ﬁnds the lensmaker equation: \\n\\nBased on this formula, he concludes that if both sides of a thin biconvex lens have the same radius of curvature, the lens will have an zero focal length. Is he right?\",\"options\":[\"Yes, since 1/R1 - 1/R2 will equal zero exactly.\",\"No, since the thickness of the lens isn’t taken into account.\",\"No, since the radius of curvature is negative for one side.\",\"No, since the index of refraction of any material is larger than one.\"],\"answers\":[3],\"difficulty\":0.21}",
+		"timestamp": "2025-03-26T01:17:37.865Z"
+	  },
+	  {
+		"original": "{\"question\":\"An object is placed symmetrically between two plane mirrors separated by a 72 degree angle. How many images are formed?\",\"options\":[\"4\",\"5\",\"6\",\"More than 6 images are formed\",\"No images are formed\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"An object is placed symmetrically between two plane mirrors separated by a 72 degree angle. How many images are formed?\",\"options\":[\"4\",\"5\",\"6\",\"More than 6 images are formed\",\"No images are formed\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-26T19:13:29.341Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or false: The law of reflection states that the angle of incidence is greater than the angle of reflection. If false, correct the statement to make it true.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"True or false: The law of reflection states that the angle of incidence is greater than the angle of reflection.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-26T20:23:55.848Z"
+	  },
+	  {
+		"original": "{\"question\":\"John is 2 meters tall and standing 2 meters away from his mirror. How tall would concave mirror with a radius of curvature of 5 meters need to be?\",\"options\":[\"2.96 m\",\"1.67 m\",\"1.0 m\",\"2.0 m\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":53}",
+		"edited": "{\"question\":\"John is 2 meters tall and standing 2 meters away from his mirror. How tall would concave mirror with a radius of curvature of 5 meters need to be to see his whole body?\",\"options\":[\"2.96 m\",\"1.67 m\",\"1.0 m\",\"2.0 m\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-27T20:42:35.021Z"
+	  },
+	  {
+		"original": "{\"question\":\"The amount of refraction a specific frequency of light undergoes as it enters a new medium is called _______________.\",\"options\":[\"Deviation\",\"Declination\",\"Dispersion\",\"Diffraction\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":3074}",
+		"edited": "{\"question\":\"The amount of refraction a specific frequency of light undergoes as it enters a new medium is called _______________.\",\"options\":[\"Deviation\",\"Declination\",\"Dispersion\",\"Diffraction\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T00:26:18.703Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the magnification of an object placed 10 cm from a converging lens with a focal length of 5 cm?\",\"options\":[\"−2\",\"+2\",\"−0.5\",\"+0.5\",\"None of the above\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":9}",
+		"edited": "{\"question\":\"What is the magnification of an object placed 10 cm from a converging lens with a focal length of 5 cm?\",\"options\":[\"−2\",\"+2\",\"−0.5\",\"+0.5\",\"None of the above\"],\"answers\":[5],\"difficulty\":0.5}",
+		"timestamp": "2025-03-28T00:53:22.848Z"
+	  },
+	  {
+		"original": "{\"question\":\"Each time a vertically polarized light ray passes through a polarizer of angle θ to the vertical, by what ratio does the intensity of the light decrease?\",\"options\":[\"cosθ\",\"sinθ\",\"sin2θ\",\"cos2θ\"],\"answers\":[4],\"difficulty\":0.1,\"originalIndex\":309}",
+		"edited": "{\"question\":\"Each time a vertically polarized light ray passes through a polarizer of angle θ to the vertical, by what ratio does the intensity of the light decrease?\",\"options\":[\"cosθ\",\"sinθ\",\"sin2θ\",\"cos2θ\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-28T01:16:57.827Z"
+	  },
+	  {
+		"original": "{\"question\":\"A combination of green and yellow light is shined onto a magenta pigment. What is the resulting perceived color?\",\"options\":[\"red\",\"blue-green\",\"black\",\"blue\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":2049}",
+		"edited": "{\"question\":\"A combination of green and yellow light is shined onto a magenta pigment. What is the resulting perceived color?\",\"options\":[\"red\",\"blue-green\",\"black\",\"blue\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-28T02:43:01.506Z"
+	  },
+	  {
+		"original": "{\"question\":\"The following questions are about a thin lens with R1 = 5cm and R2 = −5cm made out of diamond in air. What type of lens is this?\",\"options\":[\"Bi-concave\",\"Bi-convex\",\"Plano-Concave\",\"Positive Meniscus\"],\"answers\":[2],\"difficulty\":0.6}",
+		"edited": "{\"question\":\"The following questions are about a thin lens with R1 = 5cm and R2 = −5cm made out of diamond in air. What type of lens is this?\",\"options\":[\"Bi-concave\",\"Bi-convex\",\"Plano-Concave\",\"Positive Meniscus\"],\"answers\":[1,2],\"difficulty\":0.6}",
+		"timestamp": "2025-03-28T13:18:56.258Z"
+	  },
+	  {
+		"original": "{\"question\":\"Four lenses are being considered for use as a microscope objective. The one that will produce the greatest magnification with a given eyepiece has the focal length\",\"options\":[\"-1 m\",\"+1 m\",\"-2 m\",\"+2 m\"],\"answers\":[1],\"difficulty\":0.9,\"originalIndex\":1779}",
+		"edited": "{\"question\":\"Four lenses are being considered for use as a microscope objective. The one that will produce the greatest magnification with a given eyepiece has the focal length\",\"options\":[\"-1 m\",\"+1 m\",\"-2 m\",\"+2 m\"],\"answers\":[2],\"difficulty\":0.9}",
+		"timestamp": "2025-03-28T14:45:15.193Z"
+	  },
+	  {
+		"original": "{\"question\":\"John is 2 meters tall and standing 2 meters away from his mirror. How tall would a convex mirror with a radius of curvature of 3 meters need to be?\",\"options\":[\"3.2 m\",\"2.0 m\",\"1.0 m\",\"0.6 m\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":54}",
+		"edited": "{\"question\":\"John is 2 meters tall and standing 2 meters away from his mirror. How tall would a convex mirror with a radius of curvature of 3 meters need to be?\",\"options\":[\"3.2 m\",\"2.0 m\",\"1.0 m\",\"0.6 m\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T14:54:21.379Z"
+	  },
+	  {
+		"original": "{\"question\":\"When considering the incident surface of the Lensmaker Equation, a convex surface is said to have a radius of curvature. A concave surface is said to have a radius of curvature\",\"options\":[\"Negative, positive\",\"Negative, negative\",\"Positive, negative\",\"Positive, positive\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"When considering the incident surface of the Lensmaker Equation, a convex surface is said to have a radius of curvature ____. A concave surface is said to have a radius of curvature ____.\",\"options\":[\"Negative, positive\",\"Negative, negative\",\"Positive, negative\",\"Positive, positive\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T19:18:15.588Z"
+	  },
+	  {
+		"original": "{\"question\":\"Light slows down in a medium to 2.00 · 108 m/s what is the index of refraction of the medium? (c = 3.00 · 108 m/s)\",\"options\":[\"1.50\",\"Can not be determined\",\"1.00\",\".667\",\"2.00\",\"1.33\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Light slows down in a medium to 2.00 · 10^8 m/s what is the index of refraction of the medium? (c = 3.00 · 10^8 m/s)\",\"options\":[\"1.50\",\"Can not be determined\",\"1.00\",\".667\",\"2.00\",\"1.33\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T20:00:38.640Z"
+	  },
+	  {
+		"original": "{\"question\":\"If a beam of light enters water at 32 degrees, what is the transmission coefficient for perpendicularly polarized light?\",\"options\":[],\"answers\":[\"Answer Required\"],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"If a beam of light enters water at 32 degrees, what is the transmission coefficient for perpendicularly polarized light?\",\"answers\":[\".82\"],\"difficulty\":0.1}",
+		"timestamp": "2025-03-29T03:15:30.871Z"
+	  },
+	  {
+		"original": "{\"question\":\"According to the text, what percentage of the total Optics event score is the laser shoot worth?\",\"options\":[\"25%\",\"50%\",\"75%\",\"100%\"],\"answers\":[2],\"difficulty\":0.2,\"originalIndex\":824}",
+		"edited": "{\"question\":\"According to the text, what percentage of the total Optics event score is the laser shoot worth?\",\"options\":[\"25%\",\"55%.\",\"75%\",\"100%\"],\"answers\":[2],\"difficulty\":0.2}",
+		"timestamp": "2025-03-29T22:02:34.798Z"
+	  },
+	  {
+		"original": "{\"question\":\"When a perpendicular line is drawn to a flat mirror’s surface, from where are angles measured and what relation do they have to each other?\",\"options\":[\"Measured from the surface, angles of incidence and reflection are equal.\",\"Measured from the surface normal, angles of incidence are equal.\",\"Measured from the surface normal, the incidence angle is less than the reflection angle.\",\"Measured from the surface normal, the incidence angle is greater than the reflection angle.\"],\"answers\":[2],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"When a perpendicular line is drawn to a flat mirror’s surface, from where are angles measured and what relation do they have to each other?\",\"options\":[\"Measured from the surface, angles of incidence and reflection are equal.\",\"Measured from the surface normal, angles of incidence are equal.\",\"Measured from the surface normal, the incidence angle is less than the reflection angle.\",\"Measured from the surface normal, the incidence angle is greater than the reflection angle.\"],\"answers\":[1,2],\"difficulty\":0.8}",
+		"timestamp": "2025-03-30T00:16:59.070Z"
+	  },
+	  {
+		"original": "{\"question\":\"You shine a normal flashlight at a rectangular prism made of plastic, expecting to see a rainbow of colors appear on the other side of the plastic. However, you are disappointed to find that you only see white light. What is the most likely reason for this? There is normal lighting in the room.\",\"options\":[\"Normal dispersive prisms are made of other materials such as glass and fluorite, not plastic\",\"The plastic has an index of refraction too similar to air\",\"Light only disperses into multiple colors when the angle difference between both sides is nonzero\",\"The light from the room is interfering with the light from the flashlight\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":3139}",
+		"edited": "{\"question\":\"You shine a normal flashlight at a rectangular prism made of plastic, expecting to see a rainbow of colors appear on the other side of the plastic. However, you are disappointed to find that you only see white light. What is the most likely reason for this? There is normal lighting in the room.\",\"options\":[\"Normal dispersive prisms are made of other materials such as glass and fluorite, not plastic\",\"The plastic has an index of refraction too similar to air\",\"Light only disperses into multiple colors when the angle difference between both sides is nonzero\",\"The light from the room is interfering with the light from the flashlight\"],\"answers\":[3],\"difficulty\":0.6}",
+		"timestamp": "2025-03-30T15:59:58.551Z"
+	  },
+	  {
+		"original": "{\"question\":\"A pinhole camera has an effective depth of field of zero (T / F)?\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":2900}",
+		"edited": "{\"question\":\"A pinhole camera has an effective depth of field of zero (T / F)?\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-30T16:04:26.411Z"
+	  },
+	  {
+		"original": "{\"question\":\"In a concave mirror, parallel rays converge at the focal point before the reflection.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1,\"type\":\"True/False\",\"originalIndex\":2007}",
+		"edited": "{\"question\":\"In a concave mirror, parallel rays converge at the focal point after the reflection.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-30T16:05:54.698Z"
+	  },
+	  {
+		"original": "{\"question\":\"Light of frequency 1.5 x 10^14 Hz travels through the air and enters glass perpendicular to its surface. Which of the following changes occur to the ray of light as it enters the class?\",\"options\":[\"wavelength decreases\",\"speed decreases\",\"bends toward the normal\",\"frequency increases\",\"frequency decreases\"],\"answers\":[1],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Light of frequency 1.5 x 10^14 Hz travels through the air and enters glass perpendicular to its surface. Which of the following changes occur to the ray of light as it enters the class?\",\"options\":[\"wavelength decreases\",\"speed decreases\",\"bends toward the normal\",\"frequency increases\",\"frequency decreases\"],\"answers\":[1,2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-31T21:30:22.320Z"
+	  },
+	  {
+		"original": "{\"question\":\"If you look at a flat mirror on a wall from 2 meters away, and it is only big enough for you to see yourself from your head down to your west , you far back must you go before you can see your entire body?\",\"options\":[\"2 meters\",\"4 meters\",\"You actually need to move forward 1 meter\",\"You will never be able to see all of yourself\"],\"answers\":[4],\"difficulty\":0.7,\"originalIndex\":3082}",
+		"edited": "{\"question\":\"If you look at a flat mirror on a wall from 2 meters away, and it is only big enough for you to see yourself from your head down to your waist , you far back must you go before you can see your entire body?\",\"options\":[\"2 meters\",\"4 meters\",\"You actually need to move forward 1 meter\",\"You will never be able to see all of yourself\"],\"answers\":[4],\"difficulty\":0.7}",
+		"timestamp": "2025-04-02T22:13:59.574Z"
+	  },
+	  {
+		"original": "{\"question\":\"Green is a primary color of light\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":2401}",
+		"edited": "{\"question\":\"Green is a primary color of light\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":1}",
+		"timestamp": "2025-04-03T05:00:00.749Z"
+	  },
+	  {
+		"original": "{\"question\":\"How many 800-nm photons does it take to have the same total energy as four 200-nm photons?\",\"options\":[\"1\",\"2\",\"4\",\"8\",\"16\"],\"answers\":[16],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"How many 800-nm photons does it take to have the same total energy as four 200-nm photons?\",\"options\":[\"1\",\"2\",\"4\",\"8\",\"16\"],\"answers\":[3,16],\"difficulty\":0.8}",
+		"timestamp": "2025-04-03T15:15:35.327Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of the lens does the human eye contain?\",\"options\":[\"Double convex\",\"Planer convex\",\"Double concave\",\"Planer concave\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":524}",
+		"edited": "{\"question\":\"What type of the lens does the human eye contain?\",\"options\":[\"Double convex\",\"Plano convex\",\"Double concave\",\"Plano concave\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-04-03T16:00:48.643Z"
+	  },
+	  {
+		"original": "{\"question\":\"Unpolarized light of intensity 20 W/m passes through a system of 3 linear polarizers with transmission axes oriented 30 degrees from the normal line. What is the intensity of the light after passing through the system?\",\"options\":[\"20 W/m\",\"10 W/m\",\"5.63 W/m\",\"8.44 W/m\"],\"answers\":[4],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"Unpolarized light of intensity 20 W/m passes through a system of 3 linear polarizers with transmission axes oriented 30 degrees from the normal line. What is the intensity of the light after passing through the system?\",\"options\":[\"20 W/m\",\"10 W/m\",\"5.63 W/m\",\"15 W/m\"],\"answers\":[2],\"difficulty\":0.8}",
+		"timestamp": "2025-04-03T17:02:21.114Z"
+	  },
+	  {
+		"original": "{\"question\":\"A chemist is in their lab and notices that light does not travel through their sugar solution at the same speed as it travels through a vacuum. They miraculously calculate the speed of light in the solution to be 2.21 * 10⁸ m/s. What is the index of refraction of the liquid? Speed of light = 3.00 * 10⁸ m/s.\",\"options\":[\"1.75\",\"1.42\",\"0.703\",\"1.20\"],\"answers\":[2],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"A chemist is in their lab and notices that light does not travel through their sugar solution at the same speed as it travels through a vacuum. They miraculously calculate the speed of light in the solution to be 2.21 * 10⁸ m/s. What is the index of refraction of the liquid? Speed of light = 3.00 * 10⁸ m/s.\",\"options\":[\"1.75\",\"1.36\",\"0.703\",\"1.20\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-04-04T00:32:36.571Z"
+	  },
+	  {
+		"original": "{\"question\":\"What component of the human eye refracts light?\",\"options\":[\"retina\",\"iris\",\"lens\",\"cornea\",\"ciliary body\"],\"answers\":[4],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"What component of the human eye refracts light?\",\"options\":[\"retina\",\"iris\",\"lens\",\"cornea\",\"ciliary body\"],\"answers\":[3,4],\"difficulty\":0.5}",
+		"timestamp": "2025-04-04T23:15:16.134Z"
 	  }
 	],
 	"Potions and Poisons": [
@@ -489,6 +1218,96 @@
 		"original": "{\"question\":\"The estimated fatal dose of the toxin from the Jequirity bean plant in humans is\",\"options\":[\"2-10 μg/kg\",\"100-1000 μg/kg\",\"0.1-1 μg/kg\",\"0.01-0.25 μg/kg\"],\"answers\":[1],\"difficulty\":0.8}",
 		"edited": "{\"question\":\"The estimated fatal dose of the toxin from the Jequirity bean plant in humans is\",\"options\":[\"2-10 μg/kg\",\"100-1000 μg/kg\",\"0.1-1 μg/kg\",\"0.01-0.25 μg/kg\"],\"answers\":[4],\"difficulty\":0.8}",
 		"timestamp": "2025-03-25T01:23:57.062Z"
+	  },
+	  {
+		"original": "{\"question\":\"Sugar water would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[2],\"difficulty\":0.1,\"originalIndex\":243}",
+		"edited": "{\"question\":\"Sugar water would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-25T23:35:34.751Z"
+	  },
+	  {
+		"original": "{\"question\":\"Identify the Bronsted-Lowry conjugate acid-base pair(s):\\n\\n(Mark ALL correct answers)\",\"options\":[\"H3O+ and OH-\",\"H3PO4 and H2PO3-\",\"CO2- and HCO3-\",\"SO3 and SO2-\"],\"answers\":[1,2],\"difficulty\":0.9,\"originalIndex\":158}",
+		"edited": "{\"question\":\"Identify the Bronsted-Lowry conjugate acid-base pair(s):\\n\\n(Mark ALL correct answers)\",\"options\":[\"H3O+ and OH-\",\"H3PO4 and H2PO3-\",\"CO2- and HCO3-\",\"SO3 and SO2-\"],\"answers\":[1],\"difficulty\":0.9}",
+		"timestamp": "2025-03-25T23:57:09.724Z"
+	  },
+	  {
+		"original": "{\"question\":\"A baking soda-vinegar solution can be used to clean grimy surfaces. One of the household compounds below reacts similarly with baking soda, but is an even more potent cleaner. Which option below best fits this description?\",\"options\":[\"Hydrogen peroxide (4 pH)\",\"Bleach (13 pH)\",\"Ammonia (12 pH)\",\"Rubbing alcohol (6 pH)\"],\"answers\":[2],\"difficulty\":0.7,\"originalIndex\":442}",
+		"edited": "{\"question\":\"A baking soda-vinegar solution can be used to clean grimy surfaces. One of the household compounds below reacts similarly with baking soda, but is an even more potent cleaner. Which option below best fits this description?\",\"options\":[\"Hydrogen peroxide (4 pH)\",\"Bleach (13 pH)\",\"Ammonia (12 pH)\",\"Rubbing alcohol (6 pH)\"],\"answers\":[1],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T00:15:27.938Z"
+	  },
+	  {
+		"original": "{\"question\":\"The median lethal dose, or LD50, is the dose of a toxin required to kill half the members of a tested population. The substance latrotoxin can be isolated from\",\"options\":[\"poison dart frogs.\",\"black widow spiders.\",\"Bufo toads.\",\"scorpions.\",\"black pepper.\"],\"answers\":[2],\"difficulty\":0.5,\"originalIndex\":398}",
+		"edited": "{\"question\":\"The substance latrotoxin can be isolated from\",\"options\":[\"poison dart frogs.\",\"black widow spiders.\",\"Bufo toads.\",\"scorpions.\",\"black pepper.\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-26T16:23:22.329Z"
+	  },
+	  {
+		"original": "{\"question\":\"If sodium chloride (NaCl) is added to a solution of magnesium sulfate (MgSO₄), what will happen to the solubility of magnesium sulfate?\",\"options\":[\"The solubility will increase.\",\"The solubility will decrease.\",\"The solubility will stay the same.\",\"The solubility will be completely unaffected.\"],\"answers\":[3],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"If sodium chloride (NaCl) is added to a solution of magnesium sulfate (MgSO₄), what will happen to the solubility of magnesium sulfate?\",\"options\":[\"The solubility will increase.\",\"The solubility will decrease.\",\"The solubility will stay the same.\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T21:58:48.384Z"
+	  },
+	  {
+		"original": "{\"question\":\"For questions 1–10, identify each substance or combination of substances as one of the following: a. Ionic compound b. Covalent compound c. Homogenous Mixture d. Heterogenous Mixture\\n\\n4. CH3COOH and H2O\",\"options\":[\"Ionic compound\",\"Covalent compound\",\"Homogenous Mixture\",\"Heterogenous Mixture\"],\"answers\":[3],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"CH3COOH and H2O is classified as a:\",\"options\":[\"Ionic compound\",\"Covalent compound\",\"Homogenous Mixture\",\"Heterogenous Mixture\"],\"answers\":[3],\"difficulty\":0.5}",
+		"timestamp": "2025-03-26T21:59:44.315Z"
+	  },
+	  {
+		"original": "{\"question\":\"Given the presence of chromatography paper and various pens/markers, what analytical technique is likely to be used?\",\"options\":[\"Spectrophotometry\",\"Chromatography\",\"Titration\",\"Gravimetric Analysis\"],\"answers\":[2],\"difficulty\":0.7}",
+		"edited": "{\"question\":\"Given the presence of a special type of paper and various pens/markers, what analytical technique is likely to be used?\",\"options\":[\"Spectrophotometry\",\"Chromatography\",\"Titration\",\"Gravimetric Analysis\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-26T22:05:32.326Z"
+	  },
+	  {
+		"original": "{\"question\":\"When mixing bleach with acids\",\"options\":[\"It forms Ammonia gas\",\"It forms Chlorine gas\",\"Nothing happens\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"If one were to mix bleach with acids, what would happen?\",\"options\":[\"It would form Ammonia gas\",\"It would form Chlorine gas\",\"Nothing happens\"],\"answers\":[2],\"difficulty\":0.58}",
+		"timestamp": "2025-03-26T22:07:15.533Z"
+	  },
+	  {
+		"original": "{\"question\":\"The median lethal dose, or LD50, is the dose of a toxin required to kill half the members of a tested population. The substance latrotoxin can be isolated from\",\"options\":[\"poison dart frogs.\",\"black widow spiders.\",\"Bufo toads.\",\"scorpions.\",\"black pepper.\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"The substance latrotoxin can be isolated from...\",\"options\":[\"poison dart frogs.\",\"black widow spiders.\",\"Bufo toads.\",\"scorpions.\",\"black pepper.\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-26T22:09:37.293Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of change is the evaporation of alcohol?\",\"options\":[\"Physical\",\"Chemical\"],\"answers\":[1],\"difficulty\":1}",
+		"edited": "{\"question\":\"What type of change is the evaporation of alcohol?\",\"options\":[\"Physical\",\"Chemical\"],\"answers\":[1],\"difficulty\":0.1}",
+		"timestamp": "2025-03-26T23:23:10.099Z"
+	  },
+	  {
+		"original": "{\"question\":\"What organ is responsible for removing ammonia from the body?\",\"options\":[\"liver\",\"kidneys\",\"small intestines\",\"bladder\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":706}",
+		"edited": "{\"question\":\"What organ is responsible for removing ammonia from the body?\",\"options\":[\"liver\",\"kidneys\",\"small intestines\",\"bladder\"],\"answers\":[2],\"difficulty\":0.7}",
+		"timestamp": "2025-03-27T00:36:46.617Z"
+	  },
+	  {
+		"original": "{\"question\":\"True/false: The LD50 of the blue ringed octopus toxin is less than that of cyanide.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.6,\"originalIndex\":48}",
+		"edited": "{\"question\":\"True/false: The LD50 of the blue ringed octopus toxin is less than that of cyanide.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-04-04T19:33:16.518Z"
+	  },
+	  {
+		"original": "{\"question\":\"What is the most common exposure route for lead?\",\"options\":[\"Ingestion of lead paint chips\",\"Drinking water carried by lead pipes\",\"Inhalation of lead from gasoline\",\"Eating lead contaminated livestock\"],\"answers\":[1],\"difficulty\":0.5,\"originalIndex\":285}",
+		"edited": "{\"question\":\"What is the most common exposure route for lead?\",\"options\":[\"Ingestion of lead paint chips\",\"Drinking water carried by lead pipes\",\"Inhalation of lead from gasoline\",\"Eating lead contaminated livestock\"],\"answers\":[2],\"difficulty\":0.5}",
+		"timestamp": "2025-03-28T15:34:23.266Z"
+	  },
+	  {
+		"original": "{\"question\":\"Quimica Chemical recently designed a new synthesis using hydrogen peroxide as an oxidizing reagent. To scale this synthesis for mass production, they opened a chemical manufacturing plant near Lake Lago. Based on what you know from the decomposition reaction of hydrogen peroxide, which of the following concerns would be most relevant if large amounts of hydrogen peroxide decompose?\",\"options\":[\"The liquid product will contaminate nearby ecosystems\",\"The liquid product will be corrosive\",\"The reaction vessel will become too pressurized\",\"The decomposition yields environmentally benign chemicals, so there is no concern\"],\"answers\":[3],\"difficulty\":0.1,\"originalIndex\":506}",
+		"edited": "{\"question\":\"Quimica Chemical recently designed a new synthesis using hydrogen peroxide as an oxidizing reagent. To scale this synthesis for mass production, they opened a chemical manufacturing plant near Lake Lago. Based on what you know from the decomposition reaction of hydrogen peroxide, which of the following concerns would be most relevant if large amounts of hydrogen peroxide decompose?\",\"options\":[\"The liquid product will contaminate nearby ecosystems\",\"The liquid product will be corrosive\",\"The reaction vessel will become too pressurized\",\"The decomposition yields environmentally benign chemicals, so there is no concern\"],\"answers\":[3],\"difficulty\":0.86}",
+		"timestamp": "2025-03-30T02:19:20.945Z"
+	  },
+	  {
+		"original": "{\"question\":\"What type of change is milk expiring/souring?\",\"options\":[\"Physical\",\"Chemical\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":3}",
+		"edited": "{\"question\":\"What type of change is milk expiring/souring?\",\"options\":[\"Physical\",\"Chemical\"],\"answers\":[2],\"difficulty\":0.01}",
+		"timestamp": "2025-03-30T05:38:03.335Z"
+	  },
+	  {
+		"original": "{\"question\":\"The Octet rule states that atoms will\",\"options\":[\"Gain lose or share electrons in an effort to achieve a full outer shell\",\"An atom with 8 electrons will always be stable\",\"An atom can only form up to 8 bonds with other atoms\",\"Atoms will only react with other atoms that have a full outer shell.\"],\"answers\":[1],\"difficulty\":0.6,\"originalIndex\":797}",
+		"edited": "{\"question\":\"The Octet rule states that ____.\",\"options\":[\"Atoms will gain lose or share electrons in an effort to achieve a full outer shell\",\"An atom with 8 electrons will always be stable\",\"An atom can only form up to 8 bonds with other atoms\",\"Atoms will only react with other atoms that have a full outer shell\"],\"answers\":[1],\"difficulty\":0.6}",
+		"timestamp": "2025-03-31T18:27:24.882Z"
+	  },
+	  {
+		"original": "{\"question\":\"Sugar water would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[2],\"difficulty\":0.1}",
+		"edited": "{\"question\":\"Sugar water would be considered a\",\"options\":[\"A solution\",\"A mixture\",\"A compound\"],\"answers\":[1,2],\"difficulty\":0.1}",
+		"timestamp": "2025-04-04T19:38:43.392Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or False: The bond between the non-mental elements in a gas are usually covalent in character.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.7,\"originalIndex\":759}",
+		"edited": "{\"question\":\"True or False: The bond between the non-metal elements in a gas are usually covalent in character.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.28}",
+		"timestamp": "2025-04-05T03:25:41.809Z"
 	  }
 	],
 	"Reach for the Stars": [
@@ -511,6 +1330,31 @@
 		"original": "{\"question\":\"Which of the following lists the order of the main spectral types from coolest to hottest?\",\"options\":[\"MKGFABO\",\"BGOAKMF\",\"OBAFGKM\",\"AFGKMOB\"],\"answers\":[4],\"difficulty\":0.6}",
 		"edited": "{\"question\":\"Which of the following lists the order of the main spectral types from coolest to hottest?\",\"options\":[\"MKGFABO\",\"BGOAKMF\",\"OBAFGKM\",\"AFGKMOB\"],\"answers\":[4],\"difficulty\":0.6}",
 		"timestamp": "2025-03-24T03:45:06.282Z"
+	  },
+	  {
+		"original": "{\"question\":\"Where does star formation occur? A) Black holes B) Accretion disks C) Molecular clouds D) Neutron star vicinity\",\"options\":[\"Black holes\",\"Accretion disks\",\"Molecular clouds\",\"Neutron star vicinity\"],\"answers\":[3],\"difficulty\":1,\"originalIndex\":745}",
+		"edited": "{\"question\":\"Where does star formation occur? A) Black holes B) Accretion disks C) Molecular clouds D) Neutron star vicinity\",\"options\":[\"Black holes\",\"Accretion disks\",\"Molecular clouds\",\"Neutron star vicinity\"],\"answers\":[3],\"difficulty\":0.13}",
+		"timestamp": "2025-03-26T18:04:12.937Z"
+	  },
+	  {
+		"original": "{\"question\":\"At what distance does absolute and apparent magnitude equal each other?\",\"options\":[\"1 parsec\",\"10 parsecs\",\"100 parsecs\",\"1 lightyear\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":340}",
+		"edited": "{\"question\":\"At what distance does absolute and apparent magnitude equal each other?\",\"options\":[\"1 parsec\",\"10 parsecs\",\"100 parsecs\",\"1 lightyear\"],\"answers\":[2],\"difficulty\":0.1}",
+		"timestamp": "2025-03-29T23:56:51.734Z"
+	  },
+	  {
+		"original": "{\"question\":\"At what distance does absolute and apparent magnitude equal each other?\",\"options\":[\"1 parsec\",\"10 parsecs\",\"100 parsecs\",\"1 lightyear\"],\"answers\":[2],\"difficulty\":1,\"originalIndex\":1055}",
+		"edited": "{\"question\":\"At what distance does absolute and apparent magnitude equal each other?\",\"options\":[\"1 parsec\",\"10 parsecs\",\"10 lightyears\",\"1 lightyear\"],\"answers\":[2],\"difficulty\":0.33}",
+		"timestamp": "2025-03-30T23:14:43.041Z"
+	  },
+	  {
+		"original": "{\"question\":\"Our Sun is a ______ star.\",\"options\":[\"B-type\",\"M-type\",\"F-type\",\"Y-type\"],\"answers\":[3],\"difficulty\":0.5,\"originalIndex\":1324}",
+		"edited": "{\"question\":\"Our Sun is a ______ star.\",\"options\":[\"B-type\",\"M-type\",\"F-type\",\"G-Type\"],\"answers\":[4],\"difficulty\":0.5}",
+		"timestamp": "2025-03-31T01:47:46.330Z"
+	  },
+	  {
+		"original": "{\"question\":\"True or false – planetary nebulae typically have a radius of 1 light year.\",\"options\":[\"True\",\"False\"],\"answers\":[2],\"difficulty\":0.5}",
+		"edited": "{\"question\":\"True or false – planetary nebulae typically have a radius of 1 light year.\",\"options\":[\"True\",\"False\"],\"answers\":[1],\"difficulty\":0.5}",
+		"timestamp": "2025-03-31T17:43:08.675Z"
 	  }
 	],
 	"Remote Sensing": [
@@ -565,6 +1409,26 @@
 		"original": "{\"question\":\"Which of the following methods of power generation does not utilize a steam turbine in most commercial installations?\",\"options\":[\"Nuclear\",\"Coal\",\"Hydroelectric\",\"None of the above\"],\"answers\":[4],\"difficulty\":0.5,\"originalIndex\":1304}",
 		"edited": "{\"question\":\"Which of the following methods of power generation does not utilize a steam turbine in most commercial installations?\",\"options\":[\"Nuclear\",\"Coal\",\"Hydroelectric\",\"None of the above\"],\"answers\":[3],\"difficulty\":0.5}",
 		"timestamp": "2025-03-18T02:56:05.045Z"
+	  },
+	  {
+		"original": "{\"question\":\"A wind power plant generates electricity at 33 kV and needs to transmit it over a distance of 50 kilometers.  The current is 200 amperes and the resistance is 0.1 ohms, calculate the voltage drop.\",\"options\":[\"500 V\",\"1000 V\",\"2000 V\",\"5000 V\"],\"answers\":[3],\"difficulty\":0.7,\"originalIndex\":1336}",
+		"edited": "{\"question\":\"A wind power plant generates electricity at 33 kV and needs to transmit it over a distance of 50 kilometers.  The current is 200 amperes and the resistance is 0.1 ohms, calculate the voltage drop.\",\"options\":[\"500 V\",\"1000 V\",\"20 V\",\"5000 V\"],\"answers\":[3],\"difficulty\":0.7}",
+		"timestamp": "2025-03-28T21:43:49.555Z"
+	  },
+	  {
+		"original": "{\"question\":\"A wind turbine with a rotor radius of 40 meters operates in a location with an average wind speed of 10 m/s and an air density of 1.2 kg/m³. The turbine operates at a capacity factor of 35%. If the turbine efficiency is 42%, what is its annual energy output in MWh?\",\"options\":[\"3884 MWh\",\"4036 MWh\",\"5502 MWh\",\"6150 MWh\"],\"answers\":[4],\"difficulty\":0.8}",
+		"edited": "{\"question\":\"A wind turbine with a rotor radius of 40 meters operates in a location with an average wind speed of 10 m/s and an air density of 1.2 kg/m³. The turbine operates at a capacity factor of 35%. If the turbine efficiency is 42%, what is its annual energy output in MWh?\",\"options\":[\"3884 MWh\",\"4036 MWh\",\"5502 MWh\",\"6150 MWh\"],\"answers\":[1],\"difficulty\":0.8}",
+		"timestamp": "2025-03-31T20:58:32.802Z"
+	  },
+	  {
+		"original": "{\"question\":\"What percentage of total U.S. electricity generation is attributed to wind power as of recently (roughly)?\",\"options\":[\"35%\",\"25%\",\"10%\",\"5%\"],\"answers\":[3],\"difficulty\":1}",
+		"edited": "{\"question\":\"What percentage of total U.S. electricity generation is attributed to wind power as of recently (roughly)?\",\"options\":[\"35%\",\"25%\",\"10%\",\"5%\"],\"answers\":[3],\"difficulty\":0.1}",
+		"timestamp": "2025-04-02T19:21:34.416Z"
+	  },
+	  {
+		"original": "{\"question\":\"[2] What is a significant environmental concern related to wind farms?\",\"options\":[\"High water consumption\",\"Greenhouse gas emissions\",\"Habitat disruption for birds and bats\",\"Noise pollution\"],\"answers\":[3],\"difficulty\":0.4}",
+		"edited": "{\"question\":\"What are the significant environmental concerns related to wind farms?\",\"options\":[\"Destruction of Habitats and Ecosystems\",\"Greenhouse gas emissions\",\"Habitat disruption for birds and bats\",\"Noise pollution\"],\"answers\":[1,3],\"difficulty\":0.28}",
+		"timestamp": "2025-04-02T19:23:46.034Z"
 	  }
 	]
   }
