@@ -3,30 +3,27 @@
 import { useState } from 'react';
 import api from '../api';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import Fuse from 'fuse.js';
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI('AIzaSyAwFolmYf8r4nis8yIla_78X1KxsVpcZ-Q');
 
-interface EventData {
-  questions: string[];
+interface ProcessedQuestions {
+  questions: string[];  // Questions extracted from user input
+  rawText: string;
 }
 
 interface PlagiarismMatch {
-  text: string;
-  confidence: number;
-  source: string;
-  description: string;
+  inputQuestion: string;
+  matchedQuestion: string;
+  similarity: number;
 }
 
-interface PlagiarismResult {
-  summary: string;
-  overallAnalysis?: {
-    verdict: string;
-    explanation: string;
-    riskLevel: 'high' | 'medium' | 'low';
+interface EventData {
+  [key: string]: {
+    question: string;
+    // other properties may exist
   };
-  matches: PlagiarismMatch[];
-  overallConfidence: number;
 }
 
 const SCIENCE_OLYMPIAD_EVENTS = [
@@ -71,8 +68,9 @@ export default function PlagiarismPage() {
   const [inputText, setInputText] = useState<string>('');
   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
   const [loadingState, setLoadingState] = useState<'idle' | 'loading' | 'error' | 'loaded'>('idle');
-  const [plagiarismResult, setPlagiarismResult] = useState<PlagiarismResult | null>(null);
-  const [eventData, setEventData] = useState<EventData | null>(null);
+  const [inputtedQuestions, setInputtedQuestions] = useState<ProcessedQuestions | null>(null);
+  const [officialQuestions, setOfficialQuestions] = useState<string[]>([]);  // Questions from official Science Olympiad event data
+  const [plagiarismMatches, setPlagiarismMatches] = useState<PlagiarismMatch[]>([]);
 
   const handleDisplay = () => {
     if (!selectedEvent) {
@@ -87,12 +85,17 @@ export default function PlagiarismPage() {
     fetch(api.api)
       .then(res => res.json())
       .then(data => {
-        const eventData = data[selectedEvent];
+        const eventData = data[selectedEvent] as EventData;
         if (eventData) {
-          setStatus('Data loaded successfully!');
+          // Extract all official questions from the event data
+          const questions = Object.values(eventData)
+            .map(item => item.question)
+            .filter(question => question); // Filter out any undefined/null questions
+          
+          setOfficialQuestions(questions);
+          setStatus(`Data loaded successfully! Found ${questions.length} official questions.`);
           setLoadingState('loaded');
           setIsDataLoaded(true);
-          setEventData(eventData);
         } else {
           setStatus('No data found');
           setLoadingState('error');
@@ -107,69 +110,22 @@ export default function PlagiarismPage() {
   };
 
   const handlePlagiarismCheck = async () => {
-    if (!inputText || !eventData) return;
+    if (!inputText) return;
 
-    setStatus('Checking for plagiarism...');
+    setStatus('Processing questions...');
     setLoadingState('loading');
 
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       
-      const prompt = `Analyze the following text for plagiarism against these Science Olympiad questions. 
-      Your response must be in valid JSON format with the following structure:
+      const prompt = `Extract all questions from the following text. Return them in a JSON array format:
       {
-        "summary": "Overall summary of findings",
-        "overallAnalysis": {
-          "verdict": "Brief 1-2 sentence verdict (e.g. 'High likelihood of plagiarism' or 'Mostly original work')",
-          "explanation": "2-3 sentences explaining key findings",
-          "riskLevel": "high|medium|low"
-        },
-        "matches": [
-          {
-            "text": "The portion of text that matches",
-            "confidence": 0.95,
-            "source": "The source question it matches with",
-            "description": "Brief description of why this is considered plagiarism"
-          }
-        ],
-        "overallConfidence": 0.85
+        "questions": ["question1", "question2", ...],
+        "rawText": "original text"
       }
       
-      Text to analyze:
-      ${inputText}
-      
-      Questions to compare against:
-      ${JSON.stringify(eventData, null, 2)}
-      
-      Guidelines:
-      1. Include matches with confidence > 0.6
-      2. A match must meet AT LEAST ONE of these criteria:
-         - Direct word-for-word copying of 6 or more consecutive words
-         - Exact same unique problem or scenario with multiple identical elements
-         - Identical complex sequence of concepts with the same specific examples
-         - Exact reproduction of unique or unusual question structure
-         - Multiple identical specialized terms in the same context and order
-         - Same numerical values or equations in the same context
-      3. DO NOT flag matches for:
-         - Common scientific terms or general knowledge
-         - Basic questions that would be common in the field
-         - Standard scientific terminology or methodology
-         - Loosely similar approaches or questions
-      4. For the overall analysis:
-         - Evaluate the total proportion of text that appears to be copied
-         - Consider the significance of the matches found
-         - Be more likely to flag suspicious content than to miss potential plagiarism
-      5. For the source field:
-         - Quote the full source question
-         - Underline or mark exactly what parts are identical
-      6. For the description:
-         - Focus on the specific evidence of potential copying
-         - Explain what makes this match suspicious
-         - Identify specific unique elements that match
-      7. Format the response as valid JSON
-      8. DO NOT include any markdown formatting or code blocks
-      9. The response should start with { and end with }
-      10. Err on the side of flagging suspicious content rather than missing potential plagiarism`;
+      Text to process:
+      ${inputText}`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
@@ -177,23 +133,43 @@ export default function PlagiarismPage() {
       
       // Clean up the response text
       text = text.trim();
-      // Remove any markdown code block indicators
       text = text.replace(/```json\s*|\s*```/g, '');
-      // Remove any leading/trailing whitespace
       text = text.trim();
       
       try {
         const parsedResult = JSON.parse(text);
-        setPlagiarismResult(parsedResult);
-        setStatus('Plagiarism check complete');
+        setInputtedQuestions(parsedResult);
+
+        // Initialize Fuse.js with official questions
+        const fuse = new Fuse(officialQuestions, {
+          includeScore: true,
+          threshold: 0.4, // Adjust this value to control how strict the matching is
+        });
+
+        // Check each inputted question for matches
+        const matches: PlagiarismMatch[] = [];
+        for (const question of parsedResult.questions) {
+          const searchResults = fuse.search(question);
+          if (searchResults.length > 0) {
+            const bestMatch = searchResults[0];
+            matches.push({
+              inputQuestion: question,
+              matchedQuestion: bestMatch.item,
+              similarity: 1 - (bestMatch.score || 0), // Convert score to similarity percentage
+            });
+          }
+        }
+
+        setPlagiarismMatches(matches);
+        setStatus('Plagiarism check completed');
         setLoadingState('loaded');
       } catch (error) {
         console.error('Failed to parse:', text);
-        setStatus('Error parsing results: ' + (error as Error).message);
+        setStatus('Error processing questions: ' + (error as Error).message);
         setLoadingState('error');
       }
     } catch (error) {
-      setStatus('Error checking plagiarism: ' + (error as Error).message);
+      setStatus('Error: ' + (error as Error).message);
       setLoadingState('error');
     }
   };
@@ -277,55 +253,51 @@ export default function PlagiarismPage() {
             </button>
           </div>
 
-          {plagiarismResult && (
-            <div className="mt-4 space-y-4">
-              {plagiarismResult.overallAnalysis && (
-                <div className="p-4 bg-slate-50/50 rounded-lg border border-slate-200">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-sm font-medium text-slate-700">Analysis</h3>
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      plagiarismResult.overallAnalysis.riskLevel === 'high' ? 'bg-red-100 text-red-700' :
-                      plagiarismResult.overallAnalysis.riskLevel === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-green-100 text-green-700'
-                    }`}>
-                      {plagiarismResult.overallAnalysis.riskLevel.charAt(0).toUpperCase() + 
-                       plagiarismResult.overallAnalysis.riskLevel.slice(1)} Risk
-                    </span>
-                  </div>
-                  {plagiarismResult.overallAnalysis.verdict && (
-                    <p className="text-slate-700 text-sm font-medium mb-2">{plagiarismResult.overallAnalysis.verdict}</p>
-                  )}
-                  {plagiarismResult.overallAnalysis.explanation && (
-                    <p className="text-slate-600 text-sm mb-2">{plagiarismResult.overallAnalysis.explanation}</p>
-                  )}
-                  <div className="text-xs text-slate-500">
-                    Overall Confidence: {(plagiarismResult.overallConfidence * 100).toFixed(1)}%
-                  </div>
+          {inputtedQuestions && (
+            <div className="mt-4 p-4 bg-slate-50/50 rounded-lg border border-slate-200">
+              <h3 className="text-sm font-medium text-slate-700 mb-2">Inputted Questions</h3>
+              <div className="text-xs text-slate-600">
+                <p className="mb-2">Number of questions found: {inputtedQuestions.questions.length}</p>
+                <div className="max-h-40 overflow-y-auto">
+                  {inputtedQuestions.questions.map((question, index) => (
+                    <div key={index} className="mb-2 p-2 bg-white rounded border border-slate-200">
+                      <p className="text-slate-700">{question}</p>
+                    </div>
+                  ))}
                 </div>
-              )}
+              </div>
+            </div>
+          )}
 
-              <div className="space-y-3">
-                <h3 className="text-sm font-medium text-slate-700">Potential Matches:</h3>
-                {plagiarismResult.matches.map((match, index) => (
-                  <div key={index} className="p-4 bg-amber-50/50 rounded-lg border border-amber-200">
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs font-medium text-amber-700">
-                        Confidence: {(match.confidence * 100).toFixed(1)}%
-                      </span>
+          {plagiarismMatches.length > 0 && (
+            <div className="mt-4 p-4 bg-slate-50/50 rounded-lg border border-slate-200">
+              <h3 className="text-sm font-medium text-slate-700 mb-2">Plagiarism Matches</h3>
+              <div className="text-xs text-slate-600">
+                <p className="mb-2">Found {plagiarismMatches.length} potential matches</p>
+                <div className="max-h-96 overflow-y-auto space-y-4">
+                  {plagiarismMatches.map((match, index) => (
+                    <div key={index} className="p-3 bg-white rounded-lg border border-slate-200">
+                      <div className="mb-2">
+                        <p className="font-medium text-slate-800">Input Question:</p>
+                        <p className="text-slate-700">{match.inputQuestion}</p>
+                      </div>
+                      <div className="mb-2">
+                        <p className="font-medium text-slate-800">Matched Question:</p>
+                        <p className="text-slate-700">{match.matchedQuestion}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-800">Similarity Score:</p>
+                        <p className={`text-sm font-medium ${
+                          match.similarity < 0.3 ? 'text-green-600' :
+                          match.similarity < 0.7 ? 'text-yellow-600' :
+                          'text-red-600'
+                        }`}>
+                          {(match.similarity * 100).toFixed(1)}%
+                        </p>
+                      </div>
                     </div>
-                    <div className="bg-white p-3 rounded border border-amber-100 mb-2">
-                      <p className="text-slate-700 text-sm">
-                        <span className="bg-amber-100 px-1 rounded">{match.text}</span>
-                      </p>
-                    </div>
-                    <div className="text-xs text-slate-600">
-                      <p className="font-medium mb-1">Source:</p>
-                      <p className="mb-2">{match.source}</p>
-                      <p className="font-medium mb-1">Description:</p>
-                      <p>{match.description}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           )}
