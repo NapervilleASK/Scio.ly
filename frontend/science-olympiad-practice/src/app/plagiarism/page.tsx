@@ -156,11 +156,10 @@ export default function PlagiarismPage() {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       
-      const prompt = `Extract all questions from this Science Olympiad test content. Include:
+      const prompt = `Extract all questions from this Science Olympiad test content. It is the raw text from a PDF. Include:
 - Numbered questions
 - Short prompts (like "Name the element")
 - Fill-in-the-blank questions
-- Any text asking for information
 
 Return ONLY valid JSON in this exact format:
 {
@@ -168,7 +167,7 @@ Return ONLY valid JSON in this exact format:
   "rawText": "original text"
 }
 
-IMPORTANT: Make sure to escape all quotes and special characters in the JSON. Keep it simple and error-free.
+IMPORTANT: Make sure to escape all quotes and special characters in the JSON. Keep it simple and error-free. Don't include the point values or the question number.
 
 Text to analyze:
 ${inputText}`;
@@ -233,6 +232,7 @@ ${inputText}`;
         <div className="text-center mb-4">
           <h1 className="text-2xl font-bold text-slate-800 mb-1">Science Olympiad Plagiarism Checker</h1>
           <p className="text-slate-600 text-sm">Check your work against official Science Olympiad questions</p>
+          <p className="text-amber-600 text-xs mt-1">Disclaimer: This tool may not work effectively with very long tests due to processing limitations.</p>
         </div>
         
         <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-slate-200 p-4 space-y-4 relative">
