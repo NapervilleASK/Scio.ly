@@ -40,6 +40,7 @@
     "react-markdown": "^10.0.0",
     "react-pdf": "^9.2.1",
     "react-toastify": "^11.0.5",
+    "string-similarity-js": "^2.1.4",
     "three": "^0.172.0",
     "vercel": "^41.4.1",
     "xlsx": "^0.18.5"

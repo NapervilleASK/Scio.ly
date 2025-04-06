@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import api from '../api';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import Fuse from 'fuse.js';
+import { stringSimilarity } from 'string-similarity-js';
 import * as pdfjsLib from 'pdfjs-dist/webpack';
 
 
@@ -178,22 +178,29 @@ export default function PlagiarismPage() {
         const parsedResult = JSON.parse(text);
         setInputtedQuestions(parsedResult);
 
-        // Initialize Fuse.js with official questions
-        const fuse = new Fuse(officialQuestions, {
-          includeScore: true,
-          threshold: 0.4,
-        });
-
-        // Check each inputted question for matches
+        // Use string-similarity-js to find matches
         const matches: PlagiarismMatch[] = [];
-        for (const question of parsedResult.questions) {
-          const searchResults = fuse.search(question);
-          if (searchResults.length > 0) {
-            const bestMatch = searchResults[0];
+        
+        for (const inputQuestion of parsedResult.questions) {
+          let bestMatchQuestion = '';
+          let bestMatchScore = 0;
+          
+          // Find the best match among official questions
+          for (const officialQuestion of officialQuestions) {
+            const similarityScore = stringSimilarity(inputQuestion, officialQuestion);
+            
+            if (similarityScore > bestMatchScore) {
+              bestMatchScore = similarityScore;
+              bestMatchQuestion = officialQuestion;
+            }
+          }
+          
+          // Only add matches that meet a minimum threshold (e.g., 0.3)
+          if (bestMatchScore > 0.3) {
             matches.push({
-              inputQuestion: question,
-              matchedQuestion: bestMatch.item,
-              similarity: 1 - (bestMatch.score || 0),
+              inputQuestion: inputQuestion,
+              matchedQuestion: bestMatchQuestion,
+              similarity: bestMatchScore,
             });
           }
         }
