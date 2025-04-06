@@ -156,14 +156,22 @@ export default function PlagiarismPage() {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       
-      const prompt = `Extract all questions from the following text. Return them in a JSON array format:
-      {
-        "questions": ["question1", "question2", ...],
-        "rawText": "original text"
-      }
-      
-      Text to process:
-      ${inputText}`;
+      const prompt = `Extract all questions from this Science Olympiad test content. Include:
+- Numbered questions
+- Short prompts (like "Name the element")
+- Fill-in-the-blank questions
+- Any text asking for information
+
+Return ONLY valid JSON in this exact format:
+{
+  "questions": ["question1", "question2", ...],
+  "rawText": "original text"
+}
+
+IMPORTANT: Make sure to escape all quotes and special characters in the JSON. Keep it simple and error-free.
+
+Text to analyze:
+${inputText}`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
