@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 // import { useRouter } from 'next/navigation'; // Removed unused import
-import { motion } from 'framer-motion'; // For animations
+import { motion, AnimatePresence } from 'framer-motion'; // For animations & Added AnimatePresence
 import { onAuthStateChanged, User } from 'firebase/auth'; // Import Firebase Auth
 import { auth } from '@/lib/firebase'; // Import auth instance
 import { updateGamePoints } from '@/app/utils/gamepoints'; // Import game points utility
@@ -139,6 +139,7 @@ export default function CrazyEightsGame({ onGameEnd }: CrazyEightsGameProps) {
   const [message, setMessage] = useState('Starting game...');
   const [isChoosingSuit, setIsChoosingSuit] = useState(false); // Player needs to choose suit after playing 8
   const [drawnCardPlayable, setDrawnCardPlayable] = useState<Card | null>(null); // Track if drawn card can be played
+  const [showHelpTooltip, setShowHelpTooltip] = useState(false); // State for help tooltip
 
 
   const topDiscardCard = discardPile.length > 0 ? discardPile[discardPile.length - 1] : null;
@@ -576,6 +577,50 @@ export default function CrazyEightsGame({ onGameEnd }: CrazyEightsGameProps) {
                      </button>
                  )}
             </div>
+       </div>
+       
+       {/* Help Icon & Tooltip */}
+       <div className="fixed bottom-7 right-10 z-50">
+         <div
+           className={`relative flex items-center justify-center w-8 h-8 md:w-14 md:h-14 rounded-full cursor-help transition-colors ${darkMode ? 'bg-gray-600 hover:bg-gray-500 text-white' : 'bg-gray-300 hover:bg-gray-400 text-gray-800'}`}
+           onMouseEnter={() => setShowHelpTooltip(true)}
+           onMouseLeave={() => setShowHelpTooltip(false)}
+         >
+           <span className="font-bold text-lg">?</span>
+           <AnimatePresence>
+             {showHelpTooltip && (
+               <motion.div
+                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                 animate={{ opacity: 1, y: 0, scale: 1 }}
+                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                 transition={{ duration: 0.2 }}
+                 className={`absolute bottom-full right-0 mb-2 w-64 p-3 rounded-lg shadow-xl text-sm ${darkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-700 border border-gray-200'}`}
+               >
+                 <p className="font-semibold mb-1">How to Play Crazy Eights:</p>
+                 <p className="mb-2">
+                   Goal: Be the first to empty your hand.
+                 </p>
+                 <p className="mb-2">
+                   Play: Match the top discard card by rank or suit.
+                 </p>
+                 <p className="mb-2">
+                   Eights (Oxygen): Are wild! Play an 8 and choose the next suit.
+                 </p>
+                 <p className="mb-2">
+                     Draw: If you cannot play, draw from the deck until you can, or the deck is empty.
+                 </p>
+                 <a
+                   href="https://en.wikipedia.org/wiki/Crazy_Eights"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className={`font-medium underline ${darkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-700'}`}
+                 >
+                   Full Rules (Wikipedia)
+                 </a>
+               </motion.div>
+             )}
+           </AnimatePresence>
+         </div>
        </div>
      </div>
   );

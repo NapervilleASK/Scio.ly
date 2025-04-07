@@ -4,11 +4,15 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 // Define the structure of the user's profile data
 export interface UserProfile {
   navbarStyle?: 'default' | 'golden' | 'rainbow';
+  hasUnlockedGolden?: boolean; // Flag for permanent unlock
+  hasUnlockedRainbow?: boolean; // Flag for permanent unlock
   // Add other persistent user settings here if needed in the future
 }
 
 const defaultProfile: UserProfile = {
   navbarStyle: 'default',
+  hasUnlockedGolden: false,
+  hasUnlockedRainbow: false,
 };
 
 // --- Local Storage Functions for Anonymous Users ---
@@ -17,7 +21,7 @@ const getLocalProfile = (): UserProfile => {
   const localProfile = localStorage.getItem('userProfile');
   if (localProfile) {
     try {
-      // Merge with defaults to ensure all keys exist
+      // Merge with defaults to ensure all keys exist, including new unlock flags
       return { ...defaultProfile, ...JSON.parse(localProfile) };
     } catch (e) {
       console.error("Error parsing local profile:", e);
@@ -41,7 +45,7 @@ const saveLocalProfile = (profile: UserProfile) => {
  */
 export const getUserProfile = async (userId: string | null): Promise<UserProfile> => {
   if (!userId) {
-    return getLocalProfile();
+    return getLocalProfile(); // Already handles merging with defaults
   }
 
   try {
@@ -51,9 +55,10 @@ export const getUserProfile = async (userId: string | null): Promise<UserProfile
     if (userDoc.exists()) {
       const userData = userDoc.data();
       // Merge fetched data with defaults to ensure all expected fields are present
+      // This now includes the new unlock flags
       return { ...defaultProfile, ...(userData.profile || {}) };
     } else {
-      // User document might exist but no profile field yet
+      // User document might exist but no profile field yet, or no user doc at all
       return { ...defaultProfile };
     }
   } catch (error) {

@@ -13,6 +13,8 @@ import MarkdownExplanation from '@/app/utils/MarkdownExplanation';
 import PDFViewer from '@/app/components/PDFViewer';
 import ReportModal, { Question as ReportQuestion } from '@/app/components/ReportModal';
 import { addBookmark, removeBookmark, loadBookmarksFromFirebase } from '@/app/utils/bookmarks';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { getUserProfile, UserProfile } from '@/app/utils/userProfile';
 
 interface RouterParams {
   eventName?: string;
@@ -132,6 +134,7 @@ export default function TestPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Question[]>([]);
   const [routerData, setRouterData] = useState<RouterParams>({});
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [userAnswers, setUserAnswers] = useState<Record<number, (string | null)[] | null>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
@@ -699,7 +702,19 @@ Your response should contain ONLY the explanation and the "final answer index:" 
     
     loadUserBookmarks();
   }, []);
-
+  // Fetch user profile data
+  const fetchProfileData = async (user: User | null) => {
+    const profile = await getUserProfile(user?.uid || null);
+    setUserProfile(profile);
+    console.log("Header: Fetched profile:", profile); // DEBUG
+  };
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      fetchProfileData(user); // Fetch profile when user state changes
+    });
+    return () => unsubscribe();
+  }, []); 
   const handleBookmark = async (question: Question) => {
     if (!auth.currentUser) {
       toast.info('Please sign in to bookmark questions');
@@ -785,6 +800,7 @@ Your response should contain ONLY the explanation and the "final answer index:" 
   if (!isMounted) {
     return null;
   }
+    
   return (
     <>
 
@@ -921,7 +937,8 @@ Your response should contain ONLY the explanation and the "final answer index:" 
                         }`}
                       >
                         <div className="flex justify-between items-start">
-                          <h3 className="font-semibold text-lg">Question {index + 1}</h3>
+                        
+                          <h3 className={userProfile?.navbarStyle === 'golden' ? 'bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent font-semibold text-lg' : userProfile?.navbarStyle === 'rainbow' ? 'bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold text-lg' : 'font-semibold text-lg'}>Question {index + 1}</h3>
                           <div className="flex gap-2 items-center">
                             {/* The Contest Button was previously here, now removed and logic integrated into Explain button */}
                             <button

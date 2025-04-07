@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { updateGamePoints } from '@/app/utils/gamepoints'; // Import game points utility
 
 // Define types for the data structures
 interface EditedQuestion {
@@ -25,6 +28,9 @@ export default function JsonDataPage() {
   const [error, setError] = useState<string | null>(null);
   const [showRaw, setShowRaw] = useState(false);
   const [activeTab, setActiveTab] = useState<'blacklisted' | 'edited' | 'all'>('all');
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [adminNewScore, setAdminNewScore] = useState('');
+  const [isSubmittingAdmin, setIsSubmittingAdmin] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +51,15 @@ export default function JsonDataPage() {
     };
 
     fetchData();
+
+    // Listen for auth state changes
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setCurrentUser(user);
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+
   }, []);
 
   // Get the active data based on the selected tab
@@ -86,6 +101,13 @@ export default function JsonDataPage() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
+
+  // --- NEW: Admin Function ---
+  const handleSetScore = async () => {
+    updateGamePoints(currentUser?.uid || null, parseInt(adminNewScore,10))
+    setIsSubmittingAdmin(false)
+  };
+  // --- END: Admin Function ---
 
   // Background and text colors based on dark mode
   const bgColor = darkMode ? 'bg-gray-900' : 'bg-gray-50';
@@ -212,6 +234,56 @@ export default function JsonDataPage() {
           </div>
         )}
         
+        {/* --- NEW: Admin Section --- */}
+        <div className={`mt-8 p-6 rounded-lg shadow-md border ${borderColor} ${cardBgColor}`}>
+            <h2 className="text-xl font-semibold mb-4">Set Your Game Score (Today)</h2>
+             <p className={`text-sm mb-4 ${darkMode ? 'text-yellow-400' : 'text-orange-600'}`}>
+                 ⚠️ <span className="font-medium">Note:</span> Use this to manually set your score for the current day.
+             </p>
+            {currentUser ? (
+               <div className="space-y-4">
+                 {/* REMOVED User ID Input
+                 <div>
+                     <label htmlFor="adminUserId" className="block text-sm font-medium mb-1">User ID:</label>
+                     <input
+                         type="text"
+                         id="adminUserId"
+                         placeholder="Enter Firebase User ID"
+                         className={`w-full px-3 py-2 rounded-md border ${borderColor} ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'} focus:outline-none focus:ring-2 ${darkMode ? 'focus:ring-blue-500' : 'focus:ring-blue-400'}`}
+                     />
+                  </div>
+                  */}
+                 <div>
+                     <label htmlFor="adminNewScore" className="block text-sm font-medium mb-1">New Game Score for {currentUser.email || currentUser.uid}:</label>
+                     <input
+                         type="number"
+                         id="adminNewScore"
+                         value={adminNewScore}
+                         onChange={(e) => setAdminNewScore(e.target.value)}
+                         placeholder="Enter your desired score (e.g., 100)"
+                         className={`w-full px-3 py-2 rounded-md border ${borderColor} ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'} focus:outline-none focus:ring-2 ${darkMode ? 'focus:ring-blue-500' : 'focus:ring-blue-400'}`}
+                     />
+                 </div>
+                 <button
+                     onClick={handleSetScore}
+                     disabled={isSubmittingAdmin}
+                     className={`px-5 py-2 rounded-md font-semibold transition-colors flex items-center justify-center gap-2 ${isSubmittingAdmin ? 'bg-gray-500 cursor-not-allowed' : (darkMode ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-500 hover:bg-blue-600')} text-white`}
+                 >
+                     {isSubmittingAdmin ? (
+                        <><div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div> Setting...</>
+                     ) : (
+                        'Set My Score'
+                     )}
+                 </button>
+               </div>
+            ) : (
+                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Please log in to set your score.
+                </p>
+            )}
+        </div>
+        {/* --- END: Admin Section --- */}
+
         <div className="mt-8 text-sm text-gray-500">
           <p>This is an administrative page showing raw data from the reports database.</p>
         </div>

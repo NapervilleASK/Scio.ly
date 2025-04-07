@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -153,6 +153,7 @@ export default function BlackjackGame({ onGameEnd }: BlackjackGameProps) {
   const [gameStatus, setGameStatus] = useState<'betting' | 'playerTurn' | 'dealerTurn' | 'gameOver'>('betting');
   const [message, setMessage] = useState('Place your bet to start!'); // Game messages
   const [gameOver, setGameOver] = useState(true); // Start in game over state
+  const [showHelpTooltip, setShowHelpTooltip] = useState(false); // State for help tooltip
 
   // Listen for auth state changes
   useEffect(() => {
@@ -418,6 +419,51 @@ export default function BlackjackGame({ onGameEnd }: BlackjackGameProps) {
           )}
         </div>
       </div>
+
+      {/* Help Icon & Tooltip */}
+      <div className="fixed bottom-7 right-10 z-50">
+        <div
+          className={`relative flex items-center justify-center w-8 h-8 md:w-14 md:h-14 rounded-full cursor-help transition-colors ${darkMode ? 'bg-gray-600 hover:bg-gray-500 text-white' : 'bg-gray-300 hover:bg-gray-400 text-gray-800'}`}
+          onMouseEnter={() => setShowHelpTooltip(true)}
+          onMouseLeave={() => setShowHelpTooltip(false)}
+        >
+          <span className="font-bold text-lg">?</span>
+          <AnimatePresence>
+            {showHelpTooltip && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className={`absolute bottom-full right-0 mb-2 w-64 p-3 rounded-lg shadow-xl text-sm ${darkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-700 border border-gray-200'}`}
+              >
+                <p className="font-semibold mb-1">How to Play Blackjack:</p>
+                <p className="mb-2">
+                  Goal: Get closer to 21 than the dealer without going over.
+                </p>
+                <p className="mb-2">
+                  Hit: Draw another card.
+                </p>
+                <p className="mb-2">
+                  Stand: Keep your current hand.
+                </p>
+                 <p className="mb-2">
+                   Cards 2-10 are face value, J/Q/K are 10, Ace is 1 or 11.
+                 </p>
+                <a
+                  href="https://en.wikipedia.org/wiki/Blackjack"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`font-medium underline ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
+                >
+                  Full Rules (Wikipedia)
+                </a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
     </div>
   );
 }

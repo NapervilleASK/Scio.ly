@@ -28,6 +28,7 @@ export default function GamesDashboard() {
   const [currentUser, setCurrentUser] = useState<User | null>(null); // State for Firebase user
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null); // State for user profile
   const [showTooltip, setShowTooltip] = useState(false); // State for tooltip visibility
+  const [selectedNavbarStyle, setSelectedNavbarStyle] = useState<UserProfile['navbarStyle']>('default'); // NEW: State for toggle
   const { darkMode } = useTheme();
   const router = useRouter(); // Initialize router
 
@@ -49,6 +50,7 @@ export default function GamesDashboard() {
     const profile: UserProfile = await getUserProfile(userId);
     console.log('Fetched profile:', profile);
     setUserProfile(profile);
+    setSelectedNavbarStyle(profile.navbarStyle || 'default'); // NEW: Initialize toggle state
 
   }, []); // No dependencies needed inside if logic is based on passed user
 
@@ -97,11 +99,26 @@ export default function GamesDashboard() {
       }
 
       // 2. Update profile
-      await updateUserProfile(currentUser.uid, { navbarStyle: style });
+      const profileUpdates: Partial<UserProfile> = {
+        navbarStyle: style, // Set the newly purchased style as active
+      };
+      if (style === 'golden') {
+        profileUpdates.hasUnlockedGolden = true;
+      } else if (style === 'rainbow') {
+        // Unlocking rainbow also implies golden is unlocked (or should be)
+        profileUpdates.hasUnlockedGolden = true; // Ensure golden is marked unlocked too
+        profileUpdates.hasUnlockedRainbow = true;
+      }
+      await updateUserProfile(currentUser.uid, profileUpdates);
 
       // 3. Update local state immediately for UI feedback
       setDailyScore(prevScore => prevScore - cost);
-      setUserProfile(prevProfile => ({ ...prevProfile, navbarStyle: style }));
+      // Update both the active style and the unlock flags in local profile state
+      setUserProfile(prevProfile => ({
+        ...prevProfile,
+        ...profileUpdates
+       }));
+      setSelectedNavbarStyle(style); // NEW: Update toggle state after purchase
 
       toast.update(toastId, {
         render: `${style.charAt(0).toUpperCase() + style.slice(1)} style unlocked!`, 
@@ -122,7 +139,42 @@ export default function GamesDashboard() {
       // More complex error handling could be added here.
     }
   };
-  // --- End Purchase Logic ---
+
+  // NEW: Handler for changing navbar style via toggle
+  const handleStyleChange = async (newStyle: UserProfile['navbarStyle']) => {
+    if (!currentUser || !userProfile) return;
+    if (userProfile.navbarStyle === newStyle) return; // No change needed
+
+    // Check if the style is actually unlocked before allowing selection
+    // Use the new flags for these checks
+    if (newStyle === 'golden' && !userProfile.hasUnlockedGolden) return;
+    if (newStyle === 'rainbow' && !userProfile.hasUnlockedRainbow) return;
+
+    const originalStyle = selectedNavbarStyle;
+    setSelectedNavbarStyle(newStyle); // Optimistic UI update
+
+    const toastId = toast.loading('Updating navbar style...');
+    try {
+      await updateUserProfile(currentUser.uid, { navbarStyle: newStyle });
+      setUserProfile(prevProfile => ({ ...prevProfile, navbarStyle: newStyle })); // Update profile state
+      toast.update(toastId, {
+        render: 'Navbar style updated!',
+        type: 'success',
+        isLoading: false,
+        autoClose: 2000
+      });
+    } catch (error) {
+      console.error('Error updating navbar style:', error);
+      setSelectedNavbarStyle(originalStyle); // Revert optimistic update
+      setUserProfile(prevProfile => ({ ...prevProfile, navbarStyle: originalStyle })); // Revert profile state
+      toast.update(toastId, {
+        render: 'Failed to update style. Please try again.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000
+      });
+    }
+  };
 
   const buttonStyle = `px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-md w-full md:w-auto`;
   const primaryButtonStyle = darkMode
@@ -132,10 +184,9 @@ export default function GamesDashboard() {
     ? 'bg-gray-700 hover:bg-gray-600 text-white'
     : 'bg-gray-200 hover:bg-gray-300 text-gray-800';
   // --- Shop Button Styles ---
-  const shopButtonStyle = `px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed`;
+  // const shopButtonStyle = `px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed`; // Removed as it's unused
   const goldenButtonStyle = `bg-gradient-to-r from-yellow-400 to-amber-500 text-black hover:from-yellow-500 hover:to-amber-600`;
   const rainbowButtonStyle = `bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 text-white hover:opacity-90`;
-  const unlockedStyle = `opacity-70 cursor-not-allowed`;
 
   const renderGame = () => {
     const handleGameEnd = () => fetchData(currentUser); // Use fetchData as the callback
@@ -236,46 +287,80 @@ export default function GamesDashboard() {
                 Play Crazy Eights 🤪8️⃣
               </button>
 
-              {/* Navbar Style Shop */} 
+              {/* Navbar Style Shop */}
               {currentUser && userProfile && (
                 <div className="mt-12 pt-6 border-t w-full max-w-md flex flex-col items-center gap-4">
-                   <h2 className="text-xl font-semibold mb-2">Navbar Styles</h2>
-                   {/* Golden Style */} 
-                   <div className="flex items-center justify-between w-full">
-                      <span className="text-sm font-medium">
-                        Golden Navbar Text (Cost: 50)
-                      </span>
-                      <button 
-                        onClick={() => handlePurchaseStyle('golden', 50)}
-                        disabled={dailyScore < 50 || userProfile.navbarStyle === 'golden' || userProfile.navbarStyle === 'rainbow'}
-                        className={`${shopButtonStyle} ${goldenButtonStyle} ${userProfile.navbarStyle === 'golden' || userProfile.navbarStyle === 'rainbow' ? unlockedStyle : ''}`}
-                      >
-                        {userProfile.navbarStyle === 'golden' || userProfile.navbarStyle === 'rainbow' ? 'Unlocked' : 'Unlock'}
-                      </button>
-                   </div>
-                   {/* Rainbow Style */} 
-                   <div className="flex items-center justify-between w-full">
-                      <span className="text-sm font-medium">
-                        Rainbow Navbar Text (Cost: 200)
-                      </span>
-                      <button 
-                        onClick={() => handlePurchaseStyle('rainbow', 200)}
-                        disabled={dailyScore < 200 || userProfile.navbarStyle === 'rainbow'}
-                        className={`${shopButtonStyle} ${rainbowButtonStyle} ${userProfile.navbarStyle === 'rainbow' ? unlockedStyle : ''}`}
-                      >
-                        {userProfile.navbarStyle === 'rainbow' ? 'Unlocked' : 'Unlock'}
-                      </button>
-                   </div>
-                 </div>
-               )}
+                   <h2 className="text-xl font-semibold mb-2">Shop</h2>
 
+                   {/* Vertical Button Group */}
+                   <div className="w-full flex flex-col items-stretch gap-3">
+                     {/* Default Style Button */}
+                     <button
+                       onClick={() => handleStyleChange('default')}
+                       className={`w-full text-center px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:brightness-110 ${
+                         selectedNavbarStyle === 'default'
+                           ? (darkMode ? 'bg-blue-600 text-white ring-2 ring-offset-2 ring-offset-gray-800 ring-blue-600' : 'bg-blue-500 text-white ring-2 ring-offset-2 ring-offset-gray-100 ring-blue-500')
+                           : (darkMode ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300')
+                       }`}
+                     >
+                       Default
+                     </button>
+
+                     {/* Golden Style Button */}
+                     {userProfile.hasUnlockedGolden ? (
+                       <button
+                         onClick={() => handleStyleChange('golden')}
+                         className={`w-full text-center px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:brightness-110 ${
+                           selectedNavbarStyle === 'golden'
+                             ? goldenButtonStyle + ' ring-2 ring-offset-2 ring-amber-400' + (darkMode ? ' ring-offset-gray-800' : ' ring-offset-gray-100') // Active style
+                             : (darkMode ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300') // Inactive style
+                         }`}
+                       >
+                         Golden
+                       </button>
+                     ) : (
+                       <button
+                         onClick={() => handlePurchaseStyle('golden', 50)}
+                         disabled={dailyScore < 50}
+                         className={`w-full text-center px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:brightness-110 ${goldenButtonStyle} disabled:opacity-60 disabled:cursor-not-allowed`}
+                         title={dailyScore < 50 ? 'Need 50 points' : 'Unlock Golden Style (50 points)'}
+                       >
+                         Unlock Golden (50)
+                       </button>
+                     )}
+
+                     {/* Rainbow Style Button */}
+                     {userProfile.hasUnlockedRainbow ? (
+                       <button
+                         onClick={() => handleStyleChange('rainbow')}
+                         className={`w-full text-center px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:brightness-110 ${
+                           selectedNavbarStyle === 'rainbow'
+                             ? rainbowButtonStyle + ' ring-2 ring-offset-2 ring-purple-500' + (darkMode ? ' ring-offset-gray-800' : ' ring-offset-gray-100') // Active style
+                             : (darkMode ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' : 'bg-gray-200 text-gray-800 hover:bg-gray-300') // Inactive style
+                         }`}
+                       >
+                         Rainbow
+                       </button>
+                     ) : (
+                       <button
+                         onClick={() => handlePurchaseStyle('rainbow', 100)}
+                         disabled={dailyScore < 100}
+                         className={`w-full text-center px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:brightness-110 ${rainbowButtonStyle} disabled:opacity-60 disabled:cursor-not-allowed`}
+                         title={dailyScore < 100 ? 'Need 100 points' : 'Unlock Rainbow Style (100 points)'}
+                       >
+                         Unlock Rainbow (100)
+                       </button>
+                     )}
+                   </div>
+                </div>
+              )}
             </motion.div>
           ) : (
             <motion.div
               key="game"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
               {renderGame()}
@@ -285,4 +370,4 @@ export default function GamesDashboard() {
       </div>
     </div>
   );
-} 
+}
