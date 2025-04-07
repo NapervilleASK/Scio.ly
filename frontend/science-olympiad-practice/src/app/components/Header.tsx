@@ -9,6 +9,9 @@ import AuthButton from '@/app/components/AuthButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { usePathname } from 'next/navigation';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { getUserProfile, UserProfile } from '@/app/utils/userProfile';
 
 interface ContactFormData {
   name: string;
@@ -161,6 +164,7 @@ const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: {
 
 export default function Header() {
   const { darkMode } = useTheme();
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -168,6 +172,21 @@ export default function Header() {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   
+  // Fetch user profile data
+  const fetchProfileData = async (user: User | null) => {
+    const profile = await getUserProfile(user?.uid || null);
+    setUserProfile(profile);
+    console.log("Header: Fetched profile:", profile); // DEBUG
+  };
+
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      fetchProfileData(user); // Fetch profile when user state changes
+    });
+    return () => unsubscribe();
+  }, []);
+
   // Determine if we're on the homepage
   const isHomePage = pathname === '/';
   
@@ -218,15 +237,36 @@ export default function Header() {
       ? 'bg-gray-900/95 backdrop-blur-sm shadow-md' 
       : 'bg-white/95 backdrop-blur-sm shadow-md';
   
-  // Set text colors based on transparency and theme
-  const textColorClass = darkMode 
-    ? 'text-white' 
-    : 'text-gray-900';
+  // Determine base text color
+  const baseTextColorClass = darkMode ? 'text-white' : 'text-gray-900';
   
-  const linkColorClass = darkMode
-    ? 'text-gray-300 hover:text-white' 
-    : 'text-gray-700 hover:text-gray-900';
-  
+  // Determine link styles based on profile
+  const getLinkStyles = () => {
+    const base = `transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium`;
+    const hover = darkMode ? 'hover:opacity-80' : 'hover:opacity-80'; // Generic hover
+
+    if (userProfile?.navbarStyle === 'rainbow') {
+      return `${base} bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold ${hover}`;
+    } else if (userProfile?.navbarStyle === 'golden') {
+      return `${base} bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent font-semibold ${hover}`;
+    } else {
+      // Default style
+      return `${base} ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`;
+    }
+  };
+
+  const linkStyles = getLinkStyles();
+  const mobileLinkStyles = (isDarkMode: boolean) => { // Mobile styles need separate handling
+     const baseMobile = 'block px-4 py-2 text-sm';
+      if (userProfile?.navbarStyle === 'rainbow') {
+          return `${baseMobile} bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`;
+      } else if (userProfile?.navbarStyle === 'golden') {
+           return `${baseMobile} bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent font-semibold ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`;
+      } else {
+           return `${baseMobile} ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'}`;
+      }
+  };
+
   const handleContact = async (data: ContactFormData) => {
     const webhookUrl =
       'https://discord.com/api/webhooks/1339791675018576024/M9vqEh3Zw67jhoaZ20hA6yFLADRiXEpCvPNOpMgy5iaao_DkNaGm4NpPtE00SGjybAPc';
@@ -320,7 +360,7 @@ export default function Header() {
                   height={32}
                   className="mr-2"
                 />
-                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out hidden sm:inline ${textColorClass}`}>
+                <span className={`text-xl font-bold transition-colors duration-1000 ease-in-out hidden sm:inline ${baseTextColorClass}`}>
                   Scio.ly
                 </span>
               </Link>
@@ -328,28 +368,16 @@ export default function Header() {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4">
-              <Link
-                href="/dashboard"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
-              >
+              <Link href="/dashboard" className={linkStyles}>
                 Dashboard
               </Link>
-              <Link
-                href="/practice"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
-              >
+              <Link href="/practice" className={linkStyles}>
                 Practice
               </Link>
-              <button
-                onClick={() => setContactModalOpen(true)}
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
-              >
+              <button onClick={() => setContactModalOpen(true)} className={linkStyles}>
                 Contact
               </button>
-              <Link
-                href="/about"
-                className={`transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
-              >
+              <Link href="/about" className={linkStyles}>
                 About Us
               </Link>
               <AuthButton />
@@ -360,7 +388,7 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className={`flex items-center transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${linkColorClass}`}
+                  className={`flex items-center transition-colors duration-1000 ease-in-out px-1 py-1 rounded-md text-sm font-medium ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
                 >
                   Menu
                   <svg 
@@ -381,24 +409,18 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 ${
-                        darkMode ? 'bg-gray-800' : 'bg-white'
-                      }`}
+                      className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
                     >
                       <Link
                         href="/dashboard"
-                        className={`block px-4 py-2 text-sm ${
-                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
+                        className={mobileLinkStyles(darkMode)}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Dashboard
                       </Link>
                       <Link
                         href="/practice"
-                        className={`block px-4 py-2 text-sm ${
-                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
+                        className={mobileLinkStyles(darkMode)}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Practice
@@ -408,17 +430,13 @@ export default function Header() {
                           setMobileMenuOpen(false);
                           setContactModalOpen(true);
                         }}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
+                        className={`w-full text-left ${mobileLinkStyles(darkMode)}`}
                       >
                         Contact
                       </button>
                       <Link
                         href="/about"
-                        className={`block px-4 py-2 text-sm ${
-                          darkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
+                        className={mobileLinkStyles(darkMode)}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         About Us

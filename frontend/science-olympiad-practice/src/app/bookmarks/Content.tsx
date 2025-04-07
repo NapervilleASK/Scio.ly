@@ -6,7 +6,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { auth } from '@/lib/firebase';
-import { loadBookmarksFromFirebase } from '@/app/utils/bookmarks';
+import { loadBookmarksFromFirebase, removeBookmark } from '@/app/utils/bookmarks';
 
 interface Question {
   question: string;
@@ -23,10 +23,28 @@ interface BookmarkedQuestion {
 }
 
 // Simple component to display a bookmarked question's text, options, and answer
-const BookmarkedQuestionDisplay = ({ question, darkMode }: { question: Question; darkMode: boolean }) => {
+const BookmarkedQuestionDisplay = ({ bookmarkedQuestion, darkMode, onRemove }: { 
+  bookmarkedQuestion: BookmarkedQuestion; 
+  darkMode: boolean; 
+  onRemove: (questionToRemove: BookmarkedQuestion) => void; 
+}) => {
+  const { question } = bookmarkedQuestion; // Extract question object
+
   return (
-    <div className={`p-4 rounded-md ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/80'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
-      <p className={`break-words whitespace-normal text-sm font-medium mb-3 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>{question.question}</p>
+    <div className={`relative p-4 rounded-md ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100/80'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
+      {/* Remove Button */} 
+      <button 
+        onClick={() => onRemove(bookmarkedQuestion)}
+        className={`absolute top-1 right-1 p-1 rounded-full transition-colors ${darkMode ? 'text-gray-400 hover:text-red-400 hover:bg-red-900/50' : 'text-gray-500 hover:text-red-600 hover:bg-red-100'}`}
+        aria-label="Remove this bookmark"
+        title="Remove this bookmark"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <p className={`break-words whitespace-normal text-sm font-medium mb-3 pr-6 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>{question.question}</p>
       
       {/* Display Options if they exist */}
       {question.options && question.options.length > 0 && (
@@ -81,6 +99,7 @@ export default function Content() {
   const [openEvents, setOpenEvents] = useState<Record<string, boolean>>({}); // State for dropdowns
   const { darkMode, setDarkMode } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
+  const [isRemoving, setIsRemoving] = useState<Record<string, boolean>>({}); // Track removal state per question key
 
   useEffect(() => {
     const loadBookmarks = async () => {
@@ -131,6 +150,45 @@ export default function Content() {
 
   const handleBackToPractice = () => {
     router.push('/dashboard');
+  };
+
+  // Function to remove a single bookmark
+  const handleRemoveSingleBookmark = async (questionToRemove: BookmarkedQuestion) => {
+    if (!auth.currentUser) {
+      toast.info('Please sign in to manage bookmarks');
+      return;
+    }
+
+    const questionKey = `${questionToRemove.eventName}-${questionToRemove.timestamp}`;
+    if (isRemoving[questionKey]) return; // Prevent double clicks
+    setIsRemoving(prev => ({ ...prev, [questionKey]: true }));
+
+    try {
+      await removeBookmark(auth.currentUser.uid, questionToRemove.question, questionToRemove.source);
+      
+      // Update state to remove the question immediately
+      setBookmarkedQuestions(prev => {
+        const updatedEvents = { ...prev };
+        const eventName = questionToRemove.eventName;
+        if (updatedEvents[eventName]) {
+          updatedEvents[eventName] = updatedEvents[eventName].filter(
+            q => !(q.question.question === questionToRemove.question.question && q.source === questionToRemove.source && q.timestamp === questionToRemove.timestamp)
+          );
+          // If the event becomes empty, remove the event key
+          if (updatedEvents[eventName].length === 0) {
+            delete updatedEvents[eventName];
+          }
+        }
+        return updatedEvents;
+      });
+
+      toast.success('Bookmark removed!');
+    } catch (error) {
+      console.error('Error removing bookmark:', error);
+      toast.error('Failed to remove bookmark');
+    } finally {
+      setIsRemoving(prev => ({ ...prev, [questionKey]: false }));
+    }
   };
 
   return (
@@ -245,7 +303,12 @@ export default function Content() {
                     <div id={`questions-${eventName}`} className={`p-6 pt-4 border-t ${darkMode ? 'border-gray-600' : 'border-gray-200'} space-y-3 bg-opacity-50 ${darkMode ? 'bg-black/10' : 'bg-white/50'}`}>
                       <h4 className={`text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Bookmarked Questions:</h4>
                       {questions.map((q, index) => (
-                        <BookmarkedQuestionDisplay key={`${eventName}-${index}-${q.timestamp}`} question={q.question} darkMode={darkMode} />
+                        <BookmarkedQuestionDisplay 
+                          key={`${eventName}-${index}-${q.timestamp}`} 
+                          bookmarkedQuestion={q} // Pass the full object
+                          darkMode={darkMode} 
+                          onRemove={handleRemoveSingleBookmark} // Pass the removal handler
+                        />
                       ))}
                     </div>
                   )}

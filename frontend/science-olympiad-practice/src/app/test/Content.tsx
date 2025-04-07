@@ -139,7 +139,7 @@ export default function TestPage() {
   const { darkMode, setDarkMode } = useTheme();
   const [reportState, setReportState] = useState<ReportState>({
     isOpen: false,
-    questionIndex: null
+    questionIndex: null,
   });
   const [explanations, setExplanations] = useState<{ [key: number]: string }>({});
   const [loadingExplanation, setLoadingExplanation] = useState<{ [key: number]: boolean }>({});
@@ -151,6 +151,7 @@ export default function TestPage() {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [inputCode, setInputCode] = useState<string>('');
   const [bookmarkedQuestions, setBookmarkedQuestions] = useState<Record<string, boolean>>({});
+  const [isProcessingReport, setIsProcessingReport] = useState<Record<number, boolean>>({});
 
   const closeShareModal = useCallback(() => {
     setShareModalOpen(false);
@@ -499,11 +500,13 @@ export default function TestPage() {
   }
   const handleReport = async (reason: string, action: 'remove' | 'edit', editedQuestion?: string, originalQuestion?: string) => {
     if (reportState.questionIndex === null) return;
+    const indexToReport = reportState.questionIndex;
     // Close the modal first
     setReportState({ isOpen: false, questionIndex: null });
+    setIsProcessingReport(prev => ({ ...prev, [indexToReport]: true }));
     
     try {
-      const question = data[reportState.questionIndex];
+      const question = data[indexToReport];
       const endpoint = action === 'remove' ? '/api/report/remove' : '/api/report/edit';
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -525,29 +528,37 @@ export default function TestPage() {
 
     } catch {
       updateContext(false,'Failed to submit report. Please try again.');
+    } finally {
+      setIsProcessingReport(prev => ({ ...prev, [indexToReport]: false }));
     }
   };
 
   const getExplanation = async (index: number, question: Question) => {
     if (explanations[index]) return;
-    
+
     const now = Date.now();
     if (now - lastCallTime < RATE_LIMIT_DELAY) {
       toast.error('Please wait a moment before requesting another explanation');
       return;
     }
     setLastCallTime(now);
-    
+
     setLoadingExplanation((prev) => ({ ...prev, [index]: true }));
-    
+
     try {
-      console.log('Question data:', question);
-      
-      const prompt = `Question: ${question.question}${question.options && question.options.length > 0 ? `\nOptions: ${question.options.join(', ')}` : ''}\nAnswer:${question.answers[0]}
-                      Solve this question. Start with the text "Explanation: ", providing a clear and informative explanation. Start off by giving a one paragraph explanation that leads to your answer, nothing else.`;
+      const isMCQ = question.options && question.options.length > 0;
+      const prompt = `Question: ${question.question}${isMCQ ? `\nOptions: ${question?.options?.join(', ')}` : ''}
+Correct Answer(s) provided originally: ${question.answers.join(', ')}
 
+First, provide a clear and informative explanation for how to solve this question. Start the explanation with "Explanation: ".
+After the explanation, on a new line, state the final answer clearly. Use the format "final answer index: [answer]".
+For multiple choice questions, provide the 1-based index(es) of the correct option(s), separated by commas if multiple. For free response, provide the correct answer text.
+Example MCQ: final answer: 3
+Example Multi-Select MCQ: final answer: 1, 4
+Example FRQ: final answer: Photosynthesis
+Your response should contain ONLY the explanation and the "final answer index:" line.`;
 
-      console.log('Sending prompt:', prompt);
+      console.log('Sending explanation prompt:', prompt);
       const response = await fetch(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + arr[Math.floor(Math.random() * arr.length)],
         {
@@ -568,82 +579,99 @@ export default function TestPage() {
       const data = await response.json();
       console.log('API Response:', data);
 
-      if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+      const fullResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!fullResponse) {
         throw new Error('Invalid response format from API');
       }
 
-      const explanation = data.candidates[0].content.parts[0].text;
-      setExplanations((prev) => ({ ...prev, [index]: explanation }));
+      // Parse the response
+      let explanationText = fullResponse;
+      let finalAnswerText = '';
+      const answerMarker = 'final answer index:';
+      const answerIndex = fullResponse.toLowerCase().lastIndexOf(answerMarker);
+
+      if (answerIndex !== -1) {
+        explanationText = fullResponse.substring(0, answerIndex).trim();
+        // Remove "Explanation: " prefix if it exists
+        if (explanationText.toLowerCase().startsWith('explanation:')) {
+          explanationText = explanationText.substring(12).trim();
+        }
+        finalAnswerText = fullResponse.substring(answerIndex + answerMarker.length).trim();
+      } else {
+        // If marker not found, use the whole response as explanation and log a warning
+        console.warn("Could not find 'final answer:' marker in response:", fullResponse);
+        // Still remove "Explanation: " prefix
+        if (explanationText.toLowerCase().startsWith('explanation:')) {
+          explanationText = explanationText.substring(12).trim();
+        }
+      }
+
+      setExplanations((prev) => ({ ...prev, [index]: explanationText }));
+
+      // Contest logic: Only run if submitted and final answer was found
+      if (isSubmitted && finalAnswerText) {
+        const userAnswer = userAnswers[index] || [];
+        if (userAnswer.length > 0) { // Only contest if user provided an answer
+          let aiAnswerMatchesUser = false;
+
+          if (isMCQ) {
+            // Ensure question.options exists before proceeding
+            if (question.options) {
+              // AI answer (1-based indices string, e.g., "1, 4") -> array of numbers [1, 4]
+              const aiIndices = finalAnswerText.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+
+              // User answer (option texts) -> array of 1-based indices
+              const userIndices = userAnswer
+                .map(ans => {
+                  // Use optional chaining for safety
+                  const idx = question.options?.indexOf(ans ?? "");
+                  return idx !== undefined && idx !== -1 ? idx + 1 : -1;
+                })
+                .filter(idx => idx > 0)
+                .sort((a, b) => a - b); // Sort for consistent comparison
+
+              // Sort AI indices too
+              aiIndices.sort((a, b) => a - b);
+
+              // Compare sorted arrays of indices
+              if (aiIndices.length === userIndices.length && aiIndices.every((val, i) => val === userIndices[i])) {
+                aiAnswerMatchesUser = true;
+              }
+            } else {
+              console.error("Contest check error: MCQ question missing options.");
+            }
+          } else { // Free Response
+            // Simple case-insensitive comparison for FRQ for now
+            if (userAnswer[0]?.toLowerCase() === finalAnswerText.toLowerCase()) {
+              aiAnswerMatchesUser = true;
+            }
+            // TODO: Potentially add more sophisticated FRQ matching later if needed
+          }
+
+          if (aiAnswerMatchesUser && gradingResults[index] !== 1 && gradingResults[index] !== 2) {
+            // If AI agrees with user and user was marked wrong/partial/unmarked
+            setGradingResults(prev => ({ ...prev, [index]: 2 }));
+            toast.success('Explanation confirmed your answer! Marked as correct.', { autoClose: 5000 });
+          } else if (!aiAnswerMatchesUser && gradingResults[index] === 2) {
+            // Optional: If AI *disagrees* and it was previously contested correct, revert?
+            // setGradingResults(prev => ({ ...prev, [index]: 0 })); // Or original grade
+            // toast.warn('Explanation differs from your answer. Reverting contest status.');
+          } else if (aiAnswerMatchesUser && (gradingResults[index] === 1 || gradingResults[index] === 2)) {
+             toast.info('Explanation confirms your answer was already correct.');
+          }
+        }
+      }
+
     } catch (error) {
       console.error('Error in getExplanation:', error);
+      const errorMsg = `Failed to load explanation: ${(error as Error).message}`;
       setExplanations((prev) => ({
         ...prev,
-        [index]: 'Failed to load explanation. Please try again later.',
+        [index]: errorMsg,
       }));
-      toast.error(`Failed to get explanation: ${(error as Error).message}`);
+      toast.error(errorMsg);
     } finally {
       setLoadingExplanation((prev) => ({ ...prev, [index]: false }));
-    }
-  };
-
-  // Add this new function to check if a question has already been contested
-  const hasQuestionBeenContested = (index: number): boolean => {
-    const contestedQuestions = JSON.parse(localStorage.getItem('contestedQuestions') || '[]');
-    return contestedQuestions.includes(index);
-  };
-
-  // Add this new function to mark a question as contested
-  const markQuestionAsContested = (index: number): void => {
-    const contestedQuestions = JSON.parse(localStorage.getItem('contestedQuestions') || '[]');
-    if (!contestedQuestions.includes(index)) {
-      contestedQuestions.push(index);
-      localStorage.setItem('contestedQuestions', JSON.stringify(contestedQuestions));
-    }
-  };
-
-  const validateContest = async (question: Question, userAnswer: (string | null)[]): Promise<boolean> => {
-    if (!userAnswer.length) { 
-      return false
-    }
-    toast.info("Judging...")
-    const prompt = `You are grading a student's answer to a Science Olympiad question: ${question.question}.
-${question.options ? `Options: ${question.options.join(', ')}\n` : ''}
-
-Here's how they responded (if mcq, 1 based index): ${ userAnswer.filter(a => a !== null) }
-Share a reasoning process to determine whether or not their response is valid or invalid. When you finish, end on either "VALID" or "INVALID" or "BAD QUESTION", and that should be the end of your response, not even a period to end.
-Consider the nuances of a question, maybe it relies on previous (and unavailable) context, like when nouns are preceded by "the", in which case it is a bad question
-`;
-
-    try {
-      // AIzaSyAkBDzzh7TQTJzmlLmzC7Yb5ls5SJqe05c
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=` + arr[Math.floor(Math.random() * arr.length)],
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-          })
-        }
-      );
-
-      if (!response.ok) {
-        console.error('Gemini API error:', await response.text());
-        return false;
-      }
-
-      const data = await response.json();
-      const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-      console.log(prompt)
-      console.log(question)
-      console.log(resultText)
-      if (resultText) {
-         return !resultText.endsWith("INVALID")
-      }
-      return false;
-    } catch (error) {
-      console.error('Error validating contest:', error);
-      return false;
     }
   };
 
@@ -687,7 +715,6 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
       
       // Then update Firebase in the background
       await addBookmark(auth.currentUser.uid, question, routerData.eventName || 'Unknown Event', 'test');
-      toast.success('Question bookmarked!');
     } catch (error) {
       // Revert the local state if there was an error
       setBookmarkedQuestions(prev => ({
@@ -714,7 +741,6 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
       
       // Then update Firebase in the background
       await removeBookmark(auth.currentUser.uid, question, 'test');
-      toast.success('Bookmark removed!');
     } catch (error) {
       // Revert the local state if there was an error
       setBookmarkedQuestions(prev => ({
@@ -723,6 +749,36 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
       }));
       console.error('Error removing bookmark:', error);
       toast.error('Failed to remove bookmark');
+    }
+  };
+
+  // Function to handle direct report without modal
+  const handleDirectReport = async (index: number) => {
+    if (isProcessingReport[index]) return; // Prevent multiple clicks
+    setIsProcessingReport(prev => ({ ...prev, [index]: true }));
+    
+    try {
+      const question = data[index];
+      const response = await fetch('/api/report/remove', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: question.question,
+          answer: question.answers,
+          originalQuestion: JSON.stringify(question),
+          event: routerData.eventName || 'Unknown Event',
+          reason: 'Direct report from test page' // Default reason
+        }),
+      });
+
+      const result = await response.json();
+      updateContext(result.success, result.success ? 'Question reported for removal!' : result.message || 'Failed to submit report');
+    } catch {
+      updateContext(false, 'Failed to submit report. Please try again.');
+    } finally {
+      setIsProcessingReport(prev => ({ ...prev, [index]: false }));
     }
   };
 
@@ -809,8 +865,7 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
 
           {/* Smooth Progress Bar */}
           <div
-            className={`${
-              isSubmitted ? '' : 'sticky top-6'
+            className={`${isSubmitted ? '' : 'sticky top-6'
             } z-10 w-full max-w-3xl bg-white border-2 border-gray-300 rounded-full h-5 mb-6 shadow-lg transition-all duration-1000 ease-in-out`}
           >
             <div
@@ -867,62 +922,8 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                       >
                         <div className="flex justify-between items-start">
                           <h3 className="font-semibold text-lg">Question {index + 1}</h3>
-                          <div className="flex gap-2">
-                            {isSubmitted && (
-                              <button
-                                onClick={async () => {
-                                  // Check if question has already been contested
-                                  if (hasQuestionBeenContested(index)) {
-                                    toast.error('This question has already been contested', {
-                                      autoClose: 5000
-                                    });
-                                    return;
-                                  }
-
-                                  const now = Date.now();
-                                  if (now - lastCallTime < RATE_LIMIT_DELAY) {
-                                    toast.error('Please wait a moment before contesting again');
-                                    return;
-                                  }
-                                  setLastCallTime(now);
-                              
-                                  try {
-                                    // Validate contest and wait for it to finish completely
-                                    const isValid = await validateContest(question, userAnswers[index] ?? []);
-                                    
-                                    if (isValid) {
-                                      setGradingResults(prev => ({ ...prev, [index]: 2 }));
-                                      toast.success('Contest accepted! Your answer has been marked as correct.', {
-                                        autoClose: 5000
-                                      });
-                                    } else {
-                                      toast.error('Contest rejected. The original grade stands.', {
-                                        autoClose: 5000
-                                      });
-                                    }
-                                    
-                                    // Mark as contested only after all notifications and processing is complete
-                                    markQuestionAsContested(index);
-                                  } catch (error) {
-                                    console.error('Error during contest validation:', error);
-                                    toast.error('An error occurred during contest validation', {
-                                      autoClose: 5000
-                                    });
-                                  }
-                                }}
-                                className="text-gray-500 hover:text-blue-500 transition-colors duration-200"
-                                title="Contest this question"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-5 w-5"
-                                  viewBox="0 0 57 57"
-                                  fill="currentColor"
-                                >
-                                  <path d="M57,0h-8.837L18.171,29.992l-4.076-4.076l-1.345-4.034c-0.22-0.663-0.857-1.065-1.55-0.98 c-0.693,0.085-1.214,0.63-1.268,1.327l-0.572,7.438l5.982,5.982L4.992,46H2.274C1.02,46,0,47.02,0,48.274v6.452 C0,55.98,1.02,57,2.274,57h6.452C9.98,57,11,55.98,11,54.726v-3.421l10-10l6.021,6.021l6.866-1.145 c0.685-0.113,1.182-0.677,1.21-1.37c0.028-0.693-0.422-1.295-1.096-1.464l-3.297-0.824l-4.043-4.043L57,8.489V0z M9,54.726 C9,54.877,8.877,55,8.726,55H2.274C2.123,55,2,54.877,2,54.726v-6.452C2,48.123,2.123,48,2.274,48h0.718h5.734 C8.877,48,9,48.123,9,48.274v5.031V54.726z M11,48.477v-0.203C11,47.02,9.98,46,8.726,46H7.82l8.938-8.938l1.417,1.417l1.411,1.411 L11,48.477z M30.942,44.645l-3.235,0.54l-5.293-5.293l0,0l-2.833-2.833l-8.155-8.155l0.292-3.796l0.63,1.89l4.41,4.41l0,0 l4.225,4.225l8.699,8.699L30.942,44.645z M25.247,37.066l-2.822-2.822l-2.839-2.839L48.991,2h4.243L23.829,31.406 c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293L55,3.062v4.592L25.247,37.066z" />
-                                </svg>
-                              </button>
-                            )}
+                          <div className="flex gap-2 items-center">
+                            {/* The Contest Button was previously here, now removed and logic integrated into Explain button */}
                             <button
                               onClick={() => isBookmarked ? handleRemoveBookmark(question) : handleBookmark(question)}
                               className={`text-gray-500 hover:text-yellow-500 transition-colors duration-200`}
@@ -945,23 +946,38 @@ Consider the nuances of a question, maybe it relies on previous (and unavailable
                             </button>
                             <button
                               onClick={() => setReportState({ isOpen: true, questionIndex: index })}
-                              className="text-gray-500 hover:text-red-500 transition-colors duration-200"
-                              title="Report this question"
+                              className="text-gray-500 hover:text-blue-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-500/20"
+                              title="Suggest Edit"
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                                <line x1="12" y1="9" x2="12" y2="13" />
-                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                               </svg>
+                            </button>
+                            <button
+                              onClick={() => handleDirectReport(index)}
+                              className={`text-gray-500 hover:text-red-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-500/20 ${isProcessingReport[index] ? 'opacity-50 cursor-not-allowed' : ''}`}
+                              title="Report for Removal"
+                              disabled={isProcessingReport[index]}
+                            >
+                              {isProcessingReport[index] ? (
+                                <div className="animate-spin rounded-full h-5 w-5 border-2 border-red-500 border-t-transparent"></div>
+                              ) : (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                                  <line x1="12" y1="9" x2="12" y2="13" />
+                                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                              )}
                             </button>
                           </div>
                         </div>

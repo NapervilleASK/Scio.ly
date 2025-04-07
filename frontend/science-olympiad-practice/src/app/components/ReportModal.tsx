@@ -14,7 +14,7 @@ interface Question {
 interface ReportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (reason: string, action: 'remove' | 'edit', editedQuestion?: string, originalQuestion?: string) => void;
+  onSubmit: (reason: string, action: 'edit', editedQuestion?: string, originalQuestion?: string) => void;
   darkMode: boolean;
   question?: Question;
   event: string;
@@ -22,7 +22,6 @@ interface ReportModalProps {
 
 const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: ReportModalProps) => {
   const [reason, setReason] = useState('');
-  const [action, setAction] = useState<'remove' | 'edit'>('remove');
   const [editedQuestion, setEditedQuestion] = useState('');
   const [editedOptions, setEditedOptions] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<number[]>([]);
@@ -69,60 +68,42 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
     setIsProcessing(true);
 
     try {
-      if (action === 'edit') {
-        const editedQuestionData = {
-          originalQuestion: question?.question,
-          originalQuestionFull: question,
-          editedQuestion: {
-            question: editedQuestion,
-            options: isFRQ ? undefined : editedOptions.length > 0 ? editedOptions : undefined,
-            answers: isFRQ ? [frqAnswer] : editedOptions.length > 0 ? correctAnswers : [editedQuestion],
-            difficulty: difficulty === 0 ? 0.1 : difficulty
-          },
-          event: event,
-          reason: reason
-        };
+      const editedQuestionData = {
+        originalQuestion: question?.question,
+        originalQuestionFull: question,
+        editedQuestion: {
+          question: editedQuestion,
+          options: isFRQ ? undefined : editedOptions.length > 0 ? editedOptions : undefined,
+          answers: isFRQ ? [frqAnswer] : editedOptions.length > 0 ? correctAnswers : [editedQuestion],
+          difficulty: difficulty === 0 ? 0.1 : difficulty
+        },
+        event: event,
+        reason: reason
+      };
 
-        // Log the edited question data to verify it contains the difficulty value
-        console.log('Sending edited question data:', editedQuestionData);
+      // Log the edited question data to verify it contains the difficulty value
+      console.log('Sending edited question data:', editedQuestionData);
 
-        // Instead of making the API call directly, pass the data to the parent component
-        
-        resetForm();
-        onClose();
-        
-        toast.success('Edit submitted for review.', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: darkMode ? "dark" : "light"
-        });
-        onSubmit(
-          reason, 
-          action, 
-          JSON.stringify(editedQuestionData.editedQuestion),
-          JSON.stringify(question)
-        );
-      } else {
-        // For remove action, just pass the data to the parent component
-        
-        resetForm();
-        onClose();
-        onSubmit(reason, action);
-        
-        toast.success('Report submitted for review.', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: darkMode ? "dark" : "light"
-        });
-      }
+      // Instead of making the API call directly, pass the data to the parent component
+      
+      resetForm();
+      onClose();
+      
+      toast.success('Edit submitted for review.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: darkMode ? "dark" : "light"
+      });
+      onSubmit(
+        reason, 
+        'edit', 
+        JSON.stringify(editedQuestionData.editedQuestion),
+        JSON.stringify(question)
+      );
     } catch (error) {
       console.error('Error processing report:', error);
       toast.error('Failed to process report. Please try again.', {
@@ -141,7 +122,6 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
 
   const resetForm = () => {
     setReason('');
-    setAction('remove');
     setEditedQuestion('');
     setEditedOptions([]);
     setCorrectAnswers([]);
@@ -212,7 +192,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold">Report Question</h3>
+            <h3 className="text-lg font-semibold">Edit Question</h3>
             <button 
               onClick={handleClose} 
               className={`text-gray-500 hover:${darkMode ? 'text-gray-300' : 'text-gray-700'} transition-colors`}
@@ -224,165 +204,135 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block mb-2 font-medium">Action</label>
-              <div className="flex space-x-4">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="action"
-                    value="remove"
-                    checked={action === 'remove'}
-                    onChange={() => setAction('remove')}
-                    className="mr-2"
-                  />
-                  Remove Question
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="action"
-                    value="edit"
-                    checked={action === 'edit'}
-                    onChange={() => setAction('edit')}
-                    className="mr-2"
-                  />
-                  Edit Question
-                </label>
+            <div className="mb-4 space-y-4">
+              <div>
+                <label className="block mb-2 font-medium">Question Description</label>
+                <textarea
+                  className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
+                    darkMode 
+                      ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
+                      : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
+                  }`}
+                  rows={4}
+                  placeholder="Enter your edited version of the question..."
+                  value={editedQuestion}
+                  onChange={(e) => setEditedQuestion(e.target.value)}
+                  required
+                />
               </div>
-            </div>
 
-            {action === 'edit' && (
-              <div className="mb-4 space-y-4">
+              <div>
+                <label className="block mb-2 font-medium">Difficulty</label>
+                <div className="flex items-center">
+                  <span className="text-sm w-10">Easy</span>
+                  <div className="relative w-48 mx-2 h-6">
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.01"
+                      value={difficulty}
+                      onChange={(e) => {
+                        const value = parseFloat(e.target.value);
+                        // Ensure difficulty is at least 0.1 (10%)
+                        setDifficulty(value === 0 ? 0.1 : value);
+                      }}
+                      className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+                      style={{
+                        background: `linear-gradient(to right, 
+                          ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} 0%, 
+                          ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} ${difficulty * 100}%, 
+                          rgb(209, 213, 219) ${difficulty * 100}%, 
+                          rgb(209, 213, 219) 100%)`
+                      }}
+                    />
+                  </div>
+                  <span className="text-sm w-10">Hard</span>
+                  <div className="ml-2">
+                    <div className={`w-16 text-center px-2 py-1 rounded text-xs ${
+                      difficulty < 0.3 
+                        ? darkMode ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800'
+                        : difficulty < 0.7 
+                          ? darkMode ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
+                          : darkMode ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800'
+                    }`}>
+                      {difficulty < 0.3 ? 'Easy' : difficulty < 0.7 ? 'Medium' : 'Hard'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Conditional rendering based on question type */}
+              {isFRQ ? (
+                // Free Response Question Answer
                 <div>
-                  <label className="block mb-2 font-medium">Edit Question</label>
+                  <label className="block mb-2 font-medium">Correct Answer</label>
                   <textarea
-                    className={`w-full p-2 border rounded-md mb-2 transition-colors duration-300 ${
+                    className={`w-full p-2 border rounded-md transition-colors duration-300 ${
                       darkMode 
                         ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
                         : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
                     }`}
-                    rows={4}
-                    placeholder="Enter your edited version of the question..."
-                    value={editedQuestion}
-                    onChange={(e) => setEditedQuestion(e.target.value)}
+                    rows={3}
+                    placeholder="Enter the correct answer for this free response question..."
+                    value={frqAnswer}
+                    onChange={(e) => setFrqAnswer(e.target.value)}
                     required
                   />
                 </div>
-
+              ) : (
+                // Multiple Choice Question Options
                 <div>
-                  <label className="block mb-2 font-medium">Difficulty</label>
-                  <div className="flex items-center">
-                    <span className="text-sm w-10">Easy</span>
-                    <div className="relative w-48 mx-2 h-6">
-                      <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={difficulty}
-                        onChange={(e) => {
-                          const value = parseFloat(e.target.value);
-                          // Ensure difficulty is at least 0.1 (10%)
-                          setDifficulty(value === 0 ? 0.1 : value);
-                        }}
-                        className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-                        style={{
-                          background: `linear-gradient(to right, 
-                            ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} 0%, 
-                            ${difficulty < 0.3 ? 'rgb(34, 197, 94)' : difficulty < 0.7 ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'} ${difficulty * 100}%, 
-                            rgb(209, 213, 219) ${difficulty * 100}%, 
-                            rgb(209, 213, 219) 100%)`
-                        }}
-                      />
-                    </div>
-                    <span className="text-sm w-10">Hard</span>
-                    <div className="ml-2">
-                      <div className={`w-16 text-center px-2 py-1 rounded text-xs ${
-                        difficulty < 0.3 
-                          ? darkMode ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800'
-                          : difficulty < 0.7 
-                            ? darkMode ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
-                            : darkMode ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800'
-                      }`}>
-                        {difficulty < 0.3 ? 'Easy' : difficulty < 0.7 ? 'Medium' : 'Hard'}
+                  <label className="block mb-2 font-medium">Answer Options</label>
+                  <div className="space-y-2">
+                    {editedOptions.map((option, index) => (
+                      <div key={index} className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={correctAnswers.includes(index + 1)}
+                          onChange={() => toggleCorrectAnswer(index)}
+                          className="mr-2"
+                        />
+                        <input
+                          type="text"
+                          value={option}
+                          onChange={(e) => updateOption(index, e.target.value)}
+                          className={`flex-1 p-2 border rounded-md transition-colors duration-300 ${
+                            darkMode 
+                              ? 'bg-gray-700 text-white border-gray-600' 
+                              : 'bg-white text-gray-900 border-gray-300'
+                          }`}
+                          placeholder={`Option ${index + 1}`}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeOption(index)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          ×
+                        </button>
                       </div>
-                    </div>
+                    ))}
                   </div>
+                  <button
+                    type="button"
+                    onClick={addOption}
+                    className={`mt-2 px-3 py-1 rounded-md text-sm ${
+                      darkMode
+                        ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                        : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                    }`}
+                  >
+                    + Add Option
+                  </button>
+                  {editedOptions.length > 0 && (
+                    <p className="mt-2 text-sm text-gray-500">
+                      Check the boxes next to the correct answer(s)
+                    </p>
+                  )}
                 </div>
-
-                {/* Conditional rendering based on question type */}
-                {isFRQ ? (
-                  // Free Response Question Answer
-                  <div>
-                    <label className="block mb-2 font-medium">Correct Answer</label>
-                    <textarea
-                      className={`w-full p-2 border rounded-md transition-colors duration-300 ${
-                        darkMode 
-                          ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500' 
-                          : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
-                      }`}
-                      rows={3}
-                      placeholder="Enter the correct answer for this free response question..."
-                      value={frqAnswer}
-                      onChange={(e) => setFrqAnswer(e.target.value)}
-                      required
-                    />
-                  </div>
-                ) : (
-                  // Multiple Choice Question Options
-                  <div>
-                    <label className="block mb-2 font-medium">Answer Options</label>
-                    <div className="space-y-2">
-                      {editedOptions.map((option, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            checked={correctAnswers.includes(index + 1)}
-                            onChange={() => toggleCorrectAnswer(index)}
-                            className="mr-2"
-                          />
-                          <input
-                            type="text"
-                            value={option}
-                            onChange={(e) => updateOption(index, e.target.value)}
-                            className={`flex-1 p-2 border rounded-md transition-colors duration-300 ${
-                              darkMode 
-                                ? 'bg-gray-700 text-white border-gray-600' 
-                                : 'bg-white text-gray-900 border-gray-300'
-                            }`}
-                            placeholder={`Option ${index + 1}`}
-                          />
-                          <button
-                            type="button"
-                            onClick={() => removeOption(index)}
-                            className="text-red-500 hover:text-red-700"
-                          >
-                            ×
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={addOption}
-                      className={`mt-2 px-3 py-1 rounded-md text-sm ${
-                        darkMode
-                          ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                          : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                      }`}
-                    >
-                      + Add Option
-                    </button>
-                    {editedOptions.length > 0 && (
-                      <p className="mt-2 text-sm text-gray-500">
-                        Check the boxes next to the correct answer(s)
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
+              )}
+            </div>
 
             <textarea
               className={`w-full p-2 border rounded-md mb-4 transition-colors duration-300 ${
@@ -391,9 +341,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                   : 'bg-white text-gray-900 border-gray-300 focus:border-blue-400'
               }`}
               rows={4}
-              placeholder={action === 'remove' 
-                ? "Please describe why this question should be removed..." 
-                : "Please explain your changes to the question..."}
+              placeholder="Please explain your changes to the question..."
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               required
@@ -422,7 +370,7 @@ const ReportModal = ({ isOpen, onClose, onSubmit, darkMode, question, event }: R
                     <span>Processing...</span>
                   </>
                 ) : (
-                  <span>Submit {action === 'remove' ? 'Report' : 'Edit'}</span>
+                  <span>Submit Edit</span>
                 )}
               </button>
             </div>

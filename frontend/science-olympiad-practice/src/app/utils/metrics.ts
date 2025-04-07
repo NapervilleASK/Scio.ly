@@ -6,17 +6,20 @@ export interface DailyMetrics {
   correctAnswers: number;
   eventsPracticed: string[];
   eventQuestions: Record<string, number>;
+  gamePoints: number;
 }
 
 const getLocalMetrics = (): DailyMetrics => {
   const today = new Date().toISOString().split('T')[0];
   const localStats = localStorage.getItem(`metrics_${today}`);
-  return localStats ? JSON.parse(localStats) : {
+  const defaultMetrics = {
     questionsAttempted: 0,
     correctAnswers: 0,
     eventsPracticed: [],
-    eventQuestions: {}
+    eventQuestions: {},
+    gamePoints: 0
   };
+  return localStats ? { ...defaultMetrics, ...JSON.parse(localStats) } : defaultMetrics;
 };
 
 const saveLocalMetrics = (metrics: DailyMetrics) => {
@@ -25,6 +28,14 @@ const saveLocalMetrics = (metrics: DailyMetrics) => {
 };
 
 export const getDailyMetrics = async (userId: string | null): Promise<DailyMetrics | null> => {
+  const defaultMetrics = {
+    questionsAttempted: 0,
+    correctAnswers: 0,
+    eventsPracticed: [],
+    eventQuestions: {},
+    gamePoints: 0
+  };
+
   if (!userId) {
     return getLocalMetrics();
   }
@@ -38,17 +49,12 @@ export const getDailyMetrics = async (userId: string | null): Promise<DailyMetri
     if (userDoc.exists()) {
       const userData = userDoc.data();
       const dailyStats = userData.dailyStats || {};
-      return dailyStats[today] || {
-        questionsAttempted: 0,
-        correctAnswers: 0,
-        eventsPracticed: [],
-        eventQuestions: {}
-      };
+      return { ...defaultMetrics, ...(dailyStats[today] || {}) };
     }
-    return null;
+    return defaultMetrics;
   } catch (error) {
     console.error('Error getting metrics:', error);
-    return null;
+    return defaultMetrics;
   }
 };
 
@@ -59,10 +65,11 @@ export const updateMetrics = async (
     correctAnswers?: number;
     eventName?: string;
   }
-) => {
+): Promise<DailyMetrics | null> => {
   if (!userId) {
     const currentStats = getLocalMetrics();
-    const updatedStats = {
+    const updatedStats: DailyMetrics = {
+      ...currentStats,
       questionsAttempted: currentStats.questionsAttempted + (updates.questionsAttempted || 0),
       correctAnswers: currentStats.correctAnswers + (updates.correctAnswers || 0),
       eventsPracticed: updates.eventName && !currentStats.eventsPracticed.includes(updates.eventName)
@@ -70,7 +77,9 @@ export const updateMetrics = async (
         : currentStats.eventsPracticed,
       eventQuestions: {
         ...currentStats.eventQuestions,
-        [updates.eventName || '']: (currentStats.eventQuestions?.[updates.eventName || ''] || 0) + (updates.questionsAttempted || 0)
+        ...(updates.eventName && updates.questionsAttempted ? {
+          [updates.eventName]: (currentStats.eventQuestions?.[updates.eventName] || 0) + updates.questionsAttempted
+        } : {})
       }
     };
     saveLocalMetrics(updatedStats);
@@ -89,14 +98,17 @@ export const updateMetrics = async (
       dailyStats = userData.dailyStats || {};
     }
 
-    const todayStats = dailyStats[today] || {
+    const defaultTodayStats = {
       questionsAttempted: 0,
       correctAnswers: 0,
       eventsPracticed: [],
-      eventQuestions: {}
+      eventQuestions: {},
+      gamePoints: 0
     };
 
-    const updatedTodayStats = {
+    const todayStats = { ...defaultTodayStats, ...(dailyStats[today] || {}) };
+
+    const updatedTodayStats: DailyMetrics = {
       ...todayStats,
       questionsAttempted: todayStats.questionsAttempted + (updates.questionsAttempted || 0),
       correctAnswers: todayStats.correctAnswers + (updates.correctAnswers || 0),
@@ -105,7 +117,9 @@ export const updateMetrics = async (
         : todayStats.eventsPracticed,
       eventQuestions: {
         ...todayStats.eventQuestions,
-        [updates.eventName || '']: (todayStats.eventQuestions?.[updates.eventName || ''] || 0) + (updates.questionsAttempted || 0)
+        ...(updates.eventName && updates.questionsAttempted ? {
+          [updates.eventName]: (todayStats.eventQuestions?.[updates.eventName] || 0) + updates.questionsAttempted
+        } : {})
       }
     };
 

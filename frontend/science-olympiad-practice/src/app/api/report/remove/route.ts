@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(arr[Math.floor(Math.random() * arr.length)]
 
 export async function POST(request: NextRequest) {
   try {
-    const { question, originalQuestion, event, reason, answers } = await request.json();
+    const { question, originalQuestion, event, answers } = await request.json();
     
     if (!question || !event) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -27,8 +27,7 @@ export async function POST(request: NextRequest) {
     Question: ${question}
     Event: ${event}
     Answer: ${answers}
-    Reason for removal: ${reason}
-    
+
     Evaluate whether this question should be removed from the question bank for ${event}.
     
     A question should ONLY be removed if:

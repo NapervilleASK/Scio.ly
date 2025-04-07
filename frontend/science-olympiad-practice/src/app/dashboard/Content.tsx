@@ -54,17 +54,6 @@ interface UpdateInfo {
   comingSoon: string[];
 }
 
-interface BookmarkedQuestion {
-  question: {
-    question: string;
-    options?: string[];
-    answers: (string | number)[];
-    difficulty: number;
-  };
-  eventName: string;
-  source: string;
-  timestamp: number;
-}
 
 const ContactModal = ({ isOpen, onClose, onSubmit, darkMode }: ContactModalProps) => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -310,7 +299,6 @@ export default function WelcomePage() {
   // --- New: Compute window width and extra height on mobile ---
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
   const [extraHeight, setExtraHeight] = useState(0);
-  const [bookmarkedQuestions, setBookmarkedQuestions] = useState<BookmarkedQuestion[]>([]);
 
   useEffect(() => {
     function handleResize() {
@@ -409,31 +397,6 @@ export default function WelcomePage() {
     setHasSeenUpdate(!!hasSeenUpdateThisSession);
     setHasCheckedStorage(true);
   }, []);
-
-  useEffect(() => {
-    const fetchBookmarks = async () => {
-      if (currentUser) {
-        try {
-          const bookmarksRef = doc(db, 'bookmarks', currentUser.uid);
-          const bookmarksDoc = await getDoc(bookmarksRef);
-          
-          if (bookmarksDoc.exists()) {
-            const data = bookmarksDoc.data();
-            setBookmarkedQuestions(data.questions || []);
-          } else {
-            setBookmarkedQuestions([]);
-          }
-        } catch (error) {
-          console.error('Error fetching bookmarks:', error);
-          setBookmarkedQuestions([]);
-        }
-      } else {
-        setBookmarkedQuestions([]);
-      }
-    };
-    
-    fetchBookmarks();
-  }, [currentUser]);
 
   const metrics = {
     questionsAttempted: dailyStats.questionsAttempted,
@@ -628,13 +591,7 @@ export default function WelcomePage() {
 
   // Replace the old handleLoadTest function with one that accepts a code parameter
   const handleLoadTest = async (code: string) => {
-    if (!code) {
-      toast.error('Please enter a test code', {
-        position: "bottom-center"
-      });
-      return;
-    }
-    
+ 
     try {
       // Validate the code with the API before redirecting
       const response = await fetch(`/api/share?code=${code}`);
@@ -643,7 +600,6 @@ export default function WelcomePage() {
         // If the code is invalid, show an error toast and keep the user on the welcome page
         const errorData = await response.json();
         toast.error(errorData.error || 'Invalid or expired test code', {
-          position: "bottom-center"
         });
         return;
       }
@@ -755,6 +711,7 @@ export default function WelcomePage() {
   return (
     <div className="relative w-100 overflow-x-hidden" style={{ minHeight: computedMinHeight }}>
       {/* Background Layers */}
+      <ToastContainer/>
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
           darkMode ? 'opacity-100' : 'opacity-0'
@@ -1130,226 +1087,78 @@ export default function WelcomePage() {
             </div>
           </div>
 
-          {/* Remove the mobile practice button since we've moved it to the top */}
-          { isMobile ? (
-          <div className="flex w-full gap-4">
-              {/* Removed the practice button from here since it's now at the top */}
-              </div> ) : (<></>)
-            }
-
-          {/* Practice/Test Code Button Area */}
-          {isMobile ? (
-            <>
-              <br/>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="w-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden">
-                  <div className={`w-full py-4 px-6 flex items-center justify-center transition-all duration-300 ${
-                    darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
-                  >
-                    <span className="text-2xl font-bold">Test share code</span>
-                  </div>
-                  <div className="grid grid-cols-6 w-full">
-                    {testCodeDigits.map((digit, index) => (
-                      <input
-                        key={index}
-                        id={`digit-${index}`}
-                        type="text"
-                        maxLength={1}
-                        value={digit}
-                        onChange={(e) => handleDigitChange(e, index)}
-                        onKeyDown={(e) => handleKeyDown(e, index)}
-                        onPaste={(e) => handlePaste(e, index)}
-                        className={`
-                          ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'}
-                          w-full aspect-square text-center text-4xl font-bold
-                          focus:outline-none
-                          ${index > 0 ? 'border-l border-gray-400' : ''}
-                        `}
-                        style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
-                      />
-                    ))}
-                  </div>
-                </div>
-                <div 
-                  onClick={() => router.push('/reports')}
-                  className={`w-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${
-                    darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
-                  }`}
-                >
-                  <div className={`w-full h-full py-4 px-6 flex flex-col items-center justify-center transition-all duration-300 ${
-                    darkMode ? 'text-white' : 'text-black'}`}
-                  >
-                    <span className="text-2xl font-bold mb-2">Reports</span>
-                    <span className="text-sm text-center opacity-80">Check out recent question reports</span>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="flex w-full gap-4">
-              <div className="w-1/2 flex shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
-                <div className={`w-1/5 py-8 px-6 flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-gray-800 text-white border-white' : 'bg-white text-black border-gray-500'} rounded-l-lg  border-r-4`}>
-                  Test share code
-                </div>
-                <div className="w-4/5 flex flex-wrap">
-                  {testCodeDigits.map((digit, index) => (
-                    <div key={index} className="w-1/6">
-                      <input
-                        id={`digit-${index}`}
-                        type="text"
-                        maxLength={1}
-                        value={digit}
-                        onChange={(e) => handleDigitChange(e, index)}
-                        onKeyDown={(e) => handleKeyDown(e, index)}
-                        onPaste={(e) => handlePaste(e, index)}
-                        className={
-                          `${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700'} w-full h-full text-center text-4xl font-bold transform focus:outline-none ${index === 0 ? '' : 'border-l'} ${index === testCodeDigits.length - 1 ? 'rounded-tr-lg rounded-br-lg' : 'border-r'} border-gray-300 ${index < 3 ? 'border-b sm:border-b-0' : 'border-t sm:border-t-0'}`
-                        }
-                        style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div 
-                onClick={() => router.push('/reports')}
-                className={`w-1/2 shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-lg cursor-pointer transition-all duration-300 ${
-                  darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
-                }`}
-              >
-                <div className={`w-full h-full py-8 px-6 flex flex-col items-center justify-center transition-all duration-300 ${
-                  darkMode ? 'text-white' : 'text-black'}`}
-                >
-                  <span className="text-2xl font-bold mb-2">Recent Reports</span>
-                  <span className="text-lg opacity-80">Check out how the community has been fixing up the question base</span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Bookmarked Questions Section */}
-          <div className={`mt-8 p-6 rounded-lg mb-8 transition-colors duration-1000 ease-in-out ${
-            darkMode ? 'bg-gray-800' : 'bg-white/95 shadow-[0_4px_12px_rgba(0,0,0,0.1)]'
-          }`}>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                Bookmarked Questions
-              </h2>
-              <button
-                onClick={() => router.push('/bookmarks')}
-                className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                  darkMode
-                    ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                    : 'bg-blue-50 hover:bg-blue-100 text-blue-600'
-                }`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+          {/* --- Test Share Code Input - Moved Above Buttons --- */}
+          <div className="mb-8">
+            <div className={`p-6 rounded-lg ${cardStyle} flex flex-col md:flex-row items-center gap-4`}>
+              <label htmlFor="test-code-input" className={`text-lg font-semibold whitespace-nowrap ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                Test Share Code:
+              </label>
+              <div className="flex-grow grid grid-cols-6 gap-1 w-full md:w-auto">
+                {testCodeDigits.map((digit, index) => (
+                  <input
+                    key={index}
+                    id={`digit-${index}`}
+                    type="text"
+                    maxLength={1}
+                    value={digit}
+                    onChange={(e) => handleDigitChange(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onPaste={(e) => handlePaste(e, index)}
+                    className={`
+                      ${darkMode ? 'bg-gray-700 text-gray-200 border-gray-600' : 'bg-white text-gray-700 border-gray-300'} 
+                      w-full aspect-square text-center text-3xl sm:text-4xl font-bold 
+                      border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500
+                    `}
+                    style={{ fontFamily: "'PT Sans Narrow', sans-serif" }}
+                    aria-label={`Test code digit ${index + 1}`}
                   />
-                </svg>
-                <span>Practice Bookmarked Questions</span>
-              </button>
-            </div>
-            {!currentUser ? (
-              <div className="text-center py-8">
-                <p className={`text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Please sign in to view your bookmarked questions
-                </p>
+                ))}
               </div>
-            ) : (
-              <>
-                {/* Mobile view - simple button for small screens */}
-                <div className="md:hidden">
-                  <button
-                    onClick={() => router.push('/bookmarks')}
-                    className={`w-full p-3 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 transform hover:scale-105 ${
-                      darkMode
-                        ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                        : 'bg-blue-50 hover:bg-blue-100 text-blue-500'
-                    }`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                      />
-                    </svg>
-                    <span>{bookmarkedQuestions.length > 0 ? `View ${bookmarkedQuestions.length} Bookmarks` : 'View Bookmarks'}</span>
-                  </button>
-                </div>
-                
-                {/* Desktop view - grid of bookmark cards and message */}
-                <div className="hidden md:block">
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                    {bookmarkedQuestions.slice(0, 6).map((bookmarked, index) => (
-                      <div
-                        key={index}
-                        className={`p-4 rounded-lg shadow-sm transition-all duration-500 ease-in-out ${
-                          darkMode
-                            ? 'bg-gray-700 border-gray-600 text-white'
-                            : 'bg-gray-50 border-gray-300 text-black'
-                        } border`}
-                      >
-                        <div className="flex justify-between items-start mb-2">
-                          <span className={`text-sm font-medium ${
-                            darkMode ? 'text-gray-300' : 'text-gray-600'
-                          }`}>
-                            {bookmarked.eventName}
-                          </span>
-                          <span className={`text-xs ${
-                            darkMode ? 'text-gray-400' : 'text-gray-500'
-                          }`}>
-                            {bookmarked.source === 'test' ? 'From Test' : 'From Practice'}
-                          </span>
-                        </div>
-                        <p className="text-sm mb-2 line-clamp-2">{bookmarked.question.question}</p>
-                        <div className="text-right">
-                          <span className={`text-xs ${
-                            darkMode ? 'text-gray-400' : 'text-gray-500'
-                          }`}>
-                            {new Date(bookmarked.timestamp).toLocaleDateString()}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Only show these messages on desktop */}
-                  {bookmarkedQuestions.length === 0 ? (
-                    <p className={`text-center mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                      No bookmarked questions yet. Bookmark questions while practicing!
-                    </p>
-                  ) : bookmarkedQuestions.length > 6 ? (
-                    <div className="text-center mt-4">
-                      <button
-                        onClick={() => router.push('/bookmarks')}
-                        className={`text-sm ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
-                      >
-                        View all {bookmarkedQuestions.length} bookmarked questions
-                      </button>
-                    </div>
-                  ) : null}
-                </div>
-              </>
-            )}
+              {/* Optional: Add a small submit button if auto-submit on full code isn't desired */}
+              {/* <button 
+                onClick={() => handleLoadTest(testCodeDigits.join(''))} 
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ml-4"
+                disabled={testCodeDigits.some(d => d === '')}
+              >
+                Load
+              </button> */} 
+            </div>
+          </div>
+          
+          {/* --- Row of Action Buttons --- */} 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Recent Reports Button */} 
+            <div 
+              onClick={() => router.push('/reports')}
+              className={`rounded-lg cursor-pointer transition-all duration-300 transform hover:-translate-y-1 ${cardStyle}`}
+            >
+              <div className={`w-full h-full p-6 flex flex-col items-center md:items-start justify-center text-center md:text-left ${darkMode ? 'text-white' : 'text-black'}`}>
+                <span className="text-xl font-bold mb-1">Recent Reports</span>
+                <span className={`text-sm opacity-80 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Check out how the community has been fixing up the question base</span>
+              </div>
+            </div>
+            
+            {/* Bookmarked Questions Button (New Style) */} 
+            <div 
+              onClick={() => router.push('/bookmarks')}
+              className={`rounded-lg cursor-pointer transition-all duration-300 transform hover:-translate-y-1 ${cardStyle}`}
+            >
+              <div className={`w-full h-full p-6 flex flex-col items-center md:items-start justify-center text-center md:text-left ${darkMode ? 'text-white' : 'text-black'}`}>
+                <span className="text-xl font-bold mb-1">Bookmarked Questions</span>
+                <span className={`text-sm opacity-80 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>View and practice over your bookmarked questions.</span>
+              </div>
+            </div>
+
+            {/* Fun Zone Button (New) */} 
+            <div 
+              onClick={() => router.push('/fun')} // Placeholder link
+              className={`rounded-lg cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg ${darkMode ? 'bg-gradient-to-r from-purple-800 to-pink-800' : 'bg-gradient-to-r from-purple-500 to-pink-500'} text-white`}
+            >
+              <div className="w-full h-full p-6 flex flex-col items-center md:items-start justify-center text-center md:text-left">
+                <span className="text-xl font-bold mb-1">Fun Zone</span>
+                <span className="text-sm opacity-90">Explore games and other fun activities.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1508,7 +1317,7 @@ export default function WelcomePage() {
         }
       `}</style>
       <br/><br/>
-      <ToastContainer theme={`${darkMode ? "dark" : "light"}`}/>
+      
     </div>
   );
 }
