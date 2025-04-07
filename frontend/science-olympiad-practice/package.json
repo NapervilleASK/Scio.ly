@@ -28,7 +28,7 @@
     "lenis": "^1.1.21",
     "marked": "^15.0.7",
     "mongodb": "^6.14.0",
-    "next": "15.1.5",
+    "next": "15.2.4",
     "next-auth": "^4.24.11",
     "pdf-parse": "^1.1.1",
     "pdf.js-extract": "^0.2.1",
